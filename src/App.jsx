@@ -3,16 +3,18 @@ import Search from "./components/features/Search/index.jsx";
 import {AppIntlProvider} from "./providers/AppIntlProvider.jsx";
 import Layout from "./components/parts/Layout/index.jsx";
 import './styles/globals.scss';
+import {useEffect} from "react";
 
 function App() {
+
 
   return (
     <>
       <AppIntlProvider>
         <Layout>
-        <Page>
-          <Search />
-        </Page>
+          <Page>
+            <Search />
+          </Page>
         </Layout>
       </AppIntlProvider>
     </>
