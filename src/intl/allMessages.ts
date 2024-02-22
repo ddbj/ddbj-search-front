@@ -1,8 +1,7 @@
 import ja from './ja.json';
 import en from './en.json';
 
-const allMessages = {
+export const allMessages = {
   ja, en
 };
 
-export default allMessages;

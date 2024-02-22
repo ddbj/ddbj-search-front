@@ -1,15 +1,15 @@
-import { useState } from 'react';
-import { FormattedMessage } from 'react-intl';
-import { Navbar, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import React, { PropsWithChildren, useState } from "react";
+import { FormattedMessage } from "react-intl";
+import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Navbar } from "reactstrap";
 
-export default function Layout ({ children }){
-  const [isDropdownOpen, setIsDropdown] = useState(false)
+export const Layout: React.FC<PropsWithChildren> = ({ children }) => {
+  const [isDropdownOpen, setIsDropdown] = useState(false);
 
   return (
     <>
       <Navbar>
         <div className="flex-grow-1" />
-        <Dropdown isOpen={isDropdownOpen} toggle={() => setIsDropdown(isOpend => !isOpend)}>
+        <Dropdown isOpen={isDropdownOpen} toggle={() => setIsDropdown((isOpend) => !isOpend)}>
           {/*<DropdownToggle color='light' caret>*/}
           {/*  <i className="bi bi-translate me-2" />*/}
           {/*  {router.locale === LOCALE.JA ? (*/}
@@ -18,7 +18,7 @@ export default function Layout ({ children }){
           {/*    <FormattedMessage id="language.english" />*/}
           {/*  )}*/}
           {/*</DropdownToggle>*/}
-          <DropdownToggle color='light' caret>
+          <DropdownToggle color="light" caret>
             <i className="bi bi-translate me-2" />
             <FormattedMessage id="language.japanese" />
           </DropdownToggle>

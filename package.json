@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@appbaseio/reactivesearch": "3.40.1",
+    "@types/node": "^20.11.19",
     "bootstrap": "^5.3.3",
     "date-fns": "^3.3.1",
     "react": "^18.2.0",
