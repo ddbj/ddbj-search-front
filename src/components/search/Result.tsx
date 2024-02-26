@@ -1,11 +1,12 @@
 import { API_BASE_URL } from "@/constants.ts";
-import { ReactiveList, ResultList } from "@appbaseio/reactivesearch";
-import { useMemo } from "react";
+import { ReactiveList } from "@appbaseio/reactivesearch";
+import { FC, useMemo } from "react";
 import { FormattedDate, FormattedMessage, FormattedTime } from "react-intl";
 import { Badge, Card, CardSubtitle } from "reactstrap";
 
-const ResultByTable: any = ({ item }: any) => {
-  const title = useMemo(() => item.title || item.description || item.name, [item]);
+const ResultByTable: FC<any> = ({ item }: any) => {
+  console.log(item);
+  const title = item.title || item.description || item.name;
   const detailUrl = useMemo(
     () => `${API_BASE_URL}/resource/${item.type}/${item.identifier}`,
     [item.identifier, item.type],
@@ -27,8 +28,12 @@ const ResultByTable: any = ({ item }: any) => {
   );
 
   return (
-    // @ts-ignore
-    <ResultList href={detailUrl} className="bg-transparent d-block">
+    <a
+      href={detailUrl}
+      target="_blank"
+      className="bg-transparent d-block"
+      style={{ display: "block", marginBlock: "0.5rem", textDecoration: "none", color: "black" }}
+    >
       <Card className="p-2">
         <div className="small mb-2 pt-1">
           <span className="me-1">{item.identifier}</span>
@@ -63,7 +68,7 @@ const ResultByTable: any = ({ item }: any) => {
           )}
         </div>
       </Card>
-    </ResultList>
+    </a>
   );
 };
 

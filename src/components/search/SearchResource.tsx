@@ -20,7 +20,7 @@ export const SearchResource: React.FC = () => {
       }}
     >
       <div className="d-flex gap-3 p-3">
-        <div style={{ width: "20rem" }}>
+        <div style={{ width: "20rem" }} className={"flex-shrink-0"}>
           <Conditions />
         </div>
         <div className="flex-grow-1">
