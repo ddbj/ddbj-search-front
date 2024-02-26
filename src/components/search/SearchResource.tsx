@@ -1,5 +1,5 @@
-import { Conditions } from "@/components/features/Search/Conditions.tsx";
-import { Result } from "@/components/features/Search/Result.tsx";
+import { Conditions } from "@/components/search/Conditions.tsx";
+import { Result } from "@/components/search/Result.tsx";
 import { ELASTICSEARCH_URL } from "@/constants.ts";
 import { ReactiveBase } from "@appbaseio/reactivesearch";
 import React from "react";

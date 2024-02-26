@@ -1,5 +1,5 @@
-import { SearchResource } from "@/components/features/Search/SearchResource.tsx";
-import { Layout } from "@/components/parts/Layout.tsx";
+import { Layout } from "@/components/Layout.tsx";
+import { SearchResource } from "@/components/search/SearchResource.tsx";
 import { AppIntlProvider } from "@/providers/AppIntlProvider.tsx";
 import "./styles/globals.scss";
 
@@ -7,9 +7,7 @@ function App() {
   return (
     <AppIntlProvider>
       <Layout>
-        <main>
-          <SearchResource />
-        </main>
+        <SearchResource />
       </Layout>
     </AppIntlProvider>
   );
