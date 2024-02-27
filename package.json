@@ -15,6 +15,7 @@
     "@appbaseio/reactivesearch": "3.40.1",
     "@types/node": "^20.11.19",
     "bootstrap": "^5.3.3",
+    "clsx": "^2.1.0",
     "date-fns": "^3.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -35,7 +36,10 @@
     "@types/react": "^18.2.56",
     "@types/react-dom": "^18.2.19",
     "@vitejs/plugin-react-swc": "^3.5.0",
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.35",
     "storybook": "^7.6.17",
+    "tailwindcss": "^3.4.1",
     "typescript": "^5.2.2",
     "vite": "^5.1.4",
     "yohak-cli": "^0.2.3"

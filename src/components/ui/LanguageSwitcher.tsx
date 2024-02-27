@@ -7,7 +7,8 @@ type Props = {};
 export const LanguageSwitcher: FC<Props> = ({}) => {
   const [isDropdownOpen, setIsDropdown] = useState(false);
   return (
-    <Navbar>
+    <Navbar className={""}>
+      <h1>HELLO</h1>
       <div className="flex-grow-1" />
       <Dropdown isOpen={isDropdownOpen} toggle={() => setIsDropdown((isOpened) => !isOpened)}>
         {/*<DropdownToggle color='light' caret>*/}

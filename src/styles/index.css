@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .ddbjApp {
   display: flex;
   flex-direction: column;
@@ -13,7 +17,7 @@
     order: 1;
   }
 
-  & main {
+  .ddbjApp__main {
     order: 2;
   }
 
