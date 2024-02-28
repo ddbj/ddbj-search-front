@@ -1,4 +1,10 @@
-import { DataSearch, DateRange, SelectedFilters, SingleList, ToggleButton } from "@appbaseio/reactivesearch";
+import {
+  DataSearch,
+  DateRange,
+  SelectedFilters,
+  SingleList,
+  ToggleButton,
+} from "@appbaseio/reactivesearch";
 import { endOfDay, format, startOfDay } from "date-fns";
 import { FC } from "react";
 import { useIntl } from "react-intl";
@@ -12,8 +18,13 @@ const dateRangeCustomQuery = (value: any, props: any) => {
 
   const range: any = {};
   range[props.dataField] = {};
-  if (value?.start) range[props.dataField].gte = format(startOfDay(new Date(value.start)), "yyyy-MM-dd'T'HH:mm:ssxxx");
-  if (value?.end) range[props.dataField].lte = format(endOfDay(new Date(value.end)), "yyyy-MM-dd'T'HH:mm:ssxxx");
+  if (value?.start)
+    range[props.dataField].gte = format(
+      startOfDay(new Date(value.start)),
+      "yyyy-MM-dd'T'HH:mm:ssxxx"
+    );
+  if (value?.end)
+    range[props.dataField].lte = format(endOfDay(new Date(value.end)), "yyyy-MM-dd'T'HH:mm:ssxxx");
 
   const query = { bool: { must: [{ bool: { must: [{ range }] } }] } };
   return { query };
@@ -22,7 +33,7 @@ const dateRangeCustomQuery = (value: any, props: any) => {
 export const Conditions: FC = () => {
   const intl = useIntl();
   return (
-    <div className="d-flex flex-column gap-4">
+    <div className="flex flex-col gap-4">
       <DataSearch
         componentId="query"
         dataField={[

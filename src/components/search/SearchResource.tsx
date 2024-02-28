@@ -1,8 +1,8 @@
+import { ReactiveBase } from "@appbaseio/reactivesearch";
+import React from "react";
 import { Conditions } from "@/components/search/Conditions.tsx";
 import { Result } from "@/components/search/Result.tsx";
 import { ELASTICSEARCH_URL } from "@/constants.ts";
-import { ReactiveBase } from "@appbaseio/reactivesearch";
-import React from "react";
 
 export const SearchResource: React.FC = () => {
   return (
@@ -19,11 +19,11 @@ export const SearchResource: React.FC = () => {
         },
       }}
     >
-      <div className="d-flex gap-3 p-3">
-        <div style={{ width: "20rem" }} className={"flex-shrink-0"}>
+      <div className="mb-10 flex gap-4 p-4">
+        <div className="w-80 shrink-0">
           <Conditions />
         </div>
-        <div className="flex-grow-1">
+        <div className="grow">
           <Result />
         </div>
       </div>
