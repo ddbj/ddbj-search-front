@@ -9,7 +9,7 @@ import { endOfDay, format, startOfDay } from "date-fns";
 import { FC } from "react";
 import { useIntl } from "react-intl";
 
-const REACTIVE_SERACH_PROPS_REACT = Object.freeze({
+const REACTIVE_SEARCH_PROPS_REACT = Object.freeze({
   and: ["query", "isPartOf", "type", "organism", "datePublished"],
 });
 
@@ -78,7 +78,7 @@ export const Conditions: FC = () => {
         queryFormat="and"
         fuzziness="AUTO"
         debounce={100}
-        react={REACTIVE_SERACH_PROPS_REACT}
+        react={REACTIVE_SEARCH_PROPS_REACT}
       />
       <ToggleButton
         componentId="isPartOf"
@@ -86,7 +86,7 @@ export const Conditions: FC = () => {
         title={intl.formatMessage({ id: "search.select_part_of" })}
         filterLabel={intl.formatMessage({ id: "search.select_part_of" })}
         URLParams
-        react={REACTIVE_SERACH_PROPS_REACT}
+        react={REACTIVE_SEARCH_PROPS_REACT}
         data={[
           { label: "JGA", value: "jga" },
           { label: "BIOPROJECT", value: "bioproject" },
@@ -100,7 +100,7 @@ export const Conditions: FC = () => {
         title={intl.formatMessage({ id: "search.select_type" })}
         filterLabel={intl.formatMessage({ id: "search.select_type" })}
         URLParams
-        react={REACTIVE_SERACH_PROPS_REACT}
+        react={REACTIVE_SEARCH_PROPS_REACT}
       />
       <SingleList
         componentId="organism"
@@ -108,7 +108,7 @@ export const Conditions: FC = () => {
         title={intl.formatMessage({ id: "search.select_organism" })}
         filterLabel={intl.formatMessage({ id: "search.select_organism" })}
         URLParams
-        react={REACTIVE_SERACH_PROPS_REACT}
+        react={REACTIVE_SEARCH_PROPS_REACT}
       />
       <DateRange
         componentId="datePublished"
@@ -117,7 +117,7 @@ export const Conditions: FC = () => {
         filterLabel={intl.formatMessage({ id: "search.select_published_date" })}
         URLParams
         customQuery={dateRangeCustomQuery}
-        react={REACTIVE_SERACH_PROPS_REACT}
+        react={REACTIVE_SEARCH_PROPS_REACT}
       />
       <SelectedFilters />
     </div>
