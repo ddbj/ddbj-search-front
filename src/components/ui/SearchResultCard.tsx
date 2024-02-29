@@ -9,7 +9,7 @@ type Props = {
 };
 
 export const SearchResultCard: FC<Props> = ({ item }) => {
-  console.log(item);
+  // console.log(item);
   const title = item.title || item.description || item.name;
   const detailUrl = useMemo(
     () => `${API_BASE_URL}/resource/${item.type}/${item.identifier}`,

@@ -3,18 +3,29 @@ import { CheckIcon, ChevronUpDownIcon, LanguageIcon } from "@heroicons/react/20/
 import { clsx } from "clsx";
 import { Fragment, useState } from "react";
 import { FC } from "react";
+import { LocaleKey } from "@/types.ts";
 
-type Props = {};
-const languages: { key: string; label: string }[] = [
+type Props = {
+  onChangeLocale: (lang: LocaleKey) => void;
+  defaultLocale: LocaleKey;
+};
+type LocaleSelectLabel = { key: LocaleKey; label: string };
+const locales: LocaleSelectLabel[] = [
   { key: "ja", label: "日本語" },
   { key: "en", label: "English" },
 ];
 
-export const LanguageSwitcher: FC<Props> = ({}) => {
-  const [selected, setSelected] = useState(languages[0]);
+export const LocaleSwitcher: FC<Props> = ({ onChangeLocale, defaultLocale = "ja" }) => {
+  const [selected, setSelected] = useState<LocaleSelectLabel>(
+    locales.find((l) => l.key === defaultLocale ?? locales[0].key) ?? locales[0]
+  );
+  const onChangeSelect = (e: LocaleSelectLabel) => {
+    setSelected(e);
+    onChangeLocale(e.key);
+  };
   return (
     <div className="flex w-full justify-end p-2">
-      <Listbox value={selected} onChange={setSelected}>
+      <Listbox value={selected} onChange={onChangeSelect}>
         {({ open }) => (
           <>
             <div className="relative w-36">
@@ -38,7 +49,7 @@ export const LanguageSwitcher: FC<Props> = ({}) => {
                 leaveTo="opacity-0"
               >
                 <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                  {languages.map((lang) => (
+                  {locales.map((lang) => (
                     <Listbox.Option
                       key={lang.key}
                       className={({ active }) =>
@@ -78,39 +89,5 @@ export const LanguageSwitcher: FC<Props> = ({}) => {
         )}
       </Listbox>
     </div>
-
-    // <Navbar className={""}>
-    // <div className="flex-grow-1" />
-    // <Dropdown isOpen={isDropdownOpen} toggle={() => setIsDropdown((isOpened) => !isOpened)}>
-    // {/*<DropdownToggle color='light' caret>*/}
-    // {/*  <i className="bi bi-translate me-2" />*/}
-    // {/*  {router.locale === LOCALE.JA ? (*/}
-    // {/*    <FormattedMessage id="language.japanese" />*/}
-    // {/*  ) : (*/}
-    // {/*    <FormattedMessage id="language.english" />*/}
-    // {/*  )}*/}
-    // {/*</DropdownToggle>*/}
-    // <DropdownToggle color="light" caret>
-    // <i className="bi bi-translate me-2" />
-    // <FormattedMessage id="language.japanese" />
-    // </DropdownToggle>
-    // <DropdownMenu>
-    // <DropdownItem>
-    // <FormattedMessage id="language.japanese" />
-    // </DropdownItem>
-    // <DropdownItem>
-    // <FormattedMessage id="language.english" />
-    // </DropdownItem>
-    // </DropdownMenu>
-    // {/*<DropdownMenu>*/}
-    // {/*  <DropdownItem onClick={() => router.replace(router.asPath, undefined, { locale: LOCALE.JA })} active={router.locale === LOCALE.JA}>*/}
-    // {/*    <FormattedMessage id="language.japanese" />*/}
-    // {/*  </DropdownItem>*/}
-    // {/*  <DropdownItem onClick={() => router.replace(router.asPath, undefined, { locale: LOCALE.EN })} active={router.locale === LOCALE.EN}>*/}
-    // {/*    <FormattedMessage id="language.english" />*/}
-    // {/*  </DropdownItem>*/}
-    // {/*</DropdownMenu>*/}
-    // </Dropdown>
-    // </Navbar>
   );
 };

@@ -1,16 +1,17 @@
-import { Layout } from "@/components/Layout.tsx";
-import { SearchResource } from "@/components/search/SearchResource.tsx";
-import { AppIntlProvider } from "@/providers/AppIntlProvider.tsx";
+import { createRouter, RouterProvider } from "@tanstack/react-router";
+import { routeTree } from "./routeTree.gen";
 import "./styles/index.css";
 
+//tanstack router setup
+const router = createRouter({ routeTree });
+declare module "@tanstack/react-router" {
+  interface Register {
+    router: typeof router;
+  }
+}
+
 function App() {
-  return (
-    <AppIntlProvider>
-      <Layout>
-        <SearchResource />
-      </Layout>
-    </AppIntlProvider>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

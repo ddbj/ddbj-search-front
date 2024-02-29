@@ -1,10 +1,10 @@
 import { FC, PropsWithChildren } from "react";
-import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher.tsx";
+import { LocaleSwitcher } from "@/components/ui/LocaleSwitcher.tsx";
 
 export const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <>
-      <LanguageSwitcher />
+      <LocaleSwitcher />
       <main>{children}</main>
     </>
   );
