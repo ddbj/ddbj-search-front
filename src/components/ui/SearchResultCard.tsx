@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { clsx } from "clsx";
 import { FC, useMemo } from "react";
 import { FormattedDate, FormattedMessage, FormattedTime } from "react-intl";
@@ -12,7 +13,7 @@ export const SearchResultCard: FC<Props> = ({ item }) => {
   // console.log(item);
   const title = item.title || item.description || item.name;
   const detailUrl = useMemo(
-    () => `${API_BASE_URL}/resource/${item.type}/${item.identifier}`,
+    () => `./${item.type}/${item.identifier}`,
     [item.identifier, item.type]
   );
   const refsCount = item.dbXrefs.length;
@@ -61,15 +62,15 @@ export const SkeletonSearchResultCard: FC<TailwindElementProps> = ({ children, c
 
 const Wrapper: FC<TailwindElementProps & { href: string }> = ({ href, children, className }) => {
   return (
-    <a
+    <Link
       className={clsx(
         "flex flex-col gap-2 rounded-md border border-gray-200 p-2 hover:text-primary-dark",
         className
       )}
-      href={href}
+      to={href}
     >
       {children}
-    </a>
+    </Link>
   );
 };
 

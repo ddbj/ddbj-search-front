@@ -13,8 +13,14 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as SearchIndexImport } from './routes/search/index'
 import { Route as SearchEnIndexImport } from './routes/search/en/index'
-import { Route as SearchDetailIdImport } from './routes/search/detail/$id'
-import { Route as SearchEnDetailIdImport } from './routes/search/en/detail/$id'
+import { Route as SearchSraStudyIdImport } from './routes/search/sra-study/$id'
+import { Route as SearchJgaDacIdImport } from './routes/search/jga-dac/$id'
+import { Route as SearchBiosampleIdImport } from './routes/search/biosample/$id'
+import { Route as SearchBioprojectIdImport } from './routes/search/bioproject/$id'
+import { Route as SearchEnSraStudyIdImport } from './routes/search/en/sra-study/$id'
+import { Route as SearchEnJgaDacIdImport } from './routes/search/en/jga-dac/$id'
+import { Route as SearchEnBiosampleIdImport } from './routes/search/en/biosample/$id'
+import { Route as SearchEnBioprojectIdImport } from './routes/search/en/bioproject/$id'
 
 // Create/Update Routes
 
@@ -28,13 +34,43 @@ const SearchEnIndexRoute = SearchEnIndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const SearchDetailIdRoute = SearchDetailIdImport.update({
-  path: '/search/detail/$id',
+const SearchSraStudyIdRoute = SearchSraStudyIdImport.update({
+  path: '/search/sra-study/$id',
   getParentRoute: () => rootRoute,
 } as any)
 
-const SearchEnDetailIdRoute = SearchEnDetailIdImport.update({
-  path: '/search/en/detail/$id',
+const SearchJgaDacIdRoute = SearchJgaDacIdImport.update({
+  path: '/search/jga-dac/$id',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const SearchBiosampleIdRoute = SearchBiosampleIdImport.update({
+  path: '/search/biosample/$id',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const SearchBioprojectIdRoute = SearchBioprojectIdImport.update({
+  path: '/search/bioproject/$id',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const SearchEnSraStudyIdRoute = SearchEnSraStudyIdImport.update({
+  path: '/search/en/sra-study/$id',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const SearchEnJgaDacIdRoute = SearchEnJgaDacIdImport.update({
+  path: '/search/en/jga-dac/$id',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const SearchEnBiosampleIdRoute = SearchEnBiosampleIdImport.update({
+  path: '/search/en/biosample/$id',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const SearchEnBioprojectIdRoute = SearchEnBioprojectIdImport.update({
+  path: '/search/en/bioproject/$id',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -46,16 +82,40 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SearchIndexImport
       parentRoute: typeof rootRoute
     }
-    '/search/detail/$id': {
-      preLoaderRoute: typeof SearchDetailIdImport
+    '/search/bioproject/$id': {
+      preLoaderRoute: typeof SearchBioprojectIdImport
+      parentRoute: typeof rootRoute
+    }
+    '/search/biosample/$id': {
+      preLoaderRoute: typeof SearchBiosampleIdImport
+      parentRoute: typeof rootRoute
+    }
+    '/search/jga-dac/$id': {
+      preLoaderRoute: typeof SearchJgaDacIdImport
+      parentRoute: typeof rootRoute
+    }
+    '/search/sra-study/$id': {
+      preLoaderRoute: typeof SearchSraStudyIdImport
       parentRoute: typeof rootRoute
     }
     '/search/en/': {
       preLoaderRoute: typeof SearchEnIndexImport
       parentRoute: typeof rootRoute
     }
-    '/search/en/detail/$id': {
-      preLoaderRoute: typeof SearchEnDetailIdImport
+    '/search/en/bioproject/$id': {
+      preLoaderRoute: typeof SearchEnBioprojectIdImport
+      parentRoute: typeof rootRoute
+    }
+    '/search/en/biosample/$id': {
+      preLoaderRoute: typeof SearchEnBiosampleIdImport
+      parentRoute: typeof rootRoute
+    }
+    '/search/en/jga-dac/$id': {
+      preLoaderRoute: typeof SearchEnJgaDacIdImport
+      parentRoute: typeof rootRoute
+    }
+    '/search/en/sra-study/$id': {
+      preLoaderRoute: typeof SearchEnSraStudyIdImport
       parentRoute: typeof rootRoute
     }
   }
@@ -65,9 +125,15 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren([
   SearchIndexRoute,
-  SearchDetailIdRoute,
+  SearchBioprojectIdRoute,
+  SearchBiosampleIdRoute,
+  SearchJgaDacIdRoute,
+  SearchSraStudyIdRoute,
   SearchEnIndexRoute,
-  SearchEnDetailIdRoute,
+  SearchEnBioprojectIdRoute,
+  SearchEnBiosampleIdRoute,
+  SearchEnJgaDacIdRoute,
+  SearchEnSraStudyIdRoute,
 ])
 
 /* prettier-ignore-end */
