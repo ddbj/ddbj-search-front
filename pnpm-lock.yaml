@@ -121,6 +121,9 @@ devDependencies:
   storybook:
     specifier: ^7.6.17
     version: 7.6.17
+  storybook-react-intl:
+    specifier: ^2.0.10
+    version: 2.0.10(@storybook/components@7.6.17)(@storybook/manager-api@7.6.17)(@storybook/preview-api@7.6.17)(@storybook/types@7.6.17)(react-dom@18.2.0)(react-intl@6.6.2)(react@18.2.0)
   tailwindcss:
     specifier: ^3.4.1
     version: 3.4.1
@@ -2086,13 +2089,11 @@ packages:
     dependencies:
       '@formatjs/intl-localematcher': 0.5.4
       tslib: 2.6.2
-    dev: false
 
   /@formatjs/fast-memoize@2.2.0:
     resolution: {integrity: sha512-hnk/nY8FyrL5YxwP9e4r9dqeM6cAbo8PeU9UjyXojZMNvVad2Z06FAVHyR3Ecw6fza+0GH7vdJgiKIVXTMbSBA==}
     dependencies:
       tslib: 2.6.2
-    dev: false
 
   /@formatjs/icu-messageformat-parser@2.7.6:
     resolution: {integrity: sha512-etVau26po9+eewJKYoiBKP6743I1br0/Ie00Pb/S/PtmYfmjTcOn2YCh2yNkSZI12h6Rg+BOgQYborXk46BvkA==}
@@ -2100,14 +2101,12 @@ packages:
       '@formatjs/ecma402-abstract': 1.18.2
       '@formatjs/icu-skeleton-parser': 1.8.0
       tslib: 2.6.2
-    dev: false
 
   /@formatjs/icu-skeleton-parser@1.8.0:
     resolution: {integrity: sha512-QWLAYvM0n8hv7Nq5BEs4LKIjevpVpbGLAJgOaYzg9wABEoX1j0JO1q2/jVkO6CVlq0dbsxZCngS5aXbysYueqA==}
     dependencies:
       '@formatjs/ecma402-abstract': 1.18.2
       tslib: 2.6.2
-    dev: false
 
   /@formatjs/intl-displaynames@6.6.6:
     resolution: {integrity: sha512-Dg5URSjx0uzF8VZXtHb6KYZ6LFEEhCbAbKoYChYHEOnMFTw/ZU3jIo/NrujzQD2EfKPgQzIq73LOUvW6Z/LpFA==}
@@ -2115,7 +2114,6 @@ packages:
       '@formatjs/ecma402-abstract': 1.18.2
       '@formatjs/intl-localematcher': 0.5.4
       tslib: 2.6.2
-    dev: false
 
   /@formatjs/intl-listformat@7.5.5:
     resolution: {integrity: sha512-XoI52qrU6aBGJC9KJddqnacuBbPlb/bXFN+lIFVFhQ1RnFHpzuFrlFdjD9am2O7ZSYsyqzYRpkVcXeT1GHkwDQ==}
@@ -2123,13 +2121,11 @@ packages:
       '@formatjs/ecma402-abstract': 1.18.2
       '@formatjs/intl-localematcher': 0.5.4
       tslib: 2.6.2
-    dev: false
 
   /@formatjs/intl-localematcher@0.5.4:
     resolution: {integrity: sha512-zTwEpWOzZ2CiKcB93BLngUX59hQkuZjT2+SAQEscSm52peDW/getsawMcWF1rGRpMCX6D7nSJA3CzJ8gn13N/g==}
     dependencies:
       tslib: 2.6.2
-    dev: false
 
   /@formatjs/intl@2.10.0(typescript@5.3.3):
     resolution: {integrity: sha512-X3xT9guVkKDS86EKV80lS0KxoazUglkJTGZO66sKY7otgl0VeStPA8B3u8UkKT47PexVV98fUzjpkchYmbe9nw==}
@@ -2147,7 +2143,6 @@ packages:
       intl-messageformat: 10.5.11
       tslib: 2.6.2
       typescript: 5.3.3
-    dev: false
 
   /@headlessui/react@1.7.18(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-4i5DOrzwN4qSgNsL4Si61VMkUcWbcSKueUV7sFhpHzQcSShdlHENE5+QBntMSRvHt8NyoFO2AGG8si9lq+w4zQ==}
@@ -4192,7 +4187,6 @@ packages:
     dependencies:
       '@types/react': 18.2.57
       hoist-non-react-statics: 3.3.2
-    dev: false
 
   /@types/http-errors@2.0.4:
     resolution: {integrity: sha512-D0CFMMtydbJAegzOyHjtiKPLlvnm3iTZyZRSZoLq2mRhDdmLfIWOCYPfQJ4cu2erKghU++QvjcUjp/5h7hESpA==}
@@ -6987,7 +6981,6 @@ packages:
     resolution: {integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==}
     dependencies:
       react-is: 16.13.1
-    dev: false
 
   /hosted-git-info@2.8.9:
     resolution: {integrity: sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==}
@@ -7093,7 +7086,6 @@ packages:
       '@formatjs/fast-memoize': 2.2.0
       '@formatjs/icu-messageformat-parser': 2.7.6
       tslib: 2.6.2
-    dev: false
 
   /invariant@2.2.4:
     resolution: {integrity: sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==}
@@ -8819,7 +8811,6 @@ packages:
       react: 18.2.0
       tslib: 2.6.2
       typescript: 5.3.3
-    dev: false
 
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
@@ -9448,6 +9439,52 @@ packages:
 
   /store2@2.14.3:
     resolution: {integrity: sha512-4QcZ+yx7nzEFiV4BMLnr/pRa5HYzNITX2ri0Zh6sT9EyQHbBHacC6YigllUPU9X3D0f/22QCgfokpKs52YRrUg==}
+    dev: true
+
+  /storybook-i18n@2.0.13(@storybook/components@7.6.17)(@storybook/manager-api@7.6.17)(@storybook/preview-api@7.6.17)(@storybook/types@7.6.17)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-p0VPL5QiHdeS3W9BvV7UnuTKw7Mj1HWLW67LK0EOoh5fpSQIchu7byfrUUe1RbCF1gT0gOOhdNuTSXMoVVoTDw==}
+    peerDependencies:
+      '@storybook/components': ^7.0.0
+      '@storybook/manager-api': ^7.0.0
+      '@storybook/preview-api': ^7.0.0
+      '@storybook/types': ^7.0.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      '@storybook/components': 7.6.17(@types/react-dom@18.2.19)(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0)
+      '@storybook/manager-api': 7.6.17(react-dom@18.2.0)(react@18.2.0)
+      '@storybook/preview-api': 7.6.17
+      '@storybook/types': 7.6.17
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: true
+
+  /storybook-react-intl@2.0.10(@storybook/components@7.6.17)(@storybook/manager-api@7.6.17)(@storybook/preview-api@7.6.17)(@storybook/types@7.6.17)(react-dom@18.2.0)(react-intl@6.6.2)(react@18.2.0):
+    resolution: {integrity: sha512-FtZnZaRoSmrq9Ma7ZAK3EkZUlqmDlSZj1CAyQVo0jRKKYOi2LcucnW8XcaTglN3VBv3n0p/ZiU6WrW7AvB+UZQ==}
+    peerDependencies:
+      react: '*'
+      react-dom: '*'
+      react-intl: ^5.24.0 || ^6.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      react-intl: 6.6.2(react@18.2.0)(typescript@5.3.3)
+      storybook-i18n: 2.0.13(@storybook/components@7.6.17)(@storybook/manager-api@7.6.17)(@storybook/preview-api@7.6.17)(@storybook/types@7.6.17)(react-dom@18.2.0)(react@18.2.0)
+    transitivePeerDependencies:
+      - '@storybook/components'
+      - '@storybook/manager-api'
+      - '@storybook/preview-api'
+      - '@storybook/types'
     dev: true
 
   /storybook@7.6.17:

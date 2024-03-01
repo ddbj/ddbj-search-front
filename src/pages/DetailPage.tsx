@@ -1,19 +1,25 @@
-import React, { FC, useEffect } from "react";
+import { Link, Route, useLoaderData } from "@tanstack/react-router";
+import React, { FC } from "react";
+import { DetailTable } from "@/components/ui/DetailTable.tsx";
+import { ElasticSearchSource } from "@/types.ts";
 
 type Props = {};
 
 export const DetailPage: FC<Props> = ({}) => {
-  useEffect(() => {
-    fetch("https://ddbj.nig.ac.jp/resource/sra-run/SRR5880535.json", { mode: "cors" }).then(
-      (res) => {
-        const data = res.json();
-        console.log(data);
-      }
-    );
-  }, []);
+  const data = useLoaderData<never, never, never, ElasticSearchSource>({
+    strict: false,
+    select: (d) => d,
+  });
+  console.log(data);
+  // useEffect(() => {
+  //   fetchDetail("PRJNA16").then((data) => {
+  //     console.log(data);
+  //   });
+  // }, []);
   return (
     <div>
-      <div>DetailPage</div>
+      <Link to={"../../"}>Back to home</Link>
+      <DetailTable data={data} />
     </div>
   );
 };

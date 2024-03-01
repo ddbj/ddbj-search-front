@@ -44,7 +44,7 @@ export const Conditions: FC = () => {
           "name",
           "type",
           "url",
-          "sameAs.*",
+          "sameAs",
           "isPartOf",
           "status",
           "visibility",

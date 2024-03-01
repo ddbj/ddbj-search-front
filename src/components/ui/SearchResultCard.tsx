@@ -1,36 +1,29 @@
 import { Link } from "@tanstack/react-router";
 import { clsx } from "clsx";
-import { FC, useMemo } from "react";
+import { FC } from "react";
 import { FormattedDate, FormattedMessage, FormattedTime } from "react-intl";
-import { API_BASE_URL } from "@/constants";
-import { TailwindElementProps } from "@/types";
+import { ElasticSearchSource, TailwindElementProps } from "@/types";
 
 type Props = {
-  item: any;
+  item: ElasticSearchSource;
 };
 
 export const SearchResultCard: FC<Props> = ({ item }) => {
   // console.log(item);
   const title = item.title || item.description || item.name;
-  const detailUrl = useMemo(
-    () => `./${item.type}/${item.identifier}`,
-    [item.identifier, item.type]
-  );
+  const detailUrl = `./detail/${item.identifier}`;
   const refsCount = item.dbXrefs.length;
 
-  const groups = useMemo(
-    () =>
-      Object.entries(
-        item.dbXrefs.reduce(
-          (result: any, dbXref: any) => ({
-            ...result,
-            [dbXref.type]: (result[dbXref.type] || 0) + 1,
-          }),
-          {}
-        )
-      ).map(([type, count]: any) => ({ type, count })),
-    [item]
-  );
+  const groups: { type: string; count: number }[] = Object.entries(
+    item.dbXrefs.reduce<Record<string, number>>(
+      (result, dbXref) => ({
+        ...result,
+        [dbXref.type]: (result[dbXref.type] || 0) + 1,
+      }),
+      {}
+    )
+  ).map(([type, count]) => ({ type, count }));
+
   return (
     <Wrapper href={detailUrl}>
       <Tags identifier={item.identifier} type={item.type} />
@@ -49,14 +42,6 @@ export const SearchResultCard: FC<Props> = ({ item }) => {
         {item.datePublished && <DatePublished datePublished={item.datePublished} />}
       </div>
     </Wrapper>
-  );
-};
-
-export const SkeletonSearchResultCard: FC<TailwindElementProps> = ({ children, className }) => {
-  return (
-    <div className={clsx("h-8 rounded-md border border-gray-200 bg-gray-100", className)}>
-      {children}
-    </div>
   );
 };
 

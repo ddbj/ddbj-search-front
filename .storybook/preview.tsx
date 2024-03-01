@@ -1,9 +1,30 @@
 import type { Preview } from "@storybook/react";
-import { AppIntlProvider } from "../src/providers/AppIntlProvider";
 import "../src/styles/index.css";
+import {
+  createMemoryHistory,
+  createRootRoute,
+  createRoute,
+  createRouter,
+  RouterProvider,
+} from "@tanstack/react-router";
+import { reactIntl } from "./intl";
+
+const rootRoute = createRootRoute();
+const indexRoute = createRoute({ getParentRoute: () => rootRoute, path: "/" });
+const memoryHistory = createMemoryHistory({ initialEntries: ["/"] });
+const routeTree = rootRoute.addChildren([indexRoute]);
+const router = createRouter({ routeTree, history: memoryHistory });
 
 const preview: Preview = {
+  globals: {
+    locale: reactIntl.defaultLocale,
+    locales: {
+      en: "English",
+      ja: "Japanese",
+    },
+  },
   parameters: {
+    reactIntl,
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
       matchers: {
@@ -11,14 +32,11 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    router: {},
   },
   decorators: [
     (Story) => {
-      return (
-        <AppIntlProvider>
-          <Story />
-        </AppIntlProvider>
-      );
+      return <RouterProvider router={router} defaultComponent={() => <Story />} />;
     },
   ],
 };
