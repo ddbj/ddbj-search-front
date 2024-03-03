@@ -1,6 +1,6 @@
 import { clsx } from "clsx";
 import { FC } from "react";
-import { TailwindElementProps } from "@/types";
+import { TailwindElementProps } from "@/types/types.ts";
 
 type Props = TailwindElementProps;
 

@@ -2,32 +2,35 @@ import { Link } from "@tanstack/react-router";
 import { clsx } from "clsx";
 import { FC } from "react";
 import { FormattedDate, FormattedMessage, FormattedTime } from "react-intl";
-import { ElasticSearchSource, TailwindElementProps } from "@/types";
+import { ElasticSearchSource } from "@/types/api.ts";
+import { TailwindElementProps } from "@/types/types.ts";
 
 type Props = {
   item: ElasticSearchSource;
 };
 
 export const SearchResultCard: FC<Props> = ({ item }) => {
-  // console.log(item);
+  // if ((item.properties as any)?.Project?.Project?.ProjectDescr?.Grant?.Title) {
+  //   console.warn("Grant found!  " + item.identifier, item.properties);
+  // }
   const title = item.title || item.description || item.name;
   const detailUrl = `./detail/${item.identifier}`;
-  const refsCount = item.dbXrefs.length;
+  const refsCount = item.dbXrefs?.length;
 
   const groups: { type: string; count: number }[] = Object.entries(
-    item.dbXrefs.reduce<Record<string, number>>(
+    item.dbXrefs?.reduce<Record<string, number>>(
       (result, dbXref) => ({
         ...result,
         [dbXref.type]: (result[dbXref.type] || 0) + 1,
       }),
       {}
-    )
+    ) ?? []
   ).map(([type, count]) => ({ type, count }));
 
   return (
     <Wrapper href={detailUrl}>
       <Tags identifier={item.identifier} type={item.type} />
-      <Title title={title} className={"-mt-2"} />
+      <Title title={title ?? ""} className={"-mt-2"} />
       <Related className="text-sm">
         <FormattedMessage id="etnry.related_entry.message" values={{ refsCount }} />
       </Related>
@@ -53,6 +56,8 @@ const Wrapper: FC<TailwindElementProps & { href: string }> = ({ href, children, 
         className
       )}
       to={href}
+      target="_blank"
+      preload={"intent"}
     >
       {children}
     </Link>

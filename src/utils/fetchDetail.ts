@@ -1,5 +1,5 @@
 import { ELASTICSEARCH_URL } from "@/constants.ts";
-import { ElasticSearchSource, MultiSearchElasticsearchResponse } from "@/types.ts";
+import { ElasticSearchSource, MultiSearchElasticsearchResponse } from "@/types/api.ts";
 
 export const fetchDetail = async (id: string): Promise<ElasticSearchSource> => {
   const endpoint = `${ELASTICSEARCH_URL}/jga-*,sra-*,bioproject,biosample/_msearch?`;

@@ -7,6 +7,9 @@ export default {
         primary: "#ff8c00",
         "primary-dark": "#cc7000",
       },
+      gridTemplateColumns: {
+        "min-1fr": "min-content 1fr",
+      },
     },
   },
   plugins: [],

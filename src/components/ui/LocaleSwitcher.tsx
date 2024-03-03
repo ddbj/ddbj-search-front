@@ -3,7 +3,7 @@ import { CheckIcon, ChevronUpDownIcon, LanguageIcon } from "@heroicons/react/20/
 import { clsx } from "clsx";
 import { Fragment, useState } from "react";
 import { FC } from "react";
-import { LocaleKey } from "@/types.ts";
+import { LocaleKey } from "@/types/types.ts";
 
 type Props = {
   onChangeLocale: (lang: LocaleKey) => void;

@@ -2,7 +2,7 @@ import { useNavigate, useParams, useRouterState } from "@tanstack/react-router";
 import { FC, useEffect } from "react";
 import { SearchResource } from "@/components/search/SearchResource.tsx";
 import { LocaleSwitcher } from "@/components/ui/LocaleSwitcher.tsx";
-import { LocaleKey } from "@/types.ts";
+import { LocaleKey } from "@/types/types.ts";
 
 type Props = {};
 

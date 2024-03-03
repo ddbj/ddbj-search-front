@@ -1,6 +1,6 @@
 import { useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { LocaleKey } from "@/types.ts";
+import { LocaleKey } from "@/types/types.ts";
 
 export const usePathLocale = () => {
   const routerState = useRouterState();
