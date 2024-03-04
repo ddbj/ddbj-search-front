@@ -17,7 +17,7 @@ const locales: LocaleSelectLabel[] = [
 
 export const LocaleSwitcher: FC<Props> = ({ onChangeLocale, defaultLocale = "ja" }) => {
   const [selected, setSelected] = useState<LocaleSelectLabel>(
-    locales.find((l) => l.key === defaultLocale ?? locales[0].key) ?? locales[0]
+    locales.find((l) => l.key === defaultLocale || l.key === locales[0].key) ?? locales[0]
   );
   const onChangeSelect = (e: LocaleSelectLabel) => {
     setSelected(e);
