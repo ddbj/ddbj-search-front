@@ -10,15 +10,12 @@ export const DetailPage: FC<Props> = ({}) => {
     strict: false,
     select: (d) => d,
   });
-  console.log(data);
-  // useEffect(() => {
-  //   fetchDetail("PRJNA16").then((data) => {
-  //     console.log(data);
-  //   });
-  // }, []);
+  // console.log(data);
   return (
-    <div>
-      <Link to={"../../"}>Back to home</Link>
+    <div className={"p-6"}>
+      <Link to={"../../"} className={"mb-2 block w-fit"}>
+        Back to home
+      </Link>
       <DetailTable data={data} />
     </div>
   );
