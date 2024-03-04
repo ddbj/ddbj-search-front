@@ -71,7 +71,7 @@ export const Conditions: FC = () => {
         }}
         title={intl.formatMessage({ id: "search.search_keyword" })}
         filterLabel={intl.formatMessage({ id: "search.search_keyword" })}
-        fieldWeights={[1, 3, 3, 3, 3, 3, 3]}
+        fieldWeights={[1, 7, 3, 3, 3, 3, 3]}
         autosuggest={false}
         showFilter
         URLParams
