@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/search/*"
+  to = "https://ddbj-search-front.yohak-lab.com/:splat"
+  status = 200
+  force = true
