@@ -2,8 +2,11 @@ import { Link } from "@tanstack/react-router";
 import { clsx } from "clsx";
 import parse from "html-react-parser";
 import React, { FC, Fragment } from "react";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { a11yDark, atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { ElasticSearchSource } from "@/types/api.ts";
 import { TailwindElementProps } from "@/types/types.ts";
+
 type Props = {
   data: ElasticSearchSource;
 };
@@ -26,11 +29,52 @@ export const DetailTable: FC<Props> = ({ data }) => {
             {renderAttributes(data)}
             {renderPublication(data)}
             {renderGrant(data)}
+            {renderExternalLinks(data)}
+            {renderProperties(data)}
             {renderRefs(data.dbXrefs, "dbXrefs")}
           </dl>
         </div>
       </div>
     </>
+  );
+};
+
+const renderProperties = (data: ElasticSearchSource) => {
+  if (!data.properties) return <></>;
+  const properties = JSON.stringify(data.properties, null, 2);
+  return (
+    <Row dd={"properties"}>
+      <div className={"w-full, h-96 overflow-x-auto overflow-y-auto"}>
+        <SyntaxHighlighter
+          language="json"
+          style={atomOneDark}
+          wrapLines={true}
+          showLineNumbers={true}
+        >
+          {properties}
+        </SyntaxHighlighter>
+      </div>
+    </Row>
+  );
+};
+
+const renderExternalLinks = (data: ElasticSearchSource) => {
+  if (data.type !== "bioproject") return <></>;
+  const externalLinks = data.properties.Project.Project?.ProjectDescr.ExternalLink ?? [];
+  const inner = externalLinks.map((link) => {
+    const title = link.label ?? link.URL;
+    return (
+      <li key={link.URL}>
+        <LinkText href={link.URL} external={true}>
+          {title}
+        </LinkText>
+      </li>
+    );
+  });
+  return (
+    <Row dd={"external link"}>
+      <ul className={"flex flex-col gap-3"}>{inner}</ul>
+    </Row>
   );
 };
 
@@ -74,7 +118,6 @@ const renderGrant = (data: ElasticSearchSource) => {
 const renderPublication = (data: ElasticSearchSource) => {
   if (data.type !== "bioproject") return <></>;
   const publications = data.properties.Project.Project?.ProjectDescr.Publication ?? [];
-  console.log(publications);
   const inner = publications.map((pub) => {
     const title = pub.StructuredCitation?.Title ?? pub.Reference;
     return (
@@ -191,7 +234,7 @@ const Row: FC<TailwindElementProps & { dd: string }> = ({ children, className, d
   return (
     <div className={clsx("flex px-2 py-3", className)}>
       <dt className="w-40 shrink-0 grow-0 text-sm font-medium text-gray-900">{dd}</dt>
-      <dd className="text-sm text-gray-700">{children}</dd>
+      <dd className="grow-1 shrink-1 text-sm text-gray-700">{children}</dd>
     </div>
   );
 };
