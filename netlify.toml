@@ -1,6 +1,6 @@
 [[redirects]]
   from = "/search/*"
-  to = "/
+  to = "/"
   status = 200
   force = true
 
