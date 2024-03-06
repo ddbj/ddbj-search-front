@@ -44,11 +44,12 @@ const renderProperties = (data: ElasticSearchSource) => {
   const properties = JSON.stringify(data.properties, null, 2);
   return (
     <Row dd={"properties"}>
-      <div className={"w-full, h-96 overflow-x-auto overflow-y-auto"}>
+      <div className={"h-96 w-full overflow-auto"}>
         <SyntaxHighlighter
           language="json"
           style={atomOneDark}
           wrapLines={true}
+          wrapLongLines={true}
           showLineNumbers={true}
         >
           {properties}
@@ -200,7 +201,7 @@ const renderRefs = (refs: ElasticSearchSource["dbXrefs"], key: string) => {
       return (
         <div className={"flex"} key={type}>
           <dt className={"w-32 shrink-0 grow-0 font-medium"}>{type}</dt>
-          <dd className={"flex flex-wrap gap-x-3"}>
+          <dd className={"grid-cols-auto-fill-100 grid grow gap-x-3"}>
             {refs.map((ref) => {
               const isExternal = !ref.url.match(/ddbj.nig.ac.jp\/resource/);
               const linkText = isExternal ? ref.url : `/search/detail/${ref.identifier}`;
@@ -232,9 +233,9 @@ const renderUmbrellaProject = (data: ElasticSearchSource) => {
 
 const Row: FC<TailwindElementProps & { dd: string }> = ({ children, className, dd }) => {
   return (
-    <div className={clsx("flex px-2 py-3", className)}>
+    <div className={clsx("flex overflow-hidden px-2 py-3", className)}>
       <dt className="w-40 shrink-0 grow-0 text-sm font-medium text-gray-900">{dd}</dt>
-      <dd className="grow-1 shrink-1 text-sm text-gray-700">{children}</dd>
+      <dd className="shrink grow overflow-hidden text-sm text-gray-700">{children}</dd>
     </div>
   );
 };
