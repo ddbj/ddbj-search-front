@@ -1,13 +1,6 @@
 [[redirects]]
-from = "/search/detail/*"
-to = "/"
-status = 200
-force = true
-
-
-[[redirects]]
   from = "/search/*"
-  to = "/:splat"
+  to = "/
   status = 200
   force = true
 

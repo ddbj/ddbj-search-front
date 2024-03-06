@@ -81,7 +81,8 @@ const renderExternalLinks = (data: ElasticSearchSource) => {
 
 const renderAttributes = (data: ElasticSearchSource) => {
   if (data.type !== "biosample") return <></>;
-  const attributes = data.properties.Attributes.Attribute.map((attr) => {
+  const attributes = data.properties.Attributes?.Attribute ?? [];
+  const inner = attributes.map((attr) => {
     return (
       <Fragment key={attr.attribute_name}>
         <dt className={"whitespace-nowrap font-medium"}>{attr.attribute_name}</dt>
@@ -92,7 +93,7 @@ const renderAttributes = (data: ElasticSearchSource) => {
 
   return (
     <Row dd={"attributes"}>
-      <dl className={"grid grid-cols-min-1fr gap-x-4 gap-y-1 leading-normal"}>{attributes}</dl>
+      <dl className={"grid grid-cols-min-1fr gap-x-4 gap-y-1 leading-normal"}>{inner}</dl>
     </Row>
   );
 };
@@ -201,7 +202,7 @@ const renderRefs = (refs: ElasticSearchSource["dbXrefs"], key: string) => {
       return (
         <div className={"flex"} key={type}>
           <dt className={"w-32 shrink-0 grow-0 font-medium"}>{type}</dt>
-          <dd className={"grid-cols-auto-fill-100 grid grow gap-x-3"}>
+          <dd className={"grid grow grid-cols-auto-fill-100 gap-x-3"}>
             {refs.map((ref) => {
               const isExternal = !ref.url.match(/ddbj.nig.ac.jp\/resource/);
               const linkText = isExternal ? ref.url : `/search/detail/${ref.identifier}`;
