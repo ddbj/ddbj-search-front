@@ -2,12 +2,9 @@ import {
   createRootRoute,
   createRoute,
   createRouter,
-  NotFoundRoute,
   Outlet,
-  redirect,
   ScrollRestoration,
 } from "@tanstack/react-router";
-import { root } from "postcss";
 import { DetailPage } from "@/pages/DetailPage.tsx";
 import { IndexPage } from "@/pages/IndexPage.tsx";
 import { fetchDetail } from "@/utils/fetchDetail.ts";

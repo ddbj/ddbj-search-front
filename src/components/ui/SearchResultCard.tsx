@@ -2,7 +2,6 @@ import { Link } from "@tanstack/react-router";
 import { clsx } from "clsx";
 import { format } from "date-fns";
 import { FC } from "react";
-import { FormattedDate, FormattedMessage, FormattedTime } from "react-intl";
 import { LockIcon } from "@/components/icon/lockIcon.tsx";
 import { ElasticSearchSource } from "@/types/api.ts";
 import { TailwindElementProps } from "@/types/types.ts";

@@ -1,5 +1,4 @@
 import { ElasticSearchSource } from "@/types/api.ts";
-import { BioProjectProperties } from "@/types/bioProject.ts";
 
 export const bioproject3: ElasticSearchSource = {
   identifier: "PRJNA313191",

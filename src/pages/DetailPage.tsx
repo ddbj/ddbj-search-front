@@ -1,4 +1,4 @@
-import { Link, Route, useLoaderData } from "@tanstack/react-router";
+import { Link, useLoaderData } from "@tanstack/react-router";
 import React, { FC, useEffect } from "react";
 import { HomeIcon } from "@/components/icon/HomeIcon.tsx";
 import { DetailTable } from "@/components/ui/DetailTable.tsx";
