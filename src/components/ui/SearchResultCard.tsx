@@ -3,6 +3,7 @@ import { clsx } from "clsx";
 import { format } from "date-fns";
 import { FC } from "react";
 import { FormattedDate, FormattedMessage, FormattedTime } from "react-intl";
+import { LockIcon } from "@/components/icon/lockIcon.tsx";
 import { ElasticSearchSource } from "@/types/api.ts";
 import { TailwindElementProps } from "@/types/types.ts";
 
@@ -14,6 +15,7 @@ export const SearchResultCard: FC<Props> = ({ item }) => {
   const title = item.title || item.description || item.name;
   const detailUrl = `./entry/${item.type}/${item.identifier}`;
   const refsCount = item.dbXrefs?.length;
+  const isVisible = item.visibility.includes("unrestricted");
 
   const groups: { type: string; count: number }[] = Object.entries(
     item.dbXrefs?.reduce<Record<string, number>>(
@@ -27,7 +29,15 @@ export const SearchResultCard: FC<Props> = ({ item }) => {
 
   return (
     <Wrapper href={detailUrl}>
-      <Tags identifier={item.identifier} type={item.type} />
+      <div className={"flex justify-between"}>
+        <Tags identifier={item.identifier} type={item.type} />
+        {!isVisible && (
+          <p className={"flex items-center gap-x-1 rounded bg-primary px-1"}>
+            <LockIcon className={"w-3 fill-white"} />
+            <span className={"shrink-0 text-xs  text-white"}>{item.visibility}</span>
+          </p>
+        )}
+      </div>
       <Title title={title ?? ""} className={"-mt-2"} />
       <Related className="text-sm">This Object is related to {refsCount} Objects</Related>
       <div className="flex justify-between">
@@ -81,7 +91,7 @@ const Related: FC<TailwindElementProps> = ({ children, className }) => {
 };
 
 const BadgeWrapper: FC<TailwindElementProps> = ({ children, className }) => {
-  return <div className={clsx("flex gap-1", className)}>{children}</div>;
+  return <div className={clsx("flex flex-wrap gap-1", className)}>{children}</div>;
 };
 
 const Badge: FC<TailwindElementProps> = ({ children, className }) => {
@@ -97,7 +107,7 @@ const DatePublished: FC<TailwindElementProps & { datePublished: string }> = ({
   className,
 }) => {
   return (
-    <div className={clsx("flex gap-2 text-sm", className)}>
+    <div className={clsx("flex gap-2 whitespace-nowrap text-sm", className)}>
       <span>Published at</span>
       <time className="flex gap-2" dateTime={datePublished}>
         <span>{format(datePublished, "MM/dd/yyyy")}</span>

@@ -1,6 +1,6 @@
 import { Link, Route, useLoaderData } from "@tanstack/react-router";
 import React, { FC, useEffect } from "react";
-import { HomeIcon } from "@/components/icon/homeIcon.tsx";
+import { HomeIcon } from "@/components/icon/HomeIcon.tsx";
 import { DetailTable } from "@/components/ui/DetailTable.tsx";
 import { ElasticSearchSource } from "@/types/api.ts";
 
@@ -24,7 +24,7 @@ export const DetailPage: FC<Props> = ({}) => {
             "mb-2 block w-fit fill-primary text-primary hover:fill-primary-dark hover:text-primary-dark"
           }
         >
-          <p className={"flex w-fit gap-x-1 align-baseline"}>
+          <p className={"flex w-fit gap-x-1 "}>
             <HomeIcon className={"w-5"} />
             <span className={"shrink-0"}>Home</span>
           </p>
