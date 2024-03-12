@@ -2,10 +2,13 @@ import { Link } from "@tanstack/react-router";
 import { clsx } from "clsx";
 import parse from "html-react-parser";
 import React, { FC, Fragment, ReactElement } from "react";
-import SyntaxHighlighter from "react-syntax-highlighter";
+import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
+import json from "react-syntax-highlighter/dist/esm/languages/hljs/json";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { ElasticSearchSource } from "@/types/api.ts";
 import { TailwindElementProps } from "@/types/types.ts";
+
+SyntaxHighlighter.registerLanguage("json", json);
 
 type Props = {
   data: ElasticSearchSource;
