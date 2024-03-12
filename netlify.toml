@@ -5,7 +5,7 @@ status = 200
 force = true
 
 [[redirects]]
-from = "/search/"
+from = "/search/*"
 to = "/"
 status = 200
 force = true
