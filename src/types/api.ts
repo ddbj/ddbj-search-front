@@ -2,6 +2,8 @@
 
 import { BioProjectProperties } from "@/types/bioProject.ts";
 import { BioSampleProperties } from "@/types/bioSample.ts";
+import { SraExperimentProperties } from "@/types/sraExperiment.ts";
+import { SraSampleProperties } from "@/types/sraSample.ts";
 import { SraStudyProperties } from "@/types/sraStudy.ts";
 
 type ShardInfo = {
@@ -54,6 +56,14 @@ type HitSource = {
   | {
       type: "biosample";
       properties: BioSampleProperties;
+    }
+  | {
+      type: "sra-sample";
+      properties: SraSampleProperties;
+    }
+  | {
+      type: "sra-experiment";
+      properties: SraExperimentProperties;
     }
 );
 

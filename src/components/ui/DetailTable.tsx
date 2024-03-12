@@ -1,9 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { clsx } from "clsx";
 import parse from "html-react-parser";
-import React, { FC, Fragment } from "react";
+import React, { FC, Fragment, ReactElement } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
-import { a11yDark, atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { ElasticSearchSource } from "@/types/api.ts";
 import { TailwindElementProps } from "@/types/types.ts";
 
@@ -21,17 +21,28 @@ export const DetailTable: FC<Props> = ({ data }) => {
             <Row dd={"identifier"}>{data.identifier}</Row>
             <Row dd={"type"}>{data.type}</Row>
             {renderRefs(data.sameAs, "sameAs")}
-            {renderUmbrellaProject(data)}
+            {renderBioProjectUmbrellaProject(data)}
             {renderOrganism(data)}
-            {renderTitle(data)}
-            {renderDescription(data)}
-            {renderOrganization(data)}
-            {renderAttributes(data)}
-            {renderPublication(data)}
-            {renderGrant(data)}
-            {renderExternalLinks(data)}
+            {renderBioProjectTitle(data)}
+            {renderBioProjectDescription(data)}
+            {renderBioProjectOrganization(data)}
+            {renderBioProjectPublication(data)}
+            {renderBioProjectGrant(data)}
+            {renderBioProjectExternalLinks(data)}
+            {renderBioSampleAttributes(data)}
+            {renderSraSampleAttributes(data)}
+            {renderSraExperimentTitle(data)}
+            {renderSraExperimentDesign(data)}
+            {renderSraExperimentPlatform(data)}
             {renderProperties(data)}
             {renderRefs(data.dbXrefs, "dbXrefs")}
+            {renderDistribution(data)}
+            {renderDownload(data)}
+            <Row dd={"status"}>{data.status}</Row>
+            <Row dd={"visibility"}>{data.visibility}</Row>
+            <Row dd={"dateCreated"}>{data.dateCreated}</Row>
+            <Row dd={"dateModified"}>{data.dateModified}</Row>
+            <Row dd={"datePublished"}>{data.datePublished}</Row>
           </dl>
         </div>
       </div>
@@ -39,27 +50,90 @@ export const DetailTable: FC<Props> = ({ data }) => {
   );
 };
 
-const renderProperties = (data: ElasticSearchSource) => {
-  if (!data.properties) return <></>;
-  const properties = JSON.stringify(data.properties, null, 2);
+const renderDownload = (data: ElasticSearchSource) => {
+  const obj = (data.downloadUrl ?? []).reduce<Record<string, ReactElement>>((acc, value) => {
+    const key = value.name;
+    acc[key] = (
+      <p className={"flex gap-x-2"}>
+        {value.url ? (
+          <LinkText href={value.url} external={true}>
+            HTTPS
+          </LinkText>
+        ) : (
+          <></>
+        )}
+        {value.ftpUrl ? (
+          <LinkText href={value.ftpUrl} external={true}>
+            FTP
+          </LinkText>
+        ) : (
+          <></>
+        )}
+      </p>
+    );
+    return acc;
+  }, {});
   return (
-    <Row dd={"properties"}>
-      <div className={"h-96 w-full overflow-auto"}>
-        <SyntaxHighlighter
-          language="json"
-          style={atomOneDark}
-          wrapLines={true}
-          wrapLongLines={true}
-          showLineNumbers={true}
-        >
-          {properties}
-        </SyntaxHighlighter>
-      </div>
+    <Row dd={"download"}>
+      <DefinitionList {...obj} />
     </Row>
   );
 };
 
-const renderExternalLinks = (data: ElasticSearchSource) => {
+const renderDistribution = (data: ElasticSearchSource) => {
+  return (
+    <Row dd={"distribution"}>
+      <p className={"flex gap-x-2"}>
+        {data.distribution.map((dist) => (
+          <LinkText key={dist.encodingFormat} href={dist.contentUrl} external={true}>
+            {dist.encodingFormat}
+          </LinkText>
+        ))}
+      </p>
+    </Row>
+  );
+};
+
+const renderSraExperimentTitle = (data: ElasticSearchSource) => {
+  if (data.type !== "sra-experiment") return <></>;
+  return <Row dd={"title"}>{data.properties.TITLE ?? ""}</Row>;
+};
+
+const renderSraExperimentDesign = (data: ElasticSearchSource) => {
+  if (data.type !== "sra-experiment") return <></>;
+  const descriptor = JSON.stringify(data.properties.DESIGN.LIBRARY_DESCRIPTOR ?? "", null, 2);
+  return (
+    <Row dd={"library descriptor"}>
+      <PrettyJSON code={descriptor} />
+    </Row>
+  );
+};
+
+const renderSraExperimentPlatform = (data: ElasticSearchSource) => {
+  if (data.type !== "sra-experiment") return <></>;
+  const platform = data.properties.PLATFORM ?? {};
+  const obj = Object.entries(platform).reduce<Record<string, string>>((acc, [key, value]) => {
+    acc[key] = value.INSTRUMENT_MODEL ?? "";
+    return acc;
+  }, {});
+  return (
+    <Row dd={"platform"}>
+      <DefinitionList {...obj} />
+    </Row>
+  );
+};
+
+const renderProperties = (data: ElasticSearchSource) => {
+  if (!data.properties) return <Row dd={"properties"} />;
+  const properties = JSON.stringify(data.properties, null, 2);
+  return (
+    <Row dd={"properties"}>
+      <PrettyJSON code={properties} />
+    </Row>
+  );
+};
+
+const renderBioProjectExternalLinks = (data: ElasticSearchSource) => {
   if (data.type !== "bioproject") return <></>;
   const externalLinks = data.properties.Project.Project?.ProjectDescr.ExternalLink ?? [];
   const inner = externalLinks.map((link) => {
@@ -79,29 +153,38 @@ const renderExternalLinks = (data: ElasticSearchSource) => {
   );
 };
 
-const renderAttributes = (data: ElasticSearchSource) => {
-  if (data.type !== "biosample") return <></>;
-  const attributes = data.properties.Attributes?.Attribute ?? [];
-  const inner = attributes.map((attr) => {
-    return (
-      <Fragment key={attr.attribute_name}>
-        <dt className={"whitespace-nowrap font-medium"}>{attr.attribute_name}</dt>
-        <dd>{attr.content}</dd>
-      </Fragment>
-    );
-  });
-
+const renderSraSampleAttributes = (data: ElasticSearchSource) => {
+  if (data.type !== "sra-sample") return <></>;
+  const attributes = data.properties.SAMPLE_ATTRIBUTES?.SAMPLE_ATTRIBUTE ?? [];
+  const obj = attributes.reduce<Record<string, string>>((acc, attr) => {
+    acc[attr.TAG] = attr.VALUE;
+    return acc;
+  }, {});
   return (
     <Row dd={"attributes"}>
-      <dl className={"grid grid-cols-min-1fr gap-x-4 gap-y-1 leading-normal"}>{inner}</dl>
+      <DefinitionList {...obj} />
     </Row>
   );
 };
 
-const renderGrant = (data: ElasticSearchSource) => {
+const renderBioSampleAttributes = (data: ElasticSearchSource) => {
+  if (data.type !== "biosample") return <></>;
+  const attributes = data.properties.Attributes?.Attribute ?? [];
+  const obj = attributes.reduce<Record<string, string>>((acc, attr) => {
+    acc[attr.attribute_name] = attr.content;
+    return acc;
+  }, {});
+  return (
+    <Row dd={"attributes"}>
+      <DefinitionList {...obj} />
+    </Row>
+  );
+};
+
+const renderBioProjectGrant = (data: ElasticSearchSource) => {
   if (data.type !== "bioproject") return <></>;
   const grants = data.properties.Project.Project?.ProjectDescr?.Grant;
-  if (!grants) return <></>;
+  if (!grants) return <Row dd={"grant"} />;
   const inner = grants.map((grant) => {
     const title = grant.Title ?? grant.GrantId;
     return (
@@ -117,7 +200,7 @@ const renderGrant = (data: ElasticSearchSource) => {
   );
 };
 
-const renderPublication = (data: ElasticSearchSource) => {
+const renderBioProjectPublication = (data: ElasticSearchSource) => {
   if (data.type !== "bioproject") return <></>;
   const publications = data.properties.Project.Project?.ProjectDescr.Publication ?? [];
   const inner = publications.map((pub) => {
@@ -137,7 +220,7 @@ const renderPublication = (data: ElasticSearchSource) => {
   );
 };
 
-const renderOrganization = (data: ElasticSearchSource) => {
+const renderBioProjectOrganization = (data: ElasticSearchSource) => {
   if (data.type !== "bioproject") return <></>;
   const organization = data.properties.Project.Submission?.Description?.Organization ?? [];
   const inner = organization.map((org) => {
@@ -161,19 +244,19 @@ const renderOrganization = (data: ElasticSearchSource) => {
   );
 };
 
-const renderDescription = (data: ElasticSearchSource) => {
+const renderBioProjectDescription = (data: ElasticSearchSource) => {
   if (data.type !== "bioproject") return <></>;
   return <Row dd={"description"}>{parse(data.description ?? "")}</Row>;
 };
 
-const renderTitle = (data: ElasticSearchSource) => {
+const renderBioProjectTitle = (data: ElasticSearchSource) => {
   if (data.type !== "bioproject") return <></>;
-  return <Row dd={"title"}>{data.properties.Project.Project?.ProjectDescr.Title}</Row>;
+  return <Row dd={"title"}>{data.properties.Project.Project?.ProjectDescr?.Title}</Row>;
 };
 
 const renderOrganism = (data: ElasticSearchSource) => {
   const organism = data.organism;
-  if (!organism) return <></>;
+  if (!organism) return <Row dd={"organism"} />;
   const label = organism.name ?? organism.identifier;
   return (
     <Row dd={"organism"}>
@@ -188,24 +271,25 @@ const renderOrganism = (data: ElasticSearchSource) => {
 };
 
 const renderRefs = (refs: ElasticSearchSource["dbXrefs"], key: string) => {
-  if (!refs) return <></>;
+  if (!refs) return <Row dd={key} />;
   const obj = refs.reduce<Record<string, { identifier: string; url: string }[]>>((acc, ref) => {
     if (!acc[ref.type]) acc[ref.type] = [];
     acc[ref.type].push(ref);
-    // acc[ref.db] = ref.id;
     return acc;
   }, {});
   const inside = Object.entries(obj)
     .sort(([typeA], [typeB]) => typeA.localeCompare(typeB))
     .map(([type, refs]) => {
-      // const linkText =
       return (
         <div className={"flex"} key={type}>
           <dt className={"w-32 shrink-0 grow-0 font-medium"}>{type}</dt>
           <dd className={"grid grow grid-cols-auto-fill-100 gap-x-3"}>
             {refs.map((ref) => {
-              const isExternal = !ref.url.match(/ddbj.nig.ac.jp\/resource/);
-              const linkText = isExternal ? ref.url : `/search/detail/${ref.identifier}`;
+              const reg = new RegExp("(.*)(ddbj.nig.ac.jp/resource/)(.*)");
+              const result = reg.exec(ref.url);
+              const isExternal = !result;
+              const rest = result ? result[3] ?? "" : "";
+              const linkText = isExternal ? ref.url : `/search/entry/${rest}`;
               return (
                 <LinkText key={ref.identifier} href={linkText} external={isExternal}>
                   {ref.identifier}
@@ -223,19 +307,19 @@ const renderRefs = (refs: ElasticSearchSource["dbXrefs"], key: string) => {
   );
 };
 
-const renderUmbrellaProject = (data: ElasticSearchSource) => {
+const renderBioProjectUmbrellaProject = (data: ElasticSearchSource) => {
   if (data.type !== "bioproject") return <></>;
   if (data.properties.Project?.Project?.ProjectType?.ProjectTypeTopAdmin) {
     return <Row dd={"project type"}>Umbrella project</Row>;
   } else {
-    return <></>;
+    return <Row dd={"project type"} />;
   }
 };
 
 const Row: FC<TailwindElementProps & { dd: string }> = ({ children, className, dd }) => {
   return (
     <div className={clsx("flex overflow-hidden px-2 py-3", className)}>
-      <dt className="w-40 shrink-0 grow-0 text-sm font-medium text-gray-900">{dd}</dt>
+      <dt className="w-40 shrink-0 grow-0 text-sm font-bold text-gray-900">{dd}</dt>
       <dd className="shrink grow overflow-hidden text-sm text-gray-700">{children}</dd>
     </div>
   );
@@ -250,8 +334,37 @@ const LinkText: FC<
       {children}
     </a>
   ) : (
-    <Link to={href} className={classNames}>
+    <Link to={href} className={classNames} resetScroll={true}>
       {children}
     </Link>
+  );
+};
+
+const DefinitionList = (obj: Record<string, string | ReactElement>) => (
+  <dl className={"grid grid-cols-min-1fr gap-x-4 gap-y-1 leading-normal"}>
+    {Object.entries(obj).map(([key, value]) => {
+      return (
+        <Fragment key={key}>
+          <dt className={"whitespace-nowrap font-medium"}>{key}</dt>
+          <dd>{value}</dd>
+        </Fragment>
+      );
+    })}
+  </dl>
+);
+
+const PrettyJSON: FC<{ code: string }> = ({ code }) => {
+  return (
+    <div className={"max-h-96 min-h-8 w-full overflow-auto"}>
+      <SyntaxHighlighter
+        language="json"
+        style={atomOneDark}
+        wrapLines={true}
+        wrapLongLines={true}
+        showLineNumbers={true}
+      >
+        {code}
+      </SyntaxHighlighter>
+    </div>
   );
 };

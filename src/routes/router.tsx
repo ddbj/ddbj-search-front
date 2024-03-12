@@ -1,4 +1,10 @@
-import { createRootRoute, createRoute, createRouter, Outlet } from "@tanstack/react-router";
+import {
+  createRootRoute,
+  createRoute,
+  createRouter,
+  Outlet,
+  ScrollRestoration,
+} from "@tanstack/react-router";
 import { DetailPage } from "@/pages/DetailPage.tsx";
 import { IndexPage } from "@/pages/IndexPage.tsx";
 import { AppIntlProvider } from "@/providers/AppIntlProvider.tsx";
@@ -7,6 +13,7 @@ import { fetchDetail } from "@/utils/fetchDetail.ts";
 const rootRoute = createRootRoute({
   component: () => (
     <AppIntlProvider>
+      <ScrollRestoration />
       <Outlet />
     </AppIntlProvider>
   ),
@@ -14,7 +21,7 @@ const rootRoute = createRootRoute({
 
 const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: "/search/",
+  path: "/search",
   component: IndexPage,
 });
 
