@@ -1,18 +1,12 @@
 [[redirects]]
-from = "/search/detail/*"
-to = "/"
+from = "/search/assets/*"
+to = "/assets/:splat"
 status = 200
 force = true
 
 [[redirects]]
-from = "/search/en/*"
+from = "/search/"
 to = "/"
 status = 200
 force = true
-
-[[redirects]]
-  from = "/search/*"
-  to = "/:splat"
-  status = 200
-  force = true
 
