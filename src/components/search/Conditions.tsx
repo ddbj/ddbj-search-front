@@ -9,7 +9,7 @@ import { endOfDay, format, startOfDay } from "date-fns";
 import { FC } from "react";
 
 const REACTIVE_SEARCH_PROPS_REACT = Object.freeze({
-  and: ["query", "isPartOf", "type", "organism", "datePublished"],
+  and: ["query", "isPartOf", "type", "organism", "datePublished", "visibility"],
 });
 
 const dateRangeCustomQuery = (value: any, props: any) => {
@@ -100,12 +100,22 @@ export const Conditions: FC = () => {
         URLParams
         react={REACTIVE_SEARCH_PROPS_REACT}
       />
+
       <SingleList
         componentId="organism"
         dataField="organism.name.keyword"
         title={"Organism"}
         filterLabel={"Organism"}
         URLParams
+        react={REACTIVE_SEARCH_PROPS_REACT}
+      />
+      <SingleList
+        componentId="visibility"
+        dataField="visibility.keyword"
+        title={"Visibility"}
+        filterLabel={"Visibility"}
+        URLParams
+        showSearch={false}
         react={REACTIVE_SEARCH_PROPS_REACT}
       />
       <DateRange

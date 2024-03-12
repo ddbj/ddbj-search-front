@@ -29,11 +29,12 @@ export function Result() {
           "type",
           "organism",
           "datePublished",
+          "visibility",
         ],
       }}
-      renderResultStats={(stats) => (
-        <span className={"mb-2 text-sm"}>{`Completed searching in ${stats.time} ms`}</span>
-      )}
+      renderResultStats={(stats) => {
+        return <span className={"mb-2 text-sm"}>{`Completed searching in ${stats.time} ms`}</span>;
+      }}
     >
       {({ data, loading }) =>
         loading ? (
