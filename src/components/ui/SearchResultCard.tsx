@@ -14,7 +14,7 @@ export const SearchResultCard: FC<Props> = ({ item }) => {
   //   console.warn("Grant found!  " + item.identifier, item.properties);
   // }
   const title = item.title || item.description || item.name;
-  const detailUrl = `./detail/${item.identifier}`;
+  const detailUrl = `./entry/${item.type}/${item.identifier}`;
   const refsCount = item.dbXrefs?.length;
 
   const groups: { type: string; count: number }[] = Object.entries(

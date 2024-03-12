@@ -13,7 +13,7 @@ export const DetailPage: FC<Props> = ({}) => {
   // console.log(data);
   return (
     <div className={"p-6"}>
-      <Link to={"../../"} className={"mb-2 block w-fit"}>
+      <Link to={"/search"} className={"mb-2 block w-fit"}>
         Back to home
       </Link>
       <DetailTable data={data} />
