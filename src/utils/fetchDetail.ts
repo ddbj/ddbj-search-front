@@ -1,3 +1,4 @@
+import { notFound } from "@tanstack/react-router";
 import { ELASTICSEARCH_URL } from "@/constants.ts";
 import { ElasticSearchSource, MultiSearchElasticsearchResponse } from "@/types/api.ts";
 
@@ -13,8 +14,8 @@ export const fetchDetail = async (id: string): Promise<ElasticSearchSource> => {
   }).catch((err) => {});
   const data: MultiSearchElasticsearchResponse = await res?.json();
   if (!data) throw new Error("Failed to fetch data");
-  if (!data.responses[0]) throw new Error("No data found");
-  if (!data.responses[0].hits.hits[0]) throw new Error("No hits found");
+  if (!data.responses[0]) throw notFound();
+  if (!data.responses[0].hits.hits[0]) throw notFound();
   return data.responses[0].hits.hits[0]._source;
 };
 
