@@ -7,7 +7,6 @@ import {
 } from "@appbaseio/reactivesearch";
 import { endOfDay, format, startOfDay } from "date-fns";
 import { FC } from "react";
-import { useIntl } from "react-intl";
 
 const REACTIVE_SEARCH_PROPS_REACT = Object.freeze({
   and: ["query", "isPartOf", "type", "organism", "datePublished"],
@@ -31,7 +30,6 @@ const dateRangeCustomQuery = (value: any, props: any) => {
 };
 
 export const Conditions: FC = () => {
-  const intl = useIntl();
   return (
     <div className="flex flex-col gap-4">
       <DataSearch
@@ -69,8 +67,8 @@ export const Conditions: FC = () => {
             },
           };
         }}
-        title={intl.formatMessage({ id: "search.search_keyword" })}
-        filterLabel={intl.formatMessage({ id: "search.search_keyword" })}
+        title={"Keyword"}
+        filterLabel={"Keyword"}
         fieldWeights={[1, 7, 3, 3, 3, 3, 3]}
         autosuggest={false}
         showFilter
@@ -83,8 +81,8 @@ export const Conditions: FC = () => {
       <ToggleButton
         componentId="isPartOf"
         dataField="isPartOf"
-        title={intl.formatMessage({ id: "search.select_part_of" })}
-        filterLabel={intl.formatMessage({ id: "search.select_part_of" })}
+        title={"Category"}
+        filterLabel={"Category"}
         URLParams
         react={REACTIVE_SEARCH_PROPS_REACT}
         data={[
@@ -97,24 +95,24 @@ export const Conditions: FC = () => {
       <SingleList
         componentId="type"
         dataField="type.keyword"
-        title={intl.formatMessage({ id: "search.select_type" })}
-        filterLabel={intl.formatMessage({ id: "search.select_type" })}
+        title={"Type"}
+        filterLabel={"Type"}
         URLParams
         react={REACTIVE_SEARCH_PROPS_REACT}
       />
       <SingleList
         componentId="organism"
         dataField="organism.name.keyword"
-        title={intl.formatMessage({ id: "search.select_organism" })}
-        filterLabel={intl.formatMessage({ id: "search.select_organism" })}
+        title={"Organism"}
+        filterLabel={"Organism"}
         URLParams
         react={REACTIVE_SEARCH_PROPS_REACT}
       />
       <DateRange
         componentId="datePublished"
         dataField="datePublished"
-        title={intl.formatMessage({ id: "search.select_published_date" })}
-        filterLabel={intl.formatMessage({ id: "search.select_published_date" })}
+        title={"Published Date"}
+        filterLabel={"Published Date"}
         URLParams
         customQuery={dateRangeCustomQuery}
         react={REACTIVE_SEARCH_PROPS_REACT}

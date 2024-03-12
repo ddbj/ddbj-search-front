@@ -1,17 +1,12 @@
 import { ReactiveList } from "@appbaseio/reactivesearch";
-import { FormattedMessage } from "react-intl";
 import { SearchResultCard } from "@/components/ui/SearchResultCard.tsx";
 import { SearchResultSkeleton } from "@/components/ui/SearchResultSkeleton.tsx";
 
 function NoResults() {
   return (
     <div className="p-4">
-      <h1 className="mb-3">
-        <FormattedMessage id="search.no_results" />
-      </h1>
-      <p>
-        <FormattedMessage id="search.no_results.message" />
-      </p>
+      <h1 className="mb-3">No Results</h1>
+      <p>There is no result</p>
     </div>
   );
 }

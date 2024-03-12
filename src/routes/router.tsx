@@ -7,15 +7,14 @@ import {
 } from "@tanstack/react-router";
 import { DetailPage } from "@/pages/DetailPage.tsx";
 import { IndexPage } from "@/pages/IndexPage.tsx";
-import { AppIntlProvider } from "@/providers/AppIntlProvider.tsx";
 import { fetchDetail } from "@/utils/fetchDetail.ts";
 
 const rootRoute = createRootRoute({
   component: () => (
-    <AppIntlProvider>
+    <>
       <ScrollRestoration />
       <Outlet />
-    </AppIntlProvider>
+    </>
   ),
 });
 

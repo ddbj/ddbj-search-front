@@ -1,4 +1,4 @@
-import { createRouter, RouterProvider } from "@tanstack/react-router";
+import { RouterProvider } from "@tanstack/react-router";
 import "./styles/index.css";
 import { router } from "@/routes/router.tsx";
 

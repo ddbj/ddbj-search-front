@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { clsx } from "clsx";
+import { format } from "date-fns";
 import { FC } from "react";
 import { FormattedDate, FormattedMessage, FormattedTime } from "react-intl";
 import { ElasticSearchSource } from "@/types/api.ts";
@@ -10,9 +11,6 @@ type Props = {
 };
 
 export const SearchResultCard: FC<Props> = ({ item }) => {
-  // if ((item.properties as any)?.Project?.Project?.ProjectDescr?.Grant?.Title) {
-  //   console.warn("Grant found!  " + item.identifier, item.properties);
-  // }
   const title = item.title || item.description || item.name;
   const detailUrl = `./entry/${item.type}/${item.identifier}`;
   const refsCount = item.dbXrefs?.length;
@@ -31,9 +29,7 @@ export const SearchResultCard: FC<Props> = ({ item }) => {
     <Wrapper href={detailUrl}>
       <Tags identifier={item.identifier} type={item.type} />
       <Title title={title ?? ""} className={"-mt-2"} />
-      <Related className="text-sm">
-        <FormattedMessage id="etnry.related_entry.message" values={{ refsCount }} />
-      </Related>
+      <Related className="text-sm">This Object is related to {refsCount} Objects</Related>
       <div className="flex justify-between">
         <BadgeWrapper>
           {groups.map((group) => (
@@ -102,16 +98,10 @@ const DatePublished: FC<TailwindElementProps & { datePublished: string }> = ({
 }) => {
   return (
     <div className={clsx("flex gap-2 text-sm", className)}>
-      <span>
-        <FormattedMessage id="entry.published_at" />
-      </span>
+      <span>Published at</span>
       <time className="flex gap-2" dateTime={datePublished}>
-        <span>
-          <FormattedDate value={datePublished} />
-        </span>
-        <span>
-          <FormattedTime value={datePublished} />
-        </span>
+        <span>{format(datePublished, "MM/dd/yyyy")}</span>
+        <span>{format(datePublished, "p")}</span>
       </time>
     </div>
   );

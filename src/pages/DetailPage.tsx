@@ -10,13 +10,12 @@ export const DetailPage: FC<Props> = ({}) => {
     strict: false,
     select: (d) => d,
   });
-  // console.log(data);
   return (
-    <div className={"p-6"}>
+    <main className={"p-6"}>
       <Link to={"/search"} className={"mb-2 block w-fit"}>
         Back to home
       </Link>
       <DetailTable data={data} />
-    </div>
+    </main>
   );
 };
