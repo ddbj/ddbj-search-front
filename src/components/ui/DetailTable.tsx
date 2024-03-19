@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { clsx } from "clsx";
 import parse from "html-react-parser";
-import React, { FC, Fragment, ReactElement } from "react";
+import React, { FC, Fragment, ReactElement, useEffect } from "react";
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
 import json from "react-syntax-highlighter/dist/esm/languages/hljs/json";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
@@ -15,7 +15,7 @@ type Props = {
 };
 
 export const DetailTable: FC<Props> = ({ data }) => {
-  console.log(data);
+  // console.log(data);
   return (
     <>
       <div className="overflow-hidden bg-white leading-normal shadow sm:rounded-lg ">
@@ -56,30 +56,51 @@ export const DetailTable: FC<Props> = ({ data }) => {
 const renderDownload = (data: ElasticSearchSource) => {
   const obj = (data.downloadUrl ?? []).reduce<Record<string, ReactElement>>((acc, value) => {
     const key = value.name;
-    acc[key] = (
-      <p className={"flex gap-x-2"}>
-        {value.url ? (
-          <LinkText href={value.url} external={true}>
-            HTTPS
-          </LinkText>
-        ) : (
-          <></>
-        )}
-        {value.ftpUrl ? (
-          <LinkText href={value.ftpUrl} external={true}>
-            FTP
-          </LinkText>
-        ) : (
-          <></>
-        )}
-      </p>
-    );
+    acc[key] = <PrefetchedDownloadLinks https={value.url} ftp={value.ftpUrl} id={key} />;
     return acc;
   }, {});
   return (
     <Row dd={"download"}>
       <DefinitionList {...obj} />
     </Row>
+  );
+};
+
+const PrefetchedDownloadLinks = (props: {
+  https: string | undefined;
+  ftp: string | undefined;
+  id: string;
+}) => {
+  const { https, ftp, id } = props;
+  const inActiveText = clsx("text-gray-400 hover:text-gray-400");
+  const [isActive, setActive] = React.useState(true);
+  useEffect(() => {
+    if (!https) return;
+    fetch(https, { method: "HEAD" }).then((res) => {
+      if (res.ok) {
+        setActive(true);
+      } else {
+        setActive(false);
+      }
+    });
+  }, [https]);
+  return (
+    <p className={"flex gap-x-2"}>
+      {https ? (
+        <LinkText href={https} external={true} className={isActive ? "" : inActiveText}>
+          HTTPS
+        </LinkText>
+      ) : (
+        <></>
+      )}
+      {ftp ? (
+        <LinkText href={ftp} external={true} className={isActive ? "" : inActiveText}>
+          FTP
+        </LinkText>
+      ) : (
+        <></>
+      )}
+    </p>
   );
 };
 
@@ -330,14 +351,14 @@ const Row: FC<TailwindElementProps & { dd: string }> = ({ children, className, d
 
 const LinkText: FC<
   TailwindElementProps & { href: string; external?: boolean; blank?: boolean }
-> = ({ href, children, external = false, blank = false }) => {
-  const classNames = clsx("text-primary hover:text-primary-dark", {});
+> = ({ href, children, external = false, blank = false, className }) => {
+  const textClasses = clsx("text-primary hover:text-primary-dark", className);
   return external || blank ? (
-    <a href={href} className={classNames} target={"_blank"}>
+    <a href={href} className={textClasses} target={"_blank"}>
       {children}
     </a>
   ) : (
-    <Link to={href} className={classNames} resetScroll={true}>
+    <Link to={href} className={textClasses} resetScroll={true}>
       {children}
     </Link>
   );
