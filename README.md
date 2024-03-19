@@ -1,8 +1,34 @@
-# React + Vite
+# DDBJ Search front
+[DDBJ Search](https://ddbj.nig.ac.jp/search) のフロントエンドコード。以前はバックエンドと同一リポジトリ内にあったが開発が煩雑化したためフロントエンドだけを独立させた。
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## requirements
+- Node.js v18.x
+- pnpm v8.x (recommended)
 
-Currently, two official plugins are available:
+## deployment
+以下のコマンドでビルドを行い、dist 内に生成されたファイル群をサーバーにアップロードする。
+```bash
+pnpm install
+pnpm run build
+```
+**SPAとして作らているため、サーバー側の設定で `/search/entries/` 以下のURLをすべて `/search/*` にルーティングする必要がある**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## technologies
+以前はNext.jsで作られていたが、SPA構成にするためにシンプルなReact(TypeScript)で構成している。
+
+### frontend
+- react 
+- @tanstak/react-router
+- tailwindcss
+- @appbaseio/reactivesearch (廃止予定)
+
+### build
+- vite
+
+### testing
+- jest
+- storybook
+
+### lint/formatter
+- eslint
+- prettier
