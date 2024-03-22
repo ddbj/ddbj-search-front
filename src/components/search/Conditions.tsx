@@ -109,15 +109,15 @@ export const Conditions: FC = () => {
         URLParams
         react={REACTIVE_SEARCH_PROPS_REACT}
       />
-      <SingleList
-        componentId="visibility"
-        dataField="visibility.keyword"
-        title={"Visibility"}
-        filterLabel={"Visibility"}
-        URLParams
-        showSearch={false}
-        react={REACTIVE_SEARCH_PROPS_REACT}
-      />
+      {/*<SingleList*/}
+      {/*  componentId="visibility"*/}
+      {/*  dataField="visibility.keyword"*/}
+      {/*  title={"Visibility"}*/}
+      {/*  filterLabel={"Visibility"}*/}
+      {/*  URLParams*/}
+      {/*  showSearch={false}*/}
+      {/*  react={REACTIVE_SEARCH_PROPS_REACT}*/}
+      {/*/>*/}
       <DateRange
         componentId="datePublished"
         dataField="datePublished"

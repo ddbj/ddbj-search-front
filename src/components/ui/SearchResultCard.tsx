@@ -14,7 +14,8 @@ export const SearchResultCard: FC<Props> = ({ item }) => {
   const title = item.title || item.description || item.name;
   const detailUrl = `./entry/${item.type}/${item.identifier}`;
   const refsCount = item.dbXrefs?.length;
-  const isVisible = item.visibility.includes("unrestricted");
+  // const isVisible = item.visibility.includes("unrestricted");
+  const isVisible = true;
 
   const groups: { type: string; count: number }[] = Object.entries(
     item.dbXrefs?.reduce<Record<string, number>>(
