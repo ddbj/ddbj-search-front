@@ -1,0 +1,19 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+    image: ddbj-search-front-dev
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+    ports:
+      - 127.0.0.1:3000:3000
+      - 127.0.0.1:6006:6006
+    restart: on-failure
+    working_dir: /app
+    entrypoint: ["tini", "--"]
+    command: ["sleep", "infinity"]
+
+volumes:
+  node_modules:

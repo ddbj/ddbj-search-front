@@ -1,0 +1,18 @@
+# Ignore everything
+**
+
+!.env
+!.eslintrc.cjs
+!.prettierrc.cjs
+!.storybook
+!index.html
+!netlify.toml
+!package.json
+!pnpm-lock.yaml
+!postcss.config.js
+!README.md
+!src
+!tailwind.config.js
+!tsconfig.json
+!tsconfig.node.json
+!vite.config.ts
