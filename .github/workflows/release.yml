@@ -1,0 +1,63 @@
+name: release
+
+on:
+  push:
+    tags:
+      - "20*" # yyyymmdd
+
+jobs:
+  release_docker_image:
+    if: github.repository == 'ddbj/ddbj-search-front'
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          # platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/ddbj-search-front:latest
+            ghcr.io/${{ github.repository_owner }}/ddbj-search-front:${{ github.ref_name }}
+
+  create_gh_release:
+    if: github.repository == 'ddbj/ddbj-search-front'
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Create Release
+        run: |
+          gh release \
+            --repo ${{ github.repository }} \
+            create ${{ github.ref_name }} \
+            --title ${{ github.ref_name }} \
+            --generate-notes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  deploy_gh_pages:
+    if: github.repository == 'ddbj/ddbj-search-front'
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run build
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
