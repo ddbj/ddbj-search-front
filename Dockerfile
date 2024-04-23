@@ -4,7 +4,7 @@ LABEL org.opencontainers.image.authors="DDBJ (Bioinformatics and DDBJ Center)"
 LABEL org.opencontainers.image.url="https://github.com/ddbj/ddbj-search-front"
 LABEL org.opencontainers.image.documentation="https://github.com/ddbj/ddbj-search-front/blob/main/README.md"
 LABEL org.opencontainers.image.source="https://github.com/ddbj/ddbj-search-front/blob/main/Dockerfile"
-LABEL org.opencontainers.image.version="20230423"
+LABEL org.opencontainers.image.version="20240423"
 LABEL org.opencontainers.image.licenses="Apache-2.0"
 
 RUN apt update && \

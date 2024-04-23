@@ -1,7 +1,7 @@
 {
   "name": "ddbj-search-front",
   "private": true,
-  "version": "20230423",
+  "version": "20240423",
   "type": "module",
   "scripts": {
     "dev": "vite",

@@ -1,6 +1,6 @@
 services:
   app:
-    image: ghcr.io/ddbj/ddbj-search-front:20230423
+    image: ghcr.io/ddbj/ddbj-search-front:20240423
     container_name: ddbj-search-front
     ports:
       - 0.0.0.0:3000:3000
