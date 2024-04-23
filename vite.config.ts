@@ -16,12 +16,12 @@ export default defineConfig(({ mode }) => ({
     rollupOptions: {
       plugins: [
         mode === "analyze" &&
-          visualizer({
-            open: true,
-            filename: "dist/stats.html",
-            gzipSize: true,
-            brotliSize: true,
-          }),
+        visualizer({
+          open: true,
+          filename: "dist/stats.html",
+          gzipSize: true,
+          brotliSize: true,
+        }),
       ],
     },
   },
