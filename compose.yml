@@ -1,0 +1,16 @@
+services:
+  app:
+    image: ghcr.io/ddbj/ddbj-search-front:0.1.0
+    container_name: ddbj-search-front
+    ports:
+      - 0.0.0.0:3000:3000
+    restart: on-failure
+    working_dir: /app
+    entrypoint: ["tini", "--"]
+    command: ["pnpm", "run", "preview"]
+    networks:
+      - ddbj-search-network
+
+networks:
+  ddbj-search-network:
+    name: ddbj-search-network

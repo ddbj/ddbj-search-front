@@ -15,7 +15,10 @@ RUN pnpm install --frozen-lockfile
 
 COPY . .
 
+# App
 EXPOSE 3000
+# Storybook
+EXPOSE 6006
 
 ENTRYPOINT ["tini", "--"]
 CMD ["sleep", "infinity"]
