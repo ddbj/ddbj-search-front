@@ -56,7 +56,7 @@ jobs:
           node-version: "18"
       - run: corepack enable
       - run: pnpm install --frozen-lockfile
-      - run: pnpm run build
+      - run: BASE_PATH=/ddbj-search-front pnpm run build
       - uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

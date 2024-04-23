@@ -1,34 +1,49 @@
 # DDBJ Search front
-[DDBJ Search](https://ddbj.nig.ac.jp/search) のフロントエンドコード。以前はバックエンドと同一リポジトリ内にあったが開発が煩雑化したためフロントエンドだけを独立させた。
 
-## requirements
+[DDBJ Search](https://ddbj.nig.ac.jp/search) のフロントエンド。
+
+## Software Requirements
+
 - Node.js v18.x
 - pnpm v8.x (recommended)
 
-## deployment
-以下のコマンドでビルドを行い、dist 内に生成されたファイル群をサーバーにアップロードする。
+## Development
+
+開発環境:
+
 ```bash
-pnpm install
-pnpm run build
+docker compose -f compose.dev.yml up -d --build
+docker compose -f compose.dev.yml exec app pnpm run dev
+# Open your browser and navigate to `localhost:3000`.
 ```
-**SPAとして作らているため、サーバー側の設定で `/search/entries/` 以下のURLをすべて `/search/*` にルーティングする必要がある**
 
-## technologies
-以前はNext.jsで作られていたが、SPA構成にするためにシンプルなReact(TypeScript)で構成している。
+### Build SPA files
 
-### frontend
-- react 
-- @tanstak/react-router
-- tailwindcss
-- @appbaseio/reactivesearch (廃止予定)
+以下のコマンドでビルドを行い、dist 内に生成されたファイル群をサーバーにアップロードする。
 
-### build
-- vite
+```bash
+docker compose -f compose.dev.yml up -d --build
+docker compose -f compose.dev.yml exec app pnpm run build
+```
 
-### testing
-- jest
-- storybook
+### Release
 
-### lint/formatter
-- eslint
-- prettier
+- バージョン管理の format として、`yyyymmdd` を用いる。
+  - 一日に複数回 tag を打つことは、想定しない (release process を見直したほうが良い)
+- この version を Docker image と GitHub Release 用の tag として用いる
+
+Release script として、[./release.sh](./release.sh) を用いる
+
+```bash
+bash release.sh <version>
+# 1. 設定ファイルの version を更新
+# 2. git commit & tag & push
+# (3. GitHub Actions で自動的に docker image/release/pages が生成・公開される)
+```
+
+なので、[https://ddbj.github.io/ddbj-search-front/](https://ddbj.github.io/ddbj-search-front/) にも page が公開される。(preview として用いる)
+
+## License
+
+This project is licensed under [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0).
+See the [LICENSE](./LICENSE) file for details.
