@@ -39,7 +39,7 @@ export const DetailTable: FC<Props> = ({ data }) => {
             {renderSraExperimentPlatform(data)}
             {renderProperties(data)}
             {renderRefs(data.dbXrefs, "dbXrefs")}
-            {renderDistribution(data)}
+            {/*{renderDistribution(data)}*/}
             {renderDownload(data)}
             <Row dd={"status"}>{data.status}</Row>
             <Row dd={"visibility"}>{data.visibility}</Row>
