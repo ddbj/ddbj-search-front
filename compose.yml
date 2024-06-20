@@ -1,6 +1,9 @@
 services:
   app:
-    image: ghcr.io/ddbj/ddbj-search-front:20240423
+    # image: ghcr.io/ddbj/ddbj-search-front:20240423
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: ddbj-search-front
     ports:
       - 0.0.0.0:3000:3000
@@ -13,4 +16,5 @@ services:
 
 networks:
   ddbj-search-network:
-    name: ddbj-search-network
+    name: ddbjld-network
+    external: true
