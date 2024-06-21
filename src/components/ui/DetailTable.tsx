@@ -309,10 +309,10 @@ const renderRefs = (refs: ElasticSearchSource["dbXrefs"], key: string) => {
           <dt className={"w-32 shrink-0 grow-0 font-medium"}>{type}</dt>
           <dd className={"grid grow grid-cols-auto-fill-100 gap-x-3"}>
             {refs.map((ref) => {
-              const reg = new RegExp("(.*)(ddbj.nig.ac.jp/resource/)(.*)");
+              const reg = new RegExp("(.*)(ddbj.nig.ac.jp/)(.*)(resource/)(.*)");
               const result = reg.exec(ref.url);
               const isExternal = !result;
-              const rest = result ? result[3] ?? "" : "";
+              const rest = result ? result[5] ?? "" : "";
               const linkText = isExternal ? ref.url : `/search/entry/${rest}`;
               return (
                 <LinkText key={ref.identifier} href={linkText} external={isExternal}>
