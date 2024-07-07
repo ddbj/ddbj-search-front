@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { clsx } from "clsx";
+import { XMLBuilder } from "fast-xml-parser";
 import parse from "html-react-parser";
 import React, { FC, Fragment, ReactElement, useEffect } from "react";
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -40,7 +41,7 @@ export const DetailTable: FC<Props> = ({ data }) => {
             {renderProperties(data)}
             {renderRefs(data.dbXrefs, "dbXrefs")}
             {/*{renderDistribution(data)}*/}
-            {renderDownload(data)}
+            {renderDownloads(data)}
             <Row dd={"status"}>{data.status}</Row>
             <Row dd={"visibility"}>{data.visibility}</Row>
             <Row dd={"dateCreated"}>{data.dateCreated}</Row>
@@ -53,17 +54,42 @@ export const DetailTable: FC<Props> = ({ data }) => {
   );
 };
 
-const renderDownload = (data: ElasticSearchSource) => {
-  const obj = (data.downloadUrl ?? []).reduce<Record<string, ReactElement>>((acc, value) => {
-    const key = value.name;
-    acc[key] = <PrefetchedDownloadLinks https={value.url} ftp={value.ftpUrl} id={key} />;
-    return acc;
-  }, {});
+const renderDownloads = (data: ElasticSearchSource) => {
+  console.log(data.type);
+  const obj: Record<string, string | ReactElement> =
+    data.type === "bioproject" ? makeFakeXMLDownloadLinks(data) : makeNormalDownloadLinks(data);
   return (
     <Row dd={"download"}>
       <DefinitionList {...obj} />
     </Row>
   );
+};
+
+const makeFakeXMLDownloadLinks = (
+  data: ElasticSearchSource
+): Record<string, string | ReactElement> => {
+  const fileName = `${data.identifier}.xml`;
+  const builder = new XMLBuilder();
+  const xmlContent = builder.build(data.properties);
+  const file = new File([xmlContent], fileName, { type: "text/xml" });
+  const url = URL.createObjectURL(file);
+  return {
+    [fileName]: (
+      <LinkText href={url} download={fileName}>
+        HTTPS
+      </LinkText>
+    ),
+  };
+};
+
+const makeNormalDownloadLinks = (
+  data: ElasticSearchSource
+): Record<string, string | ReactElement> => {
+  return (data.downloadUrl ?? []).reduce<Record<string, ReactElement>>((acc, value) => {
+    const key = value.name;
+    acc[key] = <PrefetchedDownloadLinks https={value.url} ftp={value.ftpUrl} id={key} />;
+    return acc;
+  }, {});
 };
 
 const PrefetchedDownloadLinks = (props: {
@@ -357,11 +383,11 @@ const Row: FC<TailwindElementProps & { dd: string }> = ({ children, className, d
 };
 
 const LinkText: FC<
-  TailwindElementProps & { href: string; external?: boolean; blank?: boolean }
-> = ({ href, children, external = false, blank = false, className }) => {
+  TailwindElementProps & { href: string; external?: boolean; blank?: boolean; download?: string }
+> = ({ href, children, external = false, blank = false, className, download }) => {
   const textClasses = clsx("text-primary hover:text-primary-dark", className);
-  return external || blank ? (
-    <a href={href} className={textClasses} target={"_blank"}>
+  return external || blank || download ? (
+    <a href={href} className={textClasses} target={"_blank"} download={download}>
       {children}
     </a>
   ) : (
