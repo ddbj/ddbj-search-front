@@ -55,9 +55,10 @@ export const DetailTable: FC<Props> = ({ data }) => {
 };
 
 const renderDownloads = (data: ElasticSearchSource) => {
-  console.log(data.type);
   const obj: Record<string, string | ReactElement> =
-    data.type === "bioproject" ? makeFakeXMLDownloadLinks(data) : makeNormalDownloadLinks(data);
+    data.type === "bioproject" || data.type === "biosample"
+      ? makeFakeXMLDownloadLinks(data)
+      : makeNormalDownloadLinks(data);
   return (
     <Row dd={"download"}>
       <DefinitionList {...obj} />
@@ -70,7 +71,7 @@ const makeFakeXMLDownloadLinks = (
 ): Record<string, string | ReactElement> => {
   const fileName = `${data.identifier}.xml`;
   const builder = new XMLBuilder();
-  const xmlContent = builder.build(data.properties);
+  const xmlContent = builder.build({ xml: data.properties });
   const file = new File([xmlContent], fileName, { type: "text/xml" });
   const url = URL.createObjectURL(file);
   return {
