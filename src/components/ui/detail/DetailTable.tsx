@@ -1,10 +1,12 @@
 import { Link } from "@tanstack/react-router";
 import { clsx } from "clsx";
 import parse from "html-react-parser";
-import React, { FC, Fragment, ReactElement, useEffect } from "react";
+import React, { FC, Fragment, ReactElement } from "react";
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
 import json from "react-syntax-highlighter/dist/esm/languages/hljs/json";
-import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { DownloadLinks } from "@/components/ui/detail/rows/DownloadLinks.tsx";
+import { Properties } from "@/components/ui/detail/rows/Properties.tsx";
+import { RefLinks } from "@/components/ui/detail/rows/RefLinks.tsx";
 import { ElasticSearchSource } from "@/types/api.ts";
 import { TailwindElementProps } from "@/types/types.ts";
 
@@ -23,7 +25,7 @@ export const DetailTable: FC<Props> = ({ data }) => {
           <dl className="divide-y divide-gray-100 [&>*:nth-child(2n)]:bg-gray-50">
             <Row dd={"identifier"}>{data.identifier}</Row>
             <Row dd={"type"}>{data.type}</Row>
-            {renderRefs(data.sameAs, "sameAs")}
+            <RefLinks refs={data.sameAs} title={"sameAs"} />
             {renderBioProjectUmbrellaProject(data)}
             {renderOrganism(data)}
             {renderBioProjectTitle(data)}
@@ -37,10 +39,10 @@ export const DetailTable: FC<Props> = ({ data }) => {
             {renderSraExperimentTitle(data)}
             {renderSraExperimentDesign(data)}
             {renderSraExperimentPlatform(data)}
-            {renderProperties(data)}
-            {renderRefs(data.dbXrefs, "dbXrefs")}
+            <Properties title={"properties"} codeObj={data.properties} />
+            <RefLinks refs={data.dbXrefs} title={"dbXrefs"} />
             {/*{renderDistribution(data)}*/}
-            {renderDownload(data)}
+            <DownloadLinks downloadUrl={data.downloadUrl} />
             <Row dd={"status"}>{data.status}</Row>
             <Row dd={"visibility"}>{data.visibility}</Row>
             <Row dd={"dateCreated"}>{data.dateCreated}</Row>
@@ -50,64 +52,6 @@ export const DetailTable: FC<Props> = ({ data }) => {
         </div>
       </div>
     </>
-  );
-};
-
-const renderDownload = (data: ElasticSearchSource) => {
-  const obj = (data.downloadUrl ?? []).reduce<Record<string, ReactElement>>((acc, value) => {
-    const key = value.name;
-    acc[key] = <PrefetchedDownloadLinks https={value.url} ftp={value.ftpUrl} id={key} />;
-    return acc;
-  }, {});
-  return (
-    <Row dd={"download"}>
-      <DefinitionList {...obj} />
-    </Row>
-  );
-};
-
-const PrefetchedDownloadLinks = (props: {
-  https: string | undefined;
-  ftp: string | undefined;
-  id: string;
-}) => {
-  const { https, ftp, id } = props;
-  const inActiveText = clsx("text-gray-400 hover:text-gray-400");
-  const [isActive, setActive] = React.useState(true);
-  useEffect(() => {
-    if (!https) return;
-    const targetHost = new URL(https).host;
-    const currentHost = window.location.host;
-    if (targetHost === currentHost) {
-      fetch(https, { method: "HEAD" }).then((res) => {
-        if (res.ok) {
-          setActive(true);
-        } else {
-          setActive(false);
-        }
-      });
-    } else {
-      setActive(true);
-      console.warn("target host is different from current host. So prefetch is skipped.");
-    }
-  }, [https]);
-  return (
-    <p className={"flex gap-x-2"}>
-      {https ? (
-        <LinkText href={https} external={true} className={isActive ? "" : inActiveText}>
-          HTTPS
-        </LinkText>
-      ) : (
-        <></>
-      )}
-      {ftp ? (
-        <LinkText href={ftp} external={true} className={isActive ? "" : inActiveText}>
-          FTP
-        </LinkText>
-      ) : (
-        <></>
-      )}
-    </p>
   );
 };
 
@@ -133,11 +77,7 @@ const renderSraExperimentTitle = (data: ElasticSearchSource) => {
 const renderSraExperimentDesign = (data: ElasticSearchSource) => {
   if (data.type !== "sra-experiment") return <></>;
   const descriptor = JSON.stringify(data.properties.DESIGN.LIBRARY_DESCRIPTOR ?? "", null, 2);
-  return (
-    <Row dd={"library descriptor"}>
-      <PrettyJSON code={descriptor} />
-    </Row>
-  );
+  return <Row dd={"library descriptor"}>{/*<PrettyJSON code={descriptor} />*/}</Row>;
 };
 
 const renderSraExperimentPlatform = (data: ElasticSearchSource) => {
@@ -154,15 +94,15 @@ const renderSraExperimentPlatform = (data: ElasticSearchSource) => {
   );
 };
 
-const renderProperties = (data: ElasticSearchSource) => {
-  if (!data.properties) return <Row dd={"properties"} />;
-  const properties = JSON.stringify(data.properties, null, 2);
-  return (
-    <Row dd={"properties"}>
-      <PrettyJSON code={properties} />
-    </Row>
-  );
-};
+// const renderProperties = (data: ElasticSearchSource) => {
+//   if (!data.properties) return <Row dd={"properties"} />;
+//   const properties = JSON.stringify(data.properties, null, 2);
+//   return (
+//     <Row dd={"properties"}>
+//       <PrettyJSON code={properties} />
+//     </Row>
+//   );
+// };
 
 const renderBioProjectExternalLinks = (data: ElasticSearchSource) => {
   if (data.type !== "bioproject") return <></>;
@@ -301,43 +241,6 @@ const renderOrganism = (data: ElasticSearchSource) => {
   );
 };
 
-const renderRefs = (refs: ElasticSearchSource["dbXrefs"], key: string) => {
-  if (!refs) return <Row dd={key} />;
-  const obj = refs.reduce<Record<string, { identifier: string; url: string }[]>>((acc, ref) => {
-    if (!acc[ref.type]) acc[ref.type] = [];
-    acc[ref.type].push(ref);
-    return acc;
-  }, {});
-  const inside = Object.entries(obj)
-    .sort(([typeA], [typeB]) => typeA.localeCompare(typeB))
-    .map(([type, refs]) => {
-      return (
-        <div className={"flex"} key={type}>
-          <dt className={"w-32 shrink-0 grow-0 font-medium"}>{type}</dt>
-          <dd className={"grid grow grid-cols-auto-fill-100 gap-x-3"}>
-            {refs.map((ref) => {
-              const reg = new RegExp("(.*)(ddbj.nig.ac.jp/)(.*)(resource/)(.*)");
-              const result = reg.exec(ref.url);
-              const isExternal = !result;
-              const rest = result ? result[5] ?? "" : "";
-              const linkText = isExternal ? ref.url : `/search/entry/${rest}`;
-              return (
-                <LinkText key={ref.identifier} href={linkText} external={isExternal}>
-                  {ref.identifier}
-                </LinkText>
-              );
-            })}
-          </dd>
-        </div>
-      );
-    });
-  return (
-    <Row dd={key}>
-      <dl className={"flex flex-col gap-3"}>{inside}</dl>
-    </Row>
-  );
-};
-
 const renderBioProjectUmbrellaProject = (data: ElasticSearchSource) => {
   if (data.type !== "bioproject") return <></>;
   if (data.properties.Project?.Project?.ProjectType?.ProjectTypeTopAdmin) {
@@ -383,19 +286,3 @@ const DefinitionList = (obj: Record<string, string | ReactElement>) => (
     })}
   </dl>
 );
-
-const PrettyJSON: FC<{ code: string }> = ({ code }) => {
-  return (
-    <div className={"max-h-96 min-h-8 w-full overflow-auto"}>
-      <SyntaxHighlighter
-        language="json"
-        style={atomOneDark}
-        wrapLines={true}
-        wrapLongLines={true}
-        showLineNumbers={true}
-      >
-        {code}
-      </SyntaxHighlighter>
-    </div>
-  );
-};

@@ -6,6 +6,11 @@ import { bioproject3 } from "@/data/bioproject3.ts";
 import { biosample1 } from "@/data/biosample1.ts";
 import { sraExperiment1 } from "@/data/sraExperiment1.ts";
 import { sraStudy1 } from "@/data/sraStudy1.ts";
+import { ElasticSearchSource } from "@/types/api.ts";
+
+export type RowProps = {
+  data: ElasticSearchSource;
+};
 
 const meta: Meta<typeof DetailTable> = {
   component: DetailTable,
