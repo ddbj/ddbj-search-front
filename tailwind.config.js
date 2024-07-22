@@ -12,6 +12,11 @@ export default {
         "auto-fill-100": "repeat(auto-fill, minmax(100px, 1fr))",
         "auto-fit-100": "repeat(auto-fit, minmax(100px, 1fr))",
       },
+      spacing: {
+        128: "32rem",
+        192: "48rem",
+        256: "64rem",
+      },
     },
   },
   plugins: [],
