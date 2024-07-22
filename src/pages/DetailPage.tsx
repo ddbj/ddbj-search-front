@@ -7,10 +7,10 @@ import { ElasticSearchSource } from "@/types/api.ts";
 type Props = {};
 
 export const DetailPage: FC<Props> = ({}) => {
-  const data = useLoaderData<never, never, never, ElasticSearchSource>({
+  const data = useLoaderData<any, any, any>({
     strict: false,
     select: (d) => d,
-  });
+  }) as ElasticSearchSource;
   useEffect(() => {
     const titleTag = document.querySelector("title")!;
     titleTag.textContent = `${data.identifier} | ${data.type} | DDBJ Search`;
