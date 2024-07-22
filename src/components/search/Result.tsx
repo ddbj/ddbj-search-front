@@ -1,6 +1,6 @@
 import { ReactiveList } from "@appbaseio/reactivesearch";
-import { SearchResultCard } from "@/components/ui/SearchResultCard.tsx";
-import { SearchResultSkeleton } from "@/components/ui/SearchResultSkeleton.tsx";
+import { SearchResultCard } from "@/components/ui/result/SearchResultCard.tsx";
+import { SearchResultSkeleton } from "@/components/ui/result/SearchResultSkeleton.tsx";
 
 function NoResults() {
   return (

@@ -1,7 +1,7 @@
 import { Link, useLoaderData } from "@tanstack/react-router";
 import React, { FC, useEffect } from "react";
 import { HomeIcon } from "@/components/icon/HomeIcon.tsx";
-import { DetailTable } from "@/components/ui/DetailTable.tsx";
+import { DetailTable } from "@/components/ui/detail/DetailTable.tsx";
 import { ElasticSearchSource } from "@/types/api.ts";
 
 type Props = {};
