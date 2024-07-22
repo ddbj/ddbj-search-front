@@ -10,6 +10,6 @@ export default meta;
 type Story = StoryObj<typeof DownloadLinks>;
 export const Primary: Story = {
   args: {
-    data: bioproject1,
+    downloadUrl: bioproject1.downloadUrl,
   },
 };
