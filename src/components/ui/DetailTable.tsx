@@ -1,6 +1,5 @@
 import { Link } from "@tanstack/react-router";
 import { clsx } from "clsx";
-import { XMLBuilder } from "fast-xml-parser";
 import parse from "html-react-parser";
 import React, { FC, Fragment, ReactElement, useEffect } from "react";
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -41,7 +40,7 @@ export const DetailTable: FC<Props> = ({ data }) => {
             {renderProperties(data)}
             {renderRefs(data.dbXrefs, "dbXrefs")}
             {/*{renderDistribution(data)}*/}
-            {renderDownloads(data)}
+            {renderDownload(data)}
             <Row dd={"status"}>{data.status}</Row>
             <Row dd={"visibility"}>{data.visibility}</Row>
             <Row dd={"dateCreated"}>{data.dateCreated}</Row>
@@ -54,11 +53,20 @@ export const DetailTable: FC<Props> = ({ data }) => {
   );
 };
 
+<<<<<<< HEAD
 const renderDownloads = (data: ElasticSearchSource) => {
   const obj: Record<string, string | ReactElement> =
     data.type === "bioproject" || data.type === "biosample"
       ? makeFakeXMLDownloadLinks(data)
       : makeNormalDownloadLinks(data);
+=======
+const renderDownload = (data: ElasticSearchSource) => {
+  const obj = (data.downloadUrl ?? []).reduce<Record<string, ReactElement>>((acc, value) => {
+    const key = value.name;
+    acc[key] = <PrefetchedDownloadLinks https={value.url} ftp={value.ftpUrl} id={key} />;
+    return acc;
+  }, {});
+>>>>>>> parent of a5d9e46 (wip: biosample のXML生成)
   return (
     <Row dd={"download"}>
       <DefinitionList {...obj} />
@@ -66,6 +74,7 @@ const renderDownloads = (data: ElasticSearchSource) => {
   );
 };
 
+<<<<<<< HEAD
 const makeFakeXMLDownloadLinks = (
   data: ElasticSearchSource
 ): Record<string, string | ReactElement> => {
@@ -93,6 +102,8 @@ const makeNormalDownloadLinks = (
   }, {});
 };
 
+=======
+>>>>>>> parent of a5d9e46 (wip: biosample のXML生成)
 const PrefetchedDownloadLinks = (props: {
   https: string | undefined;
   ftp: string | undefined;
@@ -384,11 +395,11 @@ const Row: FC<TailwindElementProps & { dd: string }> = ({ children, className, d
 };
 
 const LinkText: FC<
-  TailwindElementProps & { href: string; external?: boolean; blank?: boolean; download?: string }
-> = ({ href, children, external = false, blank = false, className, download }) => {
+  TailwindElementProps & { href: string; external?: boolean; blank?: boolean }
+> = ({ href, children, external = false, blank = false, className }) => {
   const textClasses = clsx("text-primary hover:text-primary-dark", className);
-  return external || blank || download ? (
-    <a href={href} className={textClasses} target={"_blank"} download={download}>
+  return external || blank ? (
+    <a href={href} className={textClasses} target={"_blank"}>
       {children}
     </a>
   ) : (
