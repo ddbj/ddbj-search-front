@@ -1,14 +1,14 @@
-import { Link } from "@tanstack/react-router";
-import { clsx } from "clsx";
 import parse from "html-react-parser";
-import React, { FC, Fragment, ReactElement } from "react";
+import React, { FC } from "react";
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
 import json from "react-syntax-highlighter/dist/esm/languages/hljs/json";
 import { DownloadLinks } from "@/components/ui/detail/rows/DownloadLinks.tsx";
 import { Properties } from "@/components/ui/detail/rows/Properties.tsx";
 import { RefLinks } from "@/components/ui/detail/rows/RefLinks.tsx";
+import { DefinitionList, LinkText, Row } from "@/components/ui/detail/rows/Shared.tsx";
+import { SraExperiment } from "@/components/ui/detail/rows/SraExperiment.tsx";
+import { SraSample } from "@/components/ui/detail/rows/SraSample.tsx";
 import { ElasticSearchSource } from "@/types/api.ts";
-import { TailwindElementProps } from "@/types/types.ts";
 
 SyntaxHighlighter.registerLanguage("json", json);
 
@@ -26,6 +26,7 @@ export const DetailTable: FC<Props> = ({ data }) => {
             <Row dd={"identifier"}>{data.identifier}</Row>
             <Row dd={"type"}>{data.type}</Row>
             <RefLinks refs={data.sameAs} title={"sameAs"} />
+            {/*TODO: organize row order*/}
             {renderBioProjectUmbrellaProject(data)}
             {renderOrganism(data)}
             {renderBioProjectTitle(data)}
@@ -35,10 +36,9 @@ export const DetailTable: FC<Props> = ({ data }) => {
             {renderBioProjectGrant(data)}
             {renderBioProjectExternalLinks(data)}
             {renderBioSampleAttributes(data)}
-            {renderSraSampleAttributes(data)}
+            <SraSample data={data} />
             {renderSraExperimentTitle(data)}
-            {renderSraExperimentDesign(data)}
-            {renderSraExperimentPlatform(data)}
+            <SraExperiment data={data} />
             <Properties title={"properties"} codeObj={data.properties} />
             <RefLinks refs={data.dbXrefs} title={"dbXrefs"} />
             {/*{renderDistribution(data)}*/}
@@ -74,36 +74,6 @@ const renderSraExperimentTitle = (data: ElasticSearchSource) => {
   return <Row dd={"title"}>{data.properties.TITLE ?? ""}</Row>;
 };
 
-const renderSraExperimentDesign = (data: ElasticSearchSource) => {
-  if (data.type !== "sra-experiment") return <></>;
-  const descriptor = JSON.stringify(data.properties.DESIGN.LIBRARY_DESCRIPTOR ?? "", null, 2);
-  return <Row dd={"library descriptor"}>{/*<PrettyJSON code={descriptor} />*/}</Row>;
-};
-
-const renderSraExperimentPlatform = (data: ElasticSearchSource) => {
-  if (data.type !== "sra-experiment") return <></>;
-  const platform = data.properties.PLATFORM ?? {};
-  const obj = Object.entries(platform).reduce<Record<string, string>>((acc, [key, value]) => {
-    acc[key] = value.INSTRUMENT_MODEL ?? "";
-    return acc;
-  }, {});
-  return (
-    <Row dd={"platform"}>
-      <DefinitionList {...obj} />
-    </Row>
-  );
-};
-
-// const renderProperties = (data: ElasticSearchSource) => {
-//   if (!data.properties) return <Row dd={"properties"} />;
-//   const properties = JSON.stringify(data.properties, null, 2);
-//   return (
-//     <Row dd={"properties"}>
-//       <PrettyJSON code={properties} />
-//     </Row>
-//   );
-// };
-
 const renderBioProjectExternalLinks = (data: ElasticSearchSource) => {
   if (data.type !== "bioproject") return <></>;
   const externalLinks = data.properties.Project.Project?.ProjectDescr.ExternalLink ?? [];
@@ -120,20 +90,6 @@ const renderBioProjectExternalLinks = (data: ElasticSearchSource) => {
   return (
     <Row dd={"external link"}>
       <ul className={"flex flex-col gap-3"}>{inner}</ul>
-    </Row>
-  );
-};
-
-const renderSraSampleAttributes = (data: ElasticSearchSource) => {
-  if (data.type !== "sra-sample") return <></>;
-  const attributes = data.properties.SAMPLE_ATTRIBUTES?.SAMPLE_ATTRIBUTE ?? [];
-  const obj = attributes.reduce<Record<string, string>>((acc, attr) => {
-    acc[attr.TAG] = attr.VALUE;
-    return acc;
-  }, {});
-  return (
-    <Row dd={"attributes"}>
-      <DefinitionList {...obj} />
     </Row>
   );
 };
@@ -249,40 +205,3 @@ const renderBioProjectUmbrellaProject = (data: ElasticSearchSource) => {
     return <Row dd={"project type"} />;
   }
 };
-
-const Row: FC<TailwindElementProps & { dd: string }> = ({ children, className, dd }) => {
-  return (
-    <div className={clsx("flex overflow-hidden px-2 py-3", className)}>
-      <dt className="w-40 shrink-0 grow-0 text-sm font-bold text-gray-900">{dd}</dt>
-      <dd className="shrink grow overflow-hidden text-sm text-gray-700">{children}</dd>
-    </div>
-  );
-};
-
-const LinkText: FC<
-  TailwindElementProps & { href: string; external?: boolean; blank?: boolean }
-> = ({ href, children, external = false, blank = false, className }) => {
-  const textClasses = clsx("text-primary hover:text-primary-dark", className);
-  return external || blank ? (
-    <a href={href} className={textClasses} target={"_blank"}>
-      {children}
-    </a>
-  ) : (
-    <Link to={href} className={textClasses} resetScroll={true}>
-      {children}
-    </Link>
-  );
-};
-
-const DefinitionList = (obj: Record<string, string | ReactElement>) => (
-  <dl className={"grid grid-cols-min-1fr gap-x-4 gap-y-1 leading-normal"}>
-    {Object.entries(obj).map(([key, value]) => {
-      return (
-        <Fragment key={key}>
-          <dt className={"whitespace-nowrap font-medium"}>{key}</dt>
-          <dd>{value}</dd>
-        </Fragment>
-      );
-    })}
-  </dl>
-);
