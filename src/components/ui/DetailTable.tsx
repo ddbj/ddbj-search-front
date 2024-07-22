@@ -55,7 +55,9 @@ export const DetailTable: FC<Props> = ({ data }) => {
 
 <<<<<<< HEAD
 const renderDownloads = (data: ElasticSearchSource) => {
+  console.log(data.type);
   const obj: Record<string, string | ReactElement> =
+<<<<<<< HEAD
     data.type === "bioproject" || data.type === "biosample"
       ? makeFakeXMLDownloadLinks(data)
       : makeNormalDownloadLinks(data);
@@ -67,6 +69,9 @@ const renderDownload = (data: ElasticSearchSource) => {
     return acc;
   }, {});
 >>>>>>> parent of a5d9e46 (wip: biosample のXML生成)
+=======
+    data.type === "bioproject" ? makeFakeXMLDownloadLinks(data) : makeNormalDownloadLinks(data);
+>>>>>>> parent of cdd02a7 (wip: fakeXML を biosample にも適用)
   return (
     <Row dd={"download"}>
       <DefinitionList {...obj} />
@@ -80,7 +85,7 @@ const makeFakeXMLDownloadLinks = (
 ): Record<string, string | ReactElement> => {
   const fileName = `${data.identifier}.xml`;
   const builder = new XMLBuilder();
-  const xmlContent = builder.build({ xml: data.properties });
+  const xmlContent = builder.build(data.properties);
   const file = new File([xmlContent], fileName, { type: "text/xml" });
   const url = URL.createObjectURL(file);
   return {
