@@ -1,12 +1,12 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { CommonRows } from "./CommonRows";
+import { CommonTitle } from "@/components/ui/detail/rows/CommonRows.tsx";
 
-const meta: Meta<typeof CommonRows> = {
-  component: CommonRows,
+const meta: Meta<typeof CommonTitle> = {
+  component: CommonTitle,
 };
 export default meta;
 
-type Story = StoryObj<typeof CommonRows>;
+type Story = StoryObj<typeof CommonTitle>;
 export const Primary: Story = {
   args: {},
 };
