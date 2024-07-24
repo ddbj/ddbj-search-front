@@ -22,7 +22,7 @@ export const RefLinks: FC<Props> = ({ refs, title }) => {
               const reg = new RegExp("(.*)(ddbj.nig.ac.jp/)(.*)(resource/)(.*)");
               const result = reg.exec(ref.url);
               const isExternal = !result;
-              const rest = result ? result[5] ?? "" : "";
+              const rest = result ? (result[5] ?? "") : "";
               const linkText = isExternal ? ref.url : `/search/entry/${rest}`;
               return (
                 <LinkText key={ref.identifier} href={linkText} external={isExternal}>

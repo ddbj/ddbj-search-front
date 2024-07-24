@@ -6,15 +6,19 @@ import { ElasticSearchSource } from "@/types/api.ts";
 
 type Props = {};
 
+const useTitle = (data: ElasticSearchSource) => {
+  useEffect(() => {
+    const titleTag = document.querySelector("title")!;
+    titleTag.textContent = `${data.identifier} | ${data.type} | DDBJ Search`;
+  }, [data]);
+};
+
 export const DetailPage: FC<Props> = ({}) => {
   const data = useLoaderData<any, any, any>({
     strict: false,
     select: (d) => d,
   }) as ElasticSearchSource;
-  useEffect(() => {
-    const titleTag = document.querySelector("title")!;
-    titleTag.textContent = `${data.identifier} | ${data.type} | DDBJ Search`;
-  }, [data]);
+  useTitle(data);
   return (
     <main className={"p-6"}>
       <nav className={"flex gap-x-3 text-lg"}>
