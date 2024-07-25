@@ -17,8 +17,9 @@ export function Result() {
       componentId="list"
       dataField="identifier,isPartOf,type,organism.name,datePublished"
       size={10}
-      pagination
       renderNoResults={() => <NoResults />}
+      pagination
+      showEndPage
       react={{
         and: [
           "query",
@@ -33,7 +34,15 @@ export function Result() {
         ],
       }}
       renderResultStats={(stats) => {
-        return <span className={"mb-2 text-sm"}>{`Completed searching in ${stats.time} ms`}</span>;
+        const total: number = stats.numberOfResults;
+        const completeTimeInfo = `Completed searching in ${stats.time} ms`;
+        const countInfo = `Found ${total >= 10000 ? "more than " : ""}${stats.numberOfResults} entries`;
+
+        return (
+          <span className={"mb-2 text-sm"}>
+            {countInfo} / {completeTimeInfo}
+          </span>
+        );
       }}
     >
       {({ data, loading }) =>

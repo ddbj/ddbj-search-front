@@ -1,5 +1,5 @@
 import { clsx } from "clsx";
-import React, { FC, useEffect, useRef, useState } from "react";
+import React, { FC, useCallback, useEffect, useRef, useState } from "react";
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { SquareMinusIcon } from "@/components/icon/SquareMinusIcon.tsx";
@@ -21,27 +21,35 @@ export const Properties: FC<Props> = ({ title, codeObj }) => {
   );
 };
 
+const initialHeight = "11rem";
 export const PrettyJSON: FC<{ code: string }> = ({ code }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [showExpand, setShowExpand] = useState(false);
-  const [rowHeight, setRowHeight] = useState("10rem");
+  const [rowHeight, setRowHeight] = useState(initialHeight);
   const classNames = clsx("relative grid w-full overflow-hidden transition-all duration-500");
   const ref = useRef(null);
   const PreWithRef: FC = (preProps) => <pre {...preProps} ref={ref} />;
-  useEffect(() => {
+  const init = () => {
     if (!ref.current) return;
     const { scrollHeight, clientHeight } = ref.current;
-    if (scrollHeight > clientHeight) setShowExpand(true);
-  }, [ref]);
-  useEffect(() => {
+    scrollHeight > clientHeight && setShowExpand(true);
+  };
+  const toggleExpand = () => {
     if (!ref.current) return;
     const { scrollHeight } = ref.current;
-    if (isExpanded) {
-      setRowHeight(`${scrollHeight}px`);
-    } else {
-      setRowHeight("10rem");
-    }
-  }, [ref, isExpanded]);
+    isExpanded ? setRowHeight(`${scrollHeight}px`) : setRowHeight(initialHeight);
+  };
+  useEffect(() => {
+    init();
+  }, []);
+  useEffect(() => {
+    toggleExpand();
+  }, [isExpanded]);
+  useEffect(() => {
+    setIsExpanded(false);
+    init();
+  }, [code]);
+
   return (
     <div className="relative overflow-hidden">
       <div className={classNames} style={{ gridTemplateRows: rowHeight }}>
