@@ -17,8 +17,9 @@ export function Result() {
       componentId="list"
       dataField="identifier,isPartOf,type,organism.name,datePublished"
       size={10}
-      pagination
       renderNoResults={() => <NoResults />}
+      pagination
+      showEndPage
       react={{
         and: [
           "query",
