@@ -11,7 +11,7 @@ export const fetchDetail = async (id: string): Promise<ElasticSearchSource> => {
     },
     mode: "cors",
     body: makeQueryBody(id),
-  }).catch((err) => {});
+  }).catch(() => {});
   const data: MultiSearchElasticsearchResponse = await res?.json();
   if (!data) throw new Error("Failed to fetch data");
   if (!data.responses[0]) throw notFound();
