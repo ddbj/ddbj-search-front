@@ -1,20 +1,24 @@
 import { Link, useLoaderData } from "@tanstack/react-router";
 import React, { FC, useEffect } from "react";
 import { HomeIcon } from "@/components/icon/HomeIcon.tsx";
-import { DetailTable } from "@/components/ui/DetailTable.tsx";
+import { DetailTable } from "@/components/ui/detail/DetailTable.tsx";
 import { ElasticSearchSource } from "@/types/api.ts";
 
 type Props = {};
 
-export const DetailPage: FC<Props> = ({}) => {
-  const data = useLoaderData<never, never, never, ElasticSearchSource>({
-    strict: false,
-    select: (d) => d,
-  });
+const useTitle = (data: ElasticSearchSource) => {
   useEffect(() => {
     const titleTag = document.querySelector("title")!;
     titleTag.textContent = `${data.identifier} | ${data.type} | DDBJ Search`;
   }, [data]);
+};
+
+export const DetailPage: FC<Props> = ({}) => {
+  const data = useLoaderData<any, any, any>({
+    strict: false,
+    select: (d) => d,
+  }) as ElasticSearchSource;
+  useTitle(data);
   return (
     <main className={"p-6"}>
       <nav className={"flex gap-x-3 text-lg"}>
