@@ -81,14 +81,14 @@ export const Conditions: FC = () => {
       <ToggleButton
         componentId="isPartOf"
         dataField="isPartOf"
-        title={"Category"}
-        filterLabel={"Category"}
+        title={"Database"}
+        filterLabel={"Database"}
         URLParams
         react={REACTIVE_SEARCH_PROPS_REACT}
         data={[
           { label: "JGA", value: "jga" },
-          { label: "BIOPROJECT", value: "bioproject" },
-          { label: "BIOSAMPLE", value: "biosample" },
+          { label: "BioProject", value: "bioproject" },
+          { label: "BioSample", value: "biosample" },
           { label: "SRA", value: "sra" },
         ]}
       />

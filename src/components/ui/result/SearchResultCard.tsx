@@ -39,7 +39,7 @@ export const SearchResultCard: FC<Props> = ({ item }) => {
         )}
       </div>
       <Title title={title ?? ""} className={"-mt-2"} />
-      <Related className="text-sm">This Object is related to {refsCount} Objects</Related>
+      <Related className="text-sm">{makeRefCountMessage(refsCount)}</Related>
       <div className="flex justify-between">
         <BadgeWrapper>
           {groups.map((group) => (
@@ -52,6 +52,10 @@ export const SearchResultCard: FC<Props> = ({ item }) => {
       </div>
     </Wrapper>
   );
+};
+
+const makeRefCountMessage = (count: number = 0) => {
+  return count === 1 ? "Related to 1 object" : `Related to ${count} objects`;
 };
 
 const Wrapper: FC<TailwindElementProps & { href: string }> = ({ href, children, className }) => {

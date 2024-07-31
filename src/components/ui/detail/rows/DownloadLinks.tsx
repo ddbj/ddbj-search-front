@@ -25,7 +25,7 @@ const PrefetchedDownloadLinks = (props: {
   ftp: string | undefined;
   id: string;
 }) => {
-  const { https, ftp, id } = props;
+  const { https, ftp } = props;
   const inActiveText = clsx("text-gray-400 hover:text-gray-400");
   const [isActive, setActive] = React.useState(true);
   useEffect(() => {
