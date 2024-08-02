@@ -22,7 +22,13 @@ export function Result() {
       pagination
       showEndPage
       renderPagination={(opts) => {
-        return <Pagination current={opts.currentPage + 1} total={opts.totalPages} />;
+        return (
+          <Pagination
+            current={opts.currentPage + 1}
+            total={opts.totalPages}
+            setPage={opts.setPage}
+          />
+        );
       }}
       react={{
         and: [
