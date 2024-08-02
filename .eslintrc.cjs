@@ -39,6 +39,7 @@ module.exports = {
         ignoreReadBeforeAssign: false,
       },
     ],
+    "no-unused-vars": "off",
     "@typescript-eslint/ban-types": [
       "error",
       {
