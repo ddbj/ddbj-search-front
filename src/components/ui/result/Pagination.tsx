@@ -1,18 +1,25 @@
-import { Link } from "@tanstack/react-router";
 import { clsx } from "clsx";
 import React, { FC } from "react";
+import { useSearchParams } from "@/hooks/useSearchParams.ts";
 
 type Props = {
   current: number;
   total: number;
+  setPage: (page: number) => void;
 };
 type ButtonState = "current" | "idle" | "disabled";
 
-export const Pagination: FC<Props> = ({ current, total }) => {
+export const Pagination: FC<Props> = ({ current, total, setPage }) => {
   const pages = dividePages(makePaginationPages(total, current));
+  if (total <= 1) return null;
   return (
     <div className={"mt-4 text-center"}>
-      <Button label={"Prev"} page={current - 1} state={current === 1 ? "disabled" : "idle"} />
+      <Button
+        label={"Prev"}
+        page={current - 1}
+        state={current === 1 ? "disabled" : "idle"}
+        setPage={setPage}
+      />
       {pages.map((group, index) => {
         return (
           <>
@@ -23,23 +30,31 @@ export const Pagination: FC<Props> = ({ current, total }) => {
                 label={page}
                 page={page}
                 state={page === current ? "current" : "idle"}
+                setPage={setPage}
               />
             ))}
           </>
         );
       })}
-      <Button label={"Next"} page={current + 1} state={current === total ? "disabled" : "idle"} />
+      <Button
+        label={"Next"}
+        page={current + 1}
+        state={current === total ? "disabled" : "idle"}
+        setPage={setPage}
+      />
     </div>
   );
 };
 
-const Button: FC<{ label: string | number; page: number; state: ButtonState }> = ({
-  label,
-  page,
-  state,
-}) => {
-  const link = `?list=${page}`;
-  // const isCurrent =
+const Button: FC<{
+  label: string | number;
+  page: number;
+  state: ButtonState;
+  setPage: (page: number) => void;
+}> = ({ label, page, state, setPage }) => {
+  const params = useSearchParams();
+  params.set("list", page.toString());
+  const link = `?${params.toString()}`;
   const classes = clsx(
     "inline-block",
     "px-3",
@@ -47,16 +62,23 @@ const Button: FC<{ label: string | number; page: number; state: ButtonState }> =
     "rounded-md",
     "mx-1",
     state === "current" && "bg-primary text-white",
-    state === "idle" && "bg-gray-200 text-black duration-200 hover:bg-gray-300",
-    state === "disabled" && "bg-gray-50 text-gray-300"
+    state === "idle" && "bg-gray-200 text-black duration-200 hover:bg-gray-300"
+    // state === "disabled" && "bg-gray-50 text-gray-300"
   );
   if (state === "disabled") {
     return null;
   }
   return (
-    <Link className={classes} to={link} resetScroll={true}>
+    <a
+      className={classes}
+      href={link}
+      onClick={(e) => {
+        e.preventDefault();
+        setPage(page - 1);
+      }}
+    >
       {label}
-    </Link>
+    </a>
   );
 };
 
