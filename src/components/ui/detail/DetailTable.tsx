@@ -11,7 +11,7 @@ import {
 import { DownloadLinks } from "@/components/ui/detail/rows/DownloadLinks.tsx";
 import { Properties } from "@/components/ui/detail/rows/Properties.tsx";
 import { RefLinks } from "@/components/ui/detail/rows/RefLinks.tsx";
-import { LinkText, Row } from "@/components/ui/detail/rows/Shared.tsx";
+import { Row } from "@/components/ui/detail/rows/Shared.tsx";
 import { SraExperiment } from "@/components/ui/detail/rows/SraExperiment.tsx";
 import { SraSample } from "@/components/ui/detail/rows/SraSample.tsx";
 import { ElasticSearchSource } from "@/types/api.ts";
@@ -55,16 +55,16 @@ export const DetailTable: FC<Props> = ({ data }) => {
   );
 };
 
-const renderDistribution = (data: ElasticSearchSource) => {
-  return (
-    <Row dd={"distribution"}>
-      <p className={"flex gap-x-2"}>
-        {data.distribution.map((dist) => (
-          <LinkText key={dist.encodingFormat} href={dist.contentUrl} external={true}>
-            {dist.encodingFormat}
-          </LinkText>
-        ))}
-      </p>
-    </Row>
-  );
-};
+// const renderDistribution = (data: ElasticSearchSource) => {
+//   return (
+//     <Row dd={"distribution"}>
+//       <p className={"flex gap-x-2"}>
+//         {data.distribution.map((dist) => (
+//           <LinkText key={dist.encodingFormat} href={dist.contentUrl} external={true}>
+//             {dist.encodingFormat}
+//           </LinkText>
+//         ))}
+//       </p>
+//     </Row>
+//   );
+// };

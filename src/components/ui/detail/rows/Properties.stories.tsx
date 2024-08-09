@@ -14,3 +14,11 @@ export const Primary: Story = {
     codeObj: bioproject3.properties,
   },
 };
+export const Short: Story = {
+  args: {
+    title: "properties",
+    codeObj: {
+      test: "this is a short property",
+    },
+  },
+};

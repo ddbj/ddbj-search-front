@@ -1,8 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { clsx } from "clsx";
 import React, { FC, Fragment, ReactElement } from "react";
-import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
-import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { TailwindElementProps } from "@/types/types.ts";
 
 export const Row: FC<TailwindElementProps & { dd: string }> = ({ children, className, dd }) => {
@@ -19,7 +17,7 @@ export const LinkText: FC<
 > = ({ href, children, external = false, blank = false, className }) => {
   const textClasses = clsx("text-primary hover:text-primary-dark", className);
   return external || blank ? (
-    <a href={href} className={textClasses} target={"_blank"}>
+    <a href={href} className={textClasses} target="_blank" rel="noreferrer">
       {children}
     </a>
   ) : (

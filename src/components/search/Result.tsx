@@ -1,4 +1,5 @@
 import { ReactiveList } from "@appbaseio/reactivesearch";
+import { Pagination } from "@/components/ui/result/Pagination.tsx";
 import { SearchResultCard } from "@/components/ui/result/SearchResultCard.tsx";
 import { SearchResultSkeleton } from "@/components/ui/result/SearchResultSkeleton.tsx";
 
@@ -20,6 +21,15 @@ export function Result() {
       renderNoResults={() => <NoResults />}
       pagination
       showEndPage
+      renderPagination={(opts) => {
+        return (
+          <Pagination
+            current={opts.currentPage + 1}
+            total={opts.totalPages}
+            setPage={opts.setPage}
+          />
+        );
+      }}
       react={{
         and: [
           "query",

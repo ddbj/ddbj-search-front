@@ -14,6 +14,9 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:storybook/recommended",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
   ],
   plugins: ["@typescript-eslint", "react", "react-hooks", "import"],
   rules: {
@@ -36,6 +39,7 @@ module.exports = {
         ignoreReadBeforeAssign: false,
       },
     ],
+    "no-unused-vars": "off",
     "@typescript-eslint/ban-types": [
       "error",
       {
