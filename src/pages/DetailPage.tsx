@@ -2,16 +2,10 @@ import { Link, useLoaderData } from "@tanstack/react-router";
 import React, { FC, useEffect } from "react";
 import { HomeIcon } from "@/components/icon/HomeIcon.tsx";
 import { DetailTable } from "@/components/ui/detail/DetailTable.tsx";
+import { useTitle } from "@/hooks/useTitle.ts";
 import { ElasticSearchSource } from "@/types/api.ts";
 
 type Props = {};
-
-const useTitle = (data: ElasticSearchSource) => {
-  useEffect(() => {
-    const titleTag = document.querySelector("title")!;
-    titleTag.textContent = `${data.identifier} | ${data.type} | DDBJ Search`;
-  }, [data]);
-};
 
 export const DetailPage: FC<Props> = ({}) => {
   const data = useLoaderData<any, any, any>({
