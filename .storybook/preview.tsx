@@ -16,7 +16,6 @@ const router = createRouter({ routeTree, history: memoryHistory });
 
 const preview: Preview = {
   parameters: {
-    actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
       matchers: {
         color: /(background|color)$/i,
