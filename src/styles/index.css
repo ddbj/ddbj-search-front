@@ -28,4 +28,8 @@
   #DDBJCommonFooter {
     order: 4;
   }
+
+  input[placeholder='Search'] {
+    height: 42px !important;
+  }
 }
