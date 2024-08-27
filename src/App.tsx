@@ -1,5 +1,5 @@
-import { RouterProvider } from "@tanstack/react-router";
 import "./styles/index.css";
+import { RouterProvider } from "@tanstack/react-router";
 import { router } from "@/routes/router.tsx";
 
 //tanstack router setup

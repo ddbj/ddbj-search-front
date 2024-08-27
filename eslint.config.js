@@ -1,24 +1,24 @@
-module.exports = {
-  env: {
-    browser: true,
-    es2021: true,
-    node: true,
-  },
-  parser: "@typescript-eslint/parser", // Specifies the ESLint parser
-  parserOptions: {
-    ecmaVersion: 2020, // Allows for the parsing of modern ECMAScript features
-    sourceType: "module", // Allows for the use of imports
-  },
+import { fixupPluginRules } from "@eslint/compat";
+import eslint from "@eslint/js";
+import prettierConfig from "eslint-config-prettier";
+import importPlugin from "eslint-plugin-import";
+import reactPlugin from "eslint-plugin-react";
+import reactHooksPlugin from "eslint-plugin-react-hooks";
+import tseslint from "typescript-eslint";
+
+export default tseslint.config({
   extends: [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:storybook/recommended",
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:react-hooks/recommended",
+    eslint.configs.recommended,
+    ...tseslint.configs.recommended,
+    prettierConfig,
+    reactPlugin.configs.flat.recommended,
+    {
+      plugins: {
+        "react-hooks": fixupPluginRules(reactHooksPlugin),
+        import: fixupPluginRules(importPlugin),
+      },
+    },
   ],
-  plugins: ["@typescript-eslint", "react", "react-hooks", "import"],
   rules: {
     "no-prototype-builtins": "off",
     "no-empty-pattern": "off",
@@ -40,27 +40,32 @@ module.exports = {
       },
     ],
     "no-unused-vars": "off",
-    "@typescript-eslint/ban-types": [
-      "error",
-      {
-        types: {
-          "{}": false,
-        },
-        extendDefaults: true,
-      },
-    ],
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-inferrable-types": "off",
     "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/no-empty-object-type": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/no-var-requires": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-unused-expressions": [
+      "error",
+      { allowTernary: true, allowShortCircuit: true },
+    ],
     "import/order": [
       "error",
       {
-        groups: ["builtin", "external", "internal", "index", "sibling", "parent", "object", "type"],
+        groups: [
+          "internal",
+          "external",
+          "index",
+          "sibling",
+          "parent",
+          "builtin",
+          "object",
+          "type",
+        ],
         "newlines-between": "never",
         alphabetize: {
           order: "asc",
@@ -69,4 +74,4 @@ module.exports = {
       },
     ],
   },
-};
+});
