@@ -12,13 +12,15 @@ type Props = {
   codeObj?: any;
 };
 
+const MAX_LINES_FOR_HIGHLIGHTER = 10_000;
+
 export const Properties: FC<Props> = ({ title, codeObj }) => {
   if (!codeObj) return <Row dd={title} />;
   const properties = JSON.stringify(codeObj, null, 2);
+  const lineLength = properties.match(/\n/g)?.length ?? 0;
+  const useHighlighter = lineLength <= MAX_LINES_FOR_HIGHLIGHTER;
   return (
-    <Row dd={"properties"}>
-      <PrettyJSON code={properties} />
-    </Row>
+    <Row dd={"properties"}>{<PrettyJSON code={properties} useHighlighter={useHighlighter} />}</Row>
   );
 };
 
@@ -29,7 +31,10 @@ const handleCopy = (text: string) => {
   });
 };
 
-export const PrettyJSON: FC<{ code: string }> = ({ code }) => {
+export const PrettyJSON: FC<{ code: string; useHighlighter?: boolean }> = ({
+  code,
+  useHighlighter = true,
+}) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [showExpand, setShowExpand] = useState(false);
   const [rowHeight, setRowHeight] = useState(initialHeight);
@@ -62,16 +67,28 @@ export const PrettyJSON: FC<{ code: string }> = ({ code }) => {
   return (
     <div className="relative overflow-hidden">
       <div className={classNames} style={{ gridTemplateRows: rowHeight }}>
-        <SyntaxHighlighter
-          language="json"
-          style={atomOneDark}
-          wrapLines={true}
-          wrapLongLines={true}
-          showLineNumbers={true}
-          PreTag={PreWithRef}
-        >
-          {code}
-        </SyntaxHighlighter>
+        {useHighlighter ? (
+          <SyntaxHighlighter
+            language="json"
+            style={atomOneDark}
+            wrapLines={true}
+            wrapLongLines={true}
+            showLineNumbers={true}
+            PreTag={PreWithRef}
+          >
+            {code}
+          </SyntaxHighlighter>
+        ) : (
+          <>
+            <pre className={"overflow-x-clip overflow-y-scroll bg-gray-800 p-2 text-gray-300"}>
+              <span className={"text-red-500"}>
+                // Too large to apply syntax highlighter and block expansion
+              </span>
+              <br />
+              {code}
+            </pre>
+          </>
+        )}
       </div>
       <div className="absolute right-5 top-1.5 box-content flex gap-2">
         <button
