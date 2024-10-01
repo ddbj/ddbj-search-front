@@ -36,18 +36,20 @@ export const DetailTable: FC<Props> = ({ data }) => {
             <CommonTitle type={data.type} str={data.title} />
             <CommonDescription type={data.type} str={data.description} />
             <BioProject data={data} />
-            <BioSample data={data} />
-            <SraSample data={data} />
-            <SraExperiment data={data} />
-            <Properties title={"properties"} codeObj={data.properties} />
-            <RefLinks refs={data.dbXrefs} title={"dbXrefs"} />
+            {/*<BioSample data={data} />*/}
+            {/*<SraSample data={data} />*/}
+            {/*<SraExperiment data={data} />*/}
+            {/*<Properties title={"properties"} codeObj={data.properties} />*/}
+            {/*<RefLinks refs={data.dbXrefs} title={"dbXrefs"} />*/}
+
             {/*{renderDistribution(data)}*/}
-            <DownloadLinks downloadUrl={data.downloadUrl} />
-            <Row dd={"status"}>{data.status}</Row>
-            <Row dd={"visibility"}>{data.visibility}</Row>
-            <Row dd={"dateCreated"}>{data.dateCreated}</Row>
-            <Row dd={"dateModified"}>{data.dateModified}</Row>
-            <Row dd={"datePublished"}>{data.datePublished}</Row>
+
+            {/*<DownloadLinks downloadUrl={data.downloadUrl} />*/}
+            {/*<Row dd={"status"}>{data.status}</Row>*/}
+            {/*<Row dd={"visibility"}>{data.visibility}</Row>*/}
+            {/*<Row dd={"dateCreated"}>{data.dateCreated}</Row>*/}
+            {/*<Row dd={"dateModified"}>{data.dateModified}</Row>*/}
+            {/*<Row dd={"datePublished"}>{data.datePublished}</Row>*/}
           </dl>
         </div>
       </div>

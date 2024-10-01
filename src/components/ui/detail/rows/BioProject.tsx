@@ -9,9 +9,9 @@ export const BioProject: FC<Props> = ({ data }) => {
   return (
     <>
       <Organization data={data} />
-      <Publication data={data} />
-      <Grant data={data} />
-      <ExternalLinks data={data} />
+      {/*<Publication data={data} />*/}
+      {/*<Grant data={data} />*/}
+      {/*<ExternalLinks data={data} />*/}
     </>
   );
 };
@@ -27,16 +27,18 @@ export const BioProjectUmbrellaProject: FC<Props> = ({ data }) => {
 
 const Organization: FC<Props> = ({ data }) => {
   if (data.type !== "bioproject") return <></>;
-  const organization = data.properties.Project.Submission?.Description?.Organization ?? [];
-  const inner = organization.map((org) => {
+  const organizations = data.organization ?? [];
+
+  const inner = organizations.map((org) => {
+    console.log(org);
     return (
-      <li key={org.Name.content}>
+      <li key={org.name}>
         {org.url ? (
           <LinkText href={org.url} external={true}>
-            {org.Name.content}
+            {org.name}
           </LinkText>
         ) : (
-          <span>{org.Name.content}</span>
+          <span>{org.name}</span>
         )}
       </li>
     );

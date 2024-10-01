@@ -47,6 +47,13 @@ type HitSource = {
 } & (
   | {
       type: "bioproject";
+      organization: {
+        abbreviation: string;
+        name: string;
+        organizationType: string;
+        role: string;
+        url: string;
+      }[];
       properties: BioProjectProperties;
     }
   | {
