@@ -54,6 +54,16 @@ type HitSource = {
         role: string;
         url: string;
       }[];
+      publication: any[];
+      externalLink: any[];
+      grant: {
+        title?: string;
+        id: string;
+        agency: {
+          abbreviation: string;
+          name: string;
+        };
+      }[];
       properties: BioProjectProperties;
     }
   | {

@@ -9,9 +9,9 @@ export const BioProject: FC<Props> = ({ data }) => {
   return (
     <>
       <Organization data={data} />
-      {/*<Publication data={data} />*/}
-      {/*<Grant data={data} />*/}
-      {/*<ExternalLinks data={data} />*/}
+      <Publication data={data} />
+      <Grant data={data} />
+      <ExternalLinks data={data} />
     </>
   );
 };
@@ -30,7 +30,6 @@ const Organization: FC<Props> = ({ data }) => {
   const organizations = data.organization ?? [];
 
   const inner = organizations.map((org) => {
-    console.log(org);
     return (
       <li key={org.name}>
         {org.url ? (
@@ -53,7 +52,8 @@ const Organization: FC<Props> = ({ data }) => {
 
 const Publication: FC<Props> = ({ data }) => {
   if (data.type !== "bioproject") return <></>;
-  const publications = data.properties.Project.Project?.ProjectDescr.Publication ?? [];
+  // const publications = data.properties.Project.Project?.ProjectDescr.Publication ?? [];
+  const publications = data.publication ?? [];
   const inner = publications.map((pub) => {
     const title = pub.StructuredCitation?.Title ?? pub.Reference;
     return (
@@ -73,13 +73,14 @@ const Publication: FC<Props> = ({ data }) => {
 
 const Grant: FC<Props> = ({ data }) => {
   if (data.type !== "bioproject") return <></>;
-  const grants = data.properties.Project.Project?.ProjectDescr?.Grant;
+  const grants = data.grant;
+  console.log(grants);
   if (!grants) return <Row dd={"grant"} />;
   const inner = grants.map((grant) => {
-    const title = grant.Title ?? grant.GrantId;
+    const title = grant.title ?? grant.id;
     return (
-      <li key={grant.GrantId}>
-        {title} by {grant.Agency.content}
+      <li key={grant.id}>
+        {title} by {grant.agency.name}
       </li>
     );
   });
@@ -92,7 +93,8 @@ const Grant: FC<Props> = ({ data }) => {
 
 const ExternalLinks: FC<Props> = ({ data }) => {
   if (data.type !== "bioproject") return <></>;
-  const externalLinks = data.properties.Project.Project?.ProjectDescr.ExternalLink ?? [];
+  // const externalLinks = data.properties.Project.Project?.ProjectDescr.ExternalLink ?? [];
+  const externalLinks = data.externalLink ?? [];
   const inner = externalLinks.map((link) => {
     const title = link.label ?? link.URL;
     return (
