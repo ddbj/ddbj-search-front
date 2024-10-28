@@ -10,7 +10,7 @@ export default meta;
 type Story = StoryObj<typeof RefLinks>;
 export const Primary: Story = {
   args: {
-    refs: bioproject3.dbXrefs,
+    refs: bioproject3.dbXref,
     title: "dbXrefs",
   },
 };

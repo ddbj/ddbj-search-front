@@ -189,7 +189,7 @@ type Project = {
   ProjectType: ProjectType;
 };
 
-export type BioProjectProperties = {
+type BioProjectProperties = {
   Project: {
     Project?: Project;
     Submission?: Submission;

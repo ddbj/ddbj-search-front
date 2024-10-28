@@ -12,10 +12,10 @@ export const biosample1: ElasticSearchSource = {
   isPartOf: "biosample",
   organism: {
     name: null,
-    identifier: 9606,
+    identifier: "9606",
   },
-  dbXrefs: [],
-  dbXrefsStatistics: [],
+  dbXref: [],
+  dbXrefStatistics: [],
   properties: {
     access: "controlled-access",
     publication_date: "2015-09-12T04:12:53.38Z",

@@ -1,41 +1,53 @@
 // Elastic search types
 
-import { BioProjectProperties } from "@/types/bioProject.ts";
-import { BioSampleProperties } from "@/types/bioSample.ts";
 import { SraExperimentProperties } from "@/types/sraExperiment.ts";
 import { SraSampleProperties } from "@/types/sraSample.ts";
 import { SraStudyProperties } from "@/types/sraStudy.ts";
 
-type ShardInfo = {
-  total: number;
-  successful: number;
-  skipped: number;
-  failed: number;
+type MultiSearchResponse<T> = {
+  took: number;
+  responses: {
+    took: number;
+    timed_out: boolean;
+    _shards: {
+      total: number;
+      successful: number;
+      skipped: number;
+      failed: number;
+    };
+    hits: {
+      total: {
+        value: number;
+        relation: string;
+      };
+      max_score: number;
+      hits: {
+        _index: string;
+        _type: string;
+        _id: string;
+        _score: number;
+        _ignored?: string[];
+        _source: T;
+      }[];
+    };
+    status: number;
+  }[];
 };
-type TotalHits = {
-  value: number;
-  relation: string;
-};
+
 type HitSource = {
   highlight?: any;
   search?: string;
   identifier: string;
-  organism: Organism | null;
   visibility: string;
-  downloadUrl: DownloadUrl[];
   description: string | null;
   dateModified: string;
   title: string;
-  // type: hitType;
   isPartOf: string;
   distribution: Distribution[];
-  dbXrefs: DbXref[] | null;
   url: string;
   datePublished: string | null;
   dateCreated: string;
   name: string | null;
-  dbXrefsStatistics: DbXrefsStatistics[];
-  // properties: Record<string, unknown>;
   sameAs: DbXref[] | null;
   status: string;
   _index?: string;
@@ -47,6 +59,11 @@ type HitSource = {
 } & (
   | {
       type: "bioproject";
+      objectType: "UmbrellaBioProject" | "BioProject";
+      accession: string;
+      dbXref: DbXref[] | null;
+      dbXrefStatistics: DbXrefsStatistics[];
+      organism: Organism;
       organization: {
         abbreviation: string;
         name: string;
@@ -54,8 +71,19 @@ type HitSource = {
         role: string;
         url: string;
       }[];
-      publication: any[];
-      externalLink: any[];
+      publication: {
+        date: string;
+        Reference: string | null;
+        id: string;
+        title: string;
+        url?: string | null;
+        DbType: string;
+        status: string;
+      }[];
+      externalLink: {
+        label: string;
+        url: string;
+      }[];
       grant: {
         title?: string;
         id: string;
@@ -64,50 +92,43 @@ type HitSource = {
           name: string;
         };
       }[];
-      properties: BioProjectProperties;
+      properties: unknown;
+      download: unknown;
+    }
+  | {
+      type: "biosample";
+      organism: Organism;
+      dbXref: DbXref[];
+      dbXrefStatistics: DbXrefsStatistics[];
+      properties: unknown;
+      downloadUrl: unknown;
     }
   | {
       type: "sra-study";
       properties: SraStudyProperties;
-    }
-  | {
-      type: "biosample";
-      properties: BioSampleProperties;
+      organism: OldOrganism | null;
+      downloadUrl: DownloadUrl[];
+      dbXrefs: DbXref[];
+      dbXrefsStatistics: DbXrefsStatistics[];
     }
   | {
       type: "sra-sample";
       properties: SraSampleProperties;
+      organism: OldOrganism | null;
+      downloadUrl: DownloadUrl[];
+      dbXrefs: DbXref[];
+      dbXrefsStatistics: DbXrefsStatistics[];
     }
   | {
       type: "sra-experiment";
       properties: SraExperimentProperties;
+      organism: OldOrganism | null;
+      downloadUrl: DownloadUrl[];
+      dbXrefs: DbXref[];
+      dbXrefsStatistics: DbXrefsStatistics[];
     }
 );
 
-type Hit<T> = {
-  _index: string;
-  _type: string;
-  _id: string;
-  _score: number;
-  _ignored?: string[];
-  _source: T;
-};
-type Hits<T> = {
-  total: TotalHits;
-  max_score: number;
-  hits: Hit<T>[];
-};
-type ElasticsearchSubResponse<T> = {
-  took: number;
-  timed_out: boolean;
-  _shards: ShardInfo;
-  hits: Hits<T>;
-  status: number;
-};
-type MultiSearchResponse<T> = {
-  took: number;
-  responses: ElasticsearchSubResponse<T>[];
-};
 // Reuse types from the previous definition
 type DownloadUrl = {
   name: string;
@@ -116,6 +137,13 @@ type DownloadUrl = {
   url: string;
 };
 type Organism = {
+  identifier: string;
+  name: string | null;
+};
+/**
+ * @deprecated
+ */
+type OldOrganism = {
   identifier: number;
   name: string | null;
 };

@@ -3,58 +3,105 @@ import { ElasticSearchSource } from "@/types/api.ts";
 export const bioproject1: ElasticSearchSource = {
   identifier: "PRJNA16",
   organism: {
-    identifier: 322710,
+    identifier: "322710",
     name: "Azotobacter vinelandii DJ",
   },
   visibility: "unrestricted-access",
-  downloadUrl: [
+  externalLink: [
     {
-      name: "bioproject.xml",
-      ftpUrl: "ftp://ftp.ddbj.nig.ac.jp/ddbj_database/bioproject/bioproject.xml",
-      type: "meta",
-      url: "https://ddbj.nig.ac.jp/public/ddbj_database/bioproject/bioproject.xml",
+      label: "Azotobacter Org",
+      url: "http://www.azotobacter.org",
+    },
+    {
+      label: "DOE Joint Genome Institute",
+      url: "http://www.jgi.doe.gov/",
+    },
+    {
+      label: "GOLD",
+      url: "http://genomesonline.org/cgi-bin/GOLD/bin/GOLDCards.cgi?goldstamp=Gi00047",
     },
   ],
   description:
     "<P><B><I>Azotobacter vinelandii</B></I>. This organism will provide information on the proteins involved in nitrogen fixation and the production of PHB and alginate.",
-  dateModified: "2003-02-25T00:00:00Z",
-  title: "Nitrogen-fixing bacterium",
-  type: "bioproject",
-  isPartOf: "bioproject",
-  distribution: [
+  dbXref: [
     {
-      contentUrl: "https://ddbj.nig.ac.jp/resource/bioproject/PRJNA16.json",
-      encodingFormat: "JSON",
-      type: "DataDownload",
+      identifier: "SAMN19513674",
+      type: "biosample",
+      url: "https://ddbj.nig.ac.jp/resource/biosample/SAMN19513674",
     },
-    {
-      contentUrl: "https://ddbj.nig.ac.jp/resource/bioproject/PRJNA16.jsonld",
-      encodingFormat: "JSON-LD",
-      type: "DataDownload",
-    },
-  ],
-  dbXrefs: [
     {
       identifier: "SAMN02604349",
       type: "biosample",
       url: "https://ddbj.nig.ac.jp/resource/biosample/SAMN02604349",
     },
     {
-      identifier: "SAMN19513674",
-      type: "biosample",
-      url: "https://ddbj.nig.ac.jp/resource/biosample/SAMN19513674",
+      identifier: "GCA_000021045",
+      type: "assemblies",
+      url: "https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_000021045/",
     },
   ],
-  url: "https://ddbj.nig.ac.jp/resource/bioproject/PRJNA16",
-  datePublished: "2009-04-14T00:00:00Z",
-  dateCreated: "2003-02-25T00:00:00Z",
-  name: "Azotobacter vinelandii DJ strain:DJ",
-  dbXrefsStatistics: [
+  dbXrefStatistics: [
     {
       count: 2,
       type: "biosample",
     },
   ],
+  dateModified: "2024-10-24T14:47:23Z",
+  accession: "PRJNA16",
+  distribution: [
+    {
+      contentUrl: "https://ddbj.nig.ac.jp/resource/bioproject/PRJNA16",
+      encodingFormat: "JSON",
+      type: "",
+    },
+  ],
+  isPartOf: "BioProject",
+  type: "bioproject",
+  title: "Nitrogen-fixing bacterium",
+  url: "https://ddbj.nig.ac.jp/search/entry/bioproject/PRJNA16",
+  objectType: "BioProject",
+  datePublished: "2009-04-14T00:00:00Z",
+  download: null,
+  dateCreated: "2003-02-25",
+  organization: [
+    {
+      organizationType: "center",
+      role: "participant",
+      name: "DOE Joint Genome Institute",
+      abbreviation: "DOE Joint Genome Institute",
+      url: "http://genome.jgi-psf.org/draft_microbes/azovi/azovi.home.html",
+    },
+    {
+      organizationType: "consortium",
+      role: "owner",
+      name: "US DOE Joint Genome Institute (JGI-PGF)",
+      abbreviation: "US DOE Joint Genome Institute (JGI-PGF)",
+      url: "",
+    },
+    {
+      organizationType: "center",
+      role: "participant",
+      name: "Virginia Polytechnic Institute and State University, Virginia Bioinformatics Institute, USA, Blacksburg",
+      abbreviation:
+        "Virginia Polytechnic Institute and State University, Virginia Bioinformatics Institute, USA, Blacksburg",
+      url: "",
+    },
+  ],
+  publication: [
+    {
+      date: "",
+      Reference: null,
+      id: "19429624",
+      title:
+        "Genome sequence of Azotobacter vinelandii, an obligate aerobe specialized to support diverse anaerobic metabolic processes.",
+      url: "https://pubmed.ncbi.nlm.nih.gov/19429624/",
+      DbType: "ePubmed",
+      status: "ePublished",
+    },
+  ],
+  sameAs: null,
+  name: null,
+  grant: [],
   properties: {
     Project: {
       Project: {
@@ -63,296 +110,294 @@ export const bioproject1: ElasticSearchSource = {
             "<P><B><I>Azotobacter vinelandii</B></I>. This organism will provide information on the proteins involved in nitrogen fixation and the production of PHB and alginate.",
           ProjectReleaseDate: "2009-04-14T00:00:00Z",
           Title: "Nitrogen-fixing bacterium",
-          Publication: [
-            {
-              Reference: "",
-              StructuredCitation: {
-                AuthorSet: {
-                  Author: [
-                    {
-                      Consortium:
-                        "Virginia Bioinformatics Institute, Virginia Polytechnic Institute and State University, Blacksburg, VA 24061, USA. setubal@vbi.vt.edu",
-                      Name: {
-                        Last: "Setubal",
-                        First: "João C",
-                      },
+          Publication: {
+            Reference: null,
+            StructuredCitation: {
+              AuthorSet: {
+                Author: [
+                  {
+                    Consortium:
+                      "Virginia Bioinformatics Institute, Virginia Polytechnic Institute and State University, Blacksburg, VA 24061, USA. setubal@vbi.vt.edu",
+                    Name: {
+                      Last: "Setubal",
+                      First: "João C",
                     },
-                    {
-                      Name: {
-                        Last: "dos Santos",
-                        First: "Patricia",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "dos Santos",
+                      First: "Patricia",
                     },
-                    {
-                      Name: {
-                        Last: "Goldman",
-                        First: "Barry S",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Goldman",
+                      First: "Barry S",
                     },
-                    {
-                      Name: {
-                        Last: "Ertesvåg",
-                        First: "Helga",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Ertesvåg",
+                      First: "Helga",
                     },
-                    {
-                      Name: {
-                        Last: "Espin",
-                        First: "Guadelupe",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Espin",
+                      First: "Guadelupe",
                     },
-                    {
-                      Name: {
-                        Last: "Rubio",
-                        First: "Luis M",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Rubio",
+                      First: "Luis M",
                     },
-                    {
-                      Name: {
-                        Last: "Valla",
-                        First: "Svein",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Valla",
+                      First: "Svein",
                     },
-                    {
-                      Name: {
-                        Last: "Almeida",
-                        First: "Nalvo F",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Almeida",
+                      First: "Nalvo F",
                     },
-                    {
-                      Name: {
-                        Last: "Balasubramanian",
-                        First: "Divya",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Balasubramanian",
+                      First: "Divya",
                     },
-                    {
-                      Name: {
-                        Last: "Cromes",
-                        First: "Lindsey",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Cromes",
+                      First: "Lindsey",
                     },
-                    {
-                      Name: {
-                        Last: "Curatti",
-                        First: "Leonardo",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Curatti",
+                      First: "Leonardo",
                     },
-                    {
-                      Name: {
-                        Last: "Du",
-                        First: "Zijin",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Du",
+                      First: "Zijin",
                     },
-                    {
-                      Name: {
-                        Last: "Godsy",
-                        First: "Eric",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Godsy",
+                      First: "Eric",
                     },
-                    {
-                      Name: {
-                        Last: "Goodner",
-                        First: "Brad",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Goodner",
+                      First: "Brad",
                     },
-                    {
-                      Name: {
-                        Last: "Hellner-Burris",
-                        First: "Kaitlyn",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Hellner-Burris",
+                      First: "Kaitlyn",
                     },
-                    {
-                      Name: {
-                        Last: "Hernandez",
-                        First: "José A",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Hernandez",
+                      First: "José A",
                     },
-                    {
-                      Name: {
-                        Last: "Houmiel",
-                        First: "Katherine",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Houmiel",
+                      First: "Katherine",
                     },
-                    {
-                      Name: {
-                        Last: "Imperial",
-                        First: "Juan",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Imperial",
+                      First: "Juan",
                     },
-                    {
-                      Name: {
-                        Last: "Kennedy",
-                        First: "Christina",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Kennedy",
+                      First: "Christina",
                     },
-                    {
-                      Name: {
-                        Last: "Larson",
-                        First: "Timothy J",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Larson",
+                      First: "Timothy J",
                     },
-                    {
-                      Name: {
-                        Last: "Latreille",
-                        First: "Phil",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Latreille",
+                      First: "Phil",
                     },
-                    {
-                      Name: {
-                        Last: "Ligon",
-                        First: "Lauren S",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Ligon",
+                      First: "Lauren S",
                     },
-                    {
-                      Name: {
-                        Last: "Lu",
-                        First: "Jing",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Lu",
+                      First: "Jing",
                     },
-                    {
-                      Name: {
-                        Last: "Maerk",
-                        First: "Mali",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Maerk",
+                      First: "Mali",
                     },
-                    {
-                      Name: {
-                        Last: "Miller",
-                        First: "Nancy M",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Miller",
+                      First: "Nancy M",
                     },
-                    {
-                      Name: {
-                        Last: "Norton",
-                        First: "Stacie",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Norton",
+                      First: "Stacie",
                     },
-                    {
-                      Name: {
-                        Last: "O'Carroll",
-                        First: "Ina P",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "O'Carroll",
+                      First: "Ina P",
                     },
-                    {
-                      Name: {
-                        Last: "Paulsen",
-                        First: "Ian",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Paulsen",
+                      First: "Ian",
                     },
-                    {
-                      Name: {
-                        Last: "Raulfs",
-                        First: "Estella C",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Raulfs",
+                      First: "Estella C",
                     },
-                    {
-                      Name: {
-                        Last: "Roemer",
-                        First: "Rebecca",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Roemer",
+                      First: "Rebecca",
                     },
-                    {
-                      Name: {
-                        Last: "Rosser",
-                        First: "James",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Rosser",
+                      First: "James",
                     },
-                    {
-                      Name: {
-                        Last: "Segura",
-                        First: "Daniel",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Segura",
+                      First: "Daniel",
                     },
-                    {
-                      Name: {
-                        Last: "Slater",
-                        First: "Steve",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Slater",
+                      First: "Steve",
                     },
-                    {
-                      Name: {
-                        Last: "Stricklin",
-                        First: "Shawn L",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Stricklin",
+                      First: "Shawn L",
                     },
-                    {
-                      Name: {
-                        Last: "Studholme",
-                        First: "David J",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Studholme",
+                      First: "David J",
                     },
-                    {
-                      Name: {
-                        Last: "Sun",
-                        First: "Jian",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Sun",
+                      First: "Jian",
                     },
-                    {
-                      Name: {
-                        Last: "Viana",
-                        First: "Carlos J",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Viana",
+                      First: "Carlos J",
                     },
-                    {
-                      Name: {
-                        Last: "Wallin",
-                        First: "Erik",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Wallin",
+                      First: "Erik",
                     },
-                    {
-                      Name: {
-                        Last: "Wang",
-                        First: "Baomin",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Wang",
+                      First: "Baomin",
                     },
-                    {
-                      Name: {
-                        Last: "Wheeler",
-                        First: "Cathy",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Wheeler",
+                      First: "Cathy",
                     },
-                    {
-                      Name: {
-                        Last: "Zhu",
-                        First: "Huijun",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Zhu",
+                      First: "Huijun",
                     },
-                    {
-                      Name: {
-                        Last: "Dean",
-                        First: "Dennis R",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Dean",
+                      First: "Dennis R",
                     },
-                    {
-                      Name: {
-                        Last: "Dixon",
-                        First: "Ray",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Dixon",
+                      First: "Ray",
                     },
-                    {
-                      Name: {
-                        Last: "Wood",
-                        First: "Derek",
-                      },
+                  },
+                  {
+                    Name: {
+                      Last: "Wood",
+                      First: "Derek",
                     },
-                  ],
-                },
-                Title:
-                  "Genome sequence of Azotobacter vinelandii, an obligate aerobe specialized to support diverse anaerobic metabolic processes.",
-                Journal: {
-                  Issue: "14",
-                  Year: "2009",
-                  Volume: "191",
-                  JournalTitle: "Journal of bacteriology",
-                  PagesFrom: "4534",
-                  PagesTo: "45",
-                },
+                  },
+                ],
               },
-              id: "19429624",
-              DbType: "ePubmed",
-              status: "ePublished",
+              Title:
+                "Genome sequence of Azotobacter vinelandii, an obligate aerobe specialized to support diverse anaerobic metabolic processes.",
+              Journal: {
+                Issue: "14",
+                Year: "2009",
+                Volume: "191",
+                JournalTitle: "Journal of bacteriology",
+                PagesFrom: "4534",
+                PagesTo: "45",
+              },
             },
-          ],
+            id: "19429624",
+            DbType: "ePubmed",
+            status: "ePublished",
+          },
           ExternalLink: [
             {
               label: "Azotobacter Org",
@@ -390,33 +435,29 @@ export const bioproject1: ElasticSearchSource = {
               Organism: {
                 GenomeSize: {
                   units: "Kb",
-                  content: "5365.318",
+                  content: "5365.318000",
                 },
                 species: "354",
-                taxID: 322710,
+                taxID: "322710",
                 OrganismName: "Azotobacter vinelandii DJ",
                 Supergroup: "eBacteria",
                 RepliconSet: {
-                  Count: [
-                    {
-                      repliconType: "eOther",
-                      content: "1",
+                  Count: {
+                    repliconType: "eOther",
+                    content: "1",
+                  },
+                  Replicon: {
+                    Type: {
+                      location: "eNuclearProkaryote",
+                      content: "eChromosome",
                     },
-                  ],
-                  Replicon: [
-                    {
-                      Type: {
-                        location: "eNuclearProkaryote",
-                        content: "eChromosome",
-                      },
-                      Size: {
-                        units: "Mb",
-                        content: "5.365318",
-                      },
-                      order: "1",
-                      Name: "",
+                    Size: {
+                      units: "Mb",
+                      content: "5.365318",
                     },
-                  ],
+                    order: "1",
+                    Name: null,
+                  },
                 },
                 BiologicalProperties: {
                   Morphology: {
@@ -435,14 +476,12 @@ export const bioproject1: ElasticSearchSource = {
               capture: "eWhole",
             },
             ProjectDataTypeSet: {
-              DataType: ["Genome sequencing"],
+              DataType: "Genome sequencing",
             },
             Objectives: {
-              Data: [
-                {
-                  data_type: "eAssembly",
-                },
-              ],
+              Data: {
+                data_type: "eAssembly",
+              },
             },
             Method: {
               method_type: "eSequencing",
@@ -450,13 +489,11 @@ export const bioproject1: ElasticSearchSource = {
           },
         },
         ProjectID: {
-          ArchiveID: [
-            {
-              archive: "NCBI",
-              accession: "PRJNA16",
-              id: "16",
-            },
-          ],
+          ArchiveID: {
+            archive: "NCBI",
+            accession: "PRJNA16",
+            id: "16",
+          },
         },
       },
       Submission: {
@@ -493,8 +530,24 @@ export const bioproject1: ElasticSearchSource = {
           Access: "public",
         },
       },
+      ProjectLinks: {
+        Link: {
+          ProjectIDRef: {
+            archive: "NCBI",
+            id: "16",
+            accession: "PRJNA16",
+          },
+          Hierarchical: {
+            MemberID: {
+              archive: "NCBI",
+              id: "35043",
+              accession: "PRJNA35043",
+            },
+            type: "TopSingle",
+          },
+        },
+      },
     },
   },
-  sameAs: null,
   status: "public",
 };
