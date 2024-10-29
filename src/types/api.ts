@@ -1,9 +1,5 @@
 // Elastic search types
 
-import { SraExperimentProperties } from "@/types/sraExperiment.ts";
-import { SraSampleProperties } from "@/types/sraSample.ts";
-import { SraStudyProperties } from "@/types/sraStudy.ts";
-
 type MultiSearchResponse<T> = {
   took: number;
   responses: {
@@ -35,31 +31,22 @@ type MultiSearchResponse<T> = {
 };
 
 type HitSource = {
-  highlight?: any;
-  search?: string;
   identifier: string;
   visibility: string;
-  description: string | null;
   dateModified: string;
-  title: string;
   isPartOf: string;
   distribution: Distribution[];
   url: string;
   datePublished: string | null;
   dateCreated: string;
   name: string | null;
-  sameAs: DbXref[] | null;
   status: string;
-  _index?: string;
-  _type?: string;
-  _id?: string;
-  _score?: number;
-  _ignored?: string[];
-  _click_id?: number;
 } & (
   | {
       type: "bioproject";
       objectType: "UmbrellaBioProject" | "BioProject";
+      description: string | null;
+      title: string | null;
       accession: string;
       dbXref: DbXref[] | null;
       dbXrefStatistics: DbXrefsStatistics[];
@@ -94,38 +81,44 @@ type HitSource = {
       }[];
       properties: unknown;
       download: unknown;
+      sameAs: DbXref[] | null;
     }
   | {
       type: "biosample";
+      description: string | null;
+      title: string | null;
       organism: Organism;
       dbXref: DbXref[];
       dbXrefStatistics: DbXrefsStatistics[];
       properties: unknown;
       downloadUrl: unknown;
+      sameAs: DbXref[] | null;
     }
   | {
-      type: "sra-study";
-      properties: SraStudyProperties;
+      type:
+        | "sra-study"
+        | "sra-sample"
+        | "sra-run"
+        | "sra-submission"
+        | "sra-analysis"
+        | "sra-experiment"
+        | "jga-dataset"
+        | "jga-study"
+        | "jga-policy";
+      description: string | null;
+      title: string | null;
+      properties: unknown;
       organism: OldOrganism | null;
-      downloadUrl: DownloadUrl[];
+      downloadUrl: DownloadUrl[] | null;
       dbXrefs: DbXref[];
       dbXrefsStatistics: DbXrefsStatistics[];
+      sameAs: DbXref[] | null;
     }
   | {
-      type: "sra-sample";
-      properties: SraSampleProperties;
+      type: "jga-dac";
+      properties: unknown;
       organism: OldOrganism | null;
-      downloadUrl: DownloadUrl[];
       dbXrefs: DbXref[];
-      dbXrefsStatistics: DbXrefsStatistics[];
-    }
-  | {
-      type: "sra-experiment";
-      properties: SraExperimentProperties;
-      organism: OldOrganism | null;
-      downloadUrl: DownloadUrl[];
-      dbXrefs: DbXref[];
-      dbXrefsStatistics: DbXrefsStatistics[];
     }
 );
 
