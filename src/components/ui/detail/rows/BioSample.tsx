@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import { DefinitionList, Row } from "@/components/ui/detail/rows/Shared.tsx";
 import { ElasticSearchSource } from "@/types/api.ts";
-import { BioSampleProperties } from "@/types/bioSample.ts";
 
 type Props = { data: ElasticSearchSource };
 
@@ -16,8 +15,7 @@ export const BioSample: FC<Props> = ({ data }) => {
 
 const Attributes: FC<Props> = ({ data }) => {
   if (data.type !== "biosample") return <></>;
-  const properties = data.properties as BioSampleProperties;
-  const attributes = properties.Attributes?.Attribute ?? [];
+  const attributes = data.attributes ?? [];
   const obj = attributes.reduce<Record<string, string>>((acc, attr) => {
     acc[attr.attribute_name] = attr.content;
     return acc;

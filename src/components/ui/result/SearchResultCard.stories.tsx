@@ -16,14 +16,6 @@ export const Primary: Story = {
         name: null,
       },
       visibility: "controlled-access",
-      downloadUrl: [
-        {
-          name: "biosample_set.xml.gz",
-          ftpUrl: "ftp://ftp.ddbj.nig.ac.jp/ddbj_database/biosample/biosample_set.xml.gz",
-          type: "meta",
-          url: "https://ddbj.nig.ac.jp/public/ddbj_database/biosample/biosample_set.xml.gz",
-        },
-      ],
       description: null,
       dateModified: "2019-07-04T01:38:58Z",
       title:
@@ -42,6 +34,7 @@ export const Primary: Story = {
           type: "DataDownload",
         },
       ],
+      attributes: [],
       dbXref: [],
       url: "https://ddbj.nig.ac.jp/resource/biosample/SAMN04070198",
       datePublished: "2015-09-12T04:12:48Z",

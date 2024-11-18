@@ -30,6 +30,6 @@ export type BioSample = {
     harmonized_name: string;
     content: string;
   }[];
-  model: unknown; // TODO: remove this
-  Package: unknown; // TODO: remove this
+  model?: unknown; // TODO: remove this
+  Package?: unknown; // TODO: remove this
 };
