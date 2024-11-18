@@ -1,6 +1,7 @@
-import { ElasticSearchSource } from "@/types/api.ts";
+import { BioProject } from "@/types/bioProject.ts";
 
-export const bioproject1: ElasticSearchSource = {
+// check organization, publication, external link
+export const bioproject1: BioProject = {
   identifier: "PRJNA16",
   organism: {
     identifier: "322710",
@@ -25,6 +26,11 @@ export const bioproject1: ElasticSearchSource = {
     "<P><B><I>Azotobacter vinelandii</B></I>. This organism will provide information on the proteins involved in nitrogen fixation and the production of PHB and alginate.",
   dbXref: [
     {
+      identifier: "GCA_000021045",
+      type: "assemblies",
+      url: "https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_000021045/",
+    },
+    {
       identifier: "SAMN19513674",
       type: "biosample",
       url: "https://ddbj.nig.ac.jp/resource/biosample/SAMN19513674",
@@ -34,25 +40,14 @@ export const bioproject1: ElasticSearchSource = {
       type: "biosample",
       url: "https://ddbj.nig.ac.jp/resource/biosample/SAMN02604349",
     },
-    {
-      identifier: "GCA_000021045",
-      type: "assemblies",
-      url: "https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_000021045/",
-    },
   ],
-  dbXrefStatistics: [
-    {
-      count: 2,
-      type: "biosample",
-    },
-  ],
-  dateModified: "2024-10-24T14:47:23Z",
+  dateModified: "2024-11-18T11:15:39Z",
   accession: "PRJNA16",
   distribution: [
     {
-      contentUrl: "https://ddbj.nig.ac.jp/resource/bioproject/PRJNA16",
+      contentUrl: "https://ddbj.nig.ac.jp/search/entry/bioproject/PRJNA16.json",
       encodingFormat: "JSON",
-      type: "",
+      type: "DataDownload",
     },
   ],
   isPartOf: "BioProject",
@@ -61,7 +56,6 @@ export const bioproject1: ElasticSearchSource = {
   url: "https://ddbj.nig.ac.jp/search/entry/bioproject/PRJNA16",
   objectType: "BioProject",
   datePublished: "2009-04-14T00:00:00Z",
-  download: null,
   dateCreated: "2003-02-25",
   organization: [
     {
@@ -99,8 +93,7 @@ export const bioproject1: ElasticSearchSource = {
       status: "ePublished",
     },
   ],
-  sameAs: null,
-  name: null,
+  name: "",
   grant: [],
   properties: {
     Project: {
@@ -549,5 +542,6 @@ export const bioproject1: ElasticSearchSource = {
       },
     },
   },
+  sameAs: [],
   status: "public",
 };

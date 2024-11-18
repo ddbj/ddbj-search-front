@@ -1,5 +1,15 @@
 // Elastic search types
 
+import { BaseDataSet } from "@/types/BaseDataSet.ts";
+import { BioProject } from "@/types/bioProject.ts";
+import { BioSample } from "@/types/bioSample.ts";
+import { JgaDac } from "@/types/JgaDac.ts";
+
+export type MultiSearchElasticsearchResponse = MultiSearchResponse<HitSource>;
+export type ElasticSearchSource = HitSource;
+
+type HitSource = JgaDac | BaseDataSet | BioSample | BioProject;
+
 type MultiSearchResponse<T> = {
   took: number;
   responses: {
@@ -30,7 +40,31 @@ type MultiSearchResponse<T> = {
   }[];
 };
 
-type HitSource = {
+export type Organism = {
+  identifier: string;
+  name: string | null;
+};
+export type Distribution = {
+  contentUrl: string;
+  encodingFormat: string;
+  type: string;
+};
+export type DbXref = {
+  identifier: string;
+  type: string;
+  url: string;
+};
+export type DownloadUrl = {
+  name: string;
+  ftpUrl: string;
+  type: string;
+  url: string;
+};
+
+/**
+ * @deprecated
+ */
+type _HitSource = {
   identifier: string;
   visibility: string;
   dateModified: string;
@@ -49,7 +83,6 @@ type HitSource = {
       title: string | null;
       accession: string;
       dbXref: DbXref[] | null;
-      dbXrefStatistics: DbXrefsStatistics[];
       organism: Organism;
       organization: {
         abbreviation: string;
@@ -89,10 +122,12 @@ type HitSource = {
       title: string | null;
       organism: Organism;
       dbXref: DbXref[];
-      dbXrefStatistics: DbXrefsStatistics[];
       properties: unknown;
-      downloadUrl: unknown;
+      // downloadUrl: unknown;
       sameAs: DbXref[] | null;
+      attributes: any[];
+      model: any;
+      Package: any;
     }
   | {
       type:
@@ -108,53 +143,30 @@ type HitSource = {
       description: string | null;
       title: string | null;
       properties: unknown;
-      organism: OldOrganism | null;
+      organism: __Organism | null;
       downloadUrl: DownloadUrl[] | null;
       dbXrefs: DbXref[];
-      dbXrefsStatistics: DbXrefsStatistics[];
+      dbXrefsStatistics: __DbXrefsStatistics[];
       sameAs: DbXref[] | null;
     }
   | {
       type: "jga-dac";
       properties: unknown;
-      organism: OldOrganism | null;
+      organism: __Organism | null;
       dbXrefs: DbXref[];
     }
 );
-
-// Reuse types from the previous definition
-type DownloadUrl = {
-  name: string;
-  ftpUrl: string;
-  type: string;
-  url: string;
-};
-type Organism = {
-  identifier: string;
+/**
+ * @deprecated
+ */
+export type __Organism = {
+  identifier: number;
   name: string | null;
 };
 /**
  * @deprecated
  */
-type OldOrganism = {
-  identifier: number;
-  name: string | null;
-};
-type Distribution = {
-  contentUrl: string;
-  encodingFormat: string;
-  type: string;
-};
-type DbXref = {
-  identifier: string;
-  type: string;
-  url: string;
-};
-type DbXrefsStatistics = {
+export type __DbXrefsStatistics = {
   count: number;
   type: string;
 };
-
-// Example of using the type for a specific source structure
-export type MultiSearchElasticsearchResponse = MultiSearchResponse<HitSource>;
-export type ElasticSearchSource = HitSource;

@@ -1,6 +1,6 @@
-import { ElasticSearchSource } from "@/types/api.ts";
+import { BioSample } from "@/types/bioSample.ts";
 
-export const biosample2: ElasticSearchSource = {
+export const biosample2: BioSample = {
   identifier: "SAMN33271208",
   organism: {
     identifier: "749906",
@@ -8,12 +8,89 @@ export const biosample2: ElasticSearchSource = {
   },
   visibility: "unrestricted-access",
   description: "Keywords: GSC:MIxS;MIMARKS:6.0",
-  title: "laboriosa1",
-  type: "biosample",
-  isPartOf: "biosample",
+  dbXref: [],
   dateModified: "2023-02-14T02:16:02.387",
+  distribution: [
+    {
+      contentUrl: "https://ddbj.nig.ac.jp/search/entry/biosample/SAMN33271208.json",
+      encodingFormat: "JSON",
+      type: "DataDownload",
+    },
+  ],
+  type: "biosample",
+  isPartOf: "BioSample",
+  title: "laboriosa1",
+  url: "https://ddbj.nig.ac.jp/search/entry/biosample/SAMN33271208",
   datePublished: "2023-02-13T00:00:00.000",
   dateCreated: "2023-02-13T12:08:05.597",
+  name: "",
+  attributes: [
+    {
+      attribute_name: "collection_date",
+      display_name: "collection date",
+      harmonized_name: "collection_date",
+      content: "2019-03-25",
+    },
+    {
+      attribute_name: "env_broad_scale",
+      display_name: "broad-scale environmental context",
+      harmonized_name: "env_broad_scale",
+      content: "not collected",
+    },
+    {
+      attribute_name: "env_local_scale",
+      display_name: "local-scale environmental context",
+      harmonized_name: "env_local_scale",
+      content: "flower",
+    },
+    {
+      attribute_name: "env_medium",
+      display_name: "environmental medium",
+      harmonized_name: "env_medium",
+      content: "bee gut",
+    },
+    {
+      attribute_name: "geo_loc_name",
+      display_name: "geographic location",
+      harmonized_name: "geo_loc_name",
+      content: "USA: TX, Cleveland",
+    },
+    {
+      attribute_name: "host",
+      display_name: "host",
+      harmonized_name: "host",
+      content: "Habropoda laboriosa",
+    },
+    {
+      attribute_name: "lat_lon",
+      display_name: "latitude and longitude",
+      harmonized_name: "lat_lon",
+      content: "30.341 N 95.086 W",
+    },
+    {
+      attribute_name: "replicate",
+      display_name: "",
+      harmonized_name: "",
+      content: "replicate = biological replicate 1",
+    },
+    {
+      attribute_name: "region",
+      display_name: "",
+      harmonized_name: "",
+      content: "16S rRNA V4",
+    },
+    {
+      attribute_name: "primer pair",
+      display_name: "",
+      harmonized_name: "",
+      content: "515F (GTGCCAGCMGCCGCGGTAA) - 806R (GGACTACHVHHHTWTCTAAT)",
+    },
+  ],
+  model: [],
+  Package: {
+    name: "MIMARKS.survey.host-associated.6.0",
+    display_name: "MIMARKS: survey, host-associated; version 6.0",
+  },
   properties: {
     Status: {
       when: "2023-02-13T12:08:05.596",
@@ -149,14 +226,12 @@ export const biosample2: ElasticSearchSource = {
       content: "MIMARKS.survey.host-associated.6.0",
     },
   },
+  sameAs: [
+    {
+      identifier: "SRS16750571",
+      type: "sra-sample",
+      url: "https://ddbj.nig.ac.jp/resource/sra-sample/SRS16750571",
+    },
+  ],
   status: "public",
-  //
-  dbXref: [],
-  dbXrefStatistics: [],
-  //
-  url: "",
-  name: "",
-  sameAs: null,
-  downloadUrl: [],
-  distribution: [],
 };

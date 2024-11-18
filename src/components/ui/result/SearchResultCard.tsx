@@ -5,20 +5,21 @@ import { FC } from "react";
 import { LockIcon } from "@/components/icon/lockIcon.tsx";
 import { ElasticSearchSource } from "@/types/api.ts";
 import { TailwindElementProps } from "@/types/types.ts";
+import { getDbXrefs, getTitle } from "@/utils/apiWrappers.ts";
 
 type Props = {
   item: ElasticSearchSource;
 };
 
 export const SearchResultCard: FC<Props> = ({ item }) => {
-  const title = item.title || item.description || item.name;
+  const title = getTitle(item);
   const detailUrl = `./entry/${item.type}/${item.identifier}`;
-  const refsCount = item.dbXrefs?.length;
+  const refsCount = getDbXrefs(item).length;
   // const isVisible = item.visibility.includes("unrestricted");
   const isVisible = true;
 
   const groups: { type: string; count: number }[] = Object.entries(
-    item.dbXrefs?.reduce<Record<string, number>>(
+    getDbXrefs(item).reduce<Record<string, number>>(
       (result, dbXref) => ({
         ...result,
         [dbXref.type]: (result[dbXref.type] || 0) + 1,
