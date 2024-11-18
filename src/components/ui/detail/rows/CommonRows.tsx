@@ -8,7 +8,7 @@ export const CommonTitle: FC<{ data: ElasticSearchSource }> = ({ data }) => {
     case "bioproject":
     case "biosample":
     case "sra-experiment":
-      return <Row dd={"title"}>{parse(data.title ?? "")}</Row>;
+      return <Row dd={"title"}>{parse(data.title || "")}</Row>;
     default:
       return null;
   }
@@ -18,7 +18,7 @@ export const CommonDescription: FC<{ data: ElasticSearchSource }> = ({ data }) =
   switch (data.type) {
     case "bioproject":
     case "biosample":
-      return <Row dd={"description"}>{parse(data.description ?? "")}</Row>;
+      return <Row dd={"description"}>{parse(data.description || "")}</Row>;
     default:
       return null;
   }
@@ -26,7 +26,7 @@ export const CommonDescription: FC<{ data: ElasticSearchSource }> = ({ data }) =
 
 export const Organism: FC<{ organism?: ElasticSearchSource["organism"] }> = ({ organism }) => {
   if (!organism) return <Row dd={"organism"} />;
-  const label = organism.name ?? organism.identifier;
+  const label = organism.name || organism.identifier || "";
   return (
     <Row dd={"organism"}>
       <LinkText

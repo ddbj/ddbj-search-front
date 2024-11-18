@@ -80,7 +80,7 @@ const Grant: FC<Props> = ({ data }) => {
   const grants = data.grant;
   if (!grants) return <Row dd={"grant"} />;
   const inner = grants.map((grant) => {
-    const title = grant.title ?? grant.id;
+    const title = grant.title || grant.id;
     return (
       <li key={grant.id}>
         {title} by {grant.agency.name}
@@ -99,7 +99,7 @@ const ExternalLinks: FC<Props> = ({ data }) => {
   // const externalLinks = data.properties.Project.Project?.ProjectDescr.ExternalLink ?? [];
   const externalLinks = data.externalLink ?? [];
   const inner = externalLinks.map((link) => {
-    const title = link.label ?? link.url;
+    const title = link.label || link.url || "";
     return (
       <li key={link.url}>
         <LinkText href={link.url} external={true}>

@@ -39,7 +39,7 @@ export const SearchResultCard: FC<Props> = ({ item }) => {
           </p>
         )}
       </div>
-      <Title title={title ?? ""} className={"-mt-2"} />
+      <Title title={title || ""} className={"-mt-2"} />
       <Related className="text-sm">{makeRefCountMessage(refsCount)}</Related>
       <div className="flex justify-between">
         <BadgeWrapper>

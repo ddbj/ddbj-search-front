@@ -3,9 +3,9 @@ import { DbXref, ElasticSearchSource } from "@/types/api.ts";
 export const getTitle = (item: ElasticSearchSource): string => {
   switch (item.type) {
     case "jga-dac":
-      return item.name ?? "";
+      return item.name || "";
     default:
-      return item.title ?? item.description ?? item.name ?? "";
+      return item.title || item.description || item.name || "";
   }
 };
 
