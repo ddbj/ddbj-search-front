@@ -18,7 +18,7 @@ export const BioProject: FC<Props> = ({ data }) => {
 
 export const BioProjectUmbrellaProject: FC<Props> = ({ data }) => {
   if (data.type !== "bioproject") return <></>;
-  if (data.properties.Project?.Project?.ProjectType?.ProjectTypeTopAdmin) {
+  if (data.objectType === "UmbrellaBioProject") {
     return <Row dd={"project type"}>Umbrella project</Row>;
   } else {
     return <Row dd={"project type"} />;
@@ -27,16 +27,17 @@ export const BioProjectUmbrellaProject: FC<Props> = ({ data }) => {
 
 const Organization: FC<Props> = ({ data }) => {
   if (data.type !== "bioproject") return <></>;
-  const organization = data.properties.Project.Submission?.Description?.Organization ?? [];
-  const inner = organization.map((org) => {
+  const organizations = data.organization ?? [];
+
+  const inner = organizations.map((org) => {
     return (
-      <li key={org.Name.content}>
+      <li key={org.name}>
         {org.url ? (
           <LinkText href={org.url} external={true}>
-            {org.Name.content}
+            {org.name}
           </LinkText>
         ) : (
-          <span>{org.Name.content}</span>
+          <span>{org.name}</span>
         )}
       </li>
     );
@@ -51,16 +52,21 @@ const Organization: FC<Props> = ({ data }) => {
 
 const Publication: FC<Props> = ({ data }) => {
   if (data.type !== "bioproject") return <></>;
-  const publications = data.properties.Project.Project?.ProjectDescr.Publication ?? [];
+  const publications = data.publication ?? [];
   const inner = publications.map((pub) => {
-    const title = pub.StructuredCitation?.Title ?? pub.Reference;
-    return (
-      <li key={pub.id}>
-        <LinkText href={`https://pubmed.ncbi.nlm.nih.gov/${pub.id}`} external={true}>
-          {title}
-        </LinkText>
-      </li>
-    );
+    const title = pub.title;
+    const url = pub.url;
+    if (url) {
+      return (
+        <li key={pub.id}>
+          <LinkText href={url} external={true}>
+            {title}
+          </LinkText>
+        </li>
+      );
+    } else {
+      <li key={pub.id}>{title}</li>;
+    }
   });
   return (
     <Row dd={"publication"}>
@@ -71,13 +77,13 @@ const Publication: FC<Props> = ({ data }) => {
 
 const Grant: FC<Props> = ({ data }) => {
   if (data.type !== "bioproject") return <></>;
-  const grants = data.properties.Project.Project?.ProjectDescr?.Grant;
+  const grants = data.grant;
   if (!grants) return <Row dd={"grant"} />;
   const inner = grants.map((grant) => {
-    const title = grant.Title ?? grant.GrantId;
+    const title = grant.title || grant.id;
     return (
-      <li key={grant.GrantId}>
-        {title} by {grant.Agency.content}
+      <li key={grant.id}>
+        {title} by {grant.agency.name}
       </li>
     );
   });
@@ -90,12 +96,13 @@ const Grant: FC<Props> = ({ data }) => {
 
 const ExternalLinks: FC<Props> = ({ data }) => {
   if (data.type !== "bioproject") return <></>;
-  const externalLinks = data.properties.Project.Project?.ProjectDescr.ExternalLink ?? [];
+  // const externalLinks = data.properties.Project.Project?.ProjectDescr.ExternalLink ?? [];
+  const externalLinks = data.externalLink ?? [];
   const inner = externalLinks.map((link) => {
-    const title = link.label ?? link.URL;
+    const title = link.label || link.url || "";
     return (
-      <li key={link.URL}>
-        <LinkText href={link.URL} external={true}>
+      <li key={link.url}>
+        <LinkText href={link.url} external={true}>
           {title}
         </LinkText>
       </li>

@@ -1,122 +1,172 @@
 // Elastic search types
 
-import { BioProjectProperties } from "@/types/bioProject.ts";
-import { BioSampleProperties } from "@/types/bioSample.ts";
-import { SraExperimentProperties } from "@/types/sraExperiment.ts";
-import { SraSampleProperties } from "@/types/sraSample.ts";
-import { SraStudyProperties } from "@/types/sraStudy.ts";
+import { BaseDataSet } from "@/types/BaseDataSet.ts";
+import { BioProject } from "@/types/BioProject.ts";
+import { BioSample } from "@/types/BioSample.ts";
+import { JgaDac } from "@/types/JgaDac.ts";
 
-type ShardInfo = {
-  total: number;
-  successful: number;
-  skipped: number;
-  failed: number;
-};
-type TotalHits = {
-  value: number;
-  relation: string;
-};
-type HitSource = {
-  highlight?: any;
-  search?: string;
-  identifier: string;
-  organism: Organism | null;
-  visibility: string;
-  downloadUrl: DownloadUrl[];
-  description: string | null;
-  dateModified: string;
-  title: string;
-  // type: hitType;
-  isPartOf: string;
-  distribution: Distribution[];
-  dbXrefs: DbXref[] | null;
-  url: string;
-  datePublished: string | null;
-  dateCreated: string;
-  name: string | null;
-  dbXrefsStatistics: DbXrefsStatistics[];
-  // properties: Record<string, unknown>;
-  sameAs: DbXref[] | null;
-  status: string;
-  _index?: string;
-  _type?: string;
-  _id?: string;
-  _score?: number;
-  _ignored?: string[];
-  _click_id?: number;
-} & (
-  | {
-      type: "bioproject";
-      properties: BioProjectProperties;
-    }
-  | {
-      type: "sra-study";
-      properties: SraStudyProperties;
-    }
-  | {
-      type: "biosample";
-      properties: BioSampleProperties;
-    }
-  | {
-      type: "sra-sample";
-      properties: SraSampleProperties;
-    }
-  | {
-      type: "sra-experiment";
-      properties: SraExperimentProperties;
-    }
-);
+export type MultiSearchElasticsearchResponse = MultiSearchResponse<HitSource>;
+export type ElasticSearchSource = HitSource;
 
-type Hit<T> = {
-  _index: string;
-  _type: string;
-  _id: string;
-  _score: number;
-  _ignored?: string[];
-  _source: T;
-};
-type Hits<T> = {
-  total: TotalHits;
-  max_score: number;
-  hits: Hit<T>[];
-};
-type ElasticsearchSubResponse<T> = {
-  took: number;
-  timed_out: boolean;
-  _shards: ShardInfo;
-  hits: Hits<T>;
-  status: number;
-};
+type HitSource = JgaDac | BaseDataSet | BioSample | BioProject;
+
 type MultiSearchResponse<T> = {
   took: number;
-  responses: ElasticsearchSubResponse<T>[];
+  responses: {
+    took: number;
+    timed_out: boolean;
+    _shards: {
+      total: number;
+      successful: number;
+      skipped: number;
+      failed: number;
+    };
+    hits: {
+      total: {
+        value: number;
+        relation: string;
+      };
+      max_score: number;
+      hits: {
+        _index: string;
+        _type: string;
+        _id: string;
+        _score: number;
+        _ignored?: string[];
+        _source: T;
+      }[];
+    };
+    status: number;
+  }[];
 };
-// Reuse types from the previous definition
-type DownloadUrl = {
+
+export type Organism = {
+  identifier: string;
+  name: string | null;
+};
+export type Distribution = {
+  contentUrl: string;
+  encodingFormat: string;
+  type: string;
+};
+export type Xref = {
+  identifier: string;
+  type: string;
+  url: string;
+};
+export type DownloadUrl = {
   name: string;
   ftpUrl: string;
   type: string;
   url: string;
 };
-type Organism = {
+
+/**
+ * @deprecated
+ */
+type _HitSource = {
+  identifier: string;
+  visibility: string;
+  dateModified: string;
+  isPartOf: string;
+  distribution: Distribution[];
+  url: string;
+  datePublished: string | null;
+  dateCreated: string;
+  name: string | null;
+  status: string;
+} & (
+  | {
+      type: "bioproject";
+      objectType: "UmbrellaBioProject" | "BioProject";
+      description: string | null;
+      title: string | null;
+      accession: string;
+      dbXref: Xref[] | null;
+      organism: Organism;
+      organization: {
+        abbreviation: string;
+        name: string;
+        organizationType: string;
+        role: string;
+        url: string;
+      }[];
+      publication: {
+        date: string;
+        Reference: string | null;
+        id: string;
+        title: string;
+        url?: string | null;
+        DbType: string;
+        status: string;
+      }[];
+      externalLink: {
+        label: string;
+        url: string;
+      }[];
+      grant: {
+        title?: string;
+        id: string;
+        agency: {
+          abbreviation: string;
+          name: string;
+        };
+      }[];
+      properties: unknown;
+      download: unknown;
+      sameAs: Xref[] | null;
+    }
+  | {
+      type: "biosample";
+      description: string | null;
+      title: string | null;
+      organism: Organism;
+      dbXref: Xref[];
+      properties: unknown;
+      // downloadUrl: unknown;
+      sameAs: Xref[] | null;
+      attributes: any[];
+      model: any;
+      Package: any;
+    }
+  | {
+      type:
+        | "sra-study"
+        | "sra-sample"
+        | "sra-run"
+        | "sra-submission"
+        | "sra-analysis"
+        | "sra-experiment"
+        | "jga-dataset"
+        | "jga-study"
+        | "jga-policy";
+      description: string | null;
+      title: string | null;
+      properties: unknown;
+      organism: __Organism | null;
+      downloadUrl: DownloadUrl[] | null;
+      dbXrefs: Xref[];
+      dbXrefsStatistics: __DbXrefsStatistics[];
+      sameAs: Xref[] | null;
+    }
+  | {
+      type: "jga-dac";
+      properties: unknown;
+      organism: __Organism | null;
+      dbXrefs: Xref[];
+    }
+);
+/**
+ * @deprecated
+ */
+export type __Organism = {
   identifier: number;
   name: string | null;
 };
-type Distribution = {
-  contentUrl: string;
-  encodingFormat: string;
-  type: string;
-};
-type DbXref = {
-  identifier: string;
-  type: string;
-  url: string;
-};
-type DbXrefsStatistics = {
+/**
+ * @deprecated
+ */
+export type __DbXrefsStatistics = {
   count: number;
   type: string;
 };
-
-// Example of using the type for a specific source structure
-export type MultiSearchElasticsearchResponse = MultiSearchResponse<HitSource>;
-export type ElasticSearchSource = HitSource;

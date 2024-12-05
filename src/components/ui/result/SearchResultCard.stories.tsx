@@ -10,21 +10,12 @@ type Story = StoryObj<typeof SearchResultCard>;
 export const Primary: Story = {
   args: {
     item: {
-      highlight: {},
       identifier: "SAMN04070198",
       organism: {
-        identifier: 9606,
+        identifier: "9606",
         name: null,
       },
       visibility: "controlled-access",
-      downloadUrl: [
-        {
-          name: "biosample_set.xml.gz",
-          ftpUrl: "ftp://ftp.ddbj.nig.ac.jp/ddbj_database/biosample/biosample_set.xml.gz",
-          type: "meta",
-          url: "https://ddbj.nig.ac.jp/public/ddbj_database/biosample/biosample_set.xml.gz",
-        },
-      ],
       description: null,
       dateModified: "2019-07-04T01:38:58Z",
       title:
@@ -43,14 +34,12 @@ export const Primary: Story = {
           type: "DataDownload",
         },
       ],
-      dbXrefs: [],
+      attributes: [],
+      dbXref: [],
       url: "https://ddbj.nig.ac.jp/resource/biosample/SAMN04070198",
       datePublished: "2015-09-12T04:12:48Z",
-      search:
-        '{\n  "access" : "controlled-access",\n  "publication_date" : "2015-09-12T04:12:48.617Z",\n  "last_update" : "2019-07-04T01:38:58.45Z",\n  "submission_date" : "2015-09-12T04:12:48.617Z",\n  "accession" : "SAMN04070198",\n  "Ids" : {\n    "Id" : [ {\n      "is_primary" : "1",\n      "db" : "BioSample",\n      "content" : "SAMN04070198"\n    }, {\n      "db" : "dbGaP",\n      "db_label" : "Sample name",\n      "is_hidden" : "1",\n      "content" : "911-44564102"\n    } ]\n  },\n  "Status" : {\n    "when" : "2019-07-03T21:31:55",\n    "status" : "live"\n  },\n  "Description" : {\n    "Title" : "Non-tumor DNA sample from blood of a human female participant in the dbGaP study \\"Type 1 Diabetes Genetics Consortium (T1DGC): ImmunoChip Study\\"",\n    "Organism" : [ {\n      "taxonomy_id" : 9606\n    } ]\n  },\n  "Owner" : {\n    "Name" : [ {\n      "abbreviation" : "NCBI"\n    } ]\n  },\n  "Models" : {\n    "Model" : [ {\n      "content" : "Generic"\n    } ]\n  },\n  "Attributes" : {\n    "Attribute" : [ {\n      "attribute_name" : "gap_accession",\n      "display_name" : "gap accession",\n      "harmonized_name" : "gap_accession",\n      "content" : "phs000911"\n    }, {\n      "attribute_name" : "submitter handle",\n      "display_name" : "submitter handle",\n      "harmonized_name" : "submitter_handle",\n      "content" : "NIDDK_T1DGC_ImmunoChip"\n    }, {\n      "attribute_name" : "biospecimen repository",\n      "display_name" : "biospecimen repository",\n      "harmonized_name" : "biospecimen_repository",\n      "content" : "NIDDK_T1DGC_ImmunoChip"\n    }, {\n      "attribute_name" : "study name",\n      "display_name" : "study name",\n      "harmonized_name" : "study_name",\n      "content" : "Type 1 Diabetes Genetics Consortium (T1DGC): ImmunoChip Study"\n    }, {\n      "attribute_name" : "study design",\n      "display_name" : "study design",\n      "harmonized_name" : "study_design",\n      "content" : "Case-Control"\n    }, {\n      "attribute_name" : "biospecimen repository sample id",\n      "display_name" : "biospecimen repository sample id",\n      "harmonized_name" : "biospecimen_repository_sample_id",\n      "content" : "44564102"\n    }, {\n      "attribute_name" : "submitted sample id",\n      "display_name" : "submitted sample id",\n      "harmonized_name" : "submitted_sample_id",\n      "content" : "44564102"\n    }, {\n      "attribute_name" : "submitted subject id",\n      "display_name" : "submitted subject id",\n      "harmonized_name" : "submitted_subject_id",\n      "content" : "44564102"\n    }, {\n      "attribute_name" : "gap_sample_id",\n      "display_name" : "gap sample id",\n      "harmonized_name" : "gap_sample_id",\n      "content" : "1757709"\n    }, {\n      "attribute_name" : "gap_subject_id",\n      "display_name" : "gap subject id",\n      "harmonized_name" : "gap_subject_id",\n      "content" : "1345869"\n    }, {\n      "attribute_name" : "sex",\n      "display_name" : "sex",\n      "harmonized_name" : "sex",\n      "content" : "female"\n    }, {\n      "attribute_name" : "body site",\n      "display_name" : "tissue",\n      "harmonized_name" : "tissue",\n      "content" : "blood"\n    }, {\n      "attribute_name" : "histological type",\n      "display_name" : "histological type",\n      "harmonized_name" : "histological_type",\n      "content" : "not available"\n    }, {\n      "attribute_name" : "analyte type",\n      "display_name" : "analyte type",\n      "harmonized_name" : "analyte_type",\n      "content" : "DNA"\n    }, {\n      "attribute_name" : "is tumor",\n      "display_name" : "is tumor",\n      "harmonized_name" : "is_tumor",\n      "content" : "No"\n    }, {\n      "attribute_name" : "subject is affected",\n      "display_name" : "subject is affected",\n      "harmonized_name" : "subject_is_affected",\n      "content" : "No"\n    }, {\n      "attribute_name" : "molecular data type",\n      "display_name" : "molecular data type",\n      "harmonized_name" : "molecular_data_type",\n      "content" : "SNP Genotypes (Array)"\n    }, {\n      "attribute_name" : "gap_consent_code",\n      "display_name" : "gap consent code",\n      "harmonized_name" : "gap_consent_code",\n      "content" : "1"\n    }, {\n      "attribute_name" : "gap_consent_short_name",\n      "display_name" : "gap consent short name",\n      "harmonized_name" : "gap_consent_short_name",\n      "content" : "DS-T1DR-IRB-RD"\n    } ]\n  },\n  "Package" : {\n    "display_name" : "Generic",\n    "content" : "Generic.1.0"\n  }\n}',
       dateCreated: "2015-09-12T04:12:48Z",
       name: null,
-      dbXrefsStatistics: [],
       properties: {
         Status: {
           when: "2019-07-03T21:31:55",
@@ -224,12 +213,11 @@ export const Primary: Story = {
       },
       sameAs: null,
       status: "public",
-      _index: "biosample",
-      _type: "_doc",
-      _id: "SAMN04070198",
-      _score: 1.455102e-7,
-      _ignored: ["search.keyword"],
-      _click_id: 3,
+      package: {
+        display_name: "Generic",
+        name: "Generic",
+      },
+      model: [{ name: "Generic" }],
     },
   },
 };

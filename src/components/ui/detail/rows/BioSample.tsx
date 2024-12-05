@@ -15,7 +15,7 @@ export const BioSample: FC<Props> = ({ data }) => {
 
 const Attributes: FC<Props> = ({ data }) => {
   if (data.type !== "biosample") return <></>;
-  const attributes = data.properties.Attributes?.Attribute ?? [];
+  const attributes = data.attributes ?? [];
   const obj = attributes.reduce<Record<string, string>>((acc, attr) => {
     acc[attr.attribute_name] = attr.content;
     return acc;

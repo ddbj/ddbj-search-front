@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import { LinkText, Row } from "@/components/ui/detail/rows/Shared.tsx";
-import { ElasticSearchSource } from "@/types/api.ts";
+import { Xref, ElasticSearchSource } from "@/types/api.ts";
 
-type Props = { refs: ElasticSearchSource["dbXrefs"]; title: string };
+type Props = { refs: Xref[]; title: string };
 
 export const RefLinks: FC<Props> = ({ refs, title }) => {
   if (!refs) return <Row dd={title} />;

@@ -15,6 +15,7 @@ import { Row } from "@/components/ui/detail/rows/Shared.tsx";
 import { SraExperiment } from "@/components/ui/detail/rows/SraExperiment.tsx";
 import { SraSample } from "@/components/ui/detail/rows/SraSample.tsx";
 import { ElasticSearchSource } from "@/types/api.ts";
+import { getDbXrefs, getSameAs } from "@/utils/apiWrappers.ts";
 
 SyntaxHighlighter.registerLanguage("json", json);
 
@@ -30,19 +31,22 @@ export const DetailTable: FC<Props> = ({ data }) => {
           <dl className="divide-y divide-gray-100 [&>*:nth-child(2n)]:bg-gray-50">
             <Row dd={"identifier"}>{data.identifier}</Row>
             <Row dd={"type"}>{data.type}</Row>
-            <RefLinks refs={data.sameAs} title={"sameAs"} />
+            <RefLinks refs={getSameAs(data)} title={"sameAs"} />
             <BioProjectUmbrellaProject data={data} />
             <Organism organism={data.organism} />
-            <CommonTitle type={data.type} str={data.title} />
-            <CommonDescription type={data.type} str={data.description} />
+            <CommonTitle data={data} />
+            <CommonDescription data={data} />
             <BioProject data={data} />
             <BioSample data={data} />
             <SraSample data={data} />
             <SraExperiment data={data} />
             <Properties title={"properties"} codeObj={data.properties} />
-            <RefLinks refs={data.dbXrefs} title={"dbXrefs"} />
+            <RefLinks refs={getDbXrefs(data)} title={"dbXref"} />
+
             {/*{renderDistribution(data)}*/}
-            <DownloadLinks downloadUrl={data.downloadUrl} />
+
+            {/*TODO: show discuss download*/}
+            {/*<DownloadLinks downloadUrl={data.downloadUrl} />*/}
             <Row dd={"status"}>{data.status}</Row>
             <Row dd={"visibility"}>{data.visibility}</Row>
             <Row dd={"dateCreated"}>{data.dateCreated}</Row>

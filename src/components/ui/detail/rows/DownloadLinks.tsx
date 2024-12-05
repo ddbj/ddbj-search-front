@@ -1,10 +1,10 @@
 import { clsx } from "clsx";
 import React, { FC, ReactElement, useEffect } from "react";
 import { DefinitionList, LinkText, Row } from "@/components/ui/detail/rows/Shared.tsx";
-import { ElasticSearchSource } from "@/types/api.ts";
+import { DownloadUrl, ElasticSearchSource } from "@/types/api.ts";
 
 type Props = {
-  downloadUrl?: ElasticSearchSource["downloadUrl"];
+  downloadUrl?: DownloadUrl[] | null;
 };
 
 export const DownloadLinks: FC<Props> = ({ downloadUrl }) => {
