@@ -1,4 +1,4 @@
-import { BioProject } from "@/types/bioProject.ts";
+import { BioProject } from "@/types/BioProject.ts";
 
 // check grant
 export const bioproject2: BioProject = {

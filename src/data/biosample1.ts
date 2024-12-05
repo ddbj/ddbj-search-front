@@ -1,4 +1,4 @@
-import { BioSample } from "@/types/bioSample.ts";
+import { BioSample } from "@/types/BioSample.ts";
 
 export const biosample1: BioSample = {
   identifier: "SAMN29827045",
@@ -73,7 +73,7 @@ export const biosample1: BioSample = {
       name: "Generic",
     },
   ],
-  Package: {
+  package: {
     name: "Generic.1.0",
     display_name: "Generic",
   },

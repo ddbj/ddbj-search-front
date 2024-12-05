@@ -1,6 +1,6 @@
-import { ElasticSearchSource } from "@/types/api.ts";
+import { JgaStudy } from "@/types/JgaStudy.ts";
 
-export const jgaStudy1: ElasticSearchSource = {
+export const jgaStudy1: JgaStudy = {
   identifier: "JGAS000004",
   organism: {
     identifier: 9606,

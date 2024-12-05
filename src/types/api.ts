@@ -1,8 +1,8 @@
 // Elastic search types
 
 import { BaseDataSet } from "@/types/BaseDataSet.ts";
-import { BioProject } from "@/types/bioProject.ts";
-import { BioSample } from "@/types/bioSample.ts";
+import { BioProject } from "@/types/BioProject.ts";
+import { BioSample } from "@/types/BioSample.ts";
 import { JgaDac } from "@/types/JgaDac.ts";
 
 export type MultiSearchElasticsearchResponse = MultiSearchResponse<HitSource>;
@@ -49,7 +49,7 @@ export type Distribution = {
   encodingFormat: string;
   type: string;
 };
-export type DbXref = {
+export type Xref = {
   identifier: string;
   type: string;
   url: string;
@@ -82,7 +82,7 @@ type _HitSource = {
       description: string | null;
       title: string | null;
       accession: string;
-      dbXref: DbXref[] | null;
+      dbXref: Xref[] | null;
       organism: Organism;
       organization: {
         abbreviation: string;
@@ -114,17 +114,17 @@ type _HitSource = {
       }[];
       properties: unknown;
       download: unknown;
-      sameAs: DbXref[] | null;
+      sameAs: Xref[] | null;
     }
   | {
       type: "biosample";
       description: string | null;
       title: string | null;
       organism: Organism;
-      dbXref: DbXref[];
+      dbXref: Xref[];
       properties: unknown;
       // downloadUrl: unknown;
-      sameAs: DbXref[] | null;
+      sameAs: Xref[] | null;
       attributes: any[];
       model: any;
       Package: any;
@@ -145,15 +145,15 @@ type _HitSource = {
       properties: unknown;
       organism: __Organism | null;
       downloadUrl: DownloadUrl[] | null;
-      dbXrefs: DbXref[];
+      dbXrefs: Xref[];
       dbXrefsStatistics: __DbXrefsStatistics[];
-      sameAs: DbXref[] | null;
+      sameAs: Xref[] | null;
     }
   | {
       type: "jga-dac";
       properties: unknown;
       organism: __Organism | null;
-      dbXrefs: DbXref[];
+      dbXrefs: Xref[];
     }
 );
 /**

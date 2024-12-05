@@ -1,4 +1,4 @@
-import { DbXref, Distribution, Organism } from "@/types/api.ts";
+import { Xref, Distribution, Organism } from "@/types/api.ts";
 
 export type BioProject = {
   //--------------------------------
@@ -15,12 +15,12 @@ export type BioProject = {
   url: string;
   distribution: Distribution[];
   properties: unknown;
-  sameAs: DbXref[] | null;
+  sameAs: Xref[] | null;
   description: string | null;
   title: string | null;
   //--------------------------------
   // Same as bioSample but not in BaseDataSet
-  dbXref: DbXref[] | null;
+  dbXref: Xref[] | null;
   organism: Organism | null;
   //--------------------------------
   // Unique to BioProject

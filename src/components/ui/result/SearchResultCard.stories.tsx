@@ -213,6 +213,11 @@ export const Primary: Story = {
       },
       sameAs: null,
       status: "public",
+      package: {
+        display_name: "Generic",
+        name: "Generic",
+      },
+      model: [{ name: "Generic" }],
     },
   },
 };

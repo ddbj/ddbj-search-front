@@ -1,4 +1,4 @@
-import { BioProject } from "@/types/bioProject.ts";
+import { BioProject } from "@/types/BioProject.ts";
 
 // check object type as whether it's UmbrellaBioProject
 export const bioproject2: BioProject = {

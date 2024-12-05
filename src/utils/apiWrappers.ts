@@ -1,4 +1,4 @@
-import { DbXref, ElasticSearchSource } from "@/types/api.ts";
+import { Xref, ElasticSearchSource } from "@/types/api.ts";
 
 export const getTitle = (item: ElasticSearchSource): string => {
   switch (item.type) {
@@ -9,7 +9,7 @@ export const getTitle = (item: ElasticSearchSource): string => {
   }
 };
 
-export const getDbXrefs = (item: ElasticSearchSource): DbXref[] => {
+export const getDbXrefs = (item: ElasticSearchSource): Xref[] => {
   switch (item.type) {
     case "bioproject":
     case "biosample":
@@ -19,7 +19,7 @@ export const getDbXrefs = (item: ElasticSearchSource): DbXref[] => {
   }
 };
 
-export const getSameAs = (item: ElasticSearchSource): DbXref[] => {
+export const getSameAs = (item: ElasticSearchSource): Xref[] => {
   switch (item.type) {
     case "jga-dac":
       return [];

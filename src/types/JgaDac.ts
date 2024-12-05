@@ -1,4 +1,4 @@
-import { __Organism, DbXref, Distribution } from "@/types/api.ts";
+import { __Organism, Xref, Distribution } from "@/types/api.ts";
 
 export type JgaDac = {
   type: "jga-dac";
@@ -16,5 +16,5 @@ export type JgaDac = {
   //--------------------------------
   // not contained in BioSample and BioProject
   organism: __Organism | null;
-  dbXrefs: DbXref[];
+  dbXrefs: Xref[];
 };

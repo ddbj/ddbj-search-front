@@ -1,4 +1,4 @@
-import { BioProject } from "@/types/bioProject.ts";
+import { BioProject } from "@/types/BioProject.ts";
 
 // check organization, publication, external link
 export const bioproject1: BioProject = {

@@ -1,16 +1,7 @@
 import { __DbXrefsStatistics, __Organism, Xref, Distribution, DownloadUrl } from "@/types/api.ts";
 
-export type BaseDataSet = {
-  type:
-    | "sra-study"
-    | "sra-sample"
-    | "sra-run"
-    | "sra-submission"
-    | "sra-analysis"
-    | "sra-experiment"
-    | "jga-dataset"
-    | "jga-study"
-    | "jga-policy";
+export type JgaStudy = {
+  type: "jga-study";
   identifier: string;
   name: string | null;
   dateCreated: string;

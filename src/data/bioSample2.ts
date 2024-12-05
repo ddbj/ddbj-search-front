@@ -1,4 +1,4 @@
-import { BioSample } from "@/types/bioSample.ts";
+import { BioSample } from "@/types/BioSample.ts";
 
 export const biosample2: BioSample = {
   identifier: "SAMN33271208",
@@ -87,7 +87,7 @@ export const biosample2: BioSample = {
     },
   ],
   model: [],
-  Package: {
+  package: {
     name: "MIMARKS.survey.host-associated.6.0",
     display_name: "MIMARKS: survey, host-associated; version 6.0",
   },
