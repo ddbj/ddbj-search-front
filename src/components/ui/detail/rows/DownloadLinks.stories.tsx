@@ -8,10 +8,9 @@ const meta: Meta<typeof DownloadLinks> = {
 export default meta;
 
 const data = sraRun1;
-const refs = data.type === "sra-run" ? data.downloadUrl : [];
 type Story = StoryObj<typeof DownloadLinks>;
 export const Primary: Story = {
   args: {
-    downloadUrl: refs,
+    data,
   },
 };
