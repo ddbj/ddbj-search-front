@@ -45,8 +45,7 @@ export const DetailTable: FC<Props> = ({ data }) => {
 
             {/*{renderDistribution(data)}*/}
 
-            {/*TODO: show discuss download*/}
-            {/*<DownloadLinks downloadUrl={data.downloadUrl} />*/}
+            <DownloadLinks data={data} />
             <Row dd={"status"}>{data.status}</Row>
             <Row dd={"visibility"}>{data.visibility}</Row>
             <Row dd={"dateCreated"}>{data.dateCreated}</Row>
