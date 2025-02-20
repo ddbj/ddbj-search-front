@@ -6,6 +6,7 @@ import { BioSample } from "@/types/BioSample.ts";
 import { JgaDac } from "@/types/JgaDac.ts";
 
 export type MultiSearchElasticsearchResponse = MultiSearchResponse<HitSource>;
+export type SingleSearchElasticsearchResponse = SingleSearchResponse<HitSource>;
 export type ElasticSearchSource = HitSource;
 
 type HitSource = JgaDac | BaseDataSet | BioSample | BioProject;
@@ -38,6 +39,10 @@ type MultiSearchResponse<T> = {
     };
     status: number;
   }[];
+};
+
+type SingleSearchResponse<T> = {
+  _source: T;
 };
 
 export type Organism = {

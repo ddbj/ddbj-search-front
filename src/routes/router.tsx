@@ -28,7 +28,7 @@ const entryRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/search/entry/$type/$id",
   component: DetailPage,
-  loader: async ({ params: { id } }) => fetchDetail(id),
+  loader: async ({ params: { id, type } }) => fetchDetail(type, id),
 });
 
 const routeTree = rootRoute.addChildren([indexRoute, entryRoute]);
