@@ -87,8 +87,8 @@ export const Conditions: FC = () => {
         react={REACTIVE_SEARCH_PROPS_REACT}
         data={[
           { label: "JGA", value: "jga" },
-          { label: "BioProject", value: "bioproject" },
-          { label: "BioSample", value: "biosample" },
+          { label: "BioProject", value: "BioProject" },
+          { label: "BioSample", value: "BioSample" },
           { label: "SRA", value: "sra" },
         ]}
       />
