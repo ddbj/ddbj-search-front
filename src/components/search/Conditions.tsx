@@ -94,7 +94,7 @@ export const Conditions: FC = () => {
       />
       <SingleList
         componentId="type"
-        dataField="type.keyword"
+        dataField="type"
         title={"Type"}
         filterLabel={"Type"}
         URLParams
@@ -103,7 +103,7 @@ export const Conditions: FC = () => {
 
       <SingleList
         componentId="organism"
-        dataField="organism.name.keyword"
+        dataField="organism.name"
         title={"Organism"}
         filterLabel={"Organism"}
         URLParams
