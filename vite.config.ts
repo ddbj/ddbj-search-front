@@ -35,5 +35,8 @@ export default defineConfig(({ mode }) => ({
   preview: {
     host: insideDockerContainer ? "0.0.0.0" : "127.0.0.1",
     port: 3000,
+  },
+  define: {
+    DDBJ_SEARCH_BASE_URL: JSON.stringify(ProcessingInstruction.env.DDBJ_SEARCH_BASE_URL || "https://ddbj.nig.ac.jp"),
   }
 }));

@@ -1,13 +1,12 @@
 services:
   app:
-    # image: ghcr.io/ddbj/ddbj-search-front:20240423
     build:
       context: .
       dockerfile: Dockerfile
+    image: ddbj-search-front
     container_name: ddbj-search-front
-    ports:
-      - 0.0.0.0:3000:3000
-    restart: on-failure
+    environment:
+      DDBJ_SEARCH_BASE_URL: "${DDBJ_SEARCH_BASE_URL:-https://ddbj.nig.ac.jp"
     working_dir: /app
     entrypoint: ["tini", "--"]
     command: ["pnpm", "run", "preview"]
@@ -16,5 +15,5 @@ services:
 
 networks:
   ddbj-search-network:
-    name: ddbjld-network
+    name: ddbj-search-network
     external: true

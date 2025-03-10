@@ -11,7 +11,8 @@ services:
     ports:
       - 127.0.0.1:3000:3000
       - 127.0.0.1:6006:6006
-    restart: on-failure
+    environment:
+      DDBJ_SEARCH_BASE_URL: "http://localhost:3000"
     working_dir: /app
     entrypoint: ["tini", "--"]
     command: ["sleep", "infinity"]
