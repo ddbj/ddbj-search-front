@@ -7,12 +7,6 @@ LABEL org.opencontainers.image.source="https://github.com/ddbj/ddbj-search-front
 LABEL org.opencontainers.image.version="20240423"
 LABEL org.opencontainers.image.licenses="Apache-2.0"
 
-RUN apt update && \
-    apt install -y --no-install-recommends \
-    tini && \
-    apt clean && \
-    rm -rf /var/lib/apt/lists/*
-
 RUN corepack enable
 
 WORKDIR /app
@@ -28,5 +22,5 @@ RUN pnpm run build
 
 EXPOSE 3000
 
-ENTRYPOINT ["tini", "--"]
+ENTRYPOINT [""]
 CMD ["pnpm", "run", "preview"]

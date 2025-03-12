@@ -5,13 +5,11 @@ services:
       dockerfile: Dockerfile
     image: ddbj-search-front
     container_name: ddbj-search-front
-    environment:
-      DDBJ_SEARCH_BASE_URL: "${DDBJ_SEARCH_BASE_URL:-https://ddbj.nig.ac.jp"
     working_dir: /app
-    entrypoint: ["tini", "--"]
     command: ["pnpm", "run", "preview"]
     networks:
       - ddbj-search-network
+    init: true
 
 networks:
   ddbj-search-network:
