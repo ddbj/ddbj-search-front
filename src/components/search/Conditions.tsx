@@ -9,7 +9,7 @@ import { endOfDay, format, startOfDay } from "date-fns";
 import { FC } from "react";
 
 const REACTIVE_SEARCH_PROPS_REACT = Object.freeze({
-  and: ["query", "isPartOf", "type", "organism", "datePublished", "visibility"],
+  and: ["query", "isPartOf", "type", "organism", "datePublished"],
 });
 
 const dateRangeCustomQuery = (value: any, props: any) => {
@@ -29,53 +29,67 @@ const dateRangeCustomQuery = (value: any, props: any) => {
   return { query };
 };
 
+const queryCustomQuery = (value: any, props: any) => {
+  if (!value) return undefined;
+
+  return {
+    query: {
+      bool: {
+        should: [
+          {
+            multi_match: {
+              query: value,
+              fields: ["title", "description", "name"],
+              type: "cross_fields",
+              operator: "and"
+            }
+          },
+          {
+            multi_match: {
+              query: value,
+              fields: ["title", "description", "name"],
+              type: "phrase",
+              operator: "and"
+            }
+          },
+          {
+            multi_match: {
+              query: value,
+              fields: ["title", "description", "name"],
+              type: "phrase_prefix",
+              operator: "and"
+            }
+          },
+          {
+            term: { "identifier": value }
+          }
+        ],
+        minimum_should_match: 1
+      }
+    },
+  };
+};
+
 export const Conditions: FC = () => {
   return (
     <div className="flex flex-col gap-4">
       <DataSearch
         componentId="query"
         dataField={[
-          "search",
           "identifier",
           "title",
           "description",
           "name",
-          "type",
-          "url",
-          "sameAs",
-          "isPartOf",
-          "status",
-          "visibility",
         ]}
-        defaultQuery={() => {
-          return {
-            _source: {
-              includes: ["*"],
-              excludes: [
-                "url",
-                "sameAs",
-                "dbXrefs",
-                "properties",
-                "search",
-                "distribution",
-                "downloadUrl",
-                "status",
-                "visibility",
-                "dateCreated",
-                "dateModified",
-              ],
-            },
-          };
-        }}
         title={"Keyword"}
         filterLabel={"Keyword"}
-        fieldWeights={[1, 7, 3, 3, 3, 3, 3]}
         autosuggest={false}
         showFilter
         URLParams
         queryFormat="and"
         fuzziness="AUTO"
         debounce={100}
+        customQuery={queryCustomQuery}
         react={REACTIVE_SEARCH_PROPS_REACT}
       />
       <ToggleButton
