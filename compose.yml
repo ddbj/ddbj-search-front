@@ -10,6 +10,10 @@ services:
     networks:
       - ddbj-search-network
     init: true
+    ulimits:
+      nofile:
+        soft: 65535
+        hard: 65535
 
 networks:
   ddbj-search-network:
