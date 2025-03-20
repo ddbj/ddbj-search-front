@@ -32,8 +32,6 @@ const dateRangeCustomQuery = (value: any, props: any) => {
 const queryCustomQuery = (value: any, props: any) => {
   if (!value) return undefined;
 
-  console.log(value)
-
   return {
     query: {
       bool: {
