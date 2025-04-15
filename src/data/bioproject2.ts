@@ -241,10 +241,12 @@ export const bioproject2: BioProject = {
   name: "",
   grant: [
     {
-      agency: {
-        name: "NSF",
-        abbreviation: "NSF",
-      },
+      agency: [
+        {
+          name: "NSF",
+          abbreviation: "NSF",
+        },
+      ],
       id: "1139893",
       title: "",
     },
