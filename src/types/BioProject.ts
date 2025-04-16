@@ -52,6 +52,6 @@ export type BioProject = {
     agency: {
       abbreviation: string;
       name: string;
-    };
+    }[];
   }[];
 };
