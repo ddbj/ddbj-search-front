@@ -150,7 +150,7 @@ type _HitSource = {
       properties: unknown;
       organism: __Organism | null;
       downloadUrl: DownloadUrl[] | null;
-      dbXrefs: Xref[];
+      dbXref: Xref[];
       dbXrefsStatistics: __DbXrefsStatistics[];
       sameAs: Xref[] | null;
     }
@@ -158,7 +158,7 @@ type _HitSource = {
       type: "jga-dac";
       properties: unknown;
       organism: __Organism | null;
-      dbXrefs: Xref[];
+      dbXref: Xref[];
     }
 );
 /**

@@ -13,8 +13,8 @@ export type JgaDac = {
   url: string;
   distribution: Distribution[];
   properties: unknown;
+  dbXref: Xref[];
   //--------------------------------
   // not contained in BioSample and BioProject
   organism: __Organism | null;
-  dbXrefs: Xref[];
 };
