@@ -16,7 +16,9 @@ export const RefLinks: FC<Props> = ({ refs, title }) => {
     .map(([type, refs]) => {
       return (
         <div className={"flex"} key={type}>
-          <dt className={"w-32 shrink-0 grow-0 font-medium"}>{type}</dt>
+          <dt className={"w-36 shrink-0 grow-0 font-medium"}>
+            {type} ({refs.length})
+          </dt>
           <dd className={"grid grow grid-cols-auto-fill-100 gap-x-3"}>
             {refs.map((ref) => {
               const reg = new RegExp("(.*)(ddbj.nig.ac.jp/)(.*)(resource/)(.*)");
