@@ -25,7 +25,7 @@ export const jgaPolicy1: ElasticSearchSource = {
       type: "DataDownload",
     },
   ],
-  dbXrefs: [
+  dbXref: [
     {
       identifier: "JGAD000024",
       type: "jga-dataset",

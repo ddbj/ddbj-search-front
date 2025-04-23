@@ -27,7 +27,7 @@ export const jgaStudy1: JgaStudy = {
       type: "DataDownload",
     },
   ],
-  dbXrefs: [
+  dbXref: [
     {
       identifier: "JGAD000004",
       type: "jga-dataset",
