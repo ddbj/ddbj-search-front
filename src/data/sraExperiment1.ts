@@ -31,7 +31,7 @@ export const sraExperiment1: ElasticSearchSource = {
       type: "DataDownload",
     },
   ],
-  dbXrefs: [
+  dbXref: [
     {
       identifier: "SRA1421433",
       type: "sra-submission",

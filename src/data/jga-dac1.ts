@@ -22,7 +22,7 @@ export const jgaDac1: ElasticSearchSource = {
       type: "DataDownload",
     },
   ],
-  dbXrefs: [
+  dbXref: [
     {
       identifier: "JGAS000001",
       type: "jga-study",

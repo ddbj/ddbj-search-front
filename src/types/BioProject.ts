@@ -18,9 +18,9 @@ export type BioProject = {
   sameAs: Xref[] | null;
   description: string | null;
   title: string | null;
+  dbXref: Xref[] | null;
   //--------------------------------
   // Same as bioSample but not in BaseDataSet
-  dbXref: Xref[] | null;
   organism: Organism | null;
   //--------------------------------
   // Unique to BioProject

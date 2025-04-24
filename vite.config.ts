@@ -16,12 +16,12 @@ export default defineConfig(({ mode }) => ({
     rollupOptions: {
       plugins: [
         mode === "analyze" &&
-        visualizer({
-          open: true,
-          filename: "dist/stats.html",
-          gzipSize: true,
-          brotliSize: true,
-        }),
+          visualizer({
+            open: true,
+            filename: "dist/stats.html",
+            gzipSize: true,
+            brotliSize: true,
+          }),
       ],
     },
   },
@@ -36,5 +36,5 @@ export default defineConfig(({ mode }) => ({
   define: {
     DDBJ_SEARCH_BASE_URL: JSON.stringify("https://ddbj.nig.ac.jp"),
     // DDBJ_SEARCH_BASE_URL: JSON.stringify("https://ddbj-staging.nig.ac.jp"),
-  }
+  },
 }));

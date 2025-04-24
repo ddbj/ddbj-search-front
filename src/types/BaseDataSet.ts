@@ -22,6 +22,7 @@ export type BaseDataSet = {
   url: string;
   distribution: Distribution[];
   properties: unknown;
+  dbXref: Xref[];
   //--------------------------------
   // not contained in JgaDac but in BioSample and BioProject
   sameAs: Xref[] | null;
@@ -33,6 +34,5 @@ export type BaseDataSet = {
   //--------------------------------
   // not contained in BioSample and BioProject
   organism: __Organism | null;
-  dbXrefs: Xref[];
   dbXrefsStatistics: __DbXrefsStatistics[];
 };

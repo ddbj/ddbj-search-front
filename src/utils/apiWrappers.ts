@@ -10,13 +10,13 @@ export const getTitle = (item: ElasticSearchSource): string => {
 };
 
 export const getDbXrefs = (item: ElasticSearchSource): Xref[] => {
-  switch (item.type) {
-    case "bioproject":
-    case "biosample":
-      return item.dbXref ?? [];
-    default:
-      return item.dbXrefs ?? [];
-  }
+  return item.dbXref ?? [];
+  // switch (item.type) {
+  //   case "bioproject":
+  //   case "biosample"
+  //   default:
+  //     return item.dbXrefs ?? [];
+  // }
 };
 
 export const getSameAs = (item: ElasticSearchSource): Xref[] => {

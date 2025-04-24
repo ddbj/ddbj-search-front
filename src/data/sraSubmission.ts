@@ -29,7 +29,7 @@ export const sraSubmission: ElasticSearchSource = {
       type: "DataDownload",
     },
   ],
-  dbXrefs: [
+  dbXref: [
     {
       identifier: "PRJNA230968",
       type: "bioproject",
