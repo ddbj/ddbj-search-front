@@ -120,6 +120,7 @@ export const Conditions: FC = () => {
 
       <SingleList
         componentId="organism"
+        nestedField="organism"
         dataField="organism.name"
         title={"Organism"}
         filterLabel={"Organism"}
