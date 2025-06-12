@@ -1,4 +1,4 @@
-import { Search } from "./components/search.tsx";
+import { Search } from "@/components/search.tsx";
 
 function App() {
   return (

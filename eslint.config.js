@@ -1,28 +1,63 @@
 // For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
-import storybook from "eslint-plugin-storybook";
-
 import js from "@eslint/js";
-import globals from "globals";
+import importPlugin from "eslint-plugin-import";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
+import storybook from "eslint-plugin-storybook";
+import globals from "globals";
 import tseslint from "typescript-eslint";
 
-export default tseslint.config({ ignores: ["dist"] }, {
-  extends: [js.configs.recommended, ...tseslint.configs.recommended],
-  files: ["**/*.{ts,tsx}"],
-  languageOptions: {
-    ecmaVersion: 2020,
-    globals: globals.browser,
-  },
-  plugins: {
-    "react-hooks": reactHooks,
-    "react-refresh": reactRefresh,
-  },
-  rules: {
-    ...reactHooks.configs.recommended.rules,
-    "react-refresh/only-export-components": [
-      "warn",
-      { allowConstantExport: true },
+export default tseslint.config(
+  { ignores: ["dist"] },
+  {
+    extends: [
+      js.configs.recommended,
+      ...tseslint.configs.recommended,
+      importPlugin.flatConfigs.recommended,
+      importPlugin.flatConfigs.typescript,
     ],
+    files: ["**/*.{ts,tsx,js}"],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+    },
+    plugins: {
+      "react-hooks": reactHooks,
+      "react-refresh": reactRefresh,
+    },
+    rules: {
+      ...reactHooks.configs.recommended.rules,
+      "react-refresh/only-export-components": [
+        "warn",
+        { allowConstantExport: true },
+      ],
+      "import/order": [
+        "error",
+        {
+          groups: [
+            "internal",
+            "external",
+            "index",
+            "sibling",
+            "parent",
+            "builtin",
+            "object",
+            "type",
+          ],
+          "newlines-between": "never",
+          alphabetize: {
+            order: "asc",
+            caseInsensitive: true,
+          },
+        },
+      ],
+    },
+    settings: {
+      "import/resolver": {
+        typescript: true,
+        node: true,
+      },
+    },
   },
-}, storybook.configs["flat/recommended"]);
+  storybook.configs["flat/recommended"],
+);

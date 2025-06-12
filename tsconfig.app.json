@@ -21,9 +21,11 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
-  "include": [
-    "src", ".storybook/**/*.ts"
-  ]
+  "include": ["src", ".storybook/**/*.ts"]
 }
