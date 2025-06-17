@@ -3,6 +3,13 @@ import type { StoryObj, Meta } from "@storybook/react-vite";
 
 const meta = {
   component: Search,
+  decorators: [
+    (Story) => (
+      <div className="w-4xl">
+        <Story />
+      </div>
+    ),
+  ],
 } satisfies Meta<typeof Search>;
 
 export default meta;

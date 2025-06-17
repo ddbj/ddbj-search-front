@@ -1,32 +1,81 @@
+import { Select, type Selection, SelectItem, type SharedSelection } from "@heroui/react";
 import clsx from "clsx";
-import type { FC } from "react";
+import { type FC, useState } from "react";
 
-const wrapperClasses = clsx("flex h-11 items-center", "");
+const dbSet: [string, string][] = [
+  ["biosample", "BioSample"],
+  ["bioproject", "BioProject"],
+  ["sra-run", "SRA Run"],
+  ["sra-experiment", "SRA Experiment"],
+  ["sra-sample", "SRA Sample"],
+  ["sra-analysis", "SRA Analysis"],
+  ["sra-submission", "SRA Submission"],
+  ["sra-study", "SRA Study"],
+  ["jga-dataset", "JGA Dataset"],
+  ["jga-study", "JGA Study"],
+  ["jga-policy", "JGA Policy"],
+  ["jga-dac", "JGA DAC"],
+];
+
+const wrapperClasses = clsx("flex h-fit items-stretch", "");
 
 const inputClasses = clsx(
-  "block h-full w-full border-1 border-gray-200 px-4 py-2.5 text-sm",
+  "block w-full border-y-1 border-gray-200 px-4 py-2.5 text-sm",
   "focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
+);
+
+const selectWrapperClasses = clsx("w-64 flex-shrink-0 flex-grow-0");
+
+const selectTriggerClasses = clsx(
+  "rounded-tl-lg rounded-tr-none rounded-br-none rounded-bl-lg",
+  ""
 );
 
 const buttonClasses = clsx(
-  "flex aspect-[5/4] h-full cursor-pointer items-center justify-center rounded-tr-lg rounded-br-lg bg-amber-600"
-);
-const selectClasses = clsx(
-  "h-full appearance-none rounded-tl-lg rounded-bl-lg bg-white py-1.5 pr-8 pl-3 text-base text-sm text-gray-900 outline-1 -outline-offset-1 outline-gray-200",
-  "focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
+  "flex w-16 flex-shrink-0 flex-grow-0 cursor-pointer items-center justify-center rounded-tr-lg rounded-br-lg bg-amber-600"
 );
 
 //
 
 export const Search: FC = () => {
+  const [values, setValues] = useState<Selection>(new Set([]));
+
+  const onSelectionChange = (selection: SharedSelection) => {
+    if (!(selection instanceof Set)) {
+      setValues(selection);
+      return;
+    }
+    const hasAll = selection.has("all");
+    const isClickedAll = selection.currentKey === "all";
+    if (hasAll) {
+      if (isClickedAll) {
+        setValues(new Set(["all"]));
+      } else {
+        setValues(new Set([...selection].filter((v) => v !== "all")));
+      }
+    } else {
+      setValues(selection);
+    }
+  };
   return (
     <div className={wrapperClasses}>
-      <select id="country" name="country" autoComplete="country-name" className={selectClasses}>
-        <option>United States</option>
-        <option>Canada</option>
-        <option>Mexico</option>
-      </select>
+      <Select
+        className={selectWrapperClasses}
+        classNames={{
+          trigger: selectTriggerClasses,
+        }}
+        label="Data Source"
+        placeholder="Select Database"
+        selectedKeys={values}
+        selectionMode="multiple"
+        onSelectionChange={onSelectionChange}
+      >
+        {[["all", "From all Data Type"], ...dbSet].map(([key, label]) => (
+          <SelectItem key={key}>{label}</SelectItem>
+        ))}
+      </Select>
       <input
+        name="query"
         type="text"
         className={inputClasses}
         placeholder="Enter your query or leave blank to browse all data"
