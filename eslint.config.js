@@ -1,5 +1,5 @@
-// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
 import js from "@eslint/js";
+import pluginRouter from "@tanstack/eslint-plugin-router";
 import importPlugin from "eslint-plugin-import";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
@@ -13,6 +13,7 @@ export default tseslint.config(
     extends: [
       js.configs.recommended,
       ...tseslint.configs.recommended,
+      ...pluginRouter.configs["flat/recommended"],
       importPlugin.flatConfigs.recommended,
       importPlugin.flatConfigs.typescript,
     ],
@@ -27,17 +28,14 @@ export default tseslint.config(
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      "react-refresh/only-export-components": [
-        "warn",
-        { allowConstantExport: true },
-      ],
+      "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
       "import/order": [
         "error",
         {
           groups: [
-            "internal",
             "external",
             "index",
+            "internal",
             "sibling",
             "parent",
             "builtin",
@@ -59,5 +57,5 @@ export default tseslint.config(
       },
     },
   },
-  storybook.configs["flat/recommended"],
+  storybook.configs["flat/recommended"]
 );
