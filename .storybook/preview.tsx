@@ -1,12 +1,13 @@
+import { Providers } from "../src/components/providers.tsx";
 import type { Preview } from "@storybook/react-vite";
-import { HeroUIProvider } from "@heroui/react";
 import "../src/index.css";
+
 const preview: Preview = {
   decorators: [
     (Story) => (
-      <HeroUIProvider>
+      <Providers>
         <Story />
-      </HeroUIProvider>
+      </Providers>
     ),
   ],
   parameters: {

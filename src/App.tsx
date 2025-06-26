@@ -1,10 +1,11 @@
+import { Providers } from "@/components/providers.tsx";
 import { Search } from "@/components/search.tsx";
 
 function App() {
   return (
-    <div>
+    <Providers>
       <Search />
-    </div>
+    </Providers>
   );
 }
 

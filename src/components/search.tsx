@@ -21,7 +21,7 @@ const wrapperClasses = clsx("flex h-fit items-stretch", "");
 
 const inputClasses = clsx(
   "block w-full border-y-1 border-gray-200 px-4 py-2.5 text-sm",
-  "focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
+  "focus:outline-2 focus:-outline-offset-2 focus:outline-fire-bush-600"
 );
 
 const selectWrapperClasses = clsx("w-64 flex-shrink-0 flex-grow-0");
@@ -32,7 +32,7 @@ const selectTriggerClasses = clsx(
 );
 
 const buttonClasses = clsx(
-  "flex w-16 flex-shrink-0 flex-grow-0 cursor-pointer items-center justify-center rounded-tr-lg rounded-br-lg bg-amber-600"
+  "flex w-16 flex-shrink-0 flex-grow-0 cursor-pointer items-center justify-center rounded-tr-lg rounded-br-lg bg-fire-bush"
 );
 
 //

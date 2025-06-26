@@ -4,3 +4,18 @@
 
 @source '../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
 @custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-fire-bush: oklch(73.892% 0.15311 67.566);
+  --color-fire-bush-50: oklch(93.19% 0.04241 74.149);
+  --color-fire-bush-100: oklch(90.841% 0.0576 74.654);
+  --color-fire-bush-200: oklch(86.451% 0.08662 75.352);
+  --color-fire-bush-300: oklch(82.018% 0.11326 74.035);
+  --color-fire-bush-400: oklch(77.887% 0.13663 71.384);
+  --color-fire-bush-500: oklch(73.892% 0.15311 67.566);
+  --color-fire-bush-600: oklch(63.46% 0.13612 66.041);
+  --color-fire-bush-700: oklch(50.965% 0.1072 67.191);
+  --color-fire-bush-800: oklch(37.441% 0.07621 67.95);
+  --color-fire-bush-900: oklch(22.783% 0.04166 73.471);
+  --color-fire-bush-950: oklch(14.301% 0.02515 88.226);
+}
