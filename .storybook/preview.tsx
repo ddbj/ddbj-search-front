@@ -1,9 +1,18 @@
+import { createRootRoute, createRouter, RouterProvider } from "@tanstack/react-router";
 import { Providers } from "../src/components/providers.tsx";
-import type { Preview } from "@storybook/react-vite";
+import type { Decorator, Preview } from "@storybook/react-vite";
 import "../src/index.css";
+
+const RouterDecorator: Decorator = (Story) => {
+  const rootRoute = createRootRoute({ component: () => <Story /> });
+  const routeTree = rootRoute;
+  const router = createRouter({ routeTree });
+  return <RouterProvider router={router} />;
+};
 
 const preview: Preview = {
   decorators: [
+    RouterDecorator,
     (Story) => (
       <Providers>
         <Story />

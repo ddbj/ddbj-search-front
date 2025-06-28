@@ -1,6 +1,6 @@
 import { Select, type Selection, SelectItem, type SharedSelection } from "@heroui/react";
 import clsx from "clsx";
-import { type FC, useState } from "react";
+import { type FC, type FormEvent, useRef, useState } from "react";
 
 const dbSet: [string, string][] = [
   ["biosample", "BioSample"],
@@ -37,8 +37,17 @@ const buttonClasses = clsx(
 
 //
 
-export const Search: FC = () => {
+type Props = {
+  onSearch?: (types: string[], query: string) => void;
+};
+
+const defaultOnSearch = (types: string[], query: string) => {
+  console.log("Search:", { types, query });
+};
+
+export const Search: FC<Props> = ({ onSearch = defaultOnSearch }) => {
   const [values, setValues] = useState<Selection>(new Set([]));
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const onSelectionChange = (selection: SharedSelection) => {
     if (!(selection instanceof Set)) {
@@ -57,8 +66,15 @@ export const Search: FC = () => {
       setValues(selection);
     }
   };
+
+  const onSubmitForm = (e: FormEvent) => {
+    e.preventDefault();
+    const searchType = [...values].length ? [...values].map((key) => String(key)) : ["all"];
+    const value = inputRef.current?.value ?? "";
+    onSearch(searchType, value);
+  };
   return (
-    <div className={wrapperClasses}>
+    <form className={wrapperClasses} onSubmit={onSubmitForm}>
       <Select
         className={selectWrapperClasses}
         classNames={{
@@ -77,10 +93,12 @@ export const Search: FC = () => {
       <input
         name="query"
         type="text"
+        ref={inputRef}
         className={inputClasses}
         placeholder="Enter your query or leave blank to browse all data"
+        data-testid={"queryInput"}
       />
-      <button className={buttonClasses}>
+      <button className={buttonClasses} id={"searchButton"} type={"submit"}>
         <svg
           width="21"
           height="20"
@@ -94,6 +112,6 @@ export const Search: FC = () => {
           />
         </svg>
       </button>
-    </div>
+    </form>
   );
 };

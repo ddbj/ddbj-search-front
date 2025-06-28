@@ -1,5 +1,26 @@
-import type { FC } from "react";
+import { useNavigate } from "@tanstack/react-router";
+import clsx from "clsx";
+import { Logo } from "@/components/graphics/logo.tsx";
+import { Search } from "@/components/search.tsx";
+import type { ComponentProps, FC } from "react";
+
+const wrapperClasses = clsx("flex w-full flex-col items-center gap-8 pt-24");
+type SearchProps = ComponentProps<typeof Search>;
 
 export const HomePage: FC = () => {
-  return <>HELLO HOME</>;
+  const navigate = useNavigate();
+
+  const onSearch: SearchProps["onSearch"] = (type: string[], query: string) => {
+    console.log(type, query);
+    navigate({ to: "/all" });
+  };
+
+  return (
+    <div className={wrapperClasses}>
+      <Logo />
+      <div className={"w-4xl"}>
+        <Search onSearch={onSearch} />
+      </div>
+    </div>
+  );
 };
