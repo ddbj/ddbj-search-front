@@ -3,10 +3,18 @@ import { Providers } from "../src/components/providers.tsx";
 import type { Decorator, Preview } from "@storybook/react-vite";
 import "../src/index.css";
 
+declare global {
+  interface Window {
+    // eslint-disable-next-line
+    __STORYBOOK_ROUTER__?: import("@tanstack/react-router").Router<any>;
+  }
+}
+
 const RouterDecorator: Decorator = (Story) => {
   const rootRoute = createRootRoute({ component: () => <Story /> });
   const routeTree = rootRoute;
   const router = createRouter({ routeTree });
+  window.__STORYBOOK_ROUTER__ = router;
   return <RouterProvider router={router} />;
 };
 

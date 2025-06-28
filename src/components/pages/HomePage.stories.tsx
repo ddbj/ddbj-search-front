@@ -1,16 +1,11 @@
-import * as TanstackRouter from "@tanstack/react-router";
-import { expect, fn, spyOn, userEvent, within } from "storybook/test";
+import { expect, userEvent } from "storybook/test";
 import { HomePage } from "@/components/pages/HomePage.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-
-const mockedNavigate = fn();
 
 const meta = {
   component: HomePage,
   decorators: [
     (Story) => {
-      // 3. "storybook/test" の `spyOn` を使用してフックをモックします。
-      spyOn(TanstackRouter, "useNavigate");
       return <Story />;
     },
   ],
@@ -20,3 +15,14 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 export const Primary = {} satisfies Story;
+
+export const Navigate = {
+  play: async ({ canvasElement }) => {
+    const router = window.__STORYBOOK_ROUTER__;
+    if (!router) throw new Error("Router not found");
+
+    const button = canvasElement.querySelector("button#searchButton")!;
+    await userEvent.click(button);
+    expect(router.state.location.pathname).toBe("/all");
+  },
+} satisfies Story;

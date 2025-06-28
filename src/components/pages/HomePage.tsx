@@ -11,8 +11,9 @@ export const HomePage: FC = () => {
   const navigate = useNavigate();
 
   const onSearch: SearchProps["onSearch"] = (type: string[], query: string) => {
+    const { to, search } = makeNavigateArgs(type, query);
     console.log(type, query);
-    navigate({ to: "/all" });
+    navigate({ to, search });
   };
 
   return (
@@ -24,3 +25,12 @@ export const HomePage: FC = () => {
     </div>
   );
 };
+
+const makeNavigateArgs = (type: string[], query: string) => {
+  const to = "all";
+  const search = query !== "" ? { keywords: query } : {};
+
+  return { to, search };
+};
+
+export const __HOME_TEST__ = { makeNavigateArgs };
