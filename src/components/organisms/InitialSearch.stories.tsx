@@ -1,10 +1,10 @@
 import "jest-extended";
 import { expect, fn } from "storybook/test";
-import { Search } from "@/components/search.tsx";
+import { InitialSearch } from "@/components/organisms/InitialSearch.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
-  component: Search,
+  component: InitialSearch,
   args: {
     onSearch: fn(),
   },
@@ -15,7 +15,7 @@ const meta = {
       </div>
     ),
   ],
-} satisfies Meta<typeof Search>;
+} satisfies Meta<typeof InitialSearch>;
 
 export default meta;
 

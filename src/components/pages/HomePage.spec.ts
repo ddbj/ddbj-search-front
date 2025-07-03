@@ -8,12 +8,12 @@ describe("makeNavigateArgs", () => {
     expect(to).toBe("/all");
     expect(search).toEqual({});
   });
-  it("", () => {
+  it("should return {to:'/bioproject'} with single type and keywords", () => {
     const { to, search } = makeNavigateArgs(["bioproject"], "human");
     expect(to).toBe("/bioproject");
     expect(search).toEqual({ keywords: "human" });
   });
-  it("", () => {
+  it("should return {to:'/all'} with multiple types and sorted types list", () => {
     const { to, search } = makeNavigateArgs(["bioproject", "sra-run", "biosample"], "human");
     expect(to).toBe("/all");
     expect(search).toEqual({ keywords: "human", types: "bioproject,biosample,sra-run" });

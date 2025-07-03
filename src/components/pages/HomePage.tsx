@@ -1,11 +1,11 @@
 import { useNavigate } from "@tanstack/react-router";
 import clsx from "clsx";
 import { Logo } from "@/components/graphics/logo.tsx";
-import { Search } from "@/components/search.tsx";
+import { InitialSearch } from "@/components/organisms/InitialSearch.tsx";
 import type { ComponentProps, FC } from "react";
 
 const wrapperClasses = clsx("flex w-full flex-col items-center gap-8 pt-24");
-type SearchProps = ComponentProps<typeof Search>;
+type SearchProps = ComponentProps<typeof InitialSearch>;
 
 export const HomePage: FC = () => {
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ export const HomePage: FC = () => {
     <div className={wrapperClasses}>
       <Logo />
       <div className={"w-4xl"}>
-        <Search onSearch={onSearch} />
+        <InitialSearch onSearch={onSearch} />
       </div>
     </div>
   );

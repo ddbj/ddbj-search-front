@@ -1,10 +1,10 @@
 import { Providers } from "@/components/providers.tsx";
-import { Search } from "@/components/search.tsx";
+import { InitialSearch } from "@/components/organisms/InitialSearch.tsx";
 
 function App() {
   return (
     <Providers>
-      <Search />
+      <InitialSearch />
     </Providers>
   );
 }

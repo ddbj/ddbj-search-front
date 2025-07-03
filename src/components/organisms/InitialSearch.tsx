@@ -45,7 +45,7 @@ const defaultOnSearch = (types: string[], query: string) => {
   console.log("Search:", { types, query });
 };
 
-export const Search: FC<Props> = ({ onSearch = defaultOnSearch }) => {
+export const InitialSearch: FC<Props> = ({ onSearch = defaultOnSearch }) => {
   const [values, setValues] = useState<Selection>(new Set([]));
   const inputRef = useRef<HTMLInputElement>(null);
 
