@@ -1,7 +1,9 @@
+import { QueryBuilder } from "@/components/organisms/QueryBuilder.tsx";
+
 export const SearchResultPage = () => {
   return (
     <main>
-      <aside></aside>
+      <QueryBuilder></QueryBuilder>
       <section></section>
     </main>
   );
