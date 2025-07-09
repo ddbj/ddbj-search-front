@@ -8,7 +8,7 @@ export type SearchQueryState = {
   dateUpdated?: string;
 };
 
-const initialSearchQueryState: SearchQueryState = { types: ["BioSample"] };
+const initialSearchQueryState: SearchQueryState = {};
 
 const searchQueryAtom = atom(initialSearchQueryState);
 
@@ -17,17 +17,31 @@ export const useSearchQueryState = () => {
 };
 export const useSearchQueryMutators = () => {
   const setSearchQuery = useSetAtom(searchQueryAtom);
-  const removeItem = (key: keyof SearchQueryState, value?: string) => {
+  const removeFromSearchQuery = (key: keyof SearchQueryState, value?: string) => {
     setSearchQuery((draft) => {
-      const newState = _removeItem(draft, key, value);
+      const newState = removeItem(draft, key, value);
       return newState;
     });
   };
+  const updateDatePublished = (value: string | null) => {
+    setSearchQuery((draft) => {
+      const copied = copy(draft);
+      value ? (copied.datePublished = value) : delete copied.datePublished;
+      return copied;
+    });
+  };
+  const updateDateUpdated = (value: string | null) => {
+    setSearchQuery((draft) => {
+      const copied = copy(draft);
+      value ? (copied.dateUpdated = value) : delete copied.dateUpdated;
+      return copied;
+    });
+  };
 
-  return { removeItem } as const;
+  return { removeFromSearchQuery, setSearchQuery, updateDatePublished, updateDateUpdated } as const;
 };
 
-const _removeItem = (
+const removeItem = (
   original: SearchQueryState,
   key: keyof SearchQueryState,
   value?: string
@@ -49,7 +63,7 @@ const _removeItem = (
 };
 
 export const __SEARCH_QUERY_STATE_TEST__ = {
-  _removeItem,
+  removeItem,
 };
 
 // export const useSelectedQueryState = {};

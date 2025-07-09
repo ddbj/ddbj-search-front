@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { __SEARCH_QUERY_STATE_TEST__, type SearchQueryState } from "@/state/SearchQueryState.ts";
 
-const { _removeItem: removeItem } = __SEARCH_QUERY_STATE_TEST__;
+const { removeItem: removeItem } = __SEARCH_QUERY_STATE_TEST__;
 
 describe("removeItem", () => {
   const original: SearchQueryState = {

@@ -26,10 +26,9 @@ export const HomePage: FC = () => {
   );
 };
 
-const makeNavigateArgs = (_types: string[], query: string) => {
-  const to = _types.length === 1 ? `/${_types[0]}` : "/all";
+const makeNavigateArgs = (types: string[], query: string) => {
+  const to = types.length === 1 ? `/${types[0]}` : "/all";
   const keywords = query !== "" ? query : undefined;
-  const types = _types.length > 1 ? _types.sort().join(",") : undefined;
   const search = { keywords, types };
   return { to, search };
 };

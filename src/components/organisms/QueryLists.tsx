@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { QueryTip } from "@/components/morecules/QueryTip.tsx";
 import {
   type SearchQueryState,
@@ -8,26 +9,35 @@ import type { ComponentProps, FC } from "react";
 
 type Props = {};
 
+const tipWrapperClasses = clsx("flex flex-wrap gap-2");
+
 export const QueryLists: FC<Props> = () => {
   const state = useSearchQueryState();
-  const { removeItem } = useSearchQueryMutators();
+  const { removeFromSearchQuery } = useSearchQueryMutators();
   const tipData = parseQueryStateToTipList(state);
 
   //todo set name type properly
   const onClickRemove = (name: string, value: string) => {
-    removeItem(name as keyof SearchQueryState, value);
+    removeFromSearchQuery(name as keyof SearchQueryState, value);
   };
+
+  if (tipData.length === 0) {
+    return <></>;
+  }
 
   return (
     <div>
-      {tipData.map(({ label, data }) => (
-        <QueryTip
-          key={`${data.name}:${data.value}`}
-          label={label}
-          data={data}
-          onClickRemove={onClickRemove}
-        />
-      ))}
+      <h3>Queries:</h3>
+      <div className={tipWrapperClasses}>
+        {tipData.map(({ label, data }) => (
+          <QueryTip
+            key={`${data.name}:${data.value}`}
+            label={label}
+            data={data}
+            onClickRemove={onClickRemove}
+          />
+        ))}
+      </div>
     </div>
   );
 };
