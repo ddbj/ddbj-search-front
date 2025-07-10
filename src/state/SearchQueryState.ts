@@ -1,14 +1,37 @@
 import { copy } from "copy-anything";
 import { atom, useAtomValue, useSetAtom } from "jotai";
+import type { DBType } from "@/consts.ts";
+import type { CalendarDate } from "@internationalized/date";
+import type { RangeValue } from "@react-types/shared";
+
+export type DateRange = RangeValue<CalendarDate>;
 
 export type SearchQueryState = {
-  types?: string[];
-  keywords?: string[];
-  datePublished?: string;
-  dateUpdated?: string;
+  types: { [K in DBType]: boolean };
+  keywords: string[];
+  datePublished: DateRange | null;
+  dateUpdated: DateRange | null;
 };
 
-const initialSearchQueryState: SearchQueryState = {};
+const initialSearchQueryState: SearchQueryState = {
+  types: {
+    biosample: false,
+    bioproject: false,
+    "sra-run": false,
+    "sra-experiment": false,
+    "sra-sample": false,
+    "sra-analysis": false,
+    "sra-submission": false,
+    "sra-study": false,
+    "jga-dataset": false,
+    "jga-study": false,
+    "jga-policy": false,
+    "jga-dac": false,
+  },
+  keywords: [],
+  dateUpdated: null,
+  datePublished: null,
+};
 
 const searchQueryAtom = atom(initialSearchQueryState);
 
@@ -23,17 +46,17 @@ export const useSearchQueryMutators = () => {
       return newState;
     });
   };
-  const updateDatePublished = (value: string | null) => {
+  const updateDatePublished = (value: DateRange | null) => {
     setSearchQuery((draft) => {
       const copied = copy(draft);
-      value ? (copied.datePublished = value) : delete copied.datePublished;
+      copied.datePublished = value;
       return copied;
     });
   };
-  const updateDateUpdated = (value: string | null) => {
+  const updateDateUpdated = (value: DateRange | null) => {
     setSearchQuery((draft) => {
       const copied = copy(draft);
-      value ? (copied.dateUpdated = value) : delete copied.dateUpdated;
+      copied.dateUpdated = value;
       return copied;
     });
   };

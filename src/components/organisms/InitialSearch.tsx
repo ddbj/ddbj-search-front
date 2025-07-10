@@ -1,7 +1,7 @@
 import { Select, type Selection, SelectItem, type SharedSelection } from "@heroui/react";
 import clsx from "clsx";
 import { type FC, type FormEvent, useRef, useState } from "react";
-import { dbSet } from "@/consts.ts";
+import { dbLabels } from "@/consts.ts";
 
 const wrapperClasses = clsx("flex h-fit items-stretch", "");
 
@@ -75,7 +75,7 @@ export const InitialSearch: FC<Props> = ({ onSearch = defaultOnSearch }) => {
         selectionMode="multiple"
         onSelectionChange={onSelectionChange}
       >
-        {[["all", "From all Data Type"], ...dbSet].map(([key, label]) => (
+        {[["all", "From all Data Type"], ...Object.entries(dbLabels)].map(([key, label]) => (
           <SelectItem key={key}>{label}</SelectItem>
         ))}
       </Select>

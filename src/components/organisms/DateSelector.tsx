@@ -1,5 +1,9 @@
 import { DateRangePicker } from "@/components/morecules/DateRangePicker.tsx";
-import { useSearchQueryMutators, useSearchQueryState } from "@/state/SearchQueryState.ts";
+import {
+  type DateRange,
+  useSearchQueryMutators,
+  useSearchQueryState,
+} from "@/state/SearchQueryState.ts";
 import type { FC } from "react";
 
 type Props = {};
@@ -9,10 +13,10 @@ const wrapperClasses = "flex flex-col gap-4";
 export const DateSelector: FC<Props> = () => {
   const state = useSearchQueryState();
   const { updateDateUpdated, updateDatePublished } = useSearchQueryMutators();
-  const onChangeDatePublished = (value: string | null) => {
+  const onChangeDatePublished = (value: DateRange | null) => {
     updateDatePublished(value);
   };
-  const onChangeDateUpdated = (value: string | null) => {
+  const onChangeDateUpdated = (value: DateRange | null) => {
     updateDateUpdated(value);
   };
   return (

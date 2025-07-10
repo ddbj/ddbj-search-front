@@ -1,10 +1,17 @@
+import { useState } from "react";
 import { DateRangePicker } from "./DateRangePicker.tsx";
+import type { DateRange } from "@/state/SearchQueryState.ts";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
   component: DateRangePicker,
   args: {},
-  decorators: [],
+  decorators: [
+    (Story, { args }) => {
+      const [value, setValue] = useState<DateRange | null>(null);
+      return <Story args={{ ...args, value, onChange: setValue }} />;
+    },
+  ],
 } satisfies Meta<typeof DateRangePicker>;
 
 export default meta;
@@ -15,8 +22,6 @@ export const Primary = {
   args: {
     label: "Date Published",
     value: null,
-    onChange: (value) => {
-      console.log(value);
-    },
+    onChange: () => {},
   },
 } satisfies Story;

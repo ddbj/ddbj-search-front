@@ -14,15 +14,15 @@ export const TypeSelector: FC<Props> = () => {
       <div className={"flex flex-col gap-1"}>
         {dbSet.map(([value, label]) => {
           const isSelected = !!types.find((t) => t === value);
-
           return (
             <CheckboxText
+              key={value}
               labelStr={label}
               value={value}
               link={`/${value}`}
               isSelected={isSelected}
-              onValueChange={(value, isSelected) => {
-                toggleType(value, isSelected);
+              setIsSelected={(v) => {
+                toggleType(value, v);
               }}
               // onValueChange={}
             />

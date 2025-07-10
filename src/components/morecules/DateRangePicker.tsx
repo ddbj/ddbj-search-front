@@ -1,40 +1,40 @@
-import { DateRangePicker as HeroDateRangePicker } from "@heroui/date-picker";
-import { parseDate } from "@internationalized/date";
-import { type ComponentProps, type FC, useEffect, useState } from "react";
+import { DateRangePicker as _DateRangePicker } from "@heroui/date-picker";
+import { type CalendarDate } from "@internationalized/date";
+import { type FC } from "react";
+import type { DateRange } from "@/state/SearchQueryState.ts";
 
-type DateRange = ComponentProps<typeof HeroDateRangePicker>["value"];
+const TypedDateRangePicker = _DateRangePicker<CalendarDate>;
 type Props = {
   label: string;
-  value: string | null | undefined;
-  onChange: (value: string | null) => void;
+  value: DateRange | null;
+  onChange: (value: DateRange | null) => void;
 };
-
 export const DateRangePicker: FC<Props> = ({ label, value, onChange }) => {
-  const [uiValue, setUiValue] = useState<DateRange>(null);
-  useEffect(() => {
-    if (value) {
-      const splitted = value.split("_");
-      const start = splitted[0];
-      const end = splitted[1];
-      setUiValue({
-        start: parseDate(start),
-        end: parseDate(end),
-      });
-    } else {
-      setUiValue(null);
-    }
-  }, [value]);
-  useEffect(() => {
-    if (uiValue) {
-      const start = uiValue.start.toString();
-      const end = uiValue.start.toString();
-      onChange(`${start}_${end}`);
-    } else {
-      onChange(null);
-    }
-  }, [uiValue]);
   //todo: add clear button
   return (
-    <HeroDateRangePicker label={label} value={uiValue} onChange={setUiValue} aria-label={label} />
+    <TypedDateRangePicker label={label} value={value} onChange={onChange} aria-label={label} />
   );
 };
+
+/*
+const uiValue = useMemo(() => {
+    if (value) {
+      const splitted = value.split("_");
+      const start = parseDate(splitted[0]);
+      const end = parseDate(splitted[1]);
+      return { start, end };
+    } else {
+      return null;
+    }
+  }, [value]);
+  const onChangeUi = useCallback(
+    (v: RangeValue<CalendarDate> | null) => {
+      if (v?.start && v.end) {
+        onChange(`${v.start.toString()}_${v.end.toString()}`);
+      } else {
+        onChange(null);
+      }
+    },
+    [onChange]
+  );
+ */

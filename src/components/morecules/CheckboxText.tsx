@@ -1,12 +1,13 @@
 import { Checkbox } from "@heroui/react";
 import clsx from "clsx";
-import { type FC, useEffect, useState } from "react";
+import { type FC } from "react";
+
 type Props = {
   labelStr: string;
   value: string;
   link?: string;
   isSelected?: boolean;
-  onValueChange?: (value: string, isSelected: boolean) => void;
+  setIsSelected?: (value: boolean) => void;
 };
 
 const wrapperClasses = clsx("flex overflow-hidden");
@@ -15,20 +16,9 @@ export const CheckboxText: FC<Props> = ({
   link,
   labelStr,
   value,
-  onValueChange,
   isSelected = false,
+  setIsSelected,
 }) => {
-  const [uiIsSelected, setUiIsSelected] = useState(isSelected);
-
-  // useEffect(() => {
-  //   if (onValueChange) {
-  //     onValueChange(value, uiIsSelected);
-  //   }
-  // }, [uiIsSelected, onValueChange, value]);
-  // useEffect(() => {
-  //   setUiIsSelected(isSelected);
-  // }, [isSelected]);
-
   if (link) {
     return (
       <div className={wrapperClasses}>
@@ -36,8 +26,8 @@ export const CheckboxText: FC<Props> = ({
           radius={"sm"}
           disableAnimation
           value={value}
-          isSelected={uiIsSelected}
-          onValueChange={setUiIsSelected}
+          isSelected={isSelected}
+          onValueChange={setIsSelected}
         ></Checkbox>
         {/*TODO: use router link*/}
         <a href={link} className={linkClasses}>
@@ -51,8 +41,8 @@ export const CheckboxText: FC<Props> = ({
         radius={"sm"}
         disableAnimation
         value={value}
-        isSelected={uiIsSelected}
-        onValueChange={setUiIsSelected}
+        isSelected={isSelected}
+        onValueChange={setIsSelected}
       >
         {labelStr}
       </Checkbox>
