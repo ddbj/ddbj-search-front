@@ -1,5 +1,7 @@
 import { DateSelector } from "@/components/organisms/DateSelector.tsx";
+import { KeywordInput } from "@/components/organisms/KeywordInput.tsx";
 import { QueryLists } from "@/components/organisms/QueryLists.tsx";
+import { TypeSelector } from "@/components/organisms/TypeSelector.tsx";
 import type { FC } from "react";
 
 type Props = {};
@@ -9,6 +11,8 @@ export const QueryBuilder: FC<Props> = () => {
   return (
     <aside className={wrapperClasses}>
       <QueryLists />
+      <KeywordInput />
+      <TypeSelector />
       <DateSelector />
     </aside>
   );

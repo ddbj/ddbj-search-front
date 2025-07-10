@@ -1,21 +1,7 @@
 import { Select, type Selection, SelectItem, type SharedSelection } from "@heroui/react";
 import clsx from "clsx";
 import { type FC, type FormEvent, useRef, useState } from "react";
-
-const dbSet: [string, string][] = [
-  ["biosample", "BioSample"],
-  ["bioproject", "BioProject"],
-  ["sra-run", "SRA Run"],
-  ["sra-experiment", "SRA Experiment"],
-  ["sra-sample", "SRA Sample"],
-  ["sra-analysis", "SRA Analysis"],
-  ["sra-submission", "SRA Submission"],
-  ["sra-study", "SRA Study"],
-  ["jga-dataset", "JGA Dataset"],
-  ["jga-study", "JGA Study"],
-  ["jga-policy", "JGA Policy"],
-  ["jga-dac", "JGA DAC"],
-];
+import { dbSet } from "@/consts.ts";
 
 const wrapperClasses = clsx("flex h-fit items-stretch", "");
 
@@ -38,11 +24,11 @@ const buttonClasses = clsx(
 //
 
 type Props = {
-  onSearch?: (types: string[], query: string) => void;
+  onSearch?: (types: string[], keywords: string[]) => void;
 };
 
-const defaultOnSearch = (types: string[], query: string) => {
-  console.log("Search:", { types, query });
+const defaultOnSearch = (types: string[], keywords: string[]) => {
+  console.log("Search:", { types, keywords });
 };
 
 export const InitialSearch: FC<Props> = ({ onSearch = defaultOnSearch }) => {
@@ -71,7 +57,10 @@ export const InitialSearch: FC<Props> = ({ onSearch = defaultOnSearch }) => {
     e.preventDefault();
     const searchType = [...values].length ? [...values].map((key) => String(key)) : ["all"];
     const value = inputRef.current?.value ?? "";
-    onSearch(searchType, value);
+    onSearch(
+      searchType,
+      value.split(",").map((str) => str.trim())
+    );
   };
   return (
     <form className={wrapperClasses} onSubmit={onSubmitForm}>

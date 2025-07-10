@@ -10,7 +10,7 @@ type SearchProps = ComponentProps<typeof InitialSearch>;
 export const HomePage: FC = () => {
   const navigate = useNavigate();
 
-  const onSearch: SearchProps["onSearch"] = (types: string[], query: string) => {
+  const onSearch: SearchProps["onSearch"] = (types: string[], query: string[]) => {
     const { to, search } = makeNavigateArgs(types, query);
     console.log(to, search);
     navigate({ to, search });
@@ -26,10 +26,14 @@ export const HomePage: FC = () => {
   );
 };
 
-const makeNavigateArgs = (types: string[], query: string) => {
+const makeNavigateArgs = (_types: string[], _query: string[]) => {
+  const types = _types.filter((t) => t !== "all");
+  const query = _query.filter((q) => q !== "");
   const to = types.length === 1 ? `/${types[0]}` : "/all";
-  const keywords = query !== "" ? query : undefined;
-  const search = { keywords, types };
+  const search = {
+    keywords: query.length ? query : undefined,
+    types: types.length ? types : undefined,
+  };
   return { to, search };
 };
 

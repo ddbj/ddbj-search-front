@@ -37,8 +37,30 @@ export const useSearchQueryMutators = () => {
       return copied;
     });
   };
+  const updateKeywords = (value: string | null) => {
+    setSearchQuery((draft) => {
+      const copied = copy(draft);
+      value
+        ? (copied.keywords = value.split(",").map((str) => str.trim()))
+        : delete copied.keywords;
+      return copied;
+    });
+  };
+  const toggleType = (typeKey: string, isSelected: boolean) => {
+    setSearchQuery((draft) => {
+      const copied = copy(draft);
+      return copied;
+    });
+  };
 
-  return { removeFromSearchQuery, setSearchQuery, updateDatePublished, updateDateUpdated } as const;
+  return {
+    removeFromSearchQuery,
+    setSearchQuery,
+    updateDatePublished,
+    updateDateUpdated,
+    updateKeywords,
+    toggleType,
+  } as const;
 };
 
 const removeItem = (
