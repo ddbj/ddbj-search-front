@@ -10,10 +10,10 @@ const wrapperClasses = "flex flex-col gap-4 w-96 p-4";
 export const QueryBuilder: FC<Props> = () => {
   return (
     <aside className={wrapperClasses}>
-      <QueryLists />
       <KeywordInput />
       <TypeSelector />
       <DateSelector />
+      <QueryLists />
     </aside>
   );
 };

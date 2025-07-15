@@ -1,9 +1,6 @@
 import { DateRangePicker } from "@/components/morecules/DateRangePicker.tsx";
-import {
-  type DateRange,
-  useSearchQueryMutators,
-  useSearchQueryState,
-} from "@/state/SearchQueryState.ts";
+import { useSearchQueryMutators, useSearchQueryState } from "@/state/SearchQueryState.ts";
+import type { DateRange } from "@/utils/date.ts";
 import type { FC } from "react";
 
 type Props = {};

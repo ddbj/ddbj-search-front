@@ -1,14 +1,11 @@
 import { copy } from "copy-anything";
 import { atom, useAtomValue, useSetAtom } from "jotai";
-import type { DBType } from "@/consts.ts";
-import type { CalendarDate } from "@internationalized/date";
-import type { RangeValue } from "@react-types/shared";
-
-export type DateRange = RangeValue<CalendarDate>;
+import { type DBType, isDBType } from "@/consts.ts";
+import type { DateRange } from "@/utils/date.ts";
 
 export type SearchQueryState = {
   types: { [K in DBType]: boolean };
-  keywords: string[];
+  keywords: string;
   datePublished: DateRange | null;
   dateUpdated: DateRange | null;
 };
@@ -28,7 +25,7 @@ const initialSearchQueryState: SearchQueryState = {
     "jga-policy": false,
     "jga-dac": false,
   },
-  keywords: [],
+  keywords: "",
   dateUpdated: null,
   datePublished: null,
 };
@@ -40,10 +37,14 @@ export const useSearchQueryState = () => {
 };
 export const useSearchQueryMutators = () => {
   const setSearchQuery = useSetAtom(searchQueryAtom);
+  const refrectSearchParams = () => {};
+  //
+  const _overwriteSearchQuery = (state: SearchQueryState) => {
+    setSearchQuery(state);
+  };
   const removeFromSearchQuery = (key: keyof SearchQueryState, value?: string) => {
     setSearchQuery((draft) => {
-      const newState = removeItem(draft, key, value);
-      return newState;
+      return removeItem(draft, key, value);
     });
   };
   const updateDatePublished = (value: DateRange | null) => {
@@ -63,15 +64,14 @@ export const useSearchQueryMutators = () => {
   const updateKeywords = (value: string | null) => {
     setSearchQuery((draft) => {
       const copied = copy(draft);
-      value
-        ? (copied.keywords = value.split(",").map((str) => str.trim()))
-        : delete copied.keywords;
+      copied.keywords = value ?? "";
       return copied;
     });
   };
-  const toggleType = (typeKey: string, isSelected: boolean) => {
+  const toggleType = (key: DBType, isSelected: boolean) => {
     setSearchQuery((draft) => {
       const copied = copy(draft);
+      copied.types[key] = isSelected;
       return copied;
     });
   };
@@ -83,6 +83,7 @@ export const useSearchQueryMutators = () => {
     updateDateUpdated,
     updateKeywords,
     toggleType,
+    _overwriteSearchQuery,
   } as const;
 };
 
@@ -92,23 +93,39 @@ const removeItem = (
   value?: string
 ): SearchQueryState => {
   const copied = copy(original);
-  if (copied[key] !== undefined && Array.isArray(copied[key]) && value !== undefined) {
-    const arr = copied[key]!;
-    const index = arr.indexOf(value);
-    if (index >= 0) {
-      arr.splice(index, 1);
-    }
-    if (arr.length === 0) {
-      delete copied[key];
-    }
-  } else {
-    delete copied[key];
+  switch (key) {
+    case "datePublished":
+    case "dateUpdated":
+      copied[key] = null;
+      break;
+    case "keywords":
+      copied[key] = removeItemFromKeywords(original[key], value ?? "");
+      break;
+    case "types":
+      if (isDBType(value) && copied[key][value]) {
+        copied[key][value] = false;
+      }
+      break;
   }
   return copied;
 };
 
+const removeItemFromKeywords = (keywords: string, value: string) => {
+  const arr = keywords
+    .split(",")
+    .map((t) => t.trim())
+    .filter((t) => t !== "");
+  const index = arr.indexOf(value);
+  if (index === -1) return keywords;
+  arr.splice(index, 1);
+  return arr.join(", ");
+};
+
+const getNewInitialState = () => copy(initialSearchQueryState);
+
 export const __SEARCH_QUERY_STATE_TEST__ = {
   removeItem,
+  getNewInitialState,
 };
 
 // export const useSelectedQueryState = {};

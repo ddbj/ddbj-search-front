@@ -1,31 +1,49 @@
 import { describe, expect, it } from "vitest";
 import { __QUERY_LISTS_TEST__ } from "@/components/organisms/QueryLists.tsx";
-import type { SearchQueryState } from "@/state/SearchQueryState.ts";
+import { __SEARCH_QUERY_STATE_TEST__ } from "@/state/SearchQueryState.ts";
+import { stringToDateRange2 } from "@/utils/date.ts";
+import type { DBType } from "@/consts.ts";
 
 const { parseQueryStateToTipList } = __QUERY_LISTS_TEST__;
+const { getNewInitialState } = __SEARCH_QUERY_STATE_TEST__;
 
 describe("parseQueryStateToTipList", () => {
-  it("", () => {
-    const result = parseQueryStateToTipList({});
+  it("should return empty array when initial state", () => {
+    const state = getNewInitialState();
+    const result = parseQueryStateToTipList(state);
     expect(result).toEqual([]);
   });
+
   it("", () => {
-    const state: SearchQueryState = { types: ["bioSample", "bioProject"] };
+    const state = getNewInitialState();
+    state.keywords = "human,cat";
     const result = parseQueryStateToTipList(state);
     expect(result.length).toBe(2);
-    const bioSample = result.find((item) => item.data.value === "bioSample");
-    expect(bioSample?.data?.name).toBe("types");
-    expect(bioSample?.data?.value).toBe("bioSample");
+    expect(result[0].label.name).toBe("Keyword");
   });
   it("", () => {
-    const state: SearchQueryState = {
-      types: ["bioSample", "bioProject"],
-      datePublished: "2026-01-01",
-    };
+    const state = getNewInitialState();
+    state.types.biosample = true;
+    state.types["sra-analysis"] = true;
+    state.types["jga-study"] = true;
     const result = parseQueryStateToTipList(state);
     expect(result.length).toBe(3);
-    const datePublished = result.find((item) => item.data.name === "datePublished");
-    expect(datePublished?.data.name).toBe("datePublished");
-    expect(datePublished?.data.value).toBe("2026-01-01");
+  });
+  it("", () => {
+    const state = getNewInitialState();
+    Object.keys(state.types).forEach((key) => (state.types[key as DBType] = true));
+    const result = parseQueryStateToTipList(state);
+    console.log(result);
+    expect(result.length).toBe(0);
+  });
+  it("", () => {
+    const state = getNewInitialState();
+    state.datePublished = stringToDateRange2("2025-07-01", "2025-07-10");
+    state.dateUpdated = stringToDateRange2("2024-07-01", "2024-07-10");
+    const result = parseQueryStateToTipList(state);
+    expect(result.length).toBe(2);
+    expect(result.find((o) => o.data.name === "datePublished")?.label.value).toBe(
+      "2025-07-01 | 2025-07-10"
+    );
   });
 });

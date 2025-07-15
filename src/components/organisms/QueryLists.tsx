@@ -5,6 +5,7 @@ import {
   useSearchQueryMutators,
   useSearchQueryState,
 } from "@/state/SearchQueryState.ts";
+import { type DateRange, dateRangeToString2 } from "@/utils/date.ts";
 import type { ComponentProps, FC } from "react";
 
 type Props = {};
@@ -43,27 +44,49 @@ export const QueryLists: FC<Props> = () => {
 };
 
 type QueryTipProps = Omit<ComponentProps<typeof QueryTip>, "onClickRemove">;
-const parseQueryStateToTipList = (
-  state: SearchQueryState
-): Omit<ComponentProps<typeof QueryTip>, "onClickRemove">[] => {
-  //todo implement label data
-  const result: QueryTipProps[] = Object.entries(state)
-    .map(([name, value]) => {
-      if (Array.isArray(value)) {
-        return value.map((v) => {
-          const label = { name, value: v };
-          const data = { name, value: v };
-          return { label, data };
-        });
-      } else {
-        const label = { name, value };
-        const data = { name, value };
-        return { label, data };
-      }
-    })
-    .flat();
+const parseQueryStateToTipList = (state: SearchQueryState): QueryTipProps[] => {
+  const keywords: QueryTipProps[] = state.keywords
+    .split(",")
+    .map((t) => t.trim())
+    .filter((t) => t !== "")
+    .map((t) => {
+      const data = { name: "keywords", value: t };
+      const label = { name: "Keyword", value: t };
+      return { data, label };
+    });
   //
+  const isAllTypesSelected = Object.values(state.types).every((value) => value);
+  const types: QueryTipProps[] = isAllTypesSelected
+    ? []
+    : Object.entries(state.types)
+        .filter(([_key, value]) => !!value)
+        .map(([value, _key]) => {
+          const data = { name: "types", value };
+          const label = { name: "Type", value };
+          return { data, label };
+        });
+
+  const dates: QueryTipProps[] = [
+    parseDateRangeToQueryTipProps(state.datePublished, "datePublished", "Published"),
+    parseDateRangeToQueryTipProps(state.dateUpdated, "dateUpdated", "Updated"),
+  ].filter((v) => !!v);
+
+  const result: QueryTipProps[] = [...keywords, ...types, ...dates];
+
   return result;
+};
+
+const parseDateRangeToQueryTipProps = (
+  range: DateRange | null,
+  dataName: string,
+  labelName: string
+): QueryTipProps | null => {
+  const value = dateRangeToString2(range);
+  if (!value) return null;
+  const { start, end } = value;
+  const data = { name: dataName, value: `${start}_${end}` };
+  const label = { name: labelName, value: `${start} | ${end}` };
+  return { data, label };
 };
 
 export const __QUERY_LISTS_TEST__ = { parseQueryStateToTipList };

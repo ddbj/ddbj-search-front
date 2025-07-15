@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { DateRangePicker } from "./DateRangePicker.tsx";
-import type { DateRange } from "@/state/SearchQueryState.ts";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { DateRange } from "@/utils/date.ts";
 
 const meta = {
   component: DateRangePicker,

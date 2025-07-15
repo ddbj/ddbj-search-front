@@ -30,6 +30,12 @@ export default tseslint.config(
       ...reactHooks.configs.recommended.rules,
       "@typescript-eslint/no-empty-object-type": "off",
       "@typescript-eslint/no-unused-expressions": ["error", { allowTernary: true }],
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          argsIgnorePattern: "^_",
+        },
+      ],
       "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
       "import/order": [
         "error",

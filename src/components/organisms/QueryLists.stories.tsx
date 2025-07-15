@@ -1,6 +1,9 @@
 import { QueryLists } from "@/components/organisms/QueryLists.tsx";
-import { useSearchQueryMutators } from "@/state/SearchQueryState.ts";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { __SEARCH_QUERY_STATE_TEST__, useSearchQueryMutators } from "@/state/SearchQueryState.ts";
+import { stringToDateRange2 } from "@/utils/date.ts";
+
+const { getNewInitialState } = __SEARCH_QUERY_STATE_TEST__;
 
 const meta = {
   component: QueryLists,
@@ -18,21 +21,24 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Primary = {
+export const Empty = {
   decorators: [
     (Story) => {
-      const { setSearchQuery } = useSearchQueryMutators();
-      setSearchQuery({ keywords: ["human", "cat", "dog", "mouse"] });
       return <Story />;
     },
   ],
 } satisfies Story;
 
-export const Empty = {
+export const Primary = {
   decorators: [
     (Story) => {
-      const { setSearchQuery } = useSearchQueryMutators();
-      setSearchQuery({ keywords: [] });
+      const { _overwriteSearchQuery } = useSearchQueryMutators();
+      const newState = getNewInitialState();
+      newState.types.biosample = true;
+      newState.types["sra-analysis"] = true;
+      newState.dateUpdated = stringToDateRange2("2025-07-10", "2025-07-11");
+      newState.keywords = "human,cat";
+      _overwriteSearchQuery(newState);
       return <Story />;
     },
   ],

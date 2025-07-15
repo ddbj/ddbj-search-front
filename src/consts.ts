@@ -13,6 +13,7 @@ export const dbTypes = [
   "jga-dac",
 ] as const;
 export type DBType = (typeof dbTypes)[number];
+export const isDBType = (value?: string): value is DBType => dbTypes.includes(value as DBType);
 
 export const dbLabels: { [K in DBType]: string } = {
   biosample: "BioSample",

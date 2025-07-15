@@ -7,16 +7,16 @@ export const SearchResultPage = () => {
   const search = useSearch({ strict: false });
   const navigate = useNavigate();
   const { setSearchQuery } = useSearchQueryMutators();
-  const searchQuery = useSearchQueryState();
+  const searchQueryState = useSearchQueryState();
 
   useEffect(() => {
-    console.log(search);
-    setSearchQuery(search);
+    // console.log(search);
+    // setSearchQuery(search);
   }, [search, setSearchQuery]);
 
   useEffect(() => {
-    navigate({ search: searchQuery as any });
-  }, [searchQuery, navigate]);
+    // navigate({ search: searchQuery as any });
+  }, [searchQueryState, navigate]);
 
   return (
     <main>
