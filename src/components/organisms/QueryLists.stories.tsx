@@ -1,9 +1,5 @@
 import { QueryLists } from "@/components/organisms/QueryLists.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { __SEARCH_QUERY_STATE_TEST__, useSearchQueryMutators } from "@/state/SearchQueryState.ts";
-import { stringToDateRange2 } from "@/utils/date.ts";
-
-const { getNewInitialState } = __SEARCH_QUERY_STATE_TEST__;
 
 const meta = {
   component: QueryLists,
@@ -29,16 +25,25 @@ export const Empty = {
   ],
 } satisfies Story;
 
-export const Primary = {
+export const HasSearch = {
   decorators: [
     (Story) => {
-      const { _overwriteSearchQuery } = useSearchQueryMutators();
-      const newState = getNewInitialState();
-      newState.types.biosample = true;
-      newState.types["sra-analysis"] = true;
-      newState.dateUpdated = stringToDateRange2("2025-07-10", "2025-07-11");
-      newState.keywords = "human,cat";
-      _overwriteSearchQuery(newState);
+      const router = window.__STORYBOOK_ROUTER__;
+      if (!router) throw new Error("Router not found");
+      router.navigate({
+        to: "/all",
+        search: {
+          datePublished: {
+            start: "2025-03-10",
+            end: "2025-03-11",
+          },
+          dateUpdated: {
+            start: "2025-07-10",
+            end: "2025-07-11",
+          },
+          types: ["biosample", "sra-analysis"],
+        },
+      });
       return <Story />;
     },
   ],

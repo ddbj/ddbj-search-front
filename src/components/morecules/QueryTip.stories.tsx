@@ -11,8 +11,8 @@ const meta = {
     ),
   ],
   args: {
-    name: "type",
-    value: "BioSample",
+    label: { name: "type", value: "BioSample" },
+    data: { name: "type", value: "BioSample" },
     onClickRemove: (name, value) => {
       console.log(name, value);
     },

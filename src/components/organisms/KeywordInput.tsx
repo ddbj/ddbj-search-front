@@ -6,9 +6,7 @@ import { routeTree } from "@/routeTree.gen.ts";
 type Props = {};
 
 export const KeywordInput: FC<Props> = () => {
-  const searchParams = useSearch({
-    strict: false,
-  });
+  const searchParams = useSearch({ strict: false });
   const navigate = useNavigate();
   const uiValue = searchParams?.keywords?.join() ?? "";
 

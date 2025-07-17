@@ -1,15 +1,17 @@
 import * as z from "zod";
-import { dbTypes } from "@/consts.ts";
 
 const dateRangeSchema = z.object({
-  from: z.iso.date(),
-  to: z.iso.date(),
+  start: z.iso.date(),
+  end: z.iso.date(),
 });
 
 export const globalSearchSchema = z.object({
-  types: z.array(z.enum(dbTypes)).optional(),
+  types: z.array(z.string()).optional(),
   keywords: z.array(z.string()).optional(),
   datePublished: dateRangeSchema.optional(),
   dateUpdated: dateRangeSchema.optional(),
 });
 export type GlobalSearchSchemaType = z.infer<typeof globalSearchSchema>;
+export type DateRangeSchemaType = z.infer<typeof dateRangeSchema>;
+
+type AA = GlobalSearchSchemaType["types"];

@@ -1,33 +1,47 @@
+import { useNavigate, useSearch } from "@tanstack/react-router";
+import { type FC, useMemo } from "react";
 import { DateRangePicker } from "@/components/morecules/DateRangePicker.tsx";
-import { useSearchQueryMutators, useSearchQueryState } from "@/state/SearchQueryState.ts";
-import type { DateRange } from "@/utils/date.ts";
-import type { FC } from "react";
+import { routeTree } from "@/routeTree.gen.ts";
+import { type DateRange, dateRangeDataToString, dateRangeStringToData } from "@/utils/date.ts";
+import type { GlobalSearchSchemaType } from "@/schema/search.ts";
 
 type Props = {};
 
 const wrapperClasses = "flex flex-col gap-4";
 
 export const DateSelector: FC<Props> = () => {
-  const state = useSearchQueryState();
-  const { updateDateUpdated, updateDatePublished } = useSearchQueryMutators();
-  const onChangeDatePublished = (value: DateRange | null) => {
-    updateDatePublished(value);
+  const searchParams = useSearch({ strict: false });
+  const { datePublished, dateUpdated } = searchParams;
+  const navigate = useNavigate();
+  //
+  const uiPublished: DateRange | null = useMemo(() => {
+    return datePublished ? dateRangeStringToData(datePublished) : null;
+  }, [datePublished]);
+  const uiUpdated: DateRange | null = useMemo(() => {
+    return dateUpdated ? dateRangeStringToData(dateUpdated) : null;
+  }, [dateUpdated]);
+  const onChangePublished = (v: DateRange | null) => {
+    const from = routeTree.fullPath;
+    const replace = true;
+    const datePublished: GlobalSearchSchemaType["datePublished"] = v
+      ? dateRangeDataToString(v)
+      : undefined;
+    const search: GlobalSearchSchemaType = { ...searchParams, datePublished };
+    navigate({ from, search, replace });
   };
-  const onChangeDateUpdated = (value: DateRange | null) => {
-    updateDateUpdated(value);
+  const onChangeUpdated = (v: DateRange | null) => {
+    const from = routeTree.fullPath;
+    const replace = true;
+    const dateUpdated: GlobalSearchSchemaType["datePublished"] = v
+      ? dateRangeDataToString(v)
+      : undefined;
+    const search: GlobalSearchSchemaType = { ...searchParams, dateUpdated };
+    navigate({ from, search, replace });
   };
   return (
     <div className={wrapperClasses}>
-      <DateRangePicker
-        label={"Published Date"}
-        value={state.datePublished}
-        onChange={onChangeDatePublished}
-      />
-      <DateRangePicker
-        label={"Updated Date"}
-        value={state.dateUpdated}
-        onChange={onChangeDateUpdated}
-      />
+      <DateRangePicker label={"Published Date"} value={uiPublished} onChange={onChangePublished} />
+      <DateRangePicker label={"Updated Date"} value={uiUpdated} onChange={onChangeUpdated} />
     </div>
   );
 };
