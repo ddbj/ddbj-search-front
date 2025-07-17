@@ -1,19 +1,30 @@
 import { Input } from "@heroui/react";
+import { useNavigate, useSearch } from "@tanstack/react-router";
 import { type FC } from "react";
-import { useSearchQueryMutators, useSearchQueryState } from "@/state/SearchQueryState.ts";
+import { routeTree } from "@/routeTree.gen.ts";
 
 type Props = {};
 
 export const KeywordInput: FC<Props> = () => {
-  const keywords = useSearchQueryState().keywords;
-  const { updateKeywords } = useSearchQueryMutators();
+  const searchParams = useSearch({
+    strict: false,
+  });
+  const navigate = useNavigate();
+  const uiValue = searchParams?.keywords?.join() ?? "";
+
+  //todo differed update
+  const onChange = (str: string) => {
+    const keywords = str.split(",");
+    const search = { ...searchParams, keywords: keywords.length ? keywords : undefined };
+    navigate({ from: routeTree.fullPath, search, replace: true });
+  };
   return (
     <div>
       <Input
         label={"Keywords"}
         placeholder={"comma separated keywords "}
-        value={keywords}
-        onValueChange={updateKeywords}
+        value={uiValue}
+        onValueChange={onChange}
       />
     </div>
   );

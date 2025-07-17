@@ -33,7 +33,7 @@ const findByListValue = async (key: string) => {
 };
 const getOnSearchArgs = (onSearchArgs: unknown[] | undefined) => {
   const onSearchTypes = onSearchArgs?.[0] as string[];
-  const onSearchQueries = onSearchArgs?.[1] as string;
+  const onSearchQueries = onSearchArgs?.[1] as string[];
   return { onSearchTypes, onSearchQueries };
 };
 
@@ -46,7 +46,7 @@ export const SearchAsBlank: Story = {
       const button = canvasElement.querySelector("button#searchButton")!;
       await userEvent.click(button);
       const { onSearchTypes } = getOnSearchArgs(args.onSearch?.mock.lastCall);
-      expect(onSearchTypes.sort()).toEqual(["all"].sort());
+      expect(onSearchTypes.sort()).toEqual([].sort());
     });
   },
 };
@@ -96,7 +96,7 @@ export const overwriteWithAll: Story = {
       const button = canvasElement.querySelector("button#searchButton")!;
       await userEvent.click(button);
       const { onSearchTypes } = getOnSearchArgs(args.onSearch?.mock.lastCall);
-      expect(onSearchTypes.sort()).toEqual(["all"].sort());
+      expect(onSearchTypes.sort()).toEqual([].sort());
     });
   },
 };
@@ -131,11 +131,11 @@ export const inputQuery: Story = {
   play: async ({ args, userEvent, canvas, step }) => {
     await step("inputQuery", async () => {
       const input = await canvas.findByTestId("queryInput");
-      await userEvent.type(input, "foo");
+      await userEvent.type(input, "foo, hoge");
       await userEvent.type(input, "{enter}");
       const { onSearchTypes, onSearchQueries } = getOnSearchArgs(args.onSearch?.mock.lastCall);
-      expect(onSearchTypes.sort()).toEqual(["all"].sort());
-      expect(onSearchQueries).toEqual("foo");
+      expect(onSearchTypes.sort()).toEqual([].sort());
+      expect(onSearchQueries).toEqual(["foo", "hoge"]);
     });
   },
 };

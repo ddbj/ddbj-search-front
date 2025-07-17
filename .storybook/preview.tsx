@@ -1,20 +1,45 @@
-import { createRootRoute, createRouter, RouterProvider } from "@tanstack/react-router";
-import { Providers } from "../src/components/providers.tsx";
+import {
+  createMemoryHistory,
+  createRootRoute,
+  createRouter,
+  RouterProvider,
+} from "@tanstack/react-router";
+import { Providers } from "@/components/providers.tsx";
+import { routeTree } from "@/routeTree.gen.ts";
 import type { Decorator, Preview } from "@storybook/react-vite";
 import "../src/index.css";
+import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
+
+const history = createMemoryHistory();
+const fileBaseRouter = createRouter({ routeTree, history });
+type RouterType = typeof fileBaseRouter;
 
 declare global {
   interface Window {
-    // eslint-disable-next-line
-    __STORYBOOK_ROUTER__?: import("@tanstack/react-router").Router<any>;
+    __STORYBOOK_ROUTER__?: RouterType;
   }
 }
 
 const RouterDecorator: Decorator = (Story) => {
-  const rootRoute = createRootRoute({ component: () => <Story /> });
+  const rootRoute = createRootRoute({
+    component: () => (
+      <>
+        <Story />
+        <TanStackRouterDevtools />
+      </>
+    ),
+  });
+  rootRoute.addChildren([]);
   const routeTree = rootRoute;
-  const router = createRouter({ routeTree });
-  window.__STORYBOOK_ROUTER__ = router;
+  const history = createMemoryHistory({ initialEntries: ["/"] });
+  const router = createRouter({
+    routeTree,
+    history,
+    defaultComponent: () => <Story />,
+    defaultErrorComponent: () => <Story />,
+  });
+  // eslint-disable-next-line
+  window.__STORYBOOK_ROUTER__ = router as any as RouterType;
   return <RouterProvider router={router} />;
 };
 

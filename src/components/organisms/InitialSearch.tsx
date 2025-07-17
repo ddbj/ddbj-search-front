@@ -1,7 +1,12 @@
 import { Select, type Selection, SelectItem, type SharedSelection } from "@heroui/react";
 import clsx from "clsx";
 import { type FC, type FormEvent, useRef, useState } from "react";
-import { dbLabels } from "@/consts.ts";
+import { dbLabels, type DBType } from "@/consts.ts";
+
+const allLabel = "From all Data Type";
+const allKey = "all";
+type AllKey = typeof allKey;
+type DBTypeKeyWithAll = DBType | AllKey;
 
 const wrapperClasses = clsx("flex h-fit items-stretch", "");
 
@@ -24,10 +29,10 @@ const buttonClasses = clsx(
 //
 
 type Props = {
-  onSearch?: (types: string[], keywords: string[]) => void;
+  onSearch?: (types: DBType[], keywords: string[]) => void;
 };
 
-const defaultOnSearch = (types: string[], keywords: string[]) => {
+const defaultOnSearch = (types: DBType[], keywords: string[]) => {
   console.log("Search:", { types, keywords });
 };
 
@@ -55,7 +60,7 @@ export const InitialSearch: FC<Props> = ({ onSearch = defaultOnSearch }) => {
 
   const onSubmitForm = (e: FormEvent) => {
     e.preventDefault();
-    const searchType = [...values].length ? [...values].map((key) => String(key)) : ["all"];
+    const searchType = compileSearchType([...values] as DBTypeKeyWithAll[]);
     const value = inputRef.current?.value ?? "";
     onSearch(
       searchType,
@@ -75,7 +80,7 @@ export const InitialSearch: FC<Props> = ({ onSearch = defaultOnSearch }) => {
         selectionMode="multiple"
         onSelectionChange={onSelectionChange}
       >
-        {[["all", "From all Data Type"], ...Object.entries(dbLabels)].map(([key, label]) => (
+        {[[allKey, allLabel], ...Object.entries(dbLabels)].map(([key, label]) => (
           <SelectItem key={key}>{label}</SelectItem>
         ))}
       </Select>
@@ -103,4 +108,8 @@ export const InitialSearch: FC<Props> = ({ onSearch = defaultOnSearch }) => {
       </button>
     </form>
   );
+};
+
+export const compileSearchType = (values: DBTypeKeyWithAll[]): DBType[] => {
+  return values.filter((v) => v !== "all");
 };

@@ -17,12 +17,16 @@ type Story = StoryObj<typeof meta>;
 export const Primary = {} satisfies Story;
 
 export const Navigate = {
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, canvas }) => {
     const router = window.__STORYBOOK_ROUTER__;
     if (!router) throw new Error("Router not found");
+
+    const input = await canvas.findByTestId("queryInput");
+    await userEvent.type(input, "foo, hoge");
 
     const button = canvasElement.querySelector("button#searchButton")!;
     await userEvent.click(button);
     expect(router.state.location.pathname).toBe("/all");
+    expect(router.state.location.search.keywords.sort()).toEqual(["hoge", "foo"].sort());
   },
 } satisfies Story;
