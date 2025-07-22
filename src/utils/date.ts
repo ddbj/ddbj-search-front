@@ -16,14 +16,3 @@ export const dateRangeStringToData = (value: DateRangeSchemaType): DateRange => 
 export const compileDateRangeString = (start: string, end: string): DateRangeSchemaType => {
   return { start, end };
 };
-
-/**
- * @deprecated
- * @param start
- * @param end
- */
-export const stringToDateRange2 = (start: string, end: string): DateRange => {
-  const _start = parseDate(start);
-  const _end = parseDate(end);
-  return { start: _start, end: _end };
-};

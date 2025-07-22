@@ -10,8 +10,8 @@ export const removeFromSearch = (
   switch (key) {
     case "types":
     case "keywords":
-      if (copied[key] && copied[key].includes(value)) {
-        copied[key] = copied[key].filter((t) => t !== value);
+      if (copied[key]) {
+        copied[key] = copied[key].filter((t) => t.trim() !== value.trim());
       }
       break;
     case "datePublished":

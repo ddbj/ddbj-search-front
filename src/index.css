@@ -18,4 +18,5 @@
   --color-fire-bush-800: oklch(37.441% 0.07621 67.95);
   --color-fire-bush-900: oklch(22.783% 0.04166 73.471);
   --color-fire-bush-950: oklch(14.301% 0.02515 88.226);
+  --color-link-primary: var(--color-fire-bush-500);
 }

@@ -11,7 +11,7 @@ type Props = {
 };
 
 const wrapperClasses = clsx("flex overflow-hidden");
-const linkClasses = clsx("text-blue-500");
+const linkClasses = clsx("text-link-primary");
 export const CheckboxText: FC<Props> = ({
   link,
   labelStr,

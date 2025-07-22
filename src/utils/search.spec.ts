@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { removeFromSearch } from "@/state/search.ts";
+import { removeFromSearch } from "@/utils/search.ts";
 import type { GlobalSearchSchemaType } from "@/schema/search.ts";
 
 describe("removeFromSearch", () => {
@@ -13,18 +13,18 @@ describe("removeFromSearch", () => {
   });
   describe("withParams", () => {
     const current: GlobalSearchSchemaType = {
-      keywords: ["human", "cat"],
+      keywords: ["human ", " cat"],
       types: ["sra-analysis", "jga-study"],
       datePublished: { start: "2025-07-01", end: "2025-07-10" },
       dateUpdated: { start: "2024-07-01", end: "2024-07-10" },
     };
     it("", () => {
       const result = removeFromSearch(current, "keywords", "cat");
-      expect(result.keywords).toEqual(["human"]);
+      expect(result.keywords).toEqual(["human "]);
     });
     it("", () => {
       const result = removeFromSearch(current, "types", "sra-analysis");
-      expect(result.keywords).toEqual(["human", "cat"]);
+      expect(result.keywords).toEqual(["human ", " cat"]);
       expect(result.types).toEqual(["jga-study"]);
     });
     it("", () => {

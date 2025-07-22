@@ -2,7 +2,7 @@ import { useNavigate, useSearch } from "@tanstack/react-router";
 import clsx from "clsx";
 import { QueryTip } from "@/components/morecules/QueryTip.tsx";
 import { routeTree } from "@/routeTree.gen.ts";
-import { removeFromSearch } from "@/state/search.ts";
+import { removeFromSearch } from "@/utils/search.ts";
 import type { DateRangeSchemaType, GlobalSearchSchemaType } from "@/schema/search.ts";
 import type { ComponentProps, FC } from "react";
 

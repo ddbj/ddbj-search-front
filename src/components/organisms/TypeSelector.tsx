@@ -33,7 +33,7 @@ export const TypeSelector: FC<Props> = () => {
           return (
             <CheckboxText
               key={name}
-              labelStr={label}
+              labelStr={label + " (99999)"}
               value={name}
               link={`/${name}`}
               isSelected={isSelected}

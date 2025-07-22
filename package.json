@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint ddbj-search",
     "preview": "vite preview",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "storybook dev -p 6006 --no-open",
     "build-storybook": "storybook build",
     "test": "vitest"
   },
@@ -42,6 +42,7 @@
     "@storybook/react-vite": "^9.0.16",
     "@tanstack/eslint-plugin-router": "^1.121.21",
     "@tanstack/router-plugin": "^1.121.37",
+    "@total-typescript/ts-reset": "^0.6.1",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react": "^4.4.1",
