@@ -1,6 +1,6 @@
 export const dbTypes = {
-  biosample: "biosample",
   bioproject: "bioproject",
+  biosample: "biosample",
   "sra-run": "sra-run",
   "sra-experiment": "sra-experiment",
   "sra-sample": "sra-sample",
@@ -17,8 +17,8 @@ export const isDBType = (value: string): value is DBType => Object.values(dbType
 export const dbTypeList = Object.keys(dbTypes).filter(isDBType);
 
 export const dbLabels: { [K in DBType]: string } = {
-  biosample: "BioSample",
   bioproject: "BioProject",
+  biosample: "BioSample",
   "sra-run": "SRA Run",
   "sra-experiment": "SRA Experiment",
   "sra-sample": "SRA Sample",

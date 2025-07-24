@@ -1,25 +1,32 @@
 import { Checkbox } from "@heroui/react";
+import { Link } from "@tanstack/react-router";
 import clsx from "clsx";
 import { type FC } from "react";
+import type { FileRoutesByFullPath } from "@/routeTree.gen.ts";
+import type { GlobalSearchSchemaType } from "@/schema/search.ts";
 
 type Props = {
   labelStr: string;
   value: string;
-  link?: string;
   isSelected?: boolean;
   setIsSelected?: (value: boolean) => void;
+  to?: string;
+  search?: GlobalSearchSchemaType;
+  from?: keyof FileRoutesByFullPath;
 };
 
 const wrapperClasses = clsx("flex overflow-hidden");
 const linkClasses = clsx("text-link-primary");
 export const CheckboxText: FC<Props> = ({
-  link,
+  to,
   labelStr,
   value,
   isSelected = false,
   setIsSelected,
+  search,
+  from = "/",
 }) => {
-  if (link) {
+  if (to) {
     return (
       <div className={wrapperClasses}>
         <Checkbox
@@ -28,11 +35,11 @@ export const CheckboxText: FC<Props> = ({
           value={value}
           isSelected={isSelected}
           onValueChange={setIsSelected}
+          classNames={{ wrapper: "after:bg-bg-primary" }}
         ></Checkbox>
-        {/*TODO: use router link*/}
-        <a href={link} className={linkClasses}>
+        <Link to={to} className={linkClasses} search={search} from={from}>
           {labelStr}
-        </a>
+        </Link>
       </div>
     );
   } else {

@@ -14,7 +14,7 @@ export const HomePage: FC = () => {
 
   const onSearch: SearchProps["onSearch"] = (types: DBType[], query: string[]) => {
     const { to, search } = makeNavigateArgs(types, query);
-    console.log(to, search);
+    // console.log(to, search);
     navigate({ to, search });
   };
 
@@ -37,7 +37,7 @@ const makeNavigateArgs = (
   const to = types.length === 1 ? `/${types[0]}` : "/all";
   const search = {
     keywords: query.length ? query : undefined,
-    types: types.length ? types : undefined,
+    types: types.length > 1 ? types : undefined,
   };
   return { to, search };
 };

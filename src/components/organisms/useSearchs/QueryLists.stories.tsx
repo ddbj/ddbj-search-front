@@ -1,19 +1,31 @@
-import { DateSelector } from "@/components/organisms/DateSelector.tsx";
+import { QueryLists } from "@/components/organisms/useSearchs/QueryLists.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
-  component: DateSelector,
+  component: QueryLists,
   args: {},
-  decorators: [],
-} satisfies Meta<typeof DateSelector>;
+  decorators: [
+    (Story) => (
+      <div className="w-72 bg-gray-100 p-4">
+        <Story />
+      </div>
+    ),
+  ],
+} satisfies Meta<typeof QueryLists>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Primary = {} satisfies Story;
+export const Empty = {
+  decorators: [
+    (Story) => {
+      return <Story />;
+    },
+  ],
+} satisfies Story;
 
-export const hasSearch = {
+export const HasSearch = {
   decorators: [
     (Story) => {
       const router = window.__STORYBOOK_ROUTER__;
@@ -29,6 +41,7 @@ export const hasSearch = {
             start: "2025-07-10",
             end: "2025-07-11",
           },
+          types: ["biosample", "sra-analysis"],
         },
       });
       return <Story />;

@@ -28,6 +28,6 @@ export const WithLink = {
   args: {
     labelStr: "with-link",
     value: "withLink",
-    link: "https://example.com",
+    to: "https://example.com",
   },
 } satisfies Story;

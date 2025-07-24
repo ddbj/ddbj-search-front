@@ -34,6 +34,7 @@ export default tseslint.config(
         "warn",
         {
           argsIgnorePattern: "^_",
+          ignoreRestSiblings: true,
         },
       ],
       "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],

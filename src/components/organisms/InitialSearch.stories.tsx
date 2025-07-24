@@ -2,6 +2,7 @@ import "jest-extended";
 import { expect, fn } from "storybook/test";
 import { InitialSearch } from "@/components/organisms/InitialSearch.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { findByListValue, findBySlot } from "@/utils/storybook.ts";
 
 const meta = {
   component: InitialSearch,
@@ -21,16 +22,6 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const findBySlot = async (key: string) => {
-  const result = document.querySelector(`[data-slot=${key}]`);
-  await expect(result).toBeInTheDocument();
-  return result!;
-};
-const findByListValue = async (key: string) => {
-  const result = document.querySelector(`li[role="option"][data-key="${key}"]`);
-  await expect(result).toBeInTheDocument();
-  return result!;
-};
 const getOnSearchArgs = (onSearchArgs: unknown[] | undefined) => {
   const onSearchTypes = onSearchArgs?.[0] as string[];
   const onSearchQueries = onSearchArgs?.[1] as string[];
@@ -126,6 +117,24 @@ export const overwriteAll: Story = {
     });
   },
 };
+
+// export const SingleTypeQuery: Story = {
+//   play: async ({ args, userEvent, canvas, step, canvasElement }) => {
+//     await step("click trigger", async () => {
+//       const trigger = await findBySlot("trigger");
+//       await userEvent.click(trigger);
+//     });
+//     await step("inputQuery", async () => {
+//       const bioSample = await findByListValue("biosample");
+//       const button = canvasElement.querySelector("button#searchButton")!;
+//       await userEvent.click(bioSample);
+//       await userEvent.click(button);
+//       const { onSearchTypes, onSearchQueries } = getOnSearchArgs(args.onSearch?.mock.lastCall);
+//       expect(onSearchTypes.sort()).toEqual(["biosample"].sort());
+//       expect(onSearchQueries).toEqual([""]);
+//     });
+//   },
+// };
 
 export const inputQuery: Story = {
   play: async ({ args, userEvent, canvas, step }) => {

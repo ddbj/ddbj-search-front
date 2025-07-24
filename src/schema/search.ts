@@ -13,5 +13,3 @@ export const globalSearchSchema = z.object({
 });
 export type GlobalSearchSchemaType = z.infer<typeof globalSearchSchema>;
 export type DateRangeSchemaType = z.infer<typeof dateRangeSchema>;
-
-type AA = GlobalSearchSchemaType["types"];
