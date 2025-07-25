@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { zodValidator } from "@tanstack/zod-adapter";
-import { SearchResultPage } from "@/components/pages/SearchResultPage.tsx";
+import { SearchResultPage } from "@/pages/SearchResultPage.tsx";
 import { searchBaseSchema } from "@/schema/search.ts";
 
 export const Route = createFileRoute("/biosample/")({

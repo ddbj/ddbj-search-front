@@ -1,9 +1,9 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from "@tanstack/react-router";
+import { zodValidator } from "@tanstack/zod-adapter";
+import { SearchResultPage } from "@/pages/SearchResultPage.tsx";
+import { searchBaseSchema } from "@/schema/search.ts";
 
-export const Route = createFileRoute('/jga-study/')({
-  component: RouteComponent,
-})
-
-function RouteComponent() {
-  return <div>Hello "/jga-study/"!</div>
-}
+export const Route = createFileRoute("/jga-study/")({
+  component: SearchResultPage,
+  validateSearch: zodValidator(searchBaseSchema),
+});

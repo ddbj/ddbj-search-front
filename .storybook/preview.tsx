@@ -5,7 +5,7 @@ import {
   RouterProvider,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
-import { Providers } from "@/components/providers.tsx";
+import { Providers } from "@/providers.tsx";
 import { routeTree } from "@/routeTree.gen.ts";
 import type { Decorator, Preview } from "@storybook/react-vite";
 import "../src/index.css";
