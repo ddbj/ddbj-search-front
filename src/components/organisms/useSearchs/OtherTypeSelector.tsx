@@ -2,7 +2,7 @@ import { useNavigate, useSearch } from "@tanstack/react-router";
 import { type FC, useMemo } from "react";
 import { CheckboxText } from "@/components/morecules/CheckboxText.tsx";
 import { dbLabels, type DBType, dbTypeList, dbTypes } from "@/consts.ts";
-import { isGeneralSearchKey } from "@/schema/search.ts";
+import { isSearchBaseKey } from "@/schema/search.ts";
 
 type Props = {
   currentType: DBType;
@@ -11,9 +11,7 @@ type Props = {
 export const OtherTypeSelector: FC<Props> = ({ currentType }) => {
   const search = useSearch({ strict: false });
   const generalSearchParams = useMemo(() => {
-    return Object.fromEntries(
-      Object.entries(search).filter((key, _value) => isGeneralSearchKey(key))
-    );
+    return Object.fromEntries(Object.entries(search).filter((key, _value) => isSearchBaseKey(key)));
   }, [search]);
   const navigate = useNavigate();
 

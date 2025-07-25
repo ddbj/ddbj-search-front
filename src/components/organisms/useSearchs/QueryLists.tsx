@@ -1,13 +1,10 @@
 import { useNavigate, useSearch } from "@tanstack/react-router";
 import clsx from "clsx";
+import { isUndefined } from "is-what";
 import { QueryTip } from "@/components/morecules/QueryTip.tsx";
 import { routeTree } from "@/routeTree.gen.ts";
+import { type AllSearch, type SearchDateRange, isAllResourcesKey } from "@/schema/search.ts";
 import { removeFromSearch } from "@/utils/search.ts";
-import type {
-  DateRangeSchemaType,
-  GeneralSearchSchemaType,
-  SearchSchemaType,
-} from "@/schema/search.ts";
 import type { ComponentProps, FC } from "react";
 
 type Props = {};
@@ -19,12 +16,13 @@ export const QueryLists: FC<Props> = () => {
   const tipData = parseQueryStateToTipList(searchParams);
   const navigate = useNavigate();
 
-  //todo set name type properly
   const onClickRemove = (name: string, value: string) => {
     const from = routeTree.fullPath;
     const replace = true;
-    const search = removeFromSearch(searchParams, name, value);
-    navigate({ from, search, replace });
+    if (isAllResourcesKey(name)) {
+      const search = removeFromSearch(searchParams, name, value);
+      navigate({ from, search, replace });
+    }
   };
 
   if (tipData.length === 0) {
@@ -49,7 +47,7 @@ export const QueryLists: FC<Props> = () => {
 };
 
 type QueryTipProps = Omit<ComponentProps<typeof QueryTip>, "onClickRemove">;
-const parseQueryStateToTipList = (state: SearchSchemaType): QueryTipProps[] => {
+const parseQueryStateToTipList = (state: AllSearch): QueryTipProps[] => {
   const keywords: QueryTipProps[] = (state.keywords ?? [])
     .map((t) => t.trim())
     .filter((t) => t !== "")
@@ -67,27 +65,19 @@ const parseQueryStateToTipList = (state: SearchSchemaType): QueryTipProps[] => {
     parseDateRangeToQueryTipProps(state.datePublished, "datePublished", "Published"),
     parseDateRangeToQueryTipProps(state.dateUpdated, "dateUpdated", "Updated"),
   ].filter((v) => !!v);
-  const organization: QueryTipProps[] = [state.organization]
-    .filter((v) => !!v?.trim())
-    .map((value) => {
-      const data = { name: "organization", value };
-      const label = { name: "Organization", value };
-      return { data, label };
-    });
-  const publication: QueryTipProps[] = [state.publication]
-    .filter((v) => !!v?.trim())
-    .map((value) => {
-      const data = { name: "publication", value };
-      const label = { name: "Publication", value };
-      return { data, label };
-    });
-  const grant: QueryTipProps[] = [state.grant]
-    .filter((v) => !!v?.trim())
-    .map((value) => {
-      const data = { name: "grant", value };
-      const label = { name: "Grant", value };
-      return { data, label };
-    });
+  const organization: QueryTipProps[] = parseSingleStringToQueryTipProps(
+    state.organization,
+    "organization",
+    "Organization"
+  );
+  const publication: QueryTipProps[] = parseSingleStringToQueryTipProps(
+    state.publication,
+    "publication",
+    "Publication"
+  );
+  const grant = parseSingleStringToQueryTipProps(state.grant, "grant", "Grant");
+  const umbrella = parseSingleBooleanToQueryTipProps(state.umbrella, "umbrella", "Umbrella");
+
   const result: QueryTipProps[] = [
     ...keywords,
     ...types,
@@ -95,13 +85,44 @@ const parseQueryStateToTipList = (state: SearchSchemaType): QueryTipProps[] => {
     ...organization,
     ...publication,
     ...grant,
+    ...umbrella,
   ];
 
   return result;
 };
 
+const parseSingleStringToQueryTipProps = (
+  stateValue: string | undefined,
+  dataName: string,
+  labelName: string
+): QueryTipProps[] => {
+  return [stateValue]
+    .map((v) => v?.trim())
+    .filter((v) => v !== "")
+    .filter((v) => !isUndefined(v))
+    .map((value) => {
+      const data = { name: dataName, value };
+      const label = { name: labelName, value };
+      return { data, label };
+    });
+};
+
+const parseSingleBooleanToQueryTipProps = (
+  stateValue: boolean | undefined,
+  dataName: string,
+  labelName: string
+): QueryTipProps[] => {
+  return [stateValue]
+    .filter((v) => v)
+    .map((v) => {
+      const data = { name: dataName, value: "TRUE" };
+      const label = { name: labelName, value: "TRUE" };
+      return { data, label };
+    });
+};
+
 const parseDateRangeToQueryTipProps = (
-  range: DateRangeSchemaType | undefined,
+  range: SearchDateRange | undefined,
   dataName: string,
   labelName: string
 ): QueryTipProps | null => {

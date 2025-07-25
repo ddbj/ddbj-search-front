@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { Logo } from "@/components/graphics/logo.tsx";
 import { InitialSearch } from "@/components/organisms/InitialSearch.tsx";
 import type { DBType } from "@/consts.ts";
-import type { GeneralSearchSchemaType } from "@/schema/search.ts";
+import type { SearchBase } from "@/schema/search.ts";
 import type { ComponentProps, FC } from "react";
 
 const wrapperClasses = clsx("flex w-full flex-col items-center gap-8 pt-24");
@@ -31,7 +31,7 @@ export const HomePage: FC = () => {
 const makeNavigateArgs = (
   types: DBType[],
   _query: string[]
-): { to: string; search: GeneralSearchSchemaType } => {
+): { to: string; search: SearchBase } => {
   // todo: change return type according to toPath
   const query = _query.filter((q) => q !== "");
   const to = types.length === 1 ? `/${types[0]}` : "/all";

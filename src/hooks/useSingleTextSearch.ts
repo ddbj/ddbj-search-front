@@ -3,9 +3,9 @@ import { isString, isUndefined } from "is-what";
 import { useEffect, useState } from "react";
 import { useDebounceValue } from "usehooks-ts";
 import { routeTree } from "@/routeTree.gen.ts";
-import type { SearchSchemaKey, SearchSchemaType } from "@/schema/search.ts";
+import type { AllResourcesKey, AllSearch } from "@/schema/search.ts";
 
-export const useSingleTextSearch = (searchKey: SearchSchemaKey) => {
+export const useSingleTextSearch = (searchKey: AllResourcesKey) => {
   const router = useRouter();
   const param = router.latestLocation.search?.[searchKey];
   if (!isUndefined(param) && !isString(param)) throw new Error("param must be string");
@@ -23,8 +23,8 @@ export const useSingleTextSearch = (searchKey: SearchSchemaKey) => {
     if (currentValue === debouncedValue) return;
     const restParams = Object.fromEntries(
       Object.entries(searchParams).filter(([key, _value]) => key !== searchKey)
-    ) as SearchSchemaType;
-    const search: SearchSchemaType = { ...restParams, [searchKey]: debouncedValue };
+    ) as AllSearch;
+    const search: AllSearch = { ...restParams, [searchKey]: debouncedValue };
     if (debouncedValue === "") {
       delete search[searchKey];
     }

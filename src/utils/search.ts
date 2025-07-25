@@ -1,11 +1,11 @@
 import { copy } from "copy-anything";
-import type { GeneralSearchSchemaType, SearchSchemaType } from "@/schema/search.ts";
+import type { AllResourcesKey, AllSearch } from "@/schema/search.ts";
 
 export const removeFromSearch = (
-  current: SearchSchemaType,
-  key: string,
+  current: AllSearch,
+  key: AllResourcesKey,
   value: string
-): SearchSchemaType => {
+): AllSearch => {
   const copied = copy(current);
   switch (key) {
     case "types":
@@ -19,6 +19,7 @@ export const removeFromSearch = (
     case "organization":
     case "publication":
     case "grant":
+    case "umbrella":
       if (copied[key]) {
         delete copied[key];
       }

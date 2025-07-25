@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import clsx from "clsx";
 import { type FC } from "react";
 import type { FileRoutesByFullPath } from "@/routeTree.gen.ts";
-import type { GeneralSearchSchemaType } from "@/schema/search.ts";
+import type { SearchBase } from "@/schema/search.ts";
 
 type Props = {
   labelStr: string;
@@ -11,7 +11,7 @@ type Props = {
   isSelected?: boolean;
   setIsSelected?: (value: boolean) => void;
   to?: string;
-  search?: GeneralSearchSchemaType;
+  search?: SearchBase;
   from?: keyof FileRoutesByFullPath;
 };
 
@@ -50,6 +50,7 @@ export const CheckboxText: FC<Props> = ({
         value={value}
         isSelected={isSelected}
         onValueChange={setIsSelected}
+        classNames={{ wrapper: "after:bg-bg-primary" }}
       >
         {labelStr}
       </Checkbox>

@@ -1,6 +1,7 @@
 import { BioprojectGrant } from "@/components/organisms/useSearchs/BioprojectGrant.tsx";
 import { BioprojectOrganization } from "@/components/organisms/useSearchs/BioprojectOrganization.tsx";
 import { BioprojectPublication } from "@/components/organisms/useSearchs/BioprojectPublication.tsx";
+import { BioprojectUmbrella } from "@/components/organisms/useSearchs/BioprojectUmbrella.tsx";
 import { DateSelector } from "@/components/organisms/useSearchs/DateSelector.tsx";
 import { KeywordInput } from "@/components/organisms/useSearchs/KeywordInput.tsx";
 import { OtherTypeSelector } from "@/components/organisms/useSearchs/OtherTypeSelector.tsx";
@@ -20,6 +21,7 @@ export const QueryBuilder: FC<Props> = ({ currentType }) => {
       <KeywordInput />
       {!currentType && <TypeSelector />}
       {currentType && <OtherTypeSelector currentType={currentType} />}
+      {currentType === dbTypes.bioproject && <BioprojectUmbrella />}
       {currentType === dbTypes.bioproject && <BioprojectOrganization />}
       {currentType === dbTypes.bioproject && <BioprojectPublication />}
       {currentType === dbTypes.bioproject && <BioprojectGrant />}
