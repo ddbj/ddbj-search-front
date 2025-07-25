@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { __QUERY_LISTS_TEST__ } from "@/components/organisms/useSearchs/QueryLists.tsx";
 import { compileDateRangeString } from "@/utils/date.ts";
-import type { GlobalSearchSchemaType } from "@/schema/search.ts";
+import type { GeneralSearchSchemaType } from "@/schema/search.ts";
 
 const { parseQueryStateToTipList } = __QUERY_LISTS_TEST__;
 
@@ -12,7 +12,7 @@ describe("parseQueryStateToTipList", () => {
   });
 
   it("", () => {
-    const state: GlobalSearchSchemaType = {};
+    const state: GeneralSearchSchemaType = {};
     state.keywords = ["human", "cat"];
     const result = parseQueryStateToTipList(state);
     console.log(result);
@@ -20,13 +20,13 @@ describe("parseQueryStateToTipList", () => {
     expect(result[0].label.name).toBe("Keyword");
   });
   it("", () => {
-    const state: GlobalSearchSchemaType = {};
+    const state: GeneralSearchSchemaType = {};
     state.types = ["sra-analysis", "jga-study"];
     const result = parseQueryStateToTipList(state);
     expect(result.length).toBe(2);
   });
   it("", () => {
-    const state: GlobalSearchSchemaType = {};
+    const state: GeneralSearchSchemaType = {};
     state.datePublished = compileDateRangeString("2025-07-01", "2025-07-10");
     state.dateUpdated = compileDateRangeString("2024-07-01", "2024-07-10");
     const result = parseQueryStateToTipList(state);

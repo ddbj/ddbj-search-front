@@ -24,6 +24,7 @@
     "copy-anything": "^4.0.5",
     "framer-motion": "^12.17.0",
     "immer": "^10.1.1",
+    "is-what": "^5.2.1",
     "jotai": "^2.12.5",
     "jotai-immer": "^0.4.1",
     "react": "^19.1.0",

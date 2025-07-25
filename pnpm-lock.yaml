@@ -41,6 +41,9 @@ importers:
       immer:
         specifier: ^10.1.1
         version: 10.1.1
+      is-what:
+        specifier: ^5.2.1
+        version: 5.2.1
       jotai:
         specifier: ^2.12.5
         version: 2.12.5(@types/react@19.1.8)(react@19.1.0)

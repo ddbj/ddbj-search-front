@@ -18,7 +18,7 @@ const linkClasses = clsx(
 export const Breadcrumbs: FC<Props> = ({ paths }) => {
   return (
     <nav className={wrapperClasses}>
-      <Link to={"/"} className={linkClasses}>
+      <Link to={"/"} className={linkClasses} from={"/"}>
         <p className={"flex w-fit gap-x-1"}>
           <HomeIcon className={"w-5"} />
           <span className={"shrink-0"}>Home</span>
@@ -29,7 +29,7 @@ export const Breadcrumbs: FC<Props> = ({ paths }) => {
           <span key={`${label}-${index}`} className={"flex w-fit gap-x-3"}>
             <span>&gt;</span>
             {to && (
-              <Link to={to} className={linkClasses}>
+              <Link to={to} className={linkClasses} from={"/"}>
                 {label}
               </Link>
             )}

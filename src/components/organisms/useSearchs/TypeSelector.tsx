@@ -2,7 +2,7 @@ import { useNavigate, useSearch } from "@tanstack/react-router";
 import { type FC, useMemo } from "react";
 import { CheckboxText } from "@/components/morecules/CheckboxText.tsx";
 import { dbLabels, type DBType } from "@/consts.ts";
-import type { GlobalSearchSchemaType } from "@/schema/search.ts";
+import type { GeneralSearchSchemaType } from "@/schema/search.ts";
 
 type Props = {};
 
@@ -14,7 +14,7 @@ export const TypeSelector: FC<Props> = () => {
     const tempTypes = searchParams.types ?? [];
     const { types: _oldTypes, ...otherSearchTypes } = searchParams;
     const types = value ? [...tempTypes, name] : tempTypes.filter((v) => v !== name);
-    const search: GlobalSearchSchemaType = {
+    const search: GeneralSearchSchemaType = {
       ...otherSearchTypes,
       ...(types.length ? { types } : {}),
     };

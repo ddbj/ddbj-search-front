@@ -1,7 +1,20 @@
-import type { FC } from "react";
+import { Input } from "@heroui/react";
+import { type FC } from "react";
+import { useSingleTextSearch } from "@/hooks/useSingleTextSearch.ts";
 
 type Props = {};
 
 export const BioprojectOrganization: FC<Props> = () => {
-  return <div>BioprojectOrganization</div>;
+  const { uiValue, onChange } = useSingleTextSearch("organization");
+
+  return (
+    <div>
+      <Input
+        label={"Organization"}
+        placeholder={"single query or * for all entries with organization"}
+        value={uiValue}
+        onValueChange={onChange}
+      />
+    </div>
+  );
 };

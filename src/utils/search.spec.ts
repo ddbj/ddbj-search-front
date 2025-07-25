@@ -1,10 +1,10 @@
 import { describe, expect, it } from "vitest";
 import { removeFromSearch } from "@/utils/search.ts";
-import type { GlobalSearchSchemaType } from "@/schema/search.ts";
+import type { GeneralSearchSchemaType } from "@/schema/search.ts";
 
 describe("removeFromSearch", () => {
   describe("emptyObject", () => {
-    const current: GlobalSearchSchemaType = {};
+    const current: GeneralSearchSchemaType = {};
     it("", () => {
       const result = removeFromSearch(current, "keywords", "");
       expect(result).not.toBe(current);
@@ -12,7 +12,7 @@ describe("removeFromSearch", () => {
     });
   });
   describe("withParams", () => {
-    const current: GlobalSearchSchemaType = {
+    const current: GeneralSearchSchemaType = {
       keywords: ["human ", " cat"],
       types: ["sra-analysis", "jga-study"],
       datePublished: { start: "2025-07-01", end: "2025-07-10" },

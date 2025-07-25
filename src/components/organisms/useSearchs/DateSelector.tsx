@@ -3,7 +3,7 @@ import { type FC, useMemo } from "react";
 import { DateRangePicker } from "@/components/morecules/DateRangePicker.tsx";
 import { routeTree } from "@/routeTree.gen.ts";
 import { type DateRange, dateRangeDataToString, dateRangeStringToData } from "@/utils/date.ts";
-import type { GlobalSearchSchemaType } from "@/schema/search.ts";
+import type { GeneralSearchSchemaType } from "@/schema/search.ts";
 
 type Props = {};
 
@@ -23,19 +23,19 @@ export const DateSelector: FC<Props> = () => {
   const onChangePublished = (v: DateRange | null) => {
     const from = routeTree.fullPath;
     const replace = true;
-    const datePublished: GlobalSearchSchemaType["datePublished"] = v
+    const datePublished: GeneralSearchSchemaType["datePublished"] = v
       ? dateRangeDataToString(v)
       : undefined;
-    const search: GlobalSearchSchemaType = { ...searchParams, datePublished };
+    const search: GeneralSearchSchemaType = { ...searchParams, datePublished };
     navigate({ from, search, replace });
   };
   const onChangeUpdated = (v: DateRange | null) => {
     const from = routeTree.fullPath;
     const replace = true;
-    const dateUpdated: GlobalSearchSchemaType["datePublished"] = v
+    const dateUpdated: GeneralSearchSchemaType["datePublished"] = v
       ? dateRangeDataToString(v)
       : undefined;
-    const search: GlobalSearchSchemaType = { ...searchParams, dateUpdated };
+    const search: GeneralSearchSchemaType = { ...searchParams, dateUpdated };
     navigate({ from, search, replace });
   };
   return (

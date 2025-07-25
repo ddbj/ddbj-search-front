@@ -3,7 +3,11 @@ import clsx from "clsx";
 import { QueryTip } from "@/components/morecules/QueryTip.tsx";
 import { routeTree } from "@/routeTree.gen.ts";
 import { removeFromSearch } from "@/utils/search.ts";
-import type { DateRangeSchemaType, GlobalSearchSchemaType } from "@/schema/search.ts";
+import type {
+  DateRangeSchemaType,
+  GeneralSearchSchemaType,
+  SearchSchemaType,
+} from "@/schema/search.ts";
 import type { ComponentProps, FC } from "react";
 
 type Props = {};
@@ -45,7 +49,7 @@ export const QueryLists: FC<Props> = () => {
 };
 
 type QueryTipProps = Omit<ComponentProps<typeof QueryTip>, "onClickRemove">;
-const parseQueryStateToTipList = (state: GlobalSearchSchemaType): QueryTipProps[] => {
+const parseQueryStateToTipList = (state: SearchSchemaType): QueryTipProps[] => {
   const keywords: QueryTipProps[] = (state.keywords ?? [])
     .map((t) => t.trim())
     .filter((t) => t !== "")
@@ -63,8 +67,35 @@ const parseQueryStateToTipList = (state: GlobalSearchSchemaType): QueryTipProps[
     parseDateRangeToQueryTipProps(state.datePublished, "datePublished", "Published"),
     parseDateRangeToQueryTipProps(state.dateUpdated, "dateUpdated", "Updated"),
   ].filter((v) => !!v);
-  //
-  const result: QueryTipProps[] = [...keywords, ...types, ...dates];
+  const organization: QueryTipProps[] = [state.organization]
+    .filter((v) => !!v?.trim())
+    .map((value) => {
+      const data = { name: "organization", value };
+      const label = { name: "Organization", value };
+      return { data, label };
+    });
+  const publication: QueryTipProps[] = [state.publication]
+    .filter((v) => !!v?.trim())
+    .map((value) => {
+      const data = { name: "publication", value };
+      const label = { name: "Publication", value };
+      return { data, label };
+    });
+  const grant: QueryTipProps[] = [state.grant]
+    .filter((v) => !!v?.trim())
+    .map((value) => {
+      const data = { name: "grant", value };
+      const label = { name: "Grant", value };
+      return { data, label };
+    });
+  const result: QueryTipProps[] = [
+    ...keywords,
+    ...types,
+    ...dates,
+    ...organization,
+    ...publication,
+    ...grant,
+  ];
 
   return result;
 };
