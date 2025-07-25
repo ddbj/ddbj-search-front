@@ -11,7 +11,7 @@ export const useMultipleTextSearch = (searchKey: AllResourcesKey) => {
   if (!isUndefined(param) && !isArray(param)) throw new Error("param must be array");
   const initialUiValue = param?.join() ?? "";
   const [uiValue, setUiValue] = useState(initialUiValue);
-  const [debouncedValue, setDebouncedValue] = useDebounceValue(initialUiValue, 200);
+  const [debouncedValue, setDebouncedValue] = useDebounceValue(initialUiValue, 500);
 
   const onChange = (str: string) => {
     setUiValue(str);

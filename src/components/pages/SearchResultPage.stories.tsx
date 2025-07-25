@@ -18,6 +18,7 @@ export const SearchAll = {} satisfies Story;
 export const BioProject = {
   play: async () => {
     const router = getRouter();
-    router.navigate({ to: "/bioproject" });
+    console.log(router);
+    router.navigate({ to: "/bioproject", from: "/" });
   },
 } satisfies Story;

@@ -11,7 +11,7 @@ export const useSingleTextSearch = (searchKey: AllResourcesKey) => {
   if (!isUndefined(param) && !isString(param)) throw new Error("param must be string");
   const initialUiValue = param ?? "";
   const [uiValue, setUiValue] = useState(initialUiValue);
-  const [debouncedValue, setDebouncedValue] = useDebounceValue(initialUiValue, 200);
+  const [debouncedValue, setDebouncedValue] = useDebounceValue(initialUiValue, 500);
 
   const onChange = (str: string) => {
     setUiValue(str);
