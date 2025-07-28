@@ -16,10 +16,26 @@ declare module "@tanstack/react-router" {
   }
 }
 
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <HeroUIProvider>
-      <RouterProvider router={router} />
-    </HeroUIProvider>
-  </StrictMode>
-);
+async function enableMocking() {
+  if (process.env.NODE_ENV !== "development") {
+    return;
+  }
+  const { worker } = await import("./msw/browser");
+  // `worker.start()` returns a Promise that resolves
+  // once the Service Worker is up and ready to intercept requests.
+  return worker.start({
+    serviceWorker: {
+      url: "/search/mockServiceWorker.js",
+    },
+  });
+}
+
+enableMocking().then(() => {
+  createRoot(document.getElementById("root")!).render(
+    <StrictMode>
+      <HeroUIProvider>
+        <RouterProvider router={router} />
+      </HeroUIProvider>
+    </StrictMode>
+  );
+});

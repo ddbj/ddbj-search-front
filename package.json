@@ -16,6 +16,7 @@
     "@heroui/react": "^2.8.1",
     "@internationalized/date": "3.8.2",
     "@tailwindcss/vite": "^4.1.8",
+    "@tanstack/react-query": "^5.83.0",
     "@tanstack/react-router": "^1.121.34",
     "@tanstack/react-router-devtools": "^1.121.34",
     "@tanstack/zod-adapter": "^1.127.8",
@@ -58,6 +59,8 @@
     "eslint-plugin-storybook": "^9.0.16",
     "globals": "^16.0.0",
     "jest-extended": "^6.0.0",
+    "msw": "^2.10.4",
+    "msw-storybook-addon": "^2.0.5",
     "playwright": "^1.53.0",
     "prettier": "3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.12",
@@ -68,5 +71,10 @@
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.2.3",
     "yohak-cli": "^0.2.7"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }

@@ -6,4 +6,7 @@ import { searchBaseSchema } from "@/schema/search.ts";
 export const Route = createFileRoute("/entry/")({
   component: SearchResultPage,
   validateSearch: zodValidator(searchBaseSchema),
+  loader: () => {
+    return fetch("/api/search/");
+  },
 });
