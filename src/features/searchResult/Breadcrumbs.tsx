@@ -12,7 +12,7 @@ type Props = {
 
 const wrapperClasses = clsx("flex gap-x-3 text-base");
 const linkClasses = clsx(
-  "mb-2 block w-fit fill-link-primary text-link-primary hover:fill-link-primary-hover hover:text-link-primary-hover"
+  "block w-fit fill-link-primary text-link-primary hover:fill-link-primary-hover hover:text-link-primary-hover"
 );
 
 export const Breadcrumbs: FC<Props> = ({ paths }) => {
