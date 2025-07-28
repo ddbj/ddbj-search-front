@@ -1,4 +1,5 @@
-import { TypeSelector } from "./TypeSelector.tsx";
+import { TypeSelector } from "@/features/queryBuilder/organisms/TypeSelector.tsx";
+import { sbGetRouter } from "@/utils/storybook.ts";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
@@ -15,10 +16,9 @@ export const Primary = {} satisfies Story;
 export const HasSearch = {
   decorators: [
     (Story) => {
-      const router = window.__STORYBOOK_ROUTER__;
-      if (!router) throw new Error("Router not found");
+      const router = sbGetRouter();
       router.navigate({
-        to: "/all",
+        to: "/entry",
         search: {
           datePublished: {
             start: "2025-03-10",

@@ -27,7 +27,7 @@ export const Navigate = {
 
     const button = canvasElement.querySelector("button#searchButton")!;
     await userEvent.click(button);
-    expect(router.state.location.pathname).toBe("/all");
+    expect(router.state.location.pathname).toBe("/entry");
     expect(router.state.location.search.keywords?.sort()).toEqual(["hoge", "foo"].sort());
   },
 } satisfies Story;
@@ -54,7 +54,7 @@ export const NavigateToSingleType = {
       await userEvent.click(button);
     });
     await step("expect results", async () => {
-      expect(router.state.location.pathname).toBe("/biosample");
+      expect(router.state.location.pathname).toBe("/entry/biosample");
       expect(router.state.location.search.keywords?.sort()).toEqual(["hoge", "foo"].sort());
       expect(router.state.location.search.types).toBe(undefined);
     });

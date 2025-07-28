@@ -1,5 +1,5 @@
 import { SearchResultPage } from "@/pages/SearchResultPage.tsx";
-import { getRouter } from "@/utils/storybook.ts";
+import { sbGetRouter } from "@/utils/storybook.ts";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
@@ -17,8 +17,7 @@ type Story = StoryObj<typeof meta>;
 export const SearchAll = {} satisfies Story;
 export const BioProject = {
   play: async () => {
-    const router = getRouter();
-    console.log(router);
-    router.navigate({ to: "/bioproject", from: "/" });
+    const router = sbGetRouter();
+    router.navigate({ to: "/entry/bioproject", from: "/" });
   },
 } satisfies Story;

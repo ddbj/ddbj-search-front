@@ -1,7 +1,7 @@
 import { useNavigate } from "@tanstack/react-router";
 import clsx from "clsx";
-import { Logo } from "@/graphics/logo.tsx";
 import { SearchBox } from "@/features/initialSearch/SearchBox.tsx";
+import { Logo } from "@/graphics/logo.tsx";
 import type { DBType } from "@/consts.ts";
 import type { SearchBase } from "@/schema/search.ts";
 import type { ComponentProps, FC } from "react";
@@ -34,7 +34,7 @@ const makeNavigateArgs = (
 ): { to: string; search: SearchBase } => {
   // todo: change return type according to toPath
   const query = _query.filter((q) => q !== "");
-  const to = types.length === 1 ? `/${types[0]}` : "/all";
+  const to = types.length === 1 ? `/entry/${types[0]}` : "/entry";
   const search = {
     keywords: query.length ? query : undefined,
     types: types.length > 1 ? types : undefined,

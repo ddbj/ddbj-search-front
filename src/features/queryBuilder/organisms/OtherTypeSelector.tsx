@@ -21,7 +21,7 @@ export const OtherTypeSelector: FC<Props> = ({ currentType }) => {
       ...generalSearchParams,
       types,
     };
-    navigate({ from: "/", to: "/all", search: newSearch });
+    navigate({ from: "/", to: "/entry", search: newSearch });
   };
 
   return (
@@ -32,7 +32,7 @@ export const OtherTypeSelector: FC<Props> = ({ currentType }) => {
           labelStr={dbLabels[currentType]}
           value={currentType}
           isSelected={true}
-          to={`/${currentType}`}
+          to={`/entry/${currentType}`}
           search={search}
         />
       </div>
@@ -47,7 +47,7 @@ export const OtherTypeSelector: FC<Props> = ({ currentType }) => {
                   key={key}
                   labelStr={dbLabels[key]}
                   value={key}
-                  to={`/${key}`}
+                  to={`/entry/${key}`}
                   search={generalSearchParams}
                   setIsSelected={() => onSetOtherType(key)}
                 />

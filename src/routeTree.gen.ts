@@ -11,32 +11,31 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as SraSubmissionIndexRouteImport } from './routes/sra-submission/index'
-import { Route as SraStudyIndexRouteImport } from './routes/sra-study/index'
-import { Route as SraSampleIndexRouteImport } from './routes/sra-sample/index'
-import { Route as SraRunIndexRouteImport } from './routes/sra-run/index'
-import { Route as SraExperimentIndexRouteImport } from './routes/sra-experiment/index'
-import { Route as SraAnalysisIndexRouteImport } from './routes/sra-analysis/index'
-import { Route as JgaStudyIndexRouteImport } from './routes/jga-study/index'
-import { Route as JgaPolicyIndexRouteImport } from './routes/jga-policy/index'
-import { Route as JgaDatasetIndexRouteImport } from './routes/jga-dataset/index'
-import { Route as JgaDacIndexRouteImport } from './routes/jga-dac/index'
-import { Route as BiosampleIndexRouteImport } from './routes/biosample/index'
-import { Route as BioprojectIndexRouteImport } from './routes/bioproject/index'
-import { Route as AllIndexRouteImport } from './routes/all/index'
-import { Route as SraSubmissionIdentifierRouteImport } from './routes/sra-submission/$identifier'
-import { Route as SraStudyIdentifierRouteImport } from './routes/sra-study/$identifier'
-import { Route as SraSampleIdentifierRouteImport } from './routes/sra-sample/$identifier'
-import { Route as SraRunIdentifierRouteImport } from './routes/sra-run/$identifier'
-import { Route as SraExperimentIdentifierRouteImport } from './routes/sra-experiment/$identifier'
-import { Route as SraAnalysisIdentifierRouteImport } from './routes/sra-analysis/$identifier'
-import { Route as JgaStudyIdentifierRouteImport } from './routes/jga-study/$identifier'
-import { Route as JgaPolicyIdentifierRouteImport } from './routes/jga-policy/$identifier'
-import { Route as JgaDatasetIdentifierRouteImport } from './routes/jga-dataset/$identifier'
-import { Route as JgaDacIdentifierRouteImport } from './routes/jga-dac/$identifier'
-import { Route as BiosampleIdentifierRouteImport } from './routes/biosample/$identifier'
-import { Route as BioprojectIdentifierRouteImport } from './routes/bioproject/$identifier'
-import { Route as AllIdentifierRouteImport } from './routes/all/$identifier'
+import { Route as EntryIndexRouteImport } from './routes/entry/index'
+import { Route as EntrySraSubmissionIndexRouteImport } from './routes/entry/sra-submission/index'
+import { Route as EntrySraStudyIndexRouteImport } from './routes/entry/sra-study/index'
+import { Route as EntrySraSampleIndexRouteImport } from './routes/entry/sra-sample/index'
+import { Route as EntrySraRunIndexRouteImport } from './routes/entry/sra-run/index'
+import { Route as EntrySraExperimentIndexRouteImport } from './routes/entry/sra-experiment/index'
+import { Route as EntrySraAnalysisIndexRouteImport } from './routes/entry/sra-analysis/index'
+import { Route as EntryJgaStudyIndexRouteImport } from './routes/entry/jga-study/index'
+import { Route as EntryJgaPolicyIndexRouteImport } from './routes/entry/jga-policy/index'
+import { Route as EntryJgaDatasetIndexRouteImport } from './routes/entry/jga-dataset/index'
+import { Route as EntryJgaDacIndexRouteImport } from './routes/entry/jga-dac/index'
+import { Route as EntryBiosampleIndexRouteImport } from './routes/entry/biosample/index'
+import { Route as EntryBioprojectIndexRouteImport } from './routes/entry/bioproject/index'
+import { Route as EntrySraSubmissionIdentifierRouteImport } from './routes/entry/sra-submission/$identifier'
+import { Route as EntrySraStudyIdentifierRouteImport } from './routes/entry/sra-study/$identifier'
+import { Route as EntrySraSampleIdentifierRouteImport } from './routes/entry/sra-sample/$identifier'
+import { Route as EntrySraRunIdentifierRouteImport } from './routes/entry/sra-run/$identifier'
+import { Route as EntrySraExperimentIdentifierRouteImport } from './routes/entry/sra-experiment/$identifier'
+import { Route as EntrySraAnalysisIdentifierRouteImport } from './routes/entry/sra-analysis/$identifier'
+import { Route as EntryJgaStudyIdentifierRouteImport } from './routes/entry/jga-study/$identifier'
+import { Route as EntryJgaPolicyIdentifierRouteImport } from './routes/entry/jga-policy/$identifier'
+import { Route as EntryJgaDatasetIdentifierRouteImport } from './routes/entry/jga-dataset/$identifier'
+import { Route as EntryJgaDacIdentifierRouteImport } from './routes/entry/jga-dac/$identifier'
+import { Route as EntryBiosampleIdentifierRouteImport } from './routes/entry/biosample/$identifier'
+import { Route as EntryBioprojectIdentifierRouteImport } from './routes/entry/bioproject/$identifier'
 
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
@@ -48,350 +47,346 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SraSubmissionIndexRoute = SraSubmissionIndexRouteImport.update({
-  id: '/sra-submission/',
-  path: '/sra-submission/',
+const EntryIndexRoute = EntryIndexRouteImport.update({
+  id: '/entry/',
+  path: '/entry/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SraStudyIndexRoute = SraStudyIndexRouteImport.update({
-  id: '/sra-study/',
-  path: '/sra-study/',
+const EntrySraSubmissionIndexRoute = EntrySraSubmissionIndexRouteImport.update({
+  id: '/entry/sra-submission/',
+  path: '/entry/sra-submission/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SraSampleIndexRoute = SraSampleIndexRouteImport.update({
-  id: '/sra-sample/',
-  path: '/sra-sample/',
+const EntrySraStudyIndexRoute = EntrySraStudyIndexRouteImport.update({
+  id: '/entry/sra-study/',
+  path: '/entry/sra-study/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SraRunIndexRoute = SraRunIndexRouteImport.update({
-  id: '/sra-run/',
-  path: '/sra-run/',
+const EntrySraSampleIndexRoute = EntrySraSampleIndexRouteImport.update({
+  id: '/entry/sra-sample/',
+  path: '/entry/sra-sample/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SraExperimentIndexRoute = SraExperimentIndexRouteImport.update({
-  id: '/sra-experiment/',
-  path: '/sra-experiment/',
+const EntrySraRunIndexRoute = EntrySraRunIndexRouteImport.update({
+  id: '/entry/sra-run/',
+  path: '/entry/sra-run/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SraAnalysisIndexRoute = SraAnalysisIndexRouteImport.update({
-  id: '/sra-analysis/',
-  path: '/sra-analysis/',
+const EntrySraExperimentIndexRoute = EntrySraExperimentIndexRouteImport.update({
+  id: '/entry/sra-experiment/',
+  path: '/entry/sra-experiment/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const JgaStudyIndexRoute = JgaStudyIndexRouteImport.update({
-  id: '/jga-study/',
-  path: '/jga-study/',
+const EntrySraAnalysisIndexRoute = EntrySraAnalysisIndexRouteImport.update({
+  id: '/entry/sra-analysis/',
+  path: '/entry/sra-analysis/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const JgaPolicyIndexRoute = JgaPolicyIndexRouteImport.update({
-  id: '/jga-policy/',
-  path: '/jga-policy/',
+const EntryJgaStudyIndexRoute = EntryJgaStudyIndexRouteImport.update({
+  id: '/entry/jga-study/',
+  path: '/entry/jga-study/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const JgaDatasetIndexRoute = JgaDatasetIndexRouteImport.update({
-  id: '/jga-dataset/',
-  path: '/jga-dataset/',
+const EntryJgaPolicyIndexRoute = EntryJgaPolicyIndexRouteImport.update({
+  id: '/entry/jga-policy/',
+  path: '/entry/jga-policy/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const JgaDacIndexRoute = JgaDacIndexRouteImport.update({
-  id: '/jga-dac/',
-  path: '/jga-dac/',
+const EntryJgaDatasetIndexRoute = EntryJgaDatasetIndexRouteImport.update({
+  id: '/entry/jga-dataset/',
+  path: '/entry/jga-dataset/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BiosampleIndexRoute = BiosampleIndexRouteImport.update({
-  id: '/biosample/',
-  path: '/biosample/',
+const EntryJgaDacIndexRoute = EntryJgaDacIndexRouteImport.update({
+  id: '/entry/jga-dac/',
+  path: '/entry/jga-dac/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BioprojectIndexRoute = BioprojectIndexRouteImport.update({
-  id: '/bioproject/',
-  path: '/bioproject/',
+const EntryBiosampleIndexRoute = EntryBiosampleIndexRouteImport.update({
+  id: '/entry/biosample/',
+  path: '/entry/biosample/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AllIndexRoute = AllIndexRouteImport.update({
-  id: '/all/',
-  path: '/all/',
+const EntryBioprojectIndexRoute = EntryBioprojectIndexRouteImport.update({
+  id: '/entry/bioproject/',
+  path: '/entry/bioproject/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SraSubmissionIdentifierRoute = SraSubmissionIdentifierRouteImport.update({
-  id: '/sra-submission/$identifier',
-  path: '/sra-submission/$identifier',
+const EntrySraSubmissionIdentifierRoute =
+  EntrySraSubmissionIdentifierRouteImport.update({
+    id: '/entry/sra-submission/$identifier',
+    path: '/entry/sra-submission/$identifier',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const EntrySraStudyIdentifierRoute = EntrySraStudyIdentifierRouteImport.update({
+  id: '/entry/sra-study/$identifier',
+  path: '/entry/sra-study/$identifier',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SraStudyIdentifierRoute = SraStudyIdentifierRouteImport.update({
-  id: '/sra-study/$identifier',
-  path: '/sra-study/$identifier',
+const EntrySraSampleIdentifierRoute =
+  EntrySraSampleIdentifierRouteImport.update({
+    id: '/entry/sra-sample/$identifier',
+    path: '/entry/sra-sample/$identifier',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const EntrySraRunIdentifierRoute = EntrySraRunIdentifierRouteImport.update({
+  id: '/entry/sra-run/$identifier',
+  path: '/entry/sra-run/$identifier',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SraSampleIdentifierRoute = SraSampleIdentifierRouteImport.update({
-  id: '/sra-sample/$identifier',
-  path: '/sra-sample/$identifier',
+const EntrySraExperimentIdentifierRoute =
+  EntrySraExperimentIdentifierRouteImport.update({
+    id: '/entry/sra-experiment/$identifier',
+    path: '/entry/sra-experiment/$identifier',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const EntrySraAnalysisIdentifierRoute =
+  EntrySraAnalysisIdentifierRouteImport.update({
+    id: '/entry/sra-analysis/$identifier',
+    path: '/entry/sra-analysis/$identifier',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const EntryJgaStudyIdentifierRoute = EntryJgaStudyIdentifierRouteImport.update({
+  id: '/entry/jga-study/$identifier',
+  path: '/entry/jga-study/$identifier',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SraRunIdentifierRoute = SraRunIdentifierRouteImport.update({
-  id: '/sra-run/$identifier',
-  path: '/sra-run/$identifier',
+const EntryJgaPolicyIdentifierRoute =
+  EntryJgaPolicyIdentifierRouteImport.update({
+    id: '/entry/jga-policy/$identifier',
+    path: '/entry/jga-policy/$identifier',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const EntryJgaDatasetIdentifierRoute =
+  EntryJgaDatasetIdentifierRouteImport.update({
+    id: '/entry/jga-dataset/$identifier',
+    path: '/entry/jga-dataset/$identifier',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const EntryJgaDacIdentifierRoute = EntryJgaDacIdentifierRouteImport.update({
+  id: '/entry/jga-dac/$identifier',
+  path: '/entry/jga-dac/$identifier',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SraExperimentIdentifierRoute = SraExperimentIdentifierRouteImport.update({
-  id: '/sra-experiment/$identifier',
-  path: '/sra-experiment/$identifier',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SraAnalysisIdentifierRoute = SraAnalysisIdentifierRouteImport.update({
-  id: '/sra-analysis/$identifier',
-  path: '/sra-analysis/$identifier',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const JgaStudyIdentifierRoute = JgaStudyIdentifierRouteImport.update({
-  id: '/jga-study/$identifier',
-  path: '/jga-study/$identifier',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const JgaPolicyIdentifierRoute = JgaPolicyIdentifierRouteImport.update({
-  id: '/jga-policy/$identifier',
-  path: '/jga-policy/$identifier',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const JgaDatasetIdentifierRoute = JgaDatasetIdentifierRouteImport.update({
-  id: '/jga-dataset/$identifier',
-  path: '/jga-dataset/$identifier',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const JgaDacIdentifierRoute = JgaDacIdentifierRouteImport.update({
-  id: '/jga-dac/$identifier',
-  path: '/jga-dac/$identifier',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BiosampleIdentifierRoute = BiosampleIdentifierRouteImport.update({
-  id: '/biosample/$identifier',
-  path: '/biosample/$identifier',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BioprojectIdentifierRoute = BioprojectIdentifierRouteImport.update({
-  id: '/bioproject/$identifier',
-  path: '/bioproject/$identifier',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AllIdentifierRoute = AllIdentifierRouteImport.update({
-  id: '/all/$identifier',
-  path: '/all/$identifier',
-  getParentRoute: () => rootRouteImport,
-} as any)
+const EntryBiosampleIdentifierRoute =
+  EntryBiosampleIdentifierRouteImport.update({
+    id: '/entry/biosample/$identifier',
+    path: '/entry/biosample/$identifier',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const EntryBioprojectIdentifierRoute =
+  EntryBioprojectIdentifierRouteImport.update({
+    id: '/entry/bioproject/$identifier',
+    path: '/entry/bioproject/$identifier',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/all/$identifier': typeof AllIdentifierRoute
-  '/bioproject/$identifier': typeof BioprojectIdentifierRoute
-  '/biosample/$identifier': typeof BiosampleIdentifierRoute
-  '/jga-dac/$identifier': typeof JgaDacIdentifierRoute
-  '/jga-dataset/$identifier': typeof JgaDatasetIdentifierRoute
-  '/jga-policy/$identifier': typeof JgaPolicyIdentifierRoute
-  '/jga-study/$identifier': typeof JgaStudyIdentifierRoute
-  '/sra-analysis/$identifier': typeof SraAnalysisIdentifierRoute
-  '/sra-experiment/$identifier': typeof SraExperimentIdentifierRoute
-  '/sra-run/$identifier': typeof SraRunIdentifierRoute
-  '/sra-sample/$identifier': typeof SraSampleIdentifierRoute
-  '/sra-study/$identifier': typeof SraStudyIdentifierRoute
-  '/sra-submission/$identifier': typeof SraSubmissionIdentifierRoute
-  '/all': typeof AllIndexRoute
-  '/bioproject': typeof BioprojectIndexRoute
-  '/biosample': typeof BiosampleIndexRoute
-  '/jga-dac': typeof JgaDacIndexRoute
-  '/jga-dataset': typeof JgaDatasetIndexRoute
-  '/jga-policy': typeof JgaPolicyIndexRoute
-  '/jga-study': typeof JgaStudyIndexRoute
-  '/sra-analysis': typeof SraAnalysisIndexRoute
-  '/sra-experiment': typeof SraExperimentIndexRoute
-  '/sra-run': typeof SraRunIndexRoute
-  '/sra-sample': typeof SraSampleIndexRoute
-  '/sra-study': typeof SraStudyIndexRoute
-  '/sra-submission': typeof SraSubmissionIndexRoute
+  '/entry': typeof EntryIndexRoute
+  '/entry/bioproject/$identifier': typeof EntryBioprojectIdentifierRoute
+  '/entry/biosample/$identifier': typeof EntryBiosampleIdentifierRoute
+  '/entry/jga-dac/$identifier': typeof EntryJgaDacIdentifierRoute
+  '/entry/jga-dataset/$identifier': typeof EntryJgaDatasetIdentifierRoute
+  '/entry/jga-policy/$identifier': typeof EntryJgaPolicyIdentifierRoute
+  '/entry/jga-study/$identifier': typeof EntryJgaStudyIdentifierRoute
+  '/entry/sra-analysis/$identifier': typeof EntrySraAnalysisIdentifierRoute
+  '/entry/sra-experiment/$identifier': typeof EntrySraExperimentIdentifierRoute
+  '/entry/sra-run/$identifier': typeof EntrySraRunIdentifierRoute
+  '/entry/sra-sample/$identifier': typeof EntrySraSampleIdentifierRoute
+  '/entry/sra-study/$identifier': typeof EntrySraStudyIdentifierRoute
+  '/entry/sra-submission/$identifier': typeof EntrySraSubmissionIdentifierRoute
+  '/entry/bioproject': typeof EntryBioprojectIndexRoute
+  '/entry/biosample': typeof EntryBiosampleIndexRoute
+  '/entry/jga-dac': typeof EntryJgaDacIndexRoute
+  '/entry/jga-dataset': typeof EntryJgaDatasetIndexRoute
+  '/entry/jga-policy': typeof EntryJgaPolicyIndexRoute
+  '/entry/jga-study': typeof EntryJgaStudyIndexRoute
+  '/entry/sra-analysis': typeof EntrySraAnalysisIndexRoute
+  '/entry/sra-experiment': typeof EntrySraExperimentIndexRoute
+  '/entry/sra-run': typeof EntrySraRunIndexRoute
+  '/entry/sra-sample': typeof EntrySraSampleIndexRoute
+  '/entry/sra-study': typeof EntrySraStudyIndexRoute
+  '/entry/sra-submission': typeof EntrySraSubmissionIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/all/$identifier': typeof AllIdentifierRoute
-  '/bioproject/$identifier': typeof BioprojectIdentifierRoute
-  '/biosample/$identifier': typeof BiosampleIdentifierRoute
-  '/jga-dac/$identifier': typeof JgaDacIdentifierRoute
-  '/jga-dataset/$identifier': typeof JgaDatasetIdentifierRoute
-  '/jga-policy/$identifier': typeof JgaPolicyIdentifierRoute
-  '/jga-study/$identifier': typeof JgaStudyIdentifierRoute
-  '/sra-analysis/$identifier': typeof SraAnalysisIdentifierRoute
-  '/sra-experiment/$identifier': typeof SraExperimentIdentifierRoute
-  '/sra-run/$identifier': typeof SraRunIdentifierRoute
-  '/sra-sample/$identifier': typeof SraSampleIdentifierRoute
-  '/sra-study/$identifier': typeof SraStudyIdentifierRoute
-  '/sra-submission/$identifier': typeof SraSubmissionIdentifierRoute
-  '/all': typeof AllIndexRoute
-  '/bioproject': typeof BioprojectIndexRoute
-  '/biosample': typeof BiosampleIndexRoute
-  '/jga-dac': typeof JgaDacIndexRoute
-  '/jga-dataset': typeof JgaDatasetIndexRoute
-  '/jga-policy': typeof JgaPolicyIndexRoute
-  '/jga-study': typeof JgaStudyIndexRoute
-  '/sra-analysis': typeof SraAnalysisIndexRoute
-  '/sra-experiment': typeof SraExperimentIndexRoute
-  '/sra-run': typeof SraRunIndexRoute
-  '/sra-sample': typeof SraSampleIndexRoute
-  '/sra-study': typeof SraStudyIndexRoute
-  '/sra-submission': typeof SraSubmissionIndexRoute
+  '/entry': typeof EntryIndexRoute
+  '/entry/bioproject/$identifier': typeof EntryBioprojectIdentifierRoute
+  '/entry/biosample/$identifier': typeof EntryBiosampleIdentifierRoute
+  '/entry/jga-dac/$identifier': typeof EntryJgaDacIdentifierRoute
+  '/entry/jga-dataset/$identifier': typeof EntryJgaDatasetIdentifierRoute
+  '/entry/jga-policy/$identifier': typeof EntryJgaPolicyIdentifierRoute
+  '/entry/jga-study/$identifier': typeof EntryJgaStudyIdentifierRoute
+  '/entry/sra-analysis/$identifier': typeof EntrySraAnalysisIdentifierRoute
+  '/entry/sra-experiment/$identifier': typeof EntrySraExperimentIdentifierRoute
+  '/entry/sra-run/$identifier': typeof EntrySraRunIdentifierRoute
+  '/entry/sra-sample/$identifier': typeof EntrySraSampleIdentifierRoute
+  '/entry/sra-study/$identifier': typeof EntrySraStudyIdentifierRoute
+  '/entry/sra-submission/$identifier': typeof EntrySraSubmissionIdentifierRoute
+  '/entry/bioproject': typeof EntryBioprojectIndexRoute
+  '/entry/biosample': typeof EntryBiosampleIndexRoute
+  '/entry/jga-dac': typeof EntryJgaDacIndexRoute
+  '/entry/jga-dataset': typeof EntryJgaDatasetIndexRoute
+  '/entry/jga-policy': typeof EntryJgaPolicyIndexRoute
+  '/entry/jga-study': typeof EntryJgaStudyIndexRoute
+  '/entry/sra-analysis': typeof EntrySraAnalysisIndexRoute
+  '/entry/sra-experiment': typeof EntrySraExperimentIndexRoute
+  '/entry/sra-run': typeof EntrySraRunIndexRoute
+  '/entry/sra-sample': typeof EntrySraSampleIndexRoute
+  '/entry/sra-study': typeof EntrySraStudyIndexRoute
+  '/entry/sra-submission': typeof EntrySraSubmissionIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/all/$identifier': typeof AllIdentifierRoute
-  '/bioproject/$identifier': typeof BioprojectIdentifierRoute
-  '/biosample/$identifier': typeof BiosampleIdentifierRoute
-  '/jga-dac/$identifier': typeof JgaDacIdentifierRoute
-  '/jga-dataset/$identifier': typeof JgaDatasetIdentifierRoute
-  '/jga-policy/$identifier': typeof JgaPolicyIdentifierRoute
-  '/jga-study/$identifier': typeof JgaStudyIdentifierRoute
-  '/sra-analysis/$identifier': typeof SraAnalysisIdentifierRoute
-  '/sra-experiment/$identifier': typeof SraExperimentIdentifierRoute
-  '/sra-run/$identifier': typeof SraRunIdentifierRoute
-  '/sra-sample/$identifier': typeof SraSampleIdentifierRoute
-  '/sra-study/$identifier': typeof SraStudyIdentifierRoute
-  '/sra-submission/$identifier': typeof SraSubmissionIdentifierRoute
-  '/all/': typeof AllIndexRoute
-  '/bioproject/': typeof BioprojectIndexRoute
-  '/biosample/': typeof BiosampleIndexRoute
-  '/jga-dac/': typeof JgaDacIndexRoute
-  '/jga-dataset/': typeof JgaDatasetIndexRoute
-  '/jga-policy/': typeof JgaPolicyIndexRoute
-  '/jga-study/': typeof JgaStudyIndexRoute
-  '/sra-analysis/': typeof SraAnalysisIndexRoute
-  '/sra-experiment/': typeof SraExperimentIndexRoute
-  '/sra-run/': typeof SraRunIndexRoute
-  '/sra-sample/': typeof SraSampleIndexRoute
-  '/sra-study/': typeof SraStudyIndexRoute
-  '/sra-submission/': typeof SraSubmissionIndexRoute
+  '/entry/': typeof EntryIndexRoute
+  '/entry/bioproject/$identifier': typeof EntryBioprojectIdentifierRoute
+  '/entry/biosample/$identifier': typeof EntryBiosampleIdentifierRoute
+  '/entry/jga-dac/$identifier': typeof EntryJgaDacIdentifierRoute
+  '/entry/jga-dataset/$identifier': typeof EntryJgaDatasetIdentifierRoute
+  '/entry/jga-policy/$identifier': typeof EntryJgaPolicyIdentifierRoute
+  '/entry/jga-study/$identifier': typeof EntryJgaStudyIdentifierRoute
+  '/entry/sra-analysis/$identifier': typeof EntrySraAnalysisIdentifierRoute
+  '/entry/sra-experiment/$identifier': typeof EntrySraExperimentIdentifierRoute
+  '/entry/sra-run/$identifier': typeof EntrySraRunIdentifierRoute
+  '/entry/sra-sample/$identifier': typeof EntrySraSampleIdentifierRoute
+  '/entry/sra-study/$identifier': typeof EntrySraStudyIdentifierRoute
+  '/entry/sra-submission/$identifier': typeof EntrySraSubmissionIdentifierRoute
+  '/entry/bioproject/': typeof EntryBioprojectIndexRoute
+  '/entry/biosample/': typeof EntryBiosampleIndexRoute
+  '/entry/jga-dac/': typeof EntryJgaDacIndexRoute
+  '/entry/jga-dataset/': typeof EntryJgaDatasetIndexRoute
+  '/entry/jga-policy/': typeof EntryJgaPolicyIndexRoute
+  '/entry/jga-study/': typeof EntryJgaStudyIndexRoute
+  '/entry/sra-analysis/': typeof EntrySraAnalysisIndexRoute
+  '/entry/sra-experiment/': typeof EntrySraExperimentIndexRoute
+  '/entry/sra-run/': typeof EntrySraRunIndexRoute
+  '/entry/sra-sample/': typeof EntrySraSampleIndexRoute
+  '/entry/sra-study/': typeof EntrySraStudyIndexRoute
+  '/entry/sra-submission/': typeof EntrySraSubmissionIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
-    | '/all/$identifier'
-    | '/bioproject/$identifier'
-    | '/biosample/$identifier'
-    | '/jga-dac/$identifier'
-    | '/jga-dataset/$identifier'
-    | '/jga-policy/$identifier'
-    | '/jga-study/$identifier'
-    | '/sra-analysis/$identifier'
-    | '/sra-experiment/$identifier'
-    | '/sra-run/$identifier'
-    | '/sra-sample/$identifier'
-    | '/sra-study/$identifier'
-    | '/sra-submission/$identifier'
-    | '/all'
-    | '/bioproject'
-    | '/biosample'
-    | '/jga-dac'
-    | '/jga-dataset'
-    | '/jga-policy'
-    | '/jga-study'
-    | '/sra-analysis'
-    | '/sra-experiment'
-    | '/sra-run'
-    | '/sra-sample'
-    | '/sra-study'
-    | '/sra-submission'
+    | '/entry'
+    | '/entry/bioproject/$identifier'
+    | '/entry/biosample/$identifier'
+    | '/entry/jga-dac/$identifier'
+    | '/entry/jga-dataset/$identifier'
+    | '/entry/jga-policy/$identifier'
+    | '/entry/jga-study/$identifier'
+    | '/entry/sra-analysis/$identifier'
+    | '/entry/sra-experiment/$identifier'
+    | '/entry/sra-run/$identifier'
+    | '/entry/sra-sample/$identifier'
+    | '/entry/sra-study/$identifier'
+    | '/entry/sra-submission/$identifier'
+    | '/entry/bioproject'
+    | '/entry/biosample'
+    | '/entry/jga-dac'
+    | '/entry/jga-dataset'
+    | '/entry/jga-policy'
+    | '/entry/jga-study'
+    | '/entry/sra-analysis'
+    | '/entry/sra-experiment'
+    | '/entry/sra-run'
+    | '/entry/sra-sample'
+    | '/entry/sra-study'
+    | '/entry/sra-submission'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
-    | '/all/$identifier'
-    | '/bioproject/$identifier'
-    | '/biosample/$identifier'
-    | '/jga-dac/$identifier'
-    | '/jga-dataset/$identifier'
-    | '/jga-policy/$identifier'
-    | '/jga-study/$identifier'
-    | '/sra-analysis/$identifier'
-    | '/sra-experiment/$identifier'
-    | '/sra-run/$identifier'
-    | '/sra-sample/$identifier'
-    | '/sra-study/$identifier'
-    | '/sra-submission/$identifier'
-    | '/all'
-    | '/bioproject'
-    | '/biosample'
-    | '/jga-dac'
-    | '/jga-dataset'
-    | '/jga-policy'
-    | '/jga-study'
-    | '/sra-analysis'
-    | '/sra-experiment'
-    | '/sra-run'
-    | '/sra-sample'
-    | '/sra-study'
-    | '/sra-submission'
+    | '/entry'
+    | '/entry/bioproject/$identifier'
+    | '/entry/biosample/$identifier'
+    | '/entry/jga-dac/$identifier'
+    | '/entry/jga-dataset/$identifier'
+    | '/entry/jga-policy/$identifier'
+    | '/entry/jga-study/$identifier'
+    | '/entry/sra-analysis/$identifier'
+    | '/entry/sra-experiment/$identifier'
+    | '/entry/sra-run/$identifier'
+    | '/entry/sra-sample/$identifier'
+    | '/entry/sra-study/$identifier'
+    | '/entry/sra-submission/$identifier'
+    | '/entry/bioproject'
+    | '/entry/biosample'
+    | '/entry/jga-dac'
+    | '/entry/jga-dataset'
+    | '/entry/jga-policy'
+    | '/entry/jga-study'
+    | '/entry/sra-analysis'
+    | '/entry/sra-experiment'
+    | '/entry/sra-run'
+    | '/entry/sra-sample'
+    | '/entry/sra-study'
+    | '/entry/sra-submission'
   id:
     | '__root__'
     | '/'
     | '/about'
-    | '/all/$identifier'
-    | '/bioproject/$identifier'
-    | '/biosample/$identifier'
-    | '/jga-dac/$identifier'
-    | '/jga-dataset/$identifier'
-    | '/jga-policy/$identifier'
-    | '/jga-study/$identifier'
-    | '/sra-analysis/$identifier'
-    | '/sra-experiment/$identifier'
-    | '/sra-run/$identifier'
-    | '/sra-sample/$identifier'
-    | '/sra-study/$identifier'
-    | '/sra-submission/$identifier'
-    | '/all/'
-    | '/bioproject/'
-    | '/biosample/'
-    | '/jga-dac/'
-    | '/jga-dataset/'
-    | '/jga-policy/'
-    | '/jga-study/'
-    | '/sra-analysis/'
-    | '/sra-experiment/'
-    | '/sra-run/'
-    | '/sra-sample/'
-    | '/sra-study/'
-    | '/sra-submission/'
+    | '/entry/'
+    | '/entry/bioproject/$identifier'
+    | '/entry/biosample/$identifier'
+    | '/entry/jga-dac/$identifier'
+    | '/entry/jga-dataset/$identifier'
+    | '/entry/jga-policy/$identifier'
+    | '/entry/jga-study/$identifier'
+    | '/entry/sra-analysis/$identifier'
+    | '/entry/sra-experiment/$identifier'
+    | '/entry/sra-run/$identifier'
+    | '/entry/sra-sample/$identifier'
+    | '/entry/sra-study/$identifier'
+    | '/entry/sra-submission/$identifier'
+    | '/entry/bioproject/'
+    | '/entry/biosample/'
+    | '/entry/jga-dac/'
+    | '/entry/jga-dataset/'
+    | '/entry/jga-policy/'
+    | '/entry/jga-study/'
+    | '/entry/sra-analysis/'
+    | '/entry/sra-experiment/'
+    | '/entry/sra-run/'
+    | '/entry/sra-sample/'
+    | '/entry/sra-study/'
+    | '/entry/sra-submission/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  AllIdentifierRoute: typeof AllIdentifierRoute
-  BioprojectIdentifierRoute: typeof BioprojectIdentifierRoute
-  BiosampleIdentifierRoute: typeof BiosampleIdentifierRoute
-  JgaDacIdentifierRoute: typeof JgaDacIdentifierRoute
-  JgaDatasetIdentifierRoute: typeof JgaDatasetIdentifierRoute
-  JgaPolicyIdentifierRoute: typeof JgaPolicyIdentifierRoute
-  JgaStudyIdentifierRoute: typeof JgaStudyIdentifierRoute
-  SraAnalysisIdentifierRoute: typeof SraAnalysisIdentifierRoute
-  SraExperimentIdentifierRoute: typeof SraExperimentIdentifierRoute
-  SraRunIdentifierRoute: typeof SraRunIdentifierRoute
-  SraSampleIdentifierRoute: typeof SraSampleIdentifierRoute
-  SraStudyIdentifierRoute: typeof SraStudyIdentifierRoute
-  SraSubmissionIdentifierRoute: typeof SraSubmissionIdentifierRoute
-  AllIndexRoute: typeof AllIndexRoute
-  BioprojectIndexRoute: typeof BioprojectIndexRoute
-  BiosampleIndexRoute: typeof BiosampleIndexRoute
-  JgaDacIndexRoute: typeof JgaDacIndexRoute
-  JgaDatasetIndexRoute: typeof JgaDatasetIndexRoute
-  JgaPolicyIndexRoute: typeof JgaPolicyIndexRoute
-  JgaStudyIndexRoute: typeof JgaStudyIndexRoute
-  SraAnalysisIndexRoute: typeof SraAnalysisIndexRoute
-  SraExperimentIndexRoute: typeof SraExperimentIndexRoute
-  SraRunIndexRoute: typeof SraRunIndexRoute
-  SraSampleIndexRoute: typeof SraSampleIndexRoute
-  SraStudyIndexRoute: typeof SraStudyIndexRoute
-  SraSubmissionIndexRoute: typeof SraSubmissionIndexRoute
+  EntryIndexRoute: typeof EntryIndexRoute
+  EntryBioprojectIdentifierRoute: typeof EntryBioprojectIdentifierRoute
+  EntryBiosampleIdentifierRoute: typeof EntryBiosampleIdentifierRoute
+  EntryJgaDacIdentifierRoute: typeof EntryJgaDacIdentifierRoute
+  EntryJgaDatasetIdentifierRoute: typeof EntryJgaDatasetIdentifierRoute
+  EntryJgaPolicyIdentifierRoute: typeof EntryJgaPolicyIdentifierRoute
+  EntryJgaStudyIdentifierRoute: typeof EntryJgaStudyIdentifierRoute
+  EntrySraAnalysisIdentifierRoute: typeof EntrySraAnalysisIdentifierRoute
+  EntrySraExperimentIdentifierRoute: typeof EntrySraExperimentIdentifierRoute
+  EntrySraRunIdentifierRoute: typeof EntrySraRunIdentifierRoute
+  EntrySraSampleIdentifierRoute: typeof EntrySraSampleIdentifierRoute
+  EntrySraStudyIdentifierRoute: typeof EntrySraStudyIdentifierRoute
+  EntrySraSubmissionIdentifierRoute: typeof EntrySraSubmissionIdentifierRoute
+  EntryBioprojectIndexRoute: typeof EntryBioprojectIndexRoute
+  EntryBiosampleIndexRoute: typeof EntryBiosampleIndexRoute
+  EntryJgaDacIndexRoute: typeof EntryJgaDacIndexRoute
+  EntryJgaDatasetIndexRoute: typeof EntryJgaDatasetIndexRoute
+  EntryJgaPolicyIndexRoute: typeof EntryJgaPolicyIndexRoute
+  EntryJgaStudyIndexRoute: typeof EntryJgaStudyIndexRoute
+  EntrySraAnalysisIndexRoute: typeof EntrySraAnalysisIndexRoute
+  EntrySraExperimentIndexRoute: typeof EntrySraExperimentIndexRoute
+  EntrySraRunIndexRoute: typeof EntrySraRunIndexRoute
+  EntrySraSampleIndexRoute: typeof EntrySraSampleIndexRoute
+  EntrySraStudyIndexRoute: typeof EntrySraStudyIndexRoute
+  EntrySraSubmissionIndexRoute: typeof EntrySraSubmissionIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -410,186 +405,179 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/sra-submission/': {
-      id: '/sra-submission/'
-      path: '/sra-submission'
-      fullPath: '/sra-submission'
-      preLoaderRoute: typeof SraSubmissionIndexRouteImport
+    '/entry/': {
+      id: '/entry/'
+      path: '/entry'
+      fullPath: '/entry'
+      preLoaderRoute: typeof EntryIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/sra-study/': {
-      id: '/sra-study/'
-      path: '/sra-study'
-      fullPath: '/sra-study'
-      preLoaderRoute: typeof SraStudyIndexRouteImport
+    '/entry/sra-submission/': {
+      id: '/entry/sra-submission/'
+      path: '/entry/sra-submission'
+      fullPath: '/entry/sra-submission'
+      preLoaderRoute: typeof EntrySraSubmissionIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/sra-sample/': {
-      id: '/sra-sample/'
-      path: '/sra-sample'
-      fullPath: '/sra-sample'
-      preLoaderRoute: typeof SraSampleIndexRouteImport
+    '/entry/sra-study/': {
+      id: '/entry/sra-study/'
+      path: '/entry/sra-study'
+      fullPath: '/entry/sra-study'
+      preLoaderRoute: typeof EntrySraStudyIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/sra-run/': {
-      id: '/sra-run/'
-      path: '/sra-run'
-      fullPath: '/sra-run'
-      preLoaderRoute: typeof SraRunIndexRouteImport
+    '/entry/sra-sample/': {
+      id: '/entry/sra-sample/'
+      path: '/entry/sra-sample'
+      fullPath: '/entry/sra-sample'
+      preLoaderRoute: typeof EntrySraSampleIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/sra-experiment/': {
-      id: '/sra-experiment/'
-      path: '/sra-experiment'
-      fullPath: '/sra-experiment'
-      preLoaderRoute: typeof SraExperimentIndexRouteImport
+    '/entry/sra-run/': {
+      id: '/entry/sra-run/'
+      path: '/entry/sra-run'
+      fullPath: '/entry/sra-run'
+      preLoaderRoute: typeof EntrySraRunIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/sra-analysis/': {
-      id: '/sra-analysis/'
-      path: '/sra-analysis'
-      fullPath: '/sra-analysis'
-      preLoaderRoute: typeof SraAnalysisIndexRouteImport
+    '/entry/sra-experiment/': {
+      id: '/entry/sra-experiment/'
+      path: '/entry/sra-experiment'
+      fullPath: '/entry/sra-experiment'
+      preLoaderRoute: typeof EntrySraExperimentIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/jga-study/': {
-      id: '/jga-study/'
-      path: '/jga-study'
-      fullPath: '/jga-study'
-      preLoaderRoute: typeof JgaStudyIndexRouteImport
+    '/entry/sra-analysis/': {
+      id: '/entry/sra-analysis/'
+      path: '/entry/sra-analysis'
+      fullPath: '/entry/sra-analysis'
+      preLoaderRoute: typeof EntrySraAnalysisIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/jga-policy/': {
-      id: '/jga-policy/'
-      path: '/jga-policy'
-      fullPath: '/jga-policy'
-      preLoaderRoute: typeof JgaPolicyIndexRouteImport
+    '/entry/jga-study/': {
+      id: '/entry/jga-study/'
+      path: '/entry/jga-study'
+      fullPath: '/entry/jga-study'
+      preLoaderRoute: typeof EntryJgaStudyIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/jga-dataset/': {
-      id: '/jga-dataset/'
-      path: '/jga-dataset'
-      fullPath: '/jga-dataset'
-      preLoaderRoute: typeof JgaDatasetIndexRouteImport
+    '/entry/jga-policy/': {
+      id: '/entry/jga-policy/'
+      path: '/entry/jga-policy'
+      fullPath: '/entry/jga-policy'
+      preLoaderRoute: typeof EntryJgaPolicyIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/jga-dac/': {
-      id: '/jga-dac/'
-      path: '/jga-dac'
-      fullPath: '/jga-dac'
-      preLoaderRoute: typeof JgaDacIndexRouteImport
+    '/entry/jga-dataset/': {
+      id: '/entry/jga-dataset/'
+      path: '/entry/jga-dataset'
+      fullPath: '/entry/jga-dataset'
+      preLoaderRoute: typeof EntryJgaDatasetIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/biosample/': {
-      id: '/biosample/'
-      path: '/biosample'
-      fullPath: '/biosample'
-      preLoaderRoute: typeof BiosampleIndexRouteImport
+    '/entry/jga-dac/': {
+      id: '/entry/jga-dac/'
+      path: '/entry/jga-dac'
+      fullPath: '/entry/jga-dac'
+      preLoaderRoute: typeof EntryJgaDacIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/bioproject/': {
-      id: '/bioproject/'
-      path: '/bioproject'
-      fullPath: '/bioproject'
-      preLoaderRoute: typeof BioprojectIndexRouteImport
+    '/entry/biosample/': {
+      id: '/entry/biosample/'
+      path: '/entry/biosample'
+      fullPath: '/entry/biosample'
+      preLoaderRoute: typeof EntryBiosampleIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/all/': {
-      id: '/all/'
-      path: '/all'
-      fullPath: '/all'
-      preLoaderRoute: typeof AllIndexRouteImport
+    '/entry/bioproject/': {
+      id: '/entry/bioproject/'
+      path: '/entry/bioproject'
+      fullPath: '/entry/bioproject'
+      preLoaderRoute: typeof EntryBioprojectIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/sra-submission/$identifier': {
-      id: '/sra-submission/$identifier'
-      path: '/sra-submission/$identifier'
-      fullPath: '/sra-submission/$identifier'
-      preLoaderRoute: typeof SraSubmissionIdentifierRouteImport
+    '/entry/sra-submission/$identifier': {
+      id: '/entry/sra-submission/$identifier'
+      path: '/entry/sra-submission/$identifier'
+      fullPath: '/entry/sra-submission/$identifier'
+      preLoaderRoute: typeof EntrySraSubmissionIdentifierRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/sra-study/$identifier': {
-      id: '/sra-study/$identifier'
-      path: '/sra-study/$identifier'
-      fullPath: '/sra-study/$identifier'
-      preLoaderRoute: typeof SraStudyIdentifierRouteImport
+    '/entry/sra-study/$identifier': {
+      id: '/entry/sra-study/$identifier'
+      path: '/entry/sra-study/$identifier'
+      fullPath: '/entry/sra-study/$identifier'
+      preLoaderRoute: typeof EntrySraStudyIdentifierRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/sra-sample/$identifier': {
-      id: '/sra-sample/$identifier'
-      path: '/sra-sample/$identifier'
-      fullPath: '/sra-sample/$identifier'
-      preLoaderRoute: typeof SraSampleIdentifierRouteImport
+    '/entry/sra-sample/$identifier': {
+      id: '/entry/sra-sample/$identifier'
+      path: '/entry/sra-sample/$identifier'
+      fullPath: '/entry/sra-sample/$identifier'
+      preLoaderRoute: typeof EntrySraSampleIdentifierRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/sra-run/$identifier': {
-      id: '/sra-run/$identifier'
-      path: '/sra-run/$identifier'
-      fullPath: '/sra-run/$identifier'
-      preLoaderRoute: typeof SraRunIdentifierRouteImport
+    '/entry/sra-run/$identifier': {
+      id: '/entry/sra-run/$identifier'
+      path: '/entry/sra-run/$identifier'
+      fullPath: '/entry/sra-run/$identifier'
+      preLoaderRoute: typeof EntrySraRunIdentifierRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/sra-experiment/$identifier': {
-      id: '/sra-experiment/$identifier'
-      path: '/sra-experiment/$identifier'
-      fullPath: '/sra-experiment/$identifier'
-      preLoaderRoute: typeof SraExperimentIdentifierRouteImport
+    '/entry/sra-experiment/$identifier': {
+      id: '/entry/sra-experiment/$identifier'
+      path: '/entry/sra-experiment/$identifier'
+      fullPath: '/entry/sra-experiment/$identifier'
+      preLoaderRoute: typeof EntrySraExperimentIdentifierRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/sra-analysis/$identifier': {
-      id: '/sra-analysis/$identifier'
-      path: '/sra-analysis/$identifier'
-      fullPath: '/sra-analysis/$identifier'
-      preLoaderRoute: typeof SraAnalysisIdentifierRouteImport
+    '/entry/sra-analysis/$identifier': {
+      id: '/entry/sra-analysis/$identifier'
+      path: '/entry/sra-analysis/$identifier'
+      fullPath: '/entry/sra-analysis/$identifier'
+      preLoaderRoute: typeof EntrySraAnalysisIdentifierRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/jga-study/$identifier': {
-      id: '/jga-study/$identifier'
-      path: '/jga-study/$identifier'
-      fullPath: '/jga-study/$identifier'
-      preLoaderRoute: typeof JgaStudyIdentifierRouteImport
+    '/entry/jga-study/$identifier': {
+      id: '/entry/jga-study/$identifier'
+      path: '/entry/jga-study/$identifier'
+      fullPath: '/entry/jga-study/$identifier'
+      preLoaderRoute: typeof EntryJgaStudyIdentifierRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/jga-policy/$identifier': {
-      id: '/jga-policy/$identifier'
-      path: '/jga-policy/$identifier'
-      fullPath: '/jga-policy/$identifier'
-      preLoaderRoute: typeof JgaPolicyIdentifierRouteImport
+    '/entry/jga-policy/$identifier': {
+      id: '/entry/jga-policy/$identifier'
+      path: '/entry/jga-policy/$identifier'
+      fullPath: '/entry/jga-policy/$identifier'
+      preLoaderRoute: typeof EntryJgaPolicyIdentifierRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/jga-dataset/$identifier': {
-      id: '/jga-dataset/$identifier'
-      path: '/jga-dataset/$identifier'
-      fullPath: '/jga-dataset/$identifier'
-      preLoaderRoute: typeof JgaDatasetIdentifierRouteImport
+    '/entry/jga-dataset/$identifier': {
+      id: '/entry/jga-dataset/$identifier'
+      path: '/entry/jga-dataset/$identifier'
+      fullPath: '/entry/jga-dataset/$identifier'
+      preLoaderRoute: typeof EntryJgaDatasetIdentifierRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/jga-dac/$identifier': {
-      id: '/jga-dac/$identifier'
-      path: '/jga-dac/$identifier'
-      fullPath: '/jga-dac/$identifier'
-      preLoaderRoute: typeof JgaDacIdentifierRouteImport
+    '/entry/jga-dac/$identifier': {
+      id: '/entry/jga-dac/$identifier'
+      path: '/entry/jga-dac/$identifier'
+      fullPath: '/entry/jga-dac/$identifier'
+      preLoaderRoute: typeof EntryJgaDacIdentifierRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/biosample/$identifier': {
-      id: '/biosample/$identifier'
-      path: '/biosample/$identifier'
-      fullPath: '/biosample/$identifier'
-      preLoaderRoute: typeof BiosampleIdentifierRouteImport
+    '/entry/biosample/$identifier': {
+      id: '/entry/biosample/$identifier'
+      path: '/entry/biosample/$identifier'
+      fullPath: '/entry/biosample/$identifier'
+      preLoaderRoute: typeof EntryBiosampleIdentifierRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/bioproject/$identifier': {
-      id: '/bioproject/$identifier'
-      path: '/bioproject/$identifier'
-      fullPath: '/bioproject/$identifier'
-      preLoaderRoute: typeof BioprojectIdentifierRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/all/$identifier': {
-      id: '/all/$identifier'
-      path: '/all/$identifier'
-      fullPath: '/all/$identifier'
-      preLoaderRoute: typeof AllIdentifierRouteImport
+    '/entry/bioproject/$identifier': {
+      id: '/entry/bioproject/$identifier'
+      path: '/entry/bioproject/$identifier'
+      fullPath: '/entry/bioproject/$identifier'
+      preLoaderRoute: typeof EntryBioprojectIdentifierRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -598,32 +586,31 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  AllIdentifierRoute: AllIdentifierRoute,
-  BioprojectIdentifierRoute: BioprojectIdentifierRoute,
-  BiosampleIdentifierRoute: BiosampleIdentifierRoute,
-  JgaDacIdentifierRoute: JgaDacIdentifierRoute,
-  JgaDatasetIdentifierRoute: JgaDatasetIdentifierRoute,
-  JgaPolicyIdentifierRoute: JgaPolicyIdentifierRoute,
-  JgaStudyIdentifierRoute: JgaStudyIdentifierRoute,
-  SraAnalysisIdentifierRoute: SraAnalysisIdentifierRoute,
-  SraExperimentIdentifierRoute: SraExperimentIdentifierRoute,
-  SraRunIdentifierRoute: SraRunIdentifierRoute,
-  SraSampleIdentifierRoute: SraSampleIdentifierRoute,
-  SraStudyIdentifierRoute: SraStudyIdentifierRoute,
-  SraSubmissionIdentifierRoute: SraSubmissionIdentifierRoute,
-  AllIndexRoute: AllIndexRoute,
-  BioprojectIndexRoute: BioprojectIndexRoute,
-  BiosampleIndexRoute: BiosampleIndexRoute,
-  JgaDacIndexRoute: JgaDacIndexRoute,
-  JgaDatasetIndexRoute: JgaDatasetIndexRoute,
-  JgaPolicyIndexRoute: JgaPolicyIndexRoute,
-  JgaStudyIndexRoute: JgaStudyIndexRoute,
-  SraAnalysisIndexRoute: SraAnalysisIndexRoute,
-  SraExperimentIndexRoute: SraExperimentIndexRoute,
-  SraRunIndexRoute: SraRunIndexRoute,
-  SraSampleIndexRoute: SraSampleIndexRoute,
-  SraStudyIndexRoute: SraStudyIndexRoute,
-  SraSubmissionIndexRoute: SraSubmissionIndexRoute,
+  EntryIndexRoute: EntryIndexRoute,
+  EntryBioprojectIdentifierRoute: EntryBioprojectIdentifierRoute,
+  EntryBiosampleIdentifierRoute: EntryBiosampleIdentifierRoute,
+  EntryJgaDacIdentifierRoute: EntryJgaDacIdentifierRoute,
+  EntryJgaDatasetIdentifierRoute: EntryJgaDatasetIdentifierRoute,
+  EntryJgaPolicyIdentifierRoute: EntryJgaPolicyIdentifierRoute,
+  EntryJgaStudyIdentifierRoute: EntryJgaStudyIdentifierRoute,
+  EntrySraAnalysisIdentifierRoute: EntrySraAnalysisIdentifierRoute,
+  EntrySraExperimentIdentifierRoute: EntrySraExperimentIdentifierRoute,
+  EntrySraRunIdentifierRoute: EntrySraRunIdentifierRoute,
+  EntrySraSampleIdentifierRoute: EntrySraSampleIdentifierRoute,
+  EntrySraStudyIdentifierRoute: EntrySraStudyIdentifierRoute,
+  EntrySraSubmissionIdentifierRoute: EntrySraSubmissionIdentifierRoute,
+  EntryBioprojectIndexRoute: EntryBioprojectIndexRoute,
+  EntryBiosampleIndexRoute: EntryBiosampleIndexRoute,
+  EntryJgaDacIndexRoute: EntryJgaDacIndexRoute,
+  EntryJgaDatasetIndexRoute: EntryJgaDatasetIndexRoute,
+  EntryJgaPolicyIndexRoute: EntryJgaPolicyIndexRoute,
+  EntryJgaStudyIndexRoute: EntryJgaStudyIndexRoute,
+  EntrySraAnalysisIndexRoute: EntrySraAnalysisIndexRoute,
+  EntrySraExperimentIndexRoute: EntrySraExperimentIndexRoute,
+  EntrySraRunIndexRoute: EntrySraRunIndexRoute,
+  EntrySraSampleIndexRoute: EntrySraSampleIndexRoute,
+  EntrySraStudyIndexRoute: EntrySraStudyIndexRoute,
+  EntrySraSubmissionIndexRoute: EntrySraSubmissionIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

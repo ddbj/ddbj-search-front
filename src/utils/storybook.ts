@@ -1,6 +1,6 @@
 import { expect } from "storybook/test";
 
-export const getRouter = () => {
+export const sbGetRouter = () => {
   const router = window.__STORYBOOK_ROUTER__;
   if (!router) throw new Error("Router not found");
   return router;

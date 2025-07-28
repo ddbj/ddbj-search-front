@@ -35,7 +35,7 @@ export const TypeSelector: FC<Props> = () => {
               key={name}
               labelStr={label + " (99999)"}
               value={name}
-              to={`/${name}`}
+              to={`/entry/${name}`}
               isSelected={isSelected}
               setIsSelected={(v) => {
                 onChangeSelection(name as DBType, v);
