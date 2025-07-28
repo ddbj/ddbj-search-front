@@ -1,5 +1,5 @@
 import { Input } from "@heroui/react";
-import { useSingleTextSearch } from "@/features/queryBuilder/hooks/useSingleTextSearch.ts";
+import { useSingleTextSearch } from "@/features/searchResult/hooks/useSingleTextSearch.ts";
 import type { FC } from "react";
 
 type Props = {};

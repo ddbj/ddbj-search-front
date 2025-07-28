@@ -1,10 +1,10 @@
 import { useNavigate, useSearch } from "@tanstack/react-router";
 import clsx from "clsx";
 import { isUndefined } from "is-what";
-import { QueryTip } from "@/features/queryBuilder/ui/QueryTip.tsx";
+import { QueryTip } from "@/features/searchResult/ui/QueryTip.tsx";
 import { routeTree } from "@/routeTree.gen.ts";
 import { type AllSearch, type SearchDateRange, isAllResourcesKey } from "@/schema/search.ts";
-import { removeFromSearch } from "@/features/queryBuilder/utils/removeFromSearch.ts";
+import { removeFromSearch } from "@/features/searchResult/utils/removeFromSearch.ts";
 import type { ComponentProps, FC } from "react";
 
 type Props = {};

@@ -1,6 +1,6 @@
 import { useNavigate, useSearch } from "@tanstack/react-router";
 import { type FC, useMemo } from "react";
-import { DateRangePicker } from "@/features/queryBuilder/ui/DateRangePicker.tsx";
+import { DateRangePicker } from "@/features/searchResult/ui/DateRangePicker.tsx";
 import { routeTree } from "@/routeTree.gen.ts";
 import { type DateRange, dateRangeDataToString, dateRangeStringToData } from "@/utils/date.ts";
 import type { SearchBase } from "@/schema/search.ts";

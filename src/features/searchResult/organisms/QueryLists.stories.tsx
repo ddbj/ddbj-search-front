@@ -1,24 +1,37 @@
-import { TypeSelector } from "@/features/queryBuilder/organisms/TypeSelector.tsx";
-import { sbGetRouter } from "@/utils/storybook.ts";
+import { QueryLists } from "@/features/searchResult/organisms/QueryLists.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
-  component: TypeSelector,
+  component: QueryLists,
   args: {},
-  decorators: [],
-} satisfies Meta<typeof TypeSelector>;
+  decorators: [
+    (Story) => (
+      <div className="w-72 bg-gray-100 p-4">
+        <Story />
+      </div>
+    ),
+  ],
+} satisfies Meta<typeof QueryLists>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Primary = {} satisfies Story;
+export const Empty = {
+  decorators: [
+    (Story) => {
+      return <Story />;
+    },
+  ],
+} satisfies Story;
+
 export const HasSearch = {
   decorators: [
     (Story) => {
-      const router = sbGetRouter();
+      const router = window.__STORYBOOK_ROUTER__;
+      if (!router) throw new Error("Router not found");
       router.navigate({
-        to: "/entry",
+        to: "/all",
         search: {
           datePublished: {
             start: "2025-03-10",

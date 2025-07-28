@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { __QUERY_LISTS_TEST__ } from "@/features/queryBuilder/organisms/QueryLists.tsx";
+import { __QUERY_LISTS_TEST__ } from "@/features/searchResult/organisms/QueryLists.tsx";
 import { compileDateRangeString } from "@/utils/date.ts";
 import type { SearchBase, AllSearch } from "@/schema/search.ts";
 

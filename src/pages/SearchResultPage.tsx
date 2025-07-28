@@ -1,8 +1,8 @@
 import { useRouterState } from "@tanstack/react-router";
 import { type ComponentProps, useMemo } from "react";
 import { dbLabels, type DBType, isDBType } from "@/consts.ts";
-import { Breadcrumbs } from "@/features/queryBuilder/Breadcrumbs.tsx";
-import { QueryBuilder } from "@/features/queryBuilder/QueryBuilder.tsx";
+import { Breadcrumbs } from "@/features/searchResult/Breadcrumbs.tsx";
+import { QueryBuilder } from "@/features/searchResult/QueryBuilder.tsx";
 
 type BreadcrumbsPath = ComponentProps<typeof Breadcrumbs>["paths"][0];
 export const SearchResultPage = () => {

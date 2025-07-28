@@ -1,6 +1,6 @@
 import { Input } from "@heroui/react";
 import { type FC } from "react";
-import { useMultipleTextSearch } from "@/features/queryBuilder/hooks/useMultipleTextSearch.ts";
+import { useMultipleTextSearch } from "@/features/searchResult/hooks/useMultipleTextSearch.ts";
 
 type Props = {};
 

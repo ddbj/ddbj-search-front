@@ -1,6 +1,6 @@
 import { useNavigate, useSearch } from "@tanstack/react-router";
 import { type FC, useMemo } from "react";
-import { CheckboxText } from "@/features/queryBuilder/ui/CheckboxText.tsx";
+import { CheckboxText } from "@/features/searchResult/ui/CheckboxText.tsx";
 import type { AllSearch } from "@/schema/search.ts";
 
 type Props = {};

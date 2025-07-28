@@ -1,4 +1,4 @@
-import { QueryBuilder } from "@/features/queryBuilder/QueryBuilder.tsx";
+import { QueryBuilder } from "@/features/searchResult/QueryBuilder.tsx";
 import { dbTypes } from "@/consts.ts";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 

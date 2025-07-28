@@ -1,25 +1,24 @@
-import { DateSelector } from "@/features/queryBuilder/organisms/DateSelector.tsx";
+import { TypeSelector } from "@/features/searchResult/organisms/TypeSelector.tsx";
+import { sbGetRouter } from "@/utils/storybook.ts";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
-  component: DateSelector,
+  component: TypeSelector,
   args: {},
   decorators: [],
-} satisfies Meta<typeof DateSelector>;
+} satisfies Meta<typeof TypeSelector>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
 export const Primary = {} satisfies Story;
-
-export const hasSearch = {
+export const HasSearch = {
   decorators: [
     (Story) => {
-      const router = window.__STORYBOOK_ROUTER__;
-      if (!router) throw new Error("Router not found");
+      const router = sbGetRouter();
       router.navigate({
-        to: "/all",
+        to: "/entry",
         search: {
           datePublished: {
             start: "2025-03-10",
@@ -29,6 +28,7 @@ export const hasSearch = {
             start: "2025-07-10",
             end: "2025-07-11",
           },
+          types: ["biosample", "sra-analysis"],
         },
       });
       return <Story />;

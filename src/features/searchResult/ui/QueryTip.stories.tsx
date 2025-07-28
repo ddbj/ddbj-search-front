@@ -1,4 +1,4 @@
-import { QueryTip } from "@/features/queryBuilder/ui/QueryTip.tsx";
+import { QueryTip } from "@/features/searchResult/ui/QueryTip.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {

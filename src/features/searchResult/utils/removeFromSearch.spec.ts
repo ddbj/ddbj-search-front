@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { removeFromSearch } from "@/features/queryBuilder/utils/removeFromSearch.ts";
+import { removeFromSearch } from "@/features/searchResult/utils/removeFromSearch.ts";
 import type { SearchBase } from "@/schema/search.ts";
 
 describe("removeFromSearch", () => {
