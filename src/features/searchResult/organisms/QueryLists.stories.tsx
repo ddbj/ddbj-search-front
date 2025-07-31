@@ -1,15 +1,23 @@
+import { useState } from "react";
 import { QueryLists } from "@/features/searchResult/organisms/QueryLists.tsx";
+import { removeFromSearch } from "@/features/searchResult/utils/removeFromSearch.ts";
+import type { AllSearchParams, AllSearchParamsKey } from "@/schema/search.ts";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
   component: QueryLists,
-  args: {},
+  args: {
+    params: {},
+    removeParam: (key: AllSearchParamsKey, v: string) => {},
+  },
   decorators: [
-    (Story) => (
-      <div className="w-72 bg-gray-100 p-4">
-        <Story />
-      </div>
-    ),
+    (Story) => {
+      return (
+        <div className="w-72 bg-gray-100 p-4">
+          <Story />
+        </div>
+      );
+    },
   ],
 } satisfies Meta<typeof QueryLists>;
 
@@ -17,34 +25,22 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Empty = {
-  decorators: [
-    (Story) => {
-      return <Story />;
-    },
-  ],
-} satisfies Story;
+export const Empty = {} satisfies Story;
 
 export const HasSearch = {
   decorators: [
     (Story) => {
-      const router = window.__STORYBOOK_ROUTER__;
-      if (!router) throw new Error("Router not found");
-      router.navigate({
-        to: "/all",
-        search: {
-          datePublished: {
-            start: "2025-03-10",
-            end: "2025-03-11",
-          },
-          dateUpdated: {
-            start: "2025-07-10",
-            end: "2025-07-11",
-          },
-          types: ["biosample", "sra-analysis"],
-        },
+      const [params, setParams] = useState<AllSearchParams>({
+        types: ["biosample", "sra-analysis"],
+        keywords: ["hogemoge", "mogemoge"],
+        umbrella: true,
       });
-      return <Story />;
+      const removeParam = (key: AllSearchParamsKey, v: string) => {
+        setParams((prev) => {
+          return removeFromSearch(prev, key, v);
+        });
+      };
+      return <Story args={{ params, removeParam }} />;
     },
   ],
 } satisfies Story;

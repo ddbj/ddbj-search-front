@@ -1,9 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { zodValidator } from "@tanstack/zod-adapter";
 import { dbTypes } from "@/consts/db.ts";
-import { useDDBJSearchParams } from "@/features/searchResult/hooks/useDDBJSearch.ts";
+import { useUpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
 import { SearchResultLayout } from "@/layout/SearchResultLayout.tsx";
 import { baseSearchSchema } from "@/schema/search.ts";
+import type { ComponentProps } from "react";
 
 export const Route = createFileRoute("/entry/sra-study/")({
   component: PageComponent,
@@ -11,6 +12,10 @@ export const Route = createFileRoute("/entry/sra-study/")({
 });
 
 function PageComponent() {
-  const searchParams = useDDBJSearchParams(Route.useSearch());
-  return <SearchResultLayout entryType={dbTypes["sra-study"]} searchParams={searchParams} />;
+  const props = {
+    entryType: dbTypes["sra-study"],
+    params: Route.useSearch(),
+    updateFunctions: useUpdateSearchFunctions(),
+  } satisfies ComponentProps<typeof SearchResultLayout>;
+  return <SearchResultLayout {...props} />;
 }

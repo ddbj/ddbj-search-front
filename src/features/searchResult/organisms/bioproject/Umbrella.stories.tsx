@@ -3,7 +3,10 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
   component: Umbrella,
-  args: {},
+  args: {
+    value: false,
+    update: (v: boolean) => {},
+  },
   decorators: [],
 } satisfies Meta<typeof Umbrella>;
 

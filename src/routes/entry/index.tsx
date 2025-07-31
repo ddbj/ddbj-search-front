@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { zodValidator } from "@tanstack/zod-adapter";
-import { useDDBJSearchParams } from "@/features/searchResult/hooks/useDDBJSearch.ts";
+import { useUpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
 import { SearchResultLayout } from "@/layout/SearchResultLayout.tsx";
-import { allSearchSchemas, baseSearchSchema } from "@/schema/search.ts";
+import { allSearchSchemas } from "@/schema/search.ts";
+import type { ComponentProps } from "react";
 
 export const Route = createFileRoute("/entry/")({
   component: PageComponent,
@@ -13,6 +14,10 @@ export const Route = createFileRoute("/entry/")({
 });
 
 function PageComponent() {
-  const searchParams = useDDBJSearchParams(Route.useSearch());
-  return <SearchResultLayout entryType={null} searchParams={searchParams} />;
+  const props = {
+    entryType: null,
+    params: Route.useSearch(),
+    updateFunctions: useUpdateSearchFunctions(),
+  } satisfies ComponentProps<typeof SearchResultLayout>;
+  return <SearchResultLayout {...props} />;
 }

@@ -7,15 +7,16 @@ import {
   type AllSearchParamsKey,
   type SearchDateRange,
 } from "@/schema/search.ts";
-import type { DDBJSearchParams } from "@/features/searchResult/hooks/useDDBJSearch.ts";
+import type { UpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
 
-type Props = { searchParams: DDBJSearchParams };
+type Props = {
+  removeParam: UpdateSearchFunctions["removeParam"];
+  params: AllSearchParams;
+};
 
 const tipWrapperClasses = clsx("flex flex-wrap gap-2");
 
-export const QueryLists: FC<Props> = ({ searchParams }) => {
-  const { params, update } = searchParams;
-  const { removeParam } = useMemo(() => update, [update]);
+export const QueryLists: FC<Props> = ({ params, removeParam }) => {
   const tipData = parseQueryStateToTipList(params);
 
   if (tipData.length === 0) {

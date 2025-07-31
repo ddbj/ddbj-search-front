@@ -3,7 +3,10 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
   component: Grant,
-  args: {},
+  args: {
+    value: "",
+    update: (v: string) => {},
+  },
   decorators: [],
 } satisfies Meta<typeof Grant>;
 

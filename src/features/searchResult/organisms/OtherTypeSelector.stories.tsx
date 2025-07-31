@@ -15,5 +15,7 @@ type Story = StoryObj<typeof meta>;
 export const Primary = {
   args: {
     currentType: dbTypes["sra-analysis"],
+    linkSearchParams: {},
+    moveToEntryRoot: () => {},
   },
 } satisfies Story;

@@ -1,10 +1,10 @@
 import { type FC } from "react";
 import { CheckboxText } from "@/features/searchResult/ui/CheckboxText.tsx";
-import type { DDBJSearchParams } from "@/features/searchResult/hooks/useDDBJSearch.ts";
+import type { UpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
 
 type Props = {
   value: boolean;
-  update: DDBJSearchParams["update"]["changeUmbrella"];
+  update: UpdateSearchFunctions["changeUmbrella"];
 };
 
 export const Umbrella: FC<Props> = ({ value, update }) => {

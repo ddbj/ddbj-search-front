@@ -1,26 +1,25 @@
 import { dbTypes } from "@/consts/db.ts";
 import { __SB_updateFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
-import { QueryBuilder } from "@/features/searchResult/QueryBuilder.tsx";
+import { SearchResultLayout } from "./SearchResultLayout.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
-  component: QueryBuilder,
+  component: SearchResultLayout,
   args: {
-    update: __SB_updateFunctions,
-    currentType: null,
+    updateFunctions: __SB_updateFunctions,
+    entryType: null,
     params: {},
   },
   decorators: [],
-} satisfies Meta<typeof QueryBuilder>;
+} satisfies Meta<typeof SearchResultLayout>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Primary = {} satisfies Story;
+export const All = {} satisfies Story;
 export const BioProject = {
   args: {
-    currentType: dbTypes.bioproject,
-    params: {},
+    entryType: dbTypes.bioproject,
   },
 } satisfies Story;

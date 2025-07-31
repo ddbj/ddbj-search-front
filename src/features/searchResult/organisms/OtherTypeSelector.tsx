@@ -2,12 +2,12 @@ import { type FC } from "react";
 import { dbLabels, type DBType, dbTypeList } from "@/consts/db.ts";
 import { CheckboxText } from "@/features/searchResult/ui/CheckboxText.tsx";
 import { type BaseSearchParams } from "@/schema/search.ts";
-import type { DDBJSearchParams } from "@/features/searchResult/hooks/useDDBJSearch.ts";
+import type { UpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
 
 type Props = {
   currentType: DBType;
   linkSearchParams: BaseSearchParams;
-  moveToEntryRoot: DDBJSearchParams["update"]["moveToEntryRoot"];
+  moveToEntryRoot: UpdateSearchFunctions["moveToEntryRoot"];
 };
 
 export const OtherTypeSelector: FC<Props> = ({

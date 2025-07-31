@@ -10,16 +10,16 @@ import { OtherTypeSelector } from "@/features/searchResult/organisms/OtherTypeSe
 import { type AllSearchParams, type BaseSearchParams, isBaseSearchKey } from "@/schema/search.ts";
 import { dateRangeStringToData } from "@/utils/date.ts";
 import { TypeSelector } from "./organisms/TypeSelector";
-import type { DDBJSearchParams } from "@/features/searchResult/hooks/useDDBJSearch.ts";
+import type { UpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
 
 type Props = {
   currentType: DBType | null;
-  searchParams: DDBJSearchParams;
+  update: UpdateSearchFunctions;
+  params: AllSearchParams;
 };
 const wrapperClasses = "flex flex-col gap-4 w-96";
 
-export const QueryBuilder: FC<Props> = ({ currentType, searchParams }) => {
-  const { params, update } = searchParams;
+export const QueryBuilder: FC<Props> = ({ currentType, update, params }) => {
   const {
     keywords,
     types,
@@ -41,7 +41,7 @@ export const QueryBuilder: FC<Props> = ({ currentType, searchParams }) => {
     changePublication,
     changeGrant,
   } = useMemo(() => update, [update]);
-  const typeLinkParams = makeTypeLinkParams(searchParams.params);
+  const typeLinkParams = makeTypeLinkParams(params);
 
   return (
     <aside className={wrapperClasses}>

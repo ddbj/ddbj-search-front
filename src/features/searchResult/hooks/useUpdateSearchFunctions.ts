@@ -5,20 +5,17 @@ import { type DateRange, dateRangeDataToString } from "@/utils/date.ts";
 import type { DBType } from "@/consts/db.ts";
 import type { AllSearchParams, AllSearchParamsKey } from "@/schema/search.ts";
 
-export type DDBJSearchParams = {
-  params: AllSearchParams;
-  update: {
-    moveToEntryRoot: (params: AllSearchParams) => void;
-    changeKeywords: (v: string[]) => void;
-    mergeDBTypes: (type: DBType, v: boolean) => void;
-    changeUpdated: (v: DateRange | null) => void;
-    changePublished: (v: DateRange | null) => void;
-    changeUmbrella: (v: boolean) => void;
-    changeOrganization: (v: string) => void;
-    changePublication: (v: string) => void;
-    changeGrant: (v: string) => void;
-    removeParam: (name: AllSearchParamsKey, value: string) => void;
-  };
+export type UpdateSearchFunctions = {
+  moveToEntryRoot: (params: AllSearchParams) => void;
+  changeKeywords: (v: string[]) => void;
+  mergeDBTypes: (type: DBType, v: boolean) => void;
+  changeUpdated: (v: DateRange | null) => void;
+  changePublished: (v: DateRange | null) => void;
+  changeUmbrella: (v: boolean) => void;
+  changeOrganization: (v: string) => void;
+  changePublication: (v: string) => void;
+  changeGrant: (v: string) => void;
+  removeParam: (name: AllSearchParamsKey, value: string) => void;
 };
 
 const replace = true;
@@ -26,9 +23,8 @@ const from = "/";
 
 type P = AllSearchParams;
 
-export const useDDBJSearchParams = (params: AllSearchParams): DDBJSearchParams => {
+export const useUpdateSearchFunctions = (): UpdateSearchFunctions => {
   const navigate = useNavigate();
-  //
   const update = useMemo(() => {
     return {
       moveToEntryRoot: (params: P) => {
@@ -53,17 +49,17 @@ export const useDDBJSearchParams = (params: AllSearchParams): DDBJSearchParams =
         navigate({ search: (prev: P) => composeOrganization(prev, v), replace, from });
       },
       changePublication: (v: string) => {
-        navigate({ search: (prev: P) => composeOrganization(prev, v), replace, from });
+        navigate({ search: (prev: P) => composePublication(prev, v), replace, from });
       },
       changeGrant: (v: string) => {
-        navigate({ search: (prev: P) => composeOrganization(prev, v), replace, from });
+        navigate({ search: (prev: P) => composeGrant(prev, v), replace, from });
       },
       removeParam: (key: AllSearchParamsKey, v: string) => {
         navigate({ search: (prev: P) => removeFromSearch(prev, key, v), replace, from });
       },
     };
-  }, [navigate]) satisfies DDBJSearchParams["update"];
-  return { params, update };
+  }, [navigate]) satisfies UpdateSearchFunctions;
+  return update;
 };
 
 const composeKeywords = (params: P, value: string[]): P => {
@@ -104,4 +100,17 @@ const composePublication = (params: P, value: string) => {
 const composeGrant = (params: P, value: string) => {
   const { grant: prev, ...rest } = params;
   return value ? { ...rest, grant: value } : rest;
+};
+
+export const __SB_updateFunctions: UpdateSearchFunctions = {
+  moveToEntryRoot: (params: AllSearchParams) => {},
+  changeKeywords: (v: string[]) => {},
+  mergeDBTypes: (type: DBType, v: boolean) => {},
+  changeUpdated: (v: DateRange | null) => {},
+  changePublished: (v: DateRange | null) => {},
+  changeUmbrella: (v: boolean) => {},
+  changeOrganization: (v: string) => {},
+  changePublication: (v: string) => {},
+  changeGrant: (v: string) => {},
+  removeParam: (name: AllSearchParamsKey, value: string) => {},
 };
