@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { dbTypeList } from "@/consts/db.ts";
-import { allResourcesSchemas } from "@/schema/search.ts";
+import { allSearchSchemas } from "@/schema/search.ts";
 
 export const SearchApiResponseSchema = z.object({
   page: z.number(),
@@ -16,5 +16,5 @@ export const SearchApiResponseSchema = z.object({
 });
 export type SearchAPIResponse = z.infer<typeof SearchApiResponseSchema>;
 
-export const SearchApiParamsSchema = allResourcesSchemas;
+export const SearchApiParamsSchema = allSearchSchemas;
 export type SearchApiParams = z.infer<typeof SearchApiParamsSchema>;

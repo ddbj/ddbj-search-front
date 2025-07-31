@@ -1,11 +1,11 @@
 import { copy } from "copy-anything";
-import type { AllResourcesKey, AllSearch } from "@/schema/search.ts";
+import type { AllSearchParamsKey, AllSearchParams } from "@/schema/search.ts";
 
 export const removeFromSearch = (
-  current: AllSearch,
-  key: AllResourcesKey,
+  current: AllSearchParams,
+  key: AllSearchParamsKey,
   value: string
-): AllSearch => {
+): AllSearchParams => {
   const copied = copy(current);
   switch (key) {
     case "types":
@@ -13,6 +13,7 @@ export const removeFromSearch = (
       if (copied[key]) {
         copied[key] = copied[key].filter((t) => t.trim() !== value.trim());
       }
+      if (copied[key]?.length === 0) delete copied[key];
       break;
     case "datePublished":
     case "dateUpdated":

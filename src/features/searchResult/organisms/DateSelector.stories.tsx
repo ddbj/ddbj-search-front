@@ -1,9 +1,16 @@
+import { useState } from "react";
 import { DateSelector } from "@/features/searchResult/organisms/DateSelector.tsx";
+import type { DateRange } from "@/utils/date.ts";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
   component: DateSelector,
-  args: {},
+  args: {
+    published: null,
+    updated: null,
+    changePublished: (v: DateRange | null) => {},
+    changeUpdated: (v: DateRange | null) => {},
+  },
   decorators: [],
 } satisfies Meta<typeof DateSelector>;
 
@@ -11,27 +18,27 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Primary = {} satisfies Story;
-
-export const hasSearch = {
+export const Primary = {
   decorators: [
     (Story) => {
-      const router = window.__STORYBOOK_ROUTER__;
-      if (!router) throw new Error("Router not found");
-      router.navigate({
-        to: "/all",
-        search: {
-          datePublished: {
-            start: "2025-03-10",
-            end: "2025-03-11",
-          },
-          dateUpdated: {
-            start: "2025-07-10",
-            end: "2025-07-11",
-          },
-        },
-      });
-      return <Story />;
+      const [published, setPublished] = useState<DateRange | null>(null);
+      const [updated, setUpdated] = useState<DateRange | null>(null);
+      const changePublished = (v: DateRange | null) => {
+        setPublished(v);
+      };
+      const changeUpdated = (v: DateRange | null) => {
+        setUpdated(v);
+      };
+      return (
+        <Story
+          args={{
+            published,
+            updated,
+            changePublished,
+            changeUpdated,
+          }}
+        />
+      );
     },
   ],
 } satisfies Story;

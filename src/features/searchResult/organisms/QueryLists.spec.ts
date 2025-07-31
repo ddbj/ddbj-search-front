@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { __QUERY_LISTS_TEST__ } from "@/features/searchResult/organisms/QueryLists.tsx";
 import { compileDateRangeString } from "@/utils/date.ts";
-import type { SearchBase, AllSearch } from "@/schema/search.ts";
+import type { BaseSearchParams, AllSearchParams } from "@/schema/search.ts";
 
 const { parseQueryStateToTipList } = __QUERY_LISTS_TEST__;
 
@@ -12,7 +12,7 @@ describe("parseQueryStateToTipList", () => {
   });
 
   it("should parse keywords to QueryTipProps array", () => {
-    const state: AllSearch = {};
+    const state: AllSearchParams = {};
     state.keywords = ["human", "cat"];
     const result = parseQueryStateToTipList(state);
     console.log(result);
@@ -21,14 +21,14 @@ describe("parseQueryStateToTipList", () => {
   });
 
   it("should parse types to QueryTipProps array", () => {
-    const state: AllSearch = {};
+    const state: AllSearchParams = {};
     state.types = ["sra-analysis", "jga-study"];
     const result = parseQueryStateToTipList(state);
     expect(result.length).toBe(2);
   });
 
   it("should parse date ranges to QueryTipProps array", () => {
-    const state: AllSearch = {};
+    const state: AllSearchParams = {};
     state.datePublished = compileDateRangeString("2025-07-01", "2025-07-10");
     state.dateUpdated = compileDateRangeString("2024-07-01", "2024-07-10");
     const result = parseQueryStateToTipList(state);
@@ -39,7 +39,7 @@ describe("parseQueryStateToTipList", () => {
   });
 
   it("", () => {
-    const state: AllSearch = {};
+    const state: AllSearchParams = {};
     state.grant = "test grant ";
     const result = parseQueryStateToTipList(state);
     expect(result.length).toBe(1);
@@ -47,28 +47,28 @@ describe("parseQueryStateToTipList", () => {
   });
 
   it("", () => {
-    const state: AllSearch = {};
+    const state: AllSearchParams = {};
     state.grant = "";
     const result = parseQueryStateToTipList(state);
     expect(result.length).toBe(0);
   });
 
   it("", () => {
-    const state: AllSearch = {};
+    const state: AllSearchParams = {};
     state.grant = undefined;
     const result = parseQueryStateToTipList(state);
     expect(result.length).toBe(0);
   });
 
   it("", () => {
-    const state: AllSearch = {};
+    const state: AllSearchParams = {};
     state.umbrella = true;
     const result = parseQueryStateToTipList(state);
     expect(result.length).toBe(1);
     expect(result[0].data.value).toBe("TRUE");
   });
   it("", () => {
-    const state: AllSearch = {};
+    const state: AllSearchParams = {};
     state.umbrella = false;
     const result = parseQueryStateToTipList(state);
     expect(result.length).toBe(0);

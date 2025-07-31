@@ -1,28 +1,19 @@
-import { useNavigate, useSearch } from "@tanstack/react-router";
-import { type FC, useMemo } from "react";
+import { type FC } from "react";
 import { CheckboxText } from "@/features/searchResult/ui/CheckboxText.tsx";
-import type { AllSearch } from "@/schema/search.ts";
+import type { DDBJSearchParams } from "@/features/searchResult/hooks/useDDBJSearch.ts";
 
-type Props = {};
+type Props = {
+  value: boolean;
+  update: DDBJSearchParams["update"]["changeUmbrella"];
+};
 
-export const Umbrella: FC<Props> = () => {
-  const searchParams = useSearch({ strict: false });
-  const isSelected = useMemo(() => {
-    return searchParams.umbrella;
-  }, [searchParams.umbrella]);
-  const navigate = useNavigate();
-  const onChange = (value: boolean) => {
-    const { umbrella, ...rest } = searchParams;
-    const search: AllSearch = value ? { umbrella: true, ...rest } : { ...rest };
-    navigate({ search, from: "/", replace: true });
-  };
-
+export const Umbrella: FC<Props> = ({ value, update }) => {
   return (
     <CheckboxText
       labelStr={"Umbrella Project"}
       value={"umbrella"}
-      isSelected={isSelected}
-      setIsSelected={onChange}
+      isSelected={value}
+      setIsSelected={update}
     />
   );
 };

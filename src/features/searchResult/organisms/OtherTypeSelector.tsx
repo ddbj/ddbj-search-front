@@ -1,29 +1,20 @@
-import { useNavigate, useSearch } from "@tanstack/react-router";
-import { type FC, useMemo } from "react";
+import { type FC } from "react";
+import { dbLabels, type DBType, dbTypeList } from "@/consts/db.ts";
 import { CheckboxText } from "@/features/searchResult/ui/CheckboxText.tsx";
-import { dbLabels, type DBType, dbTypeList, dbTypes } from "@/consts/db.ts";
-import { isSearchBaseKey } from "@/schema/search.ts";
+import { type BaseSearchParams } from "@/schema/search.ts";
+import type { DDBJSearchParams } from "@/features/searchResult/hooks/useDDBJSearch.ts";
 
 type Props = {
   currentType: DBType;
+  linkSearchParams: BaseSearchParams;
+  moveToEntryRoot: DDBJSearchParams["update"]["moveToEntryRoot"];
 };
 
-export const OtherTypeSelector: FC<Props> = ({ currentType }) => {
-  const search = useSearch({ strict: false });
-  const generalSearchParams = useMemo(() => {
-    return Object.fromEntries(Object.entries(search).filter((key, _value) => isSearchBaseKey(key)));
-  }, [search]);
-  const navigate = useNavigate();
-
-  const onSetOtherType = (type: DBType) => {
-    const types = [type, currentType];
-    const newSearch = {
-      ...generalSearchParams,
-      types,
-    };
-    navigate({ from: "/", to: "/entry", search: newSearch });
-  };
-
+export const OtherTypeSelector: FC<Props> = ({
+  currentType,
+  linkSearchParams,
+  moveToEntryRoot,
+}) => {
   return (
     <div>
       <div>Type</div>
@@ -33,7 +24,7 @@ export const OtherTypeSelector: FC<Props> = ({ currentType }) => {
           value={currentType}
           isSelected={true}
           to={`/entry/${currentType}`}
-          search={search}
+          search={linkSearchParams}
         />
       </div>
       <details>
@@ -42,14 +33,15 @@ export const OtherTypeSelector: FC<Props> = ({ currentType }) => {
           {dbTypeList
             .filter((key) => key !== currentType)
             .map((key) => {
+              const types = [key, currentType];
               return (
                 <CheckboxText
                   key={key}
                   labelStr={dbLabels[key]}
                   value={key}
                   to={`/entry/${key}`}
-                  search={generalSearchParams}
-                  setIsSelected={() => onSetOtherType(key)}
+                  search={linkSearchParams}
+                  setIsSelected={() => moveToEntryRoot({ ...linkSearchParams, types })}
                 />
               );
             })}

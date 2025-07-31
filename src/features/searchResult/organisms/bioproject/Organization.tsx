@@ -2,10 +2,13 @@ import { Input } from "@heroui/react";
 import { type FC } from "react";
 import { useSingleTextSearch } from "@/features/searchResult/hooks/useSingleTextSearch.ts";
 
-type Props = {};
+type Props = {
+  value: string;
+  update: (v: string) => void;
+};
 
-export const Organization: FC<Props> = () => {
-  const { uiValue, onChange } = useSingleTextSearch("organization");
+export const Organization: FC<Props> = ({ value, update }) => {
+  const { uiValue, setUiValue } = useSingleTextSearch(value, update);
 
   return (
     <div>
@@ -13,7 +16,7 @@ export const Organization: FC<Props> = () => {
         label={"Organization"}
         placeholder={"single query or * for all entries with organization"}
         value={uiValue}
-        onValueChange={onChange}
+        onValueChange={setUiValue}
       />
     </div>
   );

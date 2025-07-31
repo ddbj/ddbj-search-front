@@ -1,5 +1,5 @@
 import { expect, userEvent } from "storybook/test";
-import { HomePage } from "@/pages/HomePage.tsx";
+import { HomePage } from "@/layout/HomePage.tsx";
 import { findByListValue, findBySlot } from "@/utils/storybook.ts";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 

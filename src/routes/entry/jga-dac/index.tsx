@@ -1,9 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { zodValidator } from "@tanstack/zod-adapter";
-import { SearchResultPage } from "@/pages/SearchResultPage.tsx";
-import { searchBaseSchema } from "@/schema/search.ts";
+import { dbTypes } from "@/consts/db.ts";
+import { useDDBJSearchParams } from "@/features/searchResult/hooks/useDDBJSearch.ts";
+import { SearchResultLayout } from "@/layout/SearchResultLayout.tsx";
+import { baseSearchSchema } from "@/schema/search.ts";
 
 export const Route = createFileRoute("/entry/jga-dac/")({
-  component: SearchResultPage,
-  validateSearch: zodValidator(searchBaseSchema),
+  component: PageComponent,
+  validateSearch: zodValidator(baseSearchSchema),
 });
+
+function PageComponent() {
+  const searchParams = useDDBJSearchParams(Route.useSearch());
+  return <SearchResultLayout entryType={dbTypes["jga-dac"]} searchParams={searchParams} />;
+}

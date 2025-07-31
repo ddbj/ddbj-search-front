@@ -1,35 +1,21 @@
-import { useNavigate, useSearch } from "@tanstack/react-router";
 import { type FC, useMemo } from "react";
+import { dbLabels, type DBType, isDBType } from "@/consts/db.ts";
 import { CheckboxText } from "@/features/searchResult/ui/CheckboxText.tsx";
-import { dbLabels, type DBType } from "@/consts/db.ts";
-import type { SearchBase } from "@/schema/search.ts";
+import type { BaseSearchParams } from "@/schema/search.ts";
 
-type Props = {};
+type Props = {
+  types: DBType[];
+  linkSearchParams: BaseSearchParams;
+  mergeDBTypes: (type: DBType, value: boolean) => void;
+};
 
-export const TypeSelector: FC<Props> = () => {
-  const searchParams = useSearch({ strict: false });
-  const navigate = useNavigate();
-  const onChangeSelection = (name: DBType, value: boolean) => {
-    const replace = true;
-    const tempTypes = searchParams.types ?? [];
-    const { types: _oldTypes, ...otherSearchTypes } = searchParams;
-    const types = value ? [...tempTypes, name] : tempTypes.filter((v) => v !== name);
-    const search: SearchBase = {
-      ...otherSearchTypes,
-      ...(types.length ? { types } : {}),
-    };
-    navigate({ from: "/", search, replace });
-  };
-  const linkSearchParams = useMemo(() => {
-    const { types, ...rest } = searchParams;
-    return rest;
-  }, [searchParams]);
+export const TypeSelector: FC<Props> = ({ linkSearchParams, types, mergeDBTypes }) => {
   return (
     <div>
       Types
       <div className={"flex flex-col gap-1"}>
         {Object.entries(dbLabels).map(([name, label]) => {
-          const isSelected = searchParams.types?.includes(name as DBType);
+          const isSelected = types?.includes(name as DBType);
           return (
             <CheckboxText
               key={name}
@@ -38,7 +24,8 @@ export const TypeSelector: FC<Props> = () => {
               to={`/entry/${name}`}
               isSelected={isSelected}
               setIsSelected={(v) => {
-                onChangeSelection(name as DBType, v);
+                if (!isDBType(name)) return;
+                mergeDBTypes(name, v);
               }}
               search={linkSearchParams}
             />

@@ -1,6 +1,7 @@
 import * as z from "zod";
+import { dbTypeList, dbTypes } from "@/consts/db.ts";
 
-export const dateRangeSchema = z.object({
+const dateRangeSchema = z.object({
   start: z.string().refine((s) => !isNaN(Date.parse(s)), {
     message: "must be a valid ISO date string",
   }),
@@ -10,20 +11,25 @@ export const dateRangeSchema = z.object({
 });
 export type SearchDateRange = z.infer<typeof dateRangeSchema>;
 
-export const searchBaseSchema = z.object({
-  types: z.array(z.string()).optional(),
+export const baseSearchSchema = z.object({
+  types: z.array(z.enum(dbTypeList)).optional(),
   keywords: z.array(z.string()).optional(),
   datePublished: dateRangeSchema.optional(),
   dateUpdated: dateRangeSchema.optional(),
+});
+export type BaseSearchParams = z.infer<typeof baseSearchSchema>;
+const baseSearchKeySchema = baseSearchSchema.keyof();
+export type BaseSearchKey = z.infer<typeof baseSearchKeySchema>;
+export const isBaseSearchKey = (x: unknown): x is BaseSearchKey => {
+  return baseSearchKeySchema.safeParse(x).success;
+};
+
+//
+
+const paginationShape = {
   page: z.number().optional(),
   perPage: z.number().optional(),
-});
-export type SearchBase = z.infer<typeof searchBaseSchema>;
-const searchBaseKeySchema = searchBaseSchema.keyof();
-export type SearchBaseKey = z.infer<typeof searchBaseKeySchema>;
-export const isSearchBaseKey = (x: unknown): x is SearchBaseKey =>
-  searchBaseKeySchema.safeParse(x).success;
-//
+} as const;
 
 const bioProjectSpecificShape = {
   organization: z.string().optional(),
@@ -32,12 +38,18 @@ const bioProjectSpecificShape = {
   umbrella: z.boolean().optional(),
 } as const;
 
-export const bioprojectSchema = searchBaseSchema.extend(bioProjectSpecificShape);
-export type BioprojectSearch = z.infer<typeof bioprojectSchema>;
+export const bioprojectSchema = baseSearchSchema.extend(bioProjectSpecificShape);
+export type BioprojectSearchParams = z.infer<typeof bioprojectSchema>;
 
-export const allResourcesSchemas = searchBaseSchema.extend({ ...bioProjectSpecificShape });
-export type AllSearch = z.infer<typeof allResourcesSchemas>;
-const allResourcesSchemaKeySchema = allResourcesSchemas.keyof();
-export type AllResourcesKey = z.infer<typeof allResourcesSchemaKeySchema>;
-export const isAllResourcesKey = (x: unknown): x is AllResourcesKey =>
-  allResourcesSchemaKeySchema.safeParse(x).success;
+export const allSearchSchemas = baseSearchSchema.extend({
+  ...paginationShape,
+  ...bioProjectSpecificShape,
+});
+export type AllSearchParams = z.infer<typeof allSearchSchemas>;
+const allSearchKeySchema = allSearchSchemas.keyof();
+export type AllSearchParamsKey = z.infer<typeof allSearchKeySchema>;
+export const isAllSearchParamsKey = (x: unknown): x is AllSearchParamsKey => {
+  return allSearchKeySchema.safeParse(x).success;
+};
+
+type AA = AllSearchParams["types"];

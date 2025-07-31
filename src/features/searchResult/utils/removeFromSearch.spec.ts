@@ -1,10 +1,10 @@
 import { describe, expect, it } from "vitest";
 import { removeFromSearch } from "@/features/searchResult/utils/removeFromSearch.ts";
-import type { SearchBase } from "@/schema/search.ts";
+import type { BaseSearchParams } from "@/schema/search.ts";
 
 describe("removeFromSearch", () => {
   describe("emptyObject", () => {
-    const current: SearchBase = {};
+    const current: BaseSearchParams = {};
     it("", () => {
       const result = removeFromSearch(current, "keywords", "");
       expect(result).not.toBe(current);
@@ -12,7 +12,7 @@ describe("removeFromSearch", () => {
     });
   });
   describe("withParams", () => {
-    const current: SearchBase = {
+    const current: BaseSearchParams = {
       keywords: ["human ", " cat"],
       types: ["sra-analysis", "jga-study"],
       datePublished: { start: "2025-07-01", end: "2025-07-10" },

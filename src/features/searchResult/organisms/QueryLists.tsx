@@ -1,29 +1,22 @@
-import { useNavigate, useSearch } from "@tanstack/react-router";
 import clsx from "clsx";
 import { isUndefined } from "is-what";
+import { type ComponentProps, type FC, useMemo } from "react";
 import { QueryTip } from "@/features/searchResult/ui/QueryTip.tsx";
-import { routeTree } from "@/routeTree.gen.ts";
-import { type AllSearch, type SearchDateRange, isAllResourcesKey } from "@/schema/search.ts";
-import { removeFromSearch } from "@/features/searchResult/utils/removeFromSearch.ts";
-import type { ComponentProps, FC } from "react";
+import {
+  type AllSearchParams,
+  type AllSearchParamsKey,
+  type SearchDateRange,
+} from "@/schema/search.ts";
+import type { DDBJSearchParams } from "@/features/searchResult/hooks/useDDBJSearch.ts";
 
-type Props = {};
+type Props = { searchParams: DDBJSearchParams };
 
 const tipWrapperClasses = clsx("flex flex-wrap gap-2");
 
-export const QueryLists: FC<Props> = () => {
-  const searchParams = useSearch({ strict: false });
-  const tipData = parseQueryStateToTipList(searchParams);
-  const navigate = useNavigate();
-
-  const onClickRemove = (name: string, value: string) => {
-    const from = routeTree.fullPath;
-    const replace = true;
-    if (isAllResourcesKey(name)) {
-      const search = removeFromSearch(searchParams, name, value);
-      navigate({ from, search, replace });
-    }
-  };
+export const QueryLists: FC<Props> = ({ searchParams }) => {
+  const { params, update } = searchParams;
+  const { removeParam } = useMemo(() => update, [update]);
+  const tipData = parseQueryStateToTipList(params);
 
   if (tipData.length === 0) {
     return <></>;
@@ -38,7 +31,7 @@ export const QueryLists: FC<Props> = () => {
             key={`${data.name}:${data.value}`}
             label={label}
             data={data}
-            onClickRemove={onClickRemove}
+            onClickRemove={removeParam}
           />
         ))}
       </div>
@@ -47,17 +40,17 @@ export const QueryLists: FC<Props> = () => {
 };
 
 type QueryTipProps = Omit<ComponentProps<typeof QueryTip>, "onClickRemove">;
-const parseQueryStateToTipList = (state: AllSearch): QueryTipProps[] => {
+const parseQueryStateToTipList = (state: AllSearchParams): QueryTipProps[] => {
   const keywords: QueryTipProps[] = (state.keywords ?? [])
     .map((t) => t.trim())
     .filter((t) => t !== "")
     .map((t) => {
-      const data = { name: "keywords", value: t };
+      const data = { name: "keywords", value: t } as const;
       const label = { name: "Keyword", value: t };
       return { data, label };
     });
   const types: QueryTipProps[] = (state.types ?? []).map((value) => {
-    const data = { name: "types", value };
+    const data = { name: "types", value } as const;
     const label = { name: "Type", value };
     return { data, label };
   });
@@ -93,7 +86,7 @@ const parseQueryStateToTipList = (state: AllSearch): QueryTipProps[] => {
 
 const parseSingleStringToQueryTipProps = (
   stateValue: string | undefined,
-  dataName: string,
+  dataName: AllSearchParamsKey,
   labelName: string
 ): QueryTipProps[] => {
   return [stateValue]
@@ -109,7 +102,7 @@ const parseSingleStringToQueryTipProps = (
 
 const parseSingleBooleanToQueryTipProps = (
   stateValue: boolean | undefined,
-  dataName: string,
+  dataName: AllSearchParamsKey,
   labelName: string
 ): QueryTipProps[] => {
   return [stateValue]
@@ -123,7 +116,7 @@ const parseSingleBooleanToQueryTipProps = (
 
 const parseDateRangeToQueryTipProps = (
   range: SearchDateRange | undefined,
-  dataName: string,
+  dataName: AllSearchParamsKey,
   labelName: string
 ): QueryTipProps | null => {
   if (!range) return null;

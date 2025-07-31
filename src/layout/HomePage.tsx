@@ -1,9 +1,9 @@
 import { useNavigate } from "@tanstack/react-router";
 import clsx from "clsx";
-import { SearchBox } from "@/features/initialSearch/SearchBox.tsx";
 import { Logo } from "@/features/graphics/logo.tsx";
+import { SearchBox } from "@/features/initialSearch/SearchBox.tsx";
 import type { DBType } from "@/consts/db.ts";
-import type { SearchBase } from "@/schema/search.ts";
+import type { BaseSearchParams } from "@/schema/search.ts";
 import type { ComponentProps, FC } from "react";
 
 const wrapperClasses = clsx("flex w-full flex-col items-center gap-8 pt-24");
@@ -31,8 +31,7 @@ export const HomePage: FC = () => {
 const makeNavigateArgs = (
   types: DBType[],
   _query: string[]
-): { to: string; search: SearchBase } => {
-  // todo: change return type according to toPath
+): { to: string; search: BaseSearchParams } => {
   const query = _query.filter((q) => q !== "");
   const to = types.length === 1 ? `/entry/${types[0]}` : "/entry";
   const search = {

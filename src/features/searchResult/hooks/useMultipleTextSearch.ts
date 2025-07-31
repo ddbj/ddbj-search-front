@@ -3,9 +3,9 @@ import { isArray, isUndefined } from "is-what";
 import { useEffect, useState } from "react";
 import { useDebounceValue } from "usehooks-ts";
 import { routeTree } from "@/routeTree.gen.ts";
-import type { AllResourcesKey, AllSearch } from "@/schema/search.ts";
+import type { AllSearchParamsKey, AllSearchParams } from "@/schema/search.ts";
 
-export const useMultipleTextSearch = (searchKey: AllResourcesKey) => {
+export const useMultipleTextSearch = (searchKey: AllSearchParamsKey) => {
   const router = useRouter();
   const param = router.latestLocation.search?.[searchKey];
   if (!isUndefined(param) && !isArray(param)) throw new Error("param must be array");
@@ -21,13 +21,13 @@ export const useMultipleTextSearch = (searchKey: AllResourcesKey) => {
     const searchParams = router.latestLocation.search;
     const restParams = Object.fromEntries(
       Object.entries(searchParams).filter(([key, _value]) => key !== searchKey)
-    ) as AllSearch;
+    ) as AllSearchParams;
     const newValue = debouncedValue
       .split(",")
       .map((str) => str.trim())
       .filter((str) => str !== "");
 
-    const search: AllSearch = { ...restParams, [searchKey]: newValue };
+    const search: AllSearchParams = { ...restParams, [searchKey]: newValue };
     if (newValue.length === 0) {
       delete search[searchKey];
     }

@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { __HOME_PAGE_TEST__ } from "@/pages/HomePage.tsx";
+import { __HOME_PAGE_TEST__ } from "@/layout/HomePage.tsx";
 const { makeNavigateArgs } = __HOME_PAGE_TEST__;
 
 describe("makeNavigateArgs", () => {
