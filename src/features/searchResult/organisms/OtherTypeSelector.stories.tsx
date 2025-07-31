@@ -1,4 +1,4 @@
-import { dbTypes } from "@/consts.ts";
+import { dbTypes } from "@/consts/db.ts";
 import { OtherTypeSelector } from "./OtherTypeSelector.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 

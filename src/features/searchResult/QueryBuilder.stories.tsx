@@ -1,5 +1,5 @@
 import { QueryBuilder } from "@/features/searchResult/QueryBuilder.tsx";
-import { dbTypes } from "@/consts.ts";
+import { dbTypes } from "@/consts/db.ts";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {

@@ -1,7 +1,7 @@
 import { Select, type Selection, SelectItem, type SharedSelection } from "@heroui/react";
 import clsx from "clsx";
 import { type FC, type FormEvent, useRef, useState } from "react";
-import { dbLabels, type DBType } from "@/consts.ts";
+import { dbLabels, type DBType } from "@/consts/db.ts";
 
 const allLabel = "From all Data Type";
 const allKey = "all";

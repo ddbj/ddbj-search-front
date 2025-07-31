@@ -1,8 +1,8 @@
 import { useNavigate } from "@tanstack/react-router";
 import clsx from "clsx";
 import { SearchBox } from "@/features/initialSearch/SearchBox.tsx";
-import { Logo } from "@/graphics/logo.tsx";
-import type { DBType } from "@/consts.ts";
+import { Logo } from "@/features/graphics/logo.tsx";
+import type { DBType } from "@/consts/db.ts";
 import type { SearchBase } from "@/schema/search.ts";
 import type { ComponentProps, FC } from "react";
 

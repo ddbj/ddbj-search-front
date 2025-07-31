@@ -1,7 +1,7 @@
 import { useNavigate, useSearch } from "@tanstack/react-router";
 import { type FC, useMemo } from "react";
 import { CheckboxText } from "@/features/searchResult/ui/CheckboxText.tsx";
-import { dbLabels, type DBType, dbTypeList, dbTypes } from "@/consts.ts";
+import { dbLabels, type DBType, dbTypeList, dbTypes } from "@/consts/db.ts";
 import { isSearchBaseKey } from "@/schema/search.ts";
 
 type Props = {

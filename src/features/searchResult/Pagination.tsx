@@ -1,5 +1,5 @@
 import { clsx } from "clsx";
-import type { FC } from "react";
+import { type FC, Fragment } from "react";
 // import { useSearchParams } from "@/hooks/useSearchParams.ts";
 
 type Props = {
@@ -22,8 +22,8 @@ export const Pagination: FC<Props> = ({ current, total, setPage }) => {
       />
       {pages.map((group, index) => {
         return (
-          <>
-            {index > 0 && <span>...</span>}
+          <Fragment key={index}>
+            {index > 0 && <span key={"..."}>...</span>}
             {group.map((page) => (
               <Button
                 key={page}
@@ -33,7 +33,7 @@ export const Pagination: FC<Props> = ({ current, total, setPage }) => {
                 setPage={setPage}
               />
             ))}
-          </>
+          </Fragment>
         );
       })}
       <Button

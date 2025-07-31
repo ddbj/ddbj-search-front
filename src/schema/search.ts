@@ -15,6 +15,8 @@ export const searchBaseSchema = z.object({
   keywords: z.array(z.string()).optional(),
   datePublished: dateRangeSchema.optional(),
   dateUpdated: dateRangeSchema.optional(),
+  page: z.number().optional(),
+  perPage: z.number().optional(),
 });
 export type SearchBase = z.infer<typeof searchBaseSchema>;
 const searchBaseKeySchema = searchBaseSchema.keyof();
@@ -33,7 +35,7 @@ const bioProjectSpecificShape = {
 export const bioprojectSchema = searchBaseSchema.extend(bioProjectSpecificShape);
 export type BioprojectSearch = z.infer<typeof bioprojectSchema>;
 
-const allResourcesSchemas = searchBaseSchema.extend({ ...bioProjectSpecificShape });
+export const allResourcesSchemas = searchBaseSchema.extend({ ...bioProjectSpecificShape });
 export type AllSearch = z.infer<typeof allResourcesSchemas>;
 const allResourcesSchemaKeySchema = allResourcesSchemas.keyof();
 export type AllResourcesKey = z.infer<typeof allResourcesSchemaKeySchema>;

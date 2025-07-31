@@ -1,6 +1,6 @@
 import { useRouterState } from "@tanstack/react-router";
 import { type ComponentProps, useMemo } from "react";
-import { dbLabels, type DBType, isDBType } from "@/consts.ts";
+import { dbLabels, type DBType, isDBType } from "@/consts/db.ts";
 import { Breadcrumbs } from "@/features/searchResult/Breadcrumbs.tsx";
 import { QueryLists } from "@/features/searchResult/organisms/QueryLists.tsx";
 import { Pagination } from "@/features/searchResult/Pagination.tsx";
