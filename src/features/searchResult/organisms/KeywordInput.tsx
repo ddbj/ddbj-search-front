@@ -3,11 +3,11 @@ import { type FC, useEffect, useState } from "react";
 import { useDebounceValue } from "usehooks-ts";
 
 type Props = {
-  value: string[] | undefined;
-  changeKeywords: (v: string[]) => void;
+  value: string[];
+  update: (v: string[]) => void;
 };
 
-export const KeywordInput: FC<Props> = ({ value, changeKeywords }) => {
+export const KeywordInput: FC<Props> = ({ value, update }) => {
   const initialValue = value?.join(", ") ?? "";
   const [uiValue, setUiValue] = useState<string>(initialValue);
   const [debouncedValue, setDebouncedValue] = useDebounceValue(initialValue, 200);
@@ -21,8 +21,8 @@ export const KeywordInput: FC<Props> = ({ value, changeKeywords }) => {
       .split(",")
       .map((v) => v.trim())
       .filter((v) => v);
-    changeKeywords(value);
-  }, [debouncedValue, changeKeywords]);
+    update(value);
+  }, [debouncedValue, update]);
 
   useEffect(() => {
     setUiValue((prev) => {

@@ -17,14 +17,14 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Primary = {
-  args: { changeKeywords: () => {} },
+  args: { update: () => {} },
 } satisfies Story;
 
 const mockChangeKeywords = fn((e) => {
   // console.log(e);
 });
 export const update = {
-  args: { changeKeywords: mockChangeKeywords },
+  args: { update: mockChangeKeywords },
   play: async ({ canvas, canvasElement, userEvent, step }) => {
     mockChangeKeywords.mockReset();
     const input = canvasElement.querySelector("input")!;

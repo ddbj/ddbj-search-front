@@ -1,5 +1,5 @@
 import { Input } from "@heroui/react";
-import { useSingleTextSearch } from "@/features/searchResult/hooks/useSingleTextSearch.ts";
+import { useDebouncedUiValue } from "@/features/searchResult/hooks/useDebouncedUiValue.ts";
 import type { FC } from "react";
 
 type Props = {
@@ -8,7 +8,7 @@ type Props = {
 };
 
 export const Grant: FC<Props> = ({ value, update }) => {
-  const { uiValue, setUiValue } = useSingleTextSearch(value, update);
+  const { uiValue, setUiValue } = useDebouncedUiValue(value, update);
 
   return (
     <div>

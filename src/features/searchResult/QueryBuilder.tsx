@@ -33,7 +33,7 @@ export const QueryBuilder: FC<Props> = ({ currentType, update, params }) => {
   const {
     moveToEntryRoot,
     changeKeywords,
-    mergeDBTypes,
+    setDBTypes,
     changeUpdated,
     changePublished,
     changeUmbrella,
@@ -45,13 +45,9 @@ export const QueryBuilder: FC<Props> = ({ currentType, update, params }) => {
 
   return (
     <aside className={wrapperClasses}>
-      <KeywordInput value={keywords} changeKeywords={changeKeywords} />
+      <KeywordInput value={keywords} update={changeKeywords} />
       {!currentType && (
-        <TypeSelector
-          mergeDBTypes={mergeDBTypes}
-          types={types ?? []}
-          linkSearchParams={typeLinkParams}
-        />
+        <TypeSelector update={setDBTypes} value={types ?? []} linkSearchParams={typeLinkParams} />
       )}
       {currentType && (
         <OtherTypeSelector

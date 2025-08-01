@@ -1,4 +1,5 @@
 import { type FC } from "react";
+import { useDebouncedUiValue } from "@/features/searchResult/hooks/useDebouncedUiValue.ts";
 import { DateRangePicker } from "@/features/searchResult/ui/DateRangePicker.tsx";
 import { type DateRange } from "@/utils/date.ts";
 
@@ -12,10 +13,19 @@ type Props = {
 const wrapperClasses = "flex flex-col gap-4";
 
 export const DateSelector: FC<Props> = ({ published, updated, changeUpdated, changePublished }) => {
+  const { uiValue: uiPublished, setUiValue: setUiPublished } = useDebouncedUiValue(
+    published,
+    changePublished
+  );
+  const { uiValue: uiUpdated, setUiValue: setUiUpdated } = useDebouncedUiValue(
+    updated,
+    changeUpdated
+  );
+
   return (
     <div className={wrapperClasses}>
-      <DateRangePicker label={"Published Date"} value={published} onChange={changePublished} />
-      <DateRangePicker label={"Updated Date"} value={updated} onChange={changeUpdated} />
+      <DateRangePicker label={"Published Date"} value={uiPublished} onChange={setUiPublished} />
+      <DateRangePicker label={"Updated Date"} value={uiUpdated} onChange={setUiUpdated} />
     </div>
   );
 };
