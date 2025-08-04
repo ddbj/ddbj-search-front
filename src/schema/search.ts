@@ -1,21 +1,21 @@
 import * as z from "zod";
 import { dbTypeList, dbTypes } from "@/consts/db.ts";
 
-const dateRangeSchema = z.object({
-  start: z.string().refine((s) => !isNaN(Date.parse(s)), {
-    message: "must be a valid ISO date string",
-  }),
-  end: z.string().refine((s) => !isNaN(Date.parse(s)), {
-    message: "must be a valid ISO date string",
-  }),
-});
-export type SearchDateRange = z.infer<typeof dateRangeSchema>;
+// const dateRangeSchema = z.object({
+//   start: z.string().refine((s) => !isNaN(Date.parse(s)), {
+//     message: "must be a valid ISO date string",
+//   }),
+//   end: z.string().refine((s) => !isNaN(Date.parse(s)), {
+//     message: "must be a valid ISO date string",
+//   }),
+// });
+// export type SearchDateRange = z.infer<typeof dateRangeSchema>;
 
 export const baseSearchSchema = z.object({
   types: z.array(z.enum(dbTypeList)).optional(),
   keywords: z.array(z.string()).optional(),
-  datePublished: dateRangeSchema.optional(),
-  dateUpdated: dateRangeSchema.optional(),
+  datePublished: z.string().optional(),
+  dateUpdated: z.string().optional(),
 });
 export type BaseSearchParams = z.infer<typeof baseSearchSchema>;
 const baseSearchKeySchema = baseSearchSchema.keyof();

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { DateRangePicker } from "./DateRangePicker.tsx";
-import type { DateRange } from "@/utils/date.ts";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
@@ -8,7 +7,7 @@ const meta = {
   args: {},
   decorators: [
     (Story, { args }) => {
-      const [value, setValue] = useState<DateRange | null>(null);
+      const [value, setValue] = useState<string | null>(null);
       return <Story args={{ ...args, value, onChange: setValue }} />;
     },
   ],

@@ -1,13 +1,12 @@
 import { type FC } from "react";
 import { useDebouncedUiValue } from "@/features/searchResult/hooks/useDebouncedUiValue.ts";
 import { DateRangePicker } from "@/features/searchResult/ui/DateRangePicker.tsx";
-import { type DateRange } from "@/utils/date.ts";
 
 type Props = {
-  published: DateRange | null;
-  updated: DateRange | null;
-  changePublished: (v: DateRange | null) => void;
-  changeUpdated: (v: DateRange | null) => void;
+  published: string;
+  updated: string;
+  changePublished: (v: string) => void;
+  changeUpdated: (v: string) => void;
 };
 
 const wrapperClasses = "flex flex-col gap-4";

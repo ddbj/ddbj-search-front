@@ -2,11 +2,7 @@ import clsx from "clsx";
 import { isUndefined } from "is-what";
 import { type ComponentProps, type FC, useMemo } from "react";
 import { QueryTip } from "@/features/searchResult/ui/QueryTip.tsx";
-import {
-  type AllSearchParams,
-  type AllSearchParamsKey,
-  type SearchDateRange,
-} from "@/schema/search.ts";
+import { type AllSearchParams, type AllSearchParamsKey } from "@/schema/search.ts";
 import type { UpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
 
 type Props = {
@@ -56,8 +52,8 @@ const parseQueryStateToTipList = (state: AllSearchParams): QueryTipProps[] => {
     return { data, label };
   });
   const dates: QueryTipProps[] = [
-    parseDateRangeToQueryTipProps(state.datePublished, "datePublished", "Published"),
-    parseDateRangeToQueryTipProps(state.dateUpdated, "dateUpdated", "Updated"),
+    ...parseSingleStringToQueryTipProps(state.datePublished, "datePublished", "Published"),
+    ...parseSingleStringToQueryTipProps(state.dateUpdated, "dateUpdated", "Updated"),
   ].filter((v) => !!v);
   const organization: QueryTipProps[] = parseSingleStringToQueryTipProps(
     state.organization,
@@ -113,18 +109,6 @@ const parseSingleBooleanToQueryTipProps = (
       const label = { name: labelName, value: "TRUE" };
       return { data, label };
     });
-};
-
-const parseDateRangeToQueryTipProps = (
-  range: SearchDateRange | undefined,
-  dataName: AllSearchParamsKey,
-  labelName: string
-): QueryTipProps | null => {
-  if (!range) return null;
-  const { start, end } = range;
-  const data = { name: dataName, value: `${start}_${end}` };
-  const label = { name: labelName, value: `${start} | ${end}` };
-  return { data, label };
 };
 
 export const __QUERY_LISTS_TEST__ = { parseQueryStateToTipList };

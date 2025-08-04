@@ -1,15 +1,14 @@
 import { useState } from "react";
 import { DateSelector } from "@/features/searchResult/organisms/DateSelector.tsx";
-import type { DateRange } from "@/utils/date.ts";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
   component: DateSelector,
   args: {
-    published: null,
-    updated: null,
-    changePublished: (v: DateRange | null) => {},
-    changeUpdated: (v: DateRange | null) => {},
+    published: "",
+    updated: "",
+    changePublished: (v: string) => {},
+    changeUpdated: (v: string) => {},
   },
   decorators: [],
 } satisfies Meta<typeof DateSelector>;
@@ -21,12 +20,12 @@ type Story = StoryObj<typeof meta>;
 export const Primary = {
   decorators: [
     (Story) => {
-      const [published, setPublished] = useState<DateRange | null>(null);
-      const [updated, setUpdated] = useState<DateRange | null>(null);
-      const changePublished = (v: DateRange | null) => {
+      const [published, setPublished] = useState("");
+      const [updated, setUpdated] = useState("");
+      const changePublished = (v: string) => {
         setPublished(v);
       };
-      const changeUpdated = (v: DateRange | null) => {
+      const changeUpdated = (v: string) => {
         setUpdated(v);
       };
       return (

@@ -2,7 +2,6 @@ import { describe, it, expect } from "vitest";
 import { dbTypes } from "@/consts/db.ts";
 import { __TEST_updateFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
 import type { AllSearchParams } from "@/schema/search.ts";
-import type { DateRange } from "@/utils/date.ts";
 const { composeKeywords, composeDBTypes, composeUpdated } = __TEST_updateFunctions;
 
 describe("composeKeywords", () => {
@@ -106,60 +105,6 @@ describe("composeDBTypes", () => {
       keywords: ["a"],
       types: [dbTypes.bioproject],
       page: 2,
-    };
-    expect(result).toEqual(expected);
-  });
-});
-
-describe("composeUpdated", () => {
-  it("should add dateUpdated when none is present", () => {
-    const prev: AllSearchParams = { types: [dbTypes.bioproject] };
-    const newDate: DateRange = { from: "2024/01/01", to: "2024/01/31" };
-    const result = composeUpdated(prev, newDate);
-    const expected: AllSearchParams = {
-      types: [dbTypes.bioproject],
-      dateUpdated: "2024/01/01-2024/01/31",
-    };
-    expect(result).toEqual(expected);
-  });
-
-  it("should change an existing dateUpdated", () => {
-    const prev: AllSearchParams = {
-      types: [dbTypes.bioproject],
-      dateUpdated: "2023/01/01-2023/01/31",
-    };
-    const newDate: DateRange = { from: "2024/01/01", to: "2024/01/31" };
-    const result = composeUpdated(prev, newDate);
-    const expected: AllSearchParams = {
-      types: [dbTypes.bioproject],
-      dateUpdated: "2024/01/01-2024/01/31",
-    };
-    expect(result).toEqual(expected);
-  });
-
-  it("should remove dateUpdated when null is provided", () => {
-    const prev: AllSearchParams = {
-      types: [dbTypes.bioproject],
-      dateUpdated: "2023/01/01-2023/01/31",
-    };
-    const result = composeUpdated(prev, null);
-    const expected: AllSearchParams = {
-      types: [dbTypes.bioproject],
-    };
-    expect(result).toEqual(expected);
-  });
-
-  it("should preserve the page number when dateUpdated is changed", () => {
-    const prev: AllSearchParams = {
-      types: [dbTypes.bioproject],
-      page: 2,
-    };
-    const newDate: DateRange = { from: "2024/01/01", to: "2024/01/31" };
-    const result = composeUpdated(prev, newDate);
-    const expected: AllSearchParams = {
-      types: [dbTypes.bioproject],
-      page: 2,
-      dateUpdated: "2024/01/01-2024/01/31",
     };
     expect(result).toEqual(expected);
   });

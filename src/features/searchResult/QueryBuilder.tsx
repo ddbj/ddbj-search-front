@@ -8,7 +8,6 @@ import { DateSelector } from "@/features/searchResult/organisms/DateSelector.tsx
 import { KeywordInput } from "@/features/searchResult/organisms/KeywordInput.tsx";
 import { OtherTypeSelector } from "@/features/searchResult/organisms/OtherTypeSelector.tsx";
 import { type AllSearchParams, type BaseSearchParams, isBaseSearchKey } from "@/schema/search.ts";
-import { dateRangeStringToData } from "@/utils/date.ts";
 import { TypeSelector } from "./organisms/TypeSelector";
 import type { UpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
 
@@ -67,8 +66,8 @@ export const QueryBuilder: FC<Props> = ({ currentType, update, params }) => {
       )}
       {currentType === dbTypes.bioproject && <Grant value={grant ?? ""} update={changeGrant} />}
       <DateSelector
-        published={(datePublished && dateRangeStringToData(datePublished)) ?? null}
-        updated={(dateUpdated && dateRangeStringToData(dateUpdated)) ?? null}
+        published={datePublished ?? ""}
+        updated={dateUpdated ?? ""}
         changePublished={changePublished}
         changeUpdated={changeUpdated}
       />

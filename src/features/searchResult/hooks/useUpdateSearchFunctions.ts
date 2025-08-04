@@ -2,7 +2,6 @@ import { useNavigate } from "@tanstack/react-router";
 import { isEqual } from "@ver0/deep-equal";
 import { useMemo } from "react";
 import { removeFromSearch } from "@/features/searchResult/utils/removeFromSearch.ts";
-import { type DateRange, dateRangeDataToString } from "@/utils/date.ts";
 import type { DBType } from "@/consts/db.ts";
 import type { AllSearchParams, AllSearchParamsKey } from "@/schema/search.ts";
 
@@ -11,8 +10,8 @@ export type UpdateSearchFunctions = {
   moveToPage: (page: number) => void;
   changeKeywords: (v: string[]) => void;
   setDBTypes: (v: DBType[]) => void;
-  changeUpdated: (v: DateRange | null) => void;
-  changePublished: (v: DateRange | null) => void;
+  changeUpdated: (v: string) => void;
+  changePublished: (v: string) => void;
   changeUmbrella: (v: boolean) => void;
   changeOrganization: (v: string) => void;
   changePublication: (v: string) => void;
@@ -43,10 +42,10 @@ export const useUpdateSearchFunctions = (): UpdateSearchFunctions => {
         console.log("setDBTypes", v);
         navigate({ search: (prev: P) => composeDBTypes(prev, v), replace, from });
       },
-      changeUpdated: (v: DateRange | null) => {
+      changeUpdated: (v: string) => {
         navigate({ search: (prev: P) => composeUpdated(prev, v), replace, from });
       },
-      changePublished: (v: DateRange | null) => {
+      changePublished: (v: string) => {
         navigate({ search: (prev: P) => composePublished(prev, v), replace, from });
       },
       changeUmbrella: (v: boolean) => {
@@ -84,13 +83,13 @@ const composeDBTypes = (params: P, value: DBType[]): P => {
   const { types: prev, page, ...rest } = params;
   return value.length ? { ...rest, types: value } : rest;
 };
-const composeUpdated = (params: P, value: DateRange | null): P => {
+const composeUpdated = (params: P, value: string): P => {
   const { dateUpdated: prev, ...rest } = params;
-  return value ? { ...rest, dateUpdated: dateRangeDataToString(value) } : rest;
+  return value ? { ...rest, dateUpdated: value } : rest;
 };
-const composePublished = (params: P, value: DateRange | null): P => {
+const composePublished = (params: P, value: string): P => {
   const { datePublished: prev, ...rest } = params;
-  return value ? { ...rest, datePublished: dateRangeDataToString(value) } : rest;
+  return value ? { ...rest, datePublished: value } : rest;
 };
 const composeUmbrella = (params: P, value: boolean): P => {
   const { umbrella: prev, ...rest } = params;
@@ -114,8 +113,8 @@ export const __SB_updateFunctions: UpdateSearchFunctions = {
   moveToPage: (page: number) => {},
   changeKeywords: (v: string[]) => {},
   setDBTypes: (v: DBType[]) => {},
-  changeUpdated: (v: DateRange | null) => {},
-  changePublished: (v: DateRange | null) => {},
+  changeUpdated: (v: string) => {},
+  changePublished: (v: string) => {},
   changeUmbrella: (v: boolean) => {},
   changeOrganization: (v: string) => {},
   changePublication: (v: string) => {},
