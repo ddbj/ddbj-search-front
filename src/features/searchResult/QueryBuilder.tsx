@@ -45,7 +45,7 @@ export const QueryBuilder: FC<Props> = ({ currentType, update, params }) => {
 
   return (
     <aside className={wrapperClasses}>
-      <KeywordInput value={keywords} update={changeKeywords} />
+      <KeywordInput value={keywords ?? []} update={changeKeywords} />
       {!currentType && (
         <TypeSelector update={setDBTypes} value={types ?? []} linkSearchParams={typeLinkParams} />
       )}

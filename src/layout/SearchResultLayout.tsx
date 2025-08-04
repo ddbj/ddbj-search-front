@@ -39,7 +39,7 @@ export const SearchResultLayout: FC<Props> = ({ entryType, updateFunctions, para
         </div>
         <aside className={"sticky top-0 flex w-[400px] shrink-0 grow-0 flex-col gap-4 py-4"}>
           <ResultInfo />
-          <Pagination current={1} total={1000} setPage={() => {}} />
+          <Pagination current={params.page ?? 1} total={1000} params={params} />
           <QueryLists removeParam={updateFunctions.removeParam} params={params} />
         </aside>
       </div>

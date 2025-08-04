@@ -21,6 +21,7 @@
     "@tanstack/react-router-devtools": "^1.121.34",
     "@tanstack/zod-adapter": "^1.127.8",
     "@types/node": "^24.0.14",
+    "@ver0/deep-equal": "^1.0.0",
     "clsx": "^2.1.1",
     "copy-anything": "^4.0.5",
     "framer-motion": "^12.17.0",

@@ -2,7 +2,6 @@ import { expect, fn } from "storybook/test";
 import { sleep } from "@/utils/sleep.ts";
 import { KeywordInput } from "./KeywordInput.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { useState } from "react";
 
 const meta = {
   component: KeywordInput,

@@ -1,15 +1,17 @@
 import { clsx } from "clsx";
 import { type FC, Fragment } from "react";
+import type { AllSearchParams } from "@/schema/search.ts";
+import { Link } from "@tanstack/react-router";
 // import { useSearchParams } from "@/hooks/useSearchParams.ts";
 
 type Props = {
   current: number;
   total: number;
-  setPage: (page: number) => void;
+  params: AllSearchParams;
 };
 type ButtonState = "current" | "idle" | "disabled";
 
-export const Pagination: FC<Props> = ({ current, total, setPage }) => {
+export const Pagination: FC<Props> = ({ current, total, params }) => {
   const pages = dividePages(makePaginationPages(total, current));
   if (total <= 1) return null;
   return (
@@ -18,7 +20,7 @@ export const Pagination: FC<Props> = ({ current, total, setPage }) => {
         label={"Prev"}
         page={current - 1}
         state={current === 1 ? "disabled" : "idle"}
-        setPage={setPage}
+        params={params}
       />
       {pages.map((group, index) => {
         return (
@@ -29,8 +31,8 @@ export const Pagination: FC<Props> = ({ current, total, setPage }) => {
                 key={page}
                 label={page}
                 page={page}
+                params={params}
                 state={page === current ? "current" : "idle"}
-                setPage={setPage}
               />
             ))}
           </Fragment>
@@ -40,7 +42,7 @@ export const Pagination: FC<Props> = ({ current, total, setPage }) => {
         label={"Next"}
         page={current + 1}
         state={current === total ? "disabled" : "idle"}
-        setPage={setPage}
+        params={params}
       />
     </div>
   );
@@ -57,11 +59,8 @@ const Button: FC<{
   label: string | number;
   page: number;
   state: ButtonState;
-  setPage: (page: number) => void;
-}> = ({ label, page, state, setPage }) => {
-  // const params = useSearchParams();
-  // params.set("list", page.toString());
-  // const link = `?${params.toString()}`;
+  params: AllSearchParams;
+}> = ({ label, page, state, params }) => {
   const classes = clsx(
     state === "current" && activeButtonClasses,
     state === "idle" && idleButtonClasses
@@ -70,17 +69,11 @@ const Button: FC<{
   if (state === "disabled") {
     return null;
   }
+  const searchParams = { ...params, page };
   return (
-    <a
-      className={classes}
-      href={link}
-      onClick={(e) => {
-        e.preventDefault();
-        setPage(page - 1);
-      }}
-    >
+    <Link className={classes} to={"/entry"} search={searchParams}>
       {label}
-    </a>
+    </Link>
   );
 };
 

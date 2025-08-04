@@ -15,7 +15,6 @@ describe("parseQueryStateToTipList", () => {
     const state: AllSearchParams = {};
     state.keywords = ["human", "cat"];
     const result = parseQueryStateToTipList(state);
-    console.log(result);
     expect(result.length).toBe(2);
     expect(result[0].label.name).toBe("Keyword");
   });

@@ -1,4 +1,5 @@
 import { useNavigate } from "@tanstack/react-router";
+import { isEqual } from "@ver0/deep-equal";
 import { useMemo } from "react";
 import { removeFromSearch } from "@/features/searchResult/utils/removeFromSearch.ts";
 import { type DateRange, dateRangeDataToString } from "@/utils/date.ts";
@@ -7,6 +8,7 @@ import type { AllSearchParams, AllSearchParamsKey } from "@/schema/search.ts";
 
 export type UpdateSearchFunctions = {
   moveToEntryRoot: (params: AllSearchParams) => void;
+  moveToPage: (page: number) => void;
   changeKeywords: (v: string[]) => void;
   setDBTypes: (v: DBType[]) => void;
   changeUpdated: (v: DateRange | null) => void;
@@ -30,10 +32,15 @@ export const useUpdateSearchFunctions = (): UpdateSearchFunctions => {
       moveToEntryRoot: (params: P) => {
         navigate({ search: params, from, to: "/entry" });
       },
+      moveToPage: (v: number) => {
+        navigate({ search: (prev) => composePageNumber(prev, v), from });
+      },
       changeKeywords: (v: string[]) => {
+        console.log("changeKeywords", v);
         navigate({ search: (prev: P) => composeKeywords(prev, v), replace, from });
       },
       setDBTypes: (v: DBType[]) => {
+        console.log("setDBTypes", v);
         navigate({ search: (prev: P) => composeDBTypes(prev, v), replace, from });
       },
       changeUpdated: (v: DateRange | null) => {
@@ -62,12 +69,19 @@ export const useUpdateSearchFunctions = (): UpdateSearchFunctions => {
   return update;
 };
 
+const composePageNumber = (params: P, value: number): P => {
+  const { page: prev, ...rest } = params;
+  return value > 1 ? { ...rest, page: Math.floor(value) } : rest;
+};
+
 const composeKeywords = (params: P, value: string[]): P => {
-  const { keywords: prev, ...rest } = params;
+  if (isEqual(params.keywords ?? [], value)) return params;
+  const { keywords: prev, page, ...rest } = params;
   return value.length ? { ...rest, keywords: value } : rest;
 };
 const composeDBTypes = (params: P, value: DBType[]): P => {
-  const { types: prev, ...rest } = params;
+  if (isEqual(params.types ?? [], value)) return params;
+  const { types: prev, page, ...rest } = params;
   return value.length ? { ...rest, types: value } : rest;
 };
 const composeUpdated = (params: P, value: DateRange | null): P => {
@@ -97,6 +111,7 @@ const composeGrant = (params: P, value: string) => {
 
 export const __SB_updateFunctions: UpdateSearchFunctions = {
   moveToEntryRoot: (params: AllSearchParams) => {},
+  moveToPage: (page: number) => {},
   changeKeywords: (v: string[]) => {},
   setDBTypes: (v: DBType[]) => {},
   changeUpdated: (v: DateRange | null) => {},
@@ -106,4 +121,15 @@ export const __SB_updateFunctions: UpdateSearchFunctions = {
   changePublication: (v: string) => {},
   changeGrant: (v: string) => {},
   removeParam: (name: AllSearchParamsKey, value: string) => {},
+};
+
+export const __TEST_updateFunctions = {
+  composeKeywords,
+  composeDBTypes,
+  composeUpdated,
+  composePublished,
+  composeUmbrella,
+  composeOrganization,
+  composePublication,
+  composeGrant,
 };

@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { zodValidator } from "@tanstack/zod-adapter";
-import { API_PATH_SEARCH } from "@/consts/api.ts";
+import { API_PATH_SEARCH_ALL } from "@/consts/api.ts";
 import { dbTypes } from "@/consts/db.ts";
 import { useUpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
 import { SearchResultLayout } from "@/layout/SearchResultLayout.tsx";
@@ -13,7 +13,7 @@ export const Route = createFileRoute("/entry/bioproject/")({
   loaderDeps: ({ search }) => ({ search }),
   loader: async ({ deps: { search } }) => {
     console.log(search);
-    return fetch(API_PATH_SEARCH);
+    return fetch(API_PATH_SEARCH_ALL);
   },
 });
 

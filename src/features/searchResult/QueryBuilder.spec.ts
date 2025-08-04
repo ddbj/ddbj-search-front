@@ -3,7 +3,7 @@ import { __TEST__QUERY_BUILDER } from "@/features/searchResult/QueryBuilder.tsx"
 import type { AllSearchParams } from "@/schema/search.ts";
 const { makeTypeLinkParams } = __TEST__QUERY_BUILDER;
 
-describe.only("makeTypeLinkParams", () => {
+describe("makeTypeLinkParams", () => {
   it("", () => {
     const result = makeTypeLinkParams({
       types: ["sra-analysis"],
