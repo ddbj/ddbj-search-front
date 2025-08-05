@@ -59,12 +59,12 @@ describe("parseParams", () => {
   });
   //datePublished
   it("", () => {
-    const result = parseParams({ datePublished: { start: "2025-07-01", end: "2025-07-10" } });
+    const result = parseParams({ datePublished: "2025-07-01,2025-07-10" });
     expect(result.datePublished).toBe("2025-07-01,2025-07-10");
   });
   //dateUpdated
   it("", () => {
-    const result = parseParams({ dateUpdated: { start: "2025-07-01", end: "2025-07-10" } });
+    const result = parseParams({ dateUpdated: "2025-07-01,2025-07-10" });
     expect(result.dateUpdated).toBe("2025-07-01,2025-07-10");
   });
 });

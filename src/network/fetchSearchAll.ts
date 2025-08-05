@@ -18,12 +18,8 @@ const parseParams = (params: AllSearchParams): SearchApiParams => {
       : {}),
     ...(params.types && params.types.length ? { types: params.types.join(",") } : {}),
     ...(params.keywords && params.keywords.length ? { keywords: params.keywords.join(",") } : {}),
-    ...(params.datePublished
-      ? { datePublished: `${params.datePublished.start},${params.datePublished.end}` }
-      : {}),
-    ...(params.dateUpdated
-      ? { dateUpdated: `${params.dateUpdated.start},${params.dateUpdated.end}` }
-      : {}),
+    ...(params.datePublished ? { datePublished: params.datePublished } : {}),
+    ...(params.dateUpdated ? { dateUpdated: params.dateUpdated } : {}),
   };
 };
 
