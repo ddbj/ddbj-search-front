@@ -1,7 +1,6 @@
 import { useNavigate } from "@tanstack/react-router";
 import { isEqual } from "@ver0/deep-equal";
 import { useMemo } from "react";
-import { removeFromSearch } from "@/features/searchResult/utils/removeFromSearch.ts";
 import type { DBType } from "@/consts/db.ts";
 import type { AllSearchParams, AllSearchParamsKey } from "@/schema/search.ts";
 
@@ -68,6 +67,20 @@ export const useUpdateSearchFunctions = (): UpdateSearchFunctions => {
   return update;
 };
 
+const removeFromSearch = (
+  current: AllSearchParams,
+  key: AllSearchParamsKey,
+  value: string
+): AllSearchParams => {
+  const { [key]: prev, page, ...rest } = current;
+  if (Array.isArray(prev)) {
+    const filtered = prev.filter((t) => t.trim() !== value.trim());
+    return { ...rest, ...(filtered.length ? { [key]: filtered } : {}) };
+  } else {
+    return rest;
+  }
+};
+
 const composePageNumber = (params: P, value: number): P => {
   const { page: prev, ...rest } = params;
   return value > 1 ? { ...rest, page: Math.floor(value) } : rest;
@@ -84,27 +97,33 @@ const composeDBTypes = (params: P, value: DBType[]): P => {
   return value.length ? { ...rest, types: value } : rest;
 };
 const composeUpdated = (params: P, value: string): P => {
-  const { dateUpdated: prev, ...rest } = params;
+  if ((params.dateUpdated ?? "") === value) return params;
+  const { dateUpdated: prev, page, ...rest } = params;
   return value ? { ...rest, dateUpdated: value } : rest;
 };
 const composePublished = (params: P, value: string): P => {
-  const { datePublished: prev, ...rest } = params;
+  if ((params.datePublished ?? "") === value) return params;
+  const { datePublished: prev, page, ...rest } = params;
   return value ? { ...rest, datePublished: value } : rest;
 };
 const composeUmbrella = (params: P, value: boolean): P => {
-  const { umbrella: prev, ...rest } = params;
+  if ((params.umbrella ?? false) === value) return params;
+  const { umbrella: prev, page, ...rest } = params;
   return value ? { ...rest, umbrella: value } : rest;
 };
 const composeOrganization = (params: P, value: string) => {
-  const { organization: prev, ...rest } = params;
+  if ((params.organization ?? "") === value) return params;
+  const { organization: prev, page, ...rest } = params;
   return value ? { ...rest, organization: value } : rest;
 };
 const composePublication = (params: P, value: string) => {
-  const { publication: prev, ...rest } = params;
+  if ((params.publication ?? "") === value) return params;
+  const { publication: prev, page, ...rest } = params;
   return value ? { ...rest, publication: value } : rest;
 };
 const composeGrant = (params: P, value: string) => {
-  const { grant: prev, ...rest } = params;
+  if ((params.grant ?? "") === value) return params;
+  const { grant: prev, page, ...rest } = params;
   return value ? { ...rest, grant: value } : rest;
 };
 
@@ -123,6 +142,7 @@ export const __SB_updateFunctions: UpdateSearchFunctions = {
 };
 
 export const __TEST_updateFunctions = {
+  removeFromSearch,
   composeKeywords,
   composeDBTypes,
   composeUpdated,

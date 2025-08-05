@@ -37,7 +37,7 @@ export const CheckboxText: FC<Props> = ({
           onValueChange={setIsSelected}
           classNames={{ wrapper: "after:bg-bg-primary" }}
         ></Checkbox>
-        <Link to={to} className={linkClasses} search={search} from={from}>
+        <Link to={to} className={linkClasses} search={search} from={from} resetScroll={true}>
           {labelStr}
         </Link>
       </div>

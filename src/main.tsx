@@ -7,7 +7,7 @@ import { routeTree } from "@/routeTree.gen";
 import "./index.css";
 
 // Create a new router instance
-export const router = createRouter({ routeTree, basepath: "/search" });
+export const router = createRouter({ routeTree, basepath: "/search", scrollRestoration: true });
 
 // Register the router instance for type safety
 declare module "@tanstack/react-router" {
