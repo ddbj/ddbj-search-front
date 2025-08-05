@@ -21,8 +21,9 @@ export const HomePage: FC = () => {
   return (
     <div className={wrapperClasses}>
       <Logo />
-      <div className={"w-4xl"}>
+      <div className={"flex w-4xl flex-col gap-16"}>
         <SearchBox onSearch={onSearch} />
+        <div className={"h-36 rounded bg-gray-50 p-4 text-gray-600"}>Sample query here</div>
       </div>
     </div>
   );
