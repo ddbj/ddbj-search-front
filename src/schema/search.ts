@@ -1,16 +1,6 @@
 import * as z from "zod";
 import { dbTypeList, dbTypes } from "@/consts/db.ts";
 
-// const dateRangeSchema = z.object({
-//   start: z.string().refine((s) => !isNaN(Date.parse(s)), {
-//     message: "must be a valid ISO date string",
-//   }),
-//   end: z.string().refine((s) => !isNaN(Date.parse(s)), {
-//     message: "must be a valid ISO date string",
-//   }),
-// });
-// export type SearchDateRange = z.infer<typeof dateRangeSchema>;
-
 export const baseSearchSchema = z.object({
   types: z.array(z.enum(dbTypeList)).optional(),
   keywords: z.array(z.string()).optional(),
@@ -24,11 +14,10 @@ export const isBaseSearchKey = (x: unknown): x is BaseSearchKey => {
   return baseSearchKeySchema.safeParse(x).success;
 };
 
-//
-
-const paginationShape = {
-  page: z.number().optional(),
-  perPage: z.number().optional(),
+const baseSearchShape = {
+  keywords: z.array(z.string()).optional(),
+  datePublished: z.string().optional(),
+  dateUpdated: z.string().optional(),
 } as const;
 
 const bioProjectSpecificShape = {
@@ -36,6 +25,11 @@ const bioProjectSpecificShape = {
   publication: z.string().optional(),
   grant: z.string().optional(),
   umbrella: z.boolean().optional(),
+} as const;
+
+const paginationShape = {
+  page: z.number().optional(),
+  perPage: z.number().optional(),
 } as const;
 
 export const bioprojectSchema = baseSearchSchema.extend(bioProjectSpecificShape);

@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { dbTypeList } from "@/consts/db.ts";
 
 export const SearchApiResponseSchema = z.object({
   page: z.number(),
@@ -8,8 +7,10 @@ export const SearchApiResponseSchema = z.object({
   items: z.array(
     z.object({
       identifier: z.string(),
+      type: z.string(),
       title: z.string(),
-      type: z.enum(dbTypeList),
+      dbXrefs: z.record(z.string(), z.number()),
+      datePublished: z.string(),
     })
   ),
 });

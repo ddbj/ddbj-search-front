@@ -1,1 +1,2 @@
-export const API_PATH_SEARCH_ALL = "/api/search/all";
+export const API_PATH_SEARCH_ALL = "/search/api/entries/";
+export const API_PATH_BIOPROJECTS = "/search/api/bioprojects/";

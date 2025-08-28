@@ -9,6 +9,7 @@ export const fetchSearchAll = async (params: AllSearchParams) => {
   });
   return response;
 };
+export const fetchBioProjects = async (params) => {};
 
 const parseParams = (params: AllSearchParams): SearchApiParams => {
   return {

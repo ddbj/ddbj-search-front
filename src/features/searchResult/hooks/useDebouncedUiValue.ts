@@ -25,7 +25,7 @@ export const useDebouncedUiValue = <T>(
   }, [uiValue, setDebouncedValue]);
 
   useEffect(() => {
-    console.log("initial update", debouncedValue);
+    // console.log("initial update", debouncedValue);
     updateModel(debouncedValue);
   }, [debouncedValue, updateModel]);
 

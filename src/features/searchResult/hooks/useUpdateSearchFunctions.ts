@@ -34,11 +34,11 @@ export const useUpdateSearchFunctions = (): UpdateSearchFunctions => {
         navigate({ search: (prev) => composePageNumber(prev, v), from });
       },
       changeKeywords: (v: string[]) => {
-        console.log("changeKeywords", v);
+        // console.log("changeKeywords", v);
         navigate({ search: (prev: P) => composeKeywords(prev, v), replace, from });
       },
       setDBTypes: (v: DBType[]) => {
-        console.log("setDBTypes", v);
+        // console.log("setDBTypes", v);
         navigate({ search: (prev: P) => composeDBTypes(prev, v), replace, from });
       },
       changeUpdated: (v: string) => {
