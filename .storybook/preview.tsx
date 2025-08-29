@@ -1,3 +1,4 @@
+import { QueryClient } from "@tanstack/react-query";
 import {
   createMemoryHistory,
   createRootRoute,
@@ -11,7 +12,12 @@ import type { Decorator, Preview } from "@storybook/react-vite";
 import "../src/index.css";
 
 const history = createMemoryHistory();
-const fileBaseRouter = createRouter({ routeTree, history });
+const fileBaseRouter = createRouter({
+  routeTree,
+  history,
+  basepath: "/search",
+  context: { queryClient: new QueryClient() },
+});
 type RouterType = typeof fileBaseRouter;
 
 declare global {

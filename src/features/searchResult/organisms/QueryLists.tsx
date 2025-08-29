@@ -2,12 +2,12 @@ import clsx from "clsx";
 import { isUndefined } from "is-what";
 import { type ComponentProps, type FC, useMemo } from "react";
 import { QueryTip } from "@/features/searchResult/ui/QueryTip.tsx";
-import { type AllSearchParams, type AllSearchParamsKey } from "@/schema/search.ts";
+import { type AnySearchParams, type AnySearchParamsKey } from "@/schema/search.ts";
 import type { UpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
 
 type Props = {
   removeParam: UpdateSearchFunctions["removeParam"];
-  params: AllSearchParams;
+  params: AnySearchParams;
 };
 
 const tipWrapperClasses = clsx("flex flex-wrap gap-2");
@@ -37,7 +37,7 @@ export const QueryLists: FC<Props> = ({ params, removeParam }) => {
 };
 
 type QueryTipProps = Omit<ComponentProps<typeof QueryTip>, "onClickRemove">;
-const parseQueryStateToTipList = (state: AllSearchParams): QueryTipProps[] => {
+const parseQueryStateToTipList = (state: AnySearchParams): QueryTipProps[] => {
   const keywords: QueryTipProps[] = (state.keywords ?? [])
     .map((t) => t.trim())
     .filter((t) => t !== "")
@@ -83,7 +83,7 @@ const parseQueryStateToTipList = (state: AllSearchParams): QueryTipProps[] => {
 
 const parseSingleStringToQueryTipProps = (
   stateValue: string | undefined,
-  dataName: AllSearchParamsKey,
+  dataName: AnySearchParamsKey,
   labelName: string
 ): QueryTipProps[] => {
   return [stateValue]
@@ -99,7 +99,7 @@ const parseSingleStringToQueryTipProps = (
 
 const parseSingleBooleanToQueryTipProps = (
   stateValue: boolean | undefined,
-  dataName: AllSearchParamsKey,
+  dataName: AnySearchParamsKey,
   labelName: string
 ): QueryTipProps[] => {
   return [stateValue]

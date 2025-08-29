@@ -7,14 +7,14 @@ import { Umbrella } from "@/features/searchResult/organisms/bioproject/Umbrella.
 import { DateSelector } from "@/features/searchResult/organisms/DateSelector.tsx";
 import { KeywordInput } from "@/features/searchResult/organisms/KeywordInput.tsx";
 import { OtherTypeSelector } from "@/features/searchResult/organisms/OtherTypeSelector.tsx";
-import { type AllSearchParams, type BaseSearchParams, isBaseSearchKey } from "@/schema/search.ts";
+import { type AnySearchParams, type BaseSearchParams, isBaseSearchKey } from "@/schema/search.ts";
 import { TypeSelector } from "./organisms/TypeSelector";
 import type { UpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
 
 type Props = {
   currentType: DBType | null;
   update: UpdateSearchFunctions;
-  params: AllSearchParams;
+  params: AnySearchParams;
 };
 const wrapperClasses = "flex flex-col gap-4 w-96";
 
@@ -75,11 +75,9 @@ export const QueryBuilder: FC<Props> = ({ currentType, update, params }) => {
   );
 };
 
-const makeTypeLinkParams = (params: AllSearchParams): Omit<BaseSearchParams, "types"> => {
+const makeTypeLinkParams = (params: AnySearchParams): BaseSearchParams => {
   const result = Object.fromEntries(
-    Object.entries(params)
-      .filter(([key, _value]) => isBaseSearchKey(key))
-      .filter(([key, _value]) => key !== "types")
+    Object.entries(params).filter(([key, _value]) => isBaseSearchKey(key))
   );
   return result;
 };

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { __TEST__QUERY_BUILDER } from "@/features/searchResult/QueryBuilder.tsx";
-import type { AllSearchParams } from "@/schema/search.ts";
+import type { AnySearchParams } from "@/schema/search.ts";
 const { makeTypeLinkParams } = __TEST__QUERY_BUILDER;
 
 describe("makeTypeLinkParams", () => {
@@ -10,8 +10,8 @@ describe("makeTypeLinkParams", () => {
       keywords: ["human"],
       page: 5,
     });
-    expect((result as AllSearchParams).page).toBeUndefined();
-    expect((result as AllSearchParams).types).toBeUndefined();
+    expect((result as AnySearchParams).page).toBeUndefined();
+    expect((result as AnySearchParams).types).toBeUndefined();
     expect(result.keywords).toEqual(["human"]);
   });
 });

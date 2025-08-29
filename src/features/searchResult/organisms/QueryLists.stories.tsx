@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { __TEST_updateFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
 import { QueryLists } from "@/features/searchResult/organisms/QueryLists.tsx";
-import type { AllSearchParams, AllSearchParamsKey } from "@/schema/search.ts";
+import type { AnySearchParams, AnySearchParamsKey } from "@/schema/search.ts";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 const { removeFromSearch } = __TEST_updateFunctions;
 const meta = {
   component: QueryLists,
   args: {
     params: {},
-    removeParam: (key: AllSearchParamsKey, v: string) => {},
+    removeParam: (key: AnySearchParamsKey, v: string) => {},
   },
   decorators: [
     (Story) => {
@@ -30,12 +30,12 @@ export const Empty = {} satisfies Story;
 export const HasSearch = {
   decorators: [
     (Story) => {
-      const [params, setParams] = useState<AllSearchParams>({
+      const [params, setParams] = useState<AnySearchParams>({
         types: ["biosample", "sra-analysis"],
         keywords: ["hogemoge", "mogemoge"],
         umbrella: true,
       });
-      const removeParam = (key: AllSearchParamsKey, v: string) => {
+      const removeParam = (key: AnySearchParamsKey, v: string) => {
         setParams((prev) => {
           return removeFromSearch(prev, key, v);
         });

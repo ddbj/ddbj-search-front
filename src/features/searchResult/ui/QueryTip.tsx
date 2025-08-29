@@ -1,11 +1,11 @@
 import clsx from "clsx";
 import { type FC } from "react";
-import type { AllSearchParamsKey } from "@/schema/search.ts";
+import type { AnySearchParamsKey } from "@/schema/search.ts";
 
 type Props = {
   label: { name: string; value: string };
-  data: { name: AllSearchParamsKey; value: string };
-  onClickRemove: (name: AllSearchParamsKey, value: string) => void;
+  data: { name: AnySearchParamsKey; value: string };
+  onClickRemove: (name: AnySearchParamsKey, value: string) => void;
 };
 
 const wrapperClasses = clsx(

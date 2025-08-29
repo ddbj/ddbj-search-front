@@ -4,20 +4,23 @@ import { Breadcrumbs } from "@/features/searchResult/Breadcrumbs.tsx";
 import { QueryLists } from "@/features/searchResult/organisms/QueryLists.tsx";
 import { Pagination } from "@/features/searchResult/Pagination.tsx";
 import { QueryBuilder } from "@/features/searchResult/QueryBuilder.tsx";
+import { parseResultCardProps } from "@/features/searchResult/ResultCard.tsx";
 import { ResultInfo } from "@/features/searchResult/ResultInfo.tsx";
 import { ResultList } from "@/features/searchResult/ResultList.tsx";
 import type { UpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
-import type { AllSearchParams } from "@/schema/search.ts";
+import type { EntriesApiResponse } from "@/schema/api/entries.ts";
+import type { AnySearchParams } from "@/schema/search.ts";
 
 type BreadcrumbsPath = ComponentProps<typeof Breadcrumbs>["paths"][0];
 
 type Props = {
   updateFunctions: UpdateSearchFunctions;
-  params: AllSearchParams;
+  params: AnySearchParams;
   entryType: DBType | null;
+  data: EntriesApiResponse;
 };
 
-export const SearchResultLayout: FC<Props> = ({ entryType, updateFunctions, params }) => {
+export const SearchResultLayout: FC<Props> = ({ entryType, updateFunctions, params, data }) => {
   const breadcrumbsPaths: BreadcrumbsPath[] = useMemo(() => {
     return entryType
       ? [{ label: "Entries", to: "/entry" }, { label: dbLabels[entryType] }]
@@ -35,8 +38,8 @@ export const SearchResultLayout: FC<Props> = ({ entryType, updateFunctions, para
           ></QueryBuilder>
         </aside>
         <div className={"flex flex-grow-1 flex-col gap-8 py-4"}>
-          <ResultList />
-          <Pagination current={params.page ?? 1} total={1000} params={params} />
+          <ResultList data={(data?.items ?? []).map((item) => parseResultCardProps(item))} />
+          <Pagination current={data?.page ?? 1} total={1000} params={params} />
         </div>
         <aside className={"sticky top-0 flex w-[400px] shrink-0 grow-0 flex-col gap-4 py-4"}>
           <ResultInfo />

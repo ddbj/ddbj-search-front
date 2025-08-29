@@ -1,16 +1,21 @@
-import { ResultCard } from "@/features/searchResult/ResultCard.tsx";
+import { ResultCard, type ResultCardProps } from "@/features/searchResult/ResultCard.tsx";
 import type { FC } from "react";
 
-type Props = {};
+type Props = {
+  data: ResultCardProps[];
+};
 
-export const ResultList: FC<Props> = () => {
+export const ResultList: FC<Props> = ({ data }) => {
   return (
     <div className={"flex flex-col gap-4"}>
-      {Array(20)
-        .fill(null)
-        .map((item, index) => (
-          <ResultCard key={index} />
-        ))}
+      {data.map((item, index) => (
+        <ResultCard key={index} {...item} />
+      ))}
+      {/*{Array(20)*/}
+      {/*  .fill(null)*/}
+      {/*  .map((item, index) => (*/}
+      {/*    <ResultCard key={index} />*/}
+      {/*  ))}*/}
     </div>
   );
 };

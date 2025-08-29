@@ -1,13 +1,13 @@
 import { clsx } from "clsx";
 import { type FC, Fragment } from "react";
-import type { AllSearchParams } from "@/schema/search.ts";
+import type { AnySearchParams } from "@/schema/search.ts";
 import { Link } from "@tanstack/react-router";
 // import { useSearchParams } from "@/hooks/useSearchParams.ts";
 
 type Props = {
   current: number;
   total: number;
-  params: AllSearchParams;
+  params: AnySearchParams;
 };
 type ButtonState = "current" | "idle" | "disabled";
 
@@ -59,7 +59,7 @@ const Button: FC<{
   label: string | number;
   page: number;
   state: ButtonState;
-  params: AllSearchParams;
+  params: AnySearchParams;
 }> = ({ label, page, state, params }) => {
   const classes = clsx(
     state === "current" && activeButtonClasses,

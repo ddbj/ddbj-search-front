@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
 import { dbTypes } from "@/consts/db.ts";
 import { __TEST__fetchSearchALL } from "@/network/fetchSearchAll.ts";
-import type { SearchApiParamKeys, SearchApiParams } from "@/schema/api/search.ts";
+import type { AnyEntriesApiParamKeys, AnyEntriesApiParams } from "@/schema/api/entries.ts";
 
 const { parseParams } = __TEST__fetchSearchALL;
 
-const expectKeyNotExists = (result: SearchApiParams, key: SearchApiParamKeys) => {
+const expectKeyNotExists = (result: AnyEntriesApiParams, key: AnyEntriesApiParamKeys) => {
   expect(key in result).toBe(false);
 };
 
@@ -66,5 +66,25 @@ describe("parseParams", () => {
   it("", () => {
     const result = parseParams({ dateUpdated: "2025-07-01,2025-07-10" });
     expect(result.dateUpdated).toBe("2025-07-01,2025-07-10");
+  });
+  it("", () => {
+    const result = parseParams({ organization: "NCBI" });
+    expect(result.organization).toBe("NCBI");
+  });
+  it("", () => {
+    const result = parseParams({ publication: "Nature" });
+    expect(result.publication).toBe("Nature");
+  });
+  it("", () => {
+    const result = parseParams({ grant: "test grant" });
+    expect(result.grant).toBe("test grant");
+  });
+  it("", () => {
+    const result = parseParams({ umbrella: true });
+    expect(result.umbrella).toBe("TRUE");
+  });
+  it("", () => {
+    const result = parseParams({ umbrella: false });
+    expect(result.umbrella).toBe("FALSE");
   });
 });

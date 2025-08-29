@@ -1,5 +1,6 @@
 import { SearchDetailLayout } from "@/layout/SearchDetailLayout.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { dbTypes } from "@/consts/db.ts";
 
 const meta = {
   component: SearchDetailLayout,
@@ -11,4 +12,8 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Primary = {} satisfies Story;
+export const Primary = {
+  args: {
+    entryType: dbTypes.bioproject,
+  },
+} satisfies Story;

@@ -1,8 +1,12 @@
 import * as z from "zod";
 import { dbTypeList, dbTypes } from "@/consts/db.ts";
 
+const paginationShape = {
+  page: z.number().optional(),
+  perPage: z.number().optional(),
+} as const;
+
 export const baseSearchSchema = z.object({
-  types: z.array(z.enum(dbTypeList)).optional(),
   keywords: z.array(z.string()).optional(),
   datePublished: z.string().optional(),
   dateUpdated: z.string().optional(),
@@ -14,11 +18,14 @@ export const isBaseSearchKey = (x: unknown): x is BaseSearchKey => {
   return baseSearchKeySchema.safeParse(x).success;
 };
 
-const baseSearchShape = {
-  keywords: z.array(z.string()).optional(),
-  datePublished: z.string().optional(),
-  dateUpdated: z.string().optional(),
-} as const;
+const allSearchSpecificShape = {
+  types: z.array(z.enum(dbTypeList)).optional(),
+};
+export const allSearchSchema = baseSearchSchema.extend({
+  ...paginationShape,
+  ...allSearchSpecificShape,
+});
+export type AllSearchParams = z.infer<typeof allSearchSchema>;
 
 const bioProjectSpecificShape = {
   organization: z.string().optional(),
@@ -27,23 +34,17 @@ const bioProjectSpecificShape = {
   umbrella: z.boolean().optional(),
 } as const;
 
-const paginationShape = {
-  page: z.number().optional(),
-  perPage: z.number().optional(),
-} as const;
-
 export const bioprojectSchema = baseSearchSchema.extend(bioProjectSpecificShape);
 export type BioprojectSearchParams = z.infer<typeof bioprojectSchema>;
 
-export const allSearchSchemas = baseSearchSchema.extend({
+export const anySearchSchemas = baseSearchSchema.extend({
   ...paginationShape,
+  ...allSearchSpecificShape,
   ...bioProjectSpecificShape,
 });
-export type AllSearchParams = z.infer<typeof allSearchSchemas>;
-const allSearchKeySchema = allSearchSchemas.keyof();
-export type AllSearchParamsKey = z.infer<typeof allSearchKeySchema>;
-export const isAllSearchParamsKey = (x: unknown): x is AllSearchParamsKey => {
-  return allSearchKeySchema.safeParse(x).success;
+export type AnySearchParams = z.infer<typeof anySearchSchemas>;
+const anySearchKeySchema = anySearchSchemas.keyof();
+export type AnySearchParamsKey = z.infer<typeof anySearchKeySchema>;
+export const isAnySearchParamsKey = (x: unknown): x is AnySearchParamsKey => {
+  return anySearchKeySchema.safeParse(x).success;
 };
-
-type AA = AllSearchParams["types"];

@@ -2,10 +2,10 @@ import { useNavigate } from "@tanstack/react-router";
 import { isEqual } from "@ver0/deep-equal";
 import { useMemo } from "react";
 import type { DBType } from "@/consts/db.ts";
-import type { AllSearchParams, AllSearchParamsKey } from "@/schema/search.ts";
+import type { AnySearchParams, AnySearchParamsKey } from "@/schema/search.ts";
 
 export type UpdateSearchFunctions = {
-  moveToEntryRoot: (params: AllSearchParams) => void;
+  moveToEntryRoot: (params: AnySearchParams) => void;
   moveToPage: (page: number) => void;
   changeKeywords: (v: string[]) => void;
   setDBTypes: (v: DBType[]) => void;
@@ -15,13 +15,13 @@ export type UpdateSearchFunctions = {
   changeOrganization: (v: string) => void;
   changePublication: (v: string) => void;
   changeGrant: (v: string) => void;
-  removeParam: (name: AllSearchParamsKey, value: string) => void;
+  removeParam: (name: AnySearchParamsKey, value: string) => void;
 };
 
 const replace = true;
 const from = "/";
 
-type P = AllSearchParams;
+type P = AnySearchParams;
 
 export const useUpdateSearchFunctions = (): UpdateSearchFunctions => {
   const navigate = useNavigate();
@@ -59,7 +59,7 @@ export const useUpdateSearchFunctions = (): UpdateSearchFunctions => {
       changeGrant: (v: string) => {
         navigate({ search: (prev: P) => composeGrant(prev, v), replace, from });
       },
-      removeParam: (key: AllSearchParamsKey, v: string) => {
+      removeParam: (key: AnySearchParamsKey, v: string) => {
         navigate({ search: (prev: P) => removeFromSearch(prev, key, v), replace, from });
       },
     } satisfies UpdateSearchFunctions;
@@ -68,10 +68,10 @@ export const useUpdateSearchFunctions = (): UpdateSearchFunctions => {
 };
 
 const removeFromSearch = (
-  current: AllSearchParams,
-  key: AllSearchParamsKey,
+  current: AnySearchParams,
+  key: AnySearchParamsKey,
   value: string
-): AllSearchParams => {
+): AnySearchParams => {
   const { [key]: prev, page, ...rest } = current;
   if (Array.isArray(prev)) {
     const filtered = prev.filter((t) => t.trim() !== value.trim());
@@ -128,7 +128,7 @@ const composeGrant = (params: P, value: string) => {
 };
 
 export const __SB_updateFunctions: UpdateSearchFunctions = {
-  moveToEntryRoot: (params: AllSearchParams) => {},
+  moveToEntryRoot: (params: AnySearchParams) => {},
   moveToPage: (page: number) => {},
   changeKeywords: (v: string[]) => {},
   setDBTypes: (v: DBType[]) => {},
@@ -138,7 +138,7 @@ export const __SB_updateFunctions: UpdateSearchFunctions = {
   changeOrganization: (v: string) => {},
   changePublication: (v: string) => {},
   changeGrant: (v: string) => {},
-  removeParam: (name: AllSearchParamsKey, value: string) => {},
+  removeParam: (name: AnySearchParamsKey, value: string) => {},
 };
 
 export const __TEST_updateFunctions = {
