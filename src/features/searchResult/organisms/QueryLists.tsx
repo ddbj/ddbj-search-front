@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { isUndefined } from "is-what";
-import { type ComponentProps, type FC, useMemo } from "react";
+import { type ComponentProps, type FC } from "react";
+import { getDbLabel } from "@/consts/db.ts";
 import { QueryTip } from "@/features/searchResult/ui/QueryTip.tsx";
 import { type AnySearchParams, type AnySearchParamsKey } from "@/schema/search.ts";
 import type { UpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
@@ -48,7 +49,7 @@ const parseQueryStateToTipList = (state: AnySearchParams): QueryTipProps[] => {
     });
   const types: QueryTipProps[] = (state.types ?? []).map((value) => {
     const data = { name: "types", value } as const;
-    const label = { name: "Type", value };
+    const label = { name: "Type", value: getDbLabel(value) };
     return { data, label };
   });
   const dates: QueryTipProps[] = [

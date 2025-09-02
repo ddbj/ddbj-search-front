@@ -31,3 +31,8 @@ export const dbLabels: { [K in DBType]: string } = {
   "jga-dac": "JGA DAC",
 } as const;
 export type DBLabel = (typeof dbLabels)[DBType];
+
+export const getDbLabel = (str: string): string => {
+  const result = dbLabels[str as DBType];
+  return result ? result : str;
+};
