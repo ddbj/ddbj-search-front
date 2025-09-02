@@ -5,6 +5,7 @@ import { useUpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdat
 import { SearchResultLayout } from "@/layout/SearchResultLayout.tsx";
 import { baseSearchSchema } from "@/schema/search.ts";
 import type { ComponentProps } from "react";
+import { dummyResponse } from "@/consts/api.ts";
 
 export const Route = createFileRoute("/entry/jga-study/")({
   component: PageComponent,
@@ -16,6 +17,7 @@ function PageComponent() {
     entryType: dbTypes["jga-study"],
     params: Route.useSearch(),
     updateFunctions: useUpdateSearchFunctions(),
+    data: dummyResponse,
   } satisfies ComponentProps<typeof SearchResultLayout>;
   return <SearchResultLayout {...props} />;
 }

@@ -11,11 +11,6 @@ export const ResultList: FC<Props> = ({ data }) => {
       {data.map((item, index) => (
         <ResultCard key={index} {...item} />
       ))}
-      {/*{Array(20)*/}
-      {/*  .fill(null)*/}
-      {/*  .map((item, index) => (*/}
-      {/*    <ResultCard key={index} />*/}
-      {/*  ))}*/}
     </div>
   );
 };

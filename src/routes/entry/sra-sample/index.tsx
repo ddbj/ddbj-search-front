@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { zodValidator } from "@tanstack/zod-adapter";
+import { dummyResponse } from "@/consts/api.ts";
 import { dbTypes } from "@/consts/db.ts";
 import { useUpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
 import { SearchResultLayout } from "@/layout/SearchResultLayout.tsx";
@@ -16,6 +17,7 @@ function PageComponent() {
     entryType: dbTypes["sra-sample"],
     params: Route.useSearch(),
     updateFunctions: useUpdateSearchFunctions(),
+    data: dummyResponse,
   } satisfies ComponentProps<typeof SearchResultLayout>;
   return <SearchResultLayout {...props} />;
 }

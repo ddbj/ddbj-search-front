@@ -1,3 +1,4 @@
+import { dummyResponse } from "@/consts/api.ts";
 import { dbTypes } from "@/consts/db.ts";
 import { __SB_updateFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
 import { SearchResultLayout } from "./SearchResultLayout.tsx";
@@ -9,6 +10,7 @@ const meta = {
     updateFunctions: __SB_updateFunctions,
     entryType: null,
     params: {},
+    data: dummyResponse,
   },
   decorators: [],
 } satisfies Meta<typeof SearchResultLayout>;

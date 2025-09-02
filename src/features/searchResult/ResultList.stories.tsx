@@ -1,4 +1,4 @@
-import { ResultList } from "./ResultList.tsx"
+import { ResultList } from "./ResultList.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
@@ -11,4 +11,8 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Primary = {} satisfies Story;
+export const Primary = {
+  args: {
+    data: [],
+  },
+} satisfies Story;
