@@ -1,19 +1,24 @@
+import { extendZodWithOpenApi } from "@asteasolutions/zod-to-openapi";
 import { z } from "zod";
 
 export const booleanStrings = ["TRUE", "FALSE"] as const;
 export type BooleanString = (typeof booleanStrings)[number];
 
+extendZodWithOpenApi(z);
+
 export const EntriesApiResponseSchema = z.object({
-  page: z.number(),
-  perPage: z.number(),
-  total: z.number(),
+  page: z.number().openapi({ example: 1 }),
+  perPage: z.number().openapi({ example: 10 }),
+  total: z.number().openapi({ example: 10000 }),
   items: z.array(
     z.object({
       identifier: z.string(),
-      type: z.string(),
-      title: z.string(),
-      dbXrefs: z.record(z.string(), z.number()),
-      datePublished: z.string(),
+      type: z.string().openapi({ example: "bioproject" }),
+      title: z.string().openapi({ example: "Draparnaldia sp. CCAC 6921, genomic data." }),
+      dbXrefs: z.record(z.string(), z.number()).openapi({
+        example: { bioproject: 1, biosample: 1, "sra-study": 2 },
+      }),
+      datePublished: z.string().openapi({ example: "2013-05-31" }),
     })
   ),
 });
@@ -32,7 +37,9 @@ const baseEntriesApiParamSchema = z.object({
 const allEntriesApiParamShape = {
   types: z.string().optional(),
 };
-const allEntriesApiParamSchema = baseEntriesApiParamSchema.extend({ ...allEntriesApiParamShape });
+export const allEntriesApiParamSchema = baseEntriesApiParamSchema.extend({
+  ...allEntriesApiParamShape,
+});
 export type AllEntriesApiParams = z.infer<typeof allEntriesApiParamSchema>;
 export type AllEntriesApiParamKeys = keyof AllEntriesApiParams;
 
@@ -42,7 +49,7 @@ const bioprojectEntriesApiParamShape = {
   grant: z.string().optional(),
   umbrella: z.enum(booleanStrings).optional(),
 };
-const bioProjectEntriesApiParamSchema = baseEntriesApiParamSchema.extend({
+export const bioProjectEntriesApiParamSchema = baseEntriesApiParamSchema.extend({
   ...bioprojectEntriesApiParamShape,
 });
 export type BioProjectEntriesApiParams = z.infer<typeof bioProjectEntriesApiParamSchema>;

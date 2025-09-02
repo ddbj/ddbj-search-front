@@ -17,6 +17,7 @@ const queryClient = new QueryClient({
 });
 
 // Create a new router instance
+const originalReplaceState = window.history.replaceState;
 export const router = createRouter({
   routeTree,
   context: { queryClient },
@@ -24,6 +25,7 @@ export const router = createRouter({
   scrollRestoration: true,
   defaultPreload: "intent",
 });
+window.history.replaceState = originalReplaceState;
 
 // Register the router instance for type safety
 declare module "@tanstack/react-router" {
