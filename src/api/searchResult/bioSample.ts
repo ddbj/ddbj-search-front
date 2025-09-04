@@ -1,11 +1,11 @@
 import { z } from "zod";
 import { tags } from "@/api/consts.ts";
 import { API_PATH_BIOSAMPLES } from "@/api/paths.ts";
-import { baseEntriesParamSchema, EntriesResponseSchema } from "@/api/searchResult/entries.ts";
+import { baseEntriesParamsSchema, entriesResponseSchema } from "@/api/searchResult/entries.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
 const biosampleEntriesApiParamsShape = {};
-export const bioSampleEntriesApiParamSchema = baseEntriesParamSchema.extend({
+export const bioSampleEntriesApiParamSchema = baseEntriesParamsSchema.extend({
   ...biosampleEntriesApiParamsShape,
 });
 export type BiosampleEntriesApiParams = z.infer<typeof bioSampleEntriesApiParamSchema>;
@@ -24,7 +24,7 @@ export const bioSampleEntriesDoc: RouteConfig = {
       description: "",
       content: {
         "application/json": {
-          schema: EntriesResponseSchema,
+          schema: entriesResponseSchema,
         },
       },
     },

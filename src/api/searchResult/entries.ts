@@ -3,7 +3,7 @@ import { tags } from "@/api/consts.ts";
 import { API_PATH_SEARCH_ALL } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
-export const EntriesResponseSchema = z.object({
+export const entriesResponseSchema = z.object({
   page: z.number().openapi({ example: 1 }),
   perPage: z.number().openapi({ example: 10 }),
   total: z.number().openapi({ example: 10000 }),
@@ -19,10 +19,10 @@ export const EntriesResponseSchema = z.object({
     })
   ),
 });
-export type EntriesResponse = z.infer<typeof EntriesResponseSchema>;
+export type EntriesResponse = z.infer<typeof entriesResponseSchema>;
 //
 //
-export const baseEntriesParamSchema = z.object({
+export const baseEntriesParamsSchema = z.object({
   page: z.string().optional(),
   perPage: z.string().optional(),
   keywords: z.string().optional(),
@@ -31,12 +31,13 @@ export const baseEntriesParamSchema = z.object({
   // sortBy: z.string().optional(),
   // sortOrder: z.enum(["asc", "desc"]).optional(),
 });
+export type BaseEntriesParams = z.infer<typeof baseEntriesParamsSchema>;
 //
 //
 export const allEntriesParamShape = {
   types: z.string().optional().meta({ description: "Comma separated list of DB types" }),
 };
-export const allEntriesParamSchema = baseEntriesParamSchema.extend({
+export const allEntriesParamSchema = baseEntriesParamsSchema.extend({
   ...allEntriesParamShape,
 });
 export type AllEntriesParams = z.infer<typeof allEntriesParamSchema>;
@@ -55,7 +56,7 @@ export const allEntriesDoc: RouteConfig = {
       description: "",
       content: {
         "application/json": {
-          schema: EntriesResponseSchema,
+          schema: entriesResponseSchema,
         },
       },
     },

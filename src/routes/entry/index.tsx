@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { zodValidator } from "@tanstack/zod-adapter";
 import { useUpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
 import { SearchResultLayout } from "@/layout/SearchResultLayout.tsx";
-import { fetchSearchAll } from "@/network/fetchSearchAll.ts";
+import { fetchAllEntries } from "@/fetch/fetchAllEntries.ts";
 import { allSearchSchema, type AnySearchParams } from "@/schema/search.ts";
 import type { ComponentProps } from "react";
 import { API_PATH_SEARCH_ALL } from "@/api/paths.ts";
@@ -11,7 +11,7 @@ import { API_PATH_SEARCH_ALL } from "@/api/paths.ts";
 const makeQuery = (params: AnySearchParams) => {
   return queryOptions({
     queryKey: [API_PATH_SEARCH_ALL, ...Object.entries(params)],
-    queryFn: () => fetchSearchAll(params),
+    queryFn: () => fetchAllEntries(params),
   });
 };
 

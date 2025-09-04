@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { booleanStrings, tags } from "@/api/consts.ts";
 import { API_PATH_BIOPROJECTS } from "@/api/paths.ts";
-import { baseEntriesParamSchema, EntriesResponseSchema } from "@/api/searchResult/entries.ts";
+import { baseEntriesParamsSchema, entriesResponseSchema } from "@/api/searchResult/entries.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
 export const bioprojectEntriesApiParamShape = {
@@ -10,7 +10,7 @@ export const bioprojectEntriesApiParamShape = {
   grant: z.string().optional(),
   umbrella: z.enum(booleanStrings).optional(),
 };
-export const bioProjectEntriesApiParamSchema = baseEntriesParamSchema.extend({
+export const bioProjectEntriesApiParamSchema = baseEntriesParamsSchema.extend({
   ...bioprojectEntriesApiParamShape,
 });
 export type BioProjectEntriesApiParams = z.infer<typeof bioProjectEntriesApiParamSchema>;
@@ -29,7 +29,7 @@ export const bioProjectEntriesDoc: RouteConfig = {
       description: "",
       content: {
         "application/json": {
-          schema: EntriesResponseSchema,
+          schema: entriesResponseSchema,
         },
       },
     },
