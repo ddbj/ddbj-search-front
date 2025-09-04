@@ -1,6 +1,6 @@
-import type { EntriesResponse } from "@/api/searchResult/entries.ts";
+import type { EntryListResponse } from "@/api/entries/base.ts";
 
-export const dummyResponse: EntriesResponse = {
+export const dummyResponse: EntryListResponse = {
   page: 1,
   perPage: 10,
   total: 0,

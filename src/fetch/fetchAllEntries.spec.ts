@@ -1,11 +1,15 @@
 import { describe, expect, it } from "vitest";
 import { dbTypes } from "@/consts/db.ts";
 import { __TEST__fetchSearchALL } from "@/fetch/fetchAllEntries.ts";
-import type { AllEntriesParams } from "@/api/searchResult/entries.ts";
+
+import type { AllEntryListRequestParams } from "@/api/entries/all.ts";
 
 const { parseParams } = __TEST__fetchSearchALL;
 
-const expectKeyNotExists = (result: AllEntriesParams, key: keyof AllEntriesParams) => {
+const expectKeyNotExists = (
+  result: AllEntryListRequestParams,
+  key: keyof AllEntryListRequestParams
+) => {
   expect(key in result).toBe(false);
 };
 

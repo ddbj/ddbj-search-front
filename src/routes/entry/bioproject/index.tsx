@@ -6,12 +6,12 @@ import { useUpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdat
 import { SearchResultLayout } from "@/layout/SearchResultLayout.tsx";
 import { type AnySearchParams, bioprojectSchema } from "@/schema/search.ts";
 import type { ComponentProps } from "react";
-import { API_PATH_SEARCH_ALL } from "@/api/paths.ts";
+import { API_PATH_ALL_ENTRIES_LIST } from "@/api/paths.ts";
 import { fetchBioProjects } from "@/fetch/fetchBioProjectEntries.ts";
 
 const makeQuery = (params: AnySearchParams) => {
   return queryOptions({
-    queryKey: [API_PATH_SEARCH_ALL, ...Object.entries(params)],
+    queryKey: [API_PATH_ALL_ENTRIES_LIST, ...Object.entries(params)],
     queryFn: () => fetchBioProjects(params),
   });
 };

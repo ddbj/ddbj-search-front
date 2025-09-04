@@ -1,8 +1,11 @@
 import { describe, expect, it } from "vitest";
 import { parseBaseParams } from "@/fetch/utils/parseBaseSearchParams.ts";
-import type { BaseEntriesParams } from "@/api/searchResult/entries.ts";
+import type { BaseEntryListRequestParams } from "@/api/entries/base.ts";
 
-const expectKeyNotExists = (result: BaseEntriesParams, key: keyof BaseEntriesParams) => {
+const expectKeyNotExists = (
+  result: BaseEntryListRequestParams,
+  key: keyof BaseEntryListRequestParams
+) => {
   expect(key in result).toBe(false);
 };
 

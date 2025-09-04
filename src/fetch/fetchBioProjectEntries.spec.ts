@@ -1,12 +1,12 @@
 import { describe, expect, it } from "vitest";
 import { __TEST__fetchSearchALL } from "@/fetch/fetchBioProjectEntries.ts";
-import type { BioProjectEntriesApiParams } from "@/api/searchResult/bioProject.ts";
+import type { BioProjectListRequestParams } from "@/api/entries/bioProject.ts";
 
 const { parseParams } = __TEST__fetchSearchALL;
 
 const expectKeyNotExists = (
-  result: BioProjectEntriesApiParams,
-  key: keyof BioProjectEntriesApiParams
+  result: BioProjectListRequestParams,
+  key: keyof BioProjectListRequestParams
 ) => {
   expect(key in result).toBe(false);
 };

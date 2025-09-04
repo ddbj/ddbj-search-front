@@ -1,18 +1,18 @@
-import { API_PATH_BIOPROJECTS } from "@/api/paths.ts";
+import { API_PATH_BIOPROJECT_LIST } from "@/api/paths.ts";
 import { parseBaseParams } from "@/fetch/utils/parseBaseSearchParams.ts";
-import type { BioProjectEntriesApiParams } from "@/api/searchResult/bioProject.ts";
-import type { EntriesResponse } from "@/api/searchResult/entries.ts";
+import type { BioProjectListRequestParams } from "@/api/entries/bioProject.ts";
+import type { EntryListResponse } from "@/api/entries/base.ts";
 import type { BioprojectSearchParams } from "@/schema/search.ts";
 
 export const fetchBioProjects = async (params: BioprojectSearchParams) => {
   const searchParams = parseParams(params);
-  const response = await fetch(`${API_PATH_BIOPROJECTS}?${new URLSearchParams(searchParams)}`, {
+  const response = await fetch(`${API_PATH_BIOPROJECT_LIST}?${new URLSearchParams(searchParams)}`, {
     method: "GET",
   });
-  const data = (await response.json()) as EntriesResponse;
+  const data = (await response.json()) as EntryListResponse;
   return data;
 };
-const parseParams = (params: BioprojectSearchParams): BioProjectEntriesApiParams => {
+const parseParams = (params: BioprojectSearchParams): BioProjectListRequestParams => {
   return {
     ...parseBaseParams(params),
     ...(params.organization ? { organization: params.organization } : {}),

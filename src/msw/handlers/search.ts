@@ -1,12 +1,12 @@
 import { http, HttpResponse } from "msw";
 import { v4 as uuidv4 } from "uuid";
-import { API_PATH_BIOPROJECTS, API_PATH_SEARCH_ALL } from "@/api/paths.ts";
-import type { EntriesResponse } from "@/api/searchResult/entries.ts";
-import type { BioProjectEntriesApiParams } from "@/api/searchResult/bioProject.ts";
+import { API_PATH_BIOPROJECT_LIST, API_PATH_ALL_ENTRIES_LIST } from "@/api/paths.ts";
+import type { EntryListResponse } from "@/api/entries/base.ts";
+import type { BioProjectListRequestParams } from "@/api/entries/bioProject.ts";
 
 export const handlers = [
-  http.get<{}, {}, EntriesResponse, typeof API_PATH_SEARCH_ALL>(
-    API_PATH_SEARCH_ALL,
+  http.get<{}, {}, EntryListResponse, typeof API_PATH_ALL_ENTRIES_LIST>(
+    API_PATH_ALL_ENTRIES_LIST,
     async ({ request }) => {
       // await delay(Math.random() * 500 + 300);
       const url = new URL(request.url);
@@ -30,8 +30,8 @@ export const handlers = [
       });
     }
   ),
-  http.get<BioProjectEntriesApiParams, {}, EntriesResponse, typeof API_PATH_BIOPROJECTS>(
-    API_PATH_BIOPROJECTS,
+  http.get<BioProjectListRequestParams, {}, EntryListResponse, typeof API_PATH_BIOPROJECT_LIST>(
+    API_PATH_BIOPROJECT_LIST,
     ({ request }) => {
       const url = new URL(request.url);
       const search = url.searchParams;

@@ -1,16 +1,16 @@
-import { queryOptions, useQuery, useSuspenseQuery } from "@tanstack/react-query";
+import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { zodValidator } from "@tanstack/zod-adapter";
+import { API_PATH_ALL_ENTRIES_LIST } from "@/api/paths.ts";
 import { useUpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
-import { SearchResultLayout } from "@/layout/SearchResultLayout.tsx";
 import { fetchAllEntries } from "@/fetch/fetchAllEntries.ts";
+import { SearchResultLayout } from "@/layout/SearchResultLayout.tsx";
 import { allSearchSchema, type AnySearchParams } from "@/schema/search.ts";
 import type { ComponentProps } from "react";
-import { API_PATH_SEARCH_ALL } from "@/api/paths.ts";
 
 const makeQuery = (params: AnySearchParams) => {
   return queryOptions({
-    queryKey: [API_PATH_SEARCH_ALL, ...Object.entries(params)],
+    queryKey: [API_PATH_ALL_ENTRIES_LIST, ...Object.entries(params)],
     queryFn: () => fetchAllEntries(params),
   });
 };

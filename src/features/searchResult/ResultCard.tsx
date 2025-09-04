@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import clsx from "clsx";
 import { getDbLabel } from "@/consts/db.ts";
 import type { FC } from "react";
-import type { EntriesResponse } from "@/api/searchResult/entries.ts";
+import type { EntryListResponse } from "@/api/entries/base.ts";
 
 type Props = {
   title: string;
@@ -45,7 +45,7 @@ export const ResultCard: FC<Props> = ({ id, type, title, relations, publishedAt 
   );
 };
 
-export const parseResultCardProps = (res: EntriesResponse["items"][0]): Props => {
+export const parseResultCardProps = (res: EntryListResponse["items"][0]): Props => {
   return {
     title: res.title,
     id: res.identifier,

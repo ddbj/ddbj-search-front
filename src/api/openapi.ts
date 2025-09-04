@@ -1,12 +1,12 @@
 import { OpenApiGeneratorV31, OpenAPIRegistry } from "@asteasolutions/zod-to-openapi";
-import { bioProjectEntriesDoc } from "@/api/searchResult/bioProject.ts";
-import { bioSampleEntriesDoc } from "@/api/searchResult/bioSample.ts";
-import { allEntriesDoc } from "@/api/searchResult/entries.ts";
+import { allEntryListRequestDoc } from "@/api/entries/all.ts";
+import { BioProjectListRequestDoc } from "@/api/entries/bioProject.ts";
+import { bioSampleListRequestDoc } from "@/api/entries/bioSample.ts";
 
 export const registry = new OpenAPIRegistry();
-registry.registerPath(allEntriesDoc);
-registry.registerPath(bioProjectEntriesDoc);
-registry.registerPath(bioSampleEntriesDoc);
+registry.registerPath(allEntryListRequestDoc);
+registry.registerPath(BioProjectListRequestDoc);
+registry.registerPath(bioSampleListRequestDoc);
 
 export const getDocs = () => {
   const generator = new OpenApiGeneratorV31(registry.definitions);

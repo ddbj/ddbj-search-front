@@ -1,5 +1,5 @@
 import * as z from "zod";
-import { dbTypeList, dbTypes } from "@/consts/db.ts";
+import { dbTypeList } from "@/consts/db.ts";
 
 const paginationShape = {
   page: z.number().optional(),
