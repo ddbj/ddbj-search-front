@@ -55,6 +55,13 @@ export const bioProjectEntriesApiParamSchema = baseEntriesApiParamSchema.extend(
 export type BioProjectEntriesApiParams = z.infer<typeof bioProjectEntriesApiParamSchema>;
 export type BioProjectEntriesApiParamKeys = keyof BioProjectEntriesApiParams;
 
+const biosampleEntriesApiParamsShape = {};
+export const bioSampleEntriesApiParamSchema = baseEntriesApiParamSchema.extend({
+  ...biosampleEntriesApiParamsShape,
+});
+export type BiosampleEntriesApiParams = z.infer<typeof bioSampleEntriesApiParamSchema>;
+export type BiosampleEntriesApiParamKeys = keyof BiosampleEntriesApiParams;
+
 const anyEntriesApiParamSchema = baseEntriesApiParamSchema.extend({
   ...allEntriesApiParamShape,
   ...bioprojectEntriesApiParamShape,
