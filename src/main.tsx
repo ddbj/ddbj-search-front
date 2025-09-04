@@ -1,9 +1,11 @@
+import { extendZodWithOpenApi } from "@asteasolutions/zod-to-openapi";
 import { HeroUIProvider } from "@heroui/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { createRouter, RouterProvider } from "@tanstack/react-router";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { z } from "zod";
 import { routeTree } from "@/routeTree.gen";
 
 import "./index.css";
@@ -15,6 +17,8 @@ const queryClient = new QueryClient({
     },
   },
 });
+
+extendZodWithOpenApi(z);
 
 // Create a new router instance
 const originalReplaceState = window.history.replaceState;

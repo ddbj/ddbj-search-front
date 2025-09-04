@@ -1,10 +1,11 @@
 import { http, HttpResponse } from "msw";
 import { v4 as uuidv4 } from "uuid";
-import { API_PATH_BIOPROJECTS, API_PATH_SEARCH_ALL } from "@/consts/api.ts";
-import type { BioProjectEntriesApiParams, EntriesApiResponse } from "@/schema/api/entries.ts";
+import { API_PATH_BIOPROJECTS, API_PATH_SEARCH_ALL } from "@/api/paths.ts";
+import type { EntriesResponse } from "@/api/searchResult/entries.ts";
+import type { BioProjectEntriesApiParams } from "@/api/searchResult/bioProject.ts";
 
 export const handlers = [
-  http.get<{}, {}, EntriesApiResponse, typeof API_PATH_SEARCH_ALL>(
+  http.get<{}, {}, EntriesResponse, typeof API_PATH_SEARCH_ALL>(
     API_PATH_SEARCH_ALL,
     async ({ request }) => {
       // await delay(Math.random() * 500 + 300);
@@ -29,7 +30,7 @@ export const handlers = [
       });
     }
   ),
-  http.get<BioProjectEntriesApiParams, {}, EntriesApiResponse, typeof API_PATH_BIOPROJECTS>(
+  http.get<BioProjectEntriesApiParams, {}, EntriesResponse, typeof API_PATH_BIOPROJECTS>(
     API_PATH_BIOPROJECTS,
     ({ request }) => {
       const url = new URL(request.url);

@@ -8,8 +8,8 @@ import { parseResultCardProps } from "@/features/searchResult/ResultCard.tsx";
 import { ResultInfo } from "@/features/searchResult/ResultInfo.tsx";
 import { ResultList } from "@/features/searchResult/ResultList.tsx";
 import type { UpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
-import type { EntriesApiResponse } from "@/schema/api/entries.ts";
 import type { AnySearchParams } from "@/schema/search.ts";
+import type { EntriesResponse } from "@/api/searchResult/entries.ts";
 
 type BreadcrumbsPath = ComponentProps<typeof Breadcrumbs>["paths"][0];
 
@@ -17,7 +17,7 @@ type Props = {
   updateFunctions: UpdateSearchFunctions;
   params: AnySearchParams;
   entryType: DBType | null;
-  data: EntriesApiResponse;
+  data: EntriesResponse;
 };
 
 export const SearchResultLayout: FC<Props> = ({ entryType, updateFunctions, params, data }) => {

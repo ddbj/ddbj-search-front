@@ -1,13 +1,14 @@
-import { API_PATH_BIOPROJECTS, API_PATH_SEARCH_ALL } from "@/consts/api.ts";
-import type { AnyEntriesApiParams, EntriesApiResponse } from "@/schema/api/entries.ts";
+import { API_PATH_BIOPROJECTS, API_PATH_SEARCH_ALL } from "@/api/paths.ts";
+import type { AnyEntriesApiParams } from "@/schema/api/entries.ts";
 import type { AllSearchParams, AnySearchParams, BioprojectSearchParams } from "@/schema/search.ts";
+import type { EntriesResponse } from "@/api/searchResult/entries.ts";
 
 export const fetchSearchAll = async (params: AllSearchParams) => {
   const searchParams = parseParams(params);
   const response = await fetch(`${API_PATH_SEARCH_ALL}?${new URLSearchParams(searchParams)}`, {
     method: "GET",
   });
-  const data = (await response.json()) as EntriesApiResponse;
+  const data = (await response.json()) as EntriesResponse;
   return data;
 };
 export const fetchBioProjects = async (params: BioprojectSearchParams) => {
@@ -15,7 +16,7 @@ export const fetchBioProjects = async (params: BioprojectSearchParams) => {
   const response = await fetch(`${API_PATH_BIOPROJECTS}?${new URLSearchParams(searchParams)}`, {
     method: "GET",
   });
-  const data = (await response.json()) as EntriesApiResponse;
+  const data = (await response.json()) as EntriesResponse;
   return data;
 };
 
