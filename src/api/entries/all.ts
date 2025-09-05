@@ -5,9 +5,12 @@ import { API_PATH_ALL_ENTRIES_LIST } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
 const allEntryListRequestParamShape = {
-  types: z.string().optional().meta({ description: "Comma separated list of DB types" }),
+  types: z
+    .string()
+    .optional()
+    .meta({ description: "Comma separated list of DB types", example: "biosample,bioproject" }),
 };
-const allEntryListRequestParamSchema = baseEntryListRequestParamsSchema.extend({
+export const allEntryListRequestParamSchema = baseEntryListRequestParamsSchema.extend({
   ...allEntryListRequestParamShape,
 });
 export type AllEntryListRequestParams = z.infer<typeof allEntryListRequestParamSchema>;
