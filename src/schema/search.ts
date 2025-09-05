@@ -37,6 +37,13 @@ const bioProjectSpecificShape = {
 export const bioprojectSchema = baseSearchSchema.extend(bioProjectSpecificShape);
 export type BioprojectSearchParams = z.infer<typeof bioprojectSchema>;
 
+const bioSampleSpecificShape = {
+  // Add BioSample-specific parameters here if needed
+} as const;
+
+export const biosampleSchema = baseSearchSchema.extend(bioSampleSpecificShape);
+export type BiosampleSearchParams = z.infer<typeof biosampleSchema>;
+
 export const anySearchSchemas = baseSearchSchema.extend({
   ...paginationShape,
   ...allSearchSpecificShape,
