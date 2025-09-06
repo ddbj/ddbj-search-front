@@ -1,3 +1,5 @@
-import { handlers as searchHandlers } from "@/msw/handlers/search.ts";
+import { getAllEntryList } from "@/msw/handlers/entries/getAllEntryList.ts";
+import { getBioProjectList } from "@/msw/handlers/entries/getBioProjectList.ts";
+import { getBioSampleList } from "@/msw/handlers/entries/getBioSampleList.ts";
 
-export const handlers = [...searchHandlers];
+export const handlers = [getAllEntryList, getBioProjectList, getBioSampleList];
