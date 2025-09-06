@@ -18,6 +18,9 @@ const countTypesRequestParamsSchema = allEntryListRequestParamSchema.omit({
   types: true,
 });
 
+export type CountTypesRequestParams = z.infer<typeof countTypesRequestParamsSchema>;
+export type CountTypesResponse = z.infer<typeof countTypesResponseSchema>;
+
 export const typeCountRequestDoc: RouteConfig = {
   path: API_PATH_TYPE_COUNT,
   method: "get",

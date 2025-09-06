@@ -4,7 +4,7 @@ import { zodValidator } from "@tanstack/zod-adapter";
 import { API_PATH_ALL_ENTRIES_LIST } from "@/api/paths.ts";
 import { dbTypes } from "@/consts/db.ts";
 import { useUpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
-import { fetchBioSamples } from "@/fetch/fetchBioSampleEntries.ts";
+import { fetchBioSamples } from "@/fetch/entries/fetchBioSampleEntries.ts";
 import { SearchResultLayout } from "@/layout/SearchResultLayout.tsx";
 import { biosampleSearchSchema } from "@/schema/search/bioSample.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";

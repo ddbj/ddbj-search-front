@@ -22,6 +22,6 @@ const parseParams = (params: BioprojectSearchParams): BioProjectListRequestParam
   };
 };
 
-export const __TEST__fetchSearchALL = {
+export const __TEST__fetchBioProjectEntries = {
   parseParams,
 };

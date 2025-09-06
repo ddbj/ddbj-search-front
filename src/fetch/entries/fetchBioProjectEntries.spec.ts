@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { __TEST__fetchSearchALL } from "@/fetch/fetchBioProjectEntries.ts";
+import { __TEST__fetchBioProjectEntries } from "@/fetch/entries/fetchBioProjectEntries.ts";
 import type { BioProjectListRequestParams } from "@/api/entries/bioProject.ts";
 
-const { parseParams } = __TEST__fetchSearchALL;
+const { parseParams } = __TEST__fetchBioProjectEntries;
 
 const expectKeyNotExists = (
   result: BioProjectListRequestParams,
