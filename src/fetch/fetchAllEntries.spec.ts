@@ -14,15 +14,15 @@ const expectKeyNotExists = (
 
 describe("parseParams", () => {
   //types
-  it("", () => {
+  it("should not include types param when no type is provided", () => {
     const result = parseParams({});
     expectKeyNotExists(result, "types");
   });
-  it("", () => {
+  it("should not include types param when empty array is provided", () => {
     const result = parseParams({ types: [] });
     expectKeyNotExists(result, "types");
   });
-  it("", () => {
+  it("should join multiple types with comma", () => {
     const result = parseParams({ types: [dbTypes.biosample, dbTypes.bioproject] });
     expect(result.types).toBe("biosample,bioproject");
   });
