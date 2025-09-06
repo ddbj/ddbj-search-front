@@ -19,7 +19,7 @@ export const getAllEntryList = http.get<
     total: 10000,
     items: Array(10)
       .fill(0)
-      .map((_, i) => {
+      .map((_, _i) => {
         return {
           identifier: uuidv4().slice(0, 8),
           type: "bioproject",
