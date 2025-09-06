@@ -18,7 +18,7 @@ export type BioProjectListRequestParams = z.infer<typeof bioProjectListRequestPa
 export const BioProjectListRequestDoc: RouteConfig = {
   path: API_PATH_BIOPROJECT_LIST,
   method: "get",
-  summary: "BioProjects",
+  summary: "BioProject list",
   tags: [tags.searchResultList],
   request: {
     params: bioProjectListRequestParamsSchema,

@@ -1,8 +1,8 @@
 import "jest-extended";
 import { expect, fn } from "storybook/test";
 import { SearchBox } from "@/features/initialSearch/SearchBox.tsx";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import { findByListValue, findBySlot } from "@/utils/storybook.ts";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
   component: SearchBox,

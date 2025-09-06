@@ -3,7 +3,7 @@ import { isArray, isUndefined } from "is-what";
 import { useEffect, useState } from "react";
 import { useDebounceValue } from "usehooks-ts";
 import { routeTree } from "@/routeTree.gen.ts";
-import type { AnySearchParamsKey, AnySearchParams } from "@/schema/search.ts";
+import type { AnySearchParams, AnySearchParamsKey } from "@/schema/search/any.ts";
 
 export const useMultipleTextSearch = (searchKey: AnySearchParamsKey) => {
   const router = useRouter();
@@ -28,7 +28,7 @@ export const useMultipleTextSearch = (searchKey: AnySearchParamsKey) => {
       .filter((str) => str !== "");
 
     const search: AnySearchParams = { ...restParams, [searchKey]: newValue };
-    if (newValue.length === 0) {
+    if (newValue.length === 0 && search[searchKey]) {
       delete search[searchKey];
     }
     router.navigate({ from: routeTree.fullPath, search, replace: true });

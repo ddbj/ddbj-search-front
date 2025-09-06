@@ -5,7 +5,8 @@ import { API_PATH_ALL_ENTRIES_LIST } from "@/api/paths.ts";
 import { useUpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
 import { fetchAllEntries } from "@/fetch/fetchAllEntries.ts";
 import { SearchResultLayout } from "@/layout/SearchResultLayout.tsx";
-import { allSearchSchema, type AnySearchParams } from "@/schema/search.ts";
+import { allSearchSchema } from "@/schema/search/all.ts";
+import type { AnySearchParams } from "@/schema/search/any.ts";
 import type { ComponentProps } from "react";
 
 const makeQuery = (params: AnySearchParams) => {

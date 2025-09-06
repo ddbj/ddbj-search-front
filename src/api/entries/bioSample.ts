@@ -13,7 +13,7 @@ export type BiosampleListRequestParams = z.infer<typeof bioSampleListRequestPara
 export const bioSampleListRequestDoc: RouteConfig = {
   path: API_PATH_BIOSAMPLE_LIST,
   method: "get",
-  summary: "BioSamples",
+  summary: "BioSample list",
   tags: [tags.searchResultList],
   request: {
     params: bioSampleListRequestParamsSchema,

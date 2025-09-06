@@ -7,9 +7,10 @@ import { Umbrella } from "@/features/searchResult/organisms/bioproject/Umbrella.
 import { DateSelector } from "@/features/searchResult/organisms/DateSelector.tsx";
 import { KeywordInput } from "@/features/searchResult/organisms/KeywordInput.tsx";
 import { OtherTypeSelector } from "@/features/searchResult/organisms/OtherTypeSelector.tsx";
-import { type AnySearchParams, type BaseSearchParams, isBaseSearchKey } from "@/schema/search.ts";
+import { type BaseSearchParams, isBaseSearchKey } from "@/schema/search/base.ts";
 import { TypeSelector } from "./organisms/TypeSelector";
 import type { UpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
+import type { AnySearchParams } from "@/schema/search/any.ts";
 
 type Props = {
   currentType: DBType | null;

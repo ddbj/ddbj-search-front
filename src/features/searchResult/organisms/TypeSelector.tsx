@@ -2,7 +2,7 @@ import { type FC } from "react";
 import { dbLabels, type DBType, isDBType } from "@/consts/db.ts";
 import { useDebouncedUiValue } from "@/features/searchResult/hooks/useDebouncedUiValue.ts";
 import { CheckboxText } from "@/features/searchResult/ui/CheckboxText.tsx";
-import type { BaseSearchParams } from "@/schema/search.ts";
+import type { BaseSearchParams } from "@/schema/search/base.ts";
 
 type Props = {
   value: DBType[];

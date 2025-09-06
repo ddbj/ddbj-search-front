@@ -1,8 +1,8 @@
 import { type FC } from "react";
 import { dbLabels, type DBType, dbTypeList } from "@/consts/db.ts";
 import { CheckboxText } from "@/features/searchResult/ui/CheckboxText.tsx";
-import { type BaseSearchParams } from "@/schema/search.ts";
 import type { UpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
+import type { BaseSearchParams } from "@/schema/search/base.ts";
 
 type Props = {
   currentType: DBType;

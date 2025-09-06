@@ -1,8 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import clsx from "clsx";
 import { getDbLabel } from "@/consts/db.ts";
-import type { FC } from "react";
 import type { EntryListResponse } from "@/api/entries/base.ts";
+import type { FC } from "react";
 
 type Props = {
   title: string;

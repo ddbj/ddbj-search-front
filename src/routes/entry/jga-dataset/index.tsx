@@ -4,7 +4,7 @@ import { dummyResponse } from "@/consts/api.ts";
 import { dbTypes } from "@/consts/db.ts";
 import { useUpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
 import { SearchResultLayout } from "@/layout/SearchResultLayout.tsx";
-import { baseSearchSchema } from "@/schema/search.ts";
+import { baseSearchSchema } from "@/schema/search/base.ts";
 import type { ComponentProps } from "react";
 
 export const Route = createFileRoute("/entry/jga-dataset/")({

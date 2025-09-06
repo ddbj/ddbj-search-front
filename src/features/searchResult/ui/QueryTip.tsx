@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { type FC } from "react";
-import type { AnySearchParamsKey } from "@/schema/search.ts";
+import type { AnySearchParamsKey } from "@/schema/search/any.ts";
 
 type Props = {
   label: { name: string; value: string };

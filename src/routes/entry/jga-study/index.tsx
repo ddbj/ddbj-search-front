@@ -1,11 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { zodValidator } from "@tanstack/zod-adapter";
+import { dummyResponse } from "@/consts/api.ts";
 import { dbTypes } from "@/consts/db.ts";
 import { useUpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
 import { SearchResultLayout } from "@/layout/SearchResultLayout.tsx";
-import { baseSearchSchema } from "@/schema/search.ts";
+import { baseSearchSchema } from "@/schema/search/base.ts";
 import type { ComponentProps } from "react";
-import { dummyResponse } from "@/consts/api.ts";
 
 export const Route = createFileRoute("/entry/jga-study/")({
   component: PageComponent,

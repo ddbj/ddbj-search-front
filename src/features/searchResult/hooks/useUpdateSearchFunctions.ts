@@ -2,7 +2,7 @@ import { useNavigate } from "@tanstack/react-router";
 import { isEqual } from "@ver0/deep-equal";
 import { useMemo } from "react";
 import type { DBType } from "@/consts/db.ts";
-import type { AnySearchParams, AnySearchParamsKey } from "@/schema/search.ts";
+import type { AnySearchParams, AnySearchParamsKey } from "@/schema/search/any.ts";
 
 export type UpdateSearchFunctions = {
   moveToEntryRoot: (params: AnySearchParams) => void;

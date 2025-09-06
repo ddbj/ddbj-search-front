@@ -7,9 +7,9 @@ import { QueryBuilder } from "@/features/searchResult/QueryBuilder.tsx";
 import { parseResultCardProps } from "@/features/searchResult/ResultCard.tsx";
 import { ResultInfo } from "@/features/searchResult/ResultInfo.tsx";
 import { ResultList } from "@/features/searchResult/ResultList.tsx";
-import type { UpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
-import type { AnySearchParams } from "@/schema/search.ts";
 import type { EntryListResponse } from "@/api/entries/base.ts";
+import type { UpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
+import type { AnySearchParams } from "@/schema/search/any.ts";
 
 type BreadcrumbsPath = ComponentProps<typeof Breadcrumbs>["paths"][0];
 

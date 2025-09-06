@@ -1,6 +1,6 @@
+import { dbTypes } from "@/consts/db.ts";
 import { SearchDetailLayout } from "@/layout/SearchDetailLayout.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { dbTypes } from "@/consts/db.ts";
 
 const meta = {
   component: SearchDetailLayout,

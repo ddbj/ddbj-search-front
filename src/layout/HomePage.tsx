@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { Logo } from "@/features/graphics/logo.tsx";
 import { SearchBox } from "@/features/initialSearch/SearchBox.tsx";
 import type { DBType } from "@/consts/db.ts";
-import type { BaseSearchParams } from "@/schema/search.ts";
+import type { BaseSearchParams } from "@/schema/search/base.ts";
 import type { ComponentProps, FC } from "react";
 
 const wrapperClasses = clsx("flex w-full flex-col items-center gap-8 pt-24");

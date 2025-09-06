@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import clsx from "clsx";
 import { type FC } from "react";
 import type { FileRoutesByFullPath } from "@/routeTree.gen.ts";
-import type { BaseSearchParams } from "@/schema/search.ts";
+import type { BaseSearchParams } from "@/schema/search/base.ts";
 
 type Props = {
   labelStr: string;

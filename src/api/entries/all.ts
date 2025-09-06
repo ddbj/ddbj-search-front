@@ -17,7 +17,7 @@ export type AllEntryListRequestParams = z.infer<typeof allEntryListRequestParamS
 export const allEntryListRequestDoc: RouteConfig = {
   path: API_PATH_ALL_ENTRIES_LIST,
   method: "get",
-  summary: "All entries",
+  summary: "All entries list",
   tags: [tags.searchResultList],
   request: {
     params: allEntryListRequestParamSchema,
