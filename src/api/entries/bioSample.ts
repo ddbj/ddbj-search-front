@@ -16,7 +16,7 @@ export const bioSampleListRequestDoc: RouteConfig = {
   summary: "BioSample list",
   tags: [tags.searchResultList],
   request: {
-    params: bioSampleListRequestParamsSchema,
+    query: bioSampleListRequestParamsSchema,
   },
   responses: {
     200: {

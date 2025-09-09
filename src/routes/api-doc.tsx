@@ -9,5 +9,9 @@ export const Route = createFileRoute("/api-doc")({
 });
 
 function RouteComponent() {
-  return <ApiReferenceReact configuration={{ content: getDocs() }} />;
+  return (
+    <ApiReferenceReact
+      configuration={{ content: getDocs(), orderSchemaPropertiesBy: "preserve" }}
+    />
+  );
 }

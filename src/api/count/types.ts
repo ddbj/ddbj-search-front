@@ -27,7 +27,7 @@ export const typeCountRequestDoc: RouteConfig = {
   summary: "count types",
   tags: [tags.count],
   request: {
-    params: countTypesRequestParamsSchema,
+    query: countTypesRequestParamsSchema,
   },
   responses: {
     200: {

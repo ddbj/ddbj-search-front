@@ -20,7 +20,7 @@ export const allEntryListRequestDoc: RouteConfig = {
   summary: "All entries list",
   tags: [tags.searchResultList],
   request: {
-    params: allEntryListRequestParamSchema,
+    query: allEntryListRequestParamSchema,
   },
   responses: {
     200: {

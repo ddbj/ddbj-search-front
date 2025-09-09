@@ -1,4 +1,4 @@
-import { useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import clsx from "clsx";
 import { Logo } from "@/features/graphics/logo.tsx";
 import { SearchBox } from "@/features/initialSearch/SearchBox.tsx";
@@ -23,7 +23,10 @@ export const HomePage: FC = () => {
       <Logo />
       <div className={"flex w-4xl flex-col gap-16"}>
         <SearchBox onSearch={onSearch} />
-        <div className={"h-36 rounded bg-gray-50 p-4 text-gray-600"}>Sample query here</div>
+        <div className={"flex flex-col gap-4"}>
+          <div className={"h-36 rounded bg-gray-50 p-4 text-gray-600"}>Sample query here</div>
+          <Link to={"/api-doc"}>API DOC</Link>
+        </div>
       </div>
     </div>
   );

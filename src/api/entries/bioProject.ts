@@ -21,7 +21,7 @@ export const BioProjectListRequestDoc: RouteConfig = {
   summary: "BioProject list",
   tags: [tags.searchResultList],
   request: {
-    params: bioProjectListRequestParamsSchema,
+    query: bioProjectListRequestParamsSchema,
   },
   responses: {
     200: {
