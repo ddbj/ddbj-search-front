@@ -1,4 +1,11 @@
 #netlify settings
+# This rule ensures the service worker is served correctly.
+[[redirects]]
+from = "/mockServiceWorker.js"
+to = "/mockServiceWorker.js"
+status = 200
+
+
 [[redirects]]
 from = "/assets/*"
 to = "/assets/:splat"
@@ -6,7 +13,6 @@ status = 200
 force = true
 
 [[redirects]]
-from = "/*"
-to = "/index.html"
-status = 200
-force = true
+  from = "/*"
+  to = "/index.html"
+  status = 200
