@@ -1,9 +1,12 @@
-import { ResultInfo } from "./ResultInfo.tsx"
+import { ResultInfo } from "./ResultInfo.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
   component: ResultInfo,
-  args: {},
+  args: {
+    total: 123456,
+    took: 789,
+  },
   decorators: [],
 } satisfies Meta<typeof ResultInfo>;
 
