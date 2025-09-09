@@ -1,6 +1,10 @@
 import { z } from "zod";
 import { booleanStrings, tags } from "@/api/consts.ts";
-import { baseEntryListRequestParamsSchema, entryListResponseSchema } from "@/api/entries/base.ts";
+import {
+  baseEntryListRequestParamsSchema,
+  entryItemSchema,
+  entryListResponseSchema,
+} from "@/api/entries/base.ts";
 import { API_PATH_BIOPROJECT_LIST } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
@@ -28,7 +32,11 @@ export const BioProjectListRequestDoc: RouteConfig = {
       description: "",
       content: {
         "application/json": {
-          schema: entryListResponseSchema,
+          schema: entryListResponseSchema.omit({ items: true }).extend({
+            items: z.array(
+              entryItemSchema.omit({ type: true }).extend({ type: z.literal("bioproject") })
+            ),
+          }),
         },
       },
     },
