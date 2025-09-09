@@ -20,7 +20,6 @@ export const getAllEntryList = http.get<
     page,
     perPage: 10,
     total: 10000,
-    took: Math.ceil(Math.random() * 30) + 1,
     items: Array(10)
       .fill(0)
       .map((_, _i) => {

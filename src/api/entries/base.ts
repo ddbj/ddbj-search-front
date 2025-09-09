@@ -4,7 +4,6 @@ export const entryListResponseSchema = z.object({
   page: z.int().openapi({ example: 1 }),
   perPage: z.int().openapi({ example: 10 }),
   total: z.int().openapi({ example: 10000 }),
-  took: z.int().openapi({ example: 10, description: "time taken to process the request" }),
   items: z.array(
     z.object({
       identifier: z.string(),

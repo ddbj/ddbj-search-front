@@ -5,7 +5,6 @@ const meta = {
   component: ResultInfo,
   args: {
     total: 123456,
-    took: 789,
   },
   decorators: [],
 } satisfies Meta<typeof ResultInfo>;
