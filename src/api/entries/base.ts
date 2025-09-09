@@ -1,8 +1,6 @@
 import { z } from "zod";
 
-export const entryItemShape = {};
-
-export const entryItemSchema = z.object({
+export const entryListItemResponseSchema = z.object({
   identifier: z.string(),
   type: z.string().openapi({ example: "bioproject" }),
   title: z.string().openapi({ example: "Draparnaldia sp. CCAC 6921, genomic data." }),
@@ -11,14 +9,18 @@ export const entryItemSchema = z.object({
   }),
   datePublished: z.string().openapi({ example: "2013-05-31" }),
 });
+export type EntryListItemResponse = z.infer<typeof entryListItemResponseSchema>;
+
+export const paginationResponseSchema = z.object({
+  page: z.number().int().min(1).openapi({ example: 1 }),
+  perPage: z.number().int().min(1).max(100).openapi({ example: 10 }),
+  total: z.number().int().min(0).openapi({ example: 10000 }),
+});
+export type PaginationResponse = z.infer<typeof paginationResponseSchema>;
 
 export const entryListResponseSchema = z.object({
-  pagination: z.object({
-    page: z.int().openapi({ example: 1 }),
-    perPage: z.int().openapi({ example: 10 }),
-    total: z.int().openapi({ example: 10000 }),
-  }),
-  items: z.array(entryItemSchema),
+  pagination: paginationResponseSchema,
+  items: z.array(entryListItemResponseSchema),
 });
 export type EntryListResponse = z.infer<typeof entryListResponseSchema>;
 //

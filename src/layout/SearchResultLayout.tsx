@@ -21,7 +21,7 @@ type Props = {
 };
 
 export const SearchResultLayout: FC<Props> = ({ entryType, updateFunctions, params, data }) => {
-  const pagination = data?.pagination;
+  const pagination = data.pagination;
   const breadcrumbsPaths: BreadcrumbsPath[] = useMemo(() => {
     return entryType
       ? [{ label: "Entries", to: "/entry" }, { label: dbLabels[entryType] }]
@@ -43,7 +43,7 @@ export const SearchResultLayout: FC<Props> = ({ entryType, updateFunctions, para
           <Pagination current={pagination?.page ?? 1} total={1000} params={params} />
         </div>
         <aside className={"sticky top-0 flex w-[400px] shrink-0 grow-0 flex-col gap-4 py-4"}>
-          <ResultInfo total={pagination?.total} />
+          <ResultInfo pagination={pagination} />
 
           <QueryLists removeParam={updateFunctions.removeParam} params={params} />
         </aside>

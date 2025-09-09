@@ -1,12 +1,13 @@
 import clsx from "clsx";
+import type { PaginationResponse } from "@/api/entries/base.ts";
 import type { FC } from "react";
 
 type Props = {
-  total: number;
+  pagination: PaginationResponse;
 };
 
 const wrapperClasses = clsx("rounded-md border border-gray-200 p-2 text-sm");
 
-export const ResultInfo: FC<Props> = ({ total }) => {
-  return <div className={wrapperClasses}>Found {total} entries</div>;
+export const ResultInfo: FC<Props> = ({ pagination }) => {
+  return <div className={wrapperClasses}>Found {pagination.total} entries</div>;
 };

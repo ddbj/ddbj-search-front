@@ -2,7 +2,7 @@ import { z } from "zod";
 import { booleanStrings, tags } from "@/api/consts.ts";
 import {
   baseEntryListRequestParamsSchema,
-  entryItemSchema,
+  entryListItemResponseSchema,
   entryListResponseSchema,
 } from "@/api/entries/base.ts";
 import { API_PATH_BIOPROJECT_LIST } from "@/api/paths.ts";
@@ -34,7 +34,9 @@ export const BioProjectListRequestDoc: RouteConfig = {
         "application/json": {
           schema: entryListResponseSchema.omit({ items: true }).extend({
             items: z.array(
-              entryItemSchema.omit({ type: true }).extend({ type: z.literal("bioproject") })
+              entryListItemResponseSchema
+                .omit({ type: true })
+                .extend({ type: z.literal("bioproject") })
             ),
           }),
         },
