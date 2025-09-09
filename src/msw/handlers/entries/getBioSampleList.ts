@@ -14,9 +14,11 @@ export const getBioSampleList = http.get<
   const search = url.searchParams;
   const page: number = parseInt(search.get("page") ?? "1");
   return HttpResponse.json({
-    page,
-    perPage: 10,
-    total: 10000,
+    pagination: {
+      page,
+      perPage: 10,
+      total: 10000,
+    },
     items: Array(10)
       .fill(0)
       .map((_, _i) => {

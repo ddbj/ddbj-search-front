@@ -1,9 +1,11 @@
 import { z } from "zod";
 
 export const entryListResponseSchema = z.object({
-  page: z.int().openapi({ example: 1 }),
-  perPage: z.int().openapi({ example: 10 }),
-  total: z.int().openapi({ example: 10000 }),
+  pagination: z.object({
+    page: z.int().openapi({ example: 1 }),
+    perPage: z.int().openapi({ example: 10 }),
+    total: z.int().openapi({ example: 10000 }),
+  }),
   items: z.array(
     z.object({
       identifier: z.string(),

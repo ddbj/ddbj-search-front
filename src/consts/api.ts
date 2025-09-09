@@ -1,8 +1,10 @@
 import type { EntryListResponse } from "@/api/entries/base.ts";
 
 export const dummyResponse: EntryListResponse = {
-  page: 1,
-  perPage: 10,
-  total: 0,
+  pagination: {
+    page: 1,
+    perPage: 10,
+    total: 0,
+  },
   items: [],
 };
