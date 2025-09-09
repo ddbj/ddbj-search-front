@@ -25,7 +25,6 @@ const originalReplaceState = window.history.replaceState;
 export const router = createRouter({
   routeTree,
   context: { queryClient },
-  basepath: "/search",
   scrollRestoration: true,
   defaultPreload: "intent",
 });
