@@ -25,7 +25,9 @@ export const HomePage: FC = () => {
         <SearchBox onSearch={onSearch} />
         <div className={"flex flex-col gap-4"}>
           <div className={"h-36 rounded bg-gray-50 p-4 text-gray-600"}>Sample query here</div>
-          <Link to={"/api-doc"}>API DOC</Link>
+          <Link to={"/api-doc"} className={"text-link-primary underline"}>
+            &gt; API doc
+          </Link>
         </div>
       </div>
     </div>
