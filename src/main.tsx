@@ -21,14 +21,14 @@ const queryClient = new QueryClient({
 extendZodWithOpenApi(z);
 
 // Create a new router instance
-const originalReplaceState = window.history.replaceState;
+// const originalReplaceState = window.history.replaceState;
 export const router = createRouter({
   routeTree,
   context: { queryClient },
   scrollRestoration: true,
   defaultPreload: "intent",
 });
-window.history.replaceState = originalReplaceState;
+// window.history.replaceState = originalReplaceState;
 
 // Register the router instance for type safety
 declare module "@tanstack/react-router" {

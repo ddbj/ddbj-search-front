@@ -71,7 +71,7 @@ const Button: FC<{
   }
   const searchParams = { ...params, page };
   return (
-    <Link className={classes} to={"/entry"} search={searchParams} resetScroll={true}>
+    <Link className={classes} to={"."} search={searchParams} resetScroll={true}>
       {label}
     </Link>
   );
