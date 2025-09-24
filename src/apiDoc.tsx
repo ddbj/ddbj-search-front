@@ -1,20 +1,17 @@
 import { ApiReferenceReact } from "@scalar/api-reference-react";
-import { createFileRoute } from "@tanstack/react-router";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
 import { getDocs } from "@/api/openapi.ts";
 
-import "@scalar/api-reference-react/style.css";
+import "./index.css";
 
-export const Route = createFileRoute("/api-doc")({
-  component: RouteComponent,
-});
-
-function RouteComponent() {
-  return (
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
     <ApiReferenceReact
       configuration={{
         content: getDocs(),
         orderSchemaPropertiesBy: "preserve",
       }}
     />
-  );
-}
+  </StrictMode>
+);

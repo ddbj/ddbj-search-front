@@ -1,4 +1,7 @@
 import { z } from "zod";
+import { extendZod } from "@/utils/extendZod.ts";
+
+extendZod();
 
 export const entryListItemResponseSchema = z.object({
   identifier: z.string(),
