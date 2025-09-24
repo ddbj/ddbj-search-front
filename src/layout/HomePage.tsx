@@ -18,6 +18,8 @@ export const HomePage: FC = () => {
     navigate({ to, search });
   };
 
+  const linkString: string = "/api-doc/";
+
   return (
     <div className={wrapperClasses}>
       <Logo />
@@ -25,9 +27,9 @@ export const HomePage: FC = () => {
         <SearchBox onSearch={onSearch} />
         <div className={"flex flex-col gap-4"}>
           <div className={"h-36 rounded bg-gray-50 p-4 text-gray-600"}>Sample query here</div>
-          <Link to={"/api-doc"} className={"text-link-primary underline"}>
+          <a href={linkString} className={"text-link-primary underline"}>
             &gt; API doc
-          </Link>
+          </a>
         </div>
       </div>
     </div>

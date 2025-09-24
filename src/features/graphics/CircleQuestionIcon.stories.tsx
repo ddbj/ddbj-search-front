@@ -1,11 +1,11 @@
-import { HomeIcon } from "@/features/graphics/HomeIcon.tsx";
+import { CircleQuestionIcon } from "@/features/graphics/CircleQuestionIcon.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
-  component: HomeIcon,
+  component: CircleQuestionIcon,
   args: {},
   decorators: [],
-} satisfies Meta<typeof HomeIcon>;
+} satisfies Meta<typeof CircleQuestionIcon>;
 
 export default meta;
 
