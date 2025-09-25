@@ -28,7 +28,7 @@ export const SearchResultLayout: FC<Props> = ({ entryType, updateFunctions, para
       : [{ label: "Entries" }];
   }, [entryType]);
   return (
-    <main className={"p-4"}>
+    <main className={"p-8 pb-16 shadow-lg"}>
       <Breadcrumbs paths={breadcrumbsPaths} />
       <div className={"relative flex items-start gap-4"}>
         <aside className={"sticky top-0 py-4"}>

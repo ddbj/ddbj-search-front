@@ -8,7 +8,7 @@ export const XrefListItem: FC<Props> = ({ term, values }) => {
       <div>
         {term} ({values.length})
       </div>
-      <div className={"grid grid-cols-[repeat(auto-fill,_minmax(160px,_1fr))] gap-y-1"}>
+      <div className={"grid grid-cols-[repeat(auto-fill,_160px)] gap-y-1"}>
         {values.map(([value, link]) => (
           <a href={link} className={"text-link-primary"} key={value}>
             {value}

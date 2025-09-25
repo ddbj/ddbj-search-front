@@ -6,7 +6,7 @@ import type { DBType } from "@/consts/db.ts";
 import type { BaseSearchParams } from "@/schema/search/base.ts";
 import type { ComponentProps, FC } from "react";
 
-const wrapperClasses = clsx("flex w-full flex-col items-center gap-8 pt-24");
+const wrapperClasses = clsx("flex w-full flex-col items-center gap-8 py-24 shadow-lg");
 type SearchProps = ComponentProps<typeof SearchBox>;
 
 export const HomePage: FC = () => {

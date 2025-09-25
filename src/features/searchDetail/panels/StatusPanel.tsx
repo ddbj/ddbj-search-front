@@ -8,7 +8,7 @@ type Props = {};
 export const StatusPanel: FC<Props> = () => {
   return (
     <PanelWrapper>
-      <InfoList>
+      <InfoList gapX={4}>
         <InfoListItem term={"Status"} toolTipContent={"This is the description of Status"}>
           public
         </InfoListItem>

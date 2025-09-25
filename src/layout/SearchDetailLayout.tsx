@@ -18,7 +18,7 @@ export const SearchDetailLayout: FC<Props> = ({ entryType }) => {
     { label: "$identifier" },
   ];
   return (
-    <main className={"flex flex-col gap-4 p-8"}>
+    <main className={"flex flex-col gap-4 p-8 pb-16 shadow-lg"}>
       <Breadcrumbs paths={breadcrumbsPaths} />
       <div className={"flex items-start gap-8"}>
         <div data-name={"leftCol"} className={"flex flex-grow-1 flex-col gap-4"}>
