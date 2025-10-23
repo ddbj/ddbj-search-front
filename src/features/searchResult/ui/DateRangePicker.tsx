@@ -2,6 +2,8 @@ import { DateRangePicker as _DateRangePicker } from "@heroui/date-picker";
 import { type CalendarDate, parseDate } from "@internationalized/date";
 import { type FC } from "react";
 import type { RangeValue } from "@react-types/shared";
+import { HomeIcon } from "@/features/graphics/HomeIcon.tsx";
+import { CalendarIcon } from "@/features/graphics/CalendarIcon.tsx";
 
 const TypedDateRangePicker = _DateRangePicker<CalendarDate>;
 type DateRange = RangeValue<CalendarDate>;
@@ -18,6 +20,11 @@ export const DateRangePicker: FC<Props> = ({ label, value, onChange }) => {
       value={stringToDateRange(value ?? "")}
       onChange={(e) => onChange(dataRangeToString(e))}
       aria-label={label}
+      selectorIcon={
+        <span>
+          <CalendarIcon className={"w-4 fill-text-primary"} />
+        </span>
+      }
     />
   );
 };

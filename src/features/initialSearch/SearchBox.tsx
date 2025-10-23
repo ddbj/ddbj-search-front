@@ -2,6 +2,7 @@ import { Select, type Selection, SelectItem, type SharedSelection } from "@herou
 import clsx from "clsx";
 import { type FC, type FormEvent, useRef, useState } from "react";
 import { dbLabels, type DBType } from "@/consts/db.ts";
+import { MagnifierIcon } from "@/features/graphics/MagnifierIcon.tsx";
 
 const allLabel = "From all Data Type";
 const allKey = "all";
@@ -93,18 +94,7 @@ export const SearchBox: FC<Props> = ({ onSearch = defaultOnSearch }) => {
         data-testid={"queryInput"}
       />
       <button className={buttonClasses} id={"searchButton"} type={"submit"}>
-        <svg
-          width="21"
-          height="20"
-          viewBox="0 0 21 20"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M19.8047 18.9453C20.0391 19.1797 20.0391 19.6094 19.8047 19.8438C19.6875 19.9609 19.5312 20 19.375 20C19.1797 20 19.0234 19.9609 18.8672 19.8438L13.3594 14.2969C11.9141 15.5469 10.0781 16.25 8.08594 16.25C3.63281 16.25 0 12.6172 0 8.125C0 3.67188 3.59375 0 8.08594 0C12.5391 0 16.2109 3.67188 16.2109 8.125C16.2109 10.1562 15.5078 11.9922 14.2578 13.4375L19.8047 18.9453ZM8.125 15C11.9141 15 15 11.9531 15 8.125C15 4.33594 11.9141 1.25 8.125 1.25C4.29688 1.25 1.25 4.33594 1.25 8.125C1.25 11.9141 4.29688 15 8.125 15Z"
-            fill="white"
-          />
-        </svg>
+        <MagnifierIcon className={"h-7 fill-white"} />
       </button>
     </form>
   );
