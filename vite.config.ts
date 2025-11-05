@@ -15,12 +15,4 @@ export default defineConfig({
     tsconfigPaths(),
     tailwindcss(),
   ],
-  build: {
-    rollupOptions: {
-      input: {
-        main: "index.html",
-        doc: "api-doc/index.html",
-      },
-    },
-  },
 });
