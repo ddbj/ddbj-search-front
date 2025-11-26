@@ -1,17 +1,16 @@
-import { type ComponentProps, type FC, useMemo } from "react";
+import { type FC, useMemo } from "react";
 import { dbLabels, type DBType } from "@/consts/db.ts";
-import { Breadcrumbs } from "@/features/searchResult/Breadcrumbs.tsx";
 import { QueryLists } from "@/features/searchResult/organisms/QueryLists.tsx";
 import { Pagination } from "@/features/searchResult/Pagination.tsx";
 import { QueryBuilder } from "@/features/searchResult/QueryBuilder.tsx";
 import { parseResultCardProps } from "@/features/searchResult/ResultCard.tsx";
 import { ResultInfo } from "@/features/searchResult/ResultInfo.tsx";
 import { ResultList } from "@/features/searchResult/ResultList.tsx";
+import { type BreadcrumbsPath } from "@/features/shared/Breadcrumbs.tsx";
+import { GlobalHeader } from "@/features/shared/GlobalHeader.tsx";
 import type { EntryListResponse } from "@/api/entries/base.ts";
 import type { UpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
-
-type BreadcrumbsPath = ComponentProps<typeof Breadcrumbs>["paths"][0];
 
 type Props = {
   updateFunctions: UpdateSearchFunctions;
@@ -29,7 +28,7 @@ export const SearchResultLayout: FC<Props> = ({ entryType, updateFunctions, para
   }, [entryType]);
   return (
     <main className={"p-8 pb-16 shadow-lg"}>
-      <Breadcrumbs paths={breadcrumbsPaths} />
+      <GlobalHeader breadcrumbsPaths={breadcrumbsPaths} />
       <div className={"relative flex items-start gap-4"}>
         <aside className={"sticky top-0 py-4"}>
           <QueryBuilder

@@ -1,20 +1,8 @@
-import { ApiReferenceReact } from "@scalar/api-reference-react";
 import { createFileRoute } from "@tanstack/react-router";
-import { getDocs } from "@/api/openapi.ts";
 
 import "@scalar/api-reference-react/style.css";
+import { ApiPage } from "@/layout/ApiPage.tsx";
 
 export const Route = createFileRoute("/api-doc")({
-  component: RouteComponent,
+  component: ApiPage,
 });
-
-function RouteComponent() {
-  return (
-    <ApiReferenceReact
-      configuration={{
-        content: getDocs(),
-        orderSchemaPropertiesBy: "preserve",
-      }}
-    />
-  );
-}

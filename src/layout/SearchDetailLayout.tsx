@@ -4,7 +4,8 @@ import { InfoPanel } from "@/features/searchDetail/panels/InfoPanel.tsx";
 import { PropertiesPanel } from "@/features/searchDetail/panels/PropertiesPanel.tsx";
 import { StatusPanel } from "@/features/searchDetail/panels/StatusPanel.tsx";
 import { XrefPanel } from "@/features/searchDetail/panels/XrefPanel.tsx";
-import { Breadcrumbs } from "@/features/searchResult/Breadcrumbs.tsx";
+import { Breadcrumbs } from "@/features/shared/Breadcrumbs.tsx";
+import { GlobalHeader } from "@/features/shared/GlobalHeader.tsx";
 import type { FC } from "react";
 
 type Props = {
@@ -19,7 +20,7 @@ export const SearchDetailLayout: FC<Props> = ({ entryType }) => {
   ];
   return (
     <main className={"flex flex-col gap-4 p-8 pb-16 shadow-lg"}>
-      <Breadcrumbs paths={breadcrumbsPaths} />
+      <GlobalHeader breadcrumbsPaths={breadcrumbsPaths} />
       <div className={"flex items-start gap-8"}>
         <div data-name={"leftCol"} className={"flex flex-grow-1 flex-col gap-4"}>
           <InfoPanel />

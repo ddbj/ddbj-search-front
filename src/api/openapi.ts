@@ -4,11 +4,13 @@ import { bioProjectDetailRequestDoc } from "@/api/detail/bioProject.ts";
 import { allEntryListRequestDoc } from "@/api/entries/all.ts";
 import { BioProjectListRequestDoc } from "@/api/entries/bioProject.ts";
 import { bioSampleListRequestDoc } from "@/api/entries/bioSample.ts";
+import { sraRunListRequestDoc } from "@/api/entries/sraRun.ts";
 
 export const registry = new OpenAPIRegistry();
 registry.registerPath(allEntryListRequestDoc);
 registry.registerPath(BioProjectListRequestDoc);
 registry.registerPath(bioSampleListRequestDoc);
+registry.registerPath(sraRunListRequestDoc);
 registry.registerPath(bioProjectDetailRequestDoc);
 registry.registerPath(typeCountRequestDoc);
 

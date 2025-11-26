@@ -1,11 +1,11 @@
-import { InfoList } from "@/features/searchDetail/ui/InfoList.tsx";
+import { ApiPage } from "./ApiPage.tsx"
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
-  component: InfoList,
+  component: ApiPage,
   args: {},
   decorators: [],
-} satisfies Meta<typeof InfoList>;
+} satisfies Meta<typeof ApiPage>;
 
 export default meta;
 

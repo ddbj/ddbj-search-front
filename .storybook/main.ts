@@ -1,6 +1,6 @@
 // This file has been automatically migrated to valid ESM format by Storybook.
-import { fileURLToPath } from "node:url";
 import { mergeConfig } from "vite";
+import { fileURLToPath } from "node:url";
 import path, { dirname } from "path";
 import type { StorybookConfig } from "@storybook/react-vite";
 
