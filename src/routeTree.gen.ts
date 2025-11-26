@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as StatusRouteImport } from './routes/status'
 import { Route as ApiDocRouteImport } from './routes/api-doc'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -38,6 +39,11 @@ import { Route as EntryJgaDacIdentifierRouteImport } from './routes/entry/jga-da
 import { Route as EntryBiosampleIdentifierRouteImport } from './routes/entry/biosample/$identifier'
 import { Route as EntryBioprojectIdentifierRouteImport } from './routes/entry/bioproject/$identifier'
 
+const StatusRoute = StatusRouteImport.update({
+  id: '/status',
+  path: '/status',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiDocRoute = ApiDocRouteImport.update({
   id: '/api-doc',
   path: '/api-doc',
@@ -191,6 +197,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/api-doc': typeof ApiDocRoute
+  '/status': typeof StatusRoute
   '/entry': typeof EntryIndexRoute
   '/entry/bioproject/$identifier': typeof EntryBioprojectIdentifierRoute
   '/entry/biosample/$identifier': typeof EntryBiosampleIdentifierRoute
@@ -221,6 +228,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/api-doc': typeof ApiDocRoute
+  '/status': typeof StatusRoute
   '/entry': typeof EntryIndexRoute
   '/entry/bioproject/$identifier': typeof EntryBioprojectIdentifierRoute
   '/entry/biosample/$identifier': typeof EntryBiosampleIdentifierRoute
@@ -252,6 +260,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/api-doc': typeof ApiDocRoute
+  '/status': typeof StatusRoute
   '/entry/': typeof EntryIndexRoute
   '/entry/bioproject/$identifier': typeof EntryBioprojectIdentifierRoute
   '/entry/biosample/$identifier': typeof EntryBiosampleIdentifierRoute
@@ -284,6 +293,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/api-doc'
+    | '/status'
     | '/entry'
     | '/entry/bioproject/$identifier'
     | '/entry/biosample/$identifier'
@@ -314,6 +324,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/api-doc'
+    | '/status'
     | '/entry'
     | '/entry/bioproject/$identifier'
     | '/entry/biosample/$identifier'
@@ -344,6 +355,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/api-doc'
+    | '/status'
     | '/entry/'
     | '/entry/bioproject/$identifier'
     | '/entry/biosample/$identifier'
@@ -375,6 +387,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ApiDocRoute: typeof ApiDocRoute
+  StatusRoute: typeof StatusRoute
   EntryIndexRoute: typeof EntryIndexRoute
   EntryBioprojectIdentifierRoute: typeof EntryBioprojectIdentifierRoute
   EntryBiosampleIdentifierRoute: typeof EntryBiosampleIdentifierRoute
@@ -404,6 +417,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/status': {
+      id: '/status'
+      path: '/status'
+      fullPath: '/status'
+      preLoaderRoute: typeof StatusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api-doc': {
       id: '/api-doc'
       path: '/api-doc'
@@ -607,6 +627,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ApiDocRoute: ApiDocRoute,
+  StatusRoute: StatusRoute,
   EntryIndexRoute: EntryIndexRoute,
   EntryBioprojectIdentifierRoute: EntryBioprojectIdentifierRoute,
   EntryBiosampleIdentifierRoute: EntryBiosampleIdentifierRoute,

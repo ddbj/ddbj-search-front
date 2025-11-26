@@ -14,8 +14,8 @@ const linkClasses = clsx(
 export const IconTextLink: FC<Props> = ({ Icon, to, label }) => {
   return (
     <Link to={to} className={linkClasses} from={"/"}>
-      <p className={"flex w-fit gap-x-1"}>
-        <Icon className={"w-5"} />
+      <p className={"flex w-fit items-center gap-x-1"}>
+        <Icon className={"h-5"} />
         <span className={"shrink-0"}>{label}</span>
       </p>
     </Link>
