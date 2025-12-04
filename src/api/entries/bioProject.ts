@@ -19,7 +19,7 @@ const bioProjectListRequestParamsSchema = baseEntryListRequestParamsSchema.exten
 });
 export type BioProjectListRequestParams = z.infer<typeof bioProjectListRequestParamsSchema>;
 
-export const BioProjectListRequestDoc: RouteConfig = {
+export const bioProjectListRequestDoc: RouteConfig = {
   path: API_PATH_BIOPROJECT_LIST,
   method: "get",
   summary: omitBaseApiPath(API_PATH_BIOPROJECT_LIST),

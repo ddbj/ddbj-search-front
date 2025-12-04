@@ -2,8 +2,18 @@ import { OpenApiGeneratorV31, OpenAPIRegistry } from "@asteasolutions/zod-to-ope
 import { typeCountRequestDoc } from "@/api/count/types.ts";
 import { bioProjectDetailRequestDoc } from "@/api/detail/bioProject.ts";
 import { bioSampleDetailRequestDoc } from "@/api/detail/bioSample.ts";
+import { jgaDacDetailRequestDoc } from "@/api/detail/jgaDac.ts";
+import { jgaDatasetDetailRequestDoc } from "@/api/detail/jgaDataset.ts";
+import { jgaPolicyDetailRequestDoc } from "@/api/detail/jgaPolicy.ts";
+import { jgaStudyDetailRequestDoc } from "@/api/detail/jgaStudy.ts";
+import { sraAnalysisDetailRequestDoc } from "@/api/detail/sraAnalysis.ts";
+import { sraExperimentDetailRequestDoc } from "@/api/detail/sraExperiment.ts";
+import { sraRunDetailRequestDoc } from "@/api/detail/sraRun.ts";
+import { sraSampleDetailRequestDoc } from "@/api/detail/sraSample.ts";
+import { sraStudyDetailRequestDoc } from "@/api/detail/sraStudy.ts";
+import { sraSubmissionDetailRequestDoc } from "@/api/detail/sraSubmission.ts";
 import { allEntryListRequestDoc } from "@/api/entries/all.ts";
-import { BioProjectListRequestDoc } from "@/api/entries/bioProject.ts";
+import { bioProjectListRequestDoc } from "@/api/entries/bioProject.ts";
 import { bioSampleListRequestDoc } from "@/api/entries/bioSample.ts";
 import { jgaDacListRequestDoc } from "@/api/entries/jgaDac.ts";
 import { jgaDatasetListRequestDoc } from "@/api/entries/jgaDataset.ts";
@@ -18,7 +28,7 @@ import { sraSubmissionListRequestDoc } from "@/api/entries/sraSubmission.ts";
 
 export const registry = new OpenAPIRegistry();
 registry.registerPath(allEntryListRequestDoc);
-registry.registerPath(BioProjectListRequestDoc);
+registry.registerPath(bioProjectListRequestDoc);
 registry.registerPath(bioSampleListRequestDoc);
 registry.registerPath(jgaDatasetListRequestDoc);
 registry.registerPath(jgaDacListRequestDoc);
@@ -32,6 +42,16 @@ registry.registerPath(sraStudyListRequestDoc);
 registry.registerPath(sraSubmissionListRequestDoc);
 registry.registerPath(bioProjectDetailRequestDoc);
 registry.registerPath(bioSampleDetailRequestDoc);
+registry.registerPath(sraRunDetailRequestDoc);
+registry.registerPath(sraExperimentDetailRequestDoc);
+registry.registerPath(sraSampleDetailRequestDoc);
+registry.registerPath(sraAnalysisDetailRequestDoc);
+registry.registerPath(sraSubmissionDetailRequestDoc);
+registry.registerPath(sraStudyDetailRequestDoc);
+registry.registerPath(jgaDatasetDetailRequestDoc);
+registry.registerPath(jgaStudyDetailRequestDoc);
+registry.registerPath(jgaPolicyDetailRequestDoc);
+registry.registerPath(jgaDacDetailRequestDoc);
 registry.registerPath(typeCountRequestDoc);
 
 export const getDocs = () => {
