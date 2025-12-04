@@ -6,14 +6,15 @@ type Props = {
   label: string;
   to: string;
   Icon: ComponentType<SVGProps<SVGSetElement>>;
+  target?: "_blank" | "_self";
 };
 
 const linkClasses = clsx(
   "block w-fit fill-link-primary text-link-primary hover:fill-link-primary-hover hover:text-link-primary-hover"
 );
-export const IconTextLink: FC<Props> = ({ Icon, to, label }) => {
+export const IconTextLink: FC<Props> = ({ Icon, to, label, target }) => {
   return (
-    <Link to={to} className={linkClasses} from={"/"}>
+    <Link to={to} className={linkClasses} from={"/"} target={target}>
       <p className={"flex w-fit items-center gap-x-1"}>
         <Icon className={"h-5"} />
         <span className={"shrink-0"}>{label}</span>

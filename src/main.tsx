@@ -22,8 +22,14 @@ export const router = createRouter({
   routeTree,
   context: { queryClient },
   scrollRestoration: true,
+  // getScrollRestorationKey: (location) => {
+  //   const key = location.pathname;
+  //   console.log(key);
+  //   return "";
+  // },
   defaultPreload: "intent",
   defaultHashScrollIntoView: false,
+  trailingSlash: "always",
 });
 // window.history.replaceState = originalReplaceState;
 

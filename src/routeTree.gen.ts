@@ -10,8 +10,8 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as StatusRouteImport } from './routes/status'
-import { Route as ApiDocRouteImport } from './routes/api-doc'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as _apiDocRouteImport } from './routes/__api-doc'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as EntryIndexRouteImport } from './routes/entry/index'
 import { Route as EntrySraSubmissionIndexRouteImport } from './routes/entry/sra-submission/index'
@@ -44,14 +44,13 @@ const StatusRoute = StatusRouteImport.update({
   path: '/status',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiDocRoute = ApiDocRouteImport.update({
-  id: '/api-doc',
-  path: '/api-doc',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const _apiDocRoute = _apiDocRouteImport.update({
+  id: '/__api-doc',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -196,7 +195,6 @@ const EntryBioprojectIdentifierRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/api-doc': typeof ApiDocRoute
   '/status': typeof StatusRoute
   '/entry': typeof EntryIndexRoute
   '/entry/bioproject/$identifier': typeof EntryBioprojectIdentifierRoute
@@ -227,7 +225,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/api-doc': typeof ApiDocRoute
   '/status': typeof StatusRoute
   '/entry': typeof EntryIndexRoute
   '/entry/bioproject/$identifier': typeof EntryBioprojectIdentifierRoute
@@ -258,8 +255,8 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/__api-doc': typeof _apiDocRoute
   '/about': typeof AboutRoute
-  '/api-doc': typeof ApiDocRoute
   '/status': typeof StatusRoute
   '/entry/': typeof EntryIndexRoute
   '/entry/bioproject/$identifier': typeof EntryBioprojectIdentifierRoute
@@ -292,7 +289,6 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
-    | '/api-doc'
     | '/status'
     | '/entry'
     | '/entry/bioproject/$identifier'
@@ -323,7 +319,6 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
-    | '/api-doc'
     | '/status'
     | '/entry'
     | '/entry/bioproject/$identifier'
@@ -353,8 +348,8 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/__api-doc'
     | '/about'
-    | '/api-doc'
     | '/status'
     | '/entry/'
     | '/entry/bioproject/$identifier'
@@ -385,8 +380,8 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  _apiDocRoute: typeof _apiDocRoute
   AboutRoute: typeof AboutRoute
-  ApiDocRoute: typeof ApiDocRoute
   StatusRoute: typeof StatusRoute
   EntryIndexRoute: typeof EntryIndexRoute
   EntryBioprojectIdentifierRoute: typeof EntryBioprojectIdentifierRoute
@@ -424,18 +419,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StatusRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api-doc': {
-      id: '/api-doc'
-      path: '/api-doc'
-      fullPath: '/api-doc'
-      preLoaderRoute: typeof ApiDocRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/about': {
       id: '/about'
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/__api-doc': {
+      id: '/__api-doc'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof _apiDocRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -625,8 +620,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  _apiDocRoute: _apiDocRoute,
   AboutRoute: AboutRoute,
-  ApiDocRoute: ApiDocRoute,
   StatusRoute: StatusRoute,
   EntryIndexRoute: EntryIndexRoute,
   EntryBioprojectIdentifierRoute: EntryBioprojectIdentifierRoute,
