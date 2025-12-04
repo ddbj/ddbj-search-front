@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { tags } from "@/api/consts.ts";
 import { baseEntryListRequestParamsSchema, entryListResponseSchema } from "@/api/entries/base.ts";
-import { API_PATH_ALL_ENTRIES_LIST } from "@/api/paths.ts";
+import { API_PATH_ALL_ENTRIES_LIST, omitBaseApiPath } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
 const allEntryListRequestParamShape = {
@@ -17,7 +17,8 @@ export type AllEntryListRequestParams = z.infer<typeof allEntryListRequestParamS
 export const allEntryListRequestDoc: RouteConfig = {
   path: API_PATH_ALL_ENTRIES_LIST,
   method: "get",
-  summary: "All entries list",
+  summary: omitBaseApiPath(API_PATH_ALL_ENTRIES_LIST),
+  description: "All entries list",
   tags: [tags.searchResultList],
   request: {
     query: allEntryListRequestParamSchema,

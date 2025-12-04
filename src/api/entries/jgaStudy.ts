@@ -5,7 +5,7 @@ import {
   entryListItemResponseSchema,
   entryListResponseSchema,
 } from "@/api/entries/base.ts";
-import { API_PATH_JGA_STUDY_LIST } from "@/api/paths.ts";
+import { API_PATH_JGA_STUDY_LIST, omitBaseApiPath } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
 const jgaStudyListRequestParamsShape = {};
@@ -17,7 +17,8 @@ export type JgaStudyListRequestParams = z.infer<typeof jgaStudyListRequestParams
 export const jgaStudyListRequestDoc: RouteConfig = {
   path: API_PATH_JGA_STUDY_LIST,
   method: "get",
-  summary: "JGA Study list",
+  summary: omitBaseApiPath(API_PATH_JGA_STUDY_LIST),
+  description: "JGA Study list",
   tags: [tags.searchResultList],
   request: {
     query: jgaStudyListRequestParamsSchema,

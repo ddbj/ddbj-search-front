@@ -5,7 +5,7 @@ import {
   entryListItemResponseSchema,
   entryListResponseSchema,
 } from "@/api/entries/base.ts";
-import { API_PATH_SRA_RUN_LIST } from "@/api/paths.ts";
+import { API_PATH_SRA_RUN_LIST, omitBaseApiPath } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
 const sraRunListRequestParamsShape = {};
@@ -17,7 +17,8 @@ export type SraRunListRequestParams = z.infer<typeof sraRunListRequestParamsSche
 export const sraRunListRequestDoc: RouteConfig = {
   path: API_PATH_SRA_RUN_LIST,
   method: "get",
-  summary: "SRA Run list",
+  summary: omitBaseApiPath(API_PATH_SRA_RUN_LIST),
+  description: "SRA Run list",
   tags: [tags.searchResultList],
   request: {
     query: sraRunListRequestParamsSchema,

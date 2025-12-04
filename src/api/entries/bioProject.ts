@@ -5,7 +5,7 @@ import {
   entryListItemResponseSchema,
   entryListResponseSchema,
 } from "@/api/entries/base.ts";
-import { API_PATH_BIOPROJECT_LIST } from "@/api/paths.ts";
+import { API_PATH_BIOPROJECT_LIST, omitBaseApiPath } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
 const bioprojectListRequestParamsShape = {
@@ -22,7 +22,8 @@ export type BioProjectListRequestParams = z.infer<typeof bioProjectListRequestPa
 export const BioProjectListRequestDoc: RouteConfig = {
   path: API_PATH_BIOPROJECT_LIST,
   method: "get",
-  summary: "BioProject list",
+  summary: omitBaseApiPath(API_PATH_BIOPROJECT_LIST),
+  description: "BioProject list",
   tags: [tags.searchResultList],
   request: {
     query: bioProjectListRequestParamsSchema,

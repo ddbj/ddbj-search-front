@@ -5,7 +5,7 @@ import {
   entryListItemResponseSchema,
   entryListResponseSchema,
 } from "@/api/entries/base.ts";
-import { API_PATH_SRA_EXPERIMENT_LIST } from "@/api/paths.ts";
+import { API_PATH_SRA_EXPERIMENT_LIST, omitBaseApiPath } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
 const sraExperimentListRequestParamsShape = {};
@@ -17,7 +17,8 @@ export type SraExperimentListRequestParams = z.infer<typeof sraExperimentListReq
 export const sraExperimentListRequestDoc: RouteConfig = {
   path: API_PATH_SRA_EXPERIMENT_LIST,
   method: "get",
-  summary: "SRA Experiment list",
+  summary: omitBaseApiPath(API_PATH_SRA_EXPERIMENT_LIST),
+  description: "SRA Experiment list",
   tags: [tags.searchResultList],
   request: {
     query: sraExperimentListRequestParamsSchema,

@@ -5,7 +5,7 @@ import {
   entryListItemResponseSchema,
   entryListResponseSchema,
 } from "@/api/entries/base.ts";
-import { API_PATH_JGA_DATASET_LIST } from "@/api/paths.ts";
+import { API_PATH_JGA_DATASET_LIST, omitBaseApiPath } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
 const jgaDatasetListRequestParamsShape = {};
@@ -17,7 +17,8 @@ export type JgaDatasetListRequestParams = z.infer<typeof jgaDatasetListRequestPa
 export const jgaDatasetListRequestDoc: RouteConfig = {
   path: API_PATH_JGA_DATASET_LIST,
   method: "get",
-  summary: "JGA Dataset list",
+  summary: omitBaseApiPath(API_PATH_JGA_DATASET_LIST),
+  description: "JGA Dataset list",
   tags: [tags.searchResultList],
   request: {
     query: jgaDatasetListRequestParamsSchema,

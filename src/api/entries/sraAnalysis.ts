@@ -5,7 +5,7 @@ import {
   entryListItemResponseSchema,
   entryListResponseSchema,
 } from "@/api/entries/base.ts";
-import { API_PATH_SRA_ANALYSIS_LIST } from "@/api/paths.ts";
+import { API_PATH_SRA_ANALYSIS_LIST, omitBaseApiPath } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
 const sraAnalysisListRequestParamsShape = {};
@@ -17,7 +17,8 @@ export type SraAnalysisListRequestParams = z.infer<typeof sraAnalysisListRequest
 export const sraAnalysisListRequestDoc: RouteConfig = {
   path: API_PATH_SRA_ANALYSIS_LIST,
   method: "get",
-  summary: "SRA Analysis list",
+  summary: omitBaseApiPath(API_PATH_SRA_ANALYSIS_LIST),
+  description: "SRA Analysis list",
   tags: [tags.searchResultList],
   request: {
     query: sraAnalysisListRequestParamsSchema,

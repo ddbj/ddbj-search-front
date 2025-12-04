@@ -5,7 +5,7 @@ import {
   entryListItemResponseSchema,
   entryListResponseSchema,
 } from "@/api/entries/base.ts";
-import { API_PATH_JGA_POLICY_LIST } from "@/api/paths.ts";
+import { API_PATH_JGA_POLICY_LIST, omitBaseApiPath } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
 const jgaPolicyListRequestParamsShape = {};
@@ -17,7 +17,8 @@ export type JgaPolicyListRequestParams = z.infer<typeof jgaPolicyListRequestPara
 export const jgaPolicyListRequestDoc: RouteConfig = {
   path: API_PATH_JGA_POLICY_LIST,
   method: "get",
-  summary: "JGA Policy list",
+  summary: omitBaseApiPath(API_PATH_JGA_POLICY_LIST),
+  description: "JGA Policy list",
   tags: [tags.searchResultList],
   request: {
     query: jgaPolicyListRequestParamsSchema,

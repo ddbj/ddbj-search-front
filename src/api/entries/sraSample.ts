@@ -5,7 +5,7 @@ import {
   entryListItemResponseSchema,
   entryListResponseSchema,
 } from "@/api/entries/base.ts";
-import { API_PATH_SRA_SAMPLE_LIST } from "@/api/paths.ts";
+import { API_PATH_SRA_SAMPLE_LIST, omitBaseApiPath } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
 const sraSampleListRequestParamsShape = {};
@@ -17,7 +17,8 @@ export type SraSampleListRequestParams = z.infer<typeof sraSampleListRequestPara
 export const sraSampleListRequestDoc: RouteConfig = {
   path: API_PATH_SRA_SAMPLE_LIST,
   method: "get",
-  summary: "SRA Sample list",
+  summary: omitBaseApiPath(API_PATH_SRA_SAMPLE_LIST),
+  description: "SRA Sample list",
   tags: [tags.searchResultList],
   request: {
     query: sraSampleListRequestParamsSchema,

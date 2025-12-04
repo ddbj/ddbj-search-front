@@ -5,7 +5,7 @@ import {
   entryListItemResponseSchema,
   entryListResponseSchema,
 } from "@/api/entries/base.ts";
-import { API_PATH_JGA_DAC_LIST } from "@/api/paths.ts";
+import { API_PATH_JGA_DAC_LIST, omitBaseApiPath } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
 const jgaDacListRequestParamsShape = {};
@@ -17,7 +17,8 @@ export type JgaDacListRequestParams = z.infer<typeof jgaDacListRequestParamsSche
 export const jgaDacListRequestDoc: RouteConfig = {
   path: API_PATH_JGA_DAC_LIST,
   method: "get",
-  summary: "JGA DAC list",
+  summary: omitBaseApiPath(API_PATH_JGA_DAC_LIST),
+  description: "JGA DAC list",
   tags: [tags.searchResultList],
   request: {
     query: jgaDacListRequestParamsSchema,

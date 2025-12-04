@@ -5,7 +5,7 @@ import {
   entryListItemResponseSchema,
   entryListResponseSchema,
 } from "@/api/entries/base.ts";
-import { API_PATH_SRA_SUBMISSION_LIST } from "@/api/paths.ts";
+import { API_PATH_SRA_SUBMISSION_LIST, omitBaseApiPath } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
 const sraSubmissionListRequestParamsShape = {};
@@ -17,7 +17,8 @@ export type SraSubmissionListRequestParams = z.infer<typeof sraSubmissionListReq
 export const sraSubmissionListRequestDoc: RouteConfig = {
   path: API_PATH_SRA_SUBMISSION_LIST,
   method: "get",
-  summary: "SRA Submission list",
+  summary: omitBaseApiPath(API_PATH_SRA_SUBMISSION_LIST),
+  description: "SRA Submission list",
   tags: [tags.searchResultList],
   request: {
     query: sraSubmissionListRequestParamsSchema,
