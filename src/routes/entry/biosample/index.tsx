@@ -1,7 +1,7 @@
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { zodValidator } from "@tanstack/zod-adapter";
-import { API_PATH_ALL_ENTRIES_LIST } from "@/api/paths.ts";
+import { API_PATH_BIOSAMPLE_LIST } from "@/api/paths.ts";
 import { dbTypes } from "@/consts/db.ts";
 import { useUpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
 import { fetchBioSamples } from "@/fetch/entries/fetchBioSampleEntries.ts";
@@ -12,7 +12,7 @@ import type { ComponentProps } from "react";
 
 const makeQuery = (params: AnySearchParams) => {
   return queryOptions({
-    queryKey: [API_PATH_ALL_ENTRIES_LIST, ...Object.entries(params)],
+    queryKey: [API_PATH_BIOSAMPLE_LIST, ...Object.entries(params)],
     queryFn: () => fetchBioSamples(params),
   });
 };
