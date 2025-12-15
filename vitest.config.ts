@@ -12,6 +12,20 @@ export default mergeConfig(
   defineConfig({
     test: {
       projects: [
+        // ユニットテスト用のプロジェクト
+        defineProject({
+          test: {
+            name: "unit",
+            include: ["**/*.spec.ts", "**/*.spec.tsx"],
+            environment: "node",
+          },
+          resolve: {
+            alias: {
+              "@": path.resolve(dirname, "./src"),
+            },
+          },
+        }),
+        // Storybookテスト用のプロジェクト
         defineProject({
           plugins: [
             storybookTest({

@@ -10,8 +10,9 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006 --no-open",
     "build-storybook": "storybook build",
-    "test": "vitest",
-    "test-storybook": "vitest --project=storybook"
+    "test": "vitest --project=unit",
+    "test:storybook": "vitest --project=storybook",
+    "test:all": "vitest"
   },
   "dependencies": {
     "@asteasolutions/zod-to-openapi": "^8.1.0",
