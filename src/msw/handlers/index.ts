@@ -1,5 +1,6 @@
 import { countTypes } from "@/msw/handlers/count/countTypes.ts";
 import { getBioProjectDetail } from "@/msw/handlers/detail/getBioProjectDetail.ts";
+import { getBioSampleDetail } from "@/msw/handlers/detail/getBioSampleDetail.ts";
 import { getAllEntryList } from "@/msw/handlers/entries/getAllEntryList.ts";
 import { getBioProjectList } from "@/msw/handlers/entries/getBioProjectList.ts";
 import { getBioSampleList } from "@/msw/handlers/entries/getBioSampleList.ts";
@@ -30,4 +31,5 @@ export const handlers = [
   getJgaDacList,
   countTypes,
   getBioProjectDetail,
+  getBioSampleDetail,
 ];
