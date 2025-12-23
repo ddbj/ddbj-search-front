@@ -6,11 +6,11 @@ import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-re
 
 const jgaDatasetDetailRequestParamsSchema = baseDetailRequestSchema.extend({});
 
-const jgaDatasetDetailResponseSchema = baseDetailResponseSchema
-  .omit({ type: true })
-  .extend({
-    type: z.literal("jga-dataset"),
-  });
+const jgaDatasetDetailResponseSchema = baseDetailResponseSchema.omit({ type: true }).extend({
+  type: z.literal("jga-dataset"),
+});
+
+export type JgaDatasetDetailResponse = z.infer<typeof jgaDatasetDetailResponseSchema>;
 
 export const jgaDatasetDetailRequestDoc: RouteConfig = {
   path: `${API_PATH_JGA_DATASET_LIST}:identifier`,

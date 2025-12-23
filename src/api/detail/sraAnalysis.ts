@@ -9,6 +9,7 @@ const sraAnalysisDetailRequestParamsSchema = baseDetailRequestSchema.extend({});
 const sraAnalysisDetailResponseSchema = baseDetailResponseSchema.omit({ type: true }).extend({
   type: z.literal("sra-analysis"),
 });
+export type SraAnalysisDetailResponse = z.infer<typeof sraAnalysisDetailResponseSchema>;
 
 export const sraAnalysisDetailRequestDoc: RouteConfig = {
   path: `${API_PATH_SRA_ANALYSIS_LIST}:identifier`,

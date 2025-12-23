@@ -8,6 +8,7 @@ const bioProjectDetailRequestParamsSchema = baseDetailRequestSchema.extend({});
 const bioProjectDetailResponseSchema = baseDetailResponseSchema.omit({ type: true }).extend({
   type: z.literal("bioproject"),
 });
+export type BioSampleDetailResponse = z.infer<typeof bioProjectDetailResponseSchema>;
 
 export const bioSampleDetailRequestDoc: RouteConfig = {
   path: `${API_PATH_BIOSAMPLE_LIST}:identifier`,

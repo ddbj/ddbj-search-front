@@ -9,6 +9,7 @@ const jgaDacDetailRequestParamsSchema = baseDetailRequestSchema.extend({});
 const jgaDacDetailResponseSchema = baseDetailResponseSchema.omit({ type: true }).extend({
   type: z.literal("jga-dac"),
 });
+export type JgaDacDetailResponse = z.infer<typeof jgaDacDetailResponseSchema>;
 
 export const jgaDacDetailRequestDoc: RouteConfig = {
   path: `${API_PATH_JGA_DAC_LIST}:identifier`,

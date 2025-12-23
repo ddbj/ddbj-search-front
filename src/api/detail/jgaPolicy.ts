@@ -9,6 +9,7 @@ const jgaPolicyDetailRequestParamsSchema = baseDetailRequestSchema.extend({});
 const jgaPolicyDetailResponseSchema = baseDetailResponseSchema.omit({ type: true }).extend({
   type: z.literal("jga-policy"),
 });
+export type JgaPolicyDetailResponse = z.infer<typeof jgaPolicyDetailResponseSchema>;
 
 export const jgaPolicyDetailRequestDoc: RouteConfig = {
   path: `${API_PATH_JGA_POLICY_LIST}:identifier`,

@@ -6,11 +6,11 @@ import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-re
 
 const sraSubmissionDetailRequestParamsSchema = baseDetailRequestSchema.extend({});
 
-const sraSubmissionDetailResponseSchema = baseDetailResponseSchema
-  .omit({ type: true })
-  .extend({
-    type: z.literal("sra-submission"),
-  });
+const sraSubmissionDetailResponseSchema = baseDetailResponseSchema.omit({ type: true }).extend({
+  type: z.literal("sra-submission"),
+});
+
+export type SraSubmissionDetailResponse = z.infer<typeof sraSubmissionDetailResponseSchema>;
 
 export const sraSubmissionDetailRequestDoc: RouteConfig = {
   path: `${API_PATH_SRA_SUBMISSION_LIST}:identifier`,

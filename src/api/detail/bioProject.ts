@@ -7,7 +7,11 @@ import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-re
 const bioProjectDetailRequestParamsSchema = baseDetailRequestSchema.extend({});
 const bioProjectDetailResponseSchema = baseDetailResponseSchema.omit({ type: true }).extend({
   type: z.literal("bioproject"),
+  organization: z.string().nullable(),
+  publication: z.string().nullable(),
+  grant: z.string().nullable(),
 });
+export type BioProjectDetailResponse = z.infer<typeof bioProjectDetailResponseSchema>;
 export const bioProjectDetailRequestDoc: RouteConfig = {
   path: `${API_PATH_BIOPROJECT_LIST}:identifier`,
   method: "get",
