@@ -28,6 +28,7 @@ export default tseslint.config(
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
+      "no-empty-pattern": "off",
       "@typescript-eslint/no-empty-object-type": "off",
       "@typescript-eslint/no-unused-expressions": ["error", { allowTernary: true }],
       "@typescript-eslint/no-unused-vars": [

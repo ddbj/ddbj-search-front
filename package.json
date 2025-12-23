@@ -6,14 +6,19 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint ddbj-search",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006 --no-open",
     "build-storybook": "storybook build",
-    "test": "vitest --project=unit",
-    "test:storybook": "vitest --project=storybook",
-    "test:all": "vitest",
-    "type-check": "tsc -b --noEmit"
+    "test": "vitest run --project=unit",
+    "test:watch": "vitest --project=unit",
+    "test:storybook": "vitest run --project=storybook",
+    "test:storybook:watch": "vitest --project=storybook",
+    "test:all": "vitest run",
+    "test:all:watch": "vitest",
+    "lint": "eslint .  --quiet",
+    "lint:debug": "eslint . --debug ",
+    "lint:fix": "eslint . --fix  --quiet",
+    "type-check": "tsc -b --noEmit --pretty"
   },
   "dependencies": {
     "@asteasolutions/zod-to-openapi": "^8.1.0",
