@@ -4,31 +4,29 @@ import { API_PATH_SRA_SUBMISSION_LIST } from "@/api/paths.ts";
 import type { EntryListResponse } from "@/api/entries/base.ts";
 import type { SraSubmissionListRequestParams } from "@/api/entries/sraSubmission.ts";
 
-export const getSraSubmissionList = http.get<
-  SraSubmissionListRequestParams,
-  {},
-  EntryListResponse,
-  typeof API_PATH_SRA_SUBMISSION_LIST
->(API_PATH_SRA_SUBMISSION_LIST, ({ request }) => {
-  const url = new URL(request.url);
-  const search = url.searchParams;
-  const page: number = parseInt(search.get("page") ?? "1");
-  return HttpResponse.json({
-    pagination: {
-      page,
-      perPage: 10,
-      total: 10000,
-    },
-    items: Array(10)
-      .fill(0)
-      .map((_, _i) => {
-        return {
-          identifier: uuidv4().slice(0, 8),
-          type: "sra-submission",
-          title: "Sequence Read Archive submission",
-          dbXrefs: { "sra-study": 1, "sra-experiment": 4, "sra-run": 8, biosample: 2 },
-          datePublished: "2023-04-15",
-        };
-      }),
-  });
-});
+export const getSraSubmissionList = http.get<SraSubmissionListRequestParams, {}, EntryListResponse>(
+  API_PATH_SRA_SUBMISSION_LIST,
+  ({ request }) => {
+    const url = new URL(request.url);
+    const search = url.searchParams;
+    const page: number = parseInt(search.get("page") ?? "1", 10);
+    return HttpResponse.json({
+      pagination: {
+        page,
+        perPage: 10,
+        total: 10000,
+      },
+      items: Array(10)
+        .fill(0)
+        .map((_, _i) => {
+          return {
+            identifier: uuidv4().slice(0, 8),
+            type: "sra-submission",
+            title: "Sequence Read Archive submission",
+            dbXrefs: { "sra-study": 1, "sra-experiment": 4, "sra-run": 8, biosample: 2 },
+            datePublished: "2023-04-15",
+          };
+        }),
+    });
+  }
+);
