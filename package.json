@@ -12,7 +12,8 @@
     "build-storybook": "storybook build",
     "test": "vitest --project=unit",
     "test:storybook": "vitest --project=storybook",
-    "test:all": "vitest"
+    "test:all": "vitest",
+    "type-check": "tsc -b --noEmit"
   },
   "dependencies": {
     "@asteasolutions/zod-to-openapi": "^8.1.0",

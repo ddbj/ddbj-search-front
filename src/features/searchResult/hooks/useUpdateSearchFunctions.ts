@@ -28,7 +28,7 @@ export const useUpdateSearchFunctions = (): UpdateSearchFunctions => {
   const update = useMemo(() => {
     return {
       moveToEntryRoot: (params: P) => {
-        navigate({ search: params, from, to: "/entry" });
+        navigate({ search: params, from, to: "/entry/" });
       },
       moveToPage: (v: number) => {
         navigate({ search: (prev) => composePageNumber(prev, v), from });

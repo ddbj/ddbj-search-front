@@ -1,9 +1,13 @@
-import { InfoListItem } from "./InfoListItem.tsx"
+import { InfoListItem } from "./InfoListItem.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
   component: InfoListItem,
-  args: {},
+  args: {
+    term: "Example Term",
+    toolTipContent: "This is an example tooltip content.",
+    children: "This is the description or content for the info list item.",
+  },
   decorators: [],
 } satisfies Meta<typeof InfoListItem>;
 
