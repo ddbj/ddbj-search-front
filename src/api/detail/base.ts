@@ -3,6 +3,7 @@ import { z } from "zod";
 export const baseDetailRequestSchema = z.object({
   identifier: z.string(),
 });
+export type BaseDetailRequestParams = z.infer<typeof baseDetailRequestSchema>;
 
 export const baseDetailResponseSchema = z.object({
   identifier: z.string(),

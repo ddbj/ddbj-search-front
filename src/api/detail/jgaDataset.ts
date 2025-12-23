@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { tags } from "@/api/consts.ts";
 import { baseDetailRequestSchema, baseDetailResponseSchema } from "@/api/detail/base.ts";
-import { API_PATH_JGA_DATASET_LIST, omitBaseApiPath } from "@/api/paths.ts";
+import { addIdentifierToPath, API_PATH_JGA_DATASET_LIST, omitBaseApiPath } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
 const jgaDatasetDetailRequestParamsSchema = baseDetailRequestSchema.extend({});
@@ -12,10 +12,11 @@ const jgaDatasetDetailResponseSchema = baseDetailResponseSchema.omit({ type: tru
 
 export type JgaDatasetDetailResponse = z.infer<typeof jgaDatasetDetailResponseSchema>;
 
+const path = addIdentifierToPath(API_PATH_JGA_DATASET_LIST, "openAPI");
 export const jgaDatasetDetailRequestDoc: RouteConfig = {
-  path: `${API_PATH_JGA_DATASET_LIST}:identifier`,
+  path,
   method: "get",
-  summary: `${omitBaseApiPath(API_PATH_JGA_DATASET_LIST)}:identifier`,
+  summary: omitBaseApiPath(path),
   description: "JGA Dataset detail",
   tags: [tags.searchResultDetail],
   request: {

@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { tags } from "@/api/consts.ts";
 import { baseDetailRequestSchema, baseDetailResponseSchema } from "@/api/detail/base.ts";
-import { API_PATH_SRA_ANALYSIS_LIST, omitBaseApiPath } from "@/api/paths.ts";
+import { addIdentifierToPath, API_PATH_SRA_ANALYSIS_LIST, omitBaseApiPath } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
 const sraAnalysisDetailRequestParamsSchema = baseDetailRequestSchema.extend({});
@@ -11,10 +11,11 @@ const sraAnalysisDetailResponseSchema = baseDetailResponseSchema.omit({ type: tr
 });
 export type SraAnalysisDetailResponse = z.infer<typeof sraAnalysisDetailResponseSchema>;
 
+const path = addIdentifierToPath(API_PATH_SRA_ANALYSIS_LIST, "openAPI");
 export const sraAnalysisDetailRequestDoc: RouteConfig = {
-  path: `${API_PATH_SRA_ANALYSIS_LIST}:identifier`,
+  path,
   method: "get",
-  summary: `${omitBaseApiPath(API_PATH_SRA_ANALYSIS_LIST)}:identifier`,
+  summary: omitBaseApiPath(path),
   description: "SRA Analysis detail",
   tags: [tags.searchResultDetail],
   request: {

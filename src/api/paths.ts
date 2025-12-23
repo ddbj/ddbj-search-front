@@ -21,3 +21,15 @@ export const omitBaseApiPath = (path: string) => {
   }
   return path;
 };
+
+export const addIdentifierToPath = (path: string, apiType: "MSW" | "openAPI"): string => {
+  switch (apiType) {
+    case "MSW":
+      return `${path}:identifier`;
+    case "openAPI":
+      return `${path}{identifier}`;
+    default:
+      console.warn(`Unknown apiType: ${apiType}`);
+      return path;
+  }
+};
