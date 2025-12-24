@@ -1,5 +1,5 @@
-import { dbTypes } from "@/consts/db.ts";
 import { SearchDetailLayout } from "@/layout/SearchDetailLayout.tsx";
+import { bioproject1 } from "@/msw/data/bioproject1.ts";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
@@ -12,8 +12,8 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Primary = {
+export const BioProject1 = {
   args: {
-    entryType: dbTypes.bioproject,
+    data: bioproject1,
   },
 } satisfies Story;
