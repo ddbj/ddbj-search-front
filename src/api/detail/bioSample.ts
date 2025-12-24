@@ -5,9 +5,21 @@ import { addIdentifierToPath, API_PATH_BIOSAMPLE_LIST, omitBaseApiPath } from "@
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
 const bioProjectDetailRequestParamsSchema = baseDetailRequestSchema.extend({});
-const bioProjectDetailResponseSchema = baseDetailResponseSchema.omit({ type: true }).extend({
-  type: z.literal("bioproject"),
-});
+const bioProjectDetailResponseSchema = baseDetailResponseSchema
+  .omit({ type: true })
+  .extend({
+    type: z.literal("biosample"),
+  })
+  .extend({
+    attributes: z.array(
+      z.object({
+        attribute_name: z.string(),
+        display_name: z.string(),
+        harmonized_name: z.string(),
+        content: z.string(),
+      })
+    ),
+  });
 export type BioSampleDetailResponse = z.infer<typeof bioProjectDetailResponseSchema>;
 const path = addIdentifierToPath(API_PATH_BIOSAMPLE_LIST, "openAPI");
 
