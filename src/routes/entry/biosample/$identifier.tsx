@@ -2,7 +2,6 @@ import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { baseDetailRequestSchema } from "@/api/detail/base.ts";
 import { API_PATH_BIOSAMPLE_LIST } from "@/api/paths.ts";
-import { dbTypes } from "@/consts/db.ts";
 import { fetchBioSampleDetail } from "@/fetch/detail/fetchBioSampleDetail.ts";
 import { SearchDetailLayout } from "@/layout/SearchDetailLayout.tsx";
 import type { ComponentProps } from "react";
@@ -25,9 +24,8 @@ export const Route = createFileRoute("/entry/biosample/$identifier")({
 function RouteComponent() {
   const { identifier } = Route.useParams();
   const { data } = useSuspenseQuery(makeQuery(identifier));
-  console.log(data);
   const props = {
-    entryType: dbTypes.biosample,
+    data,
   } satisfies ComponentProps<typeof SearchDetailLayout>;
   return <SearchDetailLayout {...props} />;
 }

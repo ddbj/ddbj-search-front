@@ -6,17 +6,20 @@ import { StatusPanel } from "@/features/searchDetail/panels/StatusPanel.tsx";
 import { XrefPanel } from "@/features/searchDetail/panels/XrefPanel.tsx";
 import { Breadcrumbs } from "@/features/shared/Breadcrumbs.tsx";
 import { GlobalHeader } from "@/features/shared/GlobalHeader.tsx";
+import type { SearchDetailData } from "@/utils/searchDetailData.ts";
 import type { FC } from "react";
 
 type Props = {
-  entryType: DBType;
+  data: SearchDetailData;
 };
 
-export const SearchDetailLayout: FC<Props> = ({ entryType }) => {
+export const SearchDetailLayout: FC<Props> = ({ data }) => {
+  const dbType = data.type as DBType;
+  const identifier = data.identifier;
   const breadcrumbsPaths = [
     { label: "Entries", to: "/entry" },
-    { label: dbLabels[entryType], to: `/entry/${entryType}` },
-    { label: "$identifier" },
+    { label: dbLabels[dbType], to: `/entry/${dbType}` },
+    { label: identifier },
   ];
   return (
     <main className={"flex flex-col gap-4 p-8 pb-16 shadow-lg"}>

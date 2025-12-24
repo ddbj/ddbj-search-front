@@ -1,9 +1,7 @@
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
-import { zodValidator } from "@tanstack/zod-adapter";
 import { baseDetailRequestSchema } from "@/api/detail/base.ts";
 import { API_PATH_BIOPROJECT_LIST } from "@/api/paths.ts";
-import { dbTypes } from "@/consts/db.ts";
 import { fetchBioProjectDetail } from "@/fetch/detail/fetchBioProjectDetail.ts";
 import { SearchDetailLayout } from "@/layout/SearchDetailLayout.tsx";
 import type { ComponentProps } from "react";
@@ -25,10 +23,9 @@ export const Route = createFileRoute("/entry/bioproject/$identifier")({
 function RouteComponent() {
   const { identifier } = Route.useParams();
   const { data } = useSuspenseQuery(makeQuery(identifier));
-  console.log(data);
 
   const props = {
-    entryType: dbTypes.bioproject,
+    data,
   } satisfies ComponentProps<typeof SearchDetailLayout>;
   return <SearchDetailLayout {...props} />;
 }
