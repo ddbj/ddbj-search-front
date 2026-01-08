@@ -23,8 +23,8 @@ export const getSraSubmissionDetail = http.get<
     type: "sra-submission",
     visibility: "Unrestricted",
     status: "public",
-    distribution: [],
     dbXref: [],
     properties: {},
+    downloadUrl: null,
   });
 });

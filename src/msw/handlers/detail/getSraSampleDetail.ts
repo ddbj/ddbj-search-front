@@ -21,9 +21,9 @@ export const getSraSampleDetail = http.get<BaseDetailRequestParams, never, SraSa
       type: "sra-sample",
       visibility: "Unrestricted",
       status: "public",
-      distribution: [],
       dbXref: [],
       properties: {},
+      downloadUrl: null,
     });
   }
 );

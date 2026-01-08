@@ -21,9 +21,9 @@ export const getJgaDacDetail = http.get<BaseDetailRequestParams, never, JgaDacDe
       type: "jga-dac",
       visibility: "Unrestricted",
       status: "public",
-      distribution: [],
       dbXref: [],
       properties: {},
+      downloadUrl: null,
     });
   }
 );

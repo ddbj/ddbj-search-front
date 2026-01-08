@@ -23,8 +23,8 @@ export const getSraExperimentDetail = http.get<
     type: "sra-experiment",
     visibility: "Unrestricted",
     status: "public",
-    distribution: [],
     dbXref: [],
     properties: {},
+    downloadUrl: null,
   });
 });

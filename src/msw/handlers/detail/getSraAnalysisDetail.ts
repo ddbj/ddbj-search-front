@@ -23,8 +23,8 @@ export const getSraAnalysisDetail = http.get<
     type: "sra-analysis",
     visibility: "Unrestricted",
     status: "public",
-    distribution: [],
     dbXref: [],
     properties: {},
+    downloadUrl: null,
   });
 });

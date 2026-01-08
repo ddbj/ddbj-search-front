@@ -21,9 +21,9 @@ export const getJgaStudyDetail = http.get<BaseDetailRequestParams, never, JgaStu
       type: "jga-study",
       visibility: "Unrestricted",
       status: "public",
-      distribution: [],
       dbXref: [],
       properties: {},
+      downloadUrl: null,
     });
   }
 );

@@ -21,9 +21,9 @@ export const getSraRunDetail = http.get<BaseDetailRequestParams, never, SraRunDe
       type: "sra-run",
       visibility: "Unrestricted",
       status: "public",
-      distribution: [],
       dbXref: [],
       properties: {},
+      downloadUrl: null,
     });
   }
 );

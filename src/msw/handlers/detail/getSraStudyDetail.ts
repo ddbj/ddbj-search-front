@@ -21,9 +21,9 @@ export const getSraStudyDetail = http.get<BaseDetailRequestParams, never, SraStu
       type: "sra-study",
       visibility: "Unrestricted",
       status: "public",
-      distribution: [],
       dbXref: [],
       properties: {},
+      downloadUrl: null,
     });
   }
 );

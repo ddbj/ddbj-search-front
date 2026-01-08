@@ -23,8 +23,8 @@ export const getJgaDatasetDetail = http.get<
     type: "jga-dataset",
     visibility: "Unrestricted",
     status: "public",
-    distribution: [],
     dbXref: [],
     properties: {},
+    downloadUrl: null,
   });
 });
