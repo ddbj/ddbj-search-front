@@ -6,11 +6,11 @@ import { StatusPanel } from "@/features/searchDetail/panels/StatusPanel.tsx";
 import { XrefPanel } from "@/features/searchDetail/panels/XrefPanel.tsx";
 import { Breadcrumbs } from "@/features/shared/Breadcrumbs.tsx";
 import { GlobalHeader } from "@/features/shared/GlobalHeader.tsx";
-import type { SearchDetailData } from "@/utils/searchDetailData.ts";
+import type { SearchDetailResponse } from "@/utils/searchDetailResponse.ts";
 import type { FC } from "react";
 
 type Props = {
-  data: SearchDetailData;
+  data: SearchDetailResponse;
 };
 
 export const SearchDetailLayout: FC<Props> = ({ data }) => {
@@ -32,7 +32,7 @@ export const SearchDetailLayout: FC<Props> = ({ data }) => {
         </div>
 
         <div data-name={"rightCol"} className={"flex w-fit flex-col gap-4"}>
-          <StatusPanel />
+          <StatusPanel data={data} />
           <DownloadPanel />
         </div>
       </div>

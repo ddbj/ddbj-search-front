@@ -35,6 +35,7 @@
     "@ver0/deep-equal": "^1.0.0",
     "clsx": "^2.1.1",
     "copy-anything": "^4.0.5",
+    "dayjs": "^1.11.19",
     "framer-motion": "^12.17.0",
     "immer": "^10.1.1",
     "is-what": "^5.2.1",
