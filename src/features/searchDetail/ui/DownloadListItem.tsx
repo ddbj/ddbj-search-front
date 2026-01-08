@@ -1,6 +1,6 @@
 import type { FC } from "react";
 
-type Props = { fileName: string; httpsLink?: string; ftpLink?: string };
+type Props = { fileName: string; httpsLink: string | null; ftpLink: string | null };
 
 export const DownloadListItem: FC<Props> = ({ fileName, httpsLink, ftpLink }) => {
   return (

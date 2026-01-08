@@ -14,7 +14,7 @@ export type Xref = z.infer<typeof xrefSchema>;
 
 export const downloadUrlSchema = z.object({
   name: z.string(),
-  ftpUrl: z.string(),
+  ftpUrl: z.string().optional(),
   type: z.string(),
   url: z.string(),
 });
