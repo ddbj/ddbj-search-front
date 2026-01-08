@@ -14,16 +14,25 @@ type ItemProps = ComponentProps<typeof DownloadListItem>;
 
 export const DownloadPanel: FC<Props> = ({ className, data }) => {
   const itemsProps = composeItemProps(data);
-  return (
-    <PanelWrapper>
-      <div className={"pt-2 text-sm font-bold"}>Download</div>
-      <InfoList useGrid={false}>
-        <DownloadListItem fileName={"SRA1168454.experiment.xml"} httpsLink={"#"} ftpLink={"#"} />
-        <DownloadListItem fileName={"SRA1168454.experiment.xml"} httpsLink={"#"} ftpLink={"#"} />
-        <DownloadListItem fileName={"SRA1168454.experiment.xml"} httpsLink={"#"} ftpLink={"#"} />
-      </InfoList>
-    </PanelWrapper>
-  );
+  if (itemsProps.length) {
+    return (
+      <PanelWrapper>
+        <div className={"pt-2 text-sm font-bold"}>Download</div>
+        <InfoList useGrid={false}>
+          {itemsProps.map((item, i) => (
+            <DownloadListItem
+              key={`${i} + ${item.fileName}`}
+              fileName={item.fileName}
+              httpsLink={item.httpsLink}
+              ftpLink={item.ftpLink}
+            />
+          ))}
+        </InfoList>
+      </PanelWrapper>
+    );
+  } else {
+    return <></>;
+  }
 };
 
 const composeItemProps = (

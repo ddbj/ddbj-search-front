@@ -8,12 +8,12 @@ export const DownloadListItem: FC<Props> = ({ fileName, httpsLink, ftpLink }) =>
       <span>{fileName}</span>
       <span className={"flex gap-2"}>
         {httpsLink && (
-          <a href={httpsLink} className={"text-link-primary"}>
+          <a href={httpsLink} className={"text-link-primary"} target={"_blank"}>
             HTTPS
           </a>
         )}
         {ftpLink && (
-          <a href={ftpLink} className={"text-link-primary"}>
+          <a href={ftpLink} className={"text-link-primary"} target={"_blank"}>
             FTP
           </a>
         )}
