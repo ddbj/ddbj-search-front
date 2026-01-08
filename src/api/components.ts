@@ -12,13 +12,6 @@ export const xrefSchema = z.object({
 });
 export type Xref = z.infer<typeof xrefSchema>;
 
-export const distributionSchema = z.object({
-  contentUrl: z.string(),
-  encodingFormat: z.string(),
-  type: z.string(),
-});
-export type Distribution = z.infer<typeof distributionSchema>;
-
 export const downloadUrlSchema = z.object({
   name: z.string(),
   ftpUrl: z.string(),

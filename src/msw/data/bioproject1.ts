@@ -15,13 +15,6 @@ export const bioproject1: BioProjectDetailResponse = {
   type: "bioproject",
   visibility: "Unrestricted",
   status: "public",
-  distribution: [
-    {
-      contentUrl: "https://ddbj.nig.ac.jp/search/entry/bioproject/PRJNA16.json",
-      encodingFormat: "JSON",
-      type: "DataDownload",
-    },
-  ],
   dbXref: [
     {
       identifier: "GCA_000021045",
@@ -557,4 +550,5 @@ export const bioproject1: BioProjectDetailResponse = {
       },
     },
   },
+  downloadUrl: null,
 };

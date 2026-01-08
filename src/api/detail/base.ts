@@ -1,6 +1,6 @@
 import { z } from "zod";
 import {
-  distributionSchema,
+  downloadUrlSchema,
   organismSchema,
   statusSchema,
   visibilitySchema,
@@ -23,8 +23,8 @@ export const baseDetailResponseSchema = z.object({
   type: z.string(),
   visibility: visibilitySchema,
   status: statusSchema,
-  distribution: z.array(distributionSchema),
   dbXref: z.array(xrefSchema),
+  downloadUrl: z.array(downloadUrlSchema).nullable(),
   properties: z.unknown(),
 });
 export type BaseDetailResponse = z.infer<typeof baseDetailResponseSchema>;

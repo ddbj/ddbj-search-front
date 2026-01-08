@@ -14,13 +14,6 @@ export const biosample1: BioSampleDetailResponse = {
   description: "",
   visibility: "Unrestricted",
   status: "public",
-  distribution: [
-    {
-      contentUrl: "https://ddbj.nig.ac.jp/search/entry/biosample/SAMN29827045.json",
-      encodingFormat: "JSON",
-      type: "DataDownload",
-    },
-  ],
   dbXref: [
     {
       identifier: "SRS13979220",
@@ -195,4 +188,5 @@ export const biosample1: BioSampleDetailResponse = {
       content: "pass",
     },
   ],
+  downloadUrl: null,
 };
