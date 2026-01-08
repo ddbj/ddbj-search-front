@@ -26,3 +26,10 @@ export const BrokenLink = {
     ftpLink: "ftp://example.com/example_file.txt",
   },
 } satisfies Story;
+
+export const ValidLink = {
+  args: {
+    fileName: "storybook favicon",
+    httpsLink: "/favicon.svg",
+  },
+};

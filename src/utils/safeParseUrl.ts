@@ -3,7 +3,8 @@ export const safeParseUrl = (url: string): URL | null => {
     const protocol = window.location.protocol;
     const host = window.location.hostname;
     const port = window.location.port;
-    url = protocol + "://" + host + ":" + port;
+    const portSegment = port ? `:${port}` : "";
+    url = `${protocol}//${host}${portSegment}${url}`;
   }
   let result: URL | null = null;
   try {
