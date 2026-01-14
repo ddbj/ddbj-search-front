@@ -20,8 +20,12 @@ export const downloadUrlSchema = z.object({
 });
 export type DownloadUrl = z.infer<typeof downloadUrlSchema>;
 
-export const visibilitySchema = z.enum(["Unrestricted", "Controlled"]);
+export const visibilitySchema = z
+  .enum(["Unrestricted", "Controlled"])
+  .describe(`TODO: write description for each Visibility option`);
 export type Visibility = z.infer<typeof visibilitySchema>;
 
-export const statusSchema = z.enum(["public"]);
+export const statusSchema = z
+  .enum(["public", "suppressed"])
+  .describe(`TODO: write description for each Status option`);
 export type Status = z.infer<typeof statusSchema>;
