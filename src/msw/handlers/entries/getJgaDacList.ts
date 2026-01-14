@@ -1,6 +1,6 @@
 import { http, HttpResponse } from "msw";
-import { v4 as uuidv4 } from "uuid";
 import { API_PATH_JGA_DAC_LIST } from "@/api/paths.ts";
+import { makeDummyIdentifier } from "@/msw/utils/makeDummyIdentifier.ts";
 import type { EntryListResponse } from "@/api/entries/base.ts";
 import type { JgaDacListRequestParams } from "@/api/entries/jgaDac.ts";
 
@@ -19,9 +19,10 @@ export const getJgaDacList = http.get<JgaDacListRequestParams, {}, EntryListResp
       items: Array(10)
         .fill(0)
         .map((_, _i) => {
+          const type = "jga-dac";
           return {
-            identifier: uuidv4().slice(0, 8),
-            type: "jga-dac",
+            identifier: makeDummyIdentifier(type),
+            type,
             title: "Data Access Committee for controlled genomic data",
             dbXrefs: { "jga-dataset": 10, "jga-study": 4, "jga-policy": 2 },
             datePublished: "2023-04-15",

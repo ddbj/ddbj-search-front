@@ -1,6 +1,6 @@
 import { http, HttpResponse } from "msw";
-import { v4 as uuidv4 } from "uuid";
 import { API_PATH_BIOSAMPLE_LIST } from "@/api/paths.ts";
+import { makeDummyIdentifier } from "@/msw/utils/makeDummyIdentifier.ts";
 import type { EntryListResponse } from "@/api/entries/base.ts";
 
 export const getBioSampleList = http.get<never, never, EntryListResponse>(
@@ -18,9 +18,10 @@ export const getBioSampleList = http.get<never, never, EntryListResponse>(
       items: Array(10)
         .fill(0)
         .map((_, _i) => {
+          const type = "biosample";
           return {
-            identifier: uuidv4().slice(0, 8),
-            type: "biosample",
+            identifier: makeDummyIdentifier(type),
+            type,
             title: "Soil sample from agricultural field",
             dbXrefs: { "sra-run": 5, "sra-experiment": 2, bioproject: 1 },
             datePublished: "2023-04-15",

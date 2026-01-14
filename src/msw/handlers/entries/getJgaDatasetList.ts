@@ -1,6 +1,6 @@
 import { http, HttpResponse } from "msw";
-import { v4 as uuidv4 } from "uuid";
 import { API_PATH_JGA_DATASET_LIST } from "@/api/paths.ts";
+import { makeDummyIdentifier } from "@/msw/utils/makeDummyIdentifier.ts";
 import type { EntryListResponse } from "@/api/entries/base.ts";
 import type { JgaDatasetListRequestParams } from "@/api/entries/jgaDataset.ts";
 
@@ -19,9 +19,10 @@ export const getJgaDatasetList = http.get<JgaDatasetListRequestParams, {}, Entry
       items: Array(10)
         .fill(0)
         .map((_, _i) => {
+          const type = "jga-dataset";
           return {
-            identifier: uuidv4().slice(0, 8),
-            type: "jga-dataset",
+            identifier: makeDummyIdentifier(type),
+            type,
             title: "Human genomic dataset for disease association study",
             dbXrefs: { "jga-study": 1, "jga-policy": 1, "jga-dac": 1 },
             datePublished: "2023-04-15",

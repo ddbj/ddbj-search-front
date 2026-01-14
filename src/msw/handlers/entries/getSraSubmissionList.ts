@@ -1,6 +1,6 @@
 import { http, HttpResponse } from "msw";
-import { v4 as uuidv4 } from "uuid";
 import { API_PATH_SRA_SUBMISSION_LIST } from "@/api/paths.ts";
+import { makeDummyIdentifier } from "@/msw/utils/makeDummyIdentifier.ts";
 import type { EntryListResponse } from "@/api/entries/base.ts";
 import type { SraSubmissionListRequestParams } from "@/api/entries/sraSubmission.ts";
 
@@ -19,9 +19,10 @@ export const getSraSubmissionList = http.get<SraSubmissionListRequestParams, {},
       items: Array(10)
         .fill(0)
         .map((_, _i) => {
+          const type = "sra-submission";
           return {
-            identifier: uuidv4().slice(0, 8),
-            type: "sra-submission",
+            identifier: makeDummyIdentifier(type),
+            type,
             title: "Sequence Read Archive submission",
             dbXrefs: { "sra-study": 1, "sra-experiment": 4, "sra-run": 8, biosample: 2 },
             datePublished: "2023-04-15",

@@ -1,6 +1,6 @@
 import { http, HttpResponse } from "msw";
-import { v4 as uuidv4 } from "uuid";
 import { API_PATH_SRA_EXPERIMENT_LIST } from "@/api/paths.ts";
+import { makeDummyIdentifier } from "@/msw/utils/makeDummyIdentifier.ts";
 import type { EntryListResponse } from "@/api/entries/base.ts";
 import type { SraExperimentListRequestParams } from "@/api/entries/sraExperiment.ts";
 
@@ -19,9 +19,10 @@ export const getSraExperimentList = http.get<SraExperimentListRequestParams, {},
       items: Array(10)
         .fill(0)
         .map((_, _i) => {
+          const type = "sra-experiment";
           return {
-            identifier: uuidv4().slice(0, 8),
-            type: "sra-experiment",
+            identifier: makeDummyIdentifier(type),
+            type,
             title: "Illumina HiSeq 2000 paired end sequencing",
             dbXrefs: { "sra-run": 3, "sra-sample": 1, biosample: 1, bioproject: 1 },
             datePublished: "2023-04-15",

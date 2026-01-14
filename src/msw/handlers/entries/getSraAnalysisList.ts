@@ -1,6 +1,6 @@
 import { http, HttpResponse } from "msw";
-import { v4 as uuidv4 } from "uuid";
 import { API_PATH_SRA_ANALYSIS_LIST } from "@/api/paths.ts";
+import { makeDummyIdentifier } from "@/msw/utils/makeDummyIdentifier.ts";
 import type { EntryListResponse } from "@/api/entries/base.ts";
 import type { SraAnalysisListRequestParams } from "@/api/entries/sraAnalysis.ts";
 
@@ -19,9 +19,10 @@ export const getSraAnalysisList = http.get<SraAnalysisListRequestParams, {}, Ent
       items: Array(10)
         .fill(0)
         .map((_, _i) => {
+          const type = "sra-analysis";
           return {
-            identifier: uuidv4().slice(0, 8),
-            type: "sra-analysis",
+            identifier: makeDummyIdentifier(type),
+            type,
             title: "Reference alignment analysis for genomic study",
             dbXrefs: { "sra-study": 1, "sra-sample": 2, biosample: 1, bioproject: 1 },
             datePublished: "2023-04-15",
