@@ -1,4 +1,5 @@
-import { InfoPanel } from "./InfoPanel.tsx"
+import { bioproject1 } from "@/msw/data/bioproject1.ts";
+import { InfoPanel } from "./InfoPanel.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
@@ -11,4 +12,8 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Primary = {} satisfies Story;
+export const Primary = {
+  args: {
+    data: bioproject1,
+  },
+} satisfies Story;

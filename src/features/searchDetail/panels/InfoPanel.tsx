@@ -1,23 +1,19 @@
+import { OrganismRow } from "@/features/searchDetail/panels/rows/OrganismRow.tsx";
+import { SanitizedRow } from "@/features/searchDetail/panels/rows/SanitizedRow.tsx";
 import { InfoList } from "@/features/searchDetail/ui/InfoList.tsx";
-import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
 import { PanelWrapper } from "@/features/searchDetail/ui/PanelWrapper.tsx";
+import type { SearchDetailResponse } from "@/utils/searchDetailResponse.ts";
 import type { FC } from "react";
 
-type Props = {};
+type Props = { data: SearchDetailResponse };
 
-export const InfoPanel: FC<Props> = () => {
+export const InfoPanel: FC<Props> = ({ data }) => {
   return (
     <PanelWrapper>
       <InfoList>
-        <InfoListItem term={"Title"}>DNA03206</InfoListItem>
-        <InfoListItem term={"Description"}>
-          DNA extracted from pelleted TK6 cells using the Qiagen DNeasy Blood and Tissue kit
-        </InfoListItem>
-        <InfoListItem term={"Organism"}>
-          <a href="#" className={"text-link-primary"}>
-            Homo sapiens
-          </a>
-        </InfoListItem>
+        <SanitizedRow term={"Title"} value={data.title} />
+        <SanitizedRow term={"Description"} value={data.description} />
+        <OrganismRow organism={data.organism} />
       </InfoList>
     </PanelWrapper>
   );

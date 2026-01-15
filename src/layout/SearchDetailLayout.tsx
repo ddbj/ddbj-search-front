@@ -26,7 +26,7 @@ export const SearchDetailLayout: FC<Props> = ({ data }) => {
       <GlobalHeader breadcrumbsPaths={breadcrumbsPaths} />
       <div className={"flex items-start gap-8"}>
         <div data-name={"leftCol"} className={"flex flex-grow-1 flex-col gap-4"}>
-          <InfoPanel />
+          <InfoPanel data={data} />
           <PropertiesPanel />
           <XrefPanel xrefs={data.dbXref} />
         </div>

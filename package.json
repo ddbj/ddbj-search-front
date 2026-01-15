@@ -18,7 +18,8 @@
     "lint": "eslint .  --quiet",
     "lint:debug": "eslint . --debug ",
     "lint:fix": "eslint . --fix  --quiet",
-    "type-check": "tsc -b --noEmit --pretty"
+    "type-check": "tsc -b --noEmit --pretty",
+    "check-all": "pnpm run lint:fix && pnpm run type-check && pnpm run test"
   },
   "dependencies": {
     "@asteasolutions/zod-to-openapi": "^8.1.0",
@@ -36,6 +37,7 @@
     "clsx": "^2.1.1",
     "copy-anything": "^4.0.5",
     "dayjs": "^1.11.19",
+    "dompurify": "^3.3.1",
     "framer-motion": "^12.17.0",
     "immer": "^10.1.1",
     "is-what": "^5.2.1",
