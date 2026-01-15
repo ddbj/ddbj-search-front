@@ -27,7 +27,7 @@ export const SearchDetailLayout: FC<Props> = ({ data }) => {
       <div className={"flex items-start gap-8"}>
         <div data-name={"leftCol"} className={"flex flex-grow-1 flex-col gap-4"}>
           <InfoPanel data={data} />
-          <PropertiesPanel />
+          <PropertiesPanel data={data.properties} />
           <XrefPanel xrefs={data.dbXref} />
         </div>
 
