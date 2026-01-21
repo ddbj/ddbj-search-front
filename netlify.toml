@@ -16,3 +16,9 @@ force = true
   from = "/*"
   to = "/index.html"
   status = 200
+
+
+[[redirects]]
+from = "/api-doc/"
+to = "/api-doc/index.html"
+status = 200
