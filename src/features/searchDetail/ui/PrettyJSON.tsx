@@ -2,6 +2,9 @@ import { clsx } from "clsx";
 import { type FC, useCallback, useEffect, useRef, useState } from "react";
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { CopyIcon } from "@/features/graphics/CopyIcon.tsx";
+import { SquareMinusIcon } from "@/features/graphics/SquareMinusIcon.tsx";
+import { SquarePlusIcon } from "@/features/graphics/SquarePlusIcon.tsx";
 
 type Props = { code: string; useHighlighter?: boolean };
 
@@ -40,7 +43,7 @@ export const PrettyJSON: FC<Props> = ({ code, useHighlighter = true }) => {
   }, [code, init]);
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden rounded-md">
       <div className={classNames} style={{ gridTemplateRows: rowHeight }}>
         {useHighlighter ? (
           <SyntaxHighlighter
@@ -68,22 +71,19 @@ export const PrettyJSON: FC<Props> = ({ code, useHighlighter = true }) => {
       <div className="absolute top-1.5 right-5 box-content flex gap-2">
         <button
           onClick={() => handleCopy(code)}
-          className="flex h-fit w-fit rounded-sm bg-white fill-gray-800 p-0.5 align-middle"
+          className="flex h-fit w-fit cursor-pointer rounded-sm bg-white fill-gray-800 p-0.5 align-middle"
         >
-          {/*<CopyIcon className={"w-4"} />*/}
-          <span>[C]</span>
+          <CopyIcon className={"w-4"} />
         </button>
         {showExpand && (
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="flex h-fit w-fit rounded-sm bg-white fill-gray-800 p-0.5 align-middle"
+            className="flex h-fit w-fit cursor-pointer rounded-sm bg-white fill-gray-800 p-0.5 align-middle"
           >
             {isExpanded ? (
-              // <SquareMinusIcon className={"w-4"} />
-              <span>--</span>
+              <SquareMinusIcon className={"w-4"} />
             ) : (
-              // <SquarePlusIcon className={"w-4"} />
-              <span>++</span>
+              <SquarePlusIcon className={"w-4"} />
             )}
           </button>
         )}
