@@ -11,6 +11,9 @@ createRoot(document.getElementById("root")!).render(
       configuration={{
         content: getDocs(),
         orderSchemaPropertiesBy: "preserve",
+        darkMode: false,
+        forceDarkModeState: "light",
+        hideDarkModeToggle: true,
       }}
     />
   </StrictMode>

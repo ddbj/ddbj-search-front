@@ -1,3 +1,5 @@
+import { extendZod } from "@/utils/extendZod.ts";
+
 const BASE_API_PATH = "/api/";
 
 export const API_PATH_ALL_ENTRIES_LIST = `${BASE_API_PATH}entries/`;
@@ -14,6 +16,8 @@ export const API_PATH_JGA_STUDY_LIST = `${BASE_API_PATH}entries/jga-study/`;
 export const API_PATH_JGA_POLICY_LIST = `${BASE_API_PATH}entries/jga-policy/`;
 export const API_PATH_JGA_DAC_LIST = `${BASE_API_PATH}entries/jga-dac/`;
 export const API_PATH_TYPE_COUNT = `${BASE_API_PATH}count/types/`;
+
+extendZod();
 
 export const omitBaseApiPath = (path: string) => {
   if (path.startsWith(BASE_API_PATH)) {
