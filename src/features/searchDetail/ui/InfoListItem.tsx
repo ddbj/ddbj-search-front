@@ -3,9 +3,24 @@ import clsx from "clsx";
 import { CircleQuestionIcon } from "@/features/graphics/CircleQuestionIcon.tsx";
 import type { FC, ReactNode } from "react";
 
-type Props = { term: string; toolTipContent?: ReactNode; children: ReactNode };
+type Props = {
+  term: string;
+  toolTipContent?: ReactNode;
+  children: ReactNode;
+  termsNowrap?: boolean;
+  contentNoWrap?: boolean;
+};
 
-export const InfoListItem: FC<Props> = ({ children, term, toolTipContent }) => {
+export const InfoListItem: FC<Props> = ({
+  children,
+  term,
+  toolTipContent,
+  termsNowrap = true,
+  contentNoWrap = false,
+}) => {
+  const termsClass = termsNowrap ? "text-nowrap" : "";
+  const contentClass = contentNoWrap ? "text-nowrap" : "";
+
   return (
     <li className={"col-span-2 grid grid-cols-subgrid bg-white py-2"}>
       <div className={"flex items-center gap-1 font-bold"}>
@@ -23,9 +38,9 @@ export const InfoListItem: FC<Props> = ({ children, term, toolTipContent }) => {
             </span>
           </Tooltip>
         )}
-        <span>{term}</span>
+        <span className={termsClass}>{term}</span>
       </div>
-      <div>{children}</div>
+      <div className={contentClass}>{children}</div>
     </li>
   );
 };

@@ -20,9 +20,15 @@ export const StatusPanel: FC<Props> = ({ data }) => {
         <InfoListItem term={"Visibility"} toolTipContent={"This is the description of visibility"}>
           {data.visibility}
         </InfoListItem>
-        <InfoListItem term={"Created date"}>{createdDate}</InfoListItem>
-        <InfoListItem term={"Modified date"}>{modifiedDate}</InfoListItem>
-        <InfoListItem term={"Published date"}>{publishedDate}</InfoListItem>
+        <InfoListItem term={"Created date"} contentNoWrap={true}>
+          {createdDate}
+        </InfoListItem>
+        <InfoListItem term={"Modified date"} contentNoWrap={true}>
+          {modifiedDate}
+        </InfoListItem>
+        <InfoListItem term={"Published date"} contentNoWrap={true}>
+          {publishedDate}
+        </InfoListItem>
       </InfoList>
     </PanelWrapper>
   );
