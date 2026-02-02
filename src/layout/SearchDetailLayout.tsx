@@ -4,7 +4,6 @@ import { InfoPanel } from "@/features/searchDetail/panels/InfoPanel.tsx";
 import { PropertiesPanel } from "@/features/searchDetail/panels/PropertiesPanel.tsx";
 import { StatusPanel } from "@/features/searchDetail/panels/StatusPanel.tsx";
 import { XrefPanel } from "@/features/searchDetail/panels/XrefPanel.tsx";
-import { Breadcrumbs } from "@/features/shared/Breadcrumbs.tsx";
 import { GlobalHeader } from "@/features/shared/GlobalHeader.tsx";
 import type { SearchDetailResponse } from "@/utils/searchDetailResponse.ts";
 import type { FC } from "react";

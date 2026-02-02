@@ -23,7 +23,7 @@ export const InfoListItem: FC<Props> = ({
 
   return (
     <li className={"col-span-2 grid grid-cols-subgrid bg-white py-2"}>
-      <div className={"flex items-center gap-1 font-bold"}>
+      <div className={"flex items-start gap-1 font-bold"}>
         {toolTipContent && (
           <Tooltip
             content={toolTipContent}
@@ -33,7 +33,7 @@ export const InfoListItem: FC<Props> = ({
               content: [clsx("bg-gray-500 text-white")],
             }}
           >
-            <span>
+            <span className={"self-center"}>
               <CircleQuestionIcon className={"h-4 fill-text-primary"} />
             </span>
           </Tooltip>

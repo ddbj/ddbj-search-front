@@ -13,7 +13,7 @@ export const XrefPanel: FC<Props> = ({ xrefs }) => {
   const parsed = parseRefs(xrefs);
   return (
     <PanelWrapper>
-      <div className={"pt-2 text-sm font-bold"}>DB Xref</div>
+      <div className={"pt-2 text-sm font-bold"}>DB Xrefs</div>
       <InfoList>
         {parsed.map((entry) => {
           return (
