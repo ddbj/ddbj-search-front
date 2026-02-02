@@ -37,15 +37,15 @@ export const SearchResultLayout: FC<Props> = ({ entryType, updateFunctions, para
             params={params}
           ></QueryBuilder>
         </aside>
-        <div className={"flex flex-grow-1 flex-col gap-8 py-4"}>
-          <ResultList data={(data?.items ?? []).map((item) => parseResultCardProps(item))} />
-          <Pagination current={pagination?.page ?? 1} total={1000} params={params} />
+        <div className={"flex-grow-1"}>
+          <aside className={"sticky top-0 flex flex-col gap-4"}>
+            <ResultInfo pagination={pagination} updateFunctions={updateFunctions} params={params} />
+          </aside>
+          <div className={"flex flex-grow-1 flex-col gap-8 py-4"}>
+            <ResultList data={(data?.items ?? []).map((item) => parseResultCardProps(item))} />
+            <Pagination current={pagination?.page ?? 1} total={1000} params={params} />
+          </div>
         </div>
-        <aside className={"sticky top-0 flex w-[400px] shrink-0 grow-0 flex-col gap-4 py-4"}>
-          <ResultInfo pagination={pagination} />
-
-          <QueryLists removeParam={updateFunctions.removeParam} params={params} />
-        </aside>
       </div>
     </main>
   );
