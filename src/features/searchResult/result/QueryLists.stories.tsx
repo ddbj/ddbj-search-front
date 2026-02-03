@@ -7,8 +7,8 @@ const { removeFromSearch } = __TEST_updateFunctions;
 const meta = {
   component: QueryLists,
   args: {
-    params: {},
-    removeParam: (key: AnySearchParamsKey, v: string) => {},
+    searchParams: {},
+    removeParamFunc: (key: AnySearchParamsKey, v: string) => {},
   },
   decorators: [
     (Story) => {
@@ -30,17 +30,17 @@ export const Empty = {} satisfies Story;
 export const HasSearch = {
   decorators: [
     (Story) => {
-      const [params, setParams] = useState<AnySearchParams>({
+      const [searchParams, setParams] = useState<AnySearchParams>({
         types: ["biosample", "sra-analysis"],
         keywords: ["hogemoge", "mogemoge"],
         umbrella: true,
       });
-      const removeParam = (key: AnySearchParamsKey, v: string) => {
+      const removeParamFunc = (key: AnySearchParamsKey, v: string) => {
         setParams((prev) => {
           return removeFromSearch(prev, key, v);
         });
       };
-      return <Story args={{ params, removeParam }} />;
+      return <Story args={{ searchParams, removeParamFunc }} />;
     },
   ],
 } satisfies Story;

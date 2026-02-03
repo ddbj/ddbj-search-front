@@ -7,7 +7,7 @@ const meta = {
     current: 2,
     itemCount: 100,
     perPage: 10,
-    params: {},
+    searchParams: {},
   },
   decorators: [],
 } satisfies Meta<typeof Pagination>;
