@@ -21,7 +21,7 @@ export const QueryLists: FC<Props> = ({ searchParams, removeParamFunc }) => {
   }
 
   return (
-    <div>
+    <div className={"flex flex-col gap-1"}>
       <h3>Queries:</h3>
       <div className={tipWrapperClasses}>
         {tipData.map(({ label, data }) => (

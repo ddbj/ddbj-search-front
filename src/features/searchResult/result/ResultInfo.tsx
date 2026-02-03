@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { QueryLists } from "@/features/searchResult/result/QueryLists.tsx";
+import { SortDropdown } from "@/features/searchResult/result/SortDropdown.tsx";
 import { getTotalPages } from "@/utils/getTotalPages.ts";
 import type { UpdateSearchFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
@@ -29,10 +30,11 @@ export const ResultInfo: FC<Props> = ({
     <div>
       <div className={"bg-white pt-4"}></div>
       <div className={wrapperClasses}>
-        <div>
+        <div className={"flex items-center justify-between"}>
           <p>
             Found {itemCount} entries / Displaying {currentPage} of {totalPages} pages
           </p>
+          <SortDropdown />
         </div>
         <QueryLists removeParamFunc={removeParamFunc} searchParams={searchParams} />
       </div>
