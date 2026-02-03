@@ -4,8 +4,9 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 const meta = {
   component: Pagination,
   args: {
-    current: 1,
-    total: 10,
+    current: 2,
+    itemCount: 100,
+    perPage: 10,
     params: {},
   },
   decorators: [],

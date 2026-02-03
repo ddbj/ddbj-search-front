@@ -1,26 +1,28 @@
 import { Link } from "@tanstack/react-router";
 import { clsx } from "clsx";
 import { type FC, Fragment } from "react";
+import { getTotalPages } from "@/utils/getTotalPages.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
-// import { useSearchParams } from "@/hooks/useSearchParams.ts";
 
 type Props = {
   current: number;
-  total: number;
-  params: AnySearchParams;
+  searchParams: AnySearchParams;
+  itemCount: number;
+  perPage: number;
 };
 type ButtonState = "current" | "idle" | "disabled";
 
-export const Pagination: FC<Props> = ({ current, total, params }) => {
-  const pages = dividePages(makePaginationPages(total, current));
-  if (total <= 1) return null;
+export const Pagination: FC<Props> = ({ current, itemCount, perPage, searchParams }) => {
+  const totalPages = getTotalPages(itemCount, perPage);
+  const pages = dividePages(makePaginationPages(totalPages, current));
+  if (totalPages <= 1) return null;
   return (
     <div className={""}>
       <Button
         label={"Prev"}
         page={current - 1}
         state={current === 1 ? "disabled" : "idle"}
-        params={params}
+        params={searchParams}
       />
       {pages.map((group, index) => {
         return (
@@ -31,7 +33,7 @@ export const Pagination: FC<Props> = ({ current, total, params }) => {
                 key={page}
                 label={page}
                 page={page}
-                params={params}
+                params={searchParams}
                 state={page === current ? "current" : "idle"}
               />
             ))}
@@ -41,8 +43,8 @@ export const Pagination: FC<Props> = ({ current, total, params }) => {
       <Button
         label={"Next"}
         page={current + 1}
-        state={current === total ? "disabled" : "idle"}
-        params={params}
+        state={current === totalPages ? "disabled" : "idle"}
+        params={searchParams}
       />
     </div>
   );

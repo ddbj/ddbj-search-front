@@ -2,7 +2,6 @@ import { type FC, useMemo } from "react";
 import { dbLabels, type DBType } from "@/consts/db.ts";
 import { QueryBuilder } from "@/features/searchResult/queryBuilder/QueryBuilder.tsx";
 import { Pagination } from "@/features/searchResult/result/Pagination.tsx";
-import { QueryLists } from "@/features/searchResult/result/QueryLists.tsx";
 import { parseResultCardProps } from "@/features/searchResult/result/ResultCard.tsx";
 import { ResultInfo } from "@/features/searchResult/result/ResultInfo.tsx";
 import { ResultList } from "@/features/searchResult/result/ResultList.tsx";
@@ -39,11 +38,22 @@ export const SearchResultLayout: FC<Props> = ({ entryType, updateFunctions, para
         </aside>
         <div className={"flex-grow-1"}>
           <aside className={"sticky top-0 flex flex-col gap-4"}>
-            <ResultInfo pagination={pagination} updateFunctions={updateFunctions} params={params} />
+            <ResultInfo
+              removeParamFunc={updateFunctions.removeParam}
+              searchParams={params}
+              currentPage={pagination?.page ?? 1}
+              perPage={pagination.perPage ?? 20}
+              itemCount={pagination.total ?? 0}
+            />
           </aside>
           <div className={"flex flex-grow-1 flex-col gap-8 py-4"}>
             <ResultList data={(data?.items ?? []).map((item) => parseResultCardProps(item))} />
-            <Pagination current={pagination?.page ?? 1} total={1000} params={params} />
+            <Pagination
+              searchParams={params}
+              current={pagination?.page ?? 1}
+              itemCount={pagination.total ?? 0}
+              perPage={pagination.perPage ?? 20}
+            />
           </div>
         </div>
       </div>

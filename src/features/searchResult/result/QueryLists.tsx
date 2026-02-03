@@ -7,14 +7,14 @@ import type { UpdateSearchFunctions } from "@/features/searchResult/queryBuilder
 import type { AnySearchParams, AnySearchParamsKey } from "@/schema/search/any.ts";
 
 type Props = {
-  removeParam: UpdateSearchFunctions["removeParam"];
-  params: AnySearchParams;
+  removeParamFunc: UpdateSearchFunctions["removeParam"];
+  searchParams: AnySearchParams;
 };
 
 const tipWrapperClasses = clsx("flex flex-wrap gap-2");
 
-export const QueryLists: FC<Props> = ({ params, removeParam }) => {
-  const tipData = parseQueryStateToTipList(params);
+export const QueryLists: FC<Props> = ({ searchParams, removeParamFunc }) => {
+  const tipData = parseQueryStateToTipList(searchParams);
 
   if (tipData.length === 0) {
     return <></>;
@@ -29,7 +29,7 @@ export const QueryLists: FC<Props> = ({ params, removeParam }) => {
             key={`${data.name}:${data.value}`}
             label={label}
             data={data}
-            onClickRemove={removeParam}
+            onClickRemove={removeParamFunc}
           />
         ))}
       </div>
