@@ -1,4 +1,4 @@
-import { TypeSelector } from "@/features/searchResult/organisms/TypeSelector.tsx";
+import { TypeSelector } from "@/features/searchResult/queryBuilder/controls/TypeSelector.tsx";
 import type { DBType } from "@/consts/db.ts";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 

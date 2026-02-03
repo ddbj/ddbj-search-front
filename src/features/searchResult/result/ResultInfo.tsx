@@ -1,7 +1,7 @@
 import clsx from "clsx";
-import { QueryLists } from "@/features/searchResult/organisms/QueryLists.tsx";
+import { QueryLists } from "@/features/searchResult/result/QueryLists.tsx";
 import type { PaginationResponse } from "@/api/entries/base.ts";
-import type { UpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
+import type { UpdateSearchFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
 import type { FC } from "react";
 

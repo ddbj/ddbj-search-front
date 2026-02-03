@@ -1,15 +1,15 @@
 import { type FC, useMemo } from "react";
 import { type DBType, dbTypes } from "@/consts/db.ts";
-import { Grant } from "@/features/searchResult/organisms/bioproject/Grant.tsx";
-import { Organization } from "@/features/searchResult/organisms/bioproject/Organization.tsx";
-import { Publication } from "@/features/searchResult/organisms/bioproject/Publication.tsx";
-import { Umbrella } from "@/features/searchResult/organisms/bioproject/Umbrella.tsx";
-import { DateSelector } from "@/features/searchResult/organisms/DateSelector.tsx";
-import { KeywordInput } from "@/features/searchResult/organisms/KeywordInput.tsx";
-import { OtherTypeSelector } from "@/features/searchResult/organisms/OtherTypeSelector.tsx";
+import { Grant } from "@/features/searchResult/queryBuilder/controls/bioproject/Grant.tsx";
+import { Organization } from "@/features/searchResult/queryBuilder/controls/bioproject/Organization.tsx";
+import { Publication } from "@/features/searchResult/queryBuilder/controls/bioproject/Publication.tsx";
+import { Umbrella } from "@/features/searchResult/queryBuilder/controls/bioproject/Umbrella.tsx";
+import { DateSelector } from "@/features/searchResult/queryBuilder/controls/DateSelector.tsx";
+import { KeywordInput } from "@/features/searchResult/queryBuilder/controls/KeywordInput.tsx";
+import { OtherTypeSelector } from "@/features/searchResult/queryBuilder/controls/OtherTypeSelector.tsx";
 import { type BaseSearchParams, isBaseSearchKey } from "@/schema/search/base.ts";
-import { TypeSelector } from "./organisms/TypeSelector";
-import type { UpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
+import { TypeSelector } from "./controls/TypeSelector.tsx";
+import type { UpdateSearchFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
 
 type Props = {

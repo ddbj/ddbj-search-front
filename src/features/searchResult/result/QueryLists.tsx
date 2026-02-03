@@ -2,8 +2,8 @@ import clsx from "clsx";
 import { isUndefined } from "is-what";
 import { type ComponentProps, type FC } from "react";
 import { getDbLabel } from "@/consts/db.ts";
-import { QueryTip } from "@/features/searchResult/ui/QueryTip.tsx";
-import type { UpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
+import { QueryTip } from "@/features/searchResult/queryBuilder/premitives/QueryTip.tsx";
+import type { UpdateSearchFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 import type { AnySearchParams, AnySearchParamsKey } from "@/schema/search/any.ts";
 
 type Props = {

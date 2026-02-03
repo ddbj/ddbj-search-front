@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { __QUERY_LISTS_TEST__ } from "@/features/searchResult/organisms/QueryLists.tsx";
+import { __QUERY_LISTS_TEST__ } from "@/features/searchResult/result/QueryLists.tsx";
 import type { AnySearchParams } from "@/schema/search/any.ts";
 
 const { parseQueryStateToTipList } = __QUERY_LISTS_TEST__;

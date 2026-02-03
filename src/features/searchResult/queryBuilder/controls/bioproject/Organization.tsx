@@ -1,6 +1,6 @@
 import { Input } from "@heroui/react";
 import { type FC } from "react";
-import { useDebouncedUiValue } from "@/features/searchResult/hooks/useDebouncedUiValue.ts";
+import { useDebouncedUiValue } from "@/features/searchResult/queryBuilder/hooks/useDebouncedUiValue.ts";
 
 type Props = {
   value: string;

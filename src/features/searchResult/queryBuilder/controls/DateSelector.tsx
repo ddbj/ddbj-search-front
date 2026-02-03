@@ -1,6 +1,6 @@
 import { type FC } from "react";
-import { useDebouncedUiValue } from "@/features/searchResult/hooks/useDebouncedUiValue.ts";
-import { DateRangePicker } from "@/features/searchResult/ui/DateRangePicker.tsx";
+import { useDebouncedUiValue } from "@/features/searchResult/queryBuilder/hooks/useDebouncedUiValue.ts";
+import { DateRangePicker } from "@/features/searchResult/queryBuilder/premitives/DateRangePicker.tsx";
 
 type Props = {
   published: string;

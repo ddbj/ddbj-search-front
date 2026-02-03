@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { __TEST__QUERY_BUILDER } from "@/features/searchResult/QueryBuilder.tsx";
+import { __TEST__QUERY_BUILDER } from "@/features/searchResult/queryBuilder/QueryBuilder.tsx";
 import type { AnySearchParams } from "@/schema/search/any.ts";
 const { makeTypeLinkParams } = __TEST__QUERY_BUILDER;
 

@@ -1,7 +1,7 @@
 import { type FC } from "react";
 import { dbLabels, type DBType, dbTypeList } from "@/consts/db.ts";
-import { CheckboxText } from "@/features/searchResult/ui/CheckboxText.tsx";
-import type { UpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
+import { CheckboxText } from "@/features/searchResult/queryBuilder/premitives/CheckboxText.tsx";
+import type { UpdateSearchFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 import type { BaseSearchParams } from "@/schema/search/base.ts";
 
 type Props = {

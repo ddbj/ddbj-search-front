@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { __TEST__Pagination__ } from "@/features/searchResult/Pagination.tsx";
+import { __TEST__Pagination__ } from "@/features/searchResult/result/Pagination.tsx";
 const { makePaginationPages, dividePages } = __TEST__Pagination__;
 
 describe("makePaginationPages", () => {

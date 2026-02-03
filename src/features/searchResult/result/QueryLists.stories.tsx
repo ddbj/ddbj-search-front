@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { __TEST_updateFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
-import { QueryLists } from "@/features/searchResult/organisms/QueryLists.tsx";
+import { __TEST_updateFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
+import { QueryLists } from "@/features/searchResult/result/QueryLists.tsx";
 import type { AnySearchParams, AnySearchParamsKey } from "@/schema/search/any.ts";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 const { removeFromSearch } = __TEST_updateFunctions;

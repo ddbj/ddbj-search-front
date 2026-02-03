@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { zodValidator } from "@tanstack/zod-adapter";
 import { API_PATH_JGA_DAC_LIST } from "@/api/paths.ts";
 import { dbTypes } from "@/consts/db.ts";
-import { useUpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
+import { useUpdateSearchFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 import { fetchJgaDacs } from "@/fetch/entries/fetchJgaDacEntries.ts";
 import { SearchResultLayout } from "@/layout/SearchResultLayout.tsx";
 import { jgaDacSearchSchema } from "@/schema/search/jgaDac.ts";

@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { type FC } from "react";
 import { dbLabels, type DBType, isDBType } from "@/consts/db.ts";
-import { useDebouncedUiValue } from "@/features/searchResult/hooks/useDebouncedUiValue.ts";
-import { CheckboxText } from "@/features/searchResult/ui/CheckboxText.tsx";
+import { useDebouncedUiValue } from "@/features/searchResult/queryBuilder/hooks/useDebouncedUiValue.ts";
+import { CheckboxText } from "@/features/searchResult/queryBuilder/premitives/CheckboxText.tsx";
 import { fetchTypeCount } from "@/fetch/count/fetchTypeCount.ts";
 import type { BaseSearchParams } from "@/schema/search/base.ts";
 

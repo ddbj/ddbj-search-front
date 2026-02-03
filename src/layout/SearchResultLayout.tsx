@@ -1,15 +1,15 @@
 import { type FC, useMemo } from "react";
 import { dbLabels, type DBType } from "@/consts/db.ts";
-import { QueryLists } from "@/features/searchResult/organisms/QueryLists.tsx";
-import { Pagination } from "@/features/searchResult/Pagination.tsx";
-import { QueryBuilder } from "@/features/searchResult/QueryBuilder.tsx";
-import { parseResultCardProps } from "@/features/searchResult/ResultCard.tsx";
-import { ResultInfo } from "@/features/searchResult/ResultInfo.tsx";
-import { ResultList } from "@/features/searchResult/ResultList.tsx";
+import { QueryBuilder } from "@/features/searchResult/queryBuilder/QueryBuilder.tsx";
+import { Pagination } from "@/features/searchResult/result/Pagination.tsx";
+import { QueryLists } from "@/features/searchResult/result/QueryLists.tsx";
+import { parseResultCardProps } from "@/features/searchResult/result/ResultCard.tsx";
+import { ResultInfo } from "@/features/searchResult/result/ResultInfo.tsx";
+import { ResultList } from "@/features/searchResult/result/ResultList.tsx";
 import { type BreadcrumbsPath } from "@/features/shared/Breadcrumbs.tsx";
 import { GlobalHeader } from "@/features/shared/GlobalHeader.tsx";
 import type { EntryListResponse } from "@/api/entries/base.ts";
-import type { UpdateSearchFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
+import type { UpdateSearchFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
 
 type Props = {

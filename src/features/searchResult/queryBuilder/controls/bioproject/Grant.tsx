@@ -1,5 +1,5 @@
 import { Input } from "@heroui/react";
-import { useDebouncedUiValue } from "@/features/searchResult/hooks/useDebouncedUiValue.ts";
+import { useDebouncedUiValue } from "@/features/searchResult/queryBuilder/hooks/useDebouncedUiValue.ts";
 import type { FC } from "react";
 
 type Props = {
@@ -7,14 +7,14 @@ type Props = {
   update: (v: string) => void;
 };
 
-export const Publication: FC<Props> = ({ value, update }) => {
+export const Grant: FC<Props> = ({ value, update }) => {
   const { uiValue, setUiValue } = useDebouncedUiValue(value, update);
 
   return (
     <div>
       <Input
-        label={"Publication"}
-        placeholder={"single query or * for all entries with publication"}
+        label={"Grant"}
+        placeholder={"single query or * for all entries with grant"}
         value={uiValue}
         onValueChange={setUiValue}
       />

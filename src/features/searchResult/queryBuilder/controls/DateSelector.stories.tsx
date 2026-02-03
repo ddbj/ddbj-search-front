@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DateSelector } from "@/features/searchResult/organisms/DateSelector.tsx";
+import { DateSelector } from "@/features/searchResult/queryBuilder/controls/DateSelector.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {

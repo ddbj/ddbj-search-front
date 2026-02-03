@@ -1,6 +1,6 @@
 import { dbTypes } from "@/consts/db.ts";
-import { __SB_updateFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
-import { QueryBuilder } from "@/features/searchResult/QueryBuilder.tsx";
+import { __SB_updateFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
+import { QueryBuilder } from "@/features/searchResult/queryBuilder/QueryBuilder.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {

@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { dbTypes } from "@/consts/db.ts";
-import { __TEST_updateFunctions } from "@/features/searchResult/hooks/useUpdateSearchFunctions.ts";
+import { __TEST_updateFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
 import type { BaseSearchParams } from "@/schema/search/base.ts";
 const {
