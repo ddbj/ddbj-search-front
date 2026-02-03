@@ -15,6 +15,9 @@ export default defineConfig({
     tsconfigPaths(),
     tailwindcss(),
   ],
+  esbuild: {
+    jsx: "automatic",
+  },
   build: {
     rollupOptions: {
       input: {
