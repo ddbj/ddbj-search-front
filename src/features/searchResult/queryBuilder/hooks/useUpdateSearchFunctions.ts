@@ -1,8 +1,8 @@
-import { useNavigate } from "@tanstack/react-router";
 import { isEqual } from "@ver0/deep-equal";
 import { useMemo } from "react";
 import type { DBType } from "@/consts/db.ts";
 import type { AnySearchParams, AnySearchParamsKey } from "@/schema/search/any.ts";
+import type { useNavigate } from "@tanstack/react-router";
 
 export type UpdateSearchFunctions = {
   moveToEntryRoot: (params: AnySearchParams) => void;
@@ -22,47 +22,54 @@ const replace = true;
 
 type P = AnySearchParams;
 
-export const useUpdateSearchFunctions = (): UpdateSearchFunctions => {
-  const navigate = useNavigate();
+export const useUpdateSearchFunctions = (
+  navigate: ReturnType<typeof useNavigate>
+): UpdateSearchFunctions => {
+  type NavigateLike = (opts: {
+    search?: AnySearchParams | ((prev: AnySearchParams) => AnySearchParams);
+    replace?: boolean;
+    to?: string;
+  }) => void;
+  const navigateAny = navigate as unknown as NavigateLike;
   const update = useMemo(() => {
     return {
       moveToEntryRoot: (params: P) => {
-        navigate({ search: params, to: "/entry/" });
+        navigateAny({ search: params, to: "/entry/" });
       },
       moveToPage: (v: number) => {
-        navigate({ search: (prev) => composePageNumber(prev, v) });
+        navigateAny({ search: (prev) => composePageNumber(prev, v) });
       },
       changeKeywords: (v: string[]) => {
         // console.log("changeKeywords", v);
-        navigate({ search: (prev: P) => composeKeywords(prev, v), replace });
+        navigateAny({ search: (prev: P) => composeKeywords(prev, v), replace });
       },
       setDBTypes: (v: DBType[]) => {
         // console.log("setDBTypes", v);
-        navigate({ search: (prev: P) => composeDBTypes(prev, v), replace });
+        navigateAny({ search: (prev: P) => composeDBTypes(prev, v), replace });
       },
       changeUpdated: (v: string) => {
-        navigate({ search: (prev: P) => composeUpdated(prev, v), replace });
+        navigateAny({ search: (prev: P) => composeUpdated(prev, v), replace });
       },
       changePublished: (v: string) => {
-        navigate({ search: (prev: P) => composePublished(prev, v), replace });
+        navigateAny({ search: (prev: P) => composePublished(prev, v), replace });
       },
       changeUmbrella: (v: boolean) => {
-        navigate({ search: (prev: P) => composeUmbrella(prev, v), replace });
+        navigateAny({ search: (prev: P) => composeUmbrella(prev, v), replace });
       },
       changeOrganization: (v: string) => {
-        navigate({ search: (prev: P) => composeOrganization(prev, v), replace });
+        navigateAny({ search: (prev: P) => composeOrganization(prev, v), replace });
       },
       changePublication: (v: string) => {
-        navigate({ search: (prev: P) => composePublication(prev, v), replace });
+        navigateAny({ search: (prev: P) => composePublication(prev, v), replace });
       },
       changeGrant: (v: string) => {
-        navigate({ search: (prev: P) => composeGrant(prev, v), replace });
+        navigateAny({ search: (prev: P) => composeGrant(prev, v), replace });
       },
       removeParam: (key: AnySearchParamsKey, v: string) => {
-        navigate({ search: (prev: P) => removeFromSearch(prev, key, v), replace });
+        navigateAny({ search: (prev: P) => removeFromSearch(prev, key, v), replace });
       },
     } satisfies UpdateSearchFunctions;
-  }, [navigate]);
+  }, [navigateAny]);
   return update;
 };
 

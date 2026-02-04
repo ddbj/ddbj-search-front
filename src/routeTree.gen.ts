@@ -198,7 +198,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/api-doc_': typeof ApiDoc_Route
   '/status': typeof StatusRoute
-  '/entry': typeof EntryIndexRoute
+  '/entry/': typeof EntryIndexRoute
   '/entry/bioproject/$identifier': typeof EntryBioprojectIdentifierRoute
   '/entry/biosample/$identifier': typeof EntryBiosampleIdentifierRoute
   '/entry/jga-dac/$identifier': typeof EntryJgaDacIdentifierRoute
@@ -211,18 +211,18 @@ export interface FileRoutesByFullPath {
   '/entry/sra-sample/$identifier': typeof EntrySraSampleIdentifierRoute
   '/entry/sra-study/$identifier': typeof EntrySraStudyIdentifierRoute
   '/entry/sra-submission/$identifier': typeof EntrySraSubmissionIdentifierRoute
-  '/entry/bioproject': typeof EntryBioprojectIndexRoute
-  '/entry/biosample': typeof EntryBiosampleIndexRoute
-  '/entry/jga-dac': typeof EntryJgaDacIndexRoute
-  '/entry/jga-dataset': typeof EntryJgaDatasetIndexRoute
-  '/entry/jga-policy': typeof EntryJgaPolicyIndexRoute
-  '/entry/jga-study': typeof EntryJgaStudyIndexRoute
-  '/entry/sra-analysis': typeof EntrySraAnalysisIndexRoute
-  '/entry/sra-experiment': typeof EntrySraExperimentIndexRoute
-  '/entry/sra-run': typeof EntrySraRunIndexRoute
-  '/entry/sra-sample': typeof EntrySraSampleIndexRoute
-  '/entry/sra-study': typeof EntrySraStudyIndexRoute
-  '/entry/sra-submission': typeof EntrySraSubmissionIndexRoute
+  '/entry/bioproject/': typeof EntryBioprojectIndexRoute
+  '/entry/biosample/': typeof EntryBiosampleIndexRoute
+  '/entry/jga-dac/': typeof EntryJgaDacIndexRoute
+  '/entry/jga-dataset/': typeof EntryJgaDatasetIndexRoute
+  '/entry/jga-policy/': typeof EntryJgaPolicyIndexRoute
+  '/entry/jga-study/': typeof EntryJgaStudyIndexRoute
+  '/entry/sra-analysis/': typeof EntrySraAnalysisIndexRoute
+  '/entry/sra-experiment/': typeof EntrySraExperimentIndexRoute
+  '/entry/sra-run/': typeof EntrySraRunIndexRoute
+  '/entry/sra-sample/': typeof EntrySraSampleIndexRoute
+  '/entry/sra-study/': typeof EntrySraStudyIndexRoute
+  '/entry/sra-submission/': typeof EntrySraSubmissionIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -294,7 +294,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/api-doc_'
     | '/status'
-    | '/entry'
+    | '/entry/'
     | '/entry/bioproject/$identifier'
     | '/entry/biosample/$identifier'
     | '/entry/jga-dac/$identifier'
@@ -307,18 +307,18 @@ export interface FileRouteTypes {
     | '/entry/sra-sample/$identifier'
     | '/entry/sra-study/$identifier'
     | '/entry/sra-submission/$identifier'
-    | '/entry/bioproject'
-    | '/entry/biosample'
-    | '/entry/jga-dac'
-    | '/entry/jga-dataset'
-    | '/entry/jga-policy'
-    | '/entry/jga-study'
-    | '/entry/sra-analysis'
-    | '/entry/sra-experiment'
-    | '/entry/sra-run'
-    | '/entry/sra-sample'
-    | '/entry/sra-study'
-    | '/entry/sra-submission'
+    | '/entry/bioproject/'
+    | '/entry/biosample/'
+    | '/entry/jga-dac/'
+    | '/entry/jga-dataset/'
+    | '/entry/jga-policy/'
+    | '/entry/jga-study/'
+    | '/entry/sra-analysis/'
+    | '/entry/sra-experiment/'
+    | '/entry/sra-run/'
+    | '/entry/sra-sample/'
+    | '/entry/sra-study/'
+    | '/entry/sra-submission/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -448,91 +448,91 @@ declare module '@tanstack/react-router' {
     '/entry/': {
       id: '/entry/'
       path: '/entry'
-      fullPath: '/entry'
+      fullPath: '/entry/'
       preLoaderRoute: typeof EntryIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/entry/sra-submission/': {
       id: '/entry/sra-submission/'
       path: '/entry/sra-submission'
-      fullPath: '/entry/sra-submission'
+      fullPath: '/entry/sra-submission/'
       preLoaderRoute: typeof EntrySraSubmissionIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/entry/sra-study/': {
       id: '/entry/sra-study/'
       path: '/entry/sra-study'
-      fullPath: '/entry/sra-study'
+      fullPath: '/entry/sra-study/'
       preLoaderRoute: typeof EntrySraStudyIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/entry/sra-sample/': {
       id: '/entry/sra-sample/'
       path: '/entry/sra-sample'
-      fullPath: '/entry/sra-sample'
+      fullPath: '/entry/sra-sample/'
       preLoaderRoute: typeof EntrySraSampleIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/entry/sra-run/': {
       id: '/entry/sra-run/'
       path: '/entry/sra-run'
-      fullPath: '/entry/sra-run'
+      fullPath: '/entry/sra-run/'
       preLoaderRoute: typeof EntrySraRunIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/entry/sra-experiment/': {
       id: '/entry/sra-experiment/'
       path: '/entry/sra-experiment'
-      fullPath: '/entry/sra-experiment'
+      fullPath: '/entry/sra-experiment/'
       preLoaderRoute: typeof EntrySraExperimentIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/entry/sra-analysis/': {
       id: '/entry/sra-analysis/'
       path: '/entry/sra-analysis'
-      fullPath: '/entry/sra-analysis'
+      fullPath: '/entry/sra-analysis/'
       preLoaderRoute: typeof EntrySraAnalysisIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/entry/jga-study/': {
       id: '/entry/jga-study/'
       path: '/entry/jga-study'
-      fullPath: '/entry/jga-study'
+      fullPath: '/entry/jga-study/'
       preLoaderRoute: typeof EntryJgaStudyIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/entry/jga-policy/': {
       id: '/entry/jga-policy/'
       path: '/entry/jga-policy'
-      fullPath: '/entry/jga-policy'
+      fullPath: '/entry/jga-policy/'
       preLoaderRoute: typeof EntryJgaPolicyIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/entry/jga-dataset/': {
       id: '/entry/jga-dataset/'
       path: '/entry/jga-dataset'
-      fullPath: '/entry/jga-dataset'
+      fullPath: '/entry/jga-dataset/'
       preLoaderRoute: typeof EntryJgaDatasetIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/entry/jga-dac/': {
       id: '/entry/jga-dac/'
       path: '/entry/jga-dac'
-      fullPath: '/entry/jga-dac'
+      fullPath: '/entry/jga-dac/'
       preLoaderRoute: typeof EntryJgaDacIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/entry/biosample/': {
       id: '/entry/biosample/'
       path: '/entry/biosample'
-      fullPath: '/entry/biosample'
+      fullPath: '/entry/biosample/'
       preLoaderRoute: typeof EntryBiosampleIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/entry/bioproject/': {
       id: '/entry/bioproject/'
       path: '/entry/bioproject'
-      fullPath: '/entry/bioproject'
+      fullPath: '/entry/bioproject/'
       preLoaderRoute: typeof EntryBioprojectIndexRouteImport
       parentRoute: typeof rootRouteImport
     }

@@ -32,7 +32,7 @@ function PageComponent() {
   const props = {
     entryType: dbTypes["sra-sample"],
     params: Route.useSearch(),
-    updateFunctions: useUpdateSearchFunctions(),
+    updateFunctions: useUpdateSearchFunctions(Route.useNavigate()),
     data,
   } satisfies ComponentProps<typeof SearchResultLayout>;
   return <SearchResultLayout {...props} />;

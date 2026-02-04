@@ -31,7 +31,7 @@ function PageComponent() {
   const props = {
     entryType: null,
     params: Route.useSearch(),
-    updateFunctions: useUpdateSearchFunctions(),
+    updateFunctions: useUpdateSearchFunctions(Route.useNavigate()),
     data,
   } satisfies ComponentProps<typeof SearchResultLayout>;
   return <SearchResultLayout {...props} />;
