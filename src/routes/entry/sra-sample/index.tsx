@@ -17,6 +17,8 @@ const makeQuery = (params: AnySearchParams) => {
   });
 };
 
+
+type SearchParams = ReturnType<typeof Route.useSearch>;
 export const Route = createFileRoute("/entry/sra-sample/")({
   component: PageComponent,
   validateSearch: zodValidator(sraSampleSearchSchema),
@@ -31,8 +33,8 @@ function PageComponent() {
 
   const props = {
     entryType: dbTypes["sra-sample"],
-    params: Route.useSearch(),
-    updateFunctions: useUpdateSearchFunctions<ReturnType<typeof Route.useSearch>>(Route.useNavigate()),
+    params: search,
+    updateFunctions: useUpdateSearchFunctions<SearchParams>(Route.useNavigate()),
     data,
   } satisfies ComponentProps<typeof SearchResultLayout>;
   return <SearchResultLayout {...props} />;

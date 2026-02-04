@@ -23,6 +23,7 @@ export const Route = createFileRoute("/entry/")({
   loader: async ({ context, deps }) => await context.queryClient.ensureQueryData(makeQuery(deps)),
 });
 
+type SearchParams = ReturnType<typeof Route.useSearch>;
 function PageComponent() {
   const search = Route.useSearch();
   const query = makeQuery(search);
@@ -30,10 +31,8 @@ function PageComponent() {
 
   const props = {
     entryType: null,
-    params: Route.useSearch(),
-    updateFunctions: useUpdateSearchFunctions<ReturnType<typeof Route.useSearch>>(
-      Route.useNavigate()
-    ),
+    params: search,
+    updateFunctions: useUpdateSearchFunctions<SearchParams>(Route.useNavigate()),
     data,
   } satisfies ComponentProps<typeof SearchResultLayout>;
   return <SearchResultLayout {...props} />;

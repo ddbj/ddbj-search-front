@@ -17,6 +17,8 @@ const makeQuery = (params: AnySearchParams) => {
   });
 };
 
+
+type SearchParams = ReturnType<typeof Route.useSearch>;
 export const Route = createFileRoute("/entry/jga-dac/")({
   component: PageComponent,
   validateSearch: zodValidator(jgaDacSearchSchema),
@@ -31,8 +33,8 @@ function PageComponent() {
 
   const props = {
     entryType: dbTypes["jga-dac"],
-    params: Route.useSearch(),
-    updateFunctions: useUpdateSearchFunctions<ReturnType<typeof Route.useSearch>>(Route.useNavigate()),
+    params: search,
+    updateFunctions: useUpdateSearchFunctions<SearchParams>(Route.useNavigate()),
     data,
   } satisfies ComponentProps<typeof SearchResultLayout>;
   return <SearchResultLayout {...props} />;
