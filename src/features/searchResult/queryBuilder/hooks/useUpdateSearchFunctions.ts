@@ -19,7 +19,6 @@ export type UpdateSearchFunctions = {
 };
 
 const replace = true;
-const from = "/";
 
 type P = AnySearchParams;
 
@@ -28,39 +27,39 @@ export const useUpdateSearchFunctions = (): UpdateSearchFunctions => {
   const update = useMemo(() => {
     return {
       moveToEntryRoot: (params: P) => {
-        navigate({ search: params, from, to: "/entry/" });
+        navigate({ search: params, to: "/entry/" });
       },
       moveToPage: (v: number) => {
-        navigate({ search: (prev) => composePageNumber(prev, v), from });
+        navigate({ search: (prev) => composePageNumber(prev, v) });
       },
       changeKeywords: (v: string[]) => {
         // console.log("changeKeywords", v);
-        navigate({ search: (prev: P) => composeKeywords(prev, v), replace, from });
+        navigate({ search: (prev: P) => composeKeywords(prev, v), replace });
       },
       setDBTypes: (v: DBType[]) => {
         // console.log("setDBTypes", v);
-        navigate({ search: (prev: P) => composeDBTypes(prev, v), replace, from });
+        navigate({ search: (prev: P) => composeDBTypes(prev, v), replace });
       },
       changeUpdated: (v: string) => {
-        navigate({ search: (prev: P) => composeUpdated(prev, v), replace, from });
+        navigate({ search: (prev: P) => composeUpdated(prev, v), replace });
       },
       changePublished: (v: string) => {
-        navigate({ search: (prev: P) => composePublished(prev, v), replace, from });
+        navigate({ search: (prev: P) => composePublished(prev, v), replace });
       },
       changeUmbrella: (v: boolean) => {
-        navigate({ search: (prev: P) => composeUmbrella(prev, v), replace, from });
+        navigate({ search: (prev: P) => composeUmbrella(prev, v), replace });
       },
       changeOrganization: (v: string) => {
-        navigate({ search: (prev: P) => composeOrganization(prev, v), replace, from });
+        navigate({ search: (prev: P) => composeOrganization(prev, v), replace });
       },
       changePublication: (v: string) => {
-        navigate({ search: (prev: P) => composePublication(prev, v), replace, from });
+        navigate({ search: (prev: P) => composePublication(prev, v), replace });
       },
       changeGrant: (v: string) => {
-        navigate({ search: (prev: P) => composeGrant(prev, v), replace, from });
+        navigate({ search: (prev: P) => composeGrant(prev, v), replace });
       },
       removeParam: (key: AnySearchParamsKey, v: string) => {
-        navigate({ search: (prev: P) => removeFromSearch(prev, key, v), replace, from });
+        navigate({ search: (prev: P) => removeFromSearch(prev, key, v), replace });
       },
     } satisfies UpdateSearchFunctions;
   }, [navigate]);
