@@ -2,10 +2,14 @@ import { isEqual } from "@ver0/deep-equal";
 import { useMemo } from "react";
 import type { DBType } from "@/consts/db.ts";
 import type { AnySearchParams, AnySearchParamsKey } from "@/schema/search/any.ts";
-import type { useNavigate } from "@tanstack/react-router";
+type NavigateLike<TSearch extends AnySearchParams> = (opts: {
+  search?: TSearch | ((prev: TSearch) => TSearch);
+  replace?: boolean;
+  to?: string;
+}) => void;
 
-export type UpdateSearchFunctions = {
-  moveToEntryRoot: (params: AnySearchParams) => void;
+export type UpdateSearchFunctions<TSearch extends AnySearchParams = AnySearchParams> = {
+  moveToEntryRoot: (params: TSearch) => void;
   moveToPage: (page: number) => void;
   changeKeywords: (v: string[]) => void;
   setDBTypes: (v: DBType[]) => void;
@@ -22,54 +26,51 @@ const replace = true;
 
 type P = AnySearchParams;
 
-export const useUpdateSearchFunctions = (
-  navigate: ReturnType<typeof useNavigate>
-): UpdateSearchFunctions => {
-  type NavigateLike = (opts: {
-    search?: AnySearchParams | ((prev: AnySearchParams) => AnySearchParams);
-    replace?: boolean;
-    to?: string;
-  }) => void;
-  const navigateAny = navigate as unknown as NavigateLike;
+export const useUpdateSearchFunctions = <TSearch extends AnySearchParams>(
+  navigate: NavigateLike<TSearch>
+): UpdateSearchFunctions<TSearch> => {
   const update = useMemo(() => {
     return {
-      moveToEntryRoot: (params: P) => {
-        navigateAny({ search: params, to: "/entry/" });
+      moveToEntryRoot: (params: TSearch) => {
+        navigate({ search: params, to: "/entry/" });
       },
       moveToPage: (v: number) => {
-        navigateAny({ search: (prev) => composePageNumber(prev, v) });
+        navigate({ search: (prev: TSearch) => composePageNumber(prev, v) as TSearch });
       },
       changeKeywords: (v: string[]) => {
         // console.log("changeKeywords", v);
-        navigateAny({ search: (prev: P) => composeKeywords(prev, v), replace });
+        navigate({ search: (prev: TSearch) => composeKeywords(prev, v) as TSearch, replace });
       },
       setDBTypes: (v: DBType[]) => {
         // console.log("setDBTypes", v);
-        navigateAny({ search: (prev: P) => composeDBTypes(prev, v), replace });
+        navigate({ search: (prev: TSearch) => composeDBTypes(prev, v) as TSearch, replace });
       },
       changeUpdated: (v: string) => {
-        navigateAny({ search: (prev: P) => composeUpdated(prev, v), replace });
+        navigate({ search: (prev: TSearch) => composeUpdated(prev, v) as TSearch, replace });
       },
       changePublished: (v: string) => {
-        navigateAny({ search: (prev: P) => composePublished(prev, v), replace });
+        navigate({ search: (prev: TSearch) => composePublished(prev, v) as TSearch, replace });
       },
       changeUmbrella: (v: boolean) => {
-        navigateAny({ search: (prev: P) => composeUmbrella(prev, v), replace });
+        navigate({ search: (prev: TSearch) => composeUmbrella(prev, v) as TSearch, replace });
       },
       changeOrganization: (v: string) => {
-        navigateAny({ search: (prev: P) => composeOrganization(prev, v), replace });
+        navigate({ search: (prev: TSearch) => composeOrganization(prev, v) as TSearch, replace });
       },
       changePublication: (v: string) => {
-        navigateAny({ search: (prev: P) => composePublication(prev, v), replace });
+        navigate({ search: (prev: TSearch) => composePublication(prev, v) as TSearch, replace });
       },
       changeGrant: (v: string) => {
-        navigateAny({ search: (prev: P) => composeGrant(prev, v), replace });
+        navigate({ search: (prev: TSearch) => composeGrant(prev, v) as TSearch, replace });
       },
       removeParam: (key: AnySearchParamsKey, v: string) => {
-        navigateAny({ search: (prev: P) => removeFromSearch(prev, key, v), replace });
+        navigate({
+          search: (prev: TSearch) => removeFromSearch(prev, key, v) as TSearch,
+          replace,
+        });
       },
-    } satisfies UpdateSearchFunctions;
-  }, [navigateAny]);
+    } satisfies UpdateSearchFunctions<TSearch>;
+  }, [navigate]);
   return update;
 };
 
