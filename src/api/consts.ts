@@ -4,4 +4,5 @@ export const tags = {
   searchResultList: "search result list",
   searchResultDetail: "search result detail",
   count: "count",
+  dbXref: "dbXref",
 };

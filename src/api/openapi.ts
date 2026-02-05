@@ -25,6 +25,7 @@ import { sraRunListRequestDoc } from "@/api/entries/sraRun.ts";
 import { sraSampleListRequestDoc } from "@/api/entries/sraSample.ts";
 import { sraStudyListRequestDoc } from "@/api/entries/sraStudy.ts";
 import { sraSubmissionListRequestDoc } from "@/api/entries/sraSubmission.ts";
+import { allDbXrefsRequestDoc } from "@/api/xrefs/allDbXrefs.ts";
 import { extendZod } from "@/utils/extendZod.ts";
 extendZod();
 
@@ -55,6 +56,7 @@ registry.registerPath(jgaStudyDetailRequestDoc);
 registry.registerPath(jgaPolicyDetailRequestDoc);
 registry.registerPath(jgaDacDetailRequestDoc);
 registry.registerPath(typeCountRequestDoc);
+registry.registerPath(allDbXrefsRequestDoc);
 
 export const getDocs = () => {
   const generator = new OpenApiGeneratorV31(registry.definitions);

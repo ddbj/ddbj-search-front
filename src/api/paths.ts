@@ -16,6 +16,7 @@ export const API_PATH_JGA_STUDY_LIST = `${BASE_API_PATH}entries/jga-study/`;
 export const API_PATH_JGA_POLICY_LIST = `${BASE_API_PATH}entries/jga-policy/`;
 export const API_PATH_JGA_DAC_LIST = `${BASE_API_PATH}entries/jga-dac/`;
 export const API_PATH_TYPE_COUNT = `${BASE_API_PATH}count/types/`;
+export const API_PATH_DB_XREF = `${BASE_API_PATH}db-xrefs/`;
 
 extendZod();
 
