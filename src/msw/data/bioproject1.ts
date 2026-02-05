@@ -15,7 +15,7 @@ export const bioproject1: BioProjectDetailResponse = {
   type: "bioproject",
   visibility: "Unrestricted",
   status: "public",
-  dbXref: [
+  dbXrefs: [
     {
       identifier: "GCA_000021045",
       type: "assemblies",
@@ -32,6 +32,10 @@ export const bioproject1: BioProjectDetailResponse = {
       url: "https://ddbj.nig.ac.jp/resource/biosample/SAMN02604349",
     },
   ],
+  dbXrefsCount: {
+    assemblies: 1,
+    biosample: 2,
+  },
   organization: [
     {
       organizationType: "center",

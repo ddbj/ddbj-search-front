@@ -50,6 +50,6 @@ export const parseResultCardProps = (res: EntryListResponse["items"][0]): Props 
     title: res.title,
     id: res.identifier,
     type: res.type,
-    relations: res.dbXrefs,
+    relations: res.dbXrefsCount,
   };
 };

@@ -24,7 +24,7 @@ export const getJgaDacList = http.get<JgaDacListRequestParams, {}, EntryListResp
             identifier: makeDummyIdentifier(type),
             type,
             title: "Data Access Committee for controlled genomic data",
-            dbXrefs: { "jga-dataset": 10, "jga-study": 4, "jga-policy": 2 },
+            dbXrefsCount: { "jga-dataset": 10, "jga-study": 4, "jga-policy": 2 },
             datePublished: "2023-04-15",
           };
         }),

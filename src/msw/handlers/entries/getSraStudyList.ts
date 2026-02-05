@@ -24,7 +24,7 @@ export const getSraStudyList = http.get<SraStudyListRequestParams, {}, EntryList
             identifier: makeDummyIdentifier(type),
             type,
             title: "Whole genome sequencing of microbial community",
-            dbXrefs: { "sra-experiment": 6, "sra-run": 12, biosample: 3, bioproject: 1 },
+            dbXrefsCount: { "sra-experiment": 6, "sra-run": 12, biosample: 3, bioproject: 1 },
             datePublished: "2023-04-15",
           };
         }),

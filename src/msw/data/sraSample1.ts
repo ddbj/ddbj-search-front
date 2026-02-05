@@ -20,7 +20,7 @@ export const sraSample1: SraSampleDetailResponse = {
   dateModified: "2021-09-27T14:01:30Z",
   title: "pneuDEEP7565425",
   type: "sra-sample",
-  dbXref: [
+  dbXrefs: [
     {
       identifier: "PRJEB22771",
       type: "bioproject",
@@ -52,6 +52,14 @@ export const sraSample1: SraSampleDetailResponse = {
       url: "https://ddbj.nig.ac.jp/resource/sra-study/ERP104475",
     },
   ],
+  dbXrefsCount: {
+    bioproject: 1,
+    biosample: 1,
+    "sra-submission": 1,
+    "sra-experiment": 1,
+    "sra-run": 1,
+    "sra-study": 1,
+  },
   datePublished: "2020-02-15T02:48:42Z",
   dateCreated: "2020-02-14T02:09:50Z",
   properties: {

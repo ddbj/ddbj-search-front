@@ -24,7 +24,7 @@ export const getJgaDatasetList = http.get<JgaDatasetListRequestParams, {}, Entry
             identifier: makeDummyIdentifier(type),
             type,
             title: "Human genomic dataset for disease association study",
-            dbXrefs: { "jga-study": 1, "jga-policy": 1, "jga-dac": 1 },
+            dbXrefsCount: { "jga-study": 1, "jga-policy": 1, "jga-dac": 1 },
             datePublished: "2023-04-15",
           };
         }),

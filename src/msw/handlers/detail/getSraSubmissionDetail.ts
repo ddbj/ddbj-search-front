@@ -23,7 +23,8 @@ export const getSraSubmissionDetail = http.get<
     type: "sra-submission",
     visibility: "Unrestricted",
     status: "public",
-    dbXref: [],
+    dbXrefs: [],
+    dbXrefsCount: {},
     properties: {},
     downloadUrl: null,
   });

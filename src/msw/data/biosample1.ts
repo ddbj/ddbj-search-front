@@ -14,7 +14,7 @@ export const biosample1: BioSampleDetailResponse = {
   description: "",
   visibility: "Unrestricted",
   status: "public",
-  dbXref: [
+  dbXrefs: [
     {
       identifier: "SRS13979220",
       type: "sra-sample",
@@ -31,6 +31,11 @@ export const biosample1: BioSampleDetailResponse = {
       url: "https://ddbj.nig.ac.jp/search/entry/bioproject/PRJNA860307",
     },
   ],
+  dbXrefsCount: {
+    "sra-sample": 1,
+    "geo-sample": 1,
+    bioproject: 1,
+  },
   properties: {
     Status: {
       when: "2023-06-15T00:40:25.483",

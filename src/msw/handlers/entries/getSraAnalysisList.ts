@@ -24,7 +24,7 @@ export const getSraAnalysisList = http.get<SraAnalysisListRequestParams, {}, Ent
             identifier: makeDummyIdentifier(type),
             type,
             title: "Reference alignment analysis for genomic study",
-            dbXrefs: { "sra-study": 1, "sra-sample": 2, biosample: 1, bioproject: 1 },
+            dbXrefsCount: { "sra-study": 1, "sra-sample": 2, biosample: 1, bioproject: 1 },
             datePublished: "2023-04-15",
           };
         }),

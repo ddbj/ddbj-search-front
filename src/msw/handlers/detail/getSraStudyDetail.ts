@@ -21,7 +21,8 @@ export const getSraStudyDetail = http.get<BaseDetailRequestParams, never, SraStu
       type: "sra-study",
       visibility: "Unrestricted",
       status: "public",
-      dbXref: [],
+      dbXrefs: [],
+      dbXrefsCount: {},
       properties: {},
       downloadUrl: null,
     });

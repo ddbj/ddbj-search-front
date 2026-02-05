@@ -24,7 +24,7 @@ export const getJgaStudyList = http.get<JgaStudyListRequestParams, {}, EntryList
             identifier: makeDummyIdentifier(type),
             type,
             title: "Genome-wide association study of complex diseases",
-            dbXrefs: { "jga-dataset": 3, "jga-policy": 1, "jga-dac": 1 },
+            dbXrefsCount: { "jga-dataset": 3, "jga-policy": 1, "jga-dac": 1 },
             datePublished: "2023-04-15",
           };
         }),

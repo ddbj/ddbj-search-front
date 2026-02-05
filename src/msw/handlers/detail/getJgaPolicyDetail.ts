@@ -21,7 +21,8 @@ export const getJgaPolicyDetail = http.get<BaseDetailRequestParams, never, JgaPo
       type: "jga-policy",
       visibility: "Unrestricted",
       status: "public",
-      dbXref: [],
+      dbXrefs: [],
+      dbXrefsCount: {},
       properties: {},
       downloadUrl: null,
     });

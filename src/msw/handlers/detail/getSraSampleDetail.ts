@@ -21,7 +21,8 @@ export const getSraSampleDetail = http.get<BaseDetailRequestParams, never, SraSa
       type: "sra-sample",
       visibility: "Unrestricted",
       status: "public",
-      dbXref: [],
+      dbXrefs: [],
+      dbXrefsCount: {},
       properties: {},
       downloadUrl: null,
     });

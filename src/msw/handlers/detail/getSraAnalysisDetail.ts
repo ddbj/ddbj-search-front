@@ -23,7 +23,8 @@ export const getSraAnalysisDetail = http.get<
     type: "sra-analysis",
     visibility: "Unrestricted",
     status: "public",
-    dbXref: [],
+    dbXrefs: [],
+    dbXrefsCount: {},
     properties: {},
     downloadUrl: null,
   });

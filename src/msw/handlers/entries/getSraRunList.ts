@@ -24,7 +24,7 @@ export const getSraRunList = http.get<SraRunListRequestParams, {}, EntryListResp
             identifier: makeDummyIdentifier(type),
             type,
             title: "Illumina HiSeq 2000 sequencing; GSM1234567: Sample 1",
-            dbXrefs: { "sra-experiment": 1, "sra-sample": 1, biosample: 1 },
+            dbXrefsCount: { "sra-experiment": 1, "sra-sample": 1, biosample: 1 },
             datePublished: "2023-04-15",
           };
         }),

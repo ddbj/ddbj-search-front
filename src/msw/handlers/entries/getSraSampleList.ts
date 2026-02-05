@@ -24,7 +24,7 @@ export const getSraSampleList = http.get<SraSampleListRequestParams, {}, EntryLi
             identifier: makeDummyIdentifier(type),
             type,
             title: "Sample from agricultural field experiment",
-            dbXrefs: { "sra-experiment": 2, biosample: 1, bioproject: 1 },
+            dbXrefsCount: { "sra-experiment": 2, biosample: 1, bioproject: 1 },
             datePublished: "2023-04-15",
           };
         }),

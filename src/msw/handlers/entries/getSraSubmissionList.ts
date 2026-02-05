@@ -24,7 +24,7 @@ export const getSraSubmissionList = http.get<SraSubmissionListRequestParams, {},
             identifier: makeDummyIdentifier(type),
             type,
             title: "Sequence Read Archive submission",
-            dbXrefs: { "sra-study": 1, "sra-experiment": 4, "sra-run": 8, biosample: 2 },
+            dbXrefsCount: { "sra-study": 1, "sra-experiment": 4, "sra-run": 8, biosample: 2 },
             datePublished: "2023-04-15",
           };
         }),
