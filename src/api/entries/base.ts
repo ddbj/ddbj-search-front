@@ -7,7 +7,7 @@ export const entryListItemResponseSchema = z.object({
   identifier: z.string(),
   type: z.string().openapi({ example: "bioproject" }),
   title: z.string().openapi({ example: "Draparnaldia sp. CCAC 6921, genomic data." }),
-  dbXrefs: z.record(z.string(), z.number()).openapi({
+  dbXrefsCount: z.record(z.string(), z.number()).openapi({
     example: { bioproject: 1, biosample: 1, "sra-study": 2 },
   }),
   datePublished: z.string().openapi({ example: "2013-05-31" }),

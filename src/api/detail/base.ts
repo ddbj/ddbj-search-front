@@ -23,7 +23,13 @@ export const baseDetailResponseSchema = z.object({
   type: z.string(),
   visibility: visibilitySchema,
   status: statusSchema,
-  dbXref: z.array(xrefSchema),
+  dbXrefs: z.array(xrefSchema).openapi({
+    description:
+      "To handle entries with a large number of refs, loaded refs are caped at n. <br> `dbXrefsCount` holds the total ref count in the DB, so compare as needed and fetch additional refs (refs-only) when required.",
+  }),
+  dbXrefsCount: z.record(z.string(), z.number()).openapi({
+    example: { bioproject: 1, biosample: 1, "sra-study": 2 },
+  }),
   downloadUrl: z.array(downloadUrlSchema).nullable(),
   properties: z.unknown(),
 });
