@@ -33,7 +33,7 @@ const Platform: FC<Props> = ({ data }) => {
   const properties = data.properties as SraExperimentProperties;
   const platform = properties.EXPERIMENT_SET?.EXPERIMENT?.PLATFORM ?? {};
   const obj = Object.entries(platform).reduce<Record<string, string>>((acc, [key, value]) => {
-    acc[key] = value.INSTRUMENT_MODEL || "";
+    acc[key] = value?.INSTRUMENT_MODEL || "";
     return acc;
   }, {});
   return (

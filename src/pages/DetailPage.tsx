@@ -12,8 +12,15 @@ export const DetailPage: FC<Props> = ({}) => {
   const data = useLoaderData<any, any, any>({
     strict: false,
     select: (d) => d,
-  }) as ElasticSearchSource;
+  }) as ElasticSearchSource | undefined;
   useTitle(data);
+  if (!data) {
+    return (
+      <main className={"p-6"}>
+        <p>Loading...</p>
+      </main>
+    );
+  }
   return (
     <main className={"p-6"}>
       <nav className={"flex gap-x-3 text-lg"}>

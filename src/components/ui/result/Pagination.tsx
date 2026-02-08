@@ -22,7 +22,7 @@ export const Pagination: FC<Props> = ({ current, total, setPage }) => {
       />
       {pages.map((group, index) => {
         return (
-          <>
+          <React.Fragment key={index}>
             {index > 0 && <span>...</span>}
             {group.map((page) => (
               <Button
@@ -33,7 +33,7 @@ export const Pagination: FC<Props> = ({ current, total, setPage }) => {
                 setPage={setPage}
               />
             ))}
-          </>
+          </React.Fragment>
         );
       })}
       <Button

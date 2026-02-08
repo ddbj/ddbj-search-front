@@ -24,7 +24,7 @@ export const SearchResultCard: FC<Props> = ({ item }) => {
         [dbXref.type]: (result[dbXref.type] || 0) + 1,
       }),
       {}
-    ) ?? []
+    )
   ).map(([type, count]) => ({ type, count }));
 
   return (
@@ -114,8 +114,8 @@ const DatePublished: FC<TailwindElementProps & { datePublished: string }> = ({
     <div className={clsx("flex gap-2 whitespace-nowrap text-sm", className)}>
       <span>Published at</span>
       <time className="flex gap-2" dateTime={datePublished}>
-        <span>{format(datePublished, "MM/dd/yyyy")}</span>
-        <span>{format(datePublished, "p")}</span>
+        <span>{format(new Date(datePublished), "MM/dd/yyyy")}</span>
+        <span>{format(new Date(datePublished), "p")}</span>
       </time>
     </div>
   );

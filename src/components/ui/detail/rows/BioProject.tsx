@@ -77,7 +77,7 @@ const Grant: FC<Props> = ({ data }) => {
   if (!grants) return <Row dd={"grant"} />;
   const inner = grants.map((grant) => {
     const title = grant.title || grant.id || "Granted";
-    const agency = grant.agency.map((a) => a.name || a.abbreviation).join(", ");
+    const agency = (grant.agency ?? []).map((a) => a.name || a.abbreviation).join(", ");
     const result = `${title} by ${agency}`;
     return <li key={grant.id}>{result}</li>;
   });

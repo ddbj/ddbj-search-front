@@ -8,8 +8,13 @@ export const fetchDetail = async (type: string, id: string): Promise<ElasticSear
     headers: {
       "Content-Type": "application/json",
     },
-  }).catch(() => {});
-  const data: SingleSearchElasticsearchResponse = await res?.json();
-  if (!data) throw new Error("Failed to fetch data");
+  });
+  if (!res.ok) {
+    throw new Error(`Failed to fetch ${type}/${id}: ${res.status} ${res.statusText}`);
+  }
+  const data: SingleSearchElasticsearchResponse = await res.json();
+  if (!data?._source) {
+    throw new Error(`Entry not found: ${type}/${id}`);
+  }
   return data._source;
 };
