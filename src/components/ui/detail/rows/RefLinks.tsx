@@ -21,11 +21,7 @@ export const RefLinks: FC<Props> = ({ refs, title }) => {
           </dt>
           <dd className={"grid grow grid-cols-auto-fill-100 gap-x-3"}>
             {refs.map((ref) => {
-              const reg = new RegExp("(.*)(ddbj.nig.ac.jp/)(.*)(resource/)(.*)");
-              const result = reg.exec(ref.url);
-              const isExternal = !result;
-              const rest = result ? (result[5] ?? "") : "";
-              const linkText = isExternal ? ref.url : `/search/entry/${rest}`;
+              const { linkText, isExternal } = handleRefLink(ref.url);
               return (
                 <LinkText key={ref.identifier} href={linkText} external={isExternal}>
                   {ref.identifier}
@@ -42,3 +38,12 @@ export const RefLinks: FC<Props> = ({ refs, title }) => {
     </Row>
   );
 };
+
+const handleRefLink = (url: string): { linkText: string; isExternal: boolean } => {
+  const UrlObj = new URL(url);
+  const isExternal = UrlObj.host !== "ddbj.nig.ac.jp";
+  const linkText = isExternal ? url : UrlObj.pathname.replace("/resource/", "/search/entry/");
+  return { linkText, isExternal };
+};
+
+export const __TEST__REF_LINKS__ = { handleRefLink };
