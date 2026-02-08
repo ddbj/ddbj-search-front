@@ -6,9 +6,9 @@ export const biosample1: BioSample = {
     identifier: "9606",
     name: "Homo sapiens",
   },
-  visibility: "unrestricted-access",
+  accessibility: "public-access",
   description: "",
-  dbXref: [],
+  dbXrefs: [],
   dateModified: "2023-06-15T02:00:46.693",
   distribution: [
     {
@@ -197,5 +197,5 @@ export const biosample1: BioSample = {
       url: "https://ddbj.nig.ac.jp/resource/sra-sample/SRS13979220",
     },
   ],
-  status: "public",
+  status: "live",
 };

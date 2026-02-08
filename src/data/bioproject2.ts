@@ -7,10 +7,10 @@ export const bioproject2: BioProject = {
     identifier: "410658",
     name: "soil metagenome",
   },
-  visibility: "unrestricted-access",
+  accessibility: "public-access",
   externalLink: [],
   description: "NSF TUES grant for research and bioinformatics in the classroom",
-  dbXref: [
+  dbXrefs: [
     {
       identifier: "SAMN04516587",
       type: "biosample",
@@ -353,5 +353,5 @@ export const bioproject2: BioProject = {
     },
   },
   sameAs: [],
-  status: "public",
+  status: "live",
 };

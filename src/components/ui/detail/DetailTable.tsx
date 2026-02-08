@@ -41,13 +41,13 @@ export const DetailTable: FC<Props> = ({ data }) => {
             <SraSample data={data} />
             <SraExperiment data={data} />
             <Properties title={"properties"} codeObj={data.properties} />
-            <RefLinks refs={getDbXrefs(data)} title={"dbXref"} />
+            <RefLinks refs={getDbXrefs(data)} title={"dbXrefs"} />
 
             {/*{renderDistribution(data)}*/}
 
             <DownloadLinks data={data} />
             <Row dd={"status"}>{data.status}</Row>
-            <Row dd={"visibility"}>{data.visibility}</Row>
+            <Row dd={"accessibility"}>{data.accessibility}</Row>
             <Row dd={"dateCreated"}>{data.dateCreated}</Row>
             <Row dd={"dateModified"}>{data.dateModified}</Row>
             <Row dd={"datePublished"}>{data.datePublished}</Row>

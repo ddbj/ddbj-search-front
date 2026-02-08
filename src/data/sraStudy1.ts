@@ -3,16 +3,7 @@ import { ElasticSearchSource } from "@/types/api.ts";
 export const sraStudy1: ElasticSearchSource = {
   identifier: "SRP353772",
   organism: null,
-  visibility: "unrestricted-access",
-  downloadUrl: [
-    {
-      name: "SRA1352854.study.xml",
-      ftpUrl:
-        "ftp://ftp.ddbj.nig.ac.jp/ddbj_database/dra/fastq/SRA135/SRA1352854/SRA1352854.study.xml",
-      type: "meta",
-      url: "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/SRA135/SRA1352854/SRA1352854.study.xml",
-    },
-  ],
+  accessibility: "public-access",
   description: null,
   dateModified: "2022-02-01T09:00:51Z",
   title: "gut microbiota sequencing",
@@ -30,7 +21,7 @@ export const sraStudy1: ElasticSearchSource = {
       type: "DataDownload",
     },
   ],
-  dbXref: [
+  dbXrefs: [
     {
       identifier: "PRJNA794982",
       type: "bioproject",
@@ -406,32 +397,6 @@ export const sraStudy1: ElasticSearchSource = {
   datePublished: "2022-02-01T09:00:51Z",
   dateCreated: "2022-01-06T17:06:07Z",
   name: "PRJNA794982",
-  dbXrefsStatistics: [
-    {
-      count: 1,
-      type: "bioproject",
-    },
-    {
-      count: 18,
-      type: "sra-run",
-    },
-    {
-      count: 1,
-      type: "sra-submission",
-    },
-    {
-      count: 18,
-      type: "biosample",
-    },
-    {
-      count: 18,
-      type: "sra-sample",
-    },
-    {
-      count: 18,
-      type: "sra-experiment",
-    },
-  ],
   properties: {
     DESCRIPTOR: {
       STUDY_TYPE: {
@@ -464,5 +429,5 @@ export const sraStudy1: ElasticSearchSource = {
       url: "https://ddbj.nig.ac.jp/resource/bioproject/PRJNA794982",
     },
   ],
-  status: "public",
+  status: "live",
 };

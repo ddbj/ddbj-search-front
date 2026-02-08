@@ -1,4 +1,4 @@
-import { __Organism, Xref, Distribution } from "@/types/api.ts";
+import { Organism, Xref, Distribution } from "@/types/api.ts";
 
 export type JgaDac = {
   type: "jga-dac";
@@ -7,14 +7,15 @@ export type JgaDac = {
   dateCreated: string;
   datePublished: string | null;
   dateModified: string;
-  visibility: string;
+  accessibility: string;
   status: string;
   isPartOf: string;
   url: string;
   distribution: Distribution[];
   properties: unknown;
-  dbXref: Xref[];
-  //--------------------------------
-  // not contained in BioSample and BioProject
-  organism: __Organism | null;
+  dbXrefs: Xref[];
+  sameAs: Xref[] | null;
+  description: string | null;
+  title: string | null;
+  organism: Organism | null;
 };

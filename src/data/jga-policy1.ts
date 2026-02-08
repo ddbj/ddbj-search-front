@@ -3,11 +3,10 @@ import { ElasticSearchSource } from "@/types/api.ts";
 export const jgaPolicy1: ElasticSearchSource = {
   identifier: "JGAP000003",
   organism: {
-    identifier: 9606,
+    identifier: "9606",
     name: "Homo sapiens",
   },
-  visibility: "unrestricted-access",
-  downloadUrl: null,
+  accessibility: "public-access",
   description: "Company User Limit",
   dateModified: "2020-09-24T07:30:48+09:00",
   title: "Company User Limit",
@@ -25,7 +24,7 @@ export const jgaPolicy1: ElasticSearchSource = {
       type: "DataDownload",
     },
   ],
-  dbXref: [
+  dbXrefs: [
     {
       identifier: "JGAD000024",
       type: "jga-dataset",
@@ -201,20 +200,6 @@ export const jgaPolicy1: ElasticSearchSource = {
   datePublished: "2020-09-25T06:52:15+09:00",
   dateCreated: "2014-12-11T05:04:49+09:00",
   name: "JGAP000003",
-  dbXrefsStatistics: [
-    {
-      count: 16,
-      type: "jga-study",
-    },
-    {
-      count: 17,
-      type: "jga-dataset",
-    },
-    {
-      count: 1,
-      type: "jga-dac",
-    },
-  ],
   properties: {
     POLICY_TEXT: "Company User Limit",
     center_name: "nbdc",
@@ -239,5 +224,5 @@ export const jgaPolicy1: ElasticSearchSource = {
     accession: "JGAP000003",
   },
   sameAs: null,
-  status: "public",
+  status: "live",
 };

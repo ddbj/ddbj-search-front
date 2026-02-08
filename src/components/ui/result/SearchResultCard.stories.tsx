@@ -15,7 +15,7 @@ export const Primary: Story = {
         identifier: "9606",
         name: null,
       },
-      visibility: "controlled-access",
+      accessibility: "controlled-access",
       description: null,
       dateModified: "2019-07-04T01:38:58Z",
       title:
@@ -35,7 +35,7 @@ export const Primary: Story = {
         },
       ],
       attributes: [],
-      dbXref: [],
+      dbXrefs: [],
       url: "https://ddbj.nig.ac.jp/resource/biosample/SAMN04070198",
       datePublished: "2015-09-12T04:12:48Z",
       dateCreated: "2015-09-12T04:12:48Z",
@@ -212,7 +212,7 @@ export const Primary: Story = {
         },
       },
       sameAs: null,
-      status: "public",
+      status: "live",
       package: {
         display_name: "Generic",
         name: "Generic",

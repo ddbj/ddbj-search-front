@@ -4,11 +4,11 @@ import { BioProject } from "@/types/BioProject.ts";
 export const bioproject2: BioProject = {
   identifier: "PRJNA121",
   organism: null,
-  visibility: "unrestricted-access",
+  accessibility: "public-access",
   externalLink: [],
   description:
     "Barley mapping data is being maintained by GrainGenes. Currently twenty-five maps are available at NCBI.",
-  dbXref: [
+  dbXrefs: [
     {
       identifier: "PRJNA161111",
       type: "bioproject",
@@ -426,5 +426,5 @@ export const bioproject2: BioProject = {
     },
   },
   sameAs: [],
-  status: "public",
+  status: "live",
 };

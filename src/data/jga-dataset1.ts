@@ -3,11 +3,10 @@ import { ElasticSearchSource } from "@/types/api.ts";
 export const jgaDataset1: ElasticSearchSource = {
   identifier: "JGAD000001",
   organism: {
-    identifier: 9606,
+    identifier: "9606",
     name: "Homo sapiens",
   },
-  visibility: "unrestricted-access",
-  downloadUrl: null,
+  accessibility: "public-access",
   description: "whole-exome sequencing data from 97 Japanese lung adenocarcinomapatients",
   dateModified: "2020-09-24T07:29:48+09:00",
   title: "whole-exome sequencing data from 97 Japanese lung adenocarcinomapatients",
@@ -25,7 +24,7 @@ export const jgaDataset1: ElasticSearchSource = {
       type: "DataDownload",
     },
   ],
-  dbXref: [
+  dbXrefs: [
     {
       identifier: "JGAP000002",
       type: "jga-policy",
@@ -46,20 +45,6 @@ export const jgaDataset1: ElasticSearchSource = {
   datePublished: "2020-09-28T02:03:50+09:00",
   dateCreated: "2014-07-18T01:37:12+09:00",
   name: "JSUB000002_Dataset_0001",
-  dbXrefsStatistics: [
-    {
-      count: 1,
-      type: "jga-study",
-    },
-    {
-      count: 1,
-      type: "jga-policy",
-    },
-    {
-      count: 1,
-      type: "jga-dac",
-    },
-  ],
   properties: {
     DATASET_TYPE: "Random exome sequencing",
     center_name: "Individual",
@@ -1038,5 +1023,5 @@ export const jgaDataset1: ElasticSearchSource = {
     },
   },
   sameAs: null,
-  status: "public",
+  status: "live",
 };

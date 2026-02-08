@@ -35,7 +35,7 @@ export const SearchResultCard: FC<Props> = ({ item }) => {
         {!isVisible && (
           <p className={"flex items-center gap-x-1 rounded bg-primary px-1"}>
             <LockIcon className={"w-3 fill-white"} />
-            <span className={"shrink-0 text-xs  text-white"}>{item.visibility}</span>
+            <span className={"shrink-0 text-xs  text-white"}>{item.accessibility}</span>
           </p>
         )}
       </div>

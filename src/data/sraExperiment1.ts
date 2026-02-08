@@ -3,16 +3,7 @@ import { ElasticSearchSource } from "@/types/api.ts";
 export const sraExperiment1: ElasticSearchSource = {
   identifier: "SRX15301329",
   organism: null,
-  visibility: "unrestricted-access",
-  downloadUrl: [
-    {
-      name: "SRA1421433.experiment.xml",
-      ftpUrl:
-        "ftp://ftp.ddbj.nig.ac.jp/ddbj_database/dra/fastq/SRA142/SRA1421433/SRA1421433.experiment.xml",
-      type: "meta",
-      url: "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/SRA142/SRA1421433/SRA1421433.experiment.xml",
-    },
-  ],
+  accessibility: "public-access",
   description: null,
   dateModified: "2022-05-20T04:02:21Z",
   title:
@@ -31,7 +22,7 @@ export const sraExperiment1: ElasticSearchSource = {
       type: "DataDownload",
     },
   ],
-  dbXref: [
+  dbXrefs: [
     {
       identifier: "SRA1421433",
       type: "sra-submission",
@@ -67,32 +58,6 @@ export const sraExperiment1: ElasticSearchSource = {
   datePublished: "2022-05-20T04:02:21Z",
   dateCreated: "2022-05-17T12:56:42Z",
   name: "GSM6160351_r1",
-  dbXrefsStatistics: [
-    {
-      count: 1,
-      type: "bioproject",
-    },
-    {
-      count: 1,
-      type: "sra-run",
-    },
-    {
-      count: 1,
-      type: "sra-submission",
-    },
-    {
-      count: 1,
-      type: "biosample",
-    },
-    {
-      count: 1,
-      type: "sra-study",
-    },
-    {
-      count: 1,
-      type: "sra-sample",
-    },
-  ],
   properties: {
     PLATFORM: {
       ILLUMINA: {
@@ -156,5 +121,5 @@ export const sraExperiment1: ElasticSearchSource = {
     },
   },
   sameAs: null,
-  status: "public",
+  status: "live",
 };

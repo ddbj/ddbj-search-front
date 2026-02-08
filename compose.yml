@@ -3,10 +3,17 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: ddbj-search-front
-    container_name: ddbj-search-front
+    container_name: ddbj-search-front-${DDBJ_SEARCH_ENV}
+    volumes:
+      - .:/app:rw
+      - node_modules:/app/node_modules
+      - pnpm-store:/app/.pnpm-store
+    environment:
+      TZ: ${TZ:-Asia/Tokyo}
+      DDBJ_SEARCH_ENV: ${DDBJ_SEARCH_ENV}
+      DDBJ_SEARCH_BASE_URL: ${DDBJ_SEARCH_BASE_URL}
     working_dir: /app
-    command: ["pnpm", "run", "preview"]
+    command: ${DDBJ_SEARCH_FRONT_COMMAND}
     networks:
       - ddbj-search-network
     init: true
@@ -17,5 +24,11 @@ services:
 
 networks:
   ddbj-search-network:
-    name: ddbj-search-network
+    name: ddbj-search-network-${DDBJ_SEARCH_ENV}
     external: true
+
+volumes:
+  node_modules:
+    driver: local
+  pnpm-store:
+    driver: local

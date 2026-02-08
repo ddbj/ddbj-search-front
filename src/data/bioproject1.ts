@@ -7,7 +7,7 @@ export const bioproject1: BioProject = {
     identifier: "322710",
     name: "Azotobacter vinelandii DJ",
   },
-  visibility: "unrestricted-access",
+  accessibility: "public-access",
   externalLink: [
     {
       label: "Azotobacter Org",
@@ -24,7 +24,7 @@ export const bioproject1: BioProject = {
   ],
   description:
     "<P><B><I>Azotobacter vinelandii</B></I>. This organism will provide information on the proteins involved in nitrogen fixation and the production of PHB and alginate.",
-  dbXref: [
+  dbXrefs: [
     {
       identifier: "GCA_000021045",
       type: "assemblies",
@@ -543,5 +543,5 @@ export const bioproject1: BioProject = {
     },
   },
   sameAs: [],
-  status: "public",
+  status: "live",
 };

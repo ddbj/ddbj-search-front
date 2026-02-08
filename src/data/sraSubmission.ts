@@ -3,15 +3,7 @@ import { ElasticSearchSource } from "@/types/api.ts";
 export const sraSubmission: ElasticSearchSource = {
   identifier: "SRA174011",
   organism: null,
-  visibility: "unrestricted-access",
-  downloadUrl: [
-    {
-      name: "Submitted metadata",
-      ftpUrl: "ftp://ftp.ddbj.nig.ac.jp/ddbj_database/dra/fastq/SRA174/SRA174011",
-      type: "meta",
-      url: "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/SRA174/SRA174011",
-    },
-  ],
+  accessibility: "public-access",
   description: null,
   dateModified: "2022-07-02T15:14:43Z",
   title: null,
@@ -29,7 +21,7 @@ export const sraSubmission: ElasticSearchSource = {
       type: "DataDownload",
     },
   ],
-  dbXref: [
+  dbXrefs: [
     {
       identifier: "PRJNA230968",
       type: "bioproject",
@@ -65,32 +57,6 @@ export const sraSubmission: ElasticSearchSource = {
   datePublished: "2014-07-02T22:19:07Z",
   dateCreated: "2014-07-02T22:19:07Z",
   name: "CFSAN008502_01",
-  dbXrefsStatistics: [
-    {
-      count: 1,
-      type: "bioproject",
-    },
-    {
-      count: 1,
-      type: "sra-run",
-    },
-    {
-      count: 1,
-      type: "biosample",
-    },
-    {
-      count: 1,
-      type: "sra-study",
-    },
-    {
-      count: 1,
-      type: "sra-sample",
-    },
-    {
-      count: 1,
-      type: "sra-experiment",
-    },
-  ],
   properties: {
     center_name: "CFSAN",
     alias: "CFSAN008502_01",
@@ -99,5 +65,5 @@ export const sraSubmission: ElasticSearchSource = {
     submission_comment: "GenomeTrakr pathogen sampling project",
   },
   sameAs: null,
-  status: "public",
+  status: "live",
 };

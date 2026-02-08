@@ -9,7 +9,7 @@ export type BioSample = {
   dateCreated: string;
   datePublished: string | null;
   dateModified: string;
-  visibility: string;
+  accessibility: string;
   status: string;
   isPartOf: string;
   url: string;
@@ -18,7 +18,7 @@ export type BioSample = {
   sameAs: Xref[] | null;
   description: string | null;
   title: string | null;
-  dbXref: Xref[] | null;
+  dbXrefs: Xref[] | null;
   //--------------------------------
   // Same as bioSample but not in BaseDataSet
   organism: Organism | null;

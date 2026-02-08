@@ -3,28 +3,7 @@ import { ElasticSearchSource } from "@/types/api.ts";
 export const sraRun1: ElasticSearchSource = {
   identifier: "SRR885622",
   organism: null,
-  visibility: "controlled-access",
-  downloadUrl: [
-    {
-      name: "SRA088679.run.xml",
-      ftpUrl: "ftp://ftp.ddbj.nig.ac.jp/ddbj_database/dra/fastq/SRA088/SRA088679/SRA088679.run.xml",
-      type: "meta",
-      url: "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/SRA088/SRA088679/SRA088679.run.xml",
-    },
-    {
-      name: "SRR885622.sra",
-      ftpUrl:
-        "ftp://ftp.ddbj.nig.ac.jp/ddbj_database/dra/sralite/ByExp/litesra/SRX/SRX296/SRX296737/SRR885622/SRR885622.sra",
-      type: "sra",
-      url: "https://ddbj.nig.ac.jp/public/ddbj_database/dra/sralite/ByExp/litesra/SRX/SRX296/SRX296737/SRR885622/SRR885622.sra",
-    },
-    {
-      name: "SRR885622's fastq",
-      ftpUrl: "ftp://ftp.ddbj.nig.ac.jp/ddbj_database/dra/fastq/SRA088/SRA088679/SRX296737",
-      type: "fastq",
-      url: "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/SRA088/SRA088679/SRX296737",
-    },
-  ],
+  accessibility: "controlled-access",
   description: null,
   dateModified: "2021-12-06T11:29:33Z",
   title: null,
@@ -42,7 +21,7 @@ export const sraRun1: ElasticSearchSource = {
       type: "DataDownload",
     },
   ],
-  dbXref: [
+  dbXrefs: [
     {
       identifier: "PRJNA206213",
       type: "bioproject",
@@ -78,32 +57,6 @@ export const sraRun1: ElasticSearchSource = {
   datePublished: "2014-07-04T04:32:28Z",
   dateCreated: "2013-06-06T01:17:08Z",
   name: "224302",
-  dbXrefsStatistics: [
-    {
-      count: 1,
-      type: "bioproject",
-    },
-    {
-      count: 1,
-      type: "sra-submission",
-    },
-    {
-      count: 1,
-      type: "biosample",
-    },
-    {
-      count: 1,
-      type: "sra-study",
-    },
-    {
-      count: 1,
-      type: "sra-sample",
-    },
-    {
-      count: 1,
-      type: "sra-experiment",
-    },
-  ],
   properties: {
     EXPERIMENT_REF: {
       refcenter: "WUGSC",
@@ -157,5 +110,5 @@ export const sraRun1: ElasticSearchSource = {
     accession: "SRR885622",
   },
   sameAs: null,
-  status: "public",
+  status: "live",
 };

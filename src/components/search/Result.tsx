@@ -40,7 +40,7 @@ export function Result() {
           "type",
           "organism",
           "datePublished",
-          "visibility",
+          "accessibility",
         ],
       }}
       renderResultStats={(stats) => {

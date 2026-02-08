@@ -3,11 +3,10 @@ import { JgaStudy } from "@/types/JgaStudy.ts";
 export const jgaStudy1: JgaStudy = {
   identifier: "JGAS000004",
   organism: {
-    identifier: 9606,
+    identifier: "9606",
     name: "Homo sapiens",
   },
-  visibility: "unrestricted-access",
-  downloadUrl: null,
+  accessibility: "public-access",
   description:
     "The treatment outcome of glioma patients remains disappointing, and more studies are needed to improve therapeutic strategies. In particular, it is crucial to understand the mechanisms underlying resistance to treatment and malignant transformation, as well as the intratumoral heterogeneity and interaction of tumor cells and host immunity. Recent advances in omics analysis techniques, such as next-generation sequencing (NGS), have enabled us to obtain omics data more easily and accelerated our ability to integrate this information and precisely characterize cases. In our project, we have already collected more than 100 pairs of human glioma/normal tissue samples, of which some are multiple specimens collected from initial and recurrent tumors, and some include multiple specimens collected from different regions within a single tumor. We used our in-house algorithms, composed of alignment and variant calling programs, to analyze omics data from multiple platforms, such as whole-exome sequencing (WES), RNA sequencing (RNA-seq), and methylation array, with our original cohort of glioma patients. Using several informatics tools, the information about genetic and epigenetic status and expression signatures were analyzed. Those data are expected to provide key information for investigating the mechanisms discussed above. Through this project, we hope to improve strategies for personalized therapy based on comprehensive omics data.",
   dateModified: "2020-09-24T07:29:49+09:00",
@@ -27,7 +26,7 @@ export const jgaStudy1: JgaStudy = {
       type: "DataDownload",
     },
   ],
-  dbXref: [
+  dbXrefs: [
     {
       identifier: "JGAD000004",
       type: "jga-dataset",
@@ -58,20 +57,6 @@ export const jgaStudy1: JgaStudy = {
   datePublished: "2020-09-28T02:15:20+09:00",
   dateCreated: "2014-09-08T08:23:12+09:00",
   name: "JSUB000007_Study_0001",
-  dbXrefsStatistics: [
-    {
-      count: 3,
-      type: "jga-dataset",
-    },
-    {
-      count: 1,
-      type: "jga-policy",
-    },
-    {
-      count: 1,
-      type: "jga-dac",
-    },
-  ],
   properties: {
     PUBLICATIONS: {
       PUBLICATION: [
@@ -146,5 +131,5 @@ export const jgaStudy1: JgaStudy = {
     },
   },
   sameAs: null,
-  status: "public",
+  status: "live",
 };

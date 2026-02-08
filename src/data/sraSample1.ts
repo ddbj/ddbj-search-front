@@ -3,19 +3,10 @@ import { ElasticSearchSource } from "@/types/api.ts";
 export const sraSample1: ElasticSearchSource = {
   identifier: "ERS2785606",
   organism: {
-    identifier: 1313,
+    identifier: "1313",
     name: "Streptococcus pneumoniae",
   },
-  visibility: "unrestricted-access",
-  downloadUrl: [
-    {
-      name: "ERA2380438.sample.xml",
-      ftpUrl:
-        "ftp://ftp.ddbj.nig.ac.jp/ddbj_database/dra/fastq/ERA238/ERA2380438/ERA2380438.sample.xml",
-      type: "meta",
-      url: "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/ERA238/ERA2380438/ERA2380438.sample.xml",
-    },
-  ],
+  accessibility: "public-access",
   description: null,
   dateModified: "2021-09-27T14:01:30Z",
   title: "pneuDEEP7565425",
@@ -33,7 +24,7 @@ export const sraSample1: ElasticSearchSource = {
       type: "DataDownload",
     },
   ],
-  dbXref: [
+  dbXrefs: [
     {
       identifier: "PRJEB22771",
       type: "bioproject",
@@ -69,32 +60,6 @@ export const sraSample1: ElasticSearchSource = {
   datePublished: "2020-02-15T02:48:42Z",
   dateCreated: "2020-02-14T02:09:50Z",
   name: "SAMEA4967388",
-  dbXrefsStatistics: [
-    {
-      count: 1,
-      type: "bioproject",
-    },
-    {
-      count: 1,
-      type: "sra-run",
-    },
-    {
-      count: 1,
-      type: "sra-submission",
-    },
-    {
-      count: 1,
-      type: "biosample",
-    },
-    {
-      count: 1,
-      type: "sra-study",
-    },
-    {
-      count: 1,
-      type: "sra-experiment",
-    },
-  ],
   properties: {
     SAMPLE_NAME: {
       TAXON_ID: 1313,
@@ -178,5 +143,5 @@ export const sraSample1: ElasticSearchSource = {
       url: "https://ddbj.nig.ac.jp/resource/biosample/SAMEA4967388",
     },
   ],
-  status: "public",
+  status: "live",
 };

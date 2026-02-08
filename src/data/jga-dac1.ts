@@ -3,10 +3,10 @@ import { ElasticSearchSource } from "@/types/api.ts";
 export const jgaDac1: ElasticSearchSource = {
   identifier: "JGAC000001",
   organism: {
-    identifier: 9606,
+    identifier: "9606",
     name: "Homo sapiens",
   },
-  visibility: "unrestricted-access",
+  accessibility: "public-access",
   dateModified: "2024-08-21T10:57:49+09:00",
   type: "jga-dac",
   isPartOf: "jga",
@@ -22,7 +22,7 @@ export const jgaDac1: ElasticSearchSource = {
       type: "DataDownload",
     },
   ],
-  dbXref: [
+  dbXrefs: [
     {
       identifier: "JGAS000001",
       type: "jga-study",
@@ -54,6 +54,9 @@ export const jgaDac1: ElasticSearchSource = {
       url: "https://ddbj.nig.ac.jp/search/resource/jga-policy/JGAP000012",
     },
   ],
+  sameAs: [],
+  description: null,
+  title: null,
   url: "https://ddbj.nig.ac.jp/search/resource/jga-dac/JGAC000001",
   datePublished: "2020-09-25T06:52:15+09:00",
   dateCreated: "2014-07-07T05:00:37+09:00",
@@ -81,5 +84,5 @@ export const jgaDac1: ElasticSearchSource = {
     },
     accession: "JGAC000001",
   },
-  status: "public",
+  status: "live",
 };

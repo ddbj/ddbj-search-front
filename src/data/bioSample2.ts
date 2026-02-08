@@ -6,9 +6,9 @@ export const biosample2: BioSample = {
     identifier: "749906",
     name: "gut metagenome",
   },
-  visibility: "unrestricted-access",
+  accessibility: "public-access",
   description: "Keywords: GSC:MIxS;MIMARKS:6.0",
-  dbXref: [],
+  dbXrefs: [],
   dateModified: "2023-02-14T02:16:02.387",
   distribution: [
     {
@@ -233,5 +233,5 @@ export const biosample2: BioSample = {
       url: "https://ddbj.nig.ac.jp/resource/sra-sample/SRS16750571",
     },
   ],
-  status: "public",
+  status: "live",
 };

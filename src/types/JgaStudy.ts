@@ -1,4 +1,4 @@
-import { __DbXrefsStatistics, __Organism, Xref, Distribution, DownloadUrl } from "@/types/api.ts";
+import { Organism, Xref, Distribution } from "@/types/api.ts";
 
 export type JgaStudy = {
   type: "jga-study";
@@ -7,23 +7,15 @@ export type JgaStudy = {
   dateCreated: string;
   datePublished: string | null;
   dateModified: string;
-  visibility: string;
+  accessibility: string;
   status: string;
   isPartOf: string;
   url: string;
   distribution: Distribution[];
   properties: unknown;
-  dbXref: Xref[];
-  //--------------------------------
-  // not contained in JgaDac but in BioSample and BioProject
+  dbXrefs: Xref[];
   sameAs: Xref[] | null;
   description: string | null;
   title: string | null;
-  //--------------------------------
-  // Unique to BaseDataSet
-  downloadUrl: DownloadUrl[] | null;
-  //--------------------------------
-  // not contained in BioSample and BioProject
-  organism: __Organism | null;
-  dbXrefsStatistics: __DbXrefsStatistics[];
+  organism: Organism | null;
 };

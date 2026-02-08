@@ -34,7 +34,8 @@ export default defineConfig(({ mode }) => ({
     port: 3000,
   },
   define: {
-    DDBJ_SEARCH_BASE_URL: JSON.stringify("https://ddbj.nig.ac.jp"),
-    // DDBJ_SEARCH_BASE_URL: JSON.stringify("https://ddbj-staging.nig.ac.jp"),
+    DDBJ_SEARCH_BASE_URL: JSON.stringify(
+      process.env.DDBJ_SEARCH_BASE_URL || "https://ddbj.nig.ac.jp"
+    ),
   },
 }));
