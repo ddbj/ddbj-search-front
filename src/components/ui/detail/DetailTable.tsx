@@ -14,6 +14,7 @@ import { RefLinks } from "@/components/ui/detail/rows/RefLinks.tsx";
 import { Row } from "@/components/ui/detail/rows/Shared.tsx";
 import { SraExperiment } from "@/components/ui/detail/rows/SraExperiment.tsx";
 import { SraSample } from "@/components/ui/detail/rows/SraSample.tsx";
+import { LockIcon } from "@/components/icon/lockIcon.tsx";
 import { ElasticSearchSource } from "@/types/api.ts";
 import { getDbXrefs, getSameAs } from "@/utils/apiWrappers.ts";
 
@@ -24,6 +25,8 @@ type Props = {
 };
 
 export const DetailTable: FC<Props> = ({ data }) => {
+  const isControlledAccess = data.accessibility === "controlled-access";
+
   return (
     <>
       <div className="overflow-hidden bg-white leading-normal shadow sm:rounded-lg ">
@@ -42,12 +45,18 @@ export const DetailTable: FC<Props> = ({ data }) => {
             <SraExperiment data={data} />
             <Properties title={"properties"} codeObj={data.properties} />
             <RefLinks refs={getDbXrefs(data)} title={"dbXrefs"} />
-
-            {/*{renderDistribution(data)}*/}
-
             <DownloadLinks data={data} />
             <Row dd={"status"}>{data.status}</Row>
-            <Row dd={"accessibility"}>{data.accessibility}</Row>
+            <Row dd={"accessibility"}>
+              {isControlledAccess ? (
+                <span className={"flex items-center gap-x-1"}>
+                  <LockIcon className={"w-4 fill-current"} />
+                  {data.accessibility}
+                </span>
+              ) : (
+                data.accessibility
+              )}
+            </Row>
             <Row dd={"dateCreated"}>{data.dateCreated}</Row>
             <Row dd={"dateModified"}>{data.dateModified}</Row>
             <Row dd={"datePublished"}>{data.datePublished}</Row>
@@ -57,17 +66,3 @@ export const DetailTable: FC<Props> = ({ data }) => {
     </>
   );
 };
-
-// const renderDistribution = (data: ElasticSearchSource) => {
-//   return (
-//     <Row dd={"distribution"}>
-//       <p className={"flex gap-x-2"}>
-//         {data.distribution.map((dist) => (
-//           <LinkText key={dist.encodingFormat} href={dist.contentUrl} external={true}>
-//             {dist.encodingFormat}
-//           </LinkText>
-//         ))}
-//       </p>
-//     </Row>
-//   );
-// };

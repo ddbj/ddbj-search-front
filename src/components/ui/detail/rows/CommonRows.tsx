@@ -4,24 +4,13 @@ import { LinkText, Row } from "@/components/ui/detail/rows/Shared.tsx";
 import { ElasticSearchSource } from "@/types/api.ts";
 
 export const CommonTitle: FC<{ data: ElasticSearchSource }> = ({ data }) => {
-  switch (data.type) {
-    case "bioproject":
-    case "biosample":
-    case "sra-experiment":
-      return <Row dd={"title"}>{parse(data.title || "")}</Row>;
-    default:
-      return null;
-  }
+  if (!data.title) return null;
+  return <Row dd={"title"}>{parse(data.title)}</Row>;
 };
 
 export const CommonDescription: FC<{ data: ElasticSearchSource }> = ({ data }) => {
-  switch (data.type) {
-    case "bioproject":
-    case "biosample":
-      return <Row dd={"description"}>{parse(data.description || "")}</Row>;
-    default:
-      return null;
-  }
+  if (!data.description) return null;
+  return <Row dd={"description"}>{parse(data.description)}</Row>;
 };
 
 export const Organism: FC<{ organism?: ElasticSearchSource["organism"] }> = ({ organism }) => {

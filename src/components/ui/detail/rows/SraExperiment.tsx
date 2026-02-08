@@ -21,14 +21,17 @@ export const SraExperiment: FC<Props> = ({ data }) => {
 const Descriptor: FC<Props> = ({ data }) => {
   if (data.type !== "sra-experiment") return <></>;
   const properties = data.properties as SraExperimentProperties;
-  const descriptor = JSON.stringify(properties.DESIGN.LIBRARY_DESCRIPTOR || "", null, 2);
+  const libraryDescriptor =
+    properties.EXPERIMENT_SET?.EXPERIMENT?.DESIGN?.LIBRARY_DESCRIPTOR;
+  if (!libraryDescriptor) return <Row dd={"library descriptor"} />;
+  const descriptor = JSON.stringify(libraryDescriptor, null, 2);
   return <Row dd={"library descriptor"}>{<PrettyJSON code={descriptor} />}</Row>;
 };
 
 const Platform: FC<Props> = ({ data }) => {
   if (data.type !== "sra-experiment") return <></>;
   const properties = data.properties as SraExperimentProperties;
-  const platform = properties.PLATFORM ?? {};
+  const platform = properties.EXPERIMENT_SET?.EXPERIMENT?.PLATFORM ?? {};
   const obj = Object.entries(platform).reduce<Record<string, string>>((acc, [key, value]) => {
     acc[key] = value.INSTRUMENT_MODEL || "";
     return acc;

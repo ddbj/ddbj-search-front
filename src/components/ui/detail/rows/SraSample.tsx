@@ -13,7 +13,8 @@ export const SraSample: FC<Props> = ({ data }) => {
 const Attributes: FC<Props> = ({ data }) => {
   if (data.type !== "sra-sample") return <></>;
   const properties = data.properties as SraSampleProperties;
-  const attributes = properties.SAMPLE_ATTRIBUTES?.SAMPLE_ATTRIBUTE ?? [];
+  const attributes =
+    properties.SAMPLE_SET?.SAMPLE?.SAMPLE_ATTRIBUTES?.SAMPLE_ATTRIBUTE ?? [];
   const obj = attributes.reduce<Record<string, string>>((acc, attr) => {
     acc[attr.TAG] = attr.VALUE;
     return acc;

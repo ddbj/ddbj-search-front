@@ -65,7 +65,7 @@ const Publication: FC<Props> = ({ data }) => {
         </li>
       );
     } else {
-      <li key={pub.id}>{title}</li>;
+      return <li key={pub.id}>{title}</li>;
     }
   });
   return (

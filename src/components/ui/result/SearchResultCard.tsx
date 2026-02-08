@@ -15,8 +15,7 @@ export const SearchResultCard: FC<Props> = ({ item }) => {
   const title = getTitle(item);
   const detailUrl = `./entry/${item.type}/${item.identifier}`;
   const refsCount = getDbXrefs(item).length;
-  // const isVisible = item.visibility.includes("unrestricted");
-  const isVisible = true;
+  const isControlledAccess = item.accessibility === "controlled-access";
 
   const groups: { type: string; count: number }[] = Object.entries(
     getDbXrefs(item).reduce<Record<string, number>>(
@@ -32,7 +31,7 @@ export const SearchResultCard: FC<Props> = ({ item }) => {
     <Wrapper href={detailUrl}>
       <div className={"flex justify-between"}>
         <Tags identifier={item.identifier} type={item.type} />
-        {!isVisible && (
+        {isControlledAccess && (
           <p className={"flex items-center gap-x-1 rounded bg-primary px-1"}>
             <LockIcon className={"w-3 fill-white"} />
             <span className={"shrink-0 text-xs  text-white"}>{item.accessibility}</span>
