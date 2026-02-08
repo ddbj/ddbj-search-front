@@ -29,46 +29,54 @@ const dateRangeCustomQuery = (value: any, props: any) => {
   return { query };
 };
 
-const queryCustomQuery = (value: any, props: any) => {
+// text 型フィールド（analyzed）のみ。keyword 型は cross_fields に混ぜられないため別クエリにする
+const SEARCH_TEXT_FIELDS = ["title^3", "name^2", "description^0.5"];
+
+const queryCustomQuery = (value: any) => {
   if (!value) return undefined;
+  const trimmed = String(value).trim();
+  if (!trimmed) return undefined;
 
   return {
     query: {
       bool: {
         should: [
+          // identifier: keyword 型 — 完全一致（最優先）
+          { term: { identifier: { value: trimmed, boost: 10 } } },
+          // identifier: keyword 型 — 前方一致（accession の部分入力に対応）
+          { prefix: { identifier: { value: trimmed, boost: 5 } } },
+          // organism.name: keyword 型 — 完全一致
+          { term: { "organism.name": { value: trimmed, boost: 2 } } },
+          // title: フレーズ一致ボーナス（語順が一致すれば高スコア）
+          { match_phrase: { title: { query: trimmed, boost: 5 } } },
+          // text フィールド横断検索（全キーワードがいずれかのフィールドに存在すれば一致）
           {
             multi_match: {
-              query: value,
-              fields: ["title", "description", "name"],
+              query: trimmed,
+              fields: SEARCH_TEXT_FIELDS,
               type: "cross_fields",
-              operator: "and"
-            }
+              operator: "and",
+            },
           },
+          // text フィールド: フレーズ一致（語順一致ボーナス）
           {
             multi_match: {
-              query: value,
-              fields: ["title", "description", "name"],
+              query: trimmed,
+              fields: SEARCH_TEXT_FIELDS,
               type: "phrase",
-              operator: "and"
-            }
+            },
           },
+          // text フィールド: 前方一致（入力途中の部分一致に対応）
           {
             multi_match: {
-              query: value,
-              fields: ["title", "description", "name"],
+              query: trimmed,
+              fields: SEARCH_TEXT_FIELDS,
               type: "phrase_prefix",
-              operator: "and"
-            }
-          },
-          {
-            term: { "identifier": value }
-          },
-          {
-            term: { "identifier.keyword": value }
+            },
           },
         ],
-        minimum_should_match: 1
-      }
+        minimum_should_match: 1,
+      },
     },
   };
 };
@@ -83,6 +91,7 @@ export const Conditions: FC = () => {
           "title",
           "description",
           "name",
+          "organism.name",
         ]}
         title={"Keyword"}
         filterLabel={"Keyword"}
@@ -90,8 +99,7 @@ export const Conditions: FC = () => {
         showFilter
         URLParams
         queryFormat="and"
-        fuzziness="AUTO"
-        debounce={100}
+        debounce={300}
         customQuery={queryCustomQuery}
         react={REACTIVE_SEARCH_PROPS_REACT}
       />

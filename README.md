@@ -6,20 +6,6 @@
 
 DDBJ Search Frontend は、BioProject / BioSample / SRA / JGA データを横断的に検索・閲覧するための React SPA。
 
-**主な機能:**
-
-- 全タイプ横断検索・タイプ別検索
-- エントリー詳細表示 (JSON / JSON-LD)
-- ReactiveSearch による Elasticsearch 連携
-
-**技術スタック:**
-
-- React 18 + TypeScript
-- Vite (build / dev server)
-- Tailwind CSS
-- ReactiveSearch
-- TanStack Router
-
 **関連プロジェクト:**
 
 - [ddbj-search](https://github.com/ddbj/ddbj-search) - nginx reverse proxy

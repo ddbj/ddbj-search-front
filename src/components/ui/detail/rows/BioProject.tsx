@@ -18,11 +18,7 @@ export const BioProject: FC<Props> = ({ data }) => {
 
 export const BioProjectUmbrellaProject: FC<Props> = ({ data }) => {
   if (data.type !== "bioproject") return <></>;
-  if (data.objectType === "UmbrellaBioProject") {
-    return <Row dd={"project type"}>Umbrella project</Row>;
-  } else {
-    return <Row dd={"project type"} />;
-  }
+  return <Row dd={"project type"}>{data.objectType}</Row>;
 };
 
 const Organization: FC<Props> = ({ data }) => {

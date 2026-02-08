@@ -12,6 +12,9 @@ services:
       TZ: ${TZ:-Asia/Tokyo}
       DDBJ_SEARCH_ENV: ${DDBJ_SEARCH_ENV}
       DDBJ_SEARCH_BASE_URL: ${DDBJ_SEARCH_BASE_URL}
+      DDBJ_SEARCH_FRONT_URL_PREFIX: ${DDBJ_SEARCH_FRONT_URL_PREFIX}
+    ports:
+      - 0.0.0.0:3000:3000
     working_dir: /app
     command: ${DDBJ_SEARCH_FRONT_COMMAND}
     networks:

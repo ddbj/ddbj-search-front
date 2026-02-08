@@ -7,6 +7,7 @@ import {
 } from "@tanstack/react-router";
 import { DetailPage } from "@/pages/DetailPage.tsx";
 import { IndexPage } from "@/pages/IndexPage.tsx";
+import { URL_PREFIX } from "@/constants.ts";
 import { fetchDetail } from "@/utils/fetchDetail.ts";
 
 const rootRoute = createRootRoute({
@@ -20,13 +21,13 @@ const rootRoute = createRootRoute({
 
 const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: "/search",
+  path: URL_PREFIX,
   component: IndexPage,
 });
 
 const entryRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: "/search/entry/$type/$id",
+  path: `${URL_PREFIX}/entry/$type/$id`,
   component: DetailPage,
   loader: async ({ params: { id, type } }) => fetchDetail(type, id),
 });

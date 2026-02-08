@@ -19,7 +19,5 @@ RUN pnpm install --frozen-lockfile
 
 COPY . .
 
-EXPOSE 3000
-
 ENTRYPOINT [""]
 CMD ["sleep", "infinity"]
