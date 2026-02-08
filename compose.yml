@@ -19,11 +19,11 @@ services:
     command: ${DDBJ_SEARCH_FRONT_COMMAND}
     networks:
       - ddbj-search-network
-    init: true
     ulimits:
       nofile:
         soft: 65535
         hard: 65535
+    init: true
 
 networks:
   ddbj-search-network:
