@@ -8,7 +8,10 @@ export const parseBaseParams = (params: AnySearchParams): BaseEntryListRequestPa
       ? { perPage: params.perPage.toFixed().toString() }
       : {}),
     ...(params.keywords && params.keywords.length ? { keywords: params.keywords.join(",") } : {}),
-    ...(params.datePublished ? { datePublished: params.datePublished } : {}),
-    ...(params.dateUpdated ? { dateUpdated: params.dateUpdated } : {}),
+    ...(params.datePublishedFrom ? { datePublishedFrom: params.datePublishedFrom } : {}),
+    ...(params.datePublishedTo ? { datePublishedTo: params.datePublishedTo } : {}),
+    ...(params.dateModifiedFrom ? { dateModifiedFrom: params.dateModifiedFrom } : {}),
+    ...(params.dateModifiedTo ? { dateModifiedTo: params.dateModifiedTo } : {}),
+    ...{ includeFacets: false, includeProperties: false, dbXrefsLimit: 0 },
   } satisfies BaseEntryListRequestParams;
 };

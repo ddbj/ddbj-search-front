@@ -16,7 +16,3 @@ export type AnySearchParamsKey = z.infer<typeof anySearchKeySchema>;
 export const isAnySearchParamsKey = (x: unknown): x is AnySearchParamsKey => {
   return anySearchKeySchema.safeParse(x).success;
 };
-
-const hoge: AnySearchParams = {
-  grant: "",
-};

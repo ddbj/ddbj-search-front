@@ -9,59 +9,87 @@ const expectKeyNotExists = (
   expect(key in result).toBe(false);
 };
 
+const expectDefault = (result: BaseEntryListRequestParams) => {
+  expect(result.dbXrefsLimit).toBe(0);
+  expect(result.includeFacets).toBe(false);
+  expect(result.includeProperties).toBe(false);
+};
+
 describe("parseBaseParams", () => {
   it("", () => {
     const result = parseBaseParams({});
     expectKeyNotExists(result, "page");
+    expectDefault(result);
   });
 
   //page
   it("", () => {
     const result = parseBaseParams({ page: 1 });
     expect(result.page).toBe("1");
+    expectDefault(result);
   });
   it("", () => {
     const result = parseBaseParams({ page: 2.1 });
     expect(result.page).toBe("2");
+    expectDefault(result);
   });
   it("", () => {
     const result = parseBaseParams({ page: -1 });
     expectKeyNotExists(result, "page");
+    expectDefault(result);
   });
 
   //perPage
   it("", () => {
     const result = parseBaseParams({ perPage: 10 });
     expect(result.perPage).toBe("10");
+    expectDefault(result);
   });
   it("", () => {
     const result = parseBaseParams({ perPage: 2.1 });
     expect(result.perPage).toBe("2");
+    expectDefault(result);
   });
   it("", () => {
     const result = parseBaseParams({ perPage: -1 });
     expectKeyNotExists(result, "perPage");
+    expectDefault(result);
   });
 
   //keywords
   it("", () => {
     const result = parseBaseParams({ keywords: [] });
     expectKeyNotExists(result, "keywords");
+    expectDefault(result);
   });
 
   it("", () => {
     const result = parseBaseParams({ keywords: ["human", "cat"] });
     expect(result.keywords).toBe("human,cat");
+    expectDefault(result);
   });
 
   //datePublished
   it("", () => {
-    const result = parseBaseParams({ datePublished: "2025-07-01,2025-07-10" });
-    expect(result.datePublished).toBe("2025-07-01,2025-07-10");
+    const result = parseBaseParams({ datePublishedFrom: "2025-07-01" });
+    expect(result.datePublishedFrom).toBe("2025-07-01");
+    expectDefault(result);
   });
+  it("", () => {
+    const result = parseBaseParams({ datePublishedTo: "2025-07-01" });
+    expect(result.datePublishedTo).toBe("2025-07-01");
+    expectDefault(result);
+  });
+
   //dateUpdated
   it("", () => {
-    const result = parseBaseParams({ dateUpdated: "2025-07-01,2025-07-10" });
-    expect(result.dateUpdated).toBe("2025-07-01,2025-07-10");
+    const result = parseBaseParams({ dateModifiedFrom: "2025-07-01" });
+    expect(result.dateModifiedFrom).toBe("2025-07-01");
+    expectDefault(result);
+  });
+  it("", () => {
+    const result = parseBaseParams({ dateModifiedTo: "2025-07-01" });
+    expect(result.dateModifiedTo).toBe("2025-07-01");
+    expectDefault(result);
   });
 });
