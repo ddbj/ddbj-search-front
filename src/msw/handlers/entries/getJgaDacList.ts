@@ -2,9 +2,8 @@ import { http, HttpResponse } from "msw";
 import { API_PATH_JGA_DAC_LIST } from "@/api/paths.ts";
 import { makeDummyIdentifier } from "@/msw/utils/makeDummyIdentifier.ts";
 import type { EntryListResponse } from "@/api/entries/base.ts";
-import type { JgaDacListRequestParams } from "@/api/entries/jgaDac.ts";
 
-export const getJgaDacList = http.get<JgaDacListRequestParams, {}, EntryListResponse>(
+export const getJgaDacList = http.get<never, never, EntryListResponse>(
   API_PATH_JGA_DAC_LIST,
   ({ request }) => {
     const url = new URL(request.url);

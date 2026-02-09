@@ -2,9 +2,8 @@ import { http, HttpResponse } from "msw";
 import { API_PATH_JGA_POLICY_LIST } from "@/api/paths.ts";
 import { makeDummyIdentifier } from "@/msw/utils/makeDummyIdentifier.ts";
 import type { EntryListResponse } from "@/api/entries/base.ts";
-import type { JgaPolicyListRequestParams } from "@/api/entries/jgaPolicy.ts";
 
-export const getJgaPolicyList = http.get<JgaPolicyListRequestParams, {}, EntryListResponse>(
+export const getJgaPolicyList = http.get<never, never, EntryListResponse>(
   API_PATH_JGA_POLICY_LIST,
   ({ request }) => {
     const url = new URL(request.url);

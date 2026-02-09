@@ -2,9 +2,8 @@ import { http, HttpResponse } from "msw";
 import { API_PATH_SRA_ANALYSIS_LIST } from "@/api/paths.ts";
 import { makeDummyIdentifier } from "@/msw/utils/makeDummyIdentifier.ts";
 import type { EntryListResponse } from "@/api/entries/base.ts";
-import type { SraAnalysisListRequestParams } from "@/api/entries/sraAnalysis.ts";
 
-export const getSraAnalysisList = http.get<SraAnalysisListRequestParams, {}, EntryListResponse>(
+export const getSraAnalysisList = http.get<never, never, EntryListResponse>(
   API_PATH_SRA_ANALYSIS_LIST,
   ({ request }) => {
     const url = new URL(request.url);

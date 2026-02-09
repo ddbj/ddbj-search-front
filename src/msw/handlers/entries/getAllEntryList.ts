@@ -1,12 +1,11 @@
 import { http, HttpResponse } from "msw";
-import { v4 as uuidv4 } from "uuid";
 import { API_PATH_ALL_ENTRIES_LIST } from "@/api/paths.ts";
 import { dbTypeList } from "@/consts/db.ts";
 import { makeDummyIdentifier } from "@/msw/utils/makeDummyIdentifier.ts";
 import { randomPick } from "@/msw/utils/randomPick.ts";
 import type { EntryListResponse } from "@/api/entries/base.ts";
 
-export const getAllEntryList = http.get<{}, {}, EntryListResponse>(
+export const getAllEntryList = http.get<never, never, EntryListResponse>(
   API_PATH_ALL_ENTRIES_LIST,
   async ({ request }) => {
     // await delay(Math.random() * 500 + 300);

@@ -4,7 +4,7 @@ import { makeDummyIdentifier } from "@/msw/utils/makeDummyIdentifier.ts";
 import type { EntryListResponse } from "@/api/entries/base.ts";
 import type { SraStudyListRequestParams } from "@/api/entries/sraStudy.ts";
 
-export const getSraStudyList = http.get<SraStudyListRequestParams, {}, EntryListResponse>(
+export const getSraStudyList = http.get<never, never, EntryListResponse>(
   API_PATH_SRA_STUDY_LIST,
   ({ request }) => {
     const url = new URL(request.url);

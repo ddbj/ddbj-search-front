@@ -2,9 +2,8 @@ import { http, HttpResponse } from "msw";
 import { API_PATH_JGA_STUDY_LIST } from "@/api/paths.ts";
 import { makeDummyIdentifier } from "@/msw/utils/makeDummyIdentifier.ts";
 import type { EntryListResponse } from "@/api/entries/base.ts";
-import type { JgaStudyListRequestParams } from "@/api/entries/jgaStudy.ts";
 
-export const getJgaStudyList = http.get<JgaStudyListRequestParams, {}, EntryListResponse>(
+export const getJgaStudyList = http.get<never, never, EntryListResponse>(
   API_PATH_JGA_STUDY_LIST,
   ({ request }) => {
     const url = new URL(request.url);

@@ -2,9 +2,8 @@ import { http, HttpResponse } from "msw";
 import { API_PATH_BIOPROJECT_LIST } from "@/api/paths.ts";
 import { makeDummyIdentifier } from "@/msw/utils/makeDummyIdentifier.ts";
 import type { EntryListResponse } from "@/api/entries/base.ts";
-import type { BioProjectListRequestParams } from "@/api/entries/bioProject.ts";
 
-export const getBioProjectList = http.get<BioProjectListRequestParams, {}, EntryListResponse>(
+export const getBioProjectList = http.get<never, never, EntryListResponse>(
   API_PATH_BIOPROJECT_LIST,
   ({ request }) => {
     const url = new URL(request.url);

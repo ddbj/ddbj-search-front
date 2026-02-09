@@ -2,9 +2,8 @@ import { http, HttpResponse } from "msw";
 import { API_PATH_SRA_SUBMISSION_LIST } from "@/api/paths.ts";
 import { makeDummyIdentifier } from "@/msw/utils/makeDummyIdentifier.ts";
 import type { EntryListResponse } from "@/api/entries/base.ts";
-import type { SraSubmissionListRequestParams } from "@/api/entries/sraSubmission.ts";
 
-export const getSraSubmissionList = http.get<SraSubmissionListRequestParams, {}, EntryListResponse>(
+export const getSraSubmissionList = http.get<never, never, EntryListResponse>(
   API_PATH_SRA_SUBMISSION_LIST,
   ({ request }) => {
     const url = new URL(request.url);
