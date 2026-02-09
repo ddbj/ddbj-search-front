@@ -69,6 +69,10 @@ export const getDocs = () => {
     },
     servers: [
       {
+        url: "https://ddbj-staging.nig.ac.jp/search/",
+        description: "DDBJ staging server",
+      },
+      {
         url: "http://localhost:5137",
         description: "Development server",
       },

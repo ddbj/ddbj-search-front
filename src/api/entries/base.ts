@@ -38,8 +38,14 @@ export const baseEntryListRequestParamsSchema = z.object({
     .string()
     .optional()
     .openapi({ description: "Comma separated keywords", example: "homo sapience,Draparnaldia" }),
-  datePublished: z.string().optional().openapi({ example: "2020-05-01,2021-04-30" }),
-  dateUpdated: z.string().optional().openapi({ example: "2020-05-01,2021-04-30" }),
+  organism: z.string().optional().openapi({ description: "NCBI Taxonomy ID", example: "9606" }),
+  datePublishedFrom: z.string().optional().openapi({ example: "2020-05-01" }),
+  datePublishedTo: z.string().optional().openapi({ example: "2021-04-30" }),
+  dateModifiedFrom: z.string().optional().openapi({ example: "2020-05-01" }),
+  dateModifiedTo: z.string().optional().openapi({ example: "2021-04-30" }),
+  includeProperties: z.boolean().optional().default(true),
+  dbXrefsLimit: z.number().int().min(0).max(1000).optional().default(100),
+  includeFacets: z.boolean().optional().default(false),
   // sortBy: z.string().optional(),
   // sortOrder: z.enum(["asc", "desc"]).optional(),
 });
