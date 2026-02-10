@@ -7,8 +7,8 @@ const {
   removeFromSearch,
   composeKeywords,
   composeDBTypes,
-  composeUpdated,
-  composePublished,
+  composeDateModified,
+  composeDatePublished,
   composeUmbrella,
   composeOrganization,
   composePublication,
@@ -28,8 +28,10 @@ describe("removeFromSearch", () => {
     const current: AnySearchParams = {
       keywords: ["human", " cat"],
       types: ["sra-analysis", "jga-study"],
-      datePublished: "2025-07-01,2025-07-10",
-      dateUpdated: "2024-07-01,2024-07-10",
+      datePublishedFrom: "2025-07-01",
+      datePublishedTo: "2025-07-10",
+      dateModifiedFrom: "2024-07-01",
+      dateModifiedTo: "2024-07-10",
       page: 2,
     };
     it("", () => {
@@ -37,8 +39,10 @@ describe("removeFromSearch", () => {
       expect(result).toEqual({
         keywords: ["human"],
         types: ["sra-analysis", "jga-study"],
-        datePublished: "2025-07-01,2025-07-10",
-        dateUpdated: "2024-07-01,2024-07-10",
+        datePublishedFrom: "2025-07-01",
+        datePublishedTo: "2025-07-10",
+        dateModifiedFrom: "2024-07-01",
+        dateModifiedTo: "2024-07-10",
       });
     });
     it("", () => {
@@ -46,8 +50,10 @@ describe("removeFromSearch", () => {
       const result2 = removeFromSearch(result1, "keywords", "human");
       expect(result2).toEqual({
         types: ["sra-analysis", "jga-study"],
-        datePublished: "2025-07-01,2025-07-10",
-        dateUpdated: "2024-07-01,2024-07-10",
+        datePublishedFrom: "2025-07-01",
+        datePublishedTo: "2025-07-10",
+        dateModifiedFrom: "2024-07-01",
+        dateModifiedTo: "2024-07-10",
       });
     });
     it("", () => {
@@ -55,24 +61,30 @@ describe("removeFromSearch", () => {
       expect(result).toEqual({
         keywords: ["human", " cat"],
         types: ["jga-study"],
-        datePublished: "2025-07-01,2025-07-10",
-        dateUpdated: "2024-07-01,2024-07-10",
+        datePublishedFrom: "2025-07-01",
+        datePublishedTo: "2025-07-10",
+        dateModifiedFrom: "2024-07-01",
+        dateModifiedTo: "2024-07-10",
       });
     });
     it("", () => {
-      const result = removeFromSearch(current, "datePublished", "");
-      expect(result).toEqual({
+      const result1 = removeFromSearch(current, "datePublishedFrom", "");
+      const result2 = removeFromSearch(result1, "datePublishedTo", "");
+      expect(result2).toEqual({
         keywords: ["human", " cat"],
         types: ["sra-analysis", "jga-study"],
-        dateUpdated: "2024-07-01,2024-07-10",
+        dateModifiedFrom: "2024-07-01",
+        dateModifiedTo: "2024-07-10",
       });
     });
     it("", () => {
-      const result = removeFromSearch(current, "dateUpdated", "");
-      expect(result).toEqual({
+      const result1 = removeFromSearch(current, "dateModifiedFrom", "");
+      const result2 = removeFromSearch(result1, "dateModifiedTo", "");
+      expect(result2).toEqual({
         keywords: ["human", " cat"],
         types: ["sra-analysis", "jga-study"],
-        datePublished: "2025-07-01,2025-07-10",
+        datePublishedFrom: "2025-07-01",
+        datePublishedTo: "2025-07-10",
       });
     });
   });
@@ -184,13 +196,14 @@ describe("composeDBTypes", () => {
   });
 });
 
-describe("composeUpdated", () => {
+describe("composeDateModified", () => {
   it("should add dateUpdated when none is present", () => {
     const prev: AnySearchParams = { types: [dbTypes.bioproject] };
-    const result = composeUpdated(prev, "2024-01-01,2024-01-31");
+    const result = composeDateModified(prev, "2024-01-01,2024-01-31");
     const expected: AnySearchParams = {
       types: [dbTypes.bioproject],
-      dateUpdated: "2024-01-01,2024-01-31",
+      dateModifiedFrom: "2024-01-01",
+      dateModifiedTo: "2024-01-31",
     };
     expect(result).toEqual(expected);
   });
@@ -198,9 +211,10 @@ describe("composeUpdated", () => {
   it("should remove dateUpdated the input is an empty string", () => {
     const prev: AnySearchParams = {
       types: [dbTypes.bioproject],
-      dateUpdated: "2023-01-01,2023-01-31",
+      dateModifiedFrom: "2023-01-01",
+      dateModifiedTo: "2023-01-31",
     };
-    const result = composeUpdated(prev, "");
+    const result = composeDateModified(prev, "");
     const expected: AnySearchParams = {
       types: [dbTypes.bioproject],
     };
@@ -209,10 +223,11 @@ describe("composeUpdated", () => {
 
   it("should reset the page number when dateUpdated is changed", () => {
     const prev: AnySearchParams = { types: [dbTypes.bioproject], page: 2 };
-    const result = composeUpdated(prev, "2024-01-01,2024-01-31");
+    const result = composeDateModified(prev, "2024-01-01,2024-01-31");
     const expected: AnySearchParams = {
       types: [dbTypes.bioproject],
-      dateUpdated: "2024-01-01,2024-01-31",
+      dateModifiedFrom: "2024-01-01",
+      dateModifiedTo: "2024-01-31",
     };
     expect(result).toEqual(expected);
   });
@@ -221,13 +236,15 @@ describe("composeUpdated", () => {
     const prev: AnySearchParams = {
       types: [dbTypes.bioproject],
       page: 2,
-      dateUpdated: "2024-01-01,2024-01-31",
+      dateModifiedFrom: "2024-01-01",
+      dateModifiedTo: "2024-01-31",
     };
-    const result = composeUpdated(prev, "2024-01-01,2024-01-31");
+    const result = composeDateModified(prev, "2024-01-01,2024-01-31");
     const expected: AnySearchParams = {
       types: [dbTypes.bioproject],
       page: 2,
-      dateUpdated: "2024-01-01,2024-01-31",
+      dateModifiedFrom: "2024-01-01",
+      dateModifiedTo: "2024-01-31",
     };
     expect(result).toEqual(expected);
   });
@@ -237,7 +254,7 @@ describe("composeUpdated", () => {
       types: [dbTypes.bioproject],
       page: 2,
     };
-    const result = composeUpdated(prev, "");
+    const result = composeDateModified(prev, "");
     const expected: AnySearchParams = {
       types: [dbTypes.bioproject],
       page: 2,
@@ -246,22 +263,24 @@ describe("composeUpdated", () => {
   });
 });
 
-describe("composePublished", () => {
+describe("composeDatePublished", () => {
   it("should add datePublished when none is present", () => {
     const prev: AnySearchParams = { types: [dbTypes.bioproject] };
-    const result = composePublished(prev, "2024-01-01,2024-01-31");
+    const result = composeDatePublished(prev, "2024-01-01,2024-01-31");
     const expected: AnySearchParams = {
       types: [dbTypes.bioproject],
-      datePublished: "2024-01-01,2024-01-31",
+      datePublishedFrom: "2024-01-01",
+      datePublishedTo: "2024-01-31",
     };
     expect(result).toEqual(expected);
   });
   it("should remove datePublished the input is an empty string", () => {
     const prev: AnySearchParams = {
       types: [dbTypes.bioproject],
-      datePublished: "2023-01-01,2023-01-31",
+      datePublishedFrom: "2023-01-01",
+      datePublishedTo: "2023-01-31",
     };
-    const result = composePublished(prev, "");
+    const result = composeDatePublished(prev, "");
     const expected: AnySearchParams = {
       types: [dbTypes.bioproject],
     };
@@ -269,10 +288,11 @@ describe("composePublished", () => {
   });
   it("should reset the page number when datePublished is changed", () => {
     const prev: AnySearchParams = { types: [dbTypes.bioproject], page: 2 };
-    const result = composePublished(prev, "2024-01-01,2024-01-31");
+    const result = composeDatePublished(prev, "2024-01-01,2024-01-31");
     const expected: AnySearchParams = {
       types: [dbTypes.bioproject],
-      datePublished: "2024-01-01,2024-01-31",
+      datePublishedFrom: "2024-01-01",
+      datePublishedTo: "2024-01-31",
     };
     expect(result).toEqual(expected);
   });
@@ -280,22 +300,24 @@ describe("composePublished", () => {
     const prev: AnySearchParams = {
       types: [dbTypes.bioproject],
       page: 2,
-      datePublished: "2024-01-01,2024-01-31",
+      datePublishedFrom: "2024-01-01",
+      datePublishedTo: "2024-01-31",
     };
-    const result = composePublished(prev, "2024-01-01,2024-01-31");
+    const result = composeDatePublished(prev, "2024-01-01,2024-01-31");
     const expected: AnySearchParams = {
       types: [dbTypes.bioproject],
       page: 2,
-      datePublished: "2024-01-01,2024-01-31",
+      datePublishedFrom: "2024-01-01",
+      datePublishedTo: "2024-01-31",
     };
     expect(result).toEqual(expected);
   });
-  it("should should preserve the page number when dateUpdated remains empty", () => {
+  it("should preserve the page number when datePublished remains empty", () => {
     const prev: AnySearchParams = {
       types: [dbTypes.bioproject],
       page: 2,
     };
-    const result = composePublished(prev, "");
+    const result = composeDatePublished(prev, "");
     const expected: AnySearchParams = {
       types: [dbTypes.bioproject],
       page: 2,

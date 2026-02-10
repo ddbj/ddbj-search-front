@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { __QUERY_LISTS_TEST__ } from "@/features/searchResult/result/QueryLists.tsx";
+import { __QUERY_LISTS_TEST__ } from "@/features/searchResult/result/QueryTipList.tsx";
 import type { AnySearchParams } from "@/schema/search/any.ts";
 
 const { parseQueryStateToTipList } = __QUERY_LISTS_TEST__;
@@ -27,13 +27,13 @@ describe("parseQueryStateToTipList", () => {
 
   it("should parse date ranges to QueryTipProps array", () => {
     const state: AnySearchParams = {};
-    state.datePublished = "2025-07-01,2025-07-10";
-    state.dateUpdated = "2024-07-01,2024-07-10";
+    state.datePublishedFrom = "2025-07-01";
+    state.datePublishedTo = "2025-07-10";
+    state.dateModifiedFrom = "2024-07-01";
+    state.dateModifiedTo = "2024-07-10";
     const result = parseQueryStateToTipList(state);
     expect(result.length).toBe(2);
-    expect(result.find((o) => o.data.name === "datePublished")?.label.value).toBe(
-      "2025-07-01,2025-07-10"
-    );
+    expect(result.find((o) => o.data.name === "datePublishedFrom")?.label.value).toBe("2025-07-01");
   });
 
   it("", () => {

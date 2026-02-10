@@ -13,7 +13,7 @@ type Props = {
 
 const tipWrapperClasses = clsx("flex flex-wrap gap-2");
 
-export const QueryLists: FC<Props> = ({ searchParams, removeParamFunc }) => {
+export const QueryTipList: FC<Props> = ({ searchParams, removeParamFunc }) => {
   const tipData = parseQueryStateToTipList(searchParams);
 
   if (tipData.length === 0) {
@@ -52,10 +52,12 @@ const parseQueryStateToTipList = (state: AnySearchParams): QueryTipProps[] => {
     const label = { name: "Type", value: getDbLabel(value) };
     return { data, label };
   });
-  const dates: QueryTipProps[] = [
-    ...parseSingleStringToQueryTipProps(state.datePublished, "datePublished", "Published"),
-    ...parseSingleStringToQueryTipProps(state.dateUpdated, "dateUpdated", "Updated"),
-  ].filter((v) => !!v);
+  // const dates: QueryTipProps[] = [
+  //   ...parseSingleStringToQueryTipProps(state.datePublished, "datePublished", "Published"),
+  //   ...parseSingleStringToQueryTipProps(state.dateUpdated, "dateUpdated", "Updated"),
+  // ].filter((v) => !!v);
+  //todo make date QueryTips
+  const dates = [] as const;
   const organization: QueryTipProps[] = parseSingleStringToQueryTipProps(
     state.organization,
     "organization",

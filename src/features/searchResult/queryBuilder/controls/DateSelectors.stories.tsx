@@ -1,17 +1,17 @@
 import { useState } from "react";
-import { DateSelector } from "@/features/searchResult/queryBuilder/controls/DateSelector.tsx";
+import { DateSelectors } from "@/features/searchResult/queryBuilder/controls/DateSelectors.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
-  component: DateSelector,
+  component: DateSelectors,
   args: {
     published: "",
-    updated: "",
+    modified: "",
     changePublished: (v: string) => {},
-    changeUpdated: (v: string) => {},
+    changeModified: (v: string) => {},
   },
   decorators: [],
-} satisfies Meta<typeof DateSelector>;
+} satisfies Meta<typeof DateSelectors>;
 
 export default meta;
 
@@ -21,20 +21,20 @@ export const Primary = {
   decorators: [
     (Story) => {
       const [published, setPublished] = useState("");
-      const [updated, setUpdated] = useState("");
+      const [modified, setChangeModified] = useState("");
       const changePublished = (v: string) => {
         setPublished(v);
       };
-      const changeUpdated = (v: string) => {
-        setUpdated(v);
+      const changeModified = (v: string) => {
+        setChangeModified(v);
       };
       return (
         <Story
           args={{
             published,
-            updated,
+            modified,
             changePublished,
-            changeUpdated,
+            changeModified,
           }}
         />
       );

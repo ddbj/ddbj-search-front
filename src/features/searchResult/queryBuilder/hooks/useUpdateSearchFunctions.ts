@@ -13,8 +13,8 @@ export type UpdateSearchFunctions<TSearch extends AnySearchParams = AnySearchPar
   moveToPage: (page: number) => void;
   changeKeywords: (v: string[]) => void;
   setDBTypes: (v: DBType[]) => void;
-  changeUpdated: (v: string) => void;
-  changePublished: (v: string) => void;
+  changeDateModifiedRange: (v: string) => void;
+  changeDatePublishedRange: (v: string) => void;
   changeUmbrella: (v: boolean) => void;
   changeOrganization: (v: string) => void;
   changePublication: (v: string) => void;
@@ -45,11 +45,11 @@ export const useUpdateSearchFunctions = <TSearch extends AnySearchParams>(
         // console.log("setDBTypes", v);
         navigate({ search: (prev: TSearch) => composeDBTypes(prev, v) as TSearch, replace });
       },
-      changeUpdated: (v: string) => {
-        navigate({ search: (prev: TSearch) => composeUpdated(prev, v) as TSearch, replace });
+      changeDateModifiedRange: (v: string) => {
+        navigate({ search: (prev: TSearch) => composeDateModified(prev, v) as TSearch, replace });
       },
-      changePublished: (v: string) => {
-        navigate({ search: (prev: TSearch) => composePublished(prev, v) as TSearch, replace });
+      changeDatePublishedRange: (v: string) => {
+        navigate({ search: (prev: TSearch) => composeDatePublished(prev, v) as TSearch, replace });
       },
       changeUmbrella: (v: boolean) => {
         navigate({ search: (prev: TSearch) => composeUmbrella(prev, v) as TSearch, replace });
@@ -103,15 +103,25 @@ const composeDBTypes = (params: P, value: DBType[]): P => {
   const { types: prev, page, ...rest } = params;
   return value.length ? { ...rest, types: value } : rest;
 };
-const composeUpdated = (params: P, value: string): P => {
-  if ((params.dateUpdated ?? "") === value) return params;
-  const { dateUpdated: prev, page, ...rest } = params;
-  return value ? { ...rest, dateUpdated: value } : rest;
+const composeDateModified = (params: P, value: string): P => {
+  const [from = "", to = ""] = value.split(",");
+  const { dateModifiedFrom = "", dateModifiedTo = "", page, ...rest } = params;
+  //unchanged, returns the original
+  if (from === dateModifiedFrom && to === dateModifiedTo) return params;
+  //set as empty, returns removed parameters without page
+  if (from === "" && to === "") return rest;
+  // otherwise returns updated without page
+  return { ...rest, dateModifiedFrom: from, dateModifiedTo: to };
 };
-const composePublished = (params: P, value: string): P => {
-  if ((params.datePublished ?? "") === value) return params;
-  const { datePublished: prev, page, ...rest } = params;
-  return value ? { ...rest, datePublished: value } : rest;
+const composeDatePublished = (params: P, value: string): P => {
+  const [from = "", to = ""] = value.split(",");
+  const { datePublishedFrom = "", datePublishedTo = "", page, ...rest } = params;
+  //unchanged, returns the original
+  if (from === datePublishedFrom && to === datePublishedTo) return params;
+  //set as empty, returns removed parameters without page
+  if (from === "" && to === "") return rest;
+  // otherwise returns updated without page
+  return { ...rest, datePublishedFrom: from, datePublishedTo: to };
 };
 const composeUmbrella = (params: P, value: boolean): P => {
   if ((params.umbrella ?? false) === value) return params;
@@ -139,8 +149,8 @@ export const __SB_updateFunctions: UpdateSearchFunctions = {
   moveToPage: (page: number) => {},
   changeKeywords: (v: string[]) => {},
   setDBTypes: (v: DBType[]) => {},
-  changeUpdated: (v: string) => {},
-  changePublished: (v: string) => {},
+  changeDateModifiedRange: (v: string) => {},
+  changeDatePublishedRange: (v: string) => {},
   changeUmbrella: (v: boolean) => {},
   changeOrganization: (v: string) => {},
   changePublication: (v: string) => {},
@@ -152,8 +162,8 @@ export const __TEST_updateFunctions = {
   removeFromSearch,
   composeKeywords,
   composeDBTypes,
-  composeUpdated,
-  composePublished,
+  composeDateModified,
+  composeDatePublished,
   composeUmbrella,
   composeOrganization,
   composePublication,

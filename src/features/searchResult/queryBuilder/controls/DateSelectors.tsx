@@ -4,21 +4,26 @@ import { DateRangePicker } from "@/features/searchResult/queryBuilder/premitives
 
 type Props = {
   published: string;
-  updated: string;
+  modified: string;
   changePublished: (v: string) => void;
-  changeUpdated: (v: string) => void;
+  changeModified: (v: string) => void;
 };
 
 const wrapperClasses = "flex flex-col gap-4";
 
-export const DateSelector: FC<Props> = ({ published, updated, changeUpdated, changePublished }) => {
+export const DateSelectors: FC<Props> = ({
+  published,
+  modified,
+  changeModified,
+  changePublished,
+}) => {
   const { uiValue: uiPublished, setUiValue: setUiPublished } = useDebouncedUiValue(
     published,
     changePublished
   );
   const { uiValue: uiUpdated, setUiValue: setUiUpdated } = useDebouncedUiValue(
-    updated,
-    changeUpdated
+    modified,
+    changeModified
   );
 
   return (

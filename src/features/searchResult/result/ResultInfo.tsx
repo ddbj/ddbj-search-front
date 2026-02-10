@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { QueryLists } from "@/features/searchResult/result/QueryLists.tsx";
+import { QueryTipList } from "@/features/searchResult/result/QueryTipList.tsx";
 import { SortDropdown } from "@/features/searchResult/result/SortDropdown.tsx";
 import { getTotalPages } from "@/utils/getTotalPages.ts";
 import type { UpdateSearchFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
@@ -36,7 +36,7 @@ export const ResultInfo: FC<Props> = ({
           </p>
           <SortDropdown />
         </div>
-        <QueryLists removeParamFunc={removeParamFunc} searchParams={searchParams} />
+        <QueryTipList removeParamFunc={removeParamFunc} searchParams={searchParams} />
       </div>
     </div>
   );

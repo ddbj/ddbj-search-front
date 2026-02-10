@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { __TEST_updateFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
-import { QueryLists } from "@/features/searchResult/result/QueryLists.tsx";
+import { QueryTipList } from "@/features/searchResult/result/QueryTipList.tsx";
 import type { AnySearchParams, AnySearchParamsKey } from "@/schema/search/any.ts";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+
 const { removeFromSearch } = __TEST_updateFunctions;
 const meta = {
-  component: QueryLists,
+  component: QueryTipList,
   args: {
     searchParams: {},
     removeParamFunc: (key: AnySearchParamsKey, v: string) => {},
@@ -19,7 +20,7 @@ const meta = {
       );
     },
   ],
-} satisfies Meta<typeof QueryLists>;
+} satisfies Meta<typeof QueryTipList>;
 
 export default meta;
 

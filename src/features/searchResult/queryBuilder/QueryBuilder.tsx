@@ -4,7 +4,7 @@ import { Grant } from "@/features/searchResult/queryBuilder/controls/bioproject/
 import { Organization } from "@/features/searchResult/queryBuilder/controls/bioproject/Organization.tsx";
 import { Publication } from "@/features/searchResult/queryBuilder/controls/bioproject/Publication.tsx";
 import { Umbrella } from "@/features/searchResult/queryBuilder/controls/bioproject/Umbrella.tsx";
-import { DateSelector } from "@/features/searchResult/queryBuilder/controls/DateSelector.tsx";
+import { DateSelectors } from "@/features/searchResult/queryBuilder/controls/DateSelectors.tsx";
 import { KeywordInput } from "@/features/searchResult/queryBuilder/controls/KeywordInput.tsx";
 import { OtherTypeSelector } from "@/features/searchResult/queryBuilder/controls/OtherTypeSelector.tsx";
 import { type BaseSearchParams, isBaseSearchKey } from "@/schema/search/base.ts";
@@ -23,8 +23,10 @@ export const QueryBuilder: FC<Props> = ({ currentType, update, params }) => {
   const {
     keywords,
     types,
-    dateUpdated,
-    datePublished,
+    datePublishedFrom,
+    datePublishedTo,
+    dateModifiedFrom,
+    dateModifiedTo,
     umbrella,
     organization,
     publication,
@@ -34,8 +36,8 @@ export const QueryBuilder: FC<Props> = ({ currentType, update, params }) => {
     moveToEntryRoot,
     changeKeywords,
     setDBTypes,
-    changeUpdated,
-    changePublished,
+    changeDateModifiedRange,
+    changeDatePublishedRange,
     changeUmbrella,
     changeOrganization,
     changePublication,
@@ -66,11 +68,11 @@ export const QueryBuilder: FC<Props> = ({ currentType, update, params }) => {
         <Publication value={publication ?? ""} update={changePublication} />
       )}
       {currentType === dbTypes.bioproject && <Grant value={grant ?? ""} update={changeGrant} />}
-      <DateSelector
-        published={datePublished ?? ""}
-        updated={dateUpdated ?? ""}
-        changePublished={changePublished}
-        changeUpdated={changeUpdated}
+      <DateSelectors
+        published={`${datePublishedFrom ?? ""},${dateModifiedFrom ?? ""}`}
+        modified={`${dateModifiedFrom ?? ""},${dateModifiedTo ?? ""}`}
+        changePublished={changeDatePublishedRange}
+        changeModified={changeDateModifiedRange}
       />
     </aside>
   );

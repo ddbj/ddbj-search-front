@@ -14,7 +14,8 @@ const expectKeyNotExists = (
 describe("parseParams", () => {
   it("should handle empty params", () => {
     const result = parseParams({});
-    expect(Object.keys(result)).toHaveLength(0);
+    // default params are `{ includeFacets: false, includeProperties: false, dbXrefsLimit: 0 }`
+    expect(Object.keys(result)).toHaveLength(3);
   });
 
   it("should handle base params - keywords", () => {
@@ -23,24 +24,24 @@ describe("parseParams", () => {
   });
 
   it("should handle base params - datePublished", () => {
-    const result = parseParams({ datePublished: "2023-01-01" });
-    expect(result.datePublished).toBe("2023-01-01");
+    const result = parseParams({ datePublishedFrom: "2023-01-01" });
+    expect(result.datePublishedFrom).toBe("2023-01-01");
   });
 
   it("should handle base params - dateUpdated", () => {
-    const result = parseParams({ dateUpdated: "2023-12-31" });
-    expect(result.dateUpdated).toBe("2023-12-31");
+    const result = parseParams({ dateModifiedFrom: "2023-12-31" });
+    expect(result.dateModifiedFrom).toBe("2023-12-31");
   });
 
   it("should handle multiple base params", () => {
     const result = parseParams({
       keywords: ["test", "data"],
-      datePublished: "2023-01-01",
-      dateUpdated: "2023-12-31",
+      dateModifiedFrom: "2023-01-01",
+      datePublishedFrom: "2023-12-31",
     });
     expect(result.keywords).toBe("test,data");
-    expect(result.datePublished).toBe("2023-01-01");
-    expect(result.dateUpdated).toBe("2023-12-31");
+    expect(result.dateModifiedFrom).toBe("2023-01-01");
+    expect(result.datePublishedFrom).toBe("2023-12-31");
   });
 
   it("should not include pagination params", () => {
