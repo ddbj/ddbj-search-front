@@ -4,8 +4,8 @@ import type { AnySearchParamsKey } from "@/schema/search/any.ts";
 
 type Props = {
   label: { name: string; value: string };
-  data: { name: AnySearchParamsKey; value: string };
-  onClickRemove: (name: AnySearchParamsKey, value: string) => void;
+  data: { name: AnySearchParamsKey | AnySearchParamsKey[]; value: string };
+  onClickRemove: (name: AnySearchParamsKey | AnySearchParamsKey[], value: string) => void;
 };
 
 const wrapperClasses = clsx(

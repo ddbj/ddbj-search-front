@@ -69,7 +69,7 @@ export const QueryBuilder: FC<Props> = ({ currentType, update, params }) => {
       )}
       {currentType === dbTypes.bioproject && <Grant value={grant ?? ""} update={changeGrant} />}
       <DateSelectors
-        published={`${datePublishedFrom ?? ""},${dateModifiedFrom ?? ""}`}
+        published={`${datePublishedFrom ?? ""},${datePublishedTo ?? ""}`}
         modified={`${dateModifiedFrom ?? ""},${dateModifiedTo ?? ""}`}
         changePublished={changeDatePublishedRange}
         changeModified={changeDateModifiedRange}

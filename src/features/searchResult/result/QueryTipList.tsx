@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { isUndefined } from "is-what";
 import { type ComponentProps, type FC } from "react";
+import { string } from "zod";
 import { getDbLabel } from "@/consts/db.ts";
 import { QueryTip } from "@/features/searchResult/queryBuilder/premitives/QueryTip.tsx";
 import type { UpdateSearchFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
@@ -52,12 +53,19 @@ const parseQueryStateToTipList = (state: AnySearchParams): QueryTipProps[] => {
     const label = { name: "Type", value: getDbLabel(value) };
     return { data, label };
   });
-  // const dates: QueryTipProps[] = [
-  //   ...parseSingleStringToQueryTipProps(state.datePublished, "datePublished", "Published"),
-  //   ...parseSingleStringToQueryTipProps(state.dateUpdated, "dateUpdated", "Updated"),
-  // ].filter((v) => !!v);
+  const dates: QueryTipProps[] = [
+    ...parseDateRangeToQueryTipProps(
+      [state.datePublishedFrom, state.datePublishedTo],
+      ["datePublishedFrom", "datePublishedTo"],
+      "Published"
+    ),
+    ...parseDateRangeToQueryTipProps(
+      [state.dateModifiedFrom, state.dateModifiedTo],
+      ["dateModifiedFrom", "dateModifiedTo"],
+      "Modified"
+    ),
+  ].filter((v) => !!v);
   //todo make date QueryTips
-  const dates = [] as const;
   const organization: QueryTipProps[] = parseSingleStringToQueryTipProps(
     state.organization,
     "organization",
@@ -84,6 +92,21 @@ const parseQueryStateToTipList = (state: AnySearchParams): QueryTipProps[] => {
   return result;
 };
 
+const parseDateRangeToQueryTipProps = (
+  stateValues: [string | undefined, string | undefined],
+  dataNames: [AnySearchParamsKey, AnySearchParamsKey],
+  labelName: string
+): QueryTipProps[] => {
+  return [stateValues]
+    .filter(([from, to]) => from && to)
+    .filter(([from, to]) => from !== "" && to !== "")
+    .map(([from, to]) => {
+      const data = { name: dataNames, value: `${from} | ${to}` };
+      const label = { name: labelName, value: `${from} | ${to}` };
+      return { data, label };
+    });
+};
+
 const parseSingleStringToQueryTipProps = (
   stateValue: string | undefined,
   dataName: AnySearchParamsKey,
@@ -108,8 +131,8 @@ const parseSingleBooleanToQueryTipProps = (
   return [stateValue]
     .filter((v) => v)
     .map((v) => {
-      const data = { name: dataName, value: "TRUE" };
-      const label = { name: labelName, value: "TRUE" };
+      const data = { name: dataName, value: "true" };
+      const label = { name: labelName, value: "true" };
       return { data, label };
     });
 };

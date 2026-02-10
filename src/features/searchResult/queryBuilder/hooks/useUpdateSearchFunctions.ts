@@ -19,7 +19,7 @@ export type UpdateSearchFunctions<TSearch extends AnySearchParams = AnySearchPar
   changeOrganization: (v: string) => void;
   changePublication: (v: string) => void;
   changeGrant: (v: string) => void;
-  removeParam: (name: AnySearchParamsKey, value: string) => void;
+  removeParam: (name: AnySearchParamsKey | AnySearchParamsKey[], value: string) => void;
 };
 
 const replace = true;
@@ -63,7 +63,7 @@ export const useUpdateSearchFunctions = <TSearch extends AnySearchParams>(
       changeGrant: (v: string) => {
         navigate({ search: (prev: TSearch) => composeGrant(prev, v) as TSearch, replace });
       },
-      removeParam: (key: AnySearchParamsKey, v: string) => {
+      removeParam: (key: AnySearchParamsKey | AnySearchParamsKey[], v: string) => {
         navigate({
           search: (prev: TSearch) => removeFromSearch(prev, key, v) as TSearch,
           replace,
@@ -76,15 +76,26 @@ export const useUpdateSearchFunctions = <TSearch extends AnySearchParams>(
 
 const removeFromSearch = (
   current: AnySearchParams,
-  key: AnySearchParamsKey,
+  key: AnySearchParamsKey | AnySearchParamsKey[],
   value: string
 ): AnySearchParams => {
-  const { [key]: prev, page, ...rest } = current;
-  if (Array.isArray(prev)) {
-    const filtered = prev.filter((t) => t.trim() !== value.trim());
-    return { ...rest, ...(filtered.length ? { [key]: filtered } : {}) };
-  } else {
+  if (Array.isArray(key)) {
+    const next = { ...current };
+    key.forEach((k) => {
+      if (k in next) {
+        delete next[k];
+      }
+    });
+    const { page, ...rest } = next;
     return rest;
+  } else {
+    const { [key]: prev, page, ...rest } = current;
+    if (Array.isArray(prev)) {
+      const filtered = prev.filter((t) => t.trim() !== value.trim());
+      return { ...rest, ...(filtered.length ? { [key]: filtered } : {}) };
+    } else {
+      return rest;
+    }
   }
 };
 
@@ -155,7 +166,7 @@ export const __SB_updateFunctions: UpdateSearchFunctions = {
   changeOrganization: (v: string) => {},
   changePublication: (v: string) => {},
   changeGrant: (v: string) => {},
-  removeParam: (name: AnySearchParamsKey, value: string) => {},
+  removeParam: (name: AnySearchParamsKey | AnySearchParamsKey[], value: string) => {},
 };
 
 export const __TEST_updateFunctions = {

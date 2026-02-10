@@ -29,11 +29,16 @@ describe("parseQueryStateToTipList", () => {
     const state: AnySearchParams = {};
     state.datePublishedFrom = "2025-07-01";
     state.datePublishedTo = "2025-07-10";
-    state.dateModifiedFrom = "2024-07-01";
-    state.dateModifiedTo = "2024-07-10";
+    state.dateModifiedFrom = "2024-08-01";
+    state.dateModifiedTo = "2024-08-10";
     const result = parseQueryStateToTipList(state);
     expect(result.length).toBe(2);
-    expect(result.find((o) => o.data.name === "datePublishedFrom")?.label.value).toBe("2025-07-01");
+    expect(result.find((o) => o.label.name === "Published")?.label.value).toBe(
+      "2025-07-01 | 2025-07-10"
+    );
+    expect(result.find((o) => o.label.name === "Modified")?.label.value).toBe(
+      "2024-08-01 | 2024-08-10"
+    );
   });
 
   it("", () => {
@@ -63,7 +68,7 @@ describe("parseQueryStateToTipList", () => {
     state.umbrella = true;
     const result = parseQueryStateToTipList(state);
     expect(result.length).toBe(1);
-    expect(result[0].data.value).toBe("TRUE");
+    expect(result[0].data.value).toBe("true");
   });
   it("", () => {
     const state: AnySearchParams = {};

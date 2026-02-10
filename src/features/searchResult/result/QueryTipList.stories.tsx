@@ -9,7 +9,7 @@ const meta = {
   component: QueryTipList,
   args: {
     searchParams: {},
-    removeParamFunc: (key: AnySearchParamsKey, v: string) => {},
+    removeParamFunc: (key: AnySearchParamsKey | AnySearchParamsKey[], v: string) => {},
   },
   decorators: [
     (Story) => {
@@ -36,7 +36,7 @@ export const HasSearch = {
         keywords: ["hogemoge", "mogemoge"],
         umbrella: true,
       });
-      const removeParamFunc = (key: AnySearchParamsKey, v: string) => {
+      const removeParamFunc = (key: AnySearchParamsKey | AnySearchParamsKey[], v: string) => {
         setParams((prev) => {
           return removeFromSearch(prev, key, v);
         });

@@ -13,7 +13,7 @@ const meta = {
     perPage: 20,
     currentPage: 1,
     searchParams: {},
-    removeParamFunc: (key: AnySearchParamsKey, v: string) => {},
+    removeParamFunc: (key: AnySearchParamsKey | AnySearchParamsKey[], v: string) => {},
   },
   decorators: [],
 } satisfies Meta<typeof ResultInfo>;
@@ -32,7 +32,7 @@ export const HasSearch = {
         keywords: ["hogemoge", "mogemoge"],
         umbrella: true,
       });
-      const removeParamFunc = (key: AnySearchParamsKey, v: string) => {
+      const removeParamFunc = (key: AnySearchParamsKey | AnySearchParamsKey[], v: string) => {
         setSearchParams((prev) => {
           return removeFromSearch(prev, key, v);
         });

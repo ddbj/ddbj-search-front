@@ -68,9 +68,8 @@ describe("removeFromSearch", () => {
       });
     });
     it("", () => {
-      const result1 = removeFromSearch(current, "datePublishedFrom", "");
-      const result2 = removeFromSearch(result1, "datePublishedTo", "");
-      expect(result2).toEqual({
+      const result = removeFromSearch(current, ["datePublishedFrom", "datePublishedTo"], "");
+      expect(result).toEqual({
         keywords: ["human", " cat"],
         types: ["sra-analysis", "jga-study"],
         dateModifiedFrom: "2024-07-01",
