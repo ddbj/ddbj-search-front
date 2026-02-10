@@ -10,9 +10,9 @@ const expectKeyNotExists = (
 };
 
 const expectDefault = (result: BaseEntryListRequestParams) => {
-  expect(result.dbXrefsLimit).toBe(0);
-  expect(result.includeFacets).toBe(false);
-  expect(result.includeProperties).toBe(false);
+  expect(result.dbXrefsLimit).toBe("0");
+  expect(result.includeFacets).toBe("false");
+  expect(result.includeProperties).toBe("false");
 };
 
 describe("parseBaseParams", () => {

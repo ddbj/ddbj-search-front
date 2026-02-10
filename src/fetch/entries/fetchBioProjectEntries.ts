@@ -18,7 +18,7 @@ const parseParams = (params: BioprojectSearchParams): BioProjectListRequestParam
     ...(params.organization ? { organization: params.organization } : {}),
     ...(params.publication ? { publication: params.publication } : {}),
     ...(params.grant ? { grant: params.grant } : {}),
-    ...(params.umbrella !== undefined ? { umbrella: params.umbrella ? "TRUE" : "FALSE" } : {}),
+    ...(params.umbrella !== undefined ? { umbrella: params.umbrella ? "true" : "false" } : {}),
   };
 };
 

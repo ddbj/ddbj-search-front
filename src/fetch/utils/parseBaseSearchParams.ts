@@ -12,6 +12,6 @@ export const parseBaseParams = (params: AnySearchParams): BaseEntryListRequestPa
     ...(params.datePublishedTo ? { datePublishedTo: params.datePublishedTo } : {}),
     ...(params.dateModifiedFrom ? { dateModifiedFrom: params.dateModifiedFrom } : {}),
     ...(params.dateModifiedTo ? { dateModifiedTo: params.dateModifiedTo } : {}),
-    ...{ includeFacets: false, includeProperties: false, dbXrefsLimit: 0 },
+    ...{ includeFacets: "false", includeProperties: "false", dbXrefsLimit: "0" },
   } satisfies BaseEntryListRequestParams;
 };

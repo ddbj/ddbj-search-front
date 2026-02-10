@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { booleanStrings } from "@/api/consts.ts";
 import { extendZod } from "@/utils/extendZod.ts";
 
 extendZod();
@@ -43,9 +44,9 @@ export const baseEntryListRequestParamsSchema = z.object({
   datePublishedTo: z.string().optional().openapi({ example: "2021-04-30" }),
   dateModifiedFrom: z.string().optional().openapi({ example: "2020-05-01" }),
   dateModifiedTo: z.string().optional().openapi({ example: "2021-04-30" }),
-  includeProperties: z.boolean().optional().default(true),
-  dbXrefsLimit: z.number().int().min(0).max(1000).optional().default(100),
-  includeFacets: z.boolean().optional().default(false),
+  includeProperties: z.enum(booleanStrings).optional().default("true"),
+  dbXrefsLimit: z.string().default("100").openapi({ description: "min:0, max:10000, default:100" }),
+  includeFacets: z.enum(booleanStrings).optional().default("false"),
   // sortBy: z.string().optional(),
   // sortOrder: z.enum(["asc", "desc"]).optional(),
 });

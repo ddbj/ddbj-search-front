@@ -30,11 +30,11 @@ describe("parseParams", () => {
   });
   it("should convert umbrella true to 'TRUE'", () => {
     const result = parseParams({ umbrella: true });
-    expect(result.umbrella).toBe("TRUE");
+    expect(result.umbrella).toBe("true");
   });
   it("should convert umbrella false to 'FALSE'", () => {
     const result = parseParams({ umbrella: false });
-    expect(result.umbrella).toBe("FALSE");
+    expect(result.umbrella).toBe("false");
   });
   it("should handle base params", () => {
     const result = parseParams({ keywords: ["human", "cat"] });
