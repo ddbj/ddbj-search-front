@@ -1,6 +1,7 @@
 import { extendZod } from "@/utils/extendZod.ts";
 
-const BASE_API_PATH = "/api/";
+const isMSW = import.meta.env.VITE_MSW === "true";
+const BASE_API_PATH = isMSW ? "/api/" : "https://ddbj-staging.nig.ac.jp/search/api/";
 
 export const API_PATH_ALL_ENTRIES_LIST = `${BASE_API_PATH}entries/`;
 export const API_PATH_BIOPROJECT_LIST = `${BASE_API_PATH}entries/bioproject/`;
