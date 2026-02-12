@@ -15,7 +15,7 @@ const bioSampleListRequestParamsSchema = baseEntryListRequestParamsSchema.extend
 export type BiosampleListRequestParams = z.infer<typeof bioSampleListRequestParamsSchema>;
 
 export const bioSampleListRequestDoc: RouteConfig = {
-  path: API_PATH_BIOSAMPLE_LIST,
+  path: omitBaseApiPath(API_PATH_BIOSAMPLE_LIST),
   method: "get",
   summary: omitBaseApiPath(API_PATH_BIOSAMPLE_LIST),
   description: "BioSample list",

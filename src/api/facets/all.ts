@@ -1,0 +1,35 @@
+import { z } from "zod";
+import { tags } from "@/api/consts.ts";
+import { allEntryListRequestParamSchema } from "@/api/entries/all.ts";
+import { baseFacetListResponseSchema } from "@/api/facets/base.ts";
+import { API_PATH_ALL_FACET_LIST, omitBaseApiPath } from "@/api/paths.ts";
+import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
+// export const allFacetListRequestParamShape =
+export const allFacetListRequestParamSchema = allEntryListRequestParamSchema.omit({
+  page: true,
+  perPage: true,
+  includeFacets: true,
+  includeProperties: true,
+  dbXrefsLimit: true,
+});
+export type AllFacetListRequestParam = z.infer<typeof allFacetListRequestParamSchema>;
+export const allFacetListRequestDoc: RouteConfig = {
+  path: omitBaseApiPath(API_PATH_ALL_FACET_LIST),
+  method: "get",
+  summary: omitBaseApiPath(API_PATH_ALL_FACET_LIST),
+  description: "facets list for requesting all entries",
+  tags: [tags.facetList],
+  request: {
+    query: allFacetListRequestParamSchema,
+  },
+  responses: {
+    200: {
+      description: "",
+      content: {
+        "application/json": {
+          schema: baseFacetListResponseSchema,
+        },
+      },
+    },
+  },
+};

@@ -12,7 +12,7 @@ const jgaDacDetailResponseSchema = baseDetailResponseSchema.omit({ type: true })
 export type JgaDacDetailResponse = z.infer<typeof jgaDacDetailResponseSchema>;
 const path = addIdentifierToPath(API_PATH_JGA_DAC_LIST, "openAPI");
 export const jgaDacDetailRequestDoc: RouteConfig = {
-  path,
+  path: omitBaseApiPath(path),
   method: "get",
   summary: omitBaseApiPath(path),
   description: "JGA DAC detail",

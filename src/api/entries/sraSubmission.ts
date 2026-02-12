@@ -15,7 +15,7 @@ const sraSubmissionListRequestParamsSchema = baseEntryListRequestParamsSchema.ex
 export type SraSubmissionListRequestParams = z.infer<typeof sraSubmissionListRequestParamsSchema>;
 
 export const sraSubmissionListRequestDoc: RouteConfig = {
-  path: API_PATH_SRA_SUBMISSION_LIST,
+  path: omitBaseApiPath(API_PATH_SRA_SUBMISSION_LIST),
   method: "get",
   summary: omitBaseApiPath(API_PATH_SRA_SUBMISSION_LIST),
   description: "SRA Submission list",

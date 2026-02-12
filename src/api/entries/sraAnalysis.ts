@@ -15,7 +15,7 @@ const sraAnalysisListRequestParamsSchema = baseEntryListRequestParamsSchema.exte
 export type SraAnalysisListRequestParams = z.infer<typeof sraAnalysisListRequestParamsSchema>;
 
 export const sraAnalysisListRequestDoc: RouteConfig = {
-  path: API_PATH_SRA_ANALYSIS_LIST,
+  path: omitBaseApiPath(API_PATH_SRA_ANALYSIS_LIST),
   method: "get",
   summary: omitBaseApiPath(API_PATH_SRA_ANALYSIS_LIST),
   description: "SRA Analysis list",

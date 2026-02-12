@@ -13,7 +13,7 @@ const sraRunDetailResponseSchema = baseDetailResponseSchema.omit({ type: true })
 export type SraRunDetailResponse = z.infer<typeof sraRunDetailResponseSchema>;
 const path = addIdentifierToPath(API_PATH_SRA_RUN_LIST, "openAPI");
 export const sraRunDetailRequestDoc: RouteConfig = {
-  path,
+  path: omitBaseApiPath(path),
   method: "get",
   summary: omitBaseApiPath(path),
   description: "SRA Run detail",

@@ -15,7 +15,7 @@ const sraStudyListRequestParamsSchema = baseEntryListRequestParamsSchema.extend(
 export type SraStudyListRequestParams = z.infer<typeof sraStudyListRequestParamsSchema>;
 
 export const sraStudyListRequestDoc: RouteConfig = {
-  path: API_PATH_SRA_STUDY_LIST,
+  path: omitBaseApiPath(API_PATH_SRA_STUDY_LIST),
   method: "get",
   summary: omitBaseApiPath(API_PATH_SRA_STUDY_LIST),
   description: "SRA Study list",

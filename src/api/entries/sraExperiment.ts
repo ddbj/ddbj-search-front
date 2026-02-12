@@ -15,7 +15,7 @@ const sraExperimentListRequestParamsSchema = baseEntryListRequestParamsSchema.ex
 export type SraExperimentListRequestParams = z.infer<typeof sraExperimentListRequestParamsSchema>;
 
 export const sraExperimentListRequestDoc: RouteConfig = {
-  path: API_PATH_SRA_EXPERIMENT_LIST,
+  path: omitBaseApiPath(API_PATH_SRA_EXPERIMENT_LIST),
   method: "get",
   summary: omitBaseApiPath(API_PATH_SRA_EXPERIMENT_LIST),
   description: "SRA Experiment list",

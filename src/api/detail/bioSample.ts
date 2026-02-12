@@ -24,7 +24,7 @@ export type BioSampleDetailResponse = z.infer<typeof bioProjectDetailResponseSch
 const path = addIdentifierToPath(API_PATH_BIOSAMPLE_LIST, "openAPI");
 
 export const bioSampleDetailRequestDoc: RouteConfig = {
-  path,
+  path: omitBaseApiPath(path),
   method: "get",
   summary: omitBaseApiPath(path),
   tags: [tags.searchResultDetail],

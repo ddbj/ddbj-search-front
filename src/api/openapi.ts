@@ -25,6 +25,7 @@ import { sraRunListRequestDoc } from "@/api/entries/sraRun.ts";
 import { sraSampleListRequestDoc } from "@/api/entries/sraSample.ts";
 import { sraStudyListRequestDoc } from "@/api/entries/sraStudy.ts";
 import { sraSubmissionListRequestDoc } from "@/api/entries/sraSubmission.ts";
+import { allFacetListRequestDoc } from "@/api/facets/all.ts";
 import { allDbXrefsRequestDoc } from "@/api/xrefs/allDbXrefs.ts";
 import { extendZod } from "@/utils/extendZod.ts";
 extendZod();
@@ -55,7 +56,7 @@ registry.registerPath(jgaDatasetDetailRequestDoc);
 registry.registerPath(jgaStudyDetailRequestDoc);
 registry.registerPath(jgaPolicyDetailRequestDoc);
 registry.registerPath(jgaDacDetailRequestDoc);
-registry.registerPath(typeCountRequestDoc);
+registry.registerPath(allFacetListRequestDoc);
 registry.registerPath(allDbXrefsRequestDoc);
 
 export const getDocs = () => {
@@ -69,11 +70,11 @@ export const getDocs = () => {
     },
     servers: [
       {
-        url: "https://ddbj-staging.nig.ac.jp/search/",
+        url: "https://ddbj-staging.nig.ac.jp/search/api/",
         description: "DDBJ staging server",
       },
       {
-        url: "http://localhost:5137",
+        url: "http://localhost:5137/api/",
         description: "Development server",
       },
     ],

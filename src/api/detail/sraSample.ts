@@ -14,7 +14,7 @@ export type SraSampleDetailResponse = z.infer<typeof sraSampleDetailResponseSche
 const path = addIdentifierToPath(API_PATH_SRA_SAMPLE_LIST, "openAPI");
 
 export const sraSampleDetailRequestDoc: RouteConfig = {
-  path,
+  path: omitBaseApiPath(path),
   method: "get",
   summary: omitBaseApiPath(path),
   description: "SRA Sample detail",

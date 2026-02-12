@@ -13,7 +13,7 @@ export type JgaPolicyDetailResponse = z.infer<typeof jgaPolicyDetailResponseSche
 
 const path = addIdentifierToPath(API_PATH_JGA_POLICY_LIST, "openAPI");
 export const jgaPolicyDetailRequestDoc: RouteConfig = {
-  path,
+  path: omitBaseApiPath(path),
   method: "get",
   summary: omitBaseApiPath(path),
   description: "JGA Policy detail",

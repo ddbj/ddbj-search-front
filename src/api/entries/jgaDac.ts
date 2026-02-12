@@ -15,7 +15,7 @@ const jgaDacListRequestParamsSchema = baseEntryListRequestParamsSchema.extend({
 export type JgaDacListRequestParams = z.infer<typeof jgaDacListRequestParamsSchema>;
 
 export const jgaDacListRequestDoc: RouteConfig = {
-  path: API_PATH_JGA_DAC_LIST,
+  path: omitBaseApiPath(API_PATH_JGA_DAC_LIST),
   method: "get",
   summary: omitBaseApiPath(API_PATH_JGA_DAC_LIST),
   description: "JGA DAC list",

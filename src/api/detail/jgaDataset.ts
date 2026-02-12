@@ -14,7 +14,7 @@ export type JgaDatasetDetailResponse = z.infer<typeof jgaDatasetDetailResponseSc
 
 const path = addIdentifierToPath(API_PATH_JGA_DATASET_LIST, "openAPI");
 export const jgaDatasetDetailRequestDoc: RouteConfig = {
-  path,
+  path: omitBaseApiPath(path),
   method: "get",
   summary: omitBaseApiPath(path),
   description: "JGA Dataset detail",

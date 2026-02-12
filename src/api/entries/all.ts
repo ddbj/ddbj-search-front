@@ -15,7 +15,7 @@ export const allEntryListRequestParamSchema = baseEntryListRequestParamsSchema.e
 });
 export type AllEntryListRequestParams = z.infer<typeof allEntryListRequestParamSchema>;
 export const allEntryListRequestDoc: RouteConfig = {
-  path: API_PATH_ALL_ENTRIES_LIST,
+  path: omitBaseApiPath(API_PATH_ALL_ENTRIES_LIST),
   method: "get",
   summary: omitBaseApiPath(API_PATH_ALL_ENTRIES_LIST),
   description: "All entries list",

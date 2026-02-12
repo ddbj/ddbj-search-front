@@ -13,7 +13,7 @@ const jgaStudyDetailResponseSchema = baseDetailResponseSchema.omit({ type: true 
 export type JgaStudyDetailResponse = z.infer<typeof jgaStudyDetailResponseSchema>;
 const path = addIdentifierToPath(API_PATH_JGA_STUDY_LIST, "openAPI");
 export const jgaStudyDetailRequestDoc: RouteConfig = {
-  path,
+  path: omitBaseApiPath(path),
   method: "get",
   summary: omitBaseApiPath(path),
   description: "JGA Study detail",

@@ -15,7 +15,7 @@ const sraRunListRequestParamsSchema = baseEntryListRequestParamsSchema.extend({
 export type SraRunListRequestParams = z.infer<typeof sraRunListRequestParamsSchema>;
 
 export const sraRunListRequestDoc: RouteConfig = {
-  path: API_PATH_SRA_RUN_LIST,
+  path: omitBaseApiPath(API_PATH_SRA_RUN_LIST),
   method: "get",
   summary: omitBaseApiPath(API_PATH_SRA_RUN_LIST),
   description: "SRA Run list",

@@ -15,7 +15,7 @@ const sraSampleListRequestParamsSchema = baseEntryListRequestParamsSchema.extend
 export type SraSampleListRequestParams = z.infer<typeof sraSampleListRequestParamsSchema>;
 
 export const sraSampleListRequestDoc: RouteConfig = {
-  path: API_PATH_SRA_SAMPLE_LIST,
+  path: omitBaseApiPath(API_PATH_SRA_SAMPLE_LIST),
   method: "get",
   summary: omitBaseApiPath(API_PATH_SRA_SAMPLE_LIST),
   description: "SRA Sample list",

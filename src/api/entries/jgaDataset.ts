@@ -15,7 +15,7 @@ const jgaDatasetListRequestParamsSchema = baseEntryListRequestParamsSchema.exten
 export type JgaDatasetListRequestParams = z.infer<typeof jgaDatasetListRequestParamsSchema>;
 
 export const jgaDatasetListRequestDoc: RouteConfig = {
-  path: API_PATH_JGA_DATASET_LIST,
+  path: omitBaseApiPath(API_PATH_JGA_DATASET_LIST),
   method: "get",
   summary: omitBaseApiPath(API_PATH_JGA_DATASET_LIST),
   description: "JGA Dataset list",

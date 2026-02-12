@@ -15,7 +15,7 @@ const jgaStudyListRequestParamsSchema = baseEntryListRequestParamsSchema.extend(
 export type JgaStudyListRequestParams = z.infer<typeof jgaStudyListRequestParamsSchema>;
 
 export const jgaStudyListRequestDoc: RouteConfig = {
-  path: API_PATH_JGA_STUDY_LIST,
+  path: omitBaseApiPath(API_PATH_JGA_STUDY_LIST),
   method: "get",
   summary: omitBaseApiPath(API_PATH_JGA_STUDY_LIST),
   description: "JGA Study list",

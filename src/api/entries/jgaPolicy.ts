@@ -15,7 +15,7 @@ const jgaPolicyListRequestParamsSchema = baseEntryListRequestParamsSchema.extend
 export type JgaPolicyListRequestParams = z.infer<typeof jgaPolicyListRequestParamsSchema>;
 
 export const jgaPolicyListRequestDoc: RouteConfig = {
-  path: API_PATH_JGA_POLICY_LIST,
+  path: omitBaseApiPath(API_PATH_JGA_POLICY_LIST),
   method: "get",
   summary: omitBaseApiPath(API_PATH_JGA_POLICY_LIST),
   description: "JGA Policy list",

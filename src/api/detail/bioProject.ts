@@ -53,7 +53,7 @@ const bioProjectDetailResponseSchema = baseDetailResponseSchema
 export type BioProjectDetailResponse = z.infer<typeof bioProjectDetailResponseSchema>;
 const path = addIdentifierToPath(API_PATH_BIOPROJECT_LIST, "openAPI");
 export const bioProjectDetailRequestDoc: RouteConfig = {
-  path,
+  path: omitBaseApiPath(path),
   method: "get",
   summary: omitBaseApiPath(path),
   description: "BioProject detail",

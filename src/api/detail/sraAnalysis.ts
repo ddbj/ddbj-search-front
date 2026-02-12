@@ -13,7 +13,7 @@ export type SraAnalysisDetailResponse = z.infer<typeof sraAnalysisDetailResponse
 
 const path = addIdentifierToPath(API_PATH_SRA_ANALYSIS_LIST, "openAPI");
 export const sraAnalysisDetailRequestDoc: RouteConfig = {
-  path,
+  path: omitBaseApiPath(path),
   method: "get",
   summary: omitBaseApiPath(path),
   description: "SRA Analysis detail",

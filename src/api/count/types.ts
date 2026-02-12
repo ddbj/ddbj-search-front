@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { tags } from "@/api/consts.ts";
 import { allEntryListRequestParamSchema } from "@/api/entries/all.ts";
-import { API_PATH_TYPE_COUNT } from "@/api/paths.ts";
+import { API_PATH_TYPE_COUNT, omitBaseApiPath } from "@/api/paths.ts";
 import { dbTypes } from "@/consts/db.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
@@ -22,9 +22,9 @@ export type CountTypesRequestParams = z.infer<typeof countTypesRequestParamsSche
 export type CountTypesResponse = z.infer<typeof countTypesResponseSchema>;
 
 export const typeCountRequestDoc: RouteConfig = {
-  path: API_PATH_TYPE_COUNT,
+  path: omitBaseApiPath(API_PATH_TYPE_COUNT),
   method: "get",
-  summary: "count types",
+  summary: omitBaseApiPath(API_PATH_TYPE_COUNT),
   tags: [tags.count],
   request: {
     query: countTypesRequestParamsSchema,
