@@ -50,8 +50,8 @@ const Publication: FC<Props> = ({ data }) => {
   if (data.type !== "bioproject") return <></>;
   const publications = data.publication ?? [];
   const inner = publications.map((pub) => {
-    const title = pub.title;
     const url = pub.url;
+    const title = pub.title ?? pub.url;
     if (url) {
       return (
         <li key={pub.id}>
