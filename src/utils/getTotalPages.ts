@@ -1,4 +1,7 @@
+import { MAX_ENTRIES } from "@/utils/consts.ts";
+
 export const getTotalPages = (itemCount: number, perPage: number) => {
-  if (itemCount === 0) return 1;
-  return Math.ceil(itemCount / perPage);
+  const displayCount = Math.min(itemCount, MAX_ENTRIES);
+  if (displayCount === 0) return 1;
+  return Math.ceil(displayCount / perPage);
 };
