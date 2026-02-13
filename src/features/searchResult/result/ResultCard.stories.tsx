@@ -17,7 +17,9 @@ export const Primary = {
     id: "SAMN30489498",
     type: "biosample",
     relations: {
+      "insdc-sample": 1,
       bioproject: 1,
+      gold: 4,
       "sra-run": 1,
       "sra-sample": 1,
       "sra-experiment": 1,

@@ -3,6 +3,7 @@ import clsx from "clsx";
 import { type FC, useMemo } from "react";
 import { getDbLabel } from "@/consts/db.ts";
 import { formatToDateStr } from "@/utils/dateTime.ts";
+import { reorderXrefs } from "@/utils/reorderXrefs.ts";
 import type { EntryListResponse } from "@/api/entries/base.ts";
 
 type Props = {
@@ -42,7 +43,7 @@ export const ResultCard: FC<Props> = ({
           <div className={"flex flex-col gap-1"}>
             <span>Related to {total} objects</span>
             <ul className={"flex flex-wrap gap-1"}>
-              {Object.entries(relations).map(([key, value]) => (
+              {reorderXrefs(relations).map(([key, value]) => (
                 <li className={"rounded-sm bg-gray-100 px-2 py-1 text-xs font-bold"} key={key}>
                   {getDbLabel(key)}:{value}
                 </li>
@@ -56,17 +57,18 @@ export const ResultCard: FC<Props> = ({
   );
 };
 
-const DateTable: FC<{
+type DataTableProps = {
   publishedAt?: string | null;
   updatedAt?: string | null;
   submittedAt?: string | null;
-}> = ({ publishedAt, submittedAt, updatedAt }) => {
+};
+const DateTable: FC<DataTableProps> = ({ publishedAt, submittedAt, updatedAt }) => {
   const hasDate = publishedAt || submittedAt || updatedAt;
   const data: Record<string, string | null> = useMemo(() => {
     const result: Record<string, string | null> = {};
+    if (submittedAt) result["Submitted at"] = submittedAt;
     if (publishedAt) result["Published at"] = publishedAt;
     if (updatedAt) result["Updated at"] = updatedAt;
-    if (submittedAt) result["Submitted at"] = submittedAt;
     return result;
   }, [publishedAt, updatedAt, submittedAt]);
   if (!hasDate) {
