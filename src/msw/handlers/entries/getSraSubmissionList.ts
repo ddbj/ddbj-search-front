@@ -24,7 +24,7 @@ export const getSraSubmissionList = http.get<never, never, EntryListResponse>(
             type,
             title: "Sequence Read Archive submission",
             dbXrefsCount: { "sra-study": 1, "sra-experiment": 4, "sra-run": 8, biosample: 2 },
-            datePublished: "2023-04-15",
+            datePublished: "2023-04-15", dateModified: "2023-04-15", dateCreated: "2023-04-15",
           };
         }),
     });

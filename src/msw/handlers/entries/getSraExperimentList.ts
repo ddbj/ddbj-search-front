@@ -24,7 +24,7 @@ export const getSraExperimentList = http.get<never, never, EntryListResponse>(
             type,
             title: "Illumina HiSeq 2000 paired end sequencing",
             dbXrefsCount: { "sra-run": 3, "sra-sample": 1, biosample: 1, bioproject: 1 },
-            datePublished: "2023-04-15",
+            datePublished: "2023-04-15", dateModified: "2023-04-15", dateCreated: "2023-04-15",
           };
         }),
     });

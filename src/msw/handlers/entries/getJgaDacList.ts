@@ -24,7 +24,7 @@ export const getJgaDacList = http.get<never, never, EntryListResponse>(
             type,
             title: "Data Access Committee for controlled genomic data",
             dbXrefsCount: { "jga-dataset": 10, "jga-study": 4, "jga-policy": 2 },
-            datePublished: "2023-04-15",
+            datePublished: "2023-04-15", dateModified: "2023-04-15", dateCreated: "2023-04-15",
           };
         }),
     });

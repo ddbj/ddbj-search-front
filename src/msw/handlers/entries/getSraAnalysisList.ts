@@ -24,7 +24,7 @@ export const getSraAnalysisList = http.get<never, never, EntryListResponse>(
             type,
             title: "Reference alignment analysis for genomic study",
             dbXrefsCount: { "sra-study": 1, "sra-sample": 2, biosample: 1, bioproject: 1 },
-            datePublished: "2023-04-15",
+            datePublished: "2023-04-15", dateModified: "2023-04-15", dateCreated: "2023-04-15",
           };
         }),
     });

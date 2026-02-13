@@ -4,18 +4,14 @@ import type { CountTypesRequestParams } from "@/api/count/types.ts";
 
 const { parseParams } = __TEST__fetchTypeCount;
 
-const expectKeyNotExists = (
-  result: CountTypesRequestParams,
-  key: keyof CountTypesRequestParams
-) => {
+const expectKeyNotExists = (result: Record<string, unknown>, key: string) => {
   expect(key in result).toBe(false);
 };
 
 describe("parseParams", () => {
   it("should handle empty params", () => {
     const result = parseParams({});
-    // default params are `{ includeFacets: false, includeProperties: false, dbXrefsLimit: 0 }`
-    expect(Object.keys(result)).toHaveLength(3);
+    expect(Object.keys(result)).toHaveLength(0);
   });
 
   it("should handle base params - keywords", () => {

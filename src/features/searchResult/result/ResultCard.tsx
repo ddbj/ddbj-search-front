@@ -10,13 +10,23 @@ type Props = {
   type: string;
   relations: Record<string, number>;
   publishedAt?: string;
+  updatedAt?: string;
+  submittedAt?: string;
 };
 export type ResultCardProps = Props;
 
 const wrapperClasses = clsx(
   "flex flex-col gap-1 rounded-md border border-2 border-gray-100 bg-white p-4 text-sm transition-all hover:border-link-primary hover:shadow-md"
 );
-export const ResultCard: FC<Props> = ({ id, type, title, relations, publishedAt }) => {
+export const ResultCard: FC<Props> = ({
+  id,
+  type,
+  title,
+  relations,
+  publishedAt,
+  submittedAt,
+  updatedAt,
+}) => {
   const to = `/entry/${type}/${id}`;
   const total = Object.values(relations).reduce((a, b) => a + b, 0);
   return (

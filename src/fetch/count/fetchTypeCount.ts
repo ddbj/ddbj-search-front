@@ -16,9 +16,15 @@ export const fetchTypeCount = async (params: BaseSearchParams) => {
 
 const parseParams = (params: AllSearchParams): AllFacetListRequestParam => {
   const base = parseBaseParams(params);
-  delete base.page;
-  delete base.perPage;
-  return base;
+  const {
+    page: _page,
+    perPage: _perPage,
+    includeFacets: _includeFacets,
+    includeProperties: _includeProperties,
+    dbXrefsLimit: _dbXrefsLimit,
+    ...rest
+  } = base;
+  return rest;
 };
 
 export const __TEST__fetchTypeCount = {

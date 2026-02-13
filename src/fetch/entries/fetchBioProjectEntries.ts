@@ -5,7 +5,7 @@ import type { BioProjectListRequestParams } from "@/api/entries/bioProject.ts";
 import type { BioprojectSearchParams } from "@/schema/search/bioProject.ts";
 
 export const fetchBioProjects = async (params: BioprojectSearchParams) => {
-  const searchParams = parseParams(params);
+  const searchParams = parseParams(params) as unknown as Record<string, string>;
   const response = await fetch(`${API_PATH_BIOPROJECT_LIST}?${new URLSearchParams(searchParams)}`, {
     method: "GET",
   });
@@ -13,13 +13,14 @@ export const fetchBioProjects = async (params: BioprojectSearchParams) => {
   return data;
 };
 const parseParams = (params: BioprojectSearchParams): BioProjectListRequestParams => {
+  const base = parseBaseParams(params);
   return {
-    ...parseBaseParams(params),
-    ...(params.organization ? { organization: params.organization } : {}),
-    ...(params.publication ? { publication: params.publication } : {}),
-    ...(params.grant ? { grant: params.grant } : {}),
+    ...base,
+    organization: params.organization ?? null,
+    publication: params.publication ?? null,
+    grant: params.grant ?? null,
     ...(params.umbrella !== undefined ? { umbrella: params.umbrella ? "true" : "false" } : {}),
-  };
+  } as BioProjectListRequestParams;
 };
 
 export const __TEST__fetchBioProjectEntries = {

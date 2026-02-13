@@ -12,9 +12,9 @@ const expectKeyNotExists = (
 };
 
 describe("parseParams", () => {
-  it("should not have organization if it is not provided", () => {
+  it("should have organization as null if it is not provided", () => {
     const result = parseParams({});
-    expectKeyNotExists(result, "organization");
+    expect(result.organization).toBe(null);
   });
   it("should have organization if it is provided", () => {
     const result = parseParams({ organization: "NCBI" });
