@@ -6,7 +6,7 @@ export const sraSample1: SraSampleDetailResponse = {
     identifier: "1313",
     name: "Streptococcus pneumoniae",
   },
-  visibility: "Unrestricted",
+  accessibility: "public-access",
   downloadUrl: [
     {
       name: "ERA2380438.sample.xml",
@@ -138,5 +138,5 @@ export const sraSample1: SraSampleDetailResponse = {
       ],
     },
   },
-  status: "public",
+  status: "live",
 };

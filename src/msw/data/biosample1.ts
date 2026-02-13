@@ -12,8 +12,8 @@ export const biosample1: BioSampleDetailResponse = {
     name: "Homo sapiens",
   },
   description: "",
-  visibility: "Unrestricted",
-  status: "public",
+  accessibility: "public-access",
+  status: "live",
   dbXrefs: [
     {
       identifier: "SRS13979220",

@@ -1,5 +1,6 @@
 import { z } from "zod";
 import {
+  accessibilitySchema,
   downloadUrlSchema,
   organismSchema,
   statusSchema,
@@ -21,7 +22,7 @@ export const baseDetailResponseSchema = z.object({
   organism: organismSchema.nullable(),
   description: z.string().nullable(),
   type: z.string(),
-  visibility: visibilitySchema,
+  accessibility: accessibilitySchema,
   status: statusSchema,
   dbXrefs: z.array(xrefSchema).openapi({
     description:

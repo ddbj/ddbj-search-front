@@ -13,8 +13,8 @@ export const bioproject1: BioProjectDetailResponse = {
   description:
     "<P><B><I>Azotobacter vinelandii</B></I>. This organism will provide information on the proteins involved in nitrogen fixation and the production of PHB and alginate.",
   type: "bioproject",
-  visibility: "Unrestricted",
-  status: "public",
+  accessibility: "public-access",
+  status: "live",
   dbXrefs: [
     {
       identifier: "GCA_000021045",

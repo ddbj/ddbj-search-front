@@ -17,8 +17,11 @@ export const StatusPanel: FC<Props> = ({ data }) => {
         <InfoListItem term={"Status"} toolTipContent={"This is the description of Status"}>
           {data.status}
         </InfoListItem>
-        <InfoListItem term={"Visibility"} toolTipContent={"This is the description of visibility"}>
-          {data.visibility}
+        <InfoListItem
+          term={"Accessibility"}
+          toolTipContent={"This is the description of accessibility"}
+        >
+          {data.accessibility}
         </InfoListItem>
         <InfoListItem term={"Created date"} contentNoWrap={true}>
           {createdDate}

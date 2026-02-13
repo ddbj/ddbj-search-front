@@ -25,7 +25,10 @@ export const visibilitySchema = z
   .describe(`TODO: write description for each Visibility option`);
 export type Visibility = z.infer<typeof visibilitySchema>;
 
-export const statusSchema = z
-  .enum(["public", "suppressed"])
-  .describe(`TODO: write description for each Status option`);
+export const accessibilityValues = ["public-access", "controlled-access"] as const;
+export const accessibilitySchema = z.enum(accessibilityValues);
+export type Accessibility = z.infer<typeof accessibilitySchema>;
+
+export const statusValues = ["live", "suppressed", "unpublished"] as const;
+export const statusSchema = z.enum(statusValues);
 export type Status = z.infer<typeof statusSchema>;
