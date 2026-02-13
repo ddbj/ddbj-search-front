@@ -1,22 +1,23 @@
 import { Link } from "@tanstack/react-router";
 import clsx from "clsx";
+import { type FC, useMemo } from "react";
 import { getDbLabel } from "@/consts/db.ts";
+import { formatToDateStr } from "@/utils/dateTime.ts";
 import type { EntryListResponse } from "@/api/entries/base.ts";
-import type { FC } from "react";
 
 type Props = {
   title: string;
   id: string;
   type: string;
   relations: Record<string, number>;
-  publishedAt?: string;
-  updatedAt?: string;
-  submittedAt?: string;
+  publishedAt?: string | null;
+  updatedAt?: string | null;
+  submittedAt?: string | null;
 };
 export type ResultCardProps = Props;
 
 const wrapperClasses = clsx(
-  "flex flex-col gap-1 rounded-md border border-2 border-gray-100 bg-white p-4 text-sm transition-all hover:border-link-primary hover:shadow-md"
+  "flex flex-col gap-1 rounded-md border border-2 border-gray-100 bg-white px-2 py-2 text-sm transition-all hover:border-link-primary hover:shadow-md"
 );
 export const ResultCard: FC<Props> = ({
   id,
@@ -37,7 +38,7 @@ export const ResultCard: FC<Props> = ({
           <span>{getDbLabel(type)}</span>
         </p>
         <h3 className={"mb-2 text-2xl leading-none"}>{title}</h3>
-        <div className={"flex items-end justify-between"}>
+        <div className={"flex items-end justify-between gap-x-2"}>
           <div className={"flex flex-col gap-1"}>
             <span>Related to {total} objects</span>
             <ul className={"flex flex-wrap gap-1"}>
@@ -48,18 +49,52 @@ export const ResultCard: FC<Props> = ({
               ))}
             </ul>
           </div>
-          {publishedAt && <p>Published at ${publishedAt}</p>}
+          <DateTable {...{ submittedAt, publishedAt, updatedAt }} />
         </div>
       </div>
     </Link>
   );
 };
 
+const DateTable: FC<{
+  publishedAt?: string | null;
+  updatedAt?: string | null;
+  submittedAt?: string | null;
+}> = ({ publishedAt, submittedAt, updatedAt }) => {
+  const hasDate = publishedAt || submittedAt || updatedAt;
+  const data: Record<string, string | null> = useMemo(() => {
+    const result: Record<string, string | null> = {};
+    if (publishedAt) result["Published at"] = publishedAt;
+    if (updatedAt) result["Updated at"] = updatedAt;
+    if (submittedAt) result["Submitted at"] = submittedAt;
+    return result;
+  }, [publishedAt, updatedAt, submittedAt]);
+  if (!hasDate) {
+    return <div></div>;
+  }
+  return (
+    <dl className={"grid grid-cols-[auto_auto] gap-x-2"}>
+      {Object.entries(data).map(([key, value]) => (
+        <>
+          <dt className={"text-nowrap"}>{key}</dt>
+          <dd className={"font-mono text-nowrap"}>{value}</dd>
+        </>
+      ))}
+    </dl>
+  );
+};
+
 export const parseResultCardProps = (res: EntryListResponse["items"][0]): Props => {
+  const updatedAt = res.dateModified ? formatToDateStr(res.dateModified) : null;
+  const submittedAt = res.dateCreated ? formatToDateStr(res.dateCreated) : null;
+  const publishedAt = res.datePublished ? formatToDateStr(res.datePublished) : null;
   return {
     title: res.title,
     id: res.identifier,
     type: res.type,
     relations: res.dbXrefsCount,
+    updatedAt,
+    submittedAt,
+    publishedAt,
   };
 };
