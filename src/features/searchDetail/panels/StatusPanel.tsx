@@ -23,14 +23,14 @@ export const StatusPanel: FC<Props> = ({ data }) => {
         >
           {data.accessibility}
         </InfoListItem>
-        <InfoListItem term={"Created date"} contentNoWrap={true}>
+        <InfoListItem term={"Submitted date"} contentNoWrap={true}>
           {createdDate}
-        </InfoListItem>
-        <InfoListItem term={"Modified date"} contentNoWrap={true}>
-          {modifiedDate}
         </InfoListItem>
         <InfoListItem term={"Published date"} contentNoWrap={true}>
           {publishedDate}
+        </InfoListItem>
+        <InfoListItem term={"Updated date"} contentNoWrap={true}>
+          {modifiedDate}
         </InfoListItem>
       </InfoList>
     </PanelWrapper>
