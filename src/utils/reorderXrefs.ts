@@ -1,13 +1,23 @@
-import { dbTypeList, dbTypes, isDBType } from "@/consts/db.ts";
+import { isArray } from "is-what";
+import { xrefTypeList } from "@/consts/db.ts";
 
-export const reorderXrefs = <T>(list: Record<string, T>): [string, T][] => {
-  const inDb = Object.entries(list)
-    .filter(([key]) => isDBType(key))
-    .sort((a, b) => {
-      const indexA = dbTypeList.indexOf(a[0]);
-      const indexB = dbTypeList.indexOf(b[0]);
+export const reorderXrefs = <T>(list: Record<string, T> | [string, T][]): [string, T][] => {
+  const arr = isArray(list) ? list : Object.entries(list);
+  const inDb = arr
+    .filter(([type]) => {
+      return xrefTypeList.includes(type);
+    })
+    .sort(([keyA], [keyB]) => {
+      const indexA = xrefTypeList.indexOf(keyA);
+      const indexB = xrefTypeList.indexOf(keyB);
       return indexA - indexB;
     });
-  const rest = Object.entries(list).filter(([key]) => !isDBType(key));
+  const rest = arr
+    .filter(([type]) => {
+      return !xrefTypeList.includes(type);
+    })
+    .sort(([keyA], [keyB]) => {
+      return keyA.localeCompare(keyB);
+    });
   return [...inDb, ...rest];
 };

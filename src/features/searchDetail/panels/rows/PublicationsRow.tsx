@@ -11,7 +11,7 @@ export const PublicationsRow: FC<Props> = ({ publications }) => {
   }
   return (
     <InfoListItem term={"Publications"}>
-      <ul className={""}>
+      <ul className={"flex flex-col gap-y-2"}>
         {publications.map((p) => (
           <li className={"flex flex-col"}>
             <span className={"text-xs text-gray-500"}>{p.DbType}</span>

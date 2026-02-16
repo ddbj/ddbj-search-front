@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import clsx from "clsx";
 import { type FC, useMemo } from "react";
-import { getDbLabel } from "@/consts/db.ts";
+import { getDbLabel, getXrefDbLabel } from "@/consts/db.ts";
 import { formatToDateStr } from "@/utils/dateTime.ts";
 import { reorderXrefs } from "@/utils/reorderXrefs.ts";
 import type { EntryListResponse } from "@/api/entries/base.ts";
@@ -45,7 +45,7 @@ export const ResultCard: FC<Props> = ({
             <ul className={"flex flex-wrap gap-1"}>
               {reorderXrefs(relations).map(([key, value]) => (
                 <li className={"rounded-sm bg-gray-100 px-2 py-1 text-xs font-bold"} key={key}>
-                  {getDbLabel(key)}:{value}
+                  {getXrefDbLabel(key)}:{value}
                 </li>
               ))}
             </ul>

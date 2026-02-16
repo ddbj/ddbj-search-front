@@ -13,11 +13,15 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary = {
   args: {
-    term: "ddbj",
-    values: [
-      ["DDBJ 123", "https://www.ddbj.nig.ac.jp/index-e.html"],
-      ["DDBJ 456", "https://www.ddbj.nig.ac.jp/dra/index-e.html"],
-      ["DDBJ 789", "https://www.ddbj.nig.ac.jp/biosample/index-e.html"],
+    dbName: "ddbj",
+    items: [
+      { label: "DDBJ 123", url: "https://www.ddbj.nig.ac.jp/index-e.html", isExternal: false },
+      { label: "DDBJ 456", url: "https://www.ddbj.nig.ac.jp/dra/index-e.html", isExternal: false },
+      {
+        label: "DDBJ 789",
+        url: "https://www.ddbj.nig.ac.jp/biosample/index-e.html",
+        isExternal: false,
+      },
     ],
   },
 } satisfies Story;

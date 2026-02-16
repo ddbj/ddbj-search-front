@@ -12,9 +12,16 @@ export const dbTypes = {
   "jga-policy": "jga-policy",
   "jga-dac": "jga-dac",
 } as const;
+
+const umbrellaBioProject = {
+  key: "umbrella-bioproject",
+  label: "Umbrella BioProject",
+};
+
 export type DBType = (typeof dbTypes)[keyof typeof dbTypes];
 export const isDBType = (value: string): value is DBType => Object.values(dbTypes).includes(value);
 export const dbTypeList = Object.keys(dbTypes).filter(isDBType);
+export const xrefTypeList = [umbrellaBioProject.key, ...dbTypeList];
 
 export const dbLabels: { [K in DBType]: string } = {
   bioproject: "BioProject",
@@ -33,6 +40,11 @@ export const dbLabels: { [K in DBType]: string } = {
 export type DBLabel = (typeof dbLabels)[DBType];
 
 export const getDbLabel = (str: string): string => {
+  const result = dbLabels[str as DBType];
+  return result ? result : str;
+};
+export const getXrefDbLabel = (str: string): string => {
+  if (str === umbrellaBioProject.key) return umbrellaBioProject.label;
   const result = dbLabels[str as DBType];
   return result ? result : str;
 };

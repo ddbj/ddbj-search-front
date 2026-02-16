@@ -1,7 +1,9 @@
-import { dbLabels, dbTypeList, dbTypes, getDbLabel, isDBType } from "@/consts/db.ts";
+import { dbTypeList, getDbLabel, getXrefDbLabel, xrefTypeList } from "@/consts/db.ts";
 import { InfoList } from "@/features/searchDetail/ui/InfoList.tsx";
 import { PanelWrapper } from "@/features/searchDetail/ui/PanelWrapper.tsx";
-import { XrefListItem } from "@/features/searchDetail/ui/XrefListItem.tsx";
+import { XrefListItem, type XrefListItemProps } from "@/features/searchDetail/ui/XrefListItem.tsx";
+import { reorderXrefs } from "@/utils/reorderXrefs.ts";
+import { isInternalDbLink, sanitizeDbLink } from "@/utils/sanitizeDbLink.ts";
 import type { Xref } from "@/api/components.ts";
 import type { FC } from "react";
 
@@ -22,8 +24,8 @@ export const XrefPanel: FC<Props> = ({ xrefs }) => {
           return (
             <XrefListItem
               key={`${entry.dbName}`}
-              term={entry.dbName}
-              values={entry.items}
+              dbName={entry.dbName}
+              items={entry.items}
             ></XrefListItem>
           );
         })}
@@ -32,38 +34,27 @@ export const XrefPanel: FC<Props> = ({ xrefs }) => {
   );
 };
 
-type ParsedRef = {
-  dbName: string;
-  items: [string, string][];
-};
-const parseRefs = (refs: Xref[]): ParsedRef[] => {
-  const result = refs
-    .reduce<ParsedRef[]>((acc, ref) => {
-      //todo convert url
-      const item: [string, string] = [ref.identifier, ref.url];
-      const dbEntry = acc.find((entry) => entry.dbName === ref.type);
-      if (!dbEntry) {
-        return [...acc, { dbName: ref.type, items: [item] }];
-      } else {
-        dbEntry.items = [...dbEntry.items, item];
-        return acc;
-      }
-    }, [])
-    .sort((a, b) => {
-      const indexA = dbTypeList.indexOf(a.dbName);
-      const indexB = dbTypeList.indexOf(b.dbName);
-
-      // 見つからない（-1）場合は後ろに持っていく
-      const orderA = indexA === -1 ? Infinity : indexA;
-      const orderB = indexB === -1 ? Infinity : indexB;
-
-      return orderA - orderB;
-    })
-    // Rename the database identifier from dbType to dbLabel
-    .map<ParsedRef>((item) => {
-      const dbName = getDbLabel(item.dbName);
-      return { ...item, dbName };
-    });
+type XrefItemProps = XrefListItemProps["items"][0];
+const parseRefs = (refs: Xref[]): XrefListItemProps[] => {
+  const reduced = refs.reduce<[string, XrefItemProps[]][]>((acc, ref) => {
+    const url = sanitizeDbLink(ref.url);
+    const isExternal = !isInternalDbLink(ref.url);
+    const label = ref.identifier;
+    const item: XrefItemProps = { url, label, isExternal };
+    const dbEntry = acc.find(([dbName]) => dbName === ref.type);
+    if (!dbEntry) {
+      return [...acc, [ref.type, [item]]];
+    } else {
+      dbEntry[1].push(item);
+      return acc;
+    }
+  }, []);
+  const reordered = reorderXrefs(reduced);
+  const result = reordered.map(([dbKey, items]) => {
+    const dbName = getXrefDbLabel(dbKey);
+    return { dbName, items };
+  });
+  console.log(result);
 
   return result;
 };
