@@ -29,7 +29,6 @@ export const Null = {
   },
 } satisfies Story;
 
-// TODO play 関数でunit test
 export const Primary = {
   args: {
     organism: {

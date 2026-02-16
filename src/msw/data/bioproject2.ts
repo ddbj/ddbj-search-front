@@ -1,6 +1,6 @@
 import type { BioProjectDetailResponse } from "@/api/detail/bioProject.ts";
 
-const bioproject2: BioProjectDetailResponse = {
+export const bioproject2: BioProjectDetailResponse = {
   identifier: "PRJNA313191",
   properties: {
     Project: {

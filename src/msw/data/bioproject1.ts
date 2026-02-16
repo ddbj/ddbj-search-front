@@ -2,502 +2,143 @@ import type { BioProjectDetailResponse } from "@/api/detail/bioProject.ts";
 
 export const bioproject1: BioProjectDetailResponse = {
   identifier: "PRJNA16",
-  dateCreated: "2003-02-25",
-  dateModified: "2024-11-18T11:15:39Z",
-  datePublished: "2009-04-14T00:00:00Z",
-  title: "Nitrogen-fixing bacterium",
-  organism: {
-    identifier: "322710",
-    name: "Azotobacter vinelandii DJ",
-  },
-  description:
-    "<P><B><I>Azotobacter vinelandii</B></I>. This organism will provide information on the proteins involved in nitrogen fixation and the production of PHB and alginate.",
-  type: "bioproject",
-  accessibility: "public-access",
-  status: "live",
-  dbXrefs: [
-    {
-      identifier: "GCA_000021045",
-      type: "assemblies",
-      url: "https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_000021045/",
-    },
-    {
-      identifier: "SAMN19513674",
-      type: "biosample",
-      url: "https://ddbj.nig.ac.jp/resource/biosample/SAMN19513674",
-    },
-    {
-      identifier: "SAMN02604349",
-      type: "biosample",
-      url: "https://ddbj.nig.ac.jp/resource/biosample/SAMN02604349",
-    },
-  ],
-  dbXrefsCount: {
-    assemblies: 1,
-    biosample: 2,
-  },
-  organization: [
-    {
-      organizationType: "center",
-      role: "participant",
-      name: "DOE Joint Genome Institute",
-      abbreviation: "DOE Joint Genome Institute",
-      url: "http://genome.jgi-psf.org/draft_microbes/azovi/azovi.home.html",
-    },
-    {
-      organizationType: "consortium",
-      role: "owner",
-      name: "US DOE Joint Genome Institute (JGI-PGF)",
-      abbreviation: "US DOE Joint Genome Institute (JGI-PGF)",
-      url: "",
-    },
-    {
-      organizationType: "center",
-      role: "participant",
-      name: "Virginia Polytechnic Institute and State University, Virginia Bioinformatics Institute, USA, Blacksburg",
-      abbreviation:
-        "Virginia Polytechnic Institute and State University, Virginia Bioinformatics Institute, USA, Blacksburg",
-      url: "",
-    },
-  ],
-  externalLink: [
-    {
-      label: "Azotobacter Org",
-      url: "http://www.azotobacter.org",
-    },
-    {
-      label: "DOE Joint Genome Institute",
-      url: "http://www.jgi.doe.gov/",
-    },
-    {
-      label: "GOLD",
-      url: "http://genomesonline.org/cgi-bin/GOLD/bin/GOLDCards.cgi?goldstamp=Gi00047",
-    },
-  ],
-  publication: [
-    {
-      date: "",
-      Reference: null,
-      id: "19429624",
-      title:
-        "Genome sequence of Azotobacter vinelandii, an obligate aerobe specialized to support diverse anaerobic metabolic processes.",
-      url: "https://pubmed.ncbi.nlm.nih.gov/19429624/",
-      DbType: "ePubmed",
-      status: "ePublished",
-    },
-  ],
-  grant: [],
   properties: {
-    accession: "PRJNA16",
-    url: "https://ddbj.nig.ac.jp/search/entry/bioproject/PRJNA16",
-    organism: {
-      identifier: "322710",
-      name: "Azotobacter vinelandii DJ",
-    },
-    externalLink: [
-      {
-        label: "Azotobacter Org",
-        url: "http://www.azotobacter.org",
-      },
-      {
-        label: "DOE Joint Genome Institute",
-        url: "http://www.jgi.doe.gov/",
-      },
-      {
-        label: "GOLD",
-        url: "http://genomesonline.org/cgi-bin/GOLD/bin/GOLDCards.cgi?goldstamp=Gi00047",
-      },
-    ],
     Project: {
       Project: {
+        ProjectID: { ArchiveID: { accession: "PRJNA16", archive: "NCBI", id: "16" } },
         ProjectDescr: {
+          Name: "Azotobacter vinelandii DJ strain:DJ",
+          Title: "Nitrogen-fixing bacterium",
           Description:
             "<P><B><I>Azotobacter vinelandii</B></I>. This organism will provide information on the proteins involved in nitrogen fixation and the production of PHB and alginate.",
-          ProjectReleaseDate: "2009-04-14T00:00:00Z",
-          Title: "Nitrogen-fixing bacterium",
-          Publication: {
-            Reference: null,
-            StructuredCitation: {
-              AuthorSet: {
-                Author: [
-                  {
-                    Consortium:
-                      "Virginia Bioinformatics Institute, Virginia Polytechnic Institute and State University, Blacksburg, VA 24061, USA. setubal@vbi.vt.edu",
-                    Name: {
-                      Last: "Setubal",
-                      First: "João C",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "dos Santos",
-                      First: "Patricia",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Goldman",
-                      First: "Barry S",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Ertesvåg",
-                      First: "Helga",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Espin",
-                      First: "Guadelupe",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Rubio",
-                      First: "Luis M",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Valla",
-                      First: "Svein",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Almeida",
-                      First: "Nalvo F",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Balasubramanian",
-                      First: "Divya",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Cromes",
-                      First: "Lindsey",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Curatti",
-                      First: "Leonardo",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Du",
-                      First: "Zijin",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Godsy",
-                      First: "Eric",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Goodner",
-                      First: "Brad",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Hellner-Burris",
-                      First: "Kaitlyn",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Hernandez",
-                      First: "José A",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Houmiel",
-                      First: "Katherine",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Imperial",
-                      First: "Juan",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Kennedy",
-                      First: "Christina",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Larson",
-                      First: "Timothy J",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Latreille",
-                      First: "Phil",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Ligon",
-                      First: "Lauren S",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Lu",
-                      First: "Jing",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Maerk",
-                      First: "Mali",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Miller",
-                      First: "Nancy M",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Norton",
-                      First: "Stacie",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "O'Carroll",
-                      First: "Ina P",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Paulsen",
-                      First: "Ian",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Raulfs",
-                      First: "Estella C",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Roemer",
-                      First: "Rebecca",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Rosser",
-                      First: "James",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Segura",
-                      First: "Daniel",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Slater",
-                      First: "Steve",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Stricklin",
-                      First: "Shawn L",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Studholme",
-                      First: "David J",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Sun",
-                      First: "Jian",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Viana",
-                      First: "Carlos J",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Wallin",
-                      First: "Erik",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Wang",
-                      First: "Baomin",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Wheeler",
-                      First: "Cathy",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Zhu",
-                      First: "Huijun",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Dean",
-                      First: "Dennis R",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Dixon",
-                      First: "Ray",
-                    },
-                  },
-                  {
-                    Name: {
-                      Last: "Wood",
-                      First: "Derek",
-                    },
-                  },
-                ],
-              },
-              Title:
-                "Genome sequence of Azotobacter vinelandii, an obligate aerobe specialized to support diverse anaerobic metabolic processes.",
-              Journal: {
-                Issue: "14",
-                Year: "2009",
-                Volume: "191",
-                JournalTitle: "Journal of bacteriology",
-                PagesFrom: "4534",
-                PagesTo: "45",
-              },
-            },
-            id: "19429624",
-            DbType: "ePubmed",
-            status: "ePublished",
-          },
           ExternalLink: [
             {
-              label: "Azotobacter Org",
               category: "Related Resources",
+              label: "Azotobacter Org",
               URL: "http://www.azotobacter.org",
             },
             {
-              label: "DOE Joint Genome Institute",
               category: "Sequencing Centers",
+              label: "DOE Joint Genome Institute",
               URL: "http://www.jgi.doe.gov/",
             },
             {
-              label: "GOLD",
               category: "Other Databases",
+              label: "GOLD",
               URL: "http://genomesonline.org/cgi-bin/GOLD/bin/GOLDCards.cgi?goldstamp=Gi00047",
             },
           ],
+          Publication: {
+            id: "19429624",
+            status: "ePublished",
+            Reference: null,
+            StructuredCitation: {
+              Title:
+                "Genome sequence of Azotobacter vinelandii, an obligate aerobe specialized to support diverse anaerobic metabolic processes.",
+              Journal: {
+                JournalTitle: "Journal of bacteriology",
+                Year: "2009",
+                Volume: "191",
+                Issue: "14",
+                PagesFrom: "4534",
+                PagesTo: "45",
+              },
+              AuthorSet: {
+                Author: [
+                  {
+                    Name: { First: "João C", Last: "Setubal" },
+                    Consortium:
+                      "Virginia Bioinformatics Institute, Virginia Polytechnic Institute and State University, Blacksburg, VA 24061, USA. setubal@vbi.vt.edu",
+                  },
+                  { Name: { First: "Patricia", Last: "dos Santos" } },
+                  { Name: { First: "Barry S", Last: "Goldman" } },
+                  { Name: { First: "Helga", Last: "Ertesvåg" } },
+                  { Name: { First: "Guadelupe", Last: "Espin" } },
+                  { Name: { First: "Luis M", Last: "Rubio" } },
+                  { Name: { First: "Svein", Last: "Valla" } },
+                  { Name: { First: "Nalvo F", Last: "Almeida" } },
+                  { Name: { First: "Divya", Last: "Balasubramanian" } },
+                  { Name: { First: "Lindsey", Last: "Cromes" } },
+                  { Name: { First: "Leonardo", Last: "Curatti" } },
+                  { Name: { First: "Zijin", Last: "Du" } },
+                  { Name: { First: "Eric", Last: "Godsy" } },
+                  { Name: { First: "Brad", Last: "Goodner" } },
+                  { Name: { First: "Kaitlyn", Last: "Hellner-Burris" } },
+                  { Name: { First: "José A", Last: "Hernandez" } },
+                  { Name: { First: "Katherine", Last: "Houmiel" } },
+                  { Name: { First: "Juan", Last: "Imperial" } },
+                  { Name: { First: "Christina", Last: "Kennedy" } },
+                  { Name: { First: "Timothy J", Last: "Larson" } },
+                  { Name: { First: "Phil", Last: "Latreille" } },
+                  { Name: { First: "Lauren S", Last: "Ligon" } },
+                  { Name: { First: "Jing", Last: "Lu" } },
+                  { Name: { First: "Mali", Last: "Maerk" } },
+                  { Name: { First: "Nancy M", Last: "Miller" } },
+                  { Name: { First: "Stacie", Last: "Norton" } },
+                  { Name: { First: "Ina P", Last: "O'Carroll" } },
+                  { Name: { First: "Ian", Last: "Paulsen" } },
+                  { Name: { First: "Estella C", Last: "Raulfs" } },
+                  { Name: { First: "Rebecca", Last: "Roemer" } },
+                  { Name: { First: "James", Last: "Rosser" } },
+                  { Name: { First: "Daniel", Last: "Segura" } },
+                  { Name: { First: "Steve", Last: "Slater" } },
+                  { Name: { First: "Shawn L", Last: "Stricklin" } },
+                  { Name: { First: "David J", Last: "Studholme" } },
+                  { Name: { First: "Jian", Last: "Sun" } },
+                  { Name: { First: "Carlos J", Last: "Viana" } },
+                  { Name: { First: "Erik", Last: "Wallin" } },
+                  { Name: { First: "Baomin", Last: "Wang" } },
+                  { Name: { First: "Cathy", Last: "Wheeler" } },
+                  { Name: { First: "Huijun", Last: "Zhu" } },
+                  { Name: { First: "Dennis R", Last: "Dean" } },
+                  { Name: { First: "Ray", Last: "Dixon" } },
+                  { Name: { First: "Derek", Last: "Wood" } },
+                ],
+              },
+            },
+            DbType: "ePubmed",
+          },
+          ProjectReleaseDate: "2009-04-14T00:00:00Z",
           LocusTagPrefix: [
-            {
-              assembly_id: "GCA_000021045",
-              biosample_id: "SAMN02604349",
-              content: "AVIN",
-            },
-            {
-              biosample_id: "SAMN19513674",
-              content: "KNW24",
-            },
+            { assembly_id: "GCA_000021045", biosample_id: "SAMN02604349", content: "AVIN" },
+            { biosample_id: "SAMN19513674", content: "KNW24" },
           ],
-          Name: "Azotobacter vinelandii DJ strain:DJ",
         },
         ProjectType: {
           ProjectTypeSubmission: {
             Target: {
+              capture: "eWhole",
+              material: "eGenome",
               sample_scope: "eMultiisolate",
               Organism: {
-                GenomeSize: {
-                  units: "Kb",
-                  content: "5365.318000",
-                },
                 species: "354",
                 taxID: "322710",
                 OrganismName: "Azotobacter vinelandii DJ",
+                Strain: "DJ",
                 Supergroup: "eBacteria",
-                RepliconSet: {
-                  Count: {
-                    repliconType: "eOther",
-                    content: "1",
-                  },
-                  Replicon: {
-                    Type: {
-                      location: "eNuclearProkaryote",
-                      content: "eChromosome",
-                    },
-                    Size: {
-                      units: "Mb",
-                      content: "5.365318",
-                    },
-                    order: "1",
-                    Name: null,
-                  },
-                },
                 BiologicalProperties: {
-                  Morphology: {
-                    Motility: "eYes",
-                    Gram: "eNegative",
-                  },
+                  Morphology: { Gram: "eNegative", Motility: "eYes" },
                   Environment: {
+                    OxygenReq: "eAerobic",
                     TemperatureRange: "eMesophilic",
                     Habitat: "eMultiple",
-                    OxygenReq: "eAerobic",
                   },
                 },
-                Strain: "DJ",
+                RepliconSet: {
+                  Replicon: {
+                    order: "1",
+                    Type: { location: "eNuclearProkaryote", content: "eChromosome" },
+                    Name: null,
+                    Size: { units: "Mb", content: "5.365318" },
+                  },
+                  Count: { repliconType: "eOther", content: "1" },
+                },
+                GenomeSize: { units: "Kb", content: "5365.318000" },
               },
-              material: "eGenome",
-              capture: "eWhole",
             },
-            ProjectDataTypeSet: {
-              DataType: "Genome sequencing",
-            },
-            Objectives: {
-              Data: {
-                data_type: "eAssembly",
-              },
-            },
-            Method: {
-              method_type: "eSequencing",
-            },
-          },
-        },
-        ProjectID: {
-          ArchiveID: {
-            archive: "NCBI",
-            accession: "PRJNA16",
-            id: "16",
+            Method: { method_type: "eSequencing" },
+            Objectives: { Data: { data_type: "eAssembly" } },
+            ProjectDataTypeSet: { DataType: "Genome sequencing" },
           },
         },
       },
@@ -509,10 +150,7 @@ export const bioproject1: BioProjectDetailResponse = {
               role: "participant",
               type: "center",
               url: "http://genome.jgi-psf.org/draft_microbes/azovi/azovi.home.html",
-              Name: {
-                abbr: "DOE Joint Genome Institute",
-                content: "DOE Joint Genome Institute",
-              },
+              Name: { abbr: "DOE Joint Genome Institute", content: "DOE Joint Genome Institute" },
             },
             {
               role: "owner",
@@ -537,27 +175,98 @@ export const bioproject1: BioProjectDetailResponse = {
       },
       ProjectLinks: {
         Link: {
-          ProjectIDRef: {
-            archive: "NCBI",
-            id: "16",
-            accession: "PRJNA16",
-          },
+          ProjectIDRef: { archive: "NCBI", id: "16", accession: "PRJNA16" },
           Hierarchical: {
-            MemberID: {
-              archive: "NCBI",
-              id: "35043",
-              accession: "PRJNA35043",
-            },
             type: "TopSingle",
+            MemberID: { archive: "NCBI", id: "35043", accession: "PRJNA35043" },
           },
         },
       },
     },
   },
-  distribution: [],
+  distribution: [
+    {
+      type: "DataDownload",
+      encodingFormat: "JSON",
+      contentUrl: "https://ddbj-staging.nig.ac.jp/search/entry/bioproject/PRJNA16.json",
+    },
+  ],
   isPartOf: "BioProject",
+  type: "bioproject",
   objectType: "BioProject",
   name: null,
-  url: "https://ddbj.nig.ac.jp/search/entry/bioproject/PRJNA16",
+  url: "https://ddbj-staging.nig.ac.jp/search/entry/bioproject/PRJNA16",
+  organism: { identifier: "322710", name: "Azotobacter vinelandii DJ" },
+  title: "Nitrogen-fixing bacterium",
+  description:
+    "<P><B><I>Azotobacter vinelandii</B></I>. This organism will provide information on the proteins involved in nitrogen fixation and the production of PHB and alginate.",
+  organization: [
+    {
+      name: "DOE Joint Genome Institute",
+      organizationType: "center",
+      role: "participant",
+      url: "http://genome.jgi-psf.org/draft_microbes/azovi/azovi.home.html",
+      abbreviation: "DOE Joint Genome Institute",
+    },
+    {
+      name: "US DOE Joint Genome Institute (JGI-PGF)",
+      organizationType: "consortium",
+      role: "owner",
+      url: null,
+      abbreviation: "US DOE Joint Genome Institute (JGI-PGF)",
+    },
+    {
+      name: "Virginia Polytechnic Institute and State University, Virginia Bioinformatics Institute, USA, Blacksburg",
+      organizationType: "center",
+      role: "participant",
+      url: null,
+      abbreviation:
+        "Virginia Polytechnic Institute and State University, Virginia Bioinformatics Institute, USA, Blacksburg",
+    },
+  ],
+  publication: [
+    {
+      id: "19429624",
+      title:
+        "Genome sequence of Azotobacter vinelandii, an obligate aerobe specialized to support diverse anaerobic metabolic processes.",
+      date: null,
+      Reference: null,
+      url: "https://pubmed.ncbi.nlm.nih.gov/19429624/",
+      DbType: "ePubmed",
+      status: "ePublished",
+    },
+  ],
+  grant: [],
+  externalLink: [
+    { url: "http://www.azotobacter.org", label: "Azotobacter Org" },
+    { url: "http://www.jgi.doe.gov/", label: "DOE Joint Genome Institute" },
+    {
+      url: "http://genomesonline.org/cgi-bin/GOLD/bin/GOLDCards.cgi?goldstamp=Gi00047",
+      label: "GOLD",
+    },
+  ],
   sameAs: [],
+  status: "live",
+  accessibility: "public-access",
+  dateCreated: "2003-02-25",
+  dateModified: null,
+  datePublished: "2009-04-14T00:00:00Z",
+  dbXrefs: [
+    {
+      identifier: "GCA_000021045",
+      type: "insdc-assembly",
+      url: "https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_000021045",
+    },
+    {
+      identifier: "SAMN02604349",
+      type: "biosample",
+      url: "https://ddbj-staging.nig.ac.jp/search/entry/biosample/SAMN02604349",
+    },
+    {
+      identifier: "SAMN19513674",
+      type: "biosample",
+      url: "https://ddbj-staging.nig.ac.jp/search/entry/biosample/SAMN19513674",
+    },
+  ],
+  dbXrefsCount: { "insdc-assembly": 1, biosample: 2 },
 };
