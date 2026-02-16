@@ -11,6 +11,9 @@ type Props = {
 
 export const XrefPanel: FC<Props> = ({ xrefs }) => {
   const parsed = parseRefs(xrefs);
+  if (xrefs.length === 0) {
+    return <></>;
+  }
   return (
     <PanelWrapper>
       <div className={"pt-2 text-sm font-bold"}>DB Xrefs</div>
