@@ -31,6 +31,15 @@ export const baseDetailResponseSchema = z.object({
   dbXrefsCount: z.record(z.string(), z.number()).openapi({
     example: { bioproject: 1, biosample: 1, "sra-study": 2 },
   }),
+  externalLink: z
+    .array(
+      z.object({
+        url: z.string().nullable().optional(),
+        label: z.string(),
+      })
+    )
+    .nullable()
+    .optional(),
   properties: z.unknown(),
   distribution: z.unknown(),
   isPartOf: z.string(),
@@ -39,3 +48,4 @@ export const baseDetailResponseSchema = z.object({
   sameAs: z.unknown(),
 });
 export type BaseDetailResponse = z.infer<typeof baseDetailResponseSchema>;
+export type ExternalLink = NonNullable<BaseDetailResponse["externalLink"]>[0];

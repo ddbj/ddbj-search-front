@@ -21,12 +21,6 @@ const bioProjectDetailResponseSchema = baseDetailResponseSchema
         url: z.string().nullable(),
       })
     ),
-    externalLink: z.array(
-      z.object({
-        label: z.string(),
-        url: z.string(),
-      })
-    ),
     publication: z.array(
       z.object({
         date: z.string().nullable(),
