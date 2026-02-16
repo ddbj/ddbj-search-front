@@ -24,7 +24,11 @@ export const getJgaStudyDetail = http.get<BaseDetailRequestParams, never, JgaStu
       dbXrefs: [],
       dbXrefsCount: {},
       properties: {},
-      downloadUrl: null,
+      distribution: [],
+      isPartOf: "JGA Study",
+      name: null,
+      url: `https://ddbj-staging.nig.ac.jp/search/entry/jga-study/${identifier}`,
+      sameAs: [],
     });
   }
 );

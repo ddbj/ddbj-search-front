@@ -193,5 +193,9 @@ export const biosample1: BioSampleDetailResponse = {
       content: "pass",
     },
   ],
-  downloadUrl: null,
+  distribution: [],
+  isPartOf: "BioSample",
+  name: null,
+  url: "https://ddbj.nig.ac.jp/resource/biosample/SAMN29827045",
+  sameAs: [],
 };

@@ -26,6 +26,10 @@ export const getSraAnalysisDetail = http.get<
     dbXrefs: [],
     dbXrefsCount: {},
     properties: {},
-    downloadUrl: null,
+    distribution: [],
+    isPartOf: "SRA Analysis",
+    name: null,
+    url: `https://ddbj-staging.nig.ac.jp/search/entry/sra-analysis/${identifier}`,
+    sameAs: [],
   });
 });

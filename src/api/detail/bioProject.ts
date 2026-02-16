@@ -11,13 +11,14 @@ const bioProjectDetailResponseSchema = baseDetailResponseSchema
     type: z.literal("bioproject"),
   })
   .extend({
+    objectType: z.string(),
     organization: z.array(
       z.object({
-        abbreviation: z.string(),
-        name: z.string(),
-        organizationType: z.string(),
-        role: z.string(),
-        url: z.string(),
+        abbreviation: z.string().nullable(),
+        name: z.string().nullable(),
+        organizationType: z.string().nullable(),
+        role: z.string().nullable(),
+        url: z.string().nullable(),
       })
     ),
     externalLink: z.array(
@@ -32,19 +33,19 @@ const bioProjectDetailResponseSchema = baseDetailResponseSchema
         Reference: z.string().nullable(),
         id: z.string(),
         title: z.string(),
-        url: z.string().nullable().optional(),
+        url: z.string().nullable(),
         DbType: z.string(),
         status: z.string(),
       })
     ),
     grant: z.array(
       z.object({
-        title: z.string().optional(),
+        title: z.string().nullable(),
         id: z.string(),
         agency: z.array(
           z.object({
-            abbreviation: z.string(),
-            name: z.string(),
+            abbreviation: z.string().nullable(),
+            name: z.string().nullable(),
           })
         ),
       })

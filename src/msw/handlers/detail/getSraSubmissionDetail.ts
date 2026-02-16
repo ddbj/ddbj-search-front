@@ -26,6 +26,10 @@ export const getSraSubmissionDetail = http.get<
     dbXrefs: [],
     dbXrefsCount: {},
     properties: {},
-    downloadUrl: null,
+    distribution: [],
+    isPartOf: "SRA Submission",
+    name: null,
+    url: `https://ddbj-staging.nig.ac.jp/search/entry/sra-submission/${identifier}`,
+    sameAs: [],
   });
 });

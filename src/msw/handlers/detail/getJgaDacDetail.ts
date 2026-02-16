@@ -24,7 +24,11 @@ export const getJgaDacDetail = http.get<BaseDetailRequestParams, never, JgaDacDe
       dbXrefs: [],
       dbXrefsCount: {},
       properties: {},
-      downloadUrl: null,
+      distribution: [],
+      isPartOf: "JGA DAC",
+      name: null,
+      url: `https://ddbj-staging.nig.ac.jp/search/entry/jga-dac/${identifier}`,
+      sameAs: [],
     });
   }
 );

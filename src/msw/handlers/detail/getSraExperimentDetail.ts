@@ -26,6 +26,10 @@ export const getSraExperimentDetail = http.get<
     dbXrefs: [],
     dbXrefsCount: {},
     properties: {},
-    downloadUrl: null,
+    distribution: [],
+    isPartOf: "SRA Experiment",
+    name: null,
+    url: `https://ddbj-staging.nig.ac.jp/search/entry/sra-experiment/${identifier}`,
+    sameAs: [],
   });
 });

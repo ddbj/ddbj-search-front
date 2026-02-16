@@ -26,6 +26,10 @@ export const getJgaDatasetDetail = http.get<
     dbXrefs: [],
     dbXrefsCount: {},
     properties: {},
-    downloadUrl: null,
+    distribution: [],
+    isPartOf: "JGA Dataset",
+    name: null,
+    url: `https://ddbj-staging.nig.ac.jp/search/entry/jga-dataset/${identifier}`,
+    sameAs: [],
   });
 });

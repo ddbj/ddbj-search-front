@@ -554,5 +554,10 @@ export const bioproject1: BioProjectDetailResponse = {
       },
     },
   },
-  downloadUrl: null,
+  distribution: [],
+  isPartOf: "BioProject",
+  objectType: "BioProject",
+  name: null,
+  url: "https://ddbj.nig.ac.jp/search/entry/bioproject/PRJNA16",
+  sameAs: [],
 };

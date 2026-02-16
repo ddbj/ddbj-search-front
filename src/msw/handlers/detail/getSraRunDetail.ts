@@ -24,7 +24,11 @@ export const getSraRunDetail = http.get<BaseDetailRequestParams, never, SraRunDe
       dbXrefs: [],
       dbXrefsCount: {},
       properties: {},
-      downloadUrl: null,
+      distribution: [],
+      isPartOf: "SRA Run",
+      name: null,
+      url: `https://ddbj-staging.nig.ac.jp/search/entry/sra-run/${identifier}`,
+      sameAs: [],
     });
   }
 );

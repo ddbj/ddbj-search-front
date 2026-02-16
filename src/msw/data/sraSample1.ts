@@ -7,7 +7,7 @@ export const sraSample1: SraSampleDetailResponse = {
     name: "Streptococcus pneumoniae",
   },
   accessibility: "public-access",
-  downloadUrl: [
+  distribution: [
     {
       name: "ERA2380438.sample.xml",
       ftpUrl:
@@ -16,6 +16,10 @@ export const sraSample1: SraSampleDetailResponse = {
       url: "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/ERA238/ERA2380438/ERA2380438.sample.xml",
     },
   ],
+  isPartOf: "SRA Sample",
+  name: null,
+  url: "https://ddbj.nig.ac.jp/resource/sra-sample/ERS2785606",
+  sameAs: [],
   description: null,
   dateModified: "2021-09-27T14:01:30Z",
   title: "pneuDEEP7565425",

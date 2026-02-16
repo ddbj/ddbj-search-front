@@ -24,7 +24,11 @@ export const getJgaPolicyDetail = http.get<BaseDetailRequestParams, never, JgaPo
       dbXrefs: [],
       dbXrefsCount: {},
       properties: {},
-      downloadUrl: null,
+      distribution: [],
+      isPartOf: "JGA Policy",
+      name: null,
+      url: `https://ddbj-staging.nig.ac.jp/search/entry/jga-policy/${identifier}`,
+      sameAs: [],
     });
   }
 );

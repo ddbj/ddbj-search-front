@@ -31,7 +31,11 @@ export const baseDetailResponseSchema = z.object({
   dbXrefsCount: z.record(z.string(), z.number()).openapi({
     example: { bioproject: 1, biosample: 1, "sra-study": 2 },
   }),
-  downloadUrl: z.array(downloadUrlSchema).nullable(),
   properties: z.unknown(),
+  distribution: z.unknown(),
+  isPartOf: z.string(),
+  name: z.unknown(),
+  url: z.unknown(),
+  sameAs: z.unknown(),
 });
 export type BaseDetailResponse = z.infer<typeof baseDetailResponseSchema>;

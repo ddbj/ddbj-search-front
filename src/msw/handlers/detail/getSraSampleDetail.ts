@@ -24,7 +24,11 @@ export const getSraSampleDetail = http.get<BaseDetailRequestParams, never, SraSa
       dbXrefs: [],
       dbXrefsCount: {},
       properties: {},
-      downloadUrl: null,
+      distribution: [],
+      isPartOf: "SRA Sample",
+      name: null,
+      url: `https://ddbj-staging.nig.ac.jp/search/entry/sra-sample/${identifier}`,
+      sameAs: [],
     });
   }
 );

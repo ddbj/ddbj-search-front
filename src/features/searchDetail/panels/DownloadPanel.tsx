@@ -36,7 +36,7 @@ export const DownloadPanel: FC<Props> = ({ className, data }) => {
 };
 
 const composeItemProps = (
-  data: Pick<SearchDetailResponse, "type" | "downloadUrl" | "identifier">
+  data: Pick<SearchDetailResponse, "type" | "distribution" | "identifier">
 ): ItemProps[] => {
   switch (data.type) {
     case dbTypes["jga-dac"]:
@@ -52,13 +52,15 @@ const composeItemProps = (
         },
       ];
     default:
-      return (data.downloadUrl ?? []).map((item) => {
-        return {
-          fileName: item.name,
-          httpsLink: item.url,
-          ftpLink: item.ftpUrl ?? null,
-        };
-      });
+      return ((data.distribution as { name: string; url: string; ftpUrl?: string }[]) ?? []).map(
+        (item) => {
+          return {
+            fileName: item.name,
+            httpsLink: item.url,
+            ftpLink: item.ftpUrl ?? null,
+          };
+        }
+      );
   }
 };
 

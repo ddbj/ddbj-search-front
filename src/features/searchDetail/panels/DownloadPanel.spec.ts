@@ -9,16 +9,16 @@ describe("composeItemProps", () => {
     const result = composeItemProps({
       identifier: "",
       type: dbTypes["jga-dac"],
-      downloadUrl: [],
+      distribution: [],
     });
     expect(result).toEqual([]);
   });
 
-  it("for bioProject/bioSample ignores downloadURL and returns generated JSON", () => {
+  it("for bioProject/bioSample ignores distribution and returns generated JSON", () => {
     const result = composeItemProps({
       identifier: "id",
       type: dbTypes.bioproject,
-      downloadUrl: [
+      distribution: [
         {
           name: "ERA2380438.sample.xml",
           ftpUrl:
@@ -34,11 +34,11 @@ describe("composeItemProps", () => {
     expect(result.length).toBe(1);
   });
 
-  it("parses downloadURL for other types", () => {
+  it("parses distribution for other types", () => {
     const result = composeItemProps({
       identifier: "id",
       type: dbTypes["sra-run"],
-      downloadUrl: [
+      distribution: [
         {
           name: "SRA088679.run.xml",
           ftpUrl:
