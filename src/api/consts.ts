@@ -7,3 +7,6 @@ export const tags = {
   count: "count",
   dbXref: "dbXref",
 };
+
+export const accessibilityValues = ["public-access", "controlled-access"] as const;
+export const statusValues = ["live", "suppressed", "unpublished"] as const;

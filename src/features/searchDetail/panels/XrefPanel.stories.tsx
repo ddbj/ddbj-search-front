@@ -1,5 +1,5 @@
 import { parseRefs, XrefPanel } from "./XrefPanel.tsx";
-import type { Xref } from "@/api/components.ts";
+import type { Xref } from "@/api/detail/base.ts";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {

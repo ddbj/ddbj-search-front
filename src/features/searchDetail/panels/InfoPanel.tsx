@@ -1,4 +1,3 @@
-import { dbLabels } from "@/consts/db.ts";
 import {
   ExternalLinksRow,
   getExternalLinks,
@@ -6,8 +5,8 @@ import {
 import { getGrants, GrantsRow } from "@/features/searchDetail/panels/rows/GrantsRow.tsx";
 import { OrganismRow } from "@/features/searchDetail/panels/rows/OrganismRow.tsx";
 import {
-  OrganizationsRow,
   getOrganizations,
+  OrganizationsRow,
 } from "@/features/searchDetail/panels/rows/OrganizationsRow.tsx";
 import {
   getPublications,

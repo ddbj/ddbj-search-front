@@ -1,12 +1,5 @@
 import { z } from "zod";
-import {
-  accessibilitySchema,
-  downloadUrlSchema,
-  organismSchema,
-  statusSchema,
-  visibilitySchema,
-  xrefSchema,
-} from "@/api/components.ts";
+import { accessibilityValues, statusValues } from "@/api/consts.ts";
 
 export const baseDetailRequestSchema = z.object({
   identifier: z.string(),
@@ -19,15 +12,28 @@ export const baseDetailResponseSchema = z.object({
   dateModified: z.string().nullable(),
   datePublished: z.string().nullable(),
   title: z.string(),
-  organism: organismSchema.nullable(),
+  organism: z
+    .object({
+      identifier: z.string(),
+      name: z.string().nullable(),
+    })
+    .nullable(),
   description: z.string().nullable(),
   type: z.string(),
-  accessibility: accessibilitySchema,
-  status: statusSchema,
-  dbXrefs: z.array(xrefSchema).openapi({
-    description:
-      "To handle entries with a large number of refs, loaded refs are caped at n. <br> `dbXrefsCount` holds the total ref count in the DB, so compare as needed and fetch additional refs (refs-only) when required.",
-  }),
+  accessibility: z.enum(accessibilityValues),
+  status: z.enum(statusValues),
+  dbXrefs: z
+    .array(
+      z.object({
+        identifier: z.string(),
+        type: z.string(),
+        url: z.string(),
+      })
+    )
+    .openapi({
+      description:
+        "To handle entries with a large number of refs, loaded refs are caped at n. <br> `dbXrefsCount` holds the total ref count in the DB, so compare as needed and fetch additional refs (refs-only) when required.",
+    }),
   dbXrefsCount: z.record(z.string(), z.number()).openapi({
     example: { bioproject: 1, biosample: 1, "sra-study": 2 },
   }),
@@ -42,6 +48,14 @@ export const baseDetailResponseSchema = z.object({
     .optional(),
   properties: z.unknown(),
   distribution: z.unknown(),
+  // downloadUrl: z.array(
+  //   z.object({
+  //     name: z.string(),
+  //     ftpUrl: z.string().optional(),
+  //     type: z.string(),
+  //     url: z.string(),
+  //   })
+  // ),
   isPartOf: z.string(),
   name: z.unknown(),
   url: z.unknown(),
@@ -50,3 +64,8 @@ export const baseDetailResponseSchema = z.object({
 export type BaseDetailResponse = z.infer<typeof baseDetailResponseSchema>;
 export type ExternalLink = NonNullable<BaseDetailResponse["externalLink"]>[0];
 export type DbXrefsCount = BaseDetailResponse["dbXrefsCount"];
+export type Organism = NonNullable<BaseDetailResponse["organism"]>;
+export type Xref = NonNullable<BaseDetailResponse["dbXrefs"]>[0];
+// export type DownloadUrl = BaseDetailResponse["downloadUrl"];
+export type Accessibility = NonNullable<BaseDetailResponse["accessibility"]>;
+export type Status = NonNullable<BaseDetailResponse["status"]>;

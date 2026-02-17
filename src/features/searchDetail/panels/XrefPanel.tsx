@@ -7,8 +7,7 @@ import { PanelWrapper } from "@/features/searchDetail/ui/PanelWrapper.tsx";
 import { XrefListItem, type XrefListItemProps } from "@/features/searchDetail/ui/XrefListItem.tsx";
 import { reorderXrefs } from "@/utils/reorderXrefs.ts";
 import { isInternalDbLink, sanitizeDbLink } from "@/utils/sanitizeDbLink.ts";
-import type { Xref } from "@/api/components.ts";
-import type { DbXrefsCount } from "@/api/detail/base.ts";
+import type { DbXrefsCount, Xref } from "@/api/detail/base.ts";
 
 type Props = {
   xrefs: XrefListItemProps[];
