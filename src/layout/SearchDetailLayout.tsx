@@ -36,7 +36,7 @@ export const SearchDetailLayout: FC<Props> = ({ data }) => {
 
         <div data-name={"rightCol"} className={"flex w-fit flex-shrink-0 flex-col gap-4"}>
           <StatusPanel data={data} />
-          <DownloadPanel data={data} />
+          {/*<DownloadPanel data={data} />*/}
         </div>
       </div>
     </main>

@@ -1,3 +1,9 @@
+import {
+  accessibilityLabels,
+  getAccessibilityLabels,
+  getStatusLabels,
+  statusLabels,
+} from "@/api/consts.ts";
 import { dbLabels } from "@/consts/db.ts";
 import { SanitizedRow } from "@/features/searchDetail/panels/rows/SanitizedRow.tsx";
 import { InfoList } from "@/features/searchDetail/ui/InfoList.tsx";
@@ -18,14 +24,11 @@ export const StatusPanel: FC<Props> = ({ data }) => {
       <InfoList gapX={4}>
         <SanitizedRow term={"Type"} value={dbLabels[data.type]} />
         <SanitizedRow term={"Accession"} value={data.identifier} />
-        <InfoListItem term={"Status"} toolTipContent={"This is the description of Status"}>
-          {data.status}
+        <InfoListItem term={"Status"} toolTipContent={<StatusHelp />}>
+          {getStatusLabels(data.status)}
         </InfoListItem>
-        <InfoListItem
-          term={"Accessibility"}
-          toolTipContent={"This is the description of accessibility"}
-        >
-          {data.accessibility}
+        <InfoListItem term={"Accessibility"} toolTipContent={<AccessibilityHelp />}>
+          {getAccessibilityLabels(data.accessibility)}
         </InfoListItem>
         <InfoListItem term={"Submitted date"} contentNoWrap={true}>
           {createdDate}
@@ -38,5 +41,29 @@ export const StatusPanel: FC<Props> = ({ data }) => {
         </InfoListItem>
       </InfoList>
     </PanelWrapper>
+  );
+};
+
+const StatusHelp: FC = () => {
+  return (
+    <dl className={"grid grid-cols-[auto_1fr] gap-x-2"}>
+      <dt>[{statusLabels["live"]}]</dt>
+      <dd>short description here</dd>
+      <dt>[{statusLabels["suppressed"]}]</dt>
+      <dd>short description here</dd>
+      <dt>[{statusLabels["unpublished"]}]</dt>
+      <dd>short description here</dd>
+    </dl>
+  );
+};
+
+const AccessibilityHelp: FC = () => {
+  return (
+    <dl className={"grid grid-cols-[auto_1fr] gap-x-2"}>
+      <dt>[{accessibilityLabels["public-access"]}]</dt>
+      <dd>short description here</dd>
+      <dt>[{accessibilityLabels["controlled-access"]}]</dt>
+      <dd>short description here</dd>
+    </dl>
   );
 };
