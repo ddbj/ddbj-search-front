@@ -29,6 +29,7 @@ export const SearchDetailLayout: FC<Props> = ({ data }) => {
           <PropertiesPanel data={data.properties} />
           <XrefPanel
             xrefs={parseRefs(data.dbXrefs, data.dbXrefsCount)}
+            dbType={data.type}
             identifier={data.identifier}
           />
         </div>

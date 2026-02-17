@@ -1,5 +1,4 @@
 import { OpenApiGeneratorV31, OpenAPIRegistry } from "@asteasolutions/zod-to-openapi";
-import { typeCountRequestDoc } from "@/api/count/types.ts";
 import { bioProjectDetailRequestDoc } from "@/api/detail/bioProject.ts";
 import { bioSampleDetailRequestDoc } from "@/api/detail/bioSample.ts";
 import { jgaDacDetailRequestDoc } from "@/api/detail/jgaDac.ts";
@@ -26,7 +25,6 @@ import { sraSampleListRequestDoc } from "@/api/entries/sraSample.ts";
 import { sraStudyListRequestDoc } from "@/api/entries/sraStudy.ts";
 import { sraSubmissionListRequestDoc } from "@/api/entries/sraSubmission.ts";
 import { allFacetListRequestDoc } from "@/api/facets/all.ts";
-import { allDbXrefsRequestDoc } from "@/api/xrefs/allDbXrefs.ts";
 import { extendZod } from "@/utils/extendZod.ts";
 extendZod();
 
@@ -57,7 +55,6 @@ registry.registerPath(jgaStudyDetailRequestDoc);
 registry.registerPath(jgaPolicyDetailRequestDoc);
 registry.registerPath(jgaDacDetailRequestDoc);
 registry.registerPath(allFacetListRequestDoc);
-registry.registerPath(allDbXrefsRequestDoc);
 
 export const getDocs = () => {
   const generator = new OpenApiGeneratorV31(registry.definitions);

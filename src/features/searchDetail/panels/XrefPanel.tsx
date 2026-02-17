@@ -1,4 +1,6 @@
 import { useMemo, type FC } from "react";
+import { getDBXrefAPIPath } from "@/api/paths.ts";
+import { MAX_DB_XREFS } from "@/consts/counts.ts";
 import { dbTypeList, getDbLabel, getXrefDbLabel, xrefTypeList } from "@/consts/db.ts";
 import { InfoList } from "@/features/searchDetail/ui/InfoList.tsx";
 import { PanelWrapper } from "@/features/searchDetail/ui/PanelWrapper.tsx";
@@ -11,25 +13,41 @@ import type { DbXrefsCount } from "@/api/detail/base.ts";
 type Props = {
   xrefs: XrefListItemProps[];
   identifier: string;
+  dbType: string;
 };
 
-export const XrefPanel: FC<Props> = ({ xrefs }) => {
-  // const parsed = parseRefs(xrefs, count);
-  // const isTruncated = useMemo(() => {
-  //   return parsed.some((entry) => entry.items.length !== entry.actualCount);
-  // }, [parsed]);
+export const XrefPanel: FC<Props> = ({ xrefs, identifier, dbType }) => {
+  const isTruncated = useMemo(() => {
+    return xrefs.some((entry) => entry.items.length !== entry.actualCount);
+  }, [xrefs]);
 
   return xrefs.length === 0 ? (
     <></>
   ) : (
     <PanelWrapper>
-      <div className={"pt-2 text-sm font-bold"}></div>
+      <div className={"pt-2 text-sm font-bold"}>DB Xrefs</div>
+      {isTruncated && <TruncatedMessage identifier={identifier} dbType={dbType} />}
       <InfoList>
         {xrefs.map((entry) => {
-          return <XrefListItem key={`${entry.dbName}`} {...entry}></XrefListItem>;
+          return (
+            <XrefListItem key={`${entry.dbName}`} {...{ ...entry, isTruncated }}></XrefListItem>
+          );
         })}
       </InfoList>
     </PanelWrapper>
+  );
+};
+
+const TruncatedMessage: FC<Pick<Props, "identifier" | "dbType">> = ({ identifier, dbType }) => {
+  const apiURL = getDBXrefAPIPath(dbType, identifier);
+  return (
+    <div className={"rounded bg-fire-bush-50 p-2 text-sm"}>
+      In favor of readability, the list of DB xrefs is truncated to {MAX_DB_XREFS} entries. For the
+      complete list, please refer to the{" "}
+      <a href={apiURL} target={"_blank"} className={"text-link-primary"}>
+        dedicated API.
+      </a>
+    </div>
   );
 };
 

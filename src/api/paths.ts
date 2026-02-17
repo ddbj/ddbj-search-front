@@ -22,8 +22,9 @@ export const API_PATH_JGA_DAC_LIST = `${BASE_API_PATH}entries/jga-dac/`;
 export const API_PATH_ALL_FACET_LIST = `${BASE_API_PATH}facets`;
 
 export const API_PATH_TYPE_COUNT = `${BASE_API_PATH}count/types/`;
-export const API_PATH_DB_XREF = `${BASE_API_PATH}db-xrefs/`;
 
+export const getDBXrefAPIPath = (type: string, id: string) =>
+  `${API_PATH_ALL_ENTRIES_LIST}${type}/${id}/dbxrefs.json`;
 extendZod();
 
 export const omitBaseApiPath = (path: string) => {

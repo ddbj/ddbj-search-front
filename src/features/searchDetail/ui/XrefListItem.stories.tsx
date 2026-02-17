@@ -24,5 +24,6 @@ export const Primary = {
         isExternal: false,
       },
     ],
+    isTruncated: false,
   },
 } satisfies Story;

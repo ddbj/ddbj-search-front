@@ -20,7 +20,7 @@ export const ExternalLinksRow: FC<Props> = ({ externalLinks }) => {
               rel={"noreferrer"}
               className={"text-link-primary"}
             >
-              {link.label}
+              {link.label ? link.label : link.url}
             </a>
           </li>
         ))}

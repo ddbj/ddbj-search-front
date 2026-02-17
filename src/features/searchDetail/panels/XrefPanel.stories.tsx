@@ -43,5 +43,6 @@ export const Primary = {
       sra_run: 1,
     }),
     identifier: "AAAA",
+    dbType: "biosample",
   },
 } satisfies Story;

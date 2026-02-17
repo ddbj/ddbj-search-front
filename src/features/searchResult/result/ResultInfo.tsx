@@ -1,12 +1,12 @@
 import clsx from "clsx";
 import { QueryTipList } from "@/features/searchResult/result/QueryTipList.tsx";
 import { SortDropdown } from "@/features/searchResult/result/SortDropdown.tsx";
-import { MAX_ENTRIES } from "@/utils/consts.ts";
 import { formatNumber } from "@/utils/formatNumber.ts";
 import { getTotalPages } from "@/utils/getTotalPages.ts";
 import type { UpdateSearchFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
 import type { FC } from "react";
+import { MAX_ENTRIES } from "@/consts/consts.ts";
 
 type Props = {
   removeParamFunc: UpdateSearchFunctions["removeParam"];
