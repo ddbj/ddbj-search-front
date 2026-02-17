@@ -1,4 +1,4 @@
-import { XrefPanel } from "./XrefPanel.tsx";
+import { parseRefs, XrefPanel } from "./XrefPanel.tsx";
 import type { Xref } from "@/api/components.ts";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
@@ -37,11 +37,11 @@ const data1: Xref[] = [
 
 export const Primary = {
   args: {
-    xrefs: data1,
-    count: {
+    xrefs: parseRefs(data1, {
       assemblies: 1,
       biosample: 2,
       sra_run: 1,
-    },
+    }),
+    identifier: "AAAA",
   },
 } satisfies Story;

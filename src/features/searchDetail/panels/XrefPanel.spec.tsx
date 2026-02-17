@@ -1,12 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { __test__XrefPanel } from "@/features/searchDetail/panels/XrefPanel.tsx";
+import { parseRefs } from "@/features/searchDetail/panels/XrefPanel.tsx";
 import type { Xref } from "@/api/components.ts";
 import type { DbXrefsCount } from "@/api/detail/base.ts";
 
-const { parseRefs } = __test__XrefPanel;
-
 describe("parseRefs", () => {
-  it.only("should work", () => {
+  it("should work", () => {
     const data: Xref[] = [
       {
         identifier: "GCA_000021045",

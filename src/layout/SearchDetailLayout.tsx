@@ -3,7 +3,7 @@ import { DownloadPanel } from "@/features/searchDetail/panels/DownloadPanel.tsx"
 import { InfoPanel } from "@/features/searchDetail/panels/InfoPanel.tsx";
 import { PropertiesPanel } from "@/features/searchDetail/panels/PropertiesPanel.tsx";
 import { StatusPanel } from "@/features/searchDetail/panels/StatusPanel.tsx";
-import { XrefPanel } from "@/features/searchDetail/panels/XrefPanel.tsx";
+import { parseRefs, XrefPanel } from "@/features/searchDetail/panels/XrefPanel.tsx";
 import { GlobalHeader } from "@/features/shared/GlobalHeader.tsx";
 import type { SearchDetailResponse } from "@/utils/searchDetailResponse.ts";
 import type { FC } from "react";
@@ -27,7 +27,10 @@ export const SearchDetailLayout: FC<Props> = ({ data }) => {
         <div data-name={"leftCol"} className={"flex flex-grow-1 flex-col gap-4"}>
           <InfoPanel data={data} />
           <PropertiesPanel data={data.properties} />
-          <XrefPanel xrefs={data.dbXrefs} count={data.dbXrefsCount} />
+          <XrefPanel
+            xrefs={parseRefs(data.dbXrefs, data.dbXrefsCount)}
+            identifier={data.identifier}
+          />
         </div>
 
         <div data-name={"rightCol"} className={"flex w-fit flex-shrink-0 flex-col gap-4"}>

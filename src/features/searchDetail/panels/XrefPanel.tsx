@@ -1,3 +1,4 @@
+import { useMemo, type FC } from "react";
 import { dbTypeList, getDbLabel, getXrefDbLabel, xrefTypeList } from "@/consts/db.ts";
 import { InfoList } from "@/features/searchDetail/ui/InfoList.tsx";
 import { PanelWrapper } from "@/features/searchDetail/ui/PanelWrapper.tsx";
@@ -6,23 +7,25 @@ import { reorderXrefs } from "@/utils/reorderXrefs.ts";
 import { isInternalDbLink, sanitizeDbLink } from "@/utils/sanitizeDbLink.ts";
 import type { Xref } from "@/api/components.ts";
 import type { DbXrefsCount } from "@/api/detail/base.ts";
-import type { FC } from "react";
 
 type Props = {
-  xrefs: Xref[];
-  count: DbXrefsCount;
+  xrefs: XrefListItemProps[];
+  identifier: string;
 };
 
-export const XrefPanel: FC<Props> = ({ xrefs, count }) => {
-  const parsed = parseRefs(xrefs, count);
-  if (xrefs.length === 0) {
-    return <></>;
-  }
-  return (
+export const XrefPanel: FC<Props> = ({ xrefs }) => {
+  // const parsed = parseRefs(xrefs, count);
+  // const isTruncated = useMemo(() => {
+  //   return parsed.some((entry) => entry.items.length !== entry.actualCount);
+  // }, [parsed]);
+
+  return xrefs.length === 0 ? (
+    <></>
+  ) : (
     <PanelWrapper>
-      <div className={"pt-2 text-sm font-bold"}>DB Xrefs</div>
+      <div className={"pt-2 text-sm font-bold"}></div>
       <InfoList>
-        {parsed.map((entry) => {
+        {xrefs.map((entry) => {
           return <XrefListItem key={`${entry.dbName}`} {...entry}></XrefListItem>;
         })}
       </InfoList>
@@ -30,7 +33,7 @@ export const XrefPanel: FC<Props> = ({ xrefs, count }) => {
   );
 };
 
-const parseRefs = (refs: Xref[], count: DbXrefsCount): XrefListItemProps[] => {
+export const parseRefs = (refs: Xref[], count: DbXrefsCount): XrefListItemProps[] => {
   return reorderXrefs(count).map(([dbKey, actualCount]) => {
     const dbName = getXrefDbLabel(dbKey);
     const items = refs
@@ -45,5 +48,3 @@ const parseRefs = (refs: Xref[], count: DbXrefsCount): XrefListItemProps[] => {
     return { dbName, actualCount, items };
   });
 };
-
-export const __test__XrefPanel = { parseRefs };
