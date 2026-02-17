@@ -13,7 +13,7 @@ export const PublicationsRow: FC<Props> = ({ publications }) => {
     <InfoListItem term={"Publications"}>
       <ul className={"flex flex-col gap-y-2"}>
         {publications.map((p) => (
-          <li className={"flex flex-col"}>
+          <li className={"flex flex-col"} key={p.id}>
             <span className={"text-xs text-gray-500"}>{p.DbType}</span>
             {p.url ? (
               <a href={p.url} target={"_blank"} className={"text-link-primary"}>

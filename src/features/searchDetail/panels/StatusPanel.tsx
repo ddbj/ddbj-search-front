@@ -1,3 +1,5 @@
+import { dbLabels } from "@/consts/db.ts";
+import { SanitizedRow } from "@/features/searchDetail/panels/rows/SanitizedRow.tsx";
 import { InfoList } from "@/features/searchDetail/ui/InfoList.tsx";
 import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
 import { PanelWrapper } from "@/features/searchDetail/ui/PanelWrapper.tsx";
@@ -14,6 +16,8 @@ export const StatusPanel: FC<Props> = ({ data }) => {
   return (
     <PanelWrapper>
       <InfoList gapX={4}>
+        <SanitizedRow term={"Type"} value={dbLabels[data.type]} />
+        <SanitizedRow term={"Accession"} value={data.identifier} />
         <InfoListItem term={"Status"} toolTipContent={"This is the description of Status"}>
           {data.status}
         </InfoListItem>
