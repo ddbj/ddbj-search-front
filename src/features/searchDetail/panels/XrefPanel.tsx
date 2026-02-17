@@ -50,10 +50,10 @@ const TruncatedMessage: FC<Pick<Props, "identifier" | "dbType">> = ({ identifier
   );
 };
 
-export const parseRefs = (refs: Xref[], count: DbXrefsCount): XrefListItemProps[] => {
+export const parseRefs = (refs: Xref[] | null, count: DbXrefsCount): XrefListItemProps[] => {
   return reorderXrefs(count).map(([dbKey, actualCount]) => {
     const dbName = getXrefDbLabel(dbKey);
-    const items = refs
+    const items = (refs ?? [])
       .filter((ref) => ref.type === dbKey)
       .map((ref) => {
         const url = sanitizeDbLink(ref.url);

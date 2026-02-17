@@ -12,6 +12,7 @@ import {
   getPublications,
   PublicationsRow,
 } from "@/features/searchDetail/panels/rows/PublicationsRow.tsx";
+import { getSameAs, SameAsRow } from "@/features/searchDetail/panels/rows/SameAsRow.tsx";
 import { SanitizedRow } from "@/features/searchDetail/panels/rows/SanitizedRow.tsx";
 import { InfoList } from "@/features/searchDetail/ui/InfoList.tsx";
 import { PanelWrapper } from "@/features/searchDetail/ui/PanelWrapper.tsx";
@@ -31,6 +32,7 @@ export const InfoPanel: FC<Props> = ({ data }) => {
         <GrantsRow grants={getGrants(data)} />
         <OrganizationsRow organizations={getOrganizations(data)} />
         <ExternalLinksRow externalLinks={getExternalLinks(data)} />
+        <SameAsRow sameAs={getSameAs(data)} />
       </InfoList>
     </PanelWrapper>
   );
