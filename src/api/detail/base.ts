@@ -49,3 +49,4 @@ export const baseDetailResponseSchema = z.object({
 });
 export type BaseDetailResponse = z.infer<typeof baseDetailResponseSchema>;
 export type ExternalLink = NonNullable<BaseDetailResponse["externalLink"]>[0];
+export type DbXrefsCount = BaseDetailResponse["dbXrefsCount"];

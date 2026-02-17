@@ -1,6 +1,10 @@
 import type { FC } from "react";
 
-type Props = { dbName: string; items: { label: string; url: string; isExternal: boolean }[] };
+type Props = {
+  dbName: string;
+  actualCount: number;
+  items: { label: string; url: string; isExternal: boolean }[];
+};
 export type XrefListItemProps = Props;
 
 export const XrefListItem: FC<Props> = ({ dbName, items }) => {

@@ -5,14 +5,16 @@ import { XrefListItem, type XrefListItemProps } from "@/features/searchDetail/ui
 import { reorderXrefs } from "@/utils/reorderXrefs.ts";
 import { isInternalDbLink, sanitizeDbLink } from "@/utils/sanitizeDbLink.ts";
 import type { Xref } from "@/api/components.ts";
+import type { DbXrefsCount } from "@/api/detail/base.ts";
 import type { FC } from "react";
 
 type Props = {
   xrefs: Xref[];
+  count: DbXrefsCount;
 };
 
-export const XrefPanel: FC<Props> = ({ xrefs }) => {
-  const parsed = parseRefs(xrefs);
+export const XrefPanel: FC<Props> = ({ xrefs, count }) => {
+  const parsed = parseRefs(xrefs, count);
   if (xrefs.length === 0) {
     return <></>;
   }
@@ -21,42 +23,27 @@ export const XrefPanel: FC<Props> = ({ xrefs }) => {
       <div className={"pt-2 text-sm font-bold"}>DB Xrefs</div>
       <InfoList>
         {parsed.map((entry) => {
-          return (
-            <XrefListItem
-              key={`${entry.dbName}`}
-              dbName={entry.dbName}
-              items={entry.items}
-            ></XrefListItem>
-          );
+          return <XrefListItem key={`${entry.dbName}`} {...entry}></XrefListItem>;
         })}
       </InfoList>
     </PanelWrapper>
   );
 };
 
-type XrefItemProps = XrefListItemProps["items"][0];
-const parseRefs = (refs: Xref[]): XrefListItemProps[] => {
-  const reduced = refs.reduce<[string, XrefItemProps[]][]>((acc, ref) => {
-    const url = sanitizeDbLink(ref.url);
-    const isExternal = !isInternalDbLink(ref.url);
-    const label = ref.identifier;
-    const item: XrefItemProps = { url, label, isExternal };
-    const dbEntry = acc.find(([dbName]) => dbName === ref.type);
-    if (!dbEntry) {
-      return [...acc, [ref.type, [item]]];
-    } else {
-      dbEntry[1].push(item);
-      return acc;
-    }
-  }, []);
-  const reordered = reorderXrefs(reduced);
-  const result = reordered.map(([dbKey, items]) => {
+const parseRefs = (refs: Xref[], count: DbXrefsCount): XrefListItemProps[] => {
+  return reorderXrefs(count).map(([dbKey, actualCount]) => {
     const dbName = getXrefDbLabel(dbKey);
-    return { dbName, items };
+    const items = refs
+      .filter((ref) => ref.type === dbKey)
+      .map((ref) => {
+        const url = sanitizeDbLink(ref.url);
+        const isExternal = !isInternalDbLink(ref.url);
+        const label = ref.identifier;
+        return { url, isExternal, label };
+      })
+      .sort((a, b) => a.label.localeCompare(b.label));
+    return { dbName, actualCount, items };
   });
-  console.log(result);
-
-  return result;
 };
 
 export const __test__XrefPanel = { parseRefs };

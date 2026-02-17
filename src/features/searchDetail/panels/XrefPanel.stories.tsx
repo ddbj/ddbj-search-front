@@ -38,5 +38,10 @@ const data1: Xref[] = [
 export const Primary = {
   args: {
     xrefs: data1,
+    count: {
+      assemblies: 1,
+      biosample: 2,
+      sra_run: 1,
+    },
   },
 } satisfies Story;
