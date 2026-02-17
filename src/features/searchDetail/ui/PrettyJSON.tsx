@@ -1,11 +1,13 @@
 import { clsx } from "clsx";
 import { type FC, useCallback, useEffect, useRef, useState } from "react";
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
+import json from "react-syntax-highlighter/dist/esm/languages/hljs/json";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { CopyIcon } from "@/features/graphics/CopyIcon.tsx";
 import { SquareMinusIcon } from "@/features/graphics/SquareMinusIcon.tsx";
 import { SquarePlusIcon } from "@/features/graphics/SquarePlusIcon.tsx";
 
+SyntaxHighlighter.registerLanguage("json", json);
 type Props = { code: string; useHighlighter?: boolean };
 
 const initialHeight = "11rem";
