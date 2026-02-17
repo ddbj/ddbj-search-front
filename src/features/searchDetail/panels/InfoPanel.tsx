@@ -1,3 +1,4 @@
+import { AttributeRow, getAttributes } from "@/features/searchDetail/panels/rows/AttributeRow.tsx";
 import {
   ExternalLinksRow,
   getExternalLinks,
@@ -33,6 +34,7 @@ export const InfoPanel: FC<Props> = ({ data }) => {
         <OrganizationsRow organizations={getOrganizations(data)} />
         <ExternalLinksRow externalLinks={getExternalLinks(data)} />
         <SameAsRow sameAs={getSameAs(data)} />
+        <AttributeRow attributes={getAttributes(data)} />
       </InfoList>
     </PanelWrapper>
   );

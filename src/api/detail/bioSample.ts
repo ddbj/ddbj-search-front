@@ -21,6 +21,8 @@ const bioProjectDetailResponseSchema = baseDetailResponseSchema
     ),
   });
 export type BioSampleDetailResponse = z.infer<typeof bioProjectDetailResponseSchema>;
+export type Attribute = BioSampleDetailResponse["attributes"][0];
+
 const path = addIdentifierToPath(API_PATH_BIOSAMPLE_LIST, "openAPI");
 
 export const bioSampleDetailRequestDoc: RouteConfig = {
