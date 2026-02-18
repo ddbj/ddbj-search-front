@@ -1,4 +1,5 @@
 import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
+import { sanitizeHTML } from "@/utils/sanitizeHTML.ts";
 import type { Publication } from "@/api/detail/bioProject.ts";
 import type { SearchDetailResponse } from "@/utils/searchDetailResponse.ts";
 import type { FC } from "react";
@@ -32,7 +33,7 @@ export const PublicationsRow: FC<Props> = ({ publications }) => {
 const composeTitle = (p: Publication) => {
   switch (true) {
     case !!p.title:
-      return p.title;
+      return sanitizeHTML(p.title);
     case !!p.url:
       return p.url;
     default:
