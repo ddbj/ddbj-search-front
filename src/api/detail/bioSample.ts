@@ -13,9 +13,9 @@ const bioProjectDetailResponseSchema = baseDetailResponseSchema
   .extend({
     attributes: z.array(
       z.object({
-        attribute_name: z.string(),
-        display_name: z.string(),
-        harmonized_name: z.string(),
+        attribute_name: z.string().nullable(),
+        display_name: z.string().nullable(),
+        harmonized_name: z.string().nullable(),
         content: z.string(),
       })
     ),
