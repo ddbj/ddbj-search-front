@@ -36,9 +36,9 @@ export const ResultCard: FC<Props> = ({
       <div className={wrapperClasses}>
         <p className={"flex gap-4"}>
           <span>{id}</span>
-          <span>{getDbLabel(type)}</span>
+          <span className={""}>{getDbLabel(type)}</span>
         </p>
-        <h3 className={"mb-2 text-2xl leading-none"}>{title}</h3>
+        <h3 className={"mb-2 text-2xl leading-none wrap-anywhere"}>{title}</h3>
         <div className={"flex items-end justify-between gap-x-2"}>
           <div className={"flex flex-col gap-1"}>
             <span>Related to {total} objects</span>
@@ -91,7 +91,7 @@ export const parseResultCardProps = (res: EntryListResponse["items"][0]): Props 
   const submittedAt = res.dateCreated ? formatToDateStr(res.dateCreated) : null;
   const publishedAt = res.datePublished ? formatToDateStr(res.datePublished) : null;
   return {
-    title: res.title,
+    title: res.title ?? res.name ?? res.description ?? "N/A",
     id: res.identifier,
     type: res.type,
     relations: res.dbXrefsCount,

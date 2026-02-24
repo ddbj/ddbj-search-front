@@ -23,8 +23,12 @@ export const getJgaPolicyList = http.get<never, never, EntryListResponse>(
             identifier: makeDummyIdentifier(type),
             type,
             title: "Data access policy for controlled access data",
+            name: "Data access policy for controlled access data",
+            description: "Data access policy for controlled access data",
             dbXrefsCount: { "jga-dataset": 5, "jga-study": 2, "jga-dac": 1 },
-            datePublished: "2023-04-15", dateModified: "2023-04-15", dateCreated: "2023-04-15",
+            datePublished: "2023-04-15",
+            dateModified: "2023-04-15",
+            dateCreated: "2023-04-15",
           };
         }),
     });

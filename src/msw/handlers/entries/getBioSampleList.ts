@@ -23,8 +23,12 @@ export const getBioSampleList = http.get<never, never, EntryListResponse>(
             identifier: makeDummyIdentifier(type),
             type,
             title: "Soil sample from agricultural field",
+            name: "Soil sample from agricultural field",
+            description: "Soil sample from agricultural field",
             dbXrefsCount: { "sra-run": 5, "sra-experiment": 2, bioproject: 1 },
-            datePublished: "2023-04-15", dateModified: "2023-04-15", dateCreated: "2023-04-15",
+            datePublished: "2023-04-15",
+            dateModified: "2023-04-15",
+            dateCreated: "2023-04-15",
           };
         }),
     });

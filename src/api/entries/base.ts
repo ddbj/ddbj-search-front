@@ -7,7 +7,12 @@ extendZod();
 export const entryListItemResponseSchema = z.object({
   identifier: z.string(),
   type: z.string().openapi({ example: "bioproject" }),
-  title: z.string().openapi({ example: "Draparnaldia sp. CCAC 6921, genomic data." }),
+  title: z.string().nullable().openapi({ example: "Draparnaldia sp. CCAC 6921, genomic data." }),
+  name: z.string().nullable().openapi({ example: "Draparnaldia sp. CCAC 6921, genomic data." }),
+  description: z
+    .string()
+    .nullable()
+    .openapi({ example: "Draparnaldia sp. CCAC 6921, genomic data." }),
   dbXrefsCount: z.record(z.string(), z.number()).openapi({
     example: { bioproject: 1, biosample: 1, "sra-study": 2 },
   }),
