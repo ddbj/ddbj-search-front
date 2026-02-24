@@ -29,6 +29,9 @@ export const parseBaseParams = (params: AnySearchParams): BaseEntryListRequestPa
   if (params.dateModifiedTo) {
     result.dateModifiedTo = params.dateModifiedTo;
   }
+  if (params.sort) {
+    result.sort = params.sort;
+  }
 
   return result;
 };

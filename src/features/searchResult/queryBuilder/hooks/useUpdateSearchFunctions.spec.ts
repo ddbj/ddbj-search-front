@@ -5,6 +5,7 @@ import type { AnySearchParams } from "@/schema/search/any.ts";
 import type { BaseSearchParams } from "@/schema/search/base.ts";
 const {
   removeFromSearch,
+  composeSort,
   composeKeywords,
   composeDBTypes,
   composeDateModified,
@@ -86,6 +87,60 @@ describe("removeFromSearch", () => {
         datePublishedTo: "2025-07-10",
       });
     });
+  });
+});
+
+describe("composeSort", () => {
+  it("should add sort", () => {
+    const prev: AnySearchParams = { types: [dbTypes.bioproject] };
+    const result = composeSort(prev, "dateModified:asc");
+    const expected: AnySearchParams = {
+      types: [dbTypes.bioproject],
+      sort: "dateModified:asc",
+    };
+    expect(result).toEqual(expected);
+  });
+  it("should remove sort", () => {
+    const prev: AnySearchParams = { types: [dbTypes.bioproject], sort: "dateModified:asc" };
+    const result = composeSort(prev, null);
+    const expected: AnySearchParams = { types: [dbTypes.bioproject] };
+    expect(result).toEqual(expected);
+  });
+  it("should reset the page number when sort is changed", () => {
+    const prev: AnySearchParams = { types: [dbTypes.bioproject], page: 2 };
+    const result = composeSort(prev, "dateModified:asc");
+    const expected: AnySearchParams = {
+      types: [dbTypes.bioproject],
+      sort: "dateModified:asc",
+    };
+    expect(result).toEqual(expected);
+  });
+  it("should preserve the page number when sort is not changed", () => {
+    const prev: AnySearchParams = {
+      types: [dbTypes.bioproject],
+      sort: "dateModified:asc",
+      page: 2,
+    };
+    const result = composeSort(prev, "dateModified:asc");
+    const expected: AnySearchParams = {
+      types: [dbTypes.bioproject],
+      sort: "dateModified:asc",
+      page: 2,
+    };
+    expect(result).toEqual(expected);
+  });
+
+  it("should preserve the page number when sort is not changed", () => {
+    const prev: AnySearchParams = {
+      types: [dbTypes.bioproject],
+      page: 2,
+    };
+    const result = composeSort(prev, null);
+    const expected: AnySearchParams = {
+      types: [dbTypes.bioproject],
+      page: 2,
+    };
+    expect(result).toEqual(expected);
   });
 });
 

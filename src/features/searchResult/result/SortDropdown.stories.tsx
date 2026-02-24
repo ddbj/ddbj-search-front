@@ -4,7 +4,10 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
   component: SortDropdown,
-  args: {},
+  args: {
+    changeSortFunc: () => {},
+    currentSort: null,
+  },
   decorators: [],
 } satisfies Meta<typeof SortDropdown>;
 

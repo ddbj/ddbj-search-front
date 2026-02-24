@@ -1,4 +1,5 @@
 import * as z from "zod";
+import { sortKeyValues } from "@/api/consts.ts";
 
 export const paginationShape = {
   page: z.number().optional(),
@@ -11,6 +12,7 @@ export const baseSearchSchema = z.object({
   datePublishedTo: z.string().optional(),
   dateModifiedFrom: z.string().optional(),
   dateModifiedTo: z.string().optional(),
+  sort: z.enum(sortKeyValues).optional(),
 });
 export type BaseSearchParams = z.infer<typeof baseSearchSchema>;
 const baseSearchKeySchema = baseSearchSchema.keyof();

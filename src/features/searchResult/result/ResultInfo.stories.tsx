@@ -13,6 +13,7 @@ const meta = {
     perPage: 20,
     currentPage: 1,
     searchParams: {},
+    changeSortFunc: () => {},
     removeParamFunc: (key: AnySearchParamsKey | AnySearchParamsKey[], v: string) => {},
   },
   decorators: [],

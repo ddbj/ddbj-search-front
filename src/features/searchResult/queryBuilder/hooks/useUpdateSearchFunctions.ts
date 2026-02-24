@@ -1,5 +1,6 @@
 import { isEqual } from "@ver0/deep-equal";
 import { useMemo } from "react";
+import type { SortKey } from "@/api/consts.ts";
 import type { DBType } from "@/consts/db.ts";
 import type { AnySearchParams, AnySearchParamsKey } from "@/schema/search/any.ts";
 type NavigateLike<TSearch extends AnySearchParams> = (opts: {
@@ -19,6 +20,7 @@ export type UpdateSearchFunctions<TSearch extends AnySearchParams = AnySearchPar
   changeOrganization: (v: string) => void;
   changePublication: (v: string) => void;
   changeGrant: (v: string) => void;
+  changeSort: (v: SortKey | null) => void;
   removeParam: (name: AnySearchParamsKey | AnySearchParamsKey[], value: string) => void;
 };
 
@@ -36,6 +38,9 @@ export const useUpdateSearchFunctions = <TSearch extends AnySearchParams>(
       },
       moveToPage: (v: number) => {
         navigate({ search: (prev: TSearch) => composePageNumber(prev, v) as TSearch });
+      },
+      changeSort: (v: SortKey | null) => {
+        navigate({ search: (prev: TSearch) => composeSort(prev, v) as TSearch, replace });
       },
       changeKeywords: (v: string[]) => {
         // console.log("changeKeywords", v);
@@ -103,6 +108,12 @@ const composePageNumber = (params: P, value: number): P => {
   const { page: prev, ...rest } = params;
   return value > 1 ? { ...rest, page: Math.floor(value) } : rest;
 };
+const composeSort = (params: P, value: SortKey | null): P => {
+  const { sort: prev, page, ...rest } = params;
+  if (value === prev || (value === null && prev === undefined)) return params;
+  if (value === null) return rest;
+  return { ...rest, sort: value };
+};
 
 const composeKeywords = (params: P, value: string[]): P => {
   if (isEqual(params.keywords ?? [], value)) return params;
@@ -158,6 +169,7 @@ const composeGrant = (params: P, value: string) => {
 export const __SB_updateFunctions: UpdateSearchFunctions = {
   moveToEntryRoot: (params: AnySearchParams) => {},
   moveToPage: (page: number) => {},
+  changeSort: (v: string | null) => {},
   changeKeywords: (v: string[]) => {},
   setDBTypes: (v: DBType[]) => {},
   changeDateModifiedRange: (v: string) => {},
@@ -171,6 +183,7 @@ export const __SB_updateFunctions: UpdateSearchFunctions = {
 
 export const __TEST_updateFunctions = {
   removeFromSearch,
+  composeSort,
   composeKeywords,
   composeDBTypes,
   composeDateModified,

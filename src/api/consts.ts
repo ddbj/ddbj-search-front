@@ -29,3 +29,11 @@ export const getStatusLabels = (str: string) => {
   const result = statusLabels[str as StatusValue];
   return result ?? str;
 };
+
+export const sortKeyValues = [
+  "dateModified:asc",
+  "dateModified:desc",
+  "datePublished:asc",
+  "datePublished:desc",
+];
+export type SortKey = (typeof sortKeyValues)[number];

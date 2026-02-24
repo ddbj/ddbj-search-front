@@ -10,6 +10,7 @@ import type { FC } from "react";
 
 type Props = {
   removeParamFunc: UpdateSearchFunctions["removeParam"];
+  changeSortFunc: UpdateSearchFunctions["changeSort"];
   searchParams: AnySearchParams;
   itemCount: number;
   perPage: number;
@@ -23,6 +24,7 @@ const wrapperClasses = clsx(
 export const ResultInfo: FC<Props> = ({
   searchParams,
   removeParamFunc,
+  changeSortFunc,
   itemCount,
   perPage,
   currentPage,
@@ -46,7 +48,7 @@ export const ResultInfo: FC<Props> = ({
               </>
             )}
           </p>
-          <SortDropdown />
+          <SortDropdown changeSortFunc={changeSortFunc} currentSort={searchParams.sort} />
         </div>
         <QueryTipList removeParamFunc={removeParamFunc} searchParams={searchParams} />
       </div>

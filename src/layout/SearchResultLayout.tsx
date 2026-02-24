@@ -40,6 +40,7 @@ export const SearchResultLayout: FC<Props> = ({ entryType, updateFunctions, para
           <aside className={"sticky top-0 flex flex-col gap-4"}>
             <ResultInfo
               removeParamFunc={updateFunctions.removeParam}
+              changeSortFunc={updateFunctions.changeSort}
               searchParams={params}
               currentPage={pagination?.page ?? 1}
               perPage={pagination.perPage ?? 20}

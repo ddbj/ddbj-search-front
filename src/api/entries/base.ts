@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { booleanStrings } from "@/api/consts.ts";
+import { booleanStrings, sortKeyValues } from "@/api/consts.ts";
 import { extendZod } from "@/utils/extendZod.ts";
 
 extendZod();
@@ -54,7 +54,6 @@ export const baseEntryListRequestParamsSchema = z.object({
   includeProperties: z.enum(booleanStrings).optional().default("true"),
   dbXrefsLimit: z.string().default("100").openapi({ description: "min:0, max:10000, default:100" }),
   includeFacets: z.enum(booleanStrings).optional().default("false"),
-  // sortBy: z.string().optional(),
-  // sortOrder: z.enum(["asc", "desc"]).optional(),
+  sort: z.enum(sortKeyValues).optional(),
 });
 export type BaseEntryListRequestParams = z.infer<typeof baseEntryListRequestParamsSchema>;
