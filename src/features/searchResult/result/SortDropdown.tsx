@@ -2,6 +2,7 @@ import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@
 import { type FC, type ReactNode, useMemo, useState } from "react";
 import { ArrowDownRightIcon } from "@/features/graphics/ArrowDownRightIcon.tsx";
 import { ArrowUpRightIcon } from "@/features/graphics/ArrowUpRightIcon.tsx";
+import { StarShineIcon } from "@/features/graphics/StarShineIcon.tsx";
 import type { Selection } from "@heroui/react";
 
 type Props = {};
@@ -13,23 +14,28 @@ type Item = {
 };
 const items = [
   {
+    label: "Relevance",
+    value: "relevance",
+    icon: <StarShineIcon className={"w-3"} />,
+  },
+  {
     label: "Updated Date",
-    value: "DateUpdatedDesc",
+    value: "dateModified:desc",
     icon: <ArrowDownRightIcon className={"w-3"} />,
   },
   {
     label: "Updated Date",
-    value: "DateUpdatedAsc",
+    value: "dateModified:asc",
     icon: <ArrowUpRightIcon className={"w-3"} />,
   },
   {
-    label: "Created Date",
-    value: "DateCreatedDesc",
+    label: "Published Date",
+    value: "datePublished:desc",
     icon: <ArrowDownRightIcon className={"w-3"} />,
   },
   {
-    label: "Created Date",
-    value: "DateCreatedAsc",
+    label: "Published Date",
+    value: "datePublished:asc",
     icon: <ArrowUpRightIcon className={"w-3"} />,
   },
 ];
