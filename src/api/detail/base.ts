@@ -55,7 +55,7 @@ export const baseDetailResponseSchema = z.object({
   //   })
   // ),
   isPartOf: z.string(),
-  name: z.unknown(),
+  name: z.string().nullable().optional(),
   url: z.unknown(),
   sameAs: z.array(XrefSchema).nullable(),
 });

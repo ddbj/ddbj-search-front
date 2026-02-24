@@ -4,7 +4,7 @@ import type { FC } from "react";
 
 type Props = {
   term: string;
-  value: string | null;
+  value: string | null | undefined;
 };
 
 export const SanitizedRow: FC<Props> = ({ value, term }) => {

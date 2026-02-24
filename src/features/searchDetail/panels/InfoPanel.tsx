@@ -27,6 +27,7 @@ export const InfoPanel: FC<Props> = ({ data }) => {
     <PanelWrapper>
       <InfoList>
         <SanitizedRow term={"Title"} value={data.title} />
+        <SanitizedRow term={"Name"} value={data.name} />
         <SanitizedRow term={"Description"} value={data.description} />
         <OrganismRow organism={data.organism} />
         <PublicationsRow publications={getPublications(data)} />
