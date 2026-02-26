@@ -8,6 +8,12 @@ const meta = {
     value: [],
     update: (v: DBType[]) => {},
     linkSearchParams: {},
+    countData: [
+      {
+        value: "bioproject",
+        count: 100,
+      },
+    ],
   },
   decorators: [],
 } satisfies Meta<typeof TypeSelector>;

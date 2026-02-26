@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import { type FC, useMemo } from "react";
 import { type DBType, dbTypes } from "@/consts/db.ts";
 import { Grant } from "@/features/searchResult/queryBuilder/controls/bioproject/Grant.tsx";
@@ -7,6 +8,7 @@ import { Umbrella } from "@/features/searchResult/queryBuilder/controls/bioproje
 import { DateSelectors } from "@/features/searchResult/queryBuilder/controls/DateSelectors.tsx";
 import { KeywordInput } from "@/features/searchResult/queryBuilder/controls/KeywordInput.tsx";
 import { OtherTypeSelector } from "@/features/searchResult/queryBuilder/controls/OtherTypeSelector.tsx";
+import { fetchAllFacets } from "@/fetch/facets/fetchAllFacets.ts";
 import { type BaseSearchParams, isBaseSearchKey } from "@/schema/search/base.ts";
 import { TypeSelector } from "./controls/TypeSelector.tsx";
 import type { UpdateSearchFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
@@ -44,12 +46,21 @@ export const QueryBuilder: FC<Props> = ({ currentType, update, params }) => {
     changeGrant,
   } = useMemo(() => update, [update]);
   const typeLinkParams = makeTypeLinkParams(params);
+  const { data: facetData } = useQuery({
+    queryKey: ["fetchFacets", ...Object.entries(params)],
+    queryFn: () => fetchAllFacets(params),
+  });
 
   return (
     <aside className={wrapperClasses}>
       <KeywordInput value={keywords ?? []} update={changeKeywords} />
       {!currentType && (
-        <TypeSelector update={setDBTypes} value={types ?? []} linkSearchParams={typeLinkParams} />
+        <TypeSelector
+          countData={facetData?.facets.type ?? []}
+          update={setDBTypes}
+          value={types ?? []}
+          linkSearchParams={typeLinkParams}
+        />
       )}
       {currentType && (
         <OtherTypeSelector

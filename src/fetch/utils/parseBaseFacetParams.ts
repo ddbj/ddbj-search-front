@@ -1,0 +1,22 @@
+import type { AllFacetListRequestParam } from "@/api/facets/all.ts";
+import type { AnySearchParams } from "@/schema/search/any.ts";
+
+export const parseBaseFacetParams = (params: AnySearchParams): AllFacetListRequestParam => {
+  const result: AllFacetListRequestParam = {};
+  if (params.keywords && params.keywords.length) {
+    result.keywords = params.keywords.join(",");
+  }
+  if (params.datePublishedFrom) {
+    result.datePublishedFrom = params.datePublishedFrom;
+  }
+  if (params.datePublishedTo) {
+    result.datePublishedTo = params.datePublishedTo;
+  }
+  if (params.dateModifiedFrom) {
+    result.dateModifiedFrom = params.dateModifiedFrom;
+  }
+  if (params.dateModifiedTo) {
+    result.dateModifiedTo = params.dateModifiedTo;
+  }
+  return result;
+};

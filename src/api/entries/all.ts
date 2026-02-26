@@ -4,7 +4,7 @@ import { baseEntryListRequestParamsSchema, entryListResponseSchema } from "@/api
 import { API_PATH_ALL_ENTRIES_LIST, omitBaseApiPath } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
-const allEntryListRequestParamShape = {
+export const allEntryListRequestParamShape = {
   types: z
     .string()
     .optional()

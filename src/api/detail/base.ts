@@ -1,5 +1,8 @@
 import { z } from "zod";
 import { accessibilityValues, statusValues } from "@/api/consts.ts";
+import { extendZod } from "@/utils/extendZod.ts";
+
+extendZod();
 
 export const baseDetailRequestSchema = z.object({
   identifier: z.string(),
