@@ -10,7 +10,7 @@ import { InfoList } from "@/features/searchDetail/ui/InfoList.tsx";
 import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
 import { PanelWrapper } from "@/features/searchDetail/ui/PanelWrapper.tsx";
 import { formatToDateStr } from "@/utils/dateTime.ts";
-import type { SearchDetailResponse } from "@/utils/searchDetailResponse.ts";
+import type { SearchDetailResponse } from "@/api/types.ts";
 import type { FC } from "react";
 
 type Props = { data: SearchDetailResponse };

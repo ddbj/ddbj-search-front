@@ -5,7 +5,7 @@ import { PropertiesPanel } from "@/features/searchDetail/panels/PropertiesPanel.
 import { StatusPanel } from "@/features/searchDetail/panels/StatusPanel.tsx";
 import { parseRefs, XrefPanel } from "@/features/searchDetail/panels/XrefPanel.tsx";
 import { GlobalHeader } from "@/features/shared/GlobalHeader.tsx";
-import type { SearchDetailResponse } from "@/utils/searchDetailResponse.ts";
+import type { SearchDetailResponse } from "@/api/types.ts";
 import type { FC } from "react";
 
 type Props = {

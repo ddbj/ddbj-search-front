@@ -1,6 +1,6 @@
 import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
 import type { Attribute } from "@/api/detail/bioSample.ts";
-import type { SearchDetailResponse } from "@/utils/searchDetailResponse.ts";
+import type { SearchDetailResponse } from "@/api/types.ts";
 import type { FC } from "react";
 
 type Props = { attributes: Attribute[] | null };

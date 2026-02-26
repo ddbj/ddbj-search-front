@@ -2,7 +2,7 @@ import { dbTypes } from "@/consts/db.ts";
 import { InfoList } from "@/features/searchDetail/ui/InfoList.tsx";
 import { PanelWrapper } from "@/features/searchDetail/ui/PanelWrapper.tsx";
 import { DownloadListItem } from "../ui/DownloadListItem";
-import type { SearchDetailResponse } from "@/utils/searchDetailResponse.ts";
+import type { SearchDetailResponse } from "@/api/types.ts";
 import type { ComponentProps, FC } from "react";
 
 type Props = {

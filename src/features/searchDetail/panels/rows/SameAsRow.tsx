@@ -1,7 +1,7 @@
 import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
 import { isInternalDbLink, sanitizeDbLink } from "@/utils/sanitizeDbLink.ts";
 import type { Xref } from "@/api/detail/base.ts";
-import type { SearchDetailResponse } from "@/utils/searchDetailResponse.ts";
+import type { SearchDetailResponse } from "@/api/types.ts";
 import type { FC } from "react";
 
 type Props = { sameAs: Xref[] | null };

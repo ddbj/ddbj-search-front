@@ -1,6 +1,6 @@
 import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
 import type { ExternalLink } from "@/api/detail/base.ts";
-import type { SearchDetailResponse } from "@/utils/searchDetailResponse.ts";
+import type { SearchDetailResponse } from "@/api/types.ts";
 import type { FC } from "react";
 
 type Props = { externalLinks: ExternalLink[] | null | undefined };

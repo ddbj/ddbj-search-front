@@ -17,7 +17,7 @@ import { getSameAs, SameAsRow } from "@/features/searchDetail/panels/rows/SameAs
 import { SanitizedRow } from "@/features/searchDetail/panels/rows/SanitizedRow.tsx";
 import { InfoList } from "@/features/searchDetail/ui/InfoList.tsx";
 import { PanelWrapper } from "@/features/searchDetail/ui/PanelWrapper.tsx";
-import type { SearchDetailResponse } from "@/utils/searchDetailResponse.ts";
+import type { SearchDetailResponse } from "@/api/types.ts";
 import type { FC } from "react";
 
 type Props = { data: SearchDetailResponse };

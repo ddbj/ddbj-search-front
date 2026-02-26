@@ -1,6 +1,6 @@
 import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
 import type { Grant } from "@/api/detail/bioProject.ts";
-import type { SearchDetailResponse } from "@/utils/searchDetailResponse.ts";
+import type { SearchDetailResponse } from "@/api/types.ts";
 import type { FC } from "react";
 
 type Props = { grants: Grant[] | null };

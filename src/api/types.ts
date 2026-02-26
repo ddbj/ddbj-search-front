@@ -10,6 +10,7 @@ import type { SraRunDetailResponse } from "@/api/detail/sraRun.ts";
 import type { SraSampleDetailResponse } from "@/api/detail/sraSample.ts";
 import type { SraStudyDetailResponse } from "@/api/detail/sraStudy.ts";
 import type { SraSubmissionDetailResponse } from "@/api/detail/sraSubmission.ts";
+import type { AllFacetListResponse } from "@/api/facets/all.ts";
 
 export type SearchDetailResponse =
   | BioProjectDetailResponse
