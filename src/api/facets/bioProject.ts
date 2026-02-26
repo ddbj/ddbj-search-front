@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { object, z } from "zod";
 import { tags } from "@/api/consts.ts";
 import { bioProjectListRequestParamsShape } from "@/api/entries/bioProject.ts";
 import {

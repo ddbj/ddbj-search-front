@@ -9,6 +9,7 @@ import { DateSelectors } from "@/features/searchResult/queryBuilder/controls/Dat
 import { KeywordInput } from "@/features/searchResult/queryBuilder/controls/KeywordInput.tsx";
 import { OtherTypeSelector } from "@/features/searchResult/queryBuilder/controls/OtherTypeSelector.tsx";
 import { fetchAllFacets } from "@/fetch/facets/fetchAllFacets.ts";
+import { fetchFacets } from "@/fetch/utils/fetchFacets.ts";
 import { type BaseSearchParams, isBaseSearchKey } from "@/schema/search/base.ts";
 import { TypeSelector } from "./controls/TypeSelector.tsx";
 import type { UpdateSearchFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
@@ -47,9 +48,10 @@ export const QueryBuilder: FC<Props> = ({ currentType, update, params }) => {
   } = useMemo(() => update, [update]);
   const typeLinkParams = makeTypeLinkParams(params);
   const { data: facetData } = useQuery({
-    queryKey: ["fetchFacets", ...Object.entries(params)],
-    queryFn: () => fetchAllFacets(params),
+    queryKey: ["fetchFacets", ...Object.entries(params), currentType],
+    queryFn: () => fetchFacets(currentType, params),
   });
+  console.log(facetData?.facets);
 
   return (
     <aside className={wrapperClasses}>
@@ -89,6 +91,9 @@ export const QueryBuilder: FC<Props> = ({ currentType, update, params }) => {
   );
 };
 
+/**
+ * @param params
+ */
 const makeTypeLinkParams = (params: AnySearchParams): BaseSearchParams => {
   const result = Object.fromEntries(
     Object.entries(params).filter(([key, _value]) => isBaseSearchKey(key))
