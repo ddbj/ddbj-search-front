@@ -12,31 +12,40 @@ const expectKeyNotExists = (
 };
 
 describe("parseParams", () => {
-  it("should have organization as null if it is not provided", () => {
+  it("returns only base params when no bioproject-specific params are provided", () => {
     const result = parseParams({});
-    expect(result.organization).toBe(null);
+    expect(result.organization).toBeUndefined();
+    expect(result.publication).toBeUndefined();
+    expect(result.grant).toBeUndefined();
+    expect(result.umbrella).toBeUndefined();
   });
-  it("should have organization if it is provided", () => {
+
+  it("includes organization when provided", () => {
     const result = parseParams({ organization: "NCBI" });
     expect(result.organization).toBe("NCBI");
   });
-  it("should have publication if it is provided", () => {
+
+  it("includes publication when provided", () => {
     const result = parseParams({ publication: "Nature" });
     expect(result.publication).toBe("Nature");
   });
-  it("should have grant if it is provided", () => {
+
+  it("includes grant when provided", () => {
     const result = parseParams({ grant: "test grant" });
     expect(result.grant).toBe("test grant");
   });
-  it("should convert umbrella true to 'TRUE'", () => {
+
+  it("serializes umbrella=true as 'true'", () => {
     const result = parseParams({ umbrella: true });
     expect(result.umbrella).toBe("true");
   });
-  it("should convert umbrella false to 'FALSE'", () => {
+
+  it("serializes umbrella=false as 'false'", () => {
     const result = parseParams({ umbrella: false });
     expect(result.umbrella).toBe("false");
   });
-  it("should handle base params", () => {
+
+  it("serializes keywords array as a comma-separated string", () => {
     const result = parseParams({ keywords: ["human", "cat"] });
     expect(result.keywords).toBe("human,cat");
   });

@@ -13,14 +13,20 @@ export const fetchBioProjects = async (params: BioprojectSearchParams) => {
   return data;
 };
 const parseParams = (params: BioprojectSearchParams): BioProjectListRequestParams => {
-  const base = parseBaseParams(params);
-  return {
-    ...base,
-    organization: params.organization ?? null,
-    publication: params.publication ?? null,
-    grant: params.grant ?? null,
-    ...(params.umbrella !== undefined ? { umbrella: params.umbrella ? "true" : "false" } : {}),
-  } as BioProjectListRequestParams;
+  const result: BioProjectListRequestParams = parseBaseParams(params);
+  if (params.organization) {
+    result.organization = params.organization;
+  }
+  if (params.publication) {
+    result.publication = params.publication;
+  }
+  if (params.grant) {
+    result.grant = params.grant;
+  }
+  if (params.umbrella !== undefined) {
+    result.umbrella = params.umbrella ? "true" : "false";
+  }
+  return result;
 };
 
 export const __TEST__fetchBioProjectEntries = {

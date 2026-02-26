@@ -9,39 +9,10 @@ import { API_PATH_BIOPROJECT_LIST, omitBaseApiPath } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
 const bioprojectListRequestParamsShape = {
-  organization: z
-    .object({
-      name: z.string().nullable(),
-      organizationType: z.string().nullable(),
-      role: z.string().nullable(),
-      url: z.string().nullable(),
-      abbreviation: z.string().nullable(),
-    })
-    .nullable(),
-  publication: z
-    .object({
-      id: z.string().nullable(),
-      title: z.string().nullable(),
-      date: z.string().nullable(),
-      Reference: z.string().nullable(),
-      url: z.string().nullable(),
-      DbType: z.string().nullable(),
-      status: z.string().nullable(),
-    })
-    .nullable(),
-  grant: z
-    .object({
-      id: z.string().nullable(),
-      title: z.string().nullable(),
-      agency: z.array(
-        z.object({
-          abbreviation: z.string().nullable(),
-          name: z.string().nullable(),
-        })
-      ),
-    })
-    .nullable(),
-  umbrella: z.enum(booleanStrings).optional(),
+  organization: z.string().optional(),
+  publication: z.string().optional(),
+  grant: z.string().optional(),
+  umbrella: z.enum(booleanStrings).optional().openapi({ description: "case-insensitive" }),
 };
 const bioProjectListRequestParamsSchema = baseEntryListRequestParamsSchema.extend({
   ...bioprojectListRequestParamsShape,
