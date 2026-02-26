@@ -8,10 +8,15 @@ import {
 import { API_PATH_JGA_DAC_FACET_LIST, omitBaseApiPath } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
-export const jgaDacFacetListRequestParamsSchema = baseFacetListRequestParamsSchema.extend({
+const jgaDacFacetListRequestParamsSchema = baseFacetListRequestParamsSchema.extend({
   ...jgaDacListRequestParamsShape,
 });
 export type JgaDacFacetListRequestParams = z.infer<typeof jgaDacFacetListRequestParamsSchema>;
+
+const jgaDacFacetListResponseSchema = baseFacetListResponseSchema.extend({
+  // add jgaDacFacetSpecificFields here
+});
+export type JgaDacFacetListResponse = z.infer<typeof jgaDacFacetListResponseSchema>;
 
 export const jgaDacFacetListRequestDoc: RouteConfig = {
   path: omitBaseApiPath(API_PATH_JGA_DAC_FACET_LIST),
@@ -27,7 +32,7 @@ export const jgaDacFacetListRequestDoc: RouteConfig = {
       description: "",
       content: {
         "application/json": {
-          schema: baseFacetListResponseSchema,
+          schema: jgaDacFacetListResponseSchema,
         },
       },
     },

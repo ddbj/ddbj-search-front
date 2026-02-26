@@ -8,10 +8,15 @@ import {
 import { API_PATH_SRA_RUN_FACET_LIST, omitBaseApiPath } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
-export const sraRunFacetListRequestParamsSchema = baseFacetListRequestParamsSchema.extend({
+const sraRunFacetListRequestParamsSchema = baseFacetListRequestParamsSchema.extend({
   ...sraRunListRequestParamsShape,
 });
 export type SraRunFacetListRequestParams = z.infer<typeof sraRunFacetListRequestParamsSchema>;
+
+const sraRunFacetListResponseSchema = baseFacetListResponseSchema.extend({
+  // add sraRunFacetSpecificFields here
+});
+export type SraRunFacetListResponse = z.infer<typeof sraRunFacetListResponseSchema>;
 
 export const sraRunFacetListRequestDoc: RouteConfig = {
   path: omitBaseApiPath(API_PATH_SRA_RUN_FACET_LIST),
@@ -27,7 +32,7 @@ export const sraRunFacetListRequestDoc: RouteConfig = {
       description: "",
       content: {
         "application/json": {
-          schema: baseFacetListResponseSchema,
+          schema: sraRunFacetListResponseSchema,
         },
       },
     },

@@ -8,12 +8,17 @@ import {
 import { API_PATH_SRA_EXPERIMENT_FACET_LIST, omitBaseApiPath } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
-export const sraExperimentFacetListRequestParamsSchema = baseFacetListRequestParamsSchema.extend({
+const sraExperimentFacetListRequestParamsSchema = baseFacetListRequestParamsSchema.extend({
   ...sraExperimentListRequestParamsShape,
 });
 export type SraExperimentFacetListRequestParams = z.infer<
   typeof sraExperimentFacetListRequestParamsSchema
 >;
+
+const sraExperimentFacetListResponseSchema = baseFacetListResponseSchema.extend({
+  // add sraExperimentFacetSpecificFields here
+});
+export type SraExperimentFacetListResponse = z.infer<typeof sraExperimentFacetListResponseSchema>;
 
 export const sraExperimentFacetListRequestDoc: RouteConfig = {
   path: omitBaseApiPath(API_PATH_SRA_EXPERIMENT_FACET_LIST),
@@ -29,7 +34,7 @@ export const sraExperimentFacetListRequestDoc: RouteConfig = {
       description: "",
       content: {
         "application/json": {
-          schema: baseFacetListResponseSchema,
+          schema: sraExperimentFacetListResponseSchema,
         },
       },
     },

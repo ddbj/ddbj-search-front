@@ -1,9 +1,10 @@
 import { API_PATH_SRA_STUDY_FACET_LIST } from "@/api/paths.ts";
 import { parseBaseFacetParams } from "@/fetch/utils/parseBaseFacetParams.ts";
-import type { BaseFacetListResponse } from "@/api/facets/base.ts";
-import type { SraStudyFacetListRequestParams } from "@/api/facets/sraStudy.ts";
+import type {
+  SraStudyFacetListRequestParams,
+  SraStudyFacetListResponse,
+} from "@/api/facets/sraStudy.ts";
 import type { SraStudySearchParams } from "@/schema/search/sraStudy.ts";
-
 export const fetchSraStudyFacets = async (params: SraStudySearchParams) => {
   const searchParams = parseParams(params) as unknown as Record<string, string>;
   const response = await fetch(
@@ -12,7 +13,7 @@ export const fetchSraStudyFacets = async (params: SraStudySearchParams) => {
       method: "GET",
     }
   );
-  const data = (await response.json()) as BaseFacetListResponse;
+  const data = (await response.json()) as SraStudyFacetListResponse;
   return data;
 };
 

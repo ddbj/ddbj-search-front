@@ -8,12 +8,17 @@ import {
 import { API_PATH_SRA_SUBMISSION_FACET_LIST, omitBaseApiPath } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
-export const sraSubmissionFacetListRequestParamsSchema = baseFacetListRequestParamsSchema.extend({
+const sraSubmissionFacetListRequestParamsSchema = baseFacetListRequestParamsSchema.extend({
   ...sraSubmissionListRequestParamsShape,
 });
 export type SraSubmissionFacetListRequestParams = z.infer<
   typeof sraSubmissionFacetListRequestParamsSchema
 >;
+
+const sraSubmissionFacetListResponseSchema = baseFacetListResponseSchema.extend({
+  // add sraSubmissionFacetSpecificFields here
+});
+export type SraSubmissionFacetListResponse = z.infer<typeof sraSubmissionFacetListResponseSchema>;
 
 export const sraSubmissionFacetListRequestDoc: RouteConfig = {
   path: omitBaseApiPath(API_PATH_SRA_SUBMISSION_FACET_LIST),
@@ -29,7 +34,7 @@ export const sraSubmissionFacetListRequestDoc: RouteConfig = {
       description: "",
       content: {
         "application/json": {
-          schema: baseFacetListResponseSchema,
+          schema: sraSubmissionFacetListResponseSchema,
         },
       },
     },

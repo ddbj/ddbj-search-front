@@ -8,10 +8,15 @@ import {
 import { API_PATH_JGA_STUDY_FACET_LIST, omitBaseApiPath } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
-export const jgaStudyFacetListRequestParamsSchema = baseFacetListRequestParamsSchema.extend({
+const jgaStudyFacetListRequestParamsSchema = baseFacetListRequestParamsSchema.extend({
   ...jgaStudyListRequestParamsShape,
 });
 export type JgaStudyFacetListRequestParams = z.infer<typeof jgaStudyFacetListRequestParamsSchema>;
+
+const jgaStudyFacetListResponseSchema = baseFacetListResponseSchema.extend({
+  // add jgaStudyFacetSpecificFields here
+});
+export type JgaStudyFacetListResponse = z.infer<typeof jgaStudyFacetListResponseSchema>;
 
 export const jgaStudyFacetListRequestDoc: RouteConfig = {
   path: omitBaseApiPath(API_PATH_JGA_STUDY_FACET_LIST),
@@ -27,7 +32,7 @@ export const jgaStudyFacetListRequestDoc: RouteConfig = {
       description: "",
       content: {
         "application/json": {
-          schema: baseFacetListResponseSchema,
+          schema: jgaStudyFacetListResponseSchema,
         },
       },
     },

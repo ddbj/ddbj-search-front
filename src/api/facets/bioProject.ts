@@ -8,12 +8,17 @@ import {
 import { API_PATH_BIOPROJECT_FACET_LIST, omitBaseApiPath } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
-export const bioProjectFacetListRequestParamsSchema = baseFacetListRequestParamsSchema.extend({
+const bioProjectFacetListRequestParamsSchema = baseFacetListRequestParamsSchema.extend({
   ...bioProjectListRequestParamsShape,
 });
 export type BioProjectFacetListRequestParams = z.infer<
   typeof bioProjectFacetListRequestParamsSchema
 >;
+
+const bioProjectFacetListResponseSchema = baseFacetListResponseSchema.extend({
+  // add bioProjectFacetSpecificFields here
+});
+export type BioProjectFacetListResponse = z.infer<typeof bioProjectFacetListResponseSchema>;
 
 export const bioProjectFacetListRequestDoc: RouteConfig = {
   path: omitBaseApiPath(API_PATH_BIOPROJECT_FACET_LIST),
@@ -29,7 +34,7 @@ export const bioProjectFacetListRequestDoc: RouteConfig = {
       description: "",
       content: {
         "application/json": {
-          schema: baseFacetListResponseSchema,
+          schema: bioProjectFacetListResponseSchema,
         },
       },
     },

@@ -1,9 +1,10 @@
 import { API_PATH_JGA_STUDY_FACET_LIST } from "@/api/paths.ts";
 import { parseBaseFacetParams } from "@/fetch/utils/parseBaseFacetParams.ts";
-import type { BaseFacetListResponse } from "@/api/facets/base.ts";
-import type { JgaStudyFacetListRequestParams } from "@/api/facets/jgaStudy.ts";
+import type {
+  JgaStudyFacetListRequestParams,
+  JgaStudyFacetListResponse,
+} from "@/api/facets/jgaStudy.ts";
 import type { JgaStudySearchParams } from "@/schema/search/jgaStudy.ts";
-
 export const fetchJgaStudyFacets = async (params: JgaStudySearchParams) => {
   const searchParams = parseParams(params) as unknown as Record<string, string>;
   const response = await fetch(
@@ -12,7 +13,7 @@ export const fetchJgaStudyFacets = async (params: JgaStudySearchParams) => {
       method: "GET",
     }
   );
-  const data = (await response.json()) as BaseFacetListResponse;
+  const data = (await response.json()) as JgaStudyFacetListResponse;
   return data;
 };
 

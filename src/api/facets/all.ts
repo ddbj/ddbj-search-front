@@ -14,10 +14,10 @@ export const allFacetListRequestParamsSchema = baseFacetListRequestParamsSchema.
 });
 export type AllFacetListRequestParams = z.infer<typeof allFacetListRequestParamsSchema>;
 //
-const allFacetListResponseScheme = baseFacetListResponseSchema.extend({
+const allFacetListResponseSchema = baseFacetListResponseSchema.extend({
   // add allFacetSpecificFields here
 });
-export type AllFacetListResponse = z.infer<typeof allFacetListResponseScheme>;
+export type AllFacetListResponse = z.infer<typeof allFacetListResponseSchema>;
 
 export const allFacetListRequestDoc: RouteConfig = {
   path: omitBaseApiPath(API_PATH_ALL_FACET_LIST),
@@ -33,7 +33,7 @@ export const allFacetListRequestDoc: RouteConfig = {
       description: "",
       content: {
         "application/json": {
-          schema: baseFacetListResponseSchema,
+          schema: allFacetListResponseSchema,
         },
       },
     },
