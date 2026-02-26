@@ -27,3 +27,4 @@ export const baseFacetListResponseSchema = z.object({
     accessibility: facetListShape,
   }),
 });
+export type BaseFacetListResponse = z.infer<typeof baseFacetListResponseSchema>;
