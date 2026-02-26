@@ -1,5 +1,5 @@
 import { API_PATH_BIOSAMPLE_LIST } from "@/api/paths.ts";
-import { parseBaseParams } from "@/fetch/utils/parseBaseSearchParams.ts";
+import { parseBaseEntryParams } from "@/fetch/utils/parseBaseEntryParams.ts";
 import type { EntryListResponse } from "@/api/entries/base.ts";
 import type { BiosampleListRequestParams } from "@/api/entries/bioSample.ts";
 import type { BiosampleSearchParams } from "@/schema/search/bioSample.ts";
@@ -15,7 +15,7 @@ export const fetchBioSamples = async (params: BiosampleSearchParams) => {
 
 const parseParams = (params: BiosampleSearchParams): BiosampleListRequestParams => {
   return {
-    ...parseBaseParams(params),
+    ...parseBaseEntryParams(params),
     // Add BioSample-specific parameters here if needed
   };
 };

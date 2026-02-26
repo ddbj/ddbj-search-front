@@ -1,5 +1,5 @@
 import { API_PATH_SRA_RUN_LIST } from "@/api/paths.ts";
-import { parseBaseParams } from "@/fetch/utils/parseBaseSearchParams.ts";
+import { parseBaseEntryParams } from "@/fetch/utils/parseBaseEntryParams.ts";
 import type { EntryListResponse } from "@/api/entries/base.ts";
 import type { SraRunListRequestParams } from "@/api/entries/sraRun.ts";
 import type { SraRunSearchParams } from "@/schema/search/sraRun.ts";
@@ -15,7 +15,7 @@ export const fetchSraRuns = async (params: SraRunSearchParams) => {
 
 const parseParams = (params: SraRunSearchParams): SraRunListRequestParams => {
   return {
-    ...parseBaseParams(params),
+    ...parseBaseEntryParams(params),
     // Add SRA Run-specific parameters here if needed
   };
 };

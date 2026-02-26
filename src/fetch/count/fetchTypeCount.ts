@@ -1,5 +1,5 @@
 import { API_PATH_ALL_FACET_LIST, API_PATH_TYPE_COUNT } from "@/api/paths.ts";
-import { parseBaseParams } from "@/fetch/utils/parseBaseSearchParams.ts";
+import { parseBaseEntryParams } from "@/fetch/utils/parseBaseEntryParams.ts";
 import type { CountTypesRequestParams, CountTypesResponse } from "@/api/count/types.ts";
 import type { AllFacetListRequestParam } from "@/api/facets/all.ts";
 import type { AllSearchParams } from "@/schema/search/all.ts";
@@ -15,7 +15,7 @@ export const fetchTypeCount = async (params: BaseSearchParams) => {
 };
 
 const parseParams = (params: AllSearchParams): AllFacetListRequestParam => {
-  const base = parseBaseParams(params);
+  const base = parseBaseEntryParams(params);
   const {
     page: _page,
     perPage: _perPage,

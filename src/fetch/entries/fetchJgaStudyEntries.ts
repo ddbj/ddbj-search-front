@@ -1,5 +1,5 @@
 import { API_PATH_JGA_STUDY_LIST } from "@/api/paths.ts";
-import { parseBaseParams } from "@/fetch/utils/parseBaseSearchParams.ts";
+import { parseBaseEntryParams } from "@/fetch/utils/parseBaseEntryParams.ts";
 import type { EntryListResponse } from "@/api/entries/base.ts";
 import type { JgaStudyListRequestParams } from "@/api/entries/jgaStudy.ts";
 import type { JgaStudySearchParams } from "@/schema/search/jgaStudy.ts";
@@ -15,7 +15,7 @@ export const fetchJgaStudies = async (params: JgaStudySearchParams) => {
 
 const parseParams = (params: JgaStudySearchParams): JgaStudyListRequestParams => {
   return {
-    ...parseBaseParams(params),
+    ...parseBaseEntryParams(params),
     // Add JGA Study-specific parameters here if needed
   };
 };

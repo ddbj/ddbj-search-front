@@ -1,5 +1,5 @@
 import { API_PATH_ALL_ENTRIES_LIST } from "@/api/paths.ts";
-import { parseBaseParams } from "@/fetch/utils/parseBaseSearchParams.ts";
+import { parseBaseEntryParams } from "@/fetch/utils/parseBaseEntryParams.ts";
 import type { AllEntryListRequestParams } from "@/api/entries/all.ts";
 import type { EntryListResponse } from "@/api/entries/base.ts";
 import type { AllSearchParams } from "@/schema/search/all.ts";
@@ -18,7 +18,7 @@ export const fetchAllEntries = async (params: AllSearchParams) => {
 
 const parseParams = (params: AllSearchParams): AllEntryListRequestParams => {
   return {
-    ...parseBaseParams(params),
+    ...parseBaseEntryParams(params),
     ...(params.types && params.types.length ? { types: params.types.join(",") } : {}),
   };
 };

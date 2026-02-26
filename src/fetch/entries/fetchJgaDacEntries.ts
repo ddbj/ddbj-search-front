@@ -1,5 +1,5 @@
 import { API_PATH_JGA_DAC_LIST } from "@/api/paths.ts";
-import { parseBaseParams } from "@/fetch/utils/parseBaseSearchParams.ts";
+import { parseBaseEntryParams } from "@/fetch/utils/parseBaseEntryParams.ts";
 import type { EntryListResponse } from "@/api/entries/base.ts";
 import type { JgaDacListRequestParams } from "@/api/entries/jgaDac.ts";
 import type { JgaDacSearchParams } from "@/schema/search/jgaDac.ts";
@@ -15,7 +15,7 @@ export const fetchJgaDacs = async (params: JgaDacSearchParams) => {
 
 const parseParams = (params: JgaDacSearchParams): JgaDacListRequestParams => {
   return {
-    ...parseBaseParams(params),
+    ...parseBaseEntryParams(params),
     // Add JGA DAC-specific parameters here if needed
   };
 };

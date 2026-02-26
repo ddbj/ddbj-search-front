@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { parseBaseParams } from "@/fetch/utils/parseBaseSearchParams.ts";
+import { parseBaseEntryParams } from "@/fetch/utils/parseBaseEntryParams.ts";
 import type { BaseEntryListRequestParams } from "@/api/entries/base.ts";
 
 const expectKeyNotExists = (
@@ -17,78 +17,78 @@ const expectDefault = (result: BaseEntryListRequestParams) => {
 
 describe("parseBaseParams", () => {
   it("", () => {
-    const result = parseBaseParams({});
+    const result = parseBaseEntryParams({});
     expectKeyNotExists(result, "page");
     expectDefault(result);
   });
 
   //page
   it("", () => {
-    const result = parseBaseParams({ page: 1 });
+    const result = parseBaseEntryParams({ page: 1 });
     expect(result.page).toBe("1");
     expectDefault(result);
   });
   it("", () => {
-    const result = parseBaseParams({ page: 2.1 });
+    const result = parseBaseEntryParams({ page: 2.1 });
     expect(result.page).toBe("2");
     expectDefault(result);
   });
   it("", () => {
-    const result = parseBaseParams({ page: -1 });
+    const result = parseBaseEntryParams({ page: -1 });
     expectKeyNotExists(result, "page");
     expectDefault(result);
   });
 
   //perPage
   it("", () => {
-    const result = parseBaseParams({ perPage: 10 });
+    const result = parseBaseEntryParams({ perPage: 10 });
     expect(result.perPage).toBe("10");
     expectDefault(result);
   });
   it("", () => {
-    const result = parseBaseParams({ perPage: 2.1 });
+    const result = parseBaseEntryParams({ perPage: 2.1 });
     expect(result.perPage).toBe("2");
     expectDefault(result);
   });
   it("", () => {
-    const result = parseBaseParams({ perPage: -1 });
+    const result = parseBaseEntryParams({ perPage: -1 });
     expectKeyNotExists(result, "perPage");
     expectDefault(result);
   });
 
   //keywords
   it("", () => {
-    const result = parseBaseParams({ keywords: [] });
+    const result = parseBaseEntryParams({ keywords: [] });
     expectKeyNotExists(result, "keywords");
     expectDefault(result);
   });
 
   it("", () => {
-    const result = parseBaseParams({ keywords: ["human", "cat"] });
+    const result = parseBaseEntryParams({ keywords: ["human", "cat"] });
     expect(result.keywords).toBe("human,cat");
     expectDefault(result);
   });
 
   //datePublished
   it("", () => {
-    const result = parseBaseParams({ datePublishedFrom: "2025-07-01" });
+    const result = parseBaseEntryParams({ datePublishedFrom: "2025-07-01" });
     expect(result.datePublishedFrom).toBe("2025-07-01");
     expectDefault(result);
   });
   it("", () => {
-    const result = parseBaseParams({ datePublishedTo: "2025-07-01" });
+    const result = parseBaseEntryParams({ datePublishedTo: "2025-07-01" });
     expect(result.datePublishedTo).toBe("2025-07-01");
     expectDefault(result);
   });
 
   //dateUpdated
   it("", () => {
-    const result = parseBaseParams({ dateModifiedFrom: "2025-07-01" });
+    const result = parseBaseEntryParams({ dateModifiedFrom: "2025-07-01" });
     expect(result.dateModifiedFrom).toBe("2025-07-01");
     expectDefault(result);
   });
   it("", () => {
-    const result = parseBaseParams({ dateModifiedTo: "2025-07-01" });
+    const result = parseBaseEntryParams({ dateModifiedTo: "2025-07-01" });
     expect(result.dateModifiedTo).toBe("2025-07-01");
     expectDefault(result);
   });

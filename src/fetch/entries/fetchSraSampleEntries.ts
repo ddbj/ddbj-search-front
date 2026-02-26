@@ -1,5 +1,5 @@
 import { API_PATH_SRA_SAMPLE_LIST } from "@/api/paths.ts";
-import { parseBaseParams } from "@/fetch/utils/parseBaseSearchParams.ts";
+import { parseBaseEntryParams } from "@/fetch/utils/parseBaseEntryParams.ts";
 import type { EntryListResponse } from "@/api/entries/base.ts";
 import type { SraSampleListRequestParams } from "@/api/entries/sraSample.ts";
 import type { SraSampleSearchParams } from "@/schema/search/sraSample.ts";
@@ -15,7 +15,7 @@ export const fetchSraSamples = async (params: SraSampleSearchParams) => {
 
 const parseParams = (params: SraSampleSearchParams): SraSampleListRequestParams => {
   return {
-    ...parseBaseParams(params),
+    ...parseBaseEntryParams(params),
     // Add SRA Sample-specific parameters here if needed
   };
 };
