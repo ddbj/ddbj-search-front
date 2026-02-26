@@ -1,8 +1,8 @@
-import type { AllFacetListRequestParam } from "@/api/facets/all.ts";
+import type { AllFacetListRequestParams } from "@/api/facets/all.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
 
-export const parseBaseFacetParams = (params: AnySearchParams): AllFacetListRequestParam => {
-  const result: AllFacetListRequestParam = {};
+export const parseBaseFacetParams = (params: AnySearchParams): AllFacetListRequestParams => {
+  const result: AllFacetListRequestParams = {};
   if (params.keywords && params.keywords.length) {
     result.keywords = params.keywords.join(",");
   }

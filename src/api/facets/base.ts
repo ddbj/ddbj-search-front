@@ -9,14 +9,14 @@ export type FacetCount = z.infer<typeof facetCountShape>;
 const facetListShape = z.array(facetCountShape);
 export type FacetItem = z.infer<typeof facetListShape>[0];
 
-export const baseFacetListRequestParamSchema = baseEntryListRequestParamsSchema.omit({
+export const baseFacetListRequestParamsSchema = baseEntryListRequestParamsSchema.omit({
   page: true,
   perPage: true,
   includeFacets: true,
   includeProperties: true,
   dbXrefsLimit: true,
 });
-export type BaseFacetListRequestParam = z.infer<typeof baseFacetListRequestParamSchema>;
+export type BaseFacetListRequestParams = z.infer<typeof baseFacetListRequestParamsSchema>;
 
 export const baseFacetListResponseSchema = z.object({
   facets: z.object({

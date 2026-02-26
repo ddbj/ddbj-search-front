@@ -4,16 +4,16 @@ import { baseEntryListRequestParamsSchema, entryListResponseSchema } from "@/api
 import { API_PATH_ALL_ENTRIES_LIST, omitBaseApiPath } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
-export const allEntryListRequestParamShape = {
+export const allEntryListRequestParamsShape = {
   types: z
     .string()
     .optional()
     .meta({ description: "Comma separated list of DB types", example: "biosample,bioproject" }),
 };
-export const allEntryListRequestParamSchema = baseEntryListRequestParamsSchema.extend({
-  ...allEntryListRequestParamShape,
+export const allEntryListRequestParamsSchema = baseEntryListRequestParamsSchema.extend({
+  ...allEntryListRequestParamsShape,
 });
-export type AllEntryListRequestParams = z.infer<typeof allEntryListRequestParamSchema>;
+export type AllEntryListRequestParams = z.infer<typeof allEntryListRequestParamsSchema>;
 export const allEntryListRequestDoc: RouteConfig = {
   path: omitBaseApiPath(API_PATH_ALL_ENTRIES_LIST),
   method: "get",
@@ -21,7 +21,7 @@ export const allEntryListRequestDoc: RouteConfig = {
   description: "All entries list",
   tags: [tags.searchResultList],
   request: {
-    query: allEntryListRequestParamSchema,
+    query: allEntryListRequestParamsSchema,
   },
   responses: {
     200: {

@@ -1,7 +1,7 @@
 import { API_PATH_ALL_FACET_LIST } from "@/api/paths.ts";
 import { parseBaseFacetParams } from "@/fetch/utils/parseBaseFacetParams.ts";
 import type { EntryListResponse } from "@/api/entries/base.ts";
-import type { AllFacetListRequestParam, AllFacetListResponse } from "@/api/facets/all.ts";
+import type { AllFacetListRequestParams, AllFacetListResponse } from "@/api/facets/all.ts";
 import type { AllSearchParams } from "@/schema/search/all.ts";
 
 export const fetchAllFacets = async (params: AllSearchParams) => {
@@ -13,6 +13,6 @@ export const fetchAllFacets = async (params: AllSearchParams) => {
   return data;
 };
 
-const parseParams = (params: AllSearchParams): AllFacetListRequestParam => {
+const parseParams = (params: AllSearchParams): AllFacetListRequestParams => {
   return { ...parseBaseFacetParams(params) };
 };
