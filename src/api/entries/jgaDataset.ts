@@ -8,7 +8,7 @@ import {
 import { API_PATH_JGA_DATASET_LIST, omitBaseApiPath } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
-const jgaDatasetListRequestParamsShape = {};
+export const jgaDatasetListRequestParamsShape = {};
 const jgaDatasetListRequestParamsSchema = baseEntryListRequestParamsSchema.extend({
   ...jgaDatasetListRequestParamsShape,
 });

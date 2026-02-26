@@ -8,7 +8,7 @@ import {
 import { API_PATH_JGA_STUDY_LIST, omitBaseApiPath } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
-const jgaStudyListRequestParamsShape = {};
+export const jgaStudyListRequestParamsShape = {};
 const jgaStudyListRequestParamsSchema = baseEntryListRequestParamsSchema.extend({
   ...jgaStudyListRequestParamsShape,
 });

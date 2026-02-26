@@ -8,7 +8,7 @@ import {
 import { API_PATH_JGA_POLICY_LIST, omitBaseApiPath } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
-const jgaPolicyListRequestParamsShape = {};
+export const jgaPolicyListRequestParamsShape = {};
 const jgaPolicyListRequestParamsSchema = baseEntryListRequestParamsSchema.extend({
   ...jgaPolicyListRequestParamsShape,
 });

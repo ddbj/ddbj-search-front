@@ -8,7 +8,7 @@ import {
 import { API_PATH_BIOSAMPLE_LIST, omitBaseApiPath } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
-const bioSampleListRequestParamsShape = {};
+export const bioSampleListRequestParamsShape = {};
 const bioSampleListRequestParamsSchema = baseEntryListRequestParamsSchema.extend({
   ...bioSampleListRequestParamsShape,
 });

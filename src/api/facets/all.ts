@@ -1,21 +1,22 @@
 import { z } from "zod";
 import { tags } from "@/api/consts.ts";
-import {
-  allEntryListRequestParamsSchema,
-  allEntryListRequestParamsShape,
-} from "@/api/entries/all.ts";
+import { allEntryListRequestParamsShape } from "@/api/entries/all.ts";
 import {
   baseFacetListRequestParamsSchema,
   baseFacetListResponseSchema,
 } from "@/api/facets/base.ts";
 import { API_PATH_ALL_FACET_LIST, omitBaseApiPath } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
+
 export const allFacetListRequestParamsSchema = baseFacetListRequestParamsSchema.extend({
+  // add allFacetSpecificFields here
   ...allEntryListRequestParamsShape,
 });
 export type AllFacetListRequestParams = z.infer<typeof allFacetListRequestParamsSchema>;
 //
-const allFacetListResponseScheme = baseFacetListResponseSchema.extend({});
+const allFacetListResponseScheme = baseFacetListResponseSchema.extend({
+  // add allFacetSpecificFields here
+});
 export type AllFacetListResponse = z.infer<typeof allFacetListResponseScheme>;
 
 export const allFacetListRequestDoc: RouteConfig = {

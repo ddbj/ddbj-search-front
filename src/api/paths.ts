@@ -20,6 +20,18 @@ export const API_PATH_JGA_STUDY_LIST = `${BASE_API_PATH}entries/jga-study/`;
 export const API_PATH_JGA_POLICY_LIST = `${BASE_API_PATH}entries/jga-policy/`;
 export const API_PATH_JGA_DAC_LIST = `${BASE_API_PATH}entries/jga-dac/`;
 export const API_PATH_ALL_FACET_LIST = `${BASE_API_PATH}facets`;
+export const API_PATH_BIOPROJECT_FACET_LIST = `${BASE_API_PATH}facets/bioproject`;
+export const API_PATH_BIOSAMPLE_FACET_LIST = `${BASE_API_PATH}facets/biosample`;
+export const API_PATH_SRA_RUN_FACET_LIST = `${BASE_API_PATH}facets/sra-run`;
+export const API_PATH_SRA_EXPERIMENT_FACET_LIST = `${BASE_API_PATH}facets/sra-experiment`;
+export const API_PATH_SRA_SAMPLE_FACET_LIST = `${BASE_API_PATH}facets/sra-sample`;
+export const API_PATH_SRA_ANALYSIS_FACET_LIST = `${BASE_API_PATH}facets/sra-analysis`;
+export const API_PATH_SRA_SUBMISSION_FACET_LIST = `${BASE_API_PATH}facets/sra-submission`;
+export const API_PATH_SRA_STUDY_FACET_LIST = `${BASE_API_PATH}facets/sra-study`;
+export const API_PATH_JGA_DATASET_FACET_LIST = `${BASE_API_PATH}facets/jga-dataset`;
+export const API_PATH_JGA_STUDY_FACET_LIST = `${BASE_API_PATH}facets/jga-study`;
+export const API_PATH_JGA_POLICY_FACET_LIST = `${BASE_API_PATH}facets/jga-policy`;
+export const API_PATH_JGA_DAC_FACET_LIST = `${BASE_API_PATH}facets/jga-dac`;
 
 export const API_PATH_TYPE_COUNT = `${BASE_API_PATH}count/types/`;
 

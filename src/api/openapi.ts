@@ -25,6 +25,18 @@ import { sraSampleListRequestDoc } from "@/api/entries/sraSample.ts";
 import { sraStudyListRequestDoc } from "@/api/entries/sraStudy.ts";
 import { sraSubmissionListRequestDoc } from "@/api/entries/sraSubmission.ts";
 import { allFacetListRequestDoc } from "@/api/facets/all.ts";
+import { bioProjectFacetListRequestDoc } from "@/api/facets/bioProject.ts";
+import { bioSampleFacetListRequestDoc } from "@/api/facets/bioSample.ts";
+import { jgaDacFacetListRequestDoc } from "@/api/facets/jgaDac.ts";
+import { jgaDatasetFacetListRequestDoc } from "@/api/facets/jgaDataset.ts";
+import { jgaPolicyFacetListRequestDoc } from "@/api/facets/jgaPolicy.ts";
+import { jgaStudyFacetListRequestDoc } from "@/api/facets/jgaStudy.ts";
+import { sraAnalysisFacetListRequestDoc } from "@/api/facets/sraAnalysis.ts";
+import { sraExperimentFacetListRequestDoc } from "@/api/facets/sraExperiment.ts";
+import { sraRunFacetListRequestDoc } from "@/api/facets/sraRun.ts";
+import { sraSampleFacetListRequestDoc } from "@/api/facets/sraSample.ts";
+import { sraStudyFacetListRequestDoc } from "@/api/facets/sraStudy.ts";
+import { sraSubmissionFacetListRequestDoc } from "@/api/facets/sraSubmission.ts";
 import { extendZod } from "@/utils/extendZod.ts";
 extendZod();
 
@@ -55,6 +67,18 @@ registry.registerPath(jgaStudyDetailRequestDoc);
 registry.registerPath(jgaPolicyDetailRequestDoc);
 registry.registerPath(jgaDacDetailRequestDoc);
 registry.registerPath(allFacetListRequestDoc);
+registry.registerPath(bioProjectFacetListRequestDoc);
+registry.registerPath(bioSampleFacetListRequestDoc);
+registry.registerPath(jgaDatasetFacetListRequestDoc);
+registry.registerPath(jgaDacFacetListRequestDoc);
+registry.registerPath(jgaPolicyFacetListRequestDoc);
+registry.registerPath(jgaStudyFacetListRequestDoc);
+registry.registerPath(sraAnalysisFacetListRequestDoc);
+registry.registerPath(sraExperimentFacetListRequestDoc);
+registry.registerPath(sraRunFacetListRequestDoc);
+registry.registerPath(sraSampleFacetListRequestDoc);
+registry.registerPath(sraStudyFacetListRequestDoc);
+registry.registerPath(sraSubmissionFacetListRequestDoc);
 
 export const getDocs = () => {
   const generator = new OpenApiGeneratorV31(registry.definitions);

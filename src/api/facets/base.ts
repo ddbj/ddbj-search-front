@@ -15,6 +15,7 @@ export const baseFacetListRequestParamsSchema = baseEntryListRequestParamsSchema
   includeFacets: true,
   includeProperties: true,
   dbXrefsLimit: true,
+  sort: true,
 });
 export type BaseFacetListRequestParams = z.infer<typeof baseFacetListRequestParamsSchema>;
 

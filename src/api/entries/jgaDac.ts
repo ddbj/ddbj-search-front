@@ -8,7 +8,7 @@ import {
 import { API_PATH_JGA_DAC_LIST, omitBaseApiPath } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
-const jgaDacListRequestParamsShape = {};
+export const jgaDacListRequestParamsShape = {};
 const jgaDacListRequestParamsSchema = baseEntryListRequestParamsSchema.extend({
   ...jgaDacListRequestParamsShape,
 });

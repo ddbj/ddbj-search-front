@@ -8,7 +8,7 @@ import {
 import { API_PATH_SRA_SAMPLE_LIST, omitBaseApiPath } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
-const sraSampleListRequestParamsShape = {};
+export const sraSampleListRequestParamsShape = {};
 const sraSampleListRequestParamsSchema = baseEntryListRequestParamsSchema.extend({
   ...sraSampleListRequestParamsShape,
 });

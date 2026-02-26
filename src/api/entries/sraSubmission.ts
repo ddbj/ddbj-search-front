@@ -8,7 +8,7 @@ import {
 import { API_PATH_SRA_SUBMISSION_LIST, omitBaseApiPath } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
-const sraSubmissionListRequestParamsShape = {};
+export const sraSubmissionListRequestParamsShape = {};
 const sraSubmissionListRequestParamsSchema = baseEntryListRequestParamsSchema.extend({
   ...sraSubmissionListRequestParamsShape,
 });

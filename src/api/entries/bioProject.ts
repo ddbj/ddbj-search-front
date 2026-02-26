@@ -8,14 +8,14 @@ import {
 import { API_PATH_BIOPROJECT_LIST, omitBaseApiPath } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
-const bioprojectListRequestParamsShape = {
+export const bioProjectListRequestParamsShape = {
   organization: z.string().optional(),
   publication: z.string().optional(),
   grant: z.string().optional(),
   umbrella: z.enum(booleanStrings).optional().openapi({ description: "case-insensitive" }),
 };
 const bioProjectListRequestParamsSchema = baseEntryListRequestParamsSchema.extend({
-  ...bioprojectListRequestParamsShape,
+  ...bioProjectListRequestParamsShape,
 });
 export type BioProjectListRequestParams = z.infer<typeof bioProjectListRequestParamsSchema>;
 
