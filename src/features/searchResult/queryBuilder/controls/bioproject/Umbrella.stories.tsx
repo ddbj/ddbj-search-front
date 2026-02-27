@@ -6,6 +6,7 @@ const meta = {
   args: {
     value: false,
     update: (v: boolean) => {},
+    count: 100000,
   },
   decorators: [],
 } satisfies Meta<typeof Umbrella>;

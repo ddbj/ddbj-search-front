@@ -6,8 +6,8 @@ const facetCountShape = z.object({
   count: z.number().int(),
 });
 export type FacetCount = z.infer<typeof facetCountShape>;
-const facetListShape = z.array(facetCountShape);
-export type FacetItem = z.infer<typeof facetListShape>[0];
+export const facetListShape = z.array(facetCountShape).nullable();
+export type FacetItem = NonNullable<z.infer<typeof facetListShape>>[0];
 
 export const baseFacetListRequestParamsSchema = baseEntryListRequestParamsSchema.omit({
   page: true,

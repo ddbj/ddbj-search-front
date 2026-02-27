@@ -12,3 +12,6 @@ export const bioprojectSearchSchema = baseSearchSchema.extend({
   ...bioProjectSpecificShape,
 });
 export type BioprojectSearchParams = z.infer<typeof bioprojectSearchSchema>;
+export const isBioprojectSearchParams = (x: unknown): x is BioprojectSearchParams => {
+  return bioprojectSearchSchema.safeParse(x).success;
+};
