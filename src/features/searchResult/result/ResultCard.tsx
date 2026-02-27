@@ -3,6 +3,7 @@ import clsx from "clsx";
 import { type FC, useMemo } from "react";
 import { getDbLabel, getXrefDbLabel } from "@/consts/db.ts";
 import { formatToDateStr } from "@/utils/dateTime.ts";
+import { getEntryTitle } from "@/utils/getEntryTitle.ts";
 import { reorderXrefs } from "@/utils/reorderXrefs.ts";
 import type { EntryListResponse } from "@/api/entries/base.ts";
 
@@ -91,7 +92,7 @@ export const parseResultCardProps = (res: EntryListResponse["items"][0]): Props 
   const submittedAt = res.dateCreated ? formatToDateStr(res.dateCreated) : null;
   const publishedAt = res.datePublished ? formatToDateStr(res.datePublished) : null;
   return {
-    title: res.title ?? res.name ?? res.description ?? "N/A",
+    title: getEntryTitle(res),
     id: res.identifier,
     type: res.type,
     relations: res.dbXrefsCount,

@@ -1,10 +1,13 @@
 import { type FC, useMemo } from "react";
 import { type BreadcrumbsPath } from "@/features/shared/Breadcrumbs.tsx";
 import { GlobalHeader } from "@/features/shared/GlobalHeader.tsx";
+import { useTitle } from "@/utils/useTitle.ts";
 
 type Props = {};
 
 export const AboutPage: FC<Props> = ({}) => {
+  useTitle("About");
+
   const breadcrumbsPaths: BreadcrumbsPath[] = useMemo(() => {
     return [{ label: "About" }];
   }, []);
