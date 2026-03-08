@@ -1,4 +1,4 @@
-import { Xref, Distribution, Organism } from "@/types/api.ts";
+import { DbXrefsCount, Xref, Distribution, Organism } from "@/types/api.ts";
 
 export type BioSample = {
   //--------------------------------
@@ -19,6 +19,7 @@ export type BioSample = {
   description: string | null;
   title: string | null;
   dbXrefs: Xref[] | null;
+  dbXrefsCount?: DbXrefsCount;
   //--------------------------------
   // Same as bioSample but not in BaseDataSet
   organism: Organism | null;

@@ -59,3 +59,4 @@ export type Xref = {
   type: string;
   url: string;
 };
+export type DbXrefsCount = Record<string, number>;

@@ -44,7 +44,7 @@ export const DetailTable: FC<Props> = ({ data }) => {
             <SraSample data={data} />
             <SraExperiment data={data} />
             <Properties title={"properties"} codeObj={data.properties} />
-            <RefLinks refs={getDbXrefs(data)} title={"dbXrefs"} />
+            <RefLinks refs={getDbXrefs(data)} title={"dbXrefs"} totalCountByType={data.dbXrefsCount} entryType={data.type} entryId={data.identifier} />
             <DownloadLinks data={data} />
             <Row dd={"status"}>{data.status}</Row>
             <Row dd={"accessibility"}>
