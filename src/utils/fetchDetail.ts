@@ -1,8 +1,10 @@
-import { ELASTICSEARCH_URL } from "@/constants.ts";
-import { ElasticSearchSource, SingleSearchElasticsearchResponse } from "@/types/api.ts";
+import { BASE_URL } from "@/constants.ts";
+import { ElasticSearchSource } from "@/types/api.ts";
+
+const API_URL = `${BASE_URL}/search/api`;
 
 export const fetchDetail = async (type: string, id: string): Promise<ElasticSearchSource> => {
-  const endpoint = `${ELASTICSEARCH_URL}/${type}/_doc/${id}`;
+  const endpoint = `${API_URL}/entries/${type}/${id}`;
   const res = await fetch(endpoint, {
     method: "GET",
     headers: {
@@ -12,9 +14,6 @@ export const fetchDetail = async (type: string, id: string): Promise<ElasticSear
   if (!res.ok) {
     throw new Error(`Failed to fetch ${type}/${id}: ${res.status} ${res.statusText}`);
   }
-  const data: SingleSearchElasticsearchResponse = await res.json();
-  if (!data?._source) {
-    throw new Error(`Entry not found: ${type}/${id}`);
-  }
-  return data._source;
+  const data: ElasticSearchSource = await res.json();
+  return data;
 };
