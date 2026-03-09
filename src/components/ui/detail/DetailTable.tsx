@@ -15,7 +15,7 @@ import { Row } from "@/components/ui/detail/rows/Shared.tsx";
 import { SraExperiment } from "@/components/ui/detail/rows/SraExperiment.tsx";
 import { SraSample } from "@/components/ui/detail/rows/SraSample.tsx";
 import { LockIcon } from "@/components/icon/lockIcon.tsx";
-import { ElasticSearchSource } from "@/types/api.ts";
+import { ElasticSearchSource, Xref } from "@/types/api.ts";
 import { getDbXrefs, getSameAs } from "@/utils/apiWrappers.ts";
 
 SyntaxHighlighter.registerLanguage("json", json);
@@ -36,6 +36,12 @@ export const DetailTable: FC<Props> = ({ data }) => {
             <Row dd={"type"}>{data.type}</Row>
             <RefLinks refs={getSameAs(data)} title={"sameAs"} />
             <BioProjectUmbrellaProject data={data} />
+            {data.type === "bioproject" && (
+              <>
+                <RefLinks refs={data.parentBioProjects ?? []} title={"parentBioProjects"} />
+                <RefLinks refs={data.childBioProjects ?? []} title={"childBioProjects"} />
+              </>
+            )}
             <Organism organism={data.organism} />
             <CommonTitle data={data} />
             <CommonDescription data={data} />

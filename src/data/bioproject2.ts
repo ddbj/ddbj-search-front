@@ -226,6 +226,8 @@ export const bioproject2: BioProject = {
   title: "EarlhamMetagenomics2013",
   url: "https://ddbj.nig.ac.jp/search/entry/bioproject/PRJNA313191",
   objectType: "BioProject",
+  parentBioProjects: [],
+  childBioProjects: [],
   datePublished: "2024-11-18T00:00:00Z",
   dateCreated: "2016-02-25",
   organization: [

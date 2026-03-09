@@ -55,6 +55,8 @@ export const bioproject1: BioProject = {
   title: "Nitrogen-fixing bacterium",
   url: "https://ddbj.nig.ac.jp/search/entry/bioproject/PRJNA16",
   objectType: "BioProject",
+  parentBioProjects: [],
+  childBioProjects: [],
   datePublished: "2009-04-14T00:00:00Z",
   dateCreated: "2003-02-25",
   organization: [

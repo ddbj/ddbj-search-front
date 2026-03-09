@@ -26,6 +26,8 @@ export type BioProject = {
   //--------------------------------
   // Unique to BioProject
   objectType: "UmbrellaBioProject" | "BioProject";
+  parentBioProjects: Xref[];
+  childBioProjects: Xref[];
   accession: string;
   organization: {
     abbreviation: string;

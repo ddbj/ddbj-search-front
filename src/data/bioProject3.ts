@@ -109,6 +109,34 @@ export const bioproject2: BioProject = {
   title: "Barley genetic maps",
   url: "https://ddbj.nig.ac.jp/search/entry/bioproject/PRJNA121",
   objectType: "UmbrellaBioProject",
+  parentBioProjects: [],
+  childBioProjects: [
+    {
+      identifier: "PRJNA161111",
+      type: "bioproject",
+      url: "https://ddbj.nig.ac.jp/resource/bioproject/PRJNA161111",
+    },
+    {
+      identifier: "PRJNA161121",
+      type: "bioproject",
+      url: "https://ddbj.nig.ac.jp/resource/bioproject/PRJNA161121",
+    },
+    {
+      identifier: "PRJNA162961",
+      type: "bioproject",
+      url: "https://ddbj.nig.ac.jp/resource/bioproject/PRJNA162961",
+    },
+    {
+      identifier: "PRJNA161155",
+      type: "bioproject",
+      url: "https://ddbj.nig.ac.jp/resource/bioproject/PRJNA161155",
+    },
+    {
+      identifier: "PRJNA161115",
+      type: "bioproject",
+      url: "https://ddbj.nig.ac.jp/resource/bioproject/PRJNA161115",
+    },
+  ],
   datePublished: "2024-11-18T00:00:00Z",
   dateCreated: "2003-02-25",
   organization: [
