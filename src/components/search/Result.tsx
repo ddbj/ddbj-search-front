@@ -1,22 +1,42 @@
 import { ReactiveList } from "@appbaseio/reactivesearch";
+import { FC } from "react";
 import { Pagination } from "@/components/ui/result/Pagination.tsx";
 import { SearchResultCard } from "@/components/ui/result/SearchResultCard.tsx";
 import { SearchResultSkeleton } from "@/components/ui/result/SearchResultSkeleton.tsx";
+import { useDbXrefsCounts } from "@/hooks/useDbXrefsCounts.ts";
+import { ElasticSearchSource } from "@/types/api.ts";
 
-function NoResults() {
+const NoResults = () => {
   return (
     <div className="p-4">
       <h1 className="mb-3">No Results</h1>
       <p>There is no result</p>
     </div>
   );
-}
+};
 
-export function Result() {
+const SearchResultList: FC<{ data: ElasticSearchSource[] }> = ({ data }) => {
+  const { loading, countsMap } = useDbXrefsCounts(data);
+
+  return (
+    <ReactiveList.ResultListWrapper className="flex flex-col gap-4">
+      {data.map((item: any) => (
+        <SearchResultCard
+          key={item._id}
+          item={item}
+          dbXrefsCounts={loading ? undefined : countsMap.get(`${item.type}:${item.identifier}`)}
+        />
+      ))}
+    </ReactiveList.ResultListWrapper>
+  );
+};
+
+export const Result = () => {
   return (
     <ReactiveList
       componentId="list"
       dataField="identifier,isPartOf,type,organism.name,datePublished"
+      excludeFields={["dbXrefs"]}
       size={10}
       renderNoResults={() => <NoResults />}
       pagination
@@ -56,16 +76,8 @@ export function Result() {
       }}
     >
       {({ data, loading }) =>
-        loading ? (
-          <SearchResultSkeleton />
-        ) : (
-          <ReactiveList.ResultListWrapper className="flex flex-col gap-4">
-            {data.map((item: any) => (
-              <SearchResultCard key={item._id} item={item} />
-            ))}
-          </ReactiveList.ResultListWrapper>
-        )
+        loading ? <SearchResultSkeleton /> : <SearchResultList data={data} />
       }
     </ReactiveList>
   );
-}
+};

@@ -3,29 +3,24 @@ import { clsx } from "clsx";
 import { format } from "date-fns";
 import { FC } from "react";
 import { LockIcon } from "@/components/icon/lockIcon.tsx";
-import { ElasticSearchSource } from "@/types/api.ts";
+import { DbXrefsCount, ElasticSearchSource } from "@/types/api.ts";
 import { TailwindElementProps } from "@/types/types.ts";
-import { getDbXrefs, getTitle } from "@/utils/apiWrappers.ts";
+import { getTitle } from "@/utils/apiWrappers.ts";
 
 type Props = {
   item: ElasticSearchSource;
+  dbXrefsCounts?: DbXrefsCount;
 };
 
-export const SearchResultCard: FC<Props> = ({ item }) => {
+export const SearchResultCard: FC<Props> = ({ item, dbXrefsCounts }) => {
   const title = getTitle(item);
   const detailUrl = `./entry/${item.type}/${item.identifier}`;
-  const refsCount = getDbXrefs(item).length;
   const isControlledAccess = item.accessibility === "controlled-access";
 
-  const groups: { type: string; count: number }[] = Object.entries(
-    getDbXrefs(item).reduce<Record<string, number>>(
-      (result, dbXref) => ({
-        ...result,
-        [dbXref.type]: (result[dbXref.type] || 0) + 1,
-      }),
-      {}
-    )
-  ).map(([type, count]) => ({ type, count }));
+  const groups: { type: string; count: number }[] = dbXrefsCounts
+    ? Object.entries(dbXrefsCounts).map(([type, count]) => ({ type, count }))
+    : [];
+  const refsCount = groups.reduce((sum, g) => sum + g.count, 0);
 
   return (
     <Wrapper href={detailUrl}>
@@ -39,17 +34,26 @@ export const SearchResultCard: FC<Props> = ({ item }) => {
         )}
       </div>
       <Title title={title || item.identifier} className={"-mt-2"} />
-      <Related className="text-sm">{makeRefCountMessage(refsCount)}</Related>
-      <div className="flex justify-between">
-        <BadgeWrapper>
-          {groups.map((group) => (
-            <Badge key={group.type}>
-              {group.type} : {group.count}
-            </Badge>
-          ))}
-        </BadgeWrapper>
-        {item.datePublished && <DatePublished datePublished={item.datePublished} />}
-      </div>
+      {dbXrefsCounts !== undefined && (
+        <>
+          <Related className="text-sm">{makeRefCountMessage(refsCount)}</Related>
+          <div className="flex justify-between">
+            <BadgeWrapper>
+              {groups.map((group) => (
+                <Badge key={group.type}>
+                  {group.type} : {group.count}
+                </Badge>
+              ))}
+            </BadgeWrapper>
+            {item.datePublished && <DatePublished datePublished={item.datePublished} />}
+          </div>
+        </>
+      )}
+      {dbXrefsCounts === undefined && item.datePublished && (
+        <div className="flex justify-end">
+          <DatePublished datePublished={item.datePublished} />
+        </div>
+      )}
     </Wrapper>
   );
 };

@@ -1,7 +1,5 @@
-import { BASE_URL, URL_PREFIX } from "@/constants.ts";
+import { API_URL } from "@/constants.ts";
 import { ElasticSearchSource } from "@/types/api.ts";
-
-const API_URL = `${BASE_URL}${URL_PREFIX}/api`;
 
 export const fetchDetail = async (type: string, id: string): Promise<ElasticSearchSource> => {
   const endpoint = `${API_URL}/entries/${type}/${id}`;
