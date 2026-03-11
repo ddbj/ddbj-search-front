@@ -7,6 +7,7 @@ import {
 } from "@tanstack/react-router";
 import { DetailPage } from "@/pages/DetailPage.tsx";
 import { IndexPage } from "@/pages/IndexPage.tsx";
+import { Spinner } from "@/components/ui/Spinner.tsx";
 import { URL_PREFIX } from "@/constants.ts";
 import { fetchDetail } from "@/utils/fetchDetail.ts";
 
@@ -30,6 +31,8 @@ const entryRoute = createRoute({
   path: `${URL_PREFIX}/entry/$type/$id`,
   component: DetailPage,
   loader: async ({ params: { id, type } }) => fetchDetail(type, id),
+  pendingComponent: Spinner,
+  pendingMs: 200,
 });
 
 const routeTree = rootRoute.addChildren([indexRoute, entryRoute]);
