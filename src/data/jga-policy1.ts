@@ -224,5 +224,5 @@ export const jgaPolicy1: ElasticSearchSource = {
     accession: "JGAP000003",
   },
   sameAs: null,
-  status: "live",
+  status: "public",
 };

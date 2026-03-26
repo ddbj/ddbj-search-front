@@ -84,5 +84,5 @@ export const jgaDac1: ElasticSearchSource = {
     },
     accession: "JGAC000001",
   },
-  status: "live",
+  status: "public",
 };

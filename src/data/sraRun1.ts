@@ -110,5 +110,5 @@ export const sraRun1: ElasticSearchSource = {
     accession: "SRR885622",
   },
   sameAs: null,
-  status: "live",
+  status: "public",
 };

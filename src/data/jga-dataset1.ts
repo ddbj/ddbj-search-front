@@ -1023,5 +1023,5 @@ export const jgaDataset1: ElasticSearchSource = {
     },
   },
   sameAs: null,
-  status: "live",
+  status: "public",
 };

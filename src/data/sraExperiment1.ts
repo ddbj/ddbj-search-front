@@ -121,5 +121,5 @@ export const sraExperiment1: ElasticSearchSource = {
     },
   },
   sameAs: null,
-  status: "live",
+  status: "public",
 };

@@ -65,5 +65,5 @@ export const sraSubmission: ElasticSearchSource = {
     submission_comment: "GenomeTrakr pathogen sampling project",
   },
   sameAs: null,
-  status: "live",
+  status: "public",
 };

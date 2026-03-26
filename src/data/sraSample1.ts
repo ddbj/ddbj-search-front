@@ -143,5 +143,5 @@ export const sraSample1: ElasticSearchSource = {
       url: "https://ddbj.nig.ac.jp/resource/biosample/SAMEA4967388",
     },
   ],
-  status: "live",
+  status: "public",
 };

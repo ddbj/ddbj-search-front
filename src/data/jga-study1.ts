@@ -131,5 +131,5 @@ export const jgaStudy1: JgaStudy = {
     },
   },
   sameAs: null,
-  status: "live",
+  status: "public",
 };

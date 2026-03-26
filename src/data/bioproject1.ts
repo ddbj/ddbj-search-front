@@ -545,5 +545,5 @@ export const bioproject1: BioProject = {
     },
   },
   sameAs: [],
-  status: "live",
+  status: "public",
 };

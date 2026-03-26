@@ -80,7 +80,7 @@ export const biosample1: BioSample = {
   properties: {
     Status: {
       when: "2023-06-15T00:40:25.483",
-      status: "live",
+      status: "public",
     },
     Owner: {
       Contacts: {
@@ -197,5 +197,5 @@ export const biosample1: BioSample = {
       url: "https://ddbj.nig.ac.jp/resource/sra-sample/SRS13979220",
     },
   ],
-  status: "live",
+  status: "public",
 };

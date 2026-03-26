@@ -43,7 +43,7 @@ export const Primary: Story = {
       properties: {
         Status: {
           when: "2019-07-03T21:31:55",
-          status: "live",
+          status: "public",
         },
         submission_date: "2015-09-12T04:12:48.617Z",
         Owner: {
@@ -212,7 +212,7 @@ export const Primary: Story = {
         },
       },
       sameAs: null,
-      status: "live",
+      status: "public",
       package: {
         display_name: "Generic",
         name: "Generic",

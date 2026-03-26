@@ -429,5 +429,5 @@ export const sraStudy1: ElasticSearchSource = {
       url: "https://ddbj.nig.ac.jp/resource/bioproject/PRJNA794982",
     },
   ],
-  status: "live",
+  status: "public",
 };
