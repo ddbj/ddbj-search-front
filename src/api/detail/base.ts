@@ -9,7 +9,7 @@ export const baseDetailRequestSchema = z.object({
 });
 export type BaseDetailRequestParams = z.infer<typeof baseDetailRequestSchema>;
 
-const XrefSchema = z.object({
+export const XrefSchema = z.object({
   identifier: z.string(),
   type: z.string(),
   url: z.string(),

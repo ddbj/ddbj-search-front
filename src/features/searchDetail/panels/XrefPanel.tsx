@@ -55,13 +55,14 @@ export const parseRefs = (refs: Xref[] | null, count: DbXrefsCount): XrefListIte
     const dbName = getXrefDbLabel(dbKey);
     const items = (refs ?? [])
       .filter((ref) => ref.type === dbKey)
-      .map((ref) => {
-        const url = sanitizeDbLink(ref.url);
-        const isExternal = !isInternalDbLink(ref.url);
-        const label = ref.identifier;
-        return { url, isExternal, label };
-      })
+      .map(parseXrefItem)
       .sort((a, b) => a.label.localeCompare(b.label));
     return { dbName, actualCount, items };
   });
+};
+export const parseXrefItem = (ref: Xref): XrefListItemProps["items"[0]] => {
+  const url = sanitizeDbLink(ref.url);
+  const isExternal = !isInternalDbLink(ref.url);
+  const label = ref.identifier;
+  return { url, isExternal, label };
 };

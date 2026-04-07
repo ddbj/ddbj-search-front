@@ -3,6 +3,11 @@ import { DownloadPanel } from "@/features/searchDetail/panels/DownloadPanel.tsx"
 import { InfoPanel } from "@/features/searchDetail/panels/InfoPanel.tsx";
 import { PropertiesPanel } from "@/features/searchDetail/panels/PropertiesPanel.tsx";
 import { StatusPanel } from "@/features/searchDetail/panels/StatusPanel.tsx";
+import UmprellaProjectsPanelStories from "@/features/searchDetail/panels/UmbrellaProjectsPanel.stories.tsx";
+import {
+  getUmbrellaProjectsProps,
+  UmbrellaProjectsPanel,
+} from "@/features/searchDetail/panels/UmbrellaProjectsPanel.tsx";
 import { parseRefs, XrefPanel } from "@/features/searchDetail/panels/XrefPanel.tsx";
 import { GlobalHeader } from "@/features/shared/GlobalHeader.tsx";
 import { getEntryTitle } from "@/utils/getEntryTitle.ts";
@@ -23,12 +28,14 @@ export const SearchDetailLayout: FC<Props> = ({ data }) => {
     { label: dbLabels[dbType], to: `/entry/${dbType}` },
     { label: identifier },
   ];
+  const umbrellaProps = getUmbrellaProjectsProps(data);
   return (
     <main className={"flex flex-col gap-4 p-8 pb-16 shadow-lg"}>
       <GlobalHeader breadcrumbsPaths={breadcrumbsPaths} />
       <div className={"flex items-start gap-8"}>
         <div data-name={"leftCol"} className={"flex flex-grow-1 flex-col gap-4"}>
           <InfoPanel data={data} />
+          {umbrellaProps && <UmbrellaProjectsPanel {...umbrellaProps} />}
           <PropertiesPanel data={data.properties} />
           <XrefPanel
             xrefs={parseRefs(data.dbXrefs, data.dbXrefsCount)}

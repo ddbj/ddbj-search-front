@@ -1,6 +1,10 @@
 import { z } from "zod";
 import { tags } from "@/api/consts.ts";
-import { baseDetailRequestSchema, baseDetailResponseSchema } from "@/api/detail/base.ts";
+import {
+  baseDetailRequestSchema,
+  baseDetailResponseSchema,
+  XrefSchema,
+} from "@/api/detail/base.ts";
 import { addIdentifierToPath, API_PATH_BIOPROJECT_LIST, omitBaseApiPath } from "@/api/paths.ts";
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
@@ -44,6 +48,8 @@ const bioProjectDetailResponseSchema = baseDetailResponseSchema
         ),
       })
     ),
+    parentBioProjects: z.array(XrefSchema),
+    childBioProjects: z.array(XrefSchema),
   });
 export type BioProjectDetailResponse = z.infer<typeof bioProjectDetailResponseSchema>;
 export type Publication = BioProjectDetailResponse["publication"][0];
