@@ -43,8 +43,8 @@ export const SearchResultLayout: FC<Props> = ({ entryType, updateFunctions, para
               changeSortFunc={updateFunctions.changeSort}
               searchParams={params}
               currentPage={pagination?.page ?? 1}
-              perPage={pagination.perPage ?? 20}
-              itemCount={pagination.total ?? 0}
+              perPage={pagination?.perPage ?? 20}
+              itemCount={pagination?.total ?? 0}
             />
           </aside>
           <div className={"flex flex-grow-1 flex-col gap-8 py-4"}>
@@ -52,8 +52,8 @@ export const SearchResultLayout: FC<Props> = ({ entryType, updateFunctions, para
             <Pagination
               searchParams={params}
               current={pagination?.page ?? 1}
-              itemCount={pagination.total ?? 0}
-              perPage={pagination.perPage ?? 20}
+              itemCount={pagination?.total ?? 0}
+              perPage={pagination?.perPage ?? 20}
             />
           </div>
         </div>

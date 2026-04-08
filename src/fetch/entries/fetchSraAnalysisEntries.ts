@@ -1,4 +1,5 @@
 import { API_PATH_SRA_ANALYSIS_LIST } from "@/api/paths.ts";
+import { parseJsonResponse } from "@/fetch/utils/httpError.ts";
 import { parseBaseEntryParams } from "@/fetch/utils/parseBaseEntryParams.ts";
 import type { EntryListResponse } from "@/api/entries/base.ts";
 import type { SraAnalysisListRequestParams } from "@/api/entries/sraAnalysis.ts";
@@ -12,8 +13,7 @@ export const fetchSraAnalyses = async (params: SraAnalysisSearchParams) => {
       method: "GET",
     }
   );
-  const data = (await response.json()) as EntryListResponse;
-  return data;
+  return await parseJsonResponse<EntryListResponse>(response);
 };
 
 const parseParams = (params: SraAnalysisSearchParams): SraAnalysisListRequestParams => {

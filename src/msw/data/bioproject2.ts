@@ -92,6 +92,8 @@ export const bioproject2: BioProjectDetailResponse = {
   ],
   publication: [],
   grant: [{ id: "1139893", title: null, agency: [{ abbreviation: "NSF", name: "NSF" }] }],
+  parentBioProjects: [],
+  childBioProjects: [],
   externalLink: [],
   sameAs: [],
   status: "live",

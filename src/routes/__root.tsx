@@ -4,6 +4,7 @@ import {
   type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
+import { isAppHttpError } from "@/fetch/utils/httpError.ts";
 import {
   RouteErrorPage,
   routeErrorPageActionButtonClasses,
@@ -20,6 +21,22 @@ export const Route = createRootRouteWithContext<RouterContext>()({
   errorComponent: RootErrorComponent,
 });
 
+const getRootErrorPageCopy = (error: unknown) => {
+  if (isAppHttpError(error) && error.status >= 500) {
+    return {
+      title: "Server error",
+      description:
+        "The server returned an error while loading this page. You can try again or return to a stable page.",
+    };
+  }
+
+  return {
+    title: "Unexpected error",
+    description:
+      "An unexpected error occurred while loading this page. You can try again or return to a stable page.",
+  };
+};
+
 function RootComponent() {
   return (
     <>
@@ -32,7 +49,7 @@ function RootComponent() {
 function RootNotFoundComponent() {
   return (
     <RouteErrorPage
-      variant={"not-found"}
+      statusCode={404}
       title={"Page not found"}
       description={
         "The page you requested does not exist or is not available from the current route."
@@ -42,13 +59,13 @@ function RootNotFoundComponent() {
 }
 
 function RootErrorComponent({ error, reset }: ErrorComponentProps) {
+  const { title, description } = getRootErrorPageCopy(error);
+
   return (
     <RouteErrorPage
-      variant={"server-error"}
-      title={"Unexpected error"}
-      description={
-        "An unexpected error occurred while loading this page. You can try again or return to a stable page."
-      }
+      statusCode={500}
+      title={title}
+      description={description}
       error={error}
       action={
         <button type={"button"} onClick={reset} className={routeErrorPageActionButtonClasses}>
@@ -58,3 +75,7 @@ function RootErrorComponent({ error, reset }: ErrorComponentProps) {
     />
   );
 }
+
+export const __TEST__RootRoute = {
+  getRootErrorPageCopy,
+};

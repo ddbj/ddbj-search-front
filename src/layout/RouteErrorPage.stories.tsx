@@ -13,7 +13,7 @@ type Story = StoryObj<typeof meta>;
 
 export const NotFound = {
   args: {
-    variant: "not-found",
+    statusCode: 404,
     title: "Page not found",
     description: "The page you requested does not exist or is not available from the current route.",
   },
@@ -21,7 +21,7 @@ export const NotFound = {
 
 export const ServerError = {
   args: {
-    variant: "server-error",
+    statusCode: 500,
     title: "Unexpected error",
     description:
       "An unexpected error occurred while loading this page. You can try again or return to a stable page.",

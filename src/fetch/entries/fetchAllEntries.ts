@@ -1,4 +1,5 @@
 import { API_PATH_ALL_ENTRIES_LIST } from "@/api/paths.ts";
+import { parseJsonResponse } from "@/fetch/utils/httpError.ts";
 import { parseBaseEntryParams } from "@/fetch/utils/parseBaseEntryParams.ts";
 import type { AllEntryListRequestParams } from "@/api/entries/all.ts";
 import type { EntryListResponse } from "@/api/entries/base.ts";
@@ -12,8 +13,7 @@ export const fetchAllEntries = async (params: AllSearchParams) => {
       method: "GET",
     }
   );
-  const data = (await response.json()) as EntryListResponse;
-  return data;
+  return await parseJsonResponse<EntryListResponse>(response);
 };
 
 const parseParams = (params: AllSearchParams): AllEntryListRequestParams => {
