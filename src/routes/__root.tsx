@@ -24,14 +24,14 @@ export const Route = createRootRouteWithContext<RouterContext>()({
 const getRootErrorPageCopy = (error: unknown) => {
   if (isAppHttpError(error) && error.status >= 500) {
     return {
-      title: "Server error",
+      title: "Server Error",
       description:
         "The server returned an error while loading this page. You can try again or return to a stable page.",
     };
   }
 
   return {
-    title: "Unexpected error",
+    title: "Unexpected Error",
     description:
       "An unexpected error occurred while loading this page. You can try again or return to a stable page.",
   };
@@ -50,7 +50,7 @@ function RootNotFoundComponent() {
   return (
     <RouteErrorPage
       statusCode={404}
-      title={"Page not found"}
+      title={"Page Not Found"}
       description={
         "The page you requested does not exist or is not available from the current route."
       }

@@ -22,11 +22,17 @@ const actionButtonClasses = clsx(
   "cursor-pointer rounded bg-link-primary px-4 py-2 text-white transition-colors hover:bg-link-primary-hover"
 );
 
+const formatDisplayTitle = (title: string, statusCode?: number) => {
+  return statusCode ? `[${statusCode}] ${title}` : title;
+};
+
 const getRouteErrorPageModel = (title: string, statusCode?: number, error?: unknown) => {
   const resolvedStatusCode = statusCode ?? (isAppHttpError(error) ? error.status : undefined);
+  const displayTitle = formatDisplayTitle(title, resolvedStatusCode);
 
   return {
-    breadcrumbsPaths: [{ label: title }] satisfies BreadcrumbsPath[],
+    breadcrumbsPaths: [{ label: displayTitle }] satisfies BreadcrumbsPath[],
+    displayTitle,
     statusCode: resolvedStatusCode,
     requestId: isAppHttpError(error) ? error.requestId : undefined,
     errorMessage: error instanceof Error ? error.message : undefined,
@@ -34,18 +40,20 @@ const getRouteErrorPageModel = (title: string, statusCode?: number, error?: unkn
 };
 
 export const RouteErrorPage: FC<Props> = ({ statusCode, title, description, action, error }) => {
-  useTitle(title);
+  const {
+    breadcrumbsPaths,
+    displayTitle,
+    statusCode: resolvedStatusCode,
+    requestId,
+    errorMessage,
+  } = getRouteErrorPageModel(title, statusCode, error);
 
-  const { breadcrumbsPaths, statusCode: resolvedStatusCode, requestId, errorMessage } = getRouteErrorPageModel(
-    title,
-    statusCode,
-    error
-  );
+  useTitle(displayTitle);
 
   return (
-    <main className={"flex min-h-screen flex-col gap-8 p-8 pb-16 shadow-lg"}>
+    <main className={"flex flex-col gap-4 p-8 pb-16 shadow-lg"}>
       <GlobalHeader breadcrumbsPaths={breadcrumbsPaths} />
-      <section className={"flex flex-1 items-center justify-center"}>
+      <section className={"flex justify-center py-32"}>
         <div className={"flex max-w-3xl flex-col gap-6 rounded bg-gray-50 p-6 text-gray-600"}>
           <div className={"flex flex-col gap-3"}>
             {resolvedStatusCode && (
@@ -83,5 +91,6 @@ export const RouteErrorPage: FC<Props> = ({ statusCode, title, description, acti
 export const routeErrorPageActionButtonClasses = actionButtonClasses;
 
 export const __TEST__RouteErrorPage = {
+  formatDisplayTitle,
   getRouteErrorPageModel,
 };

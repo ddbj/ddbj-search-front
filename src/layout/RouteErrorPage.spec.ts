@@ -5,10 +5,11 @@ import { __TEST__RouteErrorPage } from "@/layout/RouteErrorPage.tsx";
 const { getRouteErrorPageModel } = __TEST__RouteErrorPage;
 
 describe("RouteErrorPage", () => {
-  it("should expose the shared breadcrumbs model and explicit status code", () => {
-    const model = getRouteErrorPageModel("Page not found", 404);
+  it("should expose the status-prefixed display title and explicit status code", () => {
+    const model = getRouteErrorPageModel("Page Not Found", 404);
 
-    expect(model.breadcrumbsPaths).toEqual([{ label: "Page not found" }]);
+    expect(model.displayTitle).toBe("[404] Page Not Found");
+    expect(model.breadcrumbsPaths).toEqual([{ label: "[404] Page Not Found" }]);
     expect(model.statusCode).toBe(404);
   });
 
@@ -20,8 +21,9 @@ describe("RouteErrorPage", () => {
       requestId: "request-500",
     });
 
-    const model = getRouteErrorPageModel("Unexpected error", undefined, error);
+    const model = getRouteErrorPageModel("Server Error", undefined, error);
 
+    expect(model.displayTitle).toBe("[500] Server Error");
     expect(model.statusCode).toBe(500);
     expect(model.requestId).toBe("request-500");
     expect(model.errorMessage).toBe("database is not available");

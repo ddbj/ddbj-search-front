@@ -16,7 +16,7 @@ describe("__root", () => {
     });
 
     expect(getRootErrorPageCopy(error)).toEqual({
-      title: "Server error",
+      title: "Server Error",
       description:
         "The server returned an error while loading this page. You can try again or return to a stable page.",
     });
@@ -24,7 +24,7 @@ describe("__root", () => {
 
   it("should keep unexpected error copy for non-http errors", () => {
     expect(getRootErrorPageCopy(new Error("boom"))).toEqual({
-      title: "Unexpected error",
+      title: "Unexpected Error",
       description:
         "An unexpected error occurred while loading this page. You can try again or return to a stable page.",
     });
