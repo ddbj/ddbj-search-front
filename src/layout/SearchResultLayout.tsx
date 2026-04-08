@@ -2,7 +2,7 @@ import { type FC, useMemo } from "react";
 import { dbLabels, type DBType } from "@/consts/db.ts";
 import { QueryBuilder } from "@/features/searchResult/queryBuilder/QueryBuilder.tsx";
 import { Pagination } from "@/features/searchResult/result/Pagination.tsx";
-import { parseResultCardProps } from "@/features/searchResult/result/ResultCard.tsx";
+import { parseResultCardProps } from "@/features/searchResult/result/resultCardUtils.ts";
 import { ResultInfo } from "@/features/searchResult/result/ResultInfo.tsx";
 import { ResultList } from "@/features/searchResult/result/ResultList.tsx";
 import { type BreadcrumbsPath } from "@/features/shared/Breadcrumbs.tsx";

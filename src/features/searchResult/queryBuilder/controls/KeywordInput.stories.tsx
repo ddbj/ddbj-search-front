@@ -19,12 +19,10 @@ export const Primary = {
   args: { update: () => {} },
 } satisfies Story;
 
-const mockChangeKeywords = fn((e) => {
-  // console.log(e);
-});
+const mockChangeKeywords = fn((_e) => {});
 export const update = {
   args: { update: mockChangeKeywords },
-  play: async ({ canvas, canvasElement, userEvent, step }) => {
+  play: async ({ canvasElement, userEvent }) => {
     mockChangeKeywords.mockReset();
     const input = canvasElement.querySelector("input")!;
     await userEvent.type(input, "foo");

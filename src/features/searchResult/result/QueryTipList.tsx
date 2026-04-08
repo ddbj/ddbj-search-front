@@ -1,7 +1,6 @@
 import clsx from "clsx";
 import { isUndefined } from "is-what";
 import { type ComponentProps, type FC } from "react";
-import { string } from "zod";
 import { getDbLabel } from "@/consts/db.ts";
 import { QueryTip } from "@/features/searchResult/queryBuilder/premitives/QueryTip.tsx";
 import type { UpdateSearchFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
@@ -130,11 +129,12 @@ const parseSingleBooleanToQueryTipProps = (
 ): QueryTipProps[] => {
   return [stateValue]
     .filter((v) => v)
-    .map((v) => {
+    .map(() => {
       const data = { name: dataName, value: "true" };
       const label = { name: labelName, value: "true" };
       return { data, label };
     });
 };
 
+// eslint-disable-next-line react-refresh/only-export-components -- Test helper stays colocated with query tip shaping logic.
 export const __QUERY_LISTS_TEST__ = { parseQueryStateToTipList };

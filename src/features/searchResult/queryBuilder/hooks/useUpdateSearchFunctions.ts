@@ -167,18 +167,18 @@ const composeGrant = (params: P, value: string) => {
 };
 
 export const __SB_updateFunctions: UpdateSearchFunctions = {
-  moveToEntryRoot: (params: AnySearchParams) => {},
-  moveToPage: (page: number) => {},
-  changeSort: (v: string | null) => {},
-  changeKeywords: (v: string[]) => {},
-  setDBTypes: (v: DBType[]) => {},
-  changeDateModifiedRange: (v: string) => {},
-  changeDatePublishedRange: (v: string) => {},
-  changeUmbrella: (v: boolean) => {},
-  changeOrganization: (v: string) => {},
-  changePublication: (v: string) => {},
-  changeGrant: (v: string) => {},
-  removeParam: (name: AnySearchParamsKey | AnySearchParamsKey[], value: string) => {},
+  moveToEntryRoot: (_params: AnySearchParams) => {},
+  moveToPage: (_page: number) => {},
+  changeSort: (_v: string | null) => {},
+  changeKeywords: (_v: string[]) => {},
+  setDBTypes: (_v: DBType[]) => {},
+  changeDateModifiedRange: (_v: string) => {},
+  changeDatePublishedRange: (_v: string) => {},
+  changeUmbrella: (_v: boolean) => {},
+  changeOrganization: (_v: string) => {},
+  changePublication: (_v: string) => {},
+  changeGrant: (_v: string) => {},
+  removeParam: (_name: AnySearchParamsKey | AnySearchParamsKey[], _value: string) => {},
 };
 
 export const __TEST_updateFunctions = {

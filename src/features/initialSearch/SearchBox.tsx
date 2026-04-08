@@ -3,11 +3,10 @@ import clsx from "clsx";
 import { type FC, type FormEvent, useRef, useState } from "react";
 import { dbLabels, type DBType } from "@/consts/db.ts";
 import { MagnifierIcon } from "@/features/graphics/MagnifierIcon.tsx";
+import { compileSearchType } from "@/features/initialSearch/searchBoxUtils.ts";
 
 const allLabel = "From all Data Type";
 const allKey = "all";
-type AllKey = typeof allKey;
-type DBTypeKeyWithAll = DBType | AllKey;
 
 const wrapperClasses = clsx("flex h-fit items-stretch", "");
 
@@ -61,7 +60,7 @@ export const SearchBox: FC<Props> = ({ onSearch = defaultOnSearch }) => {
 
   const onSubmitForm = (e: FormEvent) => {
     e.preventDefault();
-    const searchType = compileSearchType([...values] as DBTypeKeyWithAll[]);
+    const searchType = compileSearchType([...values] as (DBType | "all")[]);
     const value = inputRef.current?.value ?? "";
     onSearch(
       searchType,
@@ -98,8 +97,4 @@ export const SearchBox: FC<Props> = ({ onSearch = defaultOnSearch }) => {
       </button>
     </form>
   );
-};
-
-export const compileSearchType = (values: DBTypeKeyWithAll[]): DBType[] => {
-  return values.filter((v) => v !== "all");
 };

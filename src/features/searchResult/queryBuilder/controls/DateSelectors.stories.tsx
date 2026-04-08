@@ -7,8 +7,8 @@ const meta = {
   args: {
     published: "",
     modified: "",
-    changePublished: (v: string) => {},
-    changeModified: (v: string) => {},
+    changePublished: (_v: string) => {},
+    changeModified: (_v: string) => {},
   },
   decorators: [],
 } satisfies Meta<typeof DateSelectors>;

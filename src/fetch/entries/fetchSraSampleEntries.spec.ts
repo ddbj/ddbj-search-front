@@ -14,7 +14,7 @@ const expectKeyNotExists = (
 describe("parseParams", () => {
   it("should handle empty params", () => {
     const result = parseParams({});
-    // Add assertions for SRA Sample-specific parameters if needed
+    expectKeyNotExists(result, "keywords");
   });
 
   it("should handle base params", () => {

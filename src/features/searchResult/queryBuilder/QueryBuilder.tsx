@@ -1,7 +1,7 @@
-import { QueryClient, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { type FC, useMemo } from "react";
 import { isBioProjectFacetListResponse } from "@/api/facets/bioProject.ts";
-import { type DBType, dbTypes } from "@/consts/db.ts";
+import { type DBType } from "@/consts/db.ts";
 import { Grant } from "@/features/searchResult/queryBuilder/controls/bioproject/Grant.tsx";
 import { Organization } from "@/features/searchResult/queryBuilder/controls/bioproject/Organization.tsx";
 import { Publication } from "@/features/searchResult/queryBuilder/controls/bioproject/Publication.tsx";
@@ -9,7 +9,6 @@ import { Umbrella } from "@/features/searchResult/queryBuilder/controls/bioproje
 import { DateSelectors } from "@/features/searchResult/queryBuilder/controls/DateSelectors.tsx";
 import { KeywordInput } from "@/features/searchResult/queryBuilder/controls/KeywordInput.tsx";
 import { OtherTypeSelector } from "@/features/searchResult/queryBuilder/controls/OtherTypeSelector.tsx";
-import { fetchAllFacets } from "@/fetch/facets/fetchAllFacets.ts";
 import { fetchFacets } from "@/fetch/utils/fetchFacets.ts";
 import { type BaseSearchParams, isBaseSearchKey } from "@/schema/search/base.ts";
 import { isBioprojectSearchParams } from "@/schema/search/bioProject.ts";
@@ -108,4 +107,5 @@ const makeTypeLinkParams = (params: AnySearchParams): BaseSearchParams => {
   return result;
 };
 
+// eslint-disable-next-line react-refresh/only-export-components -- Test helper stays colocated with query builder state shaping logic.
 export const __TEST__QUERY_BUILDER = { makeTypeLinkParams };

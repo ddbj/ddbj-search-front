@@ -41,7 +41,8 @@ export default mergeConfig(
             // Enable browser mode
             browser: {
               enabled: true,
-              // Make sure to install Playwright
+              // Keep Playwright as a direct dependency while story play functions are
+              // executed through @vitest/browser-playwright in this project.
               provider: playwright({}),
               headless: true,
               instances: [{ browser: "chromium" }],

@@ -1,6 +1,5 @@
 import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
 import type { Attribute } from "@/api/detail/bioSample.ts";
-import type { SearchDetailResponse } from "@/api/types.ts";
 import type { FC } from "react";
 
 type Props = { attributes: Attribute[] | null };
@@ -25,12 +24,4 @@ export const AttributeRow: FC<Props> = ({ attributes }) => {
       </dl>
     </InfoListItem>
   );
-};
-
-export const getAttributes = (res: SearchDetailResponse) => {
-  if (res.type === "biosample") {
-    return res.attributes;
-  } else {
-    return null;
-  }
 };

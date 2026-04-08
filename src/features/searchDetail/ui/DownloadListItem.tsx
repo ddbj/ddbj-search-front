@@ -1,7 +1,6 @@
 import { clsx } from "clsx";
 import { type FC, useEffect, useState } from "react";
 import { safeParseUrl } from "@/utils/safeParseUrl.ts";
-import { sleep } from "@/utils/sleep.ts";
 
 type Props = { fileName: string; httpsLink: string | null; ftpLink: string | null };
 

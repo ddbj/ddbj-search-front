@@ -9,7 +9,7 @@ const meta = {
   component: QueryTipList,
   args: {
     searchParams: {},
-    removeParamFunc: (key: AnySearchParamsKey | AnySearchParamsKey[], v: string) => {},
+    removeParamFunc: (_key: AnySearchParamsKey | AnySearchParamsKey[], _v: string) => {},
   },
   decorators: [
     (Story) => {

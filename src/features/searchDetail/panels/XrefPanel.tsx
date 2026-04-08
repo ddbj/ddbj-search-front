@@ -1,13 +1,9 @@
 import { useMemo, type FC } from "react";
 import { getDBXrefAPIPath } from "@/api/paths.ts";
 import { MAX_DB_XREFS } from "@/consts/counts.ts";
-import { dbTypeList, getDbLabel, getXrefDbLabel, xrefTypeList } from "@/consts/db.ts";
 import { InfoList } from "@/features/searchDetail/ui/InfoList.tsx";
 import { PanelWrapper } from "@/features/searchDetail/ui/PanelWrapper.tsx";
 import { XrefListItem, type XrefListItemProps } from "@/features/searchDetail/ui/XrefListItem.tsx";
-import { reorderXrefs } from "@/utils/reorderXrefs.ts";
-import { isInternalDbLink, sanitizeDbLink } from "@/utils/sanitizeDbLink.ts";
-import type { DbXrefsCount, Xref } from "@/api/detail/base.ts";
 
 type Props = {
   xrefs: XrefListItemProps[];
@@ -48,21 +44,4 @@ const TruncatedMessage: FC<Pick<Props, "identifier" | "dbType">> = ({ identifier
       </a>
     </div>
   );
-};
-
-export const parseRefs = (refs: Xref[] | null, count: DbXrefsCount): XrefListItemProps[] => {
-  return reorderXrefs(count).map(([dbKey, actualCount]) => {
-    const dbName = getXrefDbLabel(dbKey);
-    const items = (refs ?? [])
-      .filter((ref) => ref.type === dbKey)
-      .map(parseXrefItem)
-      .sort((a, b) => a.label.localeCompare(b.label));
-    return { dbName, actualCount, items };
-  });
-};
-export const parseXrefItem = (ref: Xref): XrefListItemProps["items"][0] => {
-  const url = sanitizeDbLink(ref.url);
-  const isExternal = !isInternalDbLink(ref.url);
-  const label = ref.identifier;
-  return { url, isExternal, label };
 };

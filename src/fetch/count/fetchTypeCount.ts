@@ -1,6 +1,6 @@
-import { API_PATH_ALL_FACET_LIST, API_PATH_TYPE_COUNT } from "@/api/paths.ts";
+import { API_PATH_ALL_FACET_LIST } from "@/api/paths.ts";
 import { parseBaseEntryParams } from "@/fetch/utils/parseBaseEntryParams.ts";
-import type { CountTypesRequestParams, CountTypesResponse } from "@/api/count/types.ts";
+import type { CountTypesResponse } from "@/api/count/types.ts";
 import type { AllFacetListRequestParams } from "@/api/facets/all.ts";
 import type { AllSearchParams } from "@/schema/search/all.ts";
 import type { BaseSearchParams } from "@/schema/search/base.ts";

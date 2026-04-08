@@ -18,7 +18,7 @@ type Story = StoryObj<typeof meta>;
 export const Primary = {} satisfies Story;
 
 export const Click = {
-  play: async ({ canvasElement, step, userEvent }) => {
+  play: async ({ step, userEvent }) => {
     await step("click trigger", async () => {
       const trigger = await findBySlot("trigger");
       await userEvent.click(trigger);

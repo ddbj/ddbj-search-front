@@ -25,7 +25,6 @@ import { fetchSraRunDetail } from "@/fetch/detail/fetchSraRunDetail.ts";
 import { fetchSraSampleDetail } from "@/fetch/detail/fetchSraSampleDetail.ts";
 import { fetchSraStudyDetail } from "@/fetch/detail/fetchSraStudyDetail.ts";
 import { fetchSraSubmissionDetail } from "@/fetch/detail/fetchSraSubmissionDetail.ts";
-import { AppHttpError } from "@/fetch/utils/httpError.ts";
 
 type Case = {
   name: string;

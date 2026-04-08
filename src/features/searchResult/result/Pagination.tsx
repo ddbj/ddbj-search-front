@@ -67,7 +67,6 @@ const Button: FC<{
     state === "current" && activeButtonClasses,
     state === "idle" && idleButtonClasses,
   );
-  const link = "";
   if (state === "disabled") {
     return null;
   }
@@ -110,4 +109,5 @@ const dividePages = (pages: number[]): number[][] => {
   }, []);
 };
 
+// eslint-disable-next-line react-refresh/only-export-components -- Test helper stays colocated with pagination math.
 export const __TEST__Pagination__ = { makePaginationPages, dividePages };

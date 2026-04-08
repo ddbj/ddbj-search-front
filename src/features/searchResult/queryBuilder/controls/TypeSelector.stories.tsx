@@ -6,7 +6,7 @@ const meta = {
   component: TypeSelector,
   args: {
     value: [],
-    update: (v: DBType[]) => {},
+    update: (_v: DBType[]) => {},
     linkSearchParams: {},
     countData: [
       {

@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "@tanstack/react-router";
+import { useNavigate } from "@tanstack/react-router";
 import clsx from "clsx";
 import { Logo } from "@/features/graphics/logo.tsx";
 import { SearchBox } from "@/features/initialSearch/SearchBox.tsx";
@@ -17,9 +17,6 @@ export const HomePage: FC = () => {
     // console.log(to, search);
     navigate({ to, search });
   };
-
-  const linkString: string = "/api-doc/";
-
   return (
     <div className={wrapperClasses}>
       <Logo />
@@ -46,4 +43,5 @@ const makeNavigateArgs = (
   return { to, search };
 };
 
+// eslint-disable-next-line react-refresh/only-export-components -- Test helper stays colocated with home page navigation mapping.
 export const __HOME_PAGE_TEST__ = { makeNavigateArgs };

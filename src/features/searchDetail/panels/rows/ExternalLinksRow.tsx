@@ -1,6 +1,5 @@
 import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
 import type { ExternalLink } from "@/api/detail/base.ts";
-import type { SearchDetailResponse } from "@/api/types.ts";
 import type { FC } from "react";
 
 type Props = { externalLinks: ExternalLink[] | null | undefined };
@@ -27,8 +26,4 @@ export const ExternalLinksRow: FC<Props> = ({ externalLinks }) => {
       </ul>
     </InfoListItem>
   );
-};
-
-export const getExternalLinks = (res: SearchDetailResponse) => {
-  return res.externalLink;
 };

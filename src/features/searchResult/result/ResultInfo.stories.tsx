@@ -14,7 +14,7 @@ const meta = {
     currentPage: 1,
     searchParams: {},
     changeSortFunc: () => {},
-    removeParamFunc: (key: AnySearchParamsKey | AnySearchParamsKey[], v: string) => {},
+    removeParamFunc: (_key: AnySearchParamsKey | AnySearchParamsKey[], _v: string) => {},
   },
   decorators: [],
 } satisfies Meta<typeof ResultInfo>;

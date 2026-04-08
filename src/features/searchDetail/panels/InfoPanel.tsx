@@ -1,19 +1,18 @@
-import { AttributeRow, getAttributes } from "@/features/searchDetail/panels/rows/AttributeRow.tsx";
-import {
-  ExternalLinksRow,
-  getExternalLinks,
-} from "@/features/searchDetail/panels/rows/ExternalLinksRow.tsx";
-import { getGrants, GrantsRow } from "@/features/searchDetail/panels/rows/GrantsRow.tsx";
+import { AttributeRow } from "@/features/searchDetail/panels/rows/AttributeRow.tsx";
+import { ExternalLinksRow } from "@/features/searchDetail/panels/rows/ExternalLinksRow.tsx";
+import { GrantsRow } from "@/features/searchDetail/panels/rows/GrantsRow.tsx";
 import { OrganismRow } from "@/features/searchDetail/panels/rows/OrganismRow.tsx";
+import { OrganizationsRow } from "@/features/searchDetail/panels/rows/OrganizationsRow.tsx";
+import { PublicationsRow } from "@/features/searchDetail/panels/rows/PublicationsRow.tsx";
+import { SameAsRow } from "@/features/searchDetail/panels/rows/SameAsRow.tsx";
 import {
+  getAttributes,
+  getExternalLinks,
+  getGrants,
   getOrganizations,
-  OrganizationsRow,
-} from "@/features/searchDetail/panels/rows/OrganizationsRow.tsx";
-import {
   getPublications,
-  PublicationsRow,
-} from "@/features/searchDetail/panels/rows/PublicationsRow.tsx";
-import { getSameAs, SameAsRow } from "@/features/searchDetail/panels/rows/SameAsRow.tsx";
+  getSameAs,
+} from "@/features/searchDetail/panels/searchDetailRowSelectors.ts";
 import { SanitizedRow } from "@/features/searchDetail/panels/rows/SanitizedRow.tsx";
 import { InfoList } from "@/features/searchDetail/ui/InfoList.tsx";
 import { PanelWrapper } from "@/features/searchDetail/ui/PanelWrapper.tsx";

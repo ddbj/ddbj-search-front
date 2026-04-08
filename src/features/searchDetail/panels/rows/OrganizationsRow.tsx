@@ -1,6 +1,5 @@
 import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
 import type { Organization } from "@/api/detail/bioProject.ts";
-import type { SearchDetailResponse } from "@/api/types.ts";
 import type { FC } from "react";
 
 type Props = { organizations: Organization[] | null };
@@ -41,12 +40,4 @@ export const OrganizationsRow: FC<Props> = ({ organizations }) => {
 };
 const sortOrganizations = (a: Organization, b: Organization) => {
   return (a.role ?? "").localeCompare(b.role ?? "");
-};
-
-export const getOrganizations = (res: SearchDetailResponse) => {
-  if (res.type === "bioproject") {
-    return res.organization;
-  } else {
-    return null;
-  }
 };

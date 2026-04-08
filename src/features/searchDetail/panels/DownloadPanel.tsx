@@ -12,7 +12,7 @@ type Props = {
 
 type ItemProps = ComponentProps<typeof DownloadListItem>;
 
-export const DownloadPanel: FC<Props> = ({ className, data }) => {
+export const DownloadPanel: FC<Props> = ({ data }) => {
   const itemsProps = composeItemProps(data);
   if (itemsProps.length) {
     return (

@@ -26,6 +26,7 @@ declare global {
   }
 }
 
+// eslint-disable-next-line react-refresh/only-export-components -- Storybook preview owns framework-level decorators rather than app components.
 const RouterDecorator: Decorator = (Story) => {
   const rootRoute = createRootRoute({
     component: () => (

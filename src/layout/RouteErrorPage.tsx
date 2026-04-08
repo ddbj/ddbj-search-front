@@ -4,13 +4,14 @@ import { GlobalHeader } from "@/features/shared/GlobalHeader.tsx";
 import { isAppHttpError } from "@/fetch/utils/httpError.ts";
 import { useTitle } from "@/utils/useTitle.ts";
 import type { BreadcrumbsPath } from "@/features/shared/Breadcrumbs.tsx";
-import type { FC, ReactNode } from "react";
+import type { FC } from "react";
 
 type Props = {
   statusCode?: number;
   title: string;
   description: string;
-  action?: ReactNode;
+  actionLabel?: string;
+  onAction?: () => void;
   error?: unknown;
 };
 
@@ -39,7 +40,14 @@ const getRouteErrorPageModel = (title: string, statusCode?: number, error?: unkn
   };
 };
 
-export const RouteErrorPage: FC<Props> = ({ statusCode, title, description, action, error }) => {
+export const RouteErrorPage: FC<Props> = ({
+  statusCode,
+  title,
+  description,
+  actionLabel,
+  onAction,
+  error,
+}) => {
   const {
     breadcrumbsPaths,
     displayTitle,
@@ -73,7 +81,11 @@ export const RouteErrorPage: FC<Props> = ({ statusCode, title, description, acti
             <Link to={"/"} className={linkClasses}>
               Back to home
             </Link>
-            {action}
+            {actionLabel && onAction ? (
+              <button type={"button"} onClick={onAction} className={actionButtonClasses}>
+                {actionLabel}
+              </button>
+            ) : null}
           </div>
 
           {(requestId || errorMessage) && (
@@ -88,8 +100,7 @@ export const RouteErrorPage: FC<Props> = ({ statusCode, title, description, acti
   );
 };
 
-export const routeErrorPageActionButtonClasses = actionButtonClasses;
-
+// eslint-disable-next-line react-refresh/only-export-components -- Test helper stays colocated with error page copy/model logic.
 export const __TEST__RouteErrorPage = {
   formatDisplayTitle,
   getRouteErrorPageModel,

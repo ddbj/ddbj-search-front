@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getUmbrellaProjectsProps } from "@/features/searchDetail/panels/UmbrellaProjectsPanel.tsx";
+import { getUmbrellaProjectsProps } from "@/features/searchDetail/panels/umbrellaProjectsPanelUtils.ts";
 import type { Xref } from "@/api/detail/base.ts";
 
 const parentBioProjects: Xref[] = [

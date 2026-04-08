@@ -5,7 +5,7 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { isAppHttpError } from "@/fetch/utils/httpError.ts";
-import { RouteErrorPage, routeErrorPageActionButtonClasses } from "@/layout/RouteErrorPage.tsx";
+import { RouteErrorPage } from "@/layout/RouteErrorPage.tsx";
 import type { QueryClient } from "@tanstack/react-query";
 
 export type RouterContext = {
@@ -64,15 +64,13 @@ function RootErrorComponent({ error, reset }: ErrorComponentProps) {
       title={title}
       description={description}
       error={error}
-      action={
-        <button type={"button"} onClick={reset} className={routeErrorPageActionButtonClasses}>
-          Try again
-        </button>
-      }
+      actionLabel={"Try again"}
+      onAction={reset}
     />
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components -- Test helper stays colocated with root route error mapping.
 export const __TEST__RootRoute = {
   getRootErrorPageCopy,
 };

@@ -1,15 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { __TEST__fetchBioProjectEntries } from "@/fetch/entries/fetchBioProjectEntries.ts";
-import type { BioProjectListRequestParams } from "@/api/entries/bioProject.ts";
 
 const { parseParams } = __TEST__fetchBioProjectEntries;
-
-const expectKeyNotExists = (
-  result: BioProjectListRequestParams,
-  key: keyof BioProjectListRequestParams,
-) => {
-  expect(key in result).toBe(false);
-};
 
 describe("parseParams", () => {
   it("returns only base params when no bioproject-specific params are provided", () => {

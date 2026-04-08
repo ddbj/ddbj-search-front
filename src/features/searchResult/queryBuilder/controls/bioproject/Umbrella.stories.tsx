@@ -5,7 +5,7 @@ const meta = {
   component: Umbrella,
   args: {
     value: false,
-    update: (v: boolean) => {},
+    update: (_v: boolean) => {},
     count: 100000,
   },
   decorators: [],

@@ -5,7 +5,7 @@ const meta = {
   component: Grant,
   args: {
     value: "",
-    update: (v: string) => {},
+    update: (_v: string) => {},
   },
   decorators: [],
 } satisfies Meta<typeof Grant>;
