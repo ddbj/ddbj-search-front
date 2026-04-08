@@ -237,6 +237,8 @@ export const bioproject1: BioProjectDetailResponse = {
     },
   ],
   grant: [],
+  parentBioProjects: [],
+  childBioProjects: [],
   externalLink: [
     { url: "http://www.azotobacter.org", label: "Azotobacter Org" },
     { url: "http://www.jgi.doe.gov/", label: "DOE Joint Genome Institute" },

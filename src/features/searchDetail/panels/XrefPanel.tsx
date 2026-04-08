@@ -60,7 +60,7 @@ export const parseRefs = (refs: Xref[] | null, count: DbXrefsCount): XrefListIte
     return { dbName, actualCount, items };
   });
 };
-export const parseXrefItem = (ref: Xref): XrefListItemProps["items"[0]] => {
+export const parseXrefItem = (ref: Xref): XrefListItemProps["items"][0] => {
   const url = sanitizeDbLink(ref.url);
   const isExternal = !isInternalDbLink(ref.url);
   const label = ref.identifier;
