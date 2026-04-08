@@ -4,6 +4,7 @@ import {
   type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
+import { isAppHttpError } from "@/fetch/utils/httpError.ts";
 import {
   RouteErrorPage,
   routeErrorPageActionButtonClasses,
@@ -19,6 +20,22 @@ export const Route = createRootRouteWithContext<RouterContext>()({
   notFoundComponent: RootNotFoundComponent,
   errorComponent: RootErrorComponent,
 });
+
+const getRootErrorPageCopy = (error: unknown) => {
+  if (isAppHttpError(error) && error.status >= 500) {
+    return {
+      title: "Server error",
+      description:
+        "The server returned an error while loading this page. You can try again or return to a stable page.",
+    };
+  }
+
+  return {
+    title: "Unexpected error",
+    description:
+      "An unexpected error occurred while loading this page. You can try again or return to a stable page.",
+  };
+};
 
 function RootComponent() {
   return (
@@ -42,13 +59,13 @@ function RootNotFoundComponent() {
 }
 
 function RootErrorComponent({ error, reset }: ErrorComponentProps) {
+  const { title, description } = getRootErrorPageCopy(error);
+
   return (
     <RouteErrorPage
       statusCode={500}
-      title={"Unexpected error"}
-      description={
-        "An unexpected error occurred while loading this page. You can try again or return to a stable page."
-      }
+      title={title}
+      description={description}
       error={error}
       action={
         <button type={"button"} onClick={reset} className={routeErrorPageActionButtonClasses}>
@@ -58,3 +75,7 @@ function RootErrorComponent({ error, reset }: ErrorComponentProps) {
     />
   );
 }
+
+export const __TEST__RootRoute = {
+  getRootErrorPageCopy,
+};
