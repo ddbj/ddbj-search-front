@@ -32,7 +32,7 @@ function RootComponent() {
 function RootNotFoundComponent() {
   return (
     <RouteErrorPage
-      variant={"not-found"}
+      statusCode={404}
       title={"Page not found"}
       description={
         "The page you requested does not exist or is not available from the current route."
@@ -44,7 +44,7 @@ function RootNotFoundComponent() {
 function RootErrorComponent({ error, reset }: ErrorComponentProps) {
   return (
     <RouteErrorPage
-      variant={"server-error"}
+      statusCode={500}
       title={"Unexpected error"}
       description={
         "An unexpected error occurred while loading this page. You can try again or return to a stable page."

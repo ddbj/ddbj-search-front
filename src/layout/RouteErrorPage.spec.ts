@@ -5,15 +5,14 @@ import { __TEST__RouteErrorPage } from "@/layout/RouteErrorPage.tsx";
 const { getRouteErrorPageModel } = __TEST__RouteErrorPage;
 
 describe("RouteErrorPage", () => {
-  it("should expose the 404 variant metadata", () => {
-    const model = getRouteErrorPageModel("not-found", "Page not found");
+  it("should expose the shared breadcrumbs model and explicit status code", () => {
+    const model = getRouteErrorPageModel("Page not found", 404);
 
-    expect(model.variantLabel).toBe("404 Not Found");
-    expect(model.variantAccentClassName).toContain("sky");
     expect(model.breadcrumbsPaths).toEqual([{ label: "Page not found" }]);
+    expect(model.statusCode).toBe(404);
   });
 
-  it("should expose the 500 variant metadata and request id", () => {
+  it("should expose the AppHttpError status code, request id and error message", () => {
     const error = new AppHttpError("database is not available", {
       status: 500,
       statusText: "Internal Server Error",
@@ -21,10 +20,9 @@ describe("RouteErrorPage", () => {
       requestId: "request-500",
     });
 
-    const model = getRouteErrorPageModel("server-error", "Unexpected error", error);
+    const model = getRouteErrorPageModel("Unexpected error", undefined, error);
 
-    expect(model.variantLabel).toBe("500 Server Error");
-    expect(model.variantAccentClassName).toContain("amber");
+    expect(model.statusCode).toBe(500);
     expect(model.requestId).toBe("request-500");
     expect(model.errorMessage).toBe("database is not available");
   });
