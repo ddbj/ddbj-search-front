@@ -23,7 +23,7 @@ const bioProjectDetailResponseSchema = baseDetailResponseSchema
         organizationType: z.string().nullable(),
         role: z.string().nullable(),
         url: z.string().nullable(),
-      })
+      }),
     ),
     publication: z.array(
       z.object({
@@ -34,7 +34,7 @@ const bioProjectDetailResponseSchema = baseDetailResponseSchema
         url: z.string().nullable(),
         DbType: z.string().nullable(),
         status: z.string().nullable(),
-      })
+      }),
     ),
     grant: z.array(
       z.object({
@@ -44,9 +44,9 @@ const bioProjectDetailResponseSchema = baseDetailResponseSchema
           z.object({
             abbreviation: z.string().nullable(),
             name: z.string().nullable(),
-          })
+          }),
         ),
-      })
+      }),
     ),
     parentBioProjects: z.array(XrefSchema),
     childBioProjects: z.array(XrefSchema),

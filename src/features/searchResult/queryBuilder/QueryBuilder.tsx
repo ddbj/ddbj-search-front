@@ -83,7 +83,7 @@ const BioProjectQueries = ({
 }) => {
   const { changeUmbrella, changeOrganization, changePublication, changeGrant } = useMemo(
     () => update,
-    [update]
+    [update],
   );
   if (!isBioProjectFacetListResponse(facetData)) return <></>;
   if (!isBioprojectSearchParams(params)) return <></>;
@@ -103,7 +103,7 @@ const BioProjectQueries = ({
 
 const makeTypeLinkParams = (params: AnySearchParams): BaseSearchParams => {
   const result = Object.fromEntries(
-    Object.entries(params).filter(([key, _value]) => isBaseSearchKey(key))
+    Object.entries(params).filter(([key, _value]) => isBaseSearchKey(key)),
   );
   return result;
 };

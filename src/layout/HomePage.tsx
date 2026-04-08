@@ -35,7 +35,7 @@ export const HomePage: FC = () => {
 
 const makeNavigateArgs = (
   types: DBType[],
-  _query: string[]
+  _query: string[],
 ): { to: string; search: BaseSearchParams } => {
   const query = _query.filter((q) => q !== "");
   const to = types.length === 1 ? `/entry/${types[0]}` : "/entry";

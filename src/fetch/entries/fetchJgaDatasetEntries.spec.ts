@@ -6,7 +6,7 @@ const { parseParams } = __TEST__fetchJgaDatasetEntries;
 
 const expectKeyNotExists = (
   result: JgaDatasetListRequestParams,
-  key: keyof JgaDatasetListRequestParams
+  key: keyof JgaDatasetListRequestParams,
 ) => {
   expect(key in result).toBe(false);
 };

@@ -17,7 +17,6 @@ const makeQuery = (params: AnySearchParams) => {
   });
 };
 
-
 type SearchParams = ReturnType<typeof Route.useSearch>;
 export const Route = createFileRoute("/entry/sra-sample/")({
   component: PageComponent,

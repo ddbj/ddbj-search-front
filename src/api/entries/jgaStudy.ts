@@ -32,7 +32,7 @@ export const jgaStudyListRequestDoc: RouteConfig = {
             items: z.array(
               entryListItemResponseSchema
                 .omit({ type: true })
-                .extend({ type: z.literal("jga-study") })
+                .extend({ type: z.literal("jga-study") }),
             ),
           }),
         },

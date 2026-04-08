@@ -32,5 +32,5 @@ export const getBioSampleList = http.get<never, never, EntryListResponse>(
           };
         }),
     });
-  }
+  },
 );

@@ -34,10 +34,10 @@ describe("parseQueryStateToTipList", () => {
     const result = parseQueryStateToTipList(state);
     expect(result.length).toBe(2);
     expect(result.find((o) => o.label.name === "Published")?.label.value).toBe(
-      "2025-07-01 | 2025-07-10"
+      "2025-07-01 | 2025-07-10",
     );
     expect(result.find((o) => o.label.name === "Modified")?.label.value).toBe(
-      "2024-08-01 | 2024-08-10"
+      "2024-08-01 | 2024-08-10",
     );
   });
 

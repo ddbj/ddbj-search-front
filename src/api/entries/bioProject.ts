@@ -37,7 +37,7 @@ export const bioProjectListRequestDoc: RouteConfig = {
             items: z.array(
               entryListItemResponseSchema
                 .omit({ type: true })
-                .extend({ type: z.literal("bioproject") })
+                .extend({ type: z.literal("bioproject") }),
             ),
           }),
         },

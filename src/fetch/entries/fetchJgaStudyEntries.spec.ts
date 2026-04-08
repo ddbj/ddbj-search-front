@@ -6,7 +6,7 @@ const { parseParams } = __TEST__fetchJgaStudyEntries;
 
 const expectKeyNotExists = (
   result: JgaStudyListRequestParams,
-  key: keyof JgaStudyListRequestParams
+  key: keyof JgaStudyListRequestParams,
 ) => {
   expect(key in result).toBe(false);
 };

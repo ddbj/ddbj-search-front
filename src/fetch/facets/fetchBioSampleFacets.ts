@@ -11,7 +11,7 @@ export const fetchBioSampleFacets = async (params: BiosampleSearchParams) => {
     `${API_PATH_BIOSAMPLE_FACET_LIST}?${new URLSearchParams(searchParams)}`,
     {
       method: "GET",
-    }
+    },
   );
   const data = (await response.json()) as BioSampleFacetListResponse;
   return data;

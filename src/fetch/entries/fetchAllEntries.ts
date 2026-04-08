@@ -11,7 +11,7 @@ export const fetchAllEntries = async (params: AllSearchParams) => {
     `${API_PATH_ALL_ENTRIES_LIST}?${new URLSearchParams(searchParams)}`,
     {
       method: "GET",
-    }
+    },
   );
   return await parseJsonResponse<EntryListResponse>(response);
 };

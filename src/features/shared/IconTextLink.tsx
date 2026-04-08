@@ -10,7 +10,7 @@ type Props = {
 };
 
 const linkClasses = clsx(
-  "block w-fit fill-link-primary text-link-primary hover:fill-link-primary-hover hover:text-link-primary-hover"
+  "block w-fit fill-link-primary text-link-primary hover:fill-link-primary-hover hover:text-link-primary-hover",
 );
 export const IconTextLink: FC<Props> = ({ Icon, to, label, target }) => {
   return (

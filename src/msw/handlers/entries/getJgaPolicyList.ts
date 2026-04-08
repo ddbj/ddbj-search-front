@@ -32,5 +32,5 @@ export const getJgaPolicyList = http.get<never, never, EntryListResponse>(
           };
         }),
     });
-  }
+  },
 );

@@ -11,7 +11,7 @@ export const fetchSraExperiments = async (params: SraExperimentSearchParams) => 
     `${API_PATH_SRA_EXPERIMENT_LIST}?${new URLSearchParams(searchParams)}`,
     {
       method: "GET",
-    }
+    },
   );
   return await parseJsonResponse<EntryListResponse>(response);
 };

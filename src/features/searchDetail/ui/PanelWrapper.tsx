@@ -6,7 +6,7 @@ type Props = { children: ReactNode; className?: string };
 export const PanelWrapper: FC<Props> = ({ children, className }) => {
   const wrapperClassName = clsx(
     "flex flex-col rounded-md border border-gray-200 bg-white px-4 py-1",
-    className
+    className,
   );
   return <div className={wrapperClassName}>{children}</div>;
 };

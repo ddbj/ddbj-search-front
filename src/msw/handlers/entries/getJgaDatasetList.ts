@@ -32,5 +32,5 @@ export const getJgaDatasetList = http.get<never, never, EntryListResponse>(
           };
         }),
     });
-  }
+  },
 );

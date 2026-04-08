@@ -32,5 +32,5 @@ export const getBioProjectList = http.get<never, never, EntryListResponse>(
           };
         }),
     });
-  }
+  },
 );

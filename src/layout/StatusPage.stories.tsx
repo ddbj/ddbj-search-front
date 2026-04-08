@@ -1,4 +1,4 @@
-import { StatusPage } from "./StatusPage.tsx"
+import { StatusPage } from "./StatusPage.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {

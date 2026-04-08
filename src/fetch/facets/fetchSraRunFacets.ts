@@ -8,7 +8,7 @@ export const fetchSraRunFacets = async (params: SraRunSearchParams) => {
     `${API_PATH_SRA_RUN_FACET_LIST}?${new URLSearchParams(searchParams)}`,
     {
       method: "GET",
-    }
+    },
   );
   const data = (await response.json()) as SraRunFacetListResponse;
   return data;

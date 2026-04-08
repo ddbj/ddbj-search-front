@@ -32,7 +32,7 @@ describe("httpError", () => {
         headers: {
           "content-type": "application/problem+json",
         },
-      }
+      },
     );
 
     await expect(parseJsonResponse(response)).rejects.toMatchObject({
@@ -66,9 +66,9 @@ describe("httpError", () => {
   });
 
   it("should expose a type guard for AppHttpError", () => {
-    expect(isAppHttpError(new AppHttpError("Failed", { status: 500, statusText: "Error", url: "" }))).toBe(
-      true
-    );
+    expect(
+      isAppHttpError(new AppHttpError("Failed", { status: 500, statusText: "Error", url: "" })),
+    ).toBe(true);
     expect(isAppHttpError(new Error("Failed"))).toBe(false);
   });
 });

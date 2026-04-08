@@ -43,7 +43,7 @@ export const baseDetailResponseSchema = z.object({
       z.object({
         url: z.string().nullable().optional(),
         label: z.string(),
-      })
+      }),
     )
     .nullable()
     .optional(),

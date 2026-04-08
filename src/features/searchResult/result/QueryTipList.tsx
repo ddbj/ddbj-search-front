@@ -57,24 +57,24 @@ const parseQueryStateToTipList = (state: AnySearchParams): QueryTipProps[] => {
     ...parseDateRangeToQueryTipProps(
       [state.datePublishedFrom, state.datePublishedTo],
       ["datePublishedFrom", "datePublishedTo"],
-      "Published"
+      "Published",
     ),
     ...parseDateRangeToQueryTipProps(
       [state.dateModifiedFrom, state.dateModifiedTo],
       ["dateModifiedFrom", "dateModifiedTo"],
-      "Modified"
+      "Modified",
     ),
   ].filter((v) => !!v);
   //todo make date QueryTips
   const organization: QueryTipProps[] = parseSingleStringToQueryTipProps(
     state.organization,
     "organization",
-    "Organization"
+    "Organization",
   );
   const publication: QueryTipProps[] = parseSingleStringToQueryTipProps(
     state.publication,
     "publication",
-    "Publication"
+    "Publication",
   );
   const grant = parseSingleStringToQueryTipProps(state.grant, "grant", "Grant");
   const umbrella = parseSingleBooleanToQueryTipProps(state.umbrella, "umbrella", "Umbrella");
@@ -95,7 +95,7 @@ const parseQueryStateToTipList = (state: AnySearchParams): QueryTipProps[] => {
 const parseDateRangeToQueryTipProps = (
   stateValues: [string | undefined, string | undefined],
   dataNames: [AnySearchParamsKey, AnySearchParamsKey],
-  labelName: string
+  labelName: string,
 ): QueryTipProps[] => {
   return [stateValues]
     .filter(([from, to]) => from && to)
@@ -110,7 +110,7 @@ const parseDateRangeToQueryTipProps = (
 const parseSingleStringToQueryTipProps = (
   stateValue: string | undefined,
   dataName: AnySearchParamsKey,
-  labelName: string
+  labelName: string,
 ): QueryTipProps[] => {
   return [stateValue]
     .map((v) => v?.trim())
@@ -126,7 +126,7 @@ const parseSingleStringToQueryTipProps = (
 const parseSingleBooleanToQueryTipProps = (
   stateValue: boolean | undefined,
   dataName: AnySearchParamsKey,
-  labelName: string
+  labelName: string,
 ): QueryTipProps[] => {
   return [stateValue]
     .filter((v) => v)

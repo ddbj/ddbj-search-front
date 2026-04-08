@@ -62,7 +62,7 @@ describe("composeItemProps", () => {
       ],
     });
     expect(result[1].httpsLink).toBe(
-      "https://ddbj.nig.ac.jp/public/ddbj_database/dra/sralite/ByExp/litesra/SRX/SRX296/SRX296737/SRR885622/SRR885622.sra"
+      "https://ddbj.nig.ac.jp/public/ddbj_database/dra/sralite/ByExp/litesra/SRX/SRX296/SRX296737/SRR885622/SRR885622.sra",
     );
     expect(result[1].fileName).toBe("SRR885622.sra");
     expect(result.length).toBe(3);

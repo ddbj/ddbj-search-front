@@ -15,7 +15,7 @@ import { useDebounceValue } from "usehooks-ts";
 export const useDebouncedUiValue = <T>(
   value: T,
   updateModel: (val: T) => void,
-  ms: number = 200
+  ms: number = 200,
 ) => {
   const [uiValue, setUiValue] = useState<T>(value);
   const [debouncedValue, setDebouncedValue] = useDebounceValue(value, ms);

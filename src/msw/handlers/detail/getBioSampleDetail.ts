@@ -8,7 +8,10 @@ const path = addIdentifierToPath(API_PATH_BIOSAMPLE_LIST, "MSW");
 
 export const getBioSampleDetail = http.get<BaseDetailRequestParams>(path, ({ params }) => {
   const { identifier } = params;
-  const failureResponse = resolveDetailFailureResponse(identifier, `${API_PATH_BIOSAMPLE_LIST}${identifier}`);
+  const failureResponse = resolveDetailFailureResponse(
+    identifier,
+    `${API_PATH_BIOSAMPLE_LIST}${identifier}`,
+  );
 
   if (failureResponse) {
     return failureResponse;

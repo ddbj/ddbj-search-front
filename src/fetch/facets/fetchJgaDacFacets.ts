@@ -8,7 +8,7 @@ export const fetchJgaDacFacets = async (params: JgaDacSearchParams) => {
     `${API_PATH_JGA_DAC_FACET_LIST}?${new URLSearchParams(searchParams)}`,
     {
       method: "GET",
-    }
+    },
   );
   const data = (await response.json()) as JgaDacFacetListResponse;
   return data;

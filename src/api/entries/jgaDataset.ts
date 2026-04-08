@@ -32,7 +32,7 @@ export const jgaDatasetListRequestDoc: RouteConfig = {
             items: z.array(
               entryListItemResponseSchema
                 .omit({ type: true })
-                .extend({ type: z.literal("jga-dataset") })
+                .extend({ type: z.literal("jga-dataset") }),
             ),
           }),
         },

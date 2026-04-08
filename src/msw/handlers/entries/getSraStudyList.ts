@@ -33,5 +33,5 @@ export const getSraStudyList = http.get<never, never, EntryListResponse>(
           };
         }),
     });
-  }
+  },
 );

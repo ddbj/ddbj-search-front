@@ -18,7 +18,7 @@ type Props = {
 };
 
 const wrapperClasses = clsx(
-  "flex flex-col gap-2 rounded-md border border-gray-200 bg-white p-2 text-sm shadow-sm"
+  "flex flex-col gap-2 rounded-md border border-gray-200 bg-white p-2 text-sm shadow-sm",
 );
 
 export const ResultInfo: FC<Props> = ({

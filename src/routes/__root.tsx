@@ -5,10 +5,7 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { isAppHttpError } from "@/fetch/utils/httpError.ts";
-import {
-  RouteErrorPage,
-  routeErrorPageActionButtonClasses,
-} from "@/layout/RouteErrorPage.tsx";
+import { RouteErrorPage, routeErrorPageActionButtonClasses } from "@/layout/RouteErrorPage.tsx";
 import type { QueryClient } from "@tanstack/react-query";
 
 export type RouterContext = {

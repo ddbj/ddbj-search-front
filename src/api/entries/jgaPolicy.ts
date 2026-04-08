@@ -32,7 +32,7 @@ export const jgaPolicyListRequestDoc: RouteConfig = {
             items: z.array(
               entryListItemResponseSchema
                 .omit({ type: true })
-                .extend({ type: z.literal("jga-policy") })
+                .extend({ type: z.literal("jga-policy") }),
             ),
           }),
         },

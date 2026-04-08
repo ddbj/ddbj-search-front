@@ -1,36 +1,43 @@
 # 仕様など
 
 ## Entry Title の扱いについて
+
 - 各Entryには "タイトル" 的な扱いになるものが複数存在していたり、存在していなかったりする
 - title, name が両方あるパターンもある
-- カードタイトルやページタイトルはこの差異を吸収するために `getEntryTitle()` を利用して表示する 
-
+- カードタイトルやページタイトルはこの差異を吸収するために `getEntryTitle()` を利用して表示する
 
 ## download link (downloadUrl) の仕様 (2024版)
+
 - HTTPS / FTP で実データをダウンロードさせる機能
 - API内にある Distribution は実質使用していない
+
 ### JgaDacの場合
+
 - エリアそのものを表示させない
+
 ### BioProject / BioSample の場合
+
 - downloadUrl 内のデータがDBまるごとになっている(？)ためサイズが巨大でダウンロードできない
 - そのため、api のjson を直接叩く
   - FTPはつくらない HTTPS のリンクのみ
   - 新UI / API の場合のURLの見せ方は要議論
+
 ### それ以外の場合
+
 - リンクが切れている可能性があるので、フロント読み込み後に https のリンクを `method:HEAD` で確認する
   - https のリンクが切れていたらFTPも切れているとみなす
   - リンクが切れていたらリンクを貼らずにグレーアウトしたリンクの文字列だけを表示する
   - fetch には CORSが必要なことが多いので同一ドメインでなければこのリンクチェックは行わなくてよい
 
-
 ## Modified or Updated
+
 - dateModified は DB周りのボキャブラリ
   - API周辺ではこれを使う
 - 人間的に直感的なのはどちらかというと updated で INSDCはこちら合わせ
   - UIの表示はこちらに寄せる
 
-
 ## Error handling (2026-04)
+
 - HTTP エラーの解釈は fetch ごとに分散させず、共通レイヤーで処理する
   - `response.ok` の判定、`application/problem+json` のパース、`status` / `detail` / `requestId` の保持をまとめて扱う
   - 各 fetcher では共通処理を呼ぶだけにして、エラー解釈のばらつきを防ぐ

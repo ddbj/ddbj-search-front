@@ -9,7 +9,7 @@ export const ensureDetailQueryData = async <
   TQueryKey extends QueryKey = QueryKey,
 >(
   queryClient: Pick<QueryClient, "ensureQueryData">,
-  queryOptions: EnsureQueryDataOptions<TQueryFnData, TError, TData, TQueryKey>
+  queryOptions: EnsureQueryDataOptions<TQueryFnData, TError, TData, TQueryKey>,
 ) => {
   try {
     await queryClient.ensureQueryData(queryOptions);

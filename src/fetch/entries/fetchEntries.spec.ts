@@ -50,8 +50,7 @@ const cases: Case[] = [
   { name: "sra-submission", basePath: API_PATH_SRA_SUBMISSION_LIST, fn: fetchSraSubmissions },
 ];
 
-const expectedQuery =
-  "includeFacets=false&includeProperties=false&dbXrefsLimit=0&keywords=human";
+const expectedQuery = "includeFacets=false&includeProperties=false&dbXrefsLimit=0&keywords=human";
 
 describe("fetch*Entries", () => {
   it.each(cases)("should call GET $basePath: $name", async ({ basePath, fn }) => {
@@ -70,7 +69,7 @@ describe("fetch*Entries", () => {
         headers: {
           "content-type": "application/json",
         },
-      })
+      }),
     );
 
     vi.stubGlobal("fetch", mockFetch);
@@ -83,39 +82,42 @@ describe("fetch*Entries", () => {
     vi.unstubAllGlobals();
   });
 
-  it.each(cases)("should throw AppHttpError for a problem response: $name", async ({ basePath, fn }) => {
-    const mockFetch = vi.fn().mockResolvedValue(
-      new Response(
-        JSON.stringify({
+  it.each(cases)(
+    "should throw AppHttpError for a problem response: $name",
+    async ({ basePath, fn }) => {
+      const mockFetch = vi.fn().mockResolvedValue(
+        new Response(
+          JSON.stringify({
+            title: "Internal Server Error",
+            status: 500,
+            detail: "dblink database is not available",
+            requestId: "request-500",
+          }),
+          {
+            status: 500,
+            statusText: "Internal Server Error",
+            headers: {
+              "content-type": "application/problem+json",
+            },
+          },
+        ),
+      );
+
+      vi.stubGlobal("fetch", mockFetch);
+
+      await expect(fn({ keywords: ["human"] })).rejects.toMatchObject({
+        name: "AppHttpError",
+        status: 500,
+        requestId: "request-500",
+        message: "dblink database is not available",
+        problem: {
           title: "Internal Server Error",
           status: 500,
-          detail: "dblink database is not available",
-          requestId: "request-500",
-        }),
-        {
-          status: 500,
-          statusText: "Internal Server Error",
-          headers: {
-            "content-type": "application/problem+json",
-          },
-        }
-      )
-    );
+        },
+      });
+      expect(mockFetch).toHaveBeenCalledWith(`${basePath}?${expectedQuery}`, { method: "GET" });
 
-    vi.stubGlobal("fetch", mockFetch);
-
-    await expect(fn({ keywords: ["human"] })).rejects.toMatchObject({
-      name: "AppHttpError",
-      status: 500,
-      requestId: "request-500",
-      message: "dblink database is not available",
-      problem: {
-        title: "Internal Server Error",
-        status: 500,
-      },
-    });
-    expect(mockFetch).toHaveBeenCalledWith(`${basePath}?${expectedQuery}`, { method: "GET" });
-
-    vi.unstubAllGlobals();
-  });
+      vi.unstubAllGlobals();
+    },
+  );
 });

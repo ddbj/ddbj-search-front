@@ -16,7 +16,8 @@ export const NotFound = {
   args: {
     statusCode: 404,
     title: "Page Not Found",
-    description: "The page you requested does not exist or is not available from the current route.",
+    description:
+      "The page you requested does not exist or is not available from the current route.",
   },
 } satisfies Story;
 

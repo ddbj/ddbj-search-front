@@ -11,7 +11,7 @@ export const fetchJgaDatasetFacets = async (params: JgaDatasetSearchParams) => {
     `${API_PATH_JGA_DATASET_FACET_LIST}?${new URLSearchParams(searchParams)}`,
     {
       method: "GET",
-    }
+    },
   );
   const data = (await response.json()) as JgaDatasetFacetListResponse;
   return data;

@@ -12,7 +12,7 @@ export const fetchBioProjectFacets = async (params: BioprojectSearchParams) => {
     `${API_PATH_BIOPROJECT_FACET_LIST}?${new URLSearchParams(searchParams)}`,
     {
       method: "GET",
-    }
+    },
   );
   const data = (await response.json()) as BioProjectFacetListResponse;
   return data;

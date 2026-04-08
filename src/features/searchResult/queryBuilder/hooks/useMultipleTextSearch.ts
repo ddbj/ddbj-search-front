@@ -20,7 +20,7 @@ export const useMultipleTextSearch = (searchKey: AnySearchParamsKey) => {
   useEffect(() => {
     const searchParams = router.latestLocation.search;
     const restParams = Object.fromEntries(
-      Object.entries(searchParams).filter(([key, _value]) => key !== searchKey)
+      Object.entries(searchParams).filter(([key, _value]) => key !== searchKey),
     ) as AnySearchParams;
     const newValue = debouncedValue
       .split(",")

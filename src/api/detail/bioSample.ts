@@ -17,7 +17,7 @@ const bioProjectDetailResponseSchema = baseDetailResponseSchema
         display_name: z.string().nullable(),
         harmonized_name: z.string().nullable(),
         content: z.string(),
-      })
+      }),
     ),
   });
 export type BioSampleDetailResponse = z.infer<typeof bioProjectDetailResponseSchema>;

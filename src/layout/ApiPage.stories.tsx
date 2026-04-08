@@ -1,4 +1,4 @@
-import { ApiPage } from "./ApiPage.tsx"
+import { ApiPage } from "./ApiPage.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {

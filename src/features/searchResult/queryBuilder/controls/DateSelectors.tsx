@@ -19,11 +19,11 @@ export const DateSelectors: FC<Props> = ({
 }) => {
   const { uiValue: uiPublished, setUiValue: setUiPublished } = useDebouncedUiValue(
     published,
-    changePublished
+    changePublished,
   );
   const { uiValue: uiUpdated, setUiValue: setUiUpdated } = useDebouncedUiValue(
     modified,
-    changeModified
+    changeModified,
   );
 
   return (

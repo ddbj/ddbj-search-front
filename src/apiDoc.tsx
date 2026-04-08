@@ -16,5 +16,5 @@ createRoot(document.getElementById("root")!).render(
         hideDarkModeToggle: true,
       }}
     />
-  </StrictMode>
+  </StrictMode>,
 );

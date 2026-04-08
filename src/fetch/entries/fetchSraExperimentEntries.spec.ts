@@ -6,7 +6,7 @@ const { parseParams } = __TEST__fetchSraExperimentEntries;
 
 const expectKeyNotExists = (
   result: SraExperimentListRequestParams,
-  key: keyof SraExperimentListRequestParams
+  key: keyof SraExperimentListRequestParams,
 ) => {
   expect(key in result).toBe(false);
 };

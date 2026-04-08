@@ -11,7 +11,7 @@ export const fetchSraSampleFacets = async (params: SraSampleSearchParams) => {
     `${API_PATH_SRA_SAMPLE_FACET_LIST}?${new URLSearchParams(searchParams)}`,
     {
       method: "GET",
-    }
+    },
   );
   const data = (await response.json()) as SraSampleFacetListResponse;
   return data;

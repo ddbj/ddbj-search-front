@@ -15,11 +15,11 @@ type Props = {
 };
 
 const linkClasses = clsx(
-  "rounded border border-link-primary px-4 py-2 text-link-primary transition-colors hover:border-link-primary-hover hover:text-link-primary-hover"
+  "rounded border border-link-primary px-4 py-2 text-link-primary transition-colors hover:border-link-primary-hover hover:text-link-primary-hover",
 );
 
 const actionButtonClasses = clsx(
-  "cursor-pointer rounded bg-link-primary px-4 py-2 text-white transition-colors hover:bg-link-primary-hover"
+  "cursor-pointer rounded bg-link-primary px-4 py-2 text-white transition-colors hover:bg-link-primary-hover",
 );
 
 const formatDisplayTitle = (title: string, statusCode?: number) => {

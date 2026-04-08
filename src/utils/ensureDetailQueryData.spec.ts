@@ -16,10 +16,12 @@ describe("ensureDetailQueryData", () => {
   it("should convert AppHttpError 404 into a router notFound error", async () => {
     const ensureQueryData = vi
       .fn()
-      .mockRejectedValue(new AppHttpError("missing", { status: 404, statusText: "Not Found", url: "" }));
+      .mockRejectedValue(
+        new AppHttpError("missing", { status: 404, statusText: "Not Found", url: "" }),
+      );
 
     await expect(
-      ensureDetailQueryData({ ensureQueryData }, { queryKey: ["detail"] })
+      ensureDetailQueryData({ ensureQueryData }, { queryKey: ["detail"] }),
     ).rejects.toSatisfy((error: unknown) => isNotFound(error));
   });
 
@@ -27,8 +29,8 @@ describe("ensureDetailQueryData", () => {
     const error = new AppHttpError("failed", { status: 500, statusText: "Error", url: "" });
     const ensureQueryData = vi.fn().mockRejectedValue(error);
 
-    await expect(
-      ensureDetailQueryData({ ensureQueryData }, { queryKey: ["detail"] })
-    ).rejects.toBe(error);
+    await expect(ensureDetailQueryData({ ensureQueryData }, { queryKey: ["detail"] })).rejects.toBe(
+      error,
+    );
   });
 });

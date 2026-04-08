@@ -6,7 +6,7 @@ const { parseParams } = __TEST__fetchJgaPolicyEntries;
 
 const expectKeyNotExists = (
   result: JgaPolicyListRequestParams,
-  key: keyof JgaPolicyListRequestParams
+  key: keyof JgaPolicyListRequestParams,
 ) => {
   expect(key in result).toBe(false);
 };

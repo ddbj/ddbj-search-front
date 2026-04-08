@@ -29,7 +29,7 @@ const replace = true;
 type P = AnySearchParams;
 
 export const useUpdateSearchFunctions = <TSearch extends AnySearchParams>(
-  navigate: NavigateLike<TSearch>
+  navigate: NavigateLike<TSearch>,
 ): UpdateSearchFunctions<TSearch> => {
   const update = useMemo(() => {
     return {
@@ -82,7 +82,7 @@ export const useUpdateSearchFunctions = <TSearch extends AnySearchParams>(
 const removeFromSearch = (
   current: AnySearchParams,
   key: AnySearchParamsKey | AnySearchParamsKey[],
-  value: string
+  value: string,
 ): AnySearchParams => {
   if (Array.isArray(key)) {
     const next = { ...current };

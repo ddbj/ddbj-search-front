@@ -19,7 +19,7 @@ type Props = {
 export type ResultCardProps = Props;
 
 const wrapperClasses = clsx(
-  "flex flex-col gap-1 rounded-md border border-2 border-gray-100 bg-white px-2 py-2 text-sm transition-all hover:border-link-primary hover:shadow-md"
+  "flex flex-col gap-1 rounded-md border border-2 border-gray-100 bg-white px-2 py-2 text-sm transition-all hover:border-link-primary hover:shadow-md",
 );
 export const ResultCard: FC<Props> = ({
   id,

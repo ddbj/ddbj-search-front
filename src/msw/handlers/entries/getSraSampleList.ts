@@ -32,5 +32,5 @@ export const getSraSampleList = http.get<never, never, EntryListResponse>(
           };
         }),
     });
-  }
+  },
 );

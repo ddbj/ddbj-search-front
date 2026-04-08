@@ -36,5 +36,5 @@ export const getAllEntryList = http.get<never, never, EntryListResponse>(
           };
         }),
     });
-  }
+  },
 );

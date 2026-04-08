@@ -11,7 +11,7 @@ export const fetchJgaStudyFacets = async (params: JgaStudySearchParams) => {
     `${API_PATH_JGA_STUDY_FACET_LIST}?${new URLSearchParams(searchParams)}`,
     {
       method: "GET",
-    }
+    },
   );
   const data = (await response.json()) as JgaStudyFacetListResponse;
   return data;

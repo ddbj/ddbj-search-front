@@ -30,7 +30,7 @@ import type { SraSubmissionSearchParams } from "@/schema/search/sraSubmission.ts
 
 export const fetchFacets = async (
   dbType: DBType | null,
-  params: AnySearchParams
+  params: AnySearchParams,
 ): Promise<FacetListResponse> => {
   switch (dbType) {
     case dbTypes.bioproject:

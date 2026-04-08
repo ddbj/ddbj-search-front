@@ -11,7 +11,7 @@ export const fetchSraAnalysisFacets = async (params: SraAnalysisSearchParams) =>
     `${API_PATH_SRA_ANALYSIS_FACET_LIST}?${new URLSearchParams(searchParams)}`,
     {
       method: "GET",
-    }
+    },
   );
   const data = (await response.json()) as SraAnalysisFacetListResponse;
   return data;

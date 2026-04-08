@@ -54,7 +54,7 @@ const baseButtonClasses = clsx("mx-1 inline-block rounded-md px-3 py-1");
 const activeButtonClasses = clsx(baseButtonClasses, "bg-bg-primary text-white");
 const idleButtonClasses = clsx(
   baseButtonClasses,
-  "bg-gray-200 text-black duration-200 hover:bg-gray-300"
+  "bg-gray-200 text-black duration-200 hover:bg-gray-300",
 );
 
 const Button: FC<{
@@ -65,7 +65,7 @@ const Button: FC<{
 }> = ({ label, page, state, params }) => {
   const classes = clsx(
     state === "current" && activeButtonClasses,
-    state === "idle" && idleButtonClasses
+    state === "idle" && idleButtonClasses,
   );
   const link = "";
   if (state === "disabled") {

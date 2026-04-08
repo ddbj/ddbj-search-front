@@ -7,7 +7,7 @@ const { parseParams } = __TEST__fetchSearchALL;
 
 const expectKeyNotExists = (
   result: AllEntryListRequestParams,
-  key: keyof AllEntryListRequestParams
+  key: keyof AllEntryListRequestParams,
 ) => {
   expect(key in result).toBe(false);
 };

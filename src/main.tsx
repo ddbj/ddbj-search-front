@@ -61,6 +61,6 @@ enableMocking().then(() => {
           <RouterProvider router={router} />
         </HeroUIProvider>
       </QueryClientProvider>
-    </StrictMode>
+    </StrictMode>,
   );
 });

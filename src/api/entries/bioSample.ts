@@ -32,7 +32,7 @@ export const bioSampleListRequestDoc: RouteConfig = {
             items: z.array(
               entryListItemResponseSchema
                 .omit({ type: true })
-                .extend({ type: z.literal("biosample") })
+                .extend({ type: z.literal("biosample") }),
             ),
           }),
         },

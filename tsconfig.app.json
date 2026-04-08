@@ -27,9 +27,5 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": [
-    "src/**/*",
-    ".storybook/preview.tsx",
-    ".storybook/providers.ts"
-  ]
+  "include": ["src/**/*", ".storybook/preview.tsx", ".storybook/providers.ts"]
 }

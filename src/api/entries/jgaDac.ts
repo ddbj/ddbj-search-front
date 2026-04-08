@@ -32,7 +32,7 @@ export const jgaDacListRequestDoc: RouteConfig = {
             items: z.array(
               entryListItemResponseSchema
                 .omit({ type: true })
-                .extend({ type: z.literal("jga-dac") })
+                .extend({ type: z.literal("jga-dac") }),
             ),
           }),
         },

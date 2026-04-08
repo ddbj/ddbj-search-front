@@ -32,5 +32,5 @@ export const getJgaStudyList = http.get<never, never, EntryListResponse>(
           };
         }),
     });
-  }
+  },
 );

@@ -11,7 +11,7 @@ export const fetchSraExperimentFacets = async (params: SraExperimentSearchParams
     `${API_PATH_SRA_EXPERIMENT_FACET_LIST}?${new URLSearchParams(searchParams)}`,
     {
       method: "GET",
-    }
+    },
   );
   const data = (await response.json()) as SraExperimentFacetListResponse;
   return data;

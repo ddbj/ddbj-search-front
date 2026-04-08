@@ -4,7 +4,7 @@ import type { BaseEntryListRequestParams } from "@/api/entries/base.ts";
 
 const expectKeyNotExists = (
   result: BaseEntryListRequestParams,
-  key: keyof BaseEntryListRequestParams
+  key: keyof BaseEntryListRequestParams,
 ) => {
   expect(key in result).toBe(false);
 };

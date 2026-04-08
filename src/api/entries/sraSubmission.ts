@@ -32,7 +32,7 @@ export const sraSubmissionListRequestDoc: RouteConfig = {
             items: z.array(
               entryListItemResponseSchema
                 .omit({ type: true })
-                .extend({ type: z.literal("sra-submission") })
+                .extend({ type: z.literal("sra-submission") }),
             ),
           }),
         },

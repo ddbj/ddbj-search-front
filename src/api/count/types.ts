@@ -9,7 +9,7 @@ const countTypesResponseSchema = z.object({}).extend(
   Object.keys(dbTypes).reduce<Record<string, z.ZodNumber>>((acc, val) => {
     acc[val] = z.number();
     return acc;
-  }, {})
+  }, {}),
 );
 
 const countTypesRequestParamsSchema = allEntryListRequestParamsSchema.omit({

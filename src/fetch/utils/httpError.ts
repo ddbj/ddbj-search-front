@@ -55,10 +55,7 @@ const isApiProblemDetails = (value: unknown): value is ApiProblemDetails => {
   );
 };
 
-const buildErrorMessage = (
-  response: Response,
-  problem?: ApiProblemDetails,
-) => {
+const buildErrorMessage = (response: Response, problem?: ApiProblemDetails) => {
   return (
     problem?.detail ??
     problem?.title ??
@@ -89,8 +86,7 @@ export const createAppHttpError = async (response: Response) => {
     status: response.status,
     statusText: response.statusText,
     url: response.url,
-    requestId:
-      problem?.requestId ?? response.headers.get("x-request-id") ?? undefined,
+    requestId: problem?.requestId ?? response.headers.get("x-request-id") ?? undefined,
     problem,
     body,
   });

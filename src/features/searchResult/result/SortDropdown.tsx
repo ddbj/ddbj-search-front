@@ -48,7 +48,7 @@ const items: Item[] = [
 ];
 export const SortDropdown: FC<Props> = ({ changeSortFunc, currentSort }) => {
   const [selectedKeys, setSelectedKeys] = useState<Selection>(
-    new Set([currentSort ?? SELECT_DEFAULT])
+    new Set([currentSort ?? SELECT_DEFAULT]),
   );
   const selectedKey: DropDownKey = useMemo(() => {
     return [...selectedKeys][0] as DropDownKey;

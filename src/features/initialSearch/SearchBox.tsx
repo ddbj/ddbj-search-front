@@ -13,18 +13,18 @@ const wrapperClasses = clsx("flex h-fit items-stretch", "");
 
 const inputClasses = clsx(
   "block w-full border-y-1 border-gray-200 px-4 py-2.5 text-sm",
-  "focus:outline-2 focus:-outline-offset-2 focus:outline-fire-bush-600"
+  "focus:outline-2 focus:-outline-offset-2 focus:outline-fire-bush-600",
 );
 
 const selectWrapperClasses = clsx("w-64 flex-shrink-0 flex-grow-0");
 
 const selectTriggerClasses = clsx(
   "rounded-tl-lg rounded-tr-none rounded-br-none rounded-bl-lg",
-  ""
+  "",
 );
 
 const buttonClasses = clsx(
-  "flex w-16 flex-shrink-0 flex-grow-0 cursor-pointer items-center justify-center rounded-tr-lg rounded-br-lg bg-fire-bush"
+  "flex w-16 flex-shrink-0 flex-grow-0 cursor-pointer items-center justify-center rounded-tr-lg rounded-br-lg bg-fire-bush",
 );
 
 //
@@ -65,7 +65,7 @@ export const SearchBox: FC<Props> = ({ onSearch = defaultOnSearch }) => {
     const value = inputRef.current?.value ?? "";
     onSearch(
       searchType,
-      value.split(",").map((str) => str.trim())
+      value.split(",").map((str) => str.trim()),
     );
   };
   return (

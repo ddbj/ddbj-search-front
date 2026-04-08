@@ -6,7 +6,7 @@ const { parseParams } = __TEST__fetchJgaDacEntries;
 
 const expectKeyNotExists = (
   result: JgaDacListRequestParams,
-  key: keyof JgaDacListRequestParams
+  key: keyof JgaDacListRequestParams,
 ) => {
   expect(key in result).toBe(false);
 };

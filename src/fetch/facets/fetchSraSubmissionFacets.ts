@@ -11,7 +11,7 @@ export const fetchSraSubmissionFacets = async (params: SraSubmissionSearchParams
     `${API_PATH_SRA_SUBMISSION_FACET_LIST}?${new URLSearchParams(searchParams)}`,
     {
       method: "GET",
-    }
+    },
   );
   const data = (await response.json()) as SraSubmissionFacetListResponse;
   return data;

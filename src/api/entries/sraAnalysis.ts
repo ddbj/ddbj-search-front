@@ -32,7 +32,7 @@ export const sraAnalysisListRequestDoc: RouteConfig = {
             items: z.array(
               entryListItemResponseSchema
                 .omit({ type: true })
-                .extend({ type: z.literal("sra-analysis") })
+                .extend({ type: z.literal("sra-analysis") }),
             ),
           }),
         },

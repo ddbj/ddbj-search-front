@@ -107,7 +107,7 @@ describe("fetch*Detail", () => {
         headers: {
           "content-type": "application/json",
         },
-      })
+      }),
     );
 
     vi.stubGlobal("fetch", mockFetch);
@@ -120,41 +120,44 @@ describe("fetch*Detail", () => {
     vi.unstubAllGlobals();
   });
 
-  it.each(cases)("should throw AppHttpError for a problem response: $name", async ({ basePath, fn }) => {
-    const identifier = "TEST000404";
+  it.each(cases)(
+    "should throw AppHttpError for a problem response: $name",
+    async ({ basePath, fn }) => {
+      const identifier = "TEST000404";
 
-    const mockFetch = vi.fn().mockResolvedValue(
-      new Response(
-        JSON.stringify({
+      const mockFetch = vi.fn().mockResolvedValue(
+        new Response(
+          JSON.stringify({
+            title: "Not Found",
+            status: 404,
+            detail: `${identifier} was not found`,
+            requestId: "request-404",
+          }),
+          {
+            status: 404,
+            statusText: "Not Found",
+            headers: {
+              "content-type": "application/problem+json",
+            },
+          },
+        ),
+      );
+
+      vi.stubGlobal("fetch", mockFetch);
+
+      await expect(fn(identifier)).rejects.toMatchObject({
+        name: "AppHttpError",
+        status: 404,
+        requestId: "request-404",
+        message: `${identifier} was not found`,
+        problem: {
           title: "Not Found",
           status: 404,
-          detail: `${identifier} was not found`,
-          requestId: "request-404",
-        }),
-        {
-          status: 404,
-          statusText: "Not Found",
-          headers: {
-            "content-type": "application/problem+json",
-          },
-        }
-      )
-    );
+        },
+      });
+      expect(mockFetch).toHaveBeenCalledWith(`${basePath}${identifier}`, { method: "GET" });
 
-    vi.stubGlobal("fetch", mockFetch);
-
-    await expect(fn(identifier)).rejects.toMatchObject({
-      name: "AppHttpError",
-      status: 404,
-      requestId: "request-404",
-      message: `${identifier} was not found`,
-      problem: {
-        title: "Not Found",
-        status: 404,
-      },
-    });
-    expect(mockFetch).toHaveBeenCalledWith(`${basePath}${identifier}`, { method: "GET" });
-
-    vi.unstubAllGlobals();
-  });
+      vi.unstubAllGlobals();
+    },
+  );
 });

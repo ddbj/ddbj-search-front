@@ -11,7 +11,7 @@ export const fetchJgaPolicyFacets = async (params: JgaPolicySearchParams) => {
     `${API_PATH_JGA_POLICY_FACET_LIST}?${new URLSearchParams(searchParams)}`,
     {
       method: "GET",
-    }
+    },
   );
   const data = (await response.json()) as JgaPolicyFacetListResponse;
   return data;

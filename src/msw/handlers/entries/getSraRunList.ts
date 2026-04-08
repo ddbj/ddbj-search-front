@@ -32,5 +32,5 @@ export const getSraRunList = http.get<never, never, EntryListResponse>(
           };
         }),
     });
-  }
+  },
 );

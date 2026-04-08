@@ -4,7 +4,7 @@ import type { AllFacetListRequestParams } from "@/api/facets/all.ts";
 
 const expectKeyNotExists = (
   result: AllFacetListRequestParams,
-  key: keyof AllFacetListRequestParams
+  key: keyof AllFacetListRequestParams,
 ) => {
   expect(key in result).toBe(false);
 };

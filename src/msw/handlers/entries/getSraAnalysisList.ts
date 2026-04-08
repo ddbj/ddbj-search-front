@@ -32,5 +32,5 @@ export const getSraAnalysisList = http.get<never, never, EntryListResponse>(
           };
         }),
     });
-  }
+  },
 );

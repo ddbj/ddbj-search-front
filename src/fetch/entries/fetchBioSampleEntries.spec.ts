@@ -6,7 +6,7 @@ const { parseParams } = __TEST__fetchBioSampleEntries;
 
 const expectKeyNotExists = (
   result: BiosampleListRequestParams,
-  key: keyof BiosampleListRequestParams
+  key: keyof BiosampleListRequestParams,
 ) => {
   expect(key in result).toBe(false);
 };

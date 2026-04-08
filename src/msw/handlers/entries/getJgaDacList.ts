@@ -32,5 +32,5 @@ export const getJgaDacList = http.get<never, never, EntryListResponse>(
           };
         }),
     });
-  }
+  },
 );
