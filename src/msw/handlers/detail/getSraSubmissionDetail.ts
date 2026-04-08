@@ -1,18 +1,19 @@
 import { http, HttpResponse } from "msw";
 import { addIdentifierToPath, API_PATH_SRA_SUBMISSION_LIST } from "@/api/paths.ts";
+import { resolveDetailFailureResponse } from "@/msw/handlers/detail/detailFailure.ts";
 import type { BaseDetailRequestParams } from "@/api/detail/base.ts";
-import type { SraSubmissionDetailResponse } from "@/api/detail/sraSubmission.ts";
 
 const path = addIdentifierToPath(API_PATH_SRA_SUBMISSION_LIST, "MSW");
 
-export const getSraSubmissionDetail = http.get<
-  BaseDetailRequestParams,
-  never,
-  SraSubmissionDetailResponse
->(path, ({ params }) => {
+export const getSraSubmissionDetail = http.get<BaseDetailRequestParams>(path, ({ params }) => {
   const { identifier } = params;
+  const failureResponse = resolveDetailFailureResponse(identifier, `${API_PATH_SRA_SUBMISSION_LIST}${identifier}`);
 
-  return HttpResponse.json<SraSubmissionDetailResponse>({
+  if (failureResponse) {
+    return failureResponse;
+  }
+
+  return HttpResponse.json({
     identifier,
     dateCreated: "2024-01-01T00:00:00Z",
     dateModified: "2024-01-02T00:00:00Z",

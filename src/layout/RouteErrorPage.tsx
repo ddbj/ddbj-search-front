@@ -34,14 +34,21 @@ const variantAccentClasses: Record<RouteErrorVariant, string> = {
   "server-error": "border-amber-200 bg-amber-50 text-amber-700",
 };
 
+const getRouteErrorPageModel = (variant: RouteErrorVariant, title: string, error?: unknown) => {
+  return {
+    breadcrumbsPaths: [{ label: title }] satisfies BreadcrumbsPath[],
+    requestId: isAppHttpError(error) ? error.requestId : undefined,
+    errorMessage: error instanceof Error ? error.message : undefined,
+    variantLabel: variantLabelMap[variant],
+    variantAccentClassName: variantAccentClasses[variant],
+  };
+};
+
 export const RouteErrorPage: FC<Props> = ({ variant, title, description, action, error }) => {
   useTitle(title);
 
-  const breadcrumbsPaths: BreadcrumbsPath[] = [{ label: title }];
-  const requestId = isAppHttpError(error) ? error.requestId : undefined;
-  const errorMessage = error instanceof Error ? error.message : undefined;
-  const variantLabel = variantLabelMap[variant];
-  const variantAccentClassName = variantAccentClasses[variant];
+  const { breadcrumbsPaths, requestId, errorMessage, variantLabel, variantAccentClassName } =
+    getRouteErrorPageModel(variant, title, error);
 
   return (
     <main className={"flex min-h-screen flex-col gap-8 p-8 pb-16 shadow-lg"}>
@@ -89,3 +96,7 @@ export const RouteErrorPage: FC<Props> = ({ variant, title, description, action,
 };
 
 export const routeErrorPageActionButtonClasses = actionButtonClasses;
+
+export const __TEST__RouteErrorPage = {
+  getRouteErrorPageModel,
+};
