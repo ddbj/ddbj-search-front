@@ -12,12 +12,10 @@ export default defineConfig({
       autoCodeSplitting: true,
     }),
     react(),
+    // Native tsconfig path resolution breaks TanStack Router split-route imports in Vite 8 builds.
     tsconfigPaths(),
     tailwindcss(),
   ],
-  esbuild: {
-    jsx: "automatic",
-  },
   build: {
     rollupOptions: {
       input: {

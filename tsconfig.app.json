@@ -30,7 +30,6 @@
   "include": [
     "src/**/*",
     ".storybook/preview.tsx",
-    ".storybook/providers.ts",
-    ".storybook/vitest.setup.ts"
+    ".storybook/providers.ts"
   ]
 }

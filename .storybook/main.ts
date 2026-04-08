@@ -29,9 +29,6 @@ const config: StorybookConfig = {
           "@": path.resolve(__dirname, "../src"),
         },
       },
-      esbuild: {
-        jsx: "automatic",
-      },
     });
   },
 };
