@@ -1,4 +1,3 @@
-import "jest-extended";
 import { expect, fn } from "storybook/test";
 import { SearchBox } from "@/features/initialSearch/SearchBox.tsx";
 import { findByListValue, findBySlot } from "@/utils/storybook.ts";
