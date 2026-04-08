@@ -4,6 +4,7 @@ import { baseDetailRequestSchema } from "@/api/detail/base.ts";
 import { API_PATH_BIOSAMPLE_LIST } from "@/api/paths.ts";
 import { fetchBioSampleDetail } from "@/fetch/detail/fetchBioSampleDetail.ts";
 import { SearchDetailLayout } from "@/layout/SearchDetailLayout.tsx";
+import { ensureDetailQueryData } from "@/utils/ensureDetailQueryData.ts";
 import type { ComponentProps } from "react";
 
 //
@@ -17,7 +18,7 @@ export const Route = createFileRoute("/entry/biosample/$identifier")({
   component: RouteComponent,
   loader: async ({ context, params }) => {
     const { identifier } = baseDetailRequestSchema.parse(params);
-    await context.queryClient.ensureQueryData(makeQuery(identifier));
+    await ensureDetailQueryData(context.queryClient, makeQuery(identifier));
   },
 });
 

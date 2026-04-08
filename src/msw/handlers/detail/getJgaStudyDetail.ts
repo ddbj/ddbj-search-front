@@ -1,16 +1,19 @@
 import { http, HttpResponse } from "msw";
 import { addIdentifierToPath, API_PATH_JGA_STUDY_LIST } from "@/api/paths.ts";
+import { resolveDetailFailureResponse } from "@/msw/handlers/detail/detailFailure.ts";
 import type { BaseDetailRequestParams } from "@/api/detail/base.ts";
-import type { JgaStudyDetailResponse } from "@/api/detail/jgaStudy.ts";
 
 const path = addIdentifierToPath(API_PATH_JGA_STUDY_LIST, "MSW");
 
-export const getJgaStudyDetail = http.get<BaseDetailRequestParams, never, JgaStudyDetailResponse>(
-  path,
-  ({ params }) => {
-    const { identifier } = params;
+export const getJgaStudyDetail = http.get<BaseDetailRequestParams>(path, ({ params }) => {
+  const { identifier } = params;
+  const failureResponse = resolveDetailFailureResponse(identifier, `${API_PATH_JGA_STUDY_LIST}${identifier}`);
 
-    return HttpResponse.json<JgaStudyDetailResponse>({
+  if (failureResponse) {
+    return failureResponse;
+  }
+
+  return HttpResponse.json({
       identifier,
       dateCreated: "2024-01-01T00:00:00Z",
       dateModified: "2024-01-02T00:00:00Z",
@@ -29,6 +32,5 @@ export const getJgaStudyDetail = http.get<BaseDetailRequestParams, never, JgaStu
       name: null,
       url: `https://ddbj-staging.nig.ac.jp/search/entry/jga-study/${identifier}`,
       sameAs: [],
-    });
-  }
-);
+  });
+});

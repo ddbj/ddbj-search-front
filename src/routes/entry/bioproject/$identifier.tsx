@@ -4,6 +4,7 @@ import { baseDetailRequestSchema } from "@/api/detail/base.ts";
 import { API_PATH_BIOPROJECT_LIST } from "@/api/paths.ts";
 import { fetchBioProjectDetail } from "@/fetch/detail/fetchBioProjectDetail.ts";
 import { SearchDetailLayout } from "@/layout/SearchDetailLayout.tsx";
+import { ensureDetailQueryData } from "@/utils/ensureDetailQueryData.ts";
 import type { ComponentProps } from "react";
 
 const makeQuery = (identifier: string) =>
@@ -16,7 +17,7 @@ export const Route = createFileRoute("/entry/bioproject/$identifier")({
   component: RouteComponent,
   loader: async ({ context, params }) => {
     const { identifier } = baseDetailRequestSchema.parse(params);
-    await context.queryClient.ensureQueryData(makeQuery(identifier));
+    await ensureDetailQueryData(context.queryClient, makeQuery(identifier));
   },
 });
 

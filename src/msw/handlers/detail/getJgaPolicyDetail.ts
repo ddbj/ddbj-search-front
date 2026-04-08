@@ -1,16 +1,19 @@
 import { http, HttpResponse } from "msw";
 import { addIdentifierToPath, API_PATH_JGA_POLICY_LIST } from "@/api/paths.ts";
+import { resolveDetailFailureResponse } from "@/msw/handlers/detail/detailFailure.ts";
 import type { BaseDetailRequestParams } from "@/api/detail/base.ts";
-import type { JgaPolicyDetailResponse } from "@/api/detail/jgaPolicy.ts";
 
 const path = addIdentifierToPath(API_PATH_JGA_POLICY_LIST, "MSW");
 
-export const getJgaPolicyDetail = http.get<BaseDetailRequestParams, never, JgaPolicyDetailResponse>(
-  path,
-  ({ params }) => {
-    const { identifier } = params;
+export const getJgaPolicyDetail = http.get<BaseDetailRequestParams>(path, ({ params }) => {
+  const { identifier } = params;
+  const failureResponse = resolveDetailFailureResponse(identifier, `${API_PATH_JGA_POLICY_LIST}${identifier}`);
 
-    return HttpResponse.json<JgaPolicyDetailResponse>({
+  if (failureResponse) {
+    return failureResponse;
+  }
+
+  return HttpResponse.json({
       identifier,
       dateCreated: "2024-01-01T00:00:00Z",
       dateModified: "2024-01-02T00:00:00Z",
@@ -29,6 +32,5 @@ export const getJgaPolicyDetail = http.get<BaseDetailRequestParams, never, JgaPo
       name: null,
       url: `https://ddbj-staging.nig.ac.jp/search/entry/jga-policy/${identifier}`,
       sameAs: [],
-    });
-  }
-);
+  });
+});
