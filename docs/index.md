@@ -11,7 +11,8 @@
 ## 日常開発
 
 - [`development-guide.md`](./development-guide.md): 日常開発で使う手順、検証方針、完了条件をまとめた正本
-- [`documentation-guide.md`](./documentation-guide.md): ドキュメントの書き方、置き分け方、更新時の考え方をまとめた正本
+- [`documentation-guide.md`](./documentation-guide.md): ドキュメントの書き方、置き分け方、一時メモの扱いをまとめた正本
+- [`external-tool-operation.md`](./external-tool-operation.md): AI が外部ツールを使うときの進め方、待ち方、進捗共有の標準運用
 
 ## 実装規約
 
