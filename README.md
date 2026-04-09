@@ -36,8 +36,6 @@ pnpm dev
 
 ## ドキュメント
 
-- [docs/development-guide.md](./docs/development-guide.md): 開発手順、検証方針、完了条件
-- [docs/naming-convention.md](./docs/naming-convention.md): 命名規約と型・スキーマの接尾辞ルール
-- [docs/spec.md](./docs/spec.md): 採用ライブラリと技術構成のメモ
-- [docs/domain-behavior.md](./docs/domain-behavior.md): 画面表示や download link に関するドメイン挙動
-- [docs/document-inventory.md](./docs/document-inventory.md): ドキュメント棚卸しと移行マップ
+- docs 全体の入口は [docs/index.md](./docs/index.md) を参照してください
+- 日常開発で最初に確認する内容は [docs/development-guide.md](./docs/development-guide.md) にまとまっています
+- 文書の編集方針や更新時の考え方は [docs/documentation-guide.md](./docs/documentation-guide.md) にまとまっています

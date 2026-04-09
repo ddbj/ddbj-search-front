@@ -4,12 +4,6 @@
 
 この文書は、日常開発で参照する運用ルールの正本です。
 
-- 開発開始時の確認
-- 主要コマンド
-- 検証方針
-- 完了条件
-- 生成物の扱い
-
 `README.md` には入口としての要約だけを置き、詳細な運用ルールはこの文書に集約します。
 
 ## 開発環境
@@ -30,14 +24,10 @@
 
 このリポジトリでは Oxc を標準の品質ツールとして使います。
 
-- `pnpm lint`: `oxlint . --quiet`
-- `pnpm lint:fix`: `oxlint . --fix --quiet`
-- `pnpm format`: `oxfmt .`
-- `pnpm format:check`: `oxfmt --check .`
-- `pnpm type-check`: `tsc -b --noEmit --pretty`
+- `pnpm format`: コードやドキュメントを整形する
+- `pnpm lint`: lint を実行する
+- `pnpm type-check`: 型チェックを実行する
 - `pnpm test`: unit test を実行する
-- `pnpm test:storybook`: Storybook の browser test を実行する
-- `pnpm build-storybook`: Storybook の production build を確認する
 
 Oxc の formatter を正として扱うため、import 順などは Oxc の出力に従います。
 
@@ -67,8 +57,7 @@ pnpm type-check
 
 ### ドキュメントのみの変更
 
-- 原則として `test` / `lint` / `type-check` を必須にしない
-- ただし、設定ファイル、ビルド挙動、Storybook、生成物ポリシーのように実行結果へ影響する説明を変えた場合は、必要な範囲で検証する
+- ドキュメント変更時の扱いは `docs/documentation-guide.md` を参照する
 
 ### コード変更を含む場合
 
@@ -104,24 +93,23 @@ pnpm type-check
 - 生成物の扱いが適切である
 - 関連ドキュメントの更新が必要なら反映されている
 
-## 生成物の扱い
+## 自動生成されたファイルの扱い
 
-- 生成物は手書きの正本ではなく、派生物として扱う
-- 生成物だけを直接直すのは、その保守が目的のときに限る
+- 自動生成されたファイルは手書きの正本ではなく、派生物として扱う
+- 自動生成されたファイルだけを直接直すのは、その保守が目的のときに限る
 - ソース変更に再生成が必要なら、生成差分も同じ変更に含める
-- 作業開始前から生成物に差分や破損がある場合は、その状態を明示する
+- 作業開始前から自動生成されたファイルに差分や破損がある場合は、その状態を明示する
 
-## 補足ルール
+## 用途別の参照先
 
-### `__TEST__` export
-
-- コンポーネント内で pure function を近くに置いた方が保守しやすい場合は、`__TEST__...` として export してよい
-- test 専用 export が `react-refresh/only-export-components` に触れる場合は、理由を添えた `eslint-disable-next-line` を許容する
-
-### Storybook preview decorator
-
-- `.storybook/preview.tsx` のような Storybook 設定では、フレームワーク都合の export に対する例外を許容する
-- ただし、アプリ本体の設計上の都合として安易に横展開しない
+- ドキュメントの書き方を確認したいとき:
+  - `docs/documentation-guide.md`
+- コード規約を確認したいとき:
+  - `docs/code-style.md`
+- テスト・lint 方針を確認したいとき:
+  - `docs/testing-policy.md`
+- 命名規約を確認したいとき:
+  - `docs/naming-convention.md`
 
 ## リポジトリ構成の目安
 
