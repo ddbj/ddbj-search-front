@@ -1,31 +1,78 @@
-# Development Guide
+# 開発ガイド
 
-## Environment
+## この文書の役割
 
-- Use Node.js `>=22.12.0 <23`.
-- Use the repository `packageManager` version: `pnpm@10.28.2`.
-- Install dependencies with `pnpm install`.
+この文書は、日常開発で参照する運用ルールの正本です。
 
-## Daily workflow
+- 開発開始時の確認
+- 主要コマンド
+- 検証方針
+- 完了条件
+- 生成物の扱い
 
-1. Start the app with `pnpm dev`.
-2. Use `pnpm dev:msw` when you need mocked API responses.
-3. Run `pnpm storybook` when working on UI states, stories, or visual regressions.
+`README.md` には入口としての要約だけを置き、詳細な運用ルールはこの文書に集約します。
 
-## Quality tooling
+## 開発環境
 
-This repository now uses Oxc as the default quality toolchain.
+- Node.js `>=22.12.0 <23`
+- `packageManager` に指定された `pnpm@10.28.2` を利用する
+- 依存関係のインストールは `pnpm install` を利用する
 
-- `pnpm lint` runs `oxlint . --quiet`
-- `pnpm lint:fix` runs `oxlint . --fix --quiet`
-- `pnpm format` runs `oxfmt .`
-- `pnpm format:check` runs `oxfmt --check .`
+## 日常的に使うコマンド
 
-The formatter is intentionally Oxc-native. Import ordering follows Oxc canonical output instead of the previous ESLint or Prettier conventions.
+- `pnpm dev`: アプリを起動する
+- `pnpm dev:msw`: Mock Service Worker を有効にして起動する
+- `pnpm storybook`: Storybook を起動する
+- `pnpm build`: TypeScript ビルド後に本番アセットを生成する
+- `pnpm preview`: 本番ビルドをローカル確認する
 
-## Before work
+## 品質ツール
 
-Run a preflight check before editing files so you can separate pre-existing failures from regressions introduced by the current task.
+このリポジトリでは Oxc を標準の品質ツールとして使います。
+
+- `pnpm lint`: `oxlint . --quiet`
+- `pnpm lint:fix`: `oxlint . --fix --quiet`
+- `pnpm format`: `oxfmt .`
+- `pnpm format:check`: `oxfmt --check .`
+- `pnpm type-check`: `tsc -b --noEmit --pretty`
+- `pnpm test`: unit test を実行する
+- `pnpm test:storybook`: Storybook の browser test を実行する
+- `pnpm build-storybook`: Storybook の production build を確認する
+
+Oxc の formatter を正として扱うため、import 順などは Oxc の出力に従います。
+
+## 作業開始時の確認
+
+コードや設定に影響する変更を始める前は、必要に応じて現状確認を行います。
+
+基本の確認コマンド:
+
+```bash
+pnpm lint
+pnpm test
+pnpm type-check
+```
+
+目的:
+
+- 変更前から壊れている箇所がないか把握する
+- 作業後の失敗と既存不具合を切り分ける
+
+## 検証方針
+
+### 原則
+
+- 変更内容に応じて、必要な検証だけを実行する
+- 実行した検証と、あえて省略した検証の理由を共有する
+
+### ドキュメントのみの変更
+
+- 原則として `test` / `lint` / `type-check` を必須にしない
+- ただし、設定ファイル、ビルド挙動、Storybook、生成物ポリシーのように実行結果へ影響する説明を変えた場合は、必要な範囲で検証する
+
+### コード変更を含む場合
+
+最低限の確認:
 
 ```bash
 pnpm lint
@@ -33,84 +80,60 @@ pnpm test
 pnpm type-check
 ```
 
-## After a change
+必要に応じて追加する確認:
 
-Run formatting after you finish editing files:
+- `pnpm build`: 本番ビルドへの影響を確認する
+- `pnpm test:storybook`: Storybook 設定、story、decorator を変更した場合に実行する
+- `pnpm build-storybook`: Storybook の addon、framework、builder を変更した場合に実行する
+- `pnpm dev:msw`: mock やエラー系 UI の確認が必要な場合に実行する
 
-```bash
-pnpm format
-```
+## 変更後の整え方
 
-## Generated files
+- 編集後は必要に応じて `pnpm format` を実行する
+- 実行した検証結果は、完了報告時に共有する
+- ドキュメントや運用ルールを変えた場合は、関連文書も更新する
 
-- Generated files are derived artifacts and should not be treated as hand-authored source files.
-- Avoid editing generated files directly unless the task is specifically about generated output maintenance.
-- When a source change requires regeneration, include the generated diff in the same change.
-- If a generated file already has drift before you start work, report it explicitly instead of treating it as part of your task by default.
+## 完了条件
 
-## Testing
+タスク完了時には、少なくとも以下を満たす。
 
-### Required checks
+- 依頼された変更が反映されている
+- 変更内容に見合った検証が完了している
+- 検証を省略した場合は理由が説明できる
+- 必要なら整形が実施されている
+- 生成物の扱いが適切である
+- 関連ドキュメントの更新が必要なら反映されている
 
-Run these commands before completing a task:
+## 生成物の扱い
 
-```bash
-pnpm lint
-pnpm test
-pnpm type-check
-pnpm build
-```
+- 生成物は手書きの正本ではなく、派生物として扱う
+- 生成物だけを直接直すのは、その保守が目的のときに限る
+- ソース変更に再生成が必要なら、生成差分も同じ変更に含める
+- 作業開始前から生成物に差分や破損がある場合は、その状態を明示する
 
-Compare this result with the preflight check. If something was already failing before the change, report it as pre-existing instead of treating it as a new regression.
+## 補足ルール
 
-## Done criteria
+### `__TEST__` export
 
-Use this checklist before handing work off:
+- コンポーネント内で pure function を近くに置いた方が保守しやすい場合は、`__TEST__...` として export してよい
+- test 専用 export が `react-refresh/only-export-components` に触れる場合は、理由を添えた `eslint-disable-next-line` を許容する
 
-- The requested change is implemented.
-- Preflight and final verification results are both known.
-- Pre-existing failures are separated from new regressions.
-- Formatting has been applied after editing.
-- Required checks for the task scope have been run.
-- Generated files were handled according to the generated-file policy.
-- Documentation was updated when the task changed repository behavior or contributor workflow.
+### Storybook preview decorator
 
-### Additional checks for UI and Storybook work
+- `.storybook/preview.tsx` のような Storybook 設定では、フレームワーク都合の export に対する例外を許容する
+- ただし、アプリ本体の設計上の都合として安易に横展開しない
 
-- `pnpm test:storybook`: runs the Storybook Vitest project in browser mode
-- `pnpm build-storybook`: verifies the Storybook production build
+## リポジトリ構成の目安
 
-The Storybook test project currently uses Playwright through `@vitest/browser-playwright`. Keep that in mind when changing Storybook or browser-test configuration.
+- `src/routes`: TanStack Router の file-based routes
+- `src/layout`: ページレベルの layout
+- `src/features`: 機能単位の UI とロジック
+- `src/api`: OpenAPI 由来の定義や API 型
+- `src/fetch`: fetcher と関連ユーティリティ
+- `.storybook`: Storybook 設定
 
-### `__TEST__` exports
+## ビルドに関するメモ
 
-- Prefer keeping pure helper logic in the same file as the component when that makes unit tests easier to maintain.
-- Export those helpers through a `__TEST__...` object so tests can import them without widening the public surface more than necessary.
-- When Oxc reports `react-refresh/only-export-components` for those test-only exports, add `eslint-disable-next-line react-refresh/only-export-components` with a short reason rather than moving logic out mechanically.
-- Use the same exception only for intentional colocated helpers. If a helper is not test-only, prefer moving it into a nearby utility module when that improves clarity.
-
-### Storybook preview decorators
-
-- `.storybook/preview.tsx` may use `eslint-disable-next-line react-refresh/only-export-components` for framework-required decorators.
-- Prefer this exception only in Storybook config entrypoints where the structure is imposed by Storybook rather than by app code design.
-
-## Application structure
-
-- `src/routes`: TanStack Router file-based routes
-- `src/layout`: page-level layout components
-- `src/features`: domain UI and supporting feature logic
-- `src/api`: OpenAPI-related definitions and API types
-- `src/fetch`: network fetchers and related helpers
-- `.storybook`: Storybook configuration
-
-## Build details
-
-- `pnpm build` runs `tsc -b` before `vite build`.
-- The Vite build emits both the main application and the API documentation entrypoint.
-- `vite-tsconfig-paths` remains in place because the repo depends on alias resolution that still conflicts with TanStack Router split-route builds on Vite 8.
-
-## When to run extra verification
-
-- Run `pnpm test:storybook` after changing Storybook config, shared decorators, or story files.
-- Run `pnpm build-storybook` after addon, framework, or builder changes.
-- Run `pnpm dev:msw` after changing mocks, request flows, or empty/error states that depend on MSW.
+- `pnpm build` は `tsc -b` のあとに `vite build` を実行する
+- Vite のビルドでは、メインアプリと API ドキュメントの 2 つの entrypoint を出力する
+- `vite-tsconfig-paths` は、現時点では TanStack Router の split route と相性問題があるため維持している
