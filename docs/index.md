@@ -28,3 +28,7 @@
 
 - [`decisions/README.md`](./decisions/README.md): 設計判断ログの役割、運用ルール、ひな形をまとめた入口
 - [`decisions/2026-04-09-error-handling.md`](./decisions/2026-04-09-error-handling.md): problem response の保持、404 の扱い、共通エラーレイヤーの方針を記録した判断
+
+## エージェント向け
+
+- [`agents/skills/`](./agents/skills/): エージェント用のタスク別スキル定義（詳細は `AGENTS.md` を参照）

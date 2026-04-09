@@ -52,7 +52,7 @@
 
 ## API Doc
 
-- Scaler
+- Scalar
 - Zod to OpenAPI
 
 ## 関連ドキュメント

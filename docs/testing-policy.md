@@ -33,3 +33,4 @@
 - `docs/development-guide.md`: いつどの検証を実行するか
 - `docs/code-style.md`: 実装時のコード規約
 - `docs/naming-convention.md`: 命名規約
+- `docs/documentation-guide.md`: この文書自体を更新するときの方針

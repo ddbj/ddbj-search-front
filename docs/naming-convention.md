@@ -9,6 +9,7 @@
   - API request / response の型名
   - Zod schema や search parameter の命名
 - 対象外:
+  - コードスタイルや関数定義の方針（→ `docs/code-style.md`）
   - 個別機能の設計判断
   - 一時的な実装メモ
   - 日常運用や検証方針
