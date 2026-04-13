@@ -21,6 +21,8 @@ const wrapperClasses = clsx(
   "flex flex-col gap-2 rounded-md border border-gray-200 bg-white p-2 text-sm shadow-sm",
 );
 
+const headerClasses = clsx("flex flex-col gap-3 md:flex-row md:items-start md:justify-between");
+
 export const ResultInfo: FC<Props> = ({
   searchParams,
   removeParamFunc,
@@ -34,8 +36,8 @@ export const ResultInfo: FC<Props> = ({
     <div>
       <div className={"bg-white pt-4"}></div>
       <div className={wrapperClasses}>
-        <div className={"flex items-center justify-between"}>
-          <p>
+        <div className={headerClasses}>
+          <p className="text-sm leading-6 text-gray-700">
             Found {formatNumber(itemCount)} entries / Displaying {currentPage} of{" "}
             {formatNumber(totalPages)} pages
             {itemCount > MAX_ENTRIES && (

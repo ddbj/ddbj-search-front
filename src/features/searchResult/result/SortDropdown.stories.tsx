@@ -1,6 +1,5 @@
-import { expect, fn } from "storybook/test";
+import { expect, fn, screen, within } from "storybook/test";
 import { SortDropdown } from "@/features/searchResult/result/SortDropdown.tsx";
-import { findByListValue, findBySlot } from "@/utils/storybook.ts";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const mockChangeSort = fn();
@@ -13,7 +12,7 @@ const meta = {
   },
   decorators: [
     (Story) => (
-      <div className="p-4">
+      <div className="w-fit p-4">
         <Story />
       </div>
     ),
@@ -24,6 +23,23 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+const findVisibleOption = async (name: RegExp) => {
+  const options = await screen.findAllByRole("option", { hidden: true, name });
+  const option = options.find((element) => {
+    return (
+      element instanceof HTMLElement &&
+      element.getClientRects().length > 0 &&
+      window.getComputedStyle(element).visibility !== "hidden"
+    );
+  });
+
+  if (!(option instanceof HTMLElement)) {
+    throw new Error(`Visible option not found: ${String(name)}`);
+  }
+
+  return option;
+};
+
 export const Primary = {} satisfies Story;
 
 export const UpdatedNewestFirst = {
@@ -33,35 +49,47 @@ export const UpdatedNewestFirst = {
 } satisfies Story;
 
 export const MenuOpen = {
-  play: async ({ step, userEvent }) => {
+  play: async ({ canvas, step, userEvent }) => {
     await step("click trigger", async () => {
-      const trigger = await findBySlot("trigger");
+      const trigger = await canvas.findByRole("button", { name: "Sort search results" });
       await userEvent.click(trigger);
     });
 
     await step("show listbox", async () => {
-      const updatedDateDesc = await findByListValue("dateModified:desc");
+      const updatedDateDesc = await findVisibleOption(/Updated Date\s+Newest first/);
       await expect(updatedDateDesc).toBeVisible();
+    });
+
+    await step("show sort captions", async () => {
+      const updatedDateDesc = await findVisibleOption(/Updated Date\s+Newest first/);
+      await expect(updatedDateDesc).toBeVisible();
+      await expect(updatedDateDesc).toHaveTextContent("Updated Date");
+      await expect(updatedDateDesc).toHaveTextContent("Newest first");
     });
   },
 } satisfies Story;
 
 export const SelectPublishedOldest = {
-  play: async ({ args, step, userEvent }) => {
+  play: async ({ args, canvas, step, userEvent }) => {
     mockChangeSort.mockReset();
 
     await step("click trigger", async () => {
-      const trigger = await findBySlot("trigger");
+      const trigger = await canvas.findByRole("button", { name: "Sort search results" });
       await userEvent.click(trigger);
     });
 
-    await step("select published date asc", async () => {
-      const publishedDateAsc = await findByListValue("datePublished:asc");
-      await userEvent.click(publishedDateAsc);
+    await step("select published date asc with keyboard", async () => {
+      await userEvent.keyboard("{ArrowDown}{ArrowDown}{ArrowDown}{ArrowDown}{Enter}");
     });
 
     await step("call change handler", async () => {
       await expect(args.changeSortFunc).toHaveBeenLastCalledWith("datePublished:asc");
+    });
+
+    await step("update selected label", async () => {
+      const trigger = await canvas.findByRole("button", { name: "Sort search results" });
+      await expect(within(trigger).getByText("Published Date")).toBeVisible();
+      await expect(within(trigger).getByText("Oldest first")).toBeVisible();
     });
   },
 } satisfies Story;
