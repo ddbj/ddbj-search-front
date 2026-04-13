@@ -38,6 +38,20 @@ const resetOnSearch = (onSearch: unknown) => {
 
 export const Primary = {} satisfies Story;
 
+export const MenuOpen: Story = {
+  play: async ({ canvasElement, userEvent, step }) => {
+    await step("open menu", async () => {
+      const trigger = canvasElement.querySelector('[data-slot="trigger"]')!;
+      await userEvent.click(trigger);
+    });
+
+    await step("show scroll container", async () => {
+      const scrollShadow = canvasElement.ownerDocument.querySelector(".scroll-shadow");
+      await expect(scrollShadow).toBeInTheDocument();
+    });
+  },
+};
+
 export const SearchAsBlank: Story = {
   play: async ({ args, userEvent, canvasElement, step }) => {
     resetOnSearch(args.onSearch);

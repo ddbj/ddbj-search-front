@@ -1,4 +1,4 @@
-import { ListBox, Select } from "@heroui/react";
+import { ListBox, ScrollShadow, Select } from "@heroui/react";
 import clsx from "clsx";
 import { type FC, type FormEvent, type Key, useRef, useState } from "react";
 import { dbLabels, type DBType } from "@/consts/db.ts";
@@ -26,6 +26,8 @@ const selectTriggerClasses = clsx(
 const buttonClasses = clsx(
   "flex w-16 flex-shrink-0 flex-grow-0 cursor-pointer items-center justify-center rounded-tr-lg rounded-br-lg bg-fire-bush",
 );
+
+const selectPopoverClasses = clsx("max-h-80 overflow-y-auto");
 
 const selectItems = [
   { id: allKey, label: allLabel },
@@ -92,13 +94,15 @@ export const SearchBox: FC<Props> = ({ onSearch = defaultOnSearch }) => {
           <Select.Indicator />
         </Select.Trigger>
         <Select.Popover>
-          <ListBox className="max-h-80">
-            {selectItems.map((item) => (
-              <ListBox.Item key={item.id} id={item.id} data-key={item.id} textValue={item.label}>
-                {item.label}
-              </ListBox.Item>
-            ))}
-          </ListBox>
+          <ScrollShadow className={selectPopoverClasses} hideScrollBar={false}>
+            <ListBox>
+              {selectItems.map((item) => (
+                <ListBox.Item key={item.id} id={item.id} data-key={item.id} textValue={item.label}>
+                  {item.label}
+                </ListBox.Item>
+              ))}
+            </ListBox>
+          </ScrollShadow>
         </Select.Popover>
       </Select>
       <input
