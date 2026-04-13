@@ -23,7 +23,7 @@ type Props = {
   update: UpdateSearchFunctions;
   params: AnySearchParams;
 };
-const wrapperClasses = "flex flex-col gap-4 w-96";
+const wrapperClasses = "flex w-96 shrink-0 flex-col gap-4";
 
 export const QueryBuilder: FC<Props> = ({ currentType, update, params }) => {
   const { keywords, types, datePublishedFrom, datePublishedTo, dateModifiedFrom, dateModifiedTo } =

@@ -29,14 +29,14 @@ export const SearchResultLayout: FC<Props> = ({ entryType, updateFunctions, para
     <main className={"p-8 pb-16 shadow-lg"}>
       <GlobalHeader breadcrumbsPaths={breadcrumbsPaths} />
       <div className={"relative flex items-start gap-4"}>
-        <aside className={"sticky top-0 py-4"}>
+        <aside className={"sticky top-0 w-96 shrink-0 py-4"}>
           <QueryBuilder
             currentType={entryType}
             update={updateFunctions}
             params={params}
           ></QueryBuilder>
         </aside>
-        <div className={"flex-grow-1"}>
+        <div className={"min-w-0 flex-1"}>
           <aside className={"sticky top-0 flex flex-col gap-4"}>
             <ResultInfo
               removeParamFunc={updateFunctions.removeParam}
@@ -47,7 +47,7 @@ export const SearchResultLayout: FC<Props> = ({ entryType, updateFunctions, para
               itemCount={pagination?.total ?? 0}
             />
           </aside>
-          <div className={"flex flex-grow-1 flex-col gap-8 py-4"}>
+          <div className={"flex min-w-0 flex-1 flex-col gap-8 py-4"}>
             <ResultList data={(data?.items ?? []).map((item) => parseResultCardProps(item))} />
             <Pagination
               searchParams={params}
