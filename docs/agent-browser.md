@@ -20,6 +20,5 @@
 
 ## 関連文書
 
-- `docs/ai-task-workflow.md`
 - `docs/development-guide.md`
 - `docs/external-tool-operation.md`

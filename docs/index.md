@@ -15,14 +15,6 @@
 - [`external-tool-operation.md`](./external-tool-operation.md): AI が外部ツールを使うときの進め方、待ち方、進捗共有の標準運用
 - [`agent-browser.md`](./agent-browser.md): `agent-browser` で Storybook / 実アプリを確認するときの入口、待機条件、成果物共有の運用メモ
 
-## 改修フロー
-
-- [`ai-task-workflow.md`](./ai-task-workflow.md): 人間が明示的に起動する AI 改修フローの進め方、計画と実装の責務分離、Linear Project を軸にした記録と完了の進め方をまとめた文書
-
-## 改修フロー
-
-- [`ai-task-workflow.md`](./ai-task-workflow.md): 人間が明示的に起動する AI 改修フローの進め方、計画と実装の責務分離、Linear Project を軸にした記録と完了の進め方をまとめた文書
-
 ## 実装規約
 
 - [`code-style.md`](./code-style.md): 実装時のコードスタイルと例外ルールをまとめた正本
