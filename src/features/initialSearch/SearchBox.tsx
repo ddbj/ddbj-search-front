@@ -1,4 +1,3 @@
-import { Select, type Selection, SelectItem, type SharedSelection } from "@heroui/react";
 import clsx from "clsx";
 import { type FC, type FormEvent, useRef, useState } from "react";
 import { dbLabels, type DBType } from "@/consts/db.ts";
@@ -26,6 +25,11 @@ const buttonClasses = clsx(
   "flex w-16 flex-shrink-0 flex-grow-0 cursor-pointer items-center justify-center rounded-tr-lg rounded-br-lg bg-fire-bush",
 );
 
+const selectItems = [
+  { id: allKey, label: allLabel },
+  ...Object.entries(dbLabels).map(([id, label]) => ({ id, label })),
+];
+
 //
 
 type Props = {
@@ -37,25 +41,28 @@ const defaultOnSearch = (types: DBType[], keywords: string[]) => {
 };
 
 export const SearchBox: FC<Props> = ({ onSearch = defaultOnSearch }) => {
-  const [values, setValues] = useState<Selection>(new Set([]));
+  const [values, setValues] = useState<Set<string>>(new Set());
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const onSelectionChange = (selection: SharedSelection) => {
-    if (!(selection instanceof Set)) {
-      setValues(selection);
+  const onSelectionChange = (selectedOptions: HTMLOptionsCollection) => {
+    const nextValues = new Set(
+      Array.from(selectedOptions)
+        .filter((option) => option.selected)
+        .map((option) => option.value),
+    );
+    const previouslyHadAll = values.has(allKey);
+    const nextHasAll = nextValues.has(allKey);
+
+    if (nextHasAll && !previouslyHadAll) {
+      setValues(new Set([allKey]));
       return;
     }
-    const hasAll = selection.has("all");
-    const isClickedAll = selection.currentKey === "all";
-    if (hasAll) {
-      if (isClickedAll) {
-        setValues(new Set(["all"]));
-      } else {
-        setValues(new Set([...selection].filter((v) => v !== "all")));
-      }
-    } else {
-      setValues(selection);
+
+    if (nextHasAll && previouslyHadAll && nextValues.size > 1) {
+      nextValues.delete(allKey);
     }
+
+    setValues(nextValues);
   };
 
   const onSubmitForm = (e: FormEvent) => {
@@ -69,21 +76,23 @@ export const SearchBox: FC<Props> = ({ onSearch = defaultOnSearch }) => {
   };
   return (
     <form className={wrapperClasses} onSubmit={onSubmitForm}>
-      <Select
-        className={selectWrapperClasses}
-        classNames={{
-          trigger: selectTriggerClasses,
-        }}
-        label="Data Source"
-        placeholder="Select Database"
-        selectedKeys={values}
-        selectionMode="multiple"
-        onSelectionChange={onSelectionChange}
+      <select
+        aria-label="Data Source"
+        className={clsx(
+          selectWrapperClasses,
+          selectTriggerClasses,
+          "border border-stone-300 bg-white px-3 py-2 text-sm",
+        )}
+        multiple
+        value={[...values]}
+        onChange={(event) => onSelectionChange(event.currentTarget.options)}
       >
-        {[[allKey, allLabel], ...Object.entries(dbLabels)].map(([key, label]) => (
-          <SelectItem key={key}>{label}</SelectItem>
+        {selectItems.map((item) => (
+          <option key={item.id} value={item.id}>
+            {item.label}
+          </option>
         ))}
-      </Select>
+      </select>
       <input
         name="query"
         type="text"

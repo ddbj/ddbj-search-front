@@ -1,49 +1,49 @@
-import { DateRangePicker as _DateRangePicker } from "@heroui/date-picker";
-import { type CalendarDate, parseDate } from "@internationalized/date";
 import { type FC } from "react";
-import { CalendarIcon } from "@/features/graphics/CalendarIcon.tsx";
-import type { RangeValue } from "@react-types/shared";
-
-const TypedDateRangePicker = _DateRangePicker<CalendarDate>;
-type DateRange = RangeValue<CalendarDate>;
 type Props = {
   label: string;
   value: string;
   onChange: (value: string) => void;
 };
 export const DateRangePicker: FC<Props> = ({ label, value, onChange }) => {
-  //todo: add clear button
+  const { end, start } = stringToDateRange(value ?? "");
+
+  const updateRange = (nextStart: string, nextEnd: string) => {
+    if (nextStart && nextEnd) {
+      onChange(`${nextStart},${nextEnd}`);
+      return;
+    }
+
+    onChange("");
+  };
+
   return (
-    <TypedDateRangePicker
-      label={label}
-      value={stringToDateRange(value ?? "")}
-      onChange={(e) => onChange(dataRangeToString(e))}
-      aria-label={label}
-      selectorIcon={
-        <span>
-          <CalendarIcon className={"w-4 fill-text-primary"} />
-        </span>
-      }
-    />
+    <label className="flex flex-col gap-1">
+      <span className="text-sm font-medium">{label}</span>
+      <div className="flex items-center gap-2">
+        <input
+          aria-label={`${label} start`}
+          className="rounded-md border border-stone-300 px-3 py-2"
+          type="date"
+          value={start}
+          onChange={(event) => updateRange(event.currentTarget.value, end)}
+        />
+        <span className="text-sm text-stone-500">to</span>
+        <input
+          aria-label={`${label} end`}
+          className="rounded-md border border-stone-300 px-3 py-2"
+          type="date"
+          value={end}
+          onChange={(event) => updateRange(start, event.currentTarget.value)}
+        />
+      </div>
+    </label>
   );
 };
 
-const dataRangeToString = (value: DateRange | null): string => {
-  if (value?.start && value?.end) {
-    const start = value.start.toString();
-    const end = value.end.toString();
-    return `${start},${end}`;
-  }
-  return "";
-};
-const stringToDateRange = (str: string): DateRange | null => {
+const stringToDateRange = (str: string) => {
   const [start, end] = str.split(",");
-  if (start && end) {
-    return {
-      start: parseDate(start),
-      end: parseDate(end),
-    };
-  } else {
-    return null;
-  }
+  return {
+    end: end ?? "",
+    start: start ?? "",
+  };
 };

@@ -1,5 +1,5 @@
-import { Input } from "@heroui/react";
 import { type FC } from "react";
+import { LabeledInput } from "@/components/heroui/LabeledInput.tsx";
 import { useDebouncedUiValue } from "@/features/searchResult/queryBuilder/hooks/useDebouncedUiValue.ts";
 
 type Props = {
@@ -12,7 +12,7 @@ export const Organization: FC<Props> = ({ value, update }) => {
 
   return (
     <div>
-      <Input
+      <LabeledInput
         label={"Organization"}
         placeholder={"single query or * for all entries with organization"}
         value={uiValue}

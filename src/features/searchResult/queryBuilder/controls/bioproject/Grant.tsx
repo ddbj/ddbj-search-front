@@ -1,4 +1,4 @@
-import { Input } from "@heroui/react";
+import { LabeledInput } from "@/components/heroui/LabeledInput.tsx";
 import { useDebouncedUiValue } from "@/features/searchResult/queryBuilder/hooks/useDebouncedUiValue.ts";
 import type { FC } from "react";
 
@@ -12,7 +12,7 @@ export const Grant: FC<Props> = ({ value, update }) => {
 
   return (
     <div>
-      <Input
+      <LabeledInput
         label={"Grant"}
         placeholder={"single query or * for all entries with grant"}
         value={uiValue}

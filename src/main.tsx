@@ -1,4 +1,3 @@
-import { HeroUIProvider } from "@heroui/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { createRouter, RouterProvider } from "@tanstack/react-router";
@@ -57,9 +56,7 @@ enableMocking().then(() => {
     <StrictMode>
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools />
-        <HeroUIProvider>
-          <RouterProvider router={router} />
-        </HeroUIProvider>
+        <RouterProvider router={router} />
       </QueryClientProvider>
     </StrictMode>,
   );

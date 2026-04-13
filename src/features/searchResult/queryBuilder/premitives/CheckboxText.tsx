@@ -29,14 +29,7 @@ export const CheckboxText: FC<Props> = ({
   if (to) {
     return (
       <div className={wrapperClasses}>
-        <Checkbox
-          radius={"sm"}
-          disableAnimation
-          value={value}
-          isSelected={isSelected}
-          onValueChange={setIsSelected}
-          classNames={{ wrapper: "after:bg-bg-primary" }}
-        ></Checkbox>
+        <Checkbox value={value} isSelected={isSelected} onChange={setIsSelected} />
         <Link to={to} className={linkClasses} search={search} from={from} resetScroll={true}>
           {labelStr}
         </Link>
@@ -44,14 +37,7 @@ export const CheckboxText: FC<Props> = ({
     );
   } else {
     return (
-      <Checkbox
-        radius={"sm"}
-        disableAnimation
-        value={value}
-        isSelected={isSelected}
-        onValueChange={setIsSelected}
-        classNames={{ wrapper: "after:bg-bg-primary" }}
-      >
+      <Checkbox value={value} isSelected={isSelected} onChange={setIsSelected}>
         {labelStr}
       </Checkbox>
     );

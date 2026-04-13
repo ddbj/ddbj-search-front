@@ -1,5 +1,5 @@
-import { Tooltip } from "@heroui/tooltip";
 import clsx from "clsx";
+import { Tooltip } from "@/components/heroui/Tooltip.tsx";
 import { CircleQuestionIcon } from "@/features/graphics/CircleQuestionIcon.tsx";
 import { PanelWrapper } from "@/features/searchDetail/ui/PanelWrapper.tsx";
 import { PrettyJSON } from "@/features/searchDetail/ui/PrettyJSON.tsx";
@@ -22,7 +22,7 @@ export const PropertiesPanel: FC<Props> = ({ data, tooltipOpen }) => {
         <Tooltip
           content={"Properties short description here"}
           isOpen={tooltipOpen ? true : undefined}
-          placement={"top-start"}
+          placement={"top start"}
           closeDelay={100}
           classNames={{
             content: [clsx("bg-gray-500 text-white")],

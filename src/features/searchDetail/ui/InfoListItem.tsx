@@ -1,5 +1,5 @@
-import { Tooltip } from "@heroui/tooltip";
 import clsx from "clsx";
+import { Tooltip } from "@/components/heroui/Tooltip.tsx";
 import { CircleQuestionIcon } from "@/features/graphics/CircleQuestionIcon.tsx";
 import type { FC, ReactNode } from "react";
 
@@ -30,7 +30,7 @@ export const InfoListItem: FC<Props> = ({
           <Tooltip
             content={toolTipContent}
             isOpen={tooltipOpen ? true : undefined}
-            placement={"top-start"}
+            placement={"top start"}
             closeDelay={100}
             classNames={{
               content: [clsx("bg-gray-500 text-white")],

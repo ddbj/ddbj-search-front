@@ -1,5 +1,5 @@
-import { Input } from "@heroui/react";
 import { type FC, useEffect, useState } from "react";
+import { LabeledInput } from "@/components/heroui/LabeledInput.tsx";
 import { useDebounceValue } from "usehooks-ts";
 
 type Props = {
@@ -38,7 +38,7 @@ export const KeywordInput: FC<Props> = ({ value, update }) => {
 
   return (
     <div>
-      <Input
+      <LabeledInput
         label={"Keywords"}
         placeholder={"comma separated keywords "}
         value={uiValue}

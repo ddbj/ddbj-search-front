@@ -1,8 +1,4 @@
-@import "tailwindcss";
-@import "tailwindcss/theme";
-@plugin './hero.ts';
-
-@source '../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+@import "@heroui/styles/css";
 @custom-variant dark (&:is(.dark *));
 
 @theme {
@@ -24,7 +20,20 @@
   --color-text-primary: var(--color-stone-700);
 }
 
+:root,
+[data-theme="light"] {
+  --accent: var(--color-fire-bush-500);
+  --accent-foreground: var(--color-white);
+  --link: var(--color-fire-bush-500);
+  --field-background: var(--color-white);
+  --field-foreground: var(--color-stone-700);
+  --field-border: var(--color-stone-300);
+  --field-placeholder: var(--color-stone-400);
+  --focus: var(--color-fire-bush-500);
+}
+
 body {
+  background: var(--background);
   color: var(--color-text-primary);
 }
 
