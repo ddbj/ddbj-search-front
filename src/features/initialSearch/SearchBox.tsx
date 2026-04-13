@@ -11,7 +11,7 @@ const allKey = "all";
 const wrapperClasses = clsx("flex h-fit items-stretch", "");
 
 const inputClasses = clsx(
-  "block w-full border-y-1 border-gray-200 px-4 py-2.5 text-sm",
+  "block w-full border-y-1 border-gray-200 bg-white px-4 py-2.5 text-sm",
   "focus:outline-2 focus:-outline-offset-2 focus:outline-fire-bush-600",
 );
 
@@ -19,7 +19,7 @@ const selectWrapperClasses = clsx("w-64 flex-shrink-0 flex-grow-0");
 
 const selectTriggerClasses = clsx(
   "min-h-[3.1rem] rounded-tl-lg rounded-tr-none rounded-br-none rounded-bl-lg",
-  "border border-stone-300 bg-white px-3 py-2 shadow-none",
+  "border border-stone-300 bg-gray-50 px-3 py-2 shadow-none",
   "focus:outline-2 focus:-outline-offset-2 focus:outline-fire-bush-600",
 );
 
