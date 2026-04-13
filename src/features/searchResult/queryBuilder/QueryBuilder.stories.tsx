@@ -4,6 +4,15 @@ import { QueryBuilder } from "@/features/searchResult/queryBuilder/QueryBuilder.
 import type { AnySearchParams } from "@/schema/search/any.ts";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
+const primaryParams: AnySearchParams = {
+  keywords: ["human microbiome"],
+  types: ["biosample", "sra-analysis"],
+  datePublishedFrom: "2021-01-01",
+  datePublishedTo: "2024-12-31",
+  dateModifiedFrom: "2024-01-01",
+  dateModifiedTo: "2025-03-31",
+} as const;
+
 const bioProjectParams: AnySearchParams = {
   keywords: ["metagenome"],
   organization: "NCBI",
@@ -21,11 +30,11 @@ const meta = {
   args: {
     update: __SB_updateFunctions,
     currentType: null,
-    params: {},
+    params: primaryParams,
   },
   decorators: [
     (Story) => (
-      <div className="p-4">
+      <div className="bg-bg-canvas p-6">
         <Story />
       </div>
     ),
