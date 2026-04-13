@@ -11,13 +11,11 @@ export const Grant: FC<Props> = ({ value, update }) => {
   const { uiValue, setUiValue } = useDebouncedUiValue(value, update);
 
   return (
-    <div>
-      <LabeledInput
-        label={"Grant"}
-        placeholder={"single query or * for all entries with grant"}
-        value={uiValue}
-        onValueChange={setUiValue}
-      />
-    </div>
+    <LabeledInput
+      label={"Grant"}
+      placeholder={"single query or * for all entries with grant"}
+      value={uiValue}
+      onValueChange={setUiValue}
+    />
   );
 };

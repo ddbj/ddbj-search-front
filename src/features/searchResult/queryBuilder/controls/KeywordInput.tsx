@@ -37,13 +37,11 @@ export const KeywordInput: FC<Props> = ({ value, update }) => {
   }, [value, setUiValue]);
 
   return (
-    <div>
-      <LabeledInput
-        label={"Keywords"}
-        placeholder={"comma separated keywords "}
-        value={uiValue}
-        onValueChange={setUiValue}
-      />
-    </div>
+    <LabeledInput
+      label={"Keywords"}
+      placeholder={"comma separated keywords"}
+      value={uiValue}
+      onValueChange={setUiValue}
+    />
   );
 };

@@ -11,13 +11,11 @@ export const Publication: FC<Props> = ({ value, update }) => {
   const { uiValue, setUiValue } = useDebouncedUiValue(value, update);
 
   return (
-    <div>
-      <LabeledInput
-        label={"Publication"}
-        placeholder={"single query or * for all entries with publication"}
-        value={uiValue}
-        onValueChange={setUiValue}
-      />
-    </div>
+    <LabeledInput
+      label={"Publication"}
+      placeholder={"single query or * for all entries with publication"}
+      value={uiValue}
+      onValueChange={setUiValue}
+    />
   );
 };
