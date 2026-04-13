@@ -16,9 +16,14 @@ type Props = {
 };
 
 const wrapperClasses = clsx("flex min-w-0 items-start gap-2.5");
-const checkboxClasses = clsx("shrink-0");
 const labelClasses = clsx("min-w-0 text-sm leading-6 text-gray-900 break-words");
-const buttonClasses = clsx(labelClasses, "cursor-pointer text-left");
+const checkboxClasses = clsx("[&>[data-slot='checkbox']]:gap-2.5");
+const controlClasses = clsx(
+  "mt-1 size-4 shrink-0 rounded-sm border border-gray-400",
+  "data-[selected=true]:border-fire-bush-600 data-[selected=true]:bg-fire-bush-600",
+);
+const indicatorClasses = clsx("text-white");
+const contentClasses = clsx("min-w-0");
 const linkClasses = clsx(labelClasses, "text-link-primary underline-offset-2 hover:underline");
 export const CheckboxText: FC<Props> = ({
   to,
@@ -31,37 +36,44 @@ export const CheckboxText: FC<Props> = ({
 }) => {
   if (to) {
     return (
-      <div className={wrapperClasses}>
-        <Checkbox
-          aria-label={labelStr}
-          className={checkboxClasses}
-          value={value}
-          isSelected={isSelected}
-          onChange={setIsSelected}
-        />
-        <Link to={to} className={linkClasses} search={search} from={from} resetScroll={true}>
-          {labelStr}
-        </Link>
-      </div>
+      <Checkbox
+        className={checkboxClasses}
+        isSelected={isSelected}
+        onChange={setIsSelected}
+        value={value}
+      >
+        <Checkbox.Control className={controlClasses}>
+          <Checkbox.Indicator className={indicatorClasses} />
+        </Checkbox.Control>
+        <Checkbox.Content className={contentClasses}>
+          <Link
+            to={to}
+            className={linkClasses}
+            search={search}
+            from={from}
+            resetScroll={true}
+            onClick={(event) => event.stopPropagation()}
+          >
+            {labelStr}
+          </Link>
+        </Checkbox.Content>
+      </Checkbox>
     );
   } else {
     return (
-      <div className={wrapperClasses}>
-        <Checkbox
-          aria-label={labelStr}
-          className={checkboxClasses}
+      <Checkbox
+        className={clsx(wrapperClasses, checkboxClasses)}
+        isSelected={isSelected}
+        onChange={setIsSelected}
           value={value}
-          isSelected={isSelected}
-          onChange={setIsSelected}
-        />
-        <button
-          type="button"
-          className={buttonClasses}
-          onClick={() => setIsSelected?.(!isSelected)}
-        >
-          {labelStr}
-        </button>
-      </div>
+      >
+        <Checkbox.Control className={controlClasses}>
+          <Checkbox.Indicator className={indicatorClasses} />
+        </Checkbox.Control>
+        <Checkbox.Content className={contentClasses}>
+          <span className={labelClasses}>{labelStr}</span>
+        </Checkbox.Content>
+      </Checkbox>
     );
   }
 };
