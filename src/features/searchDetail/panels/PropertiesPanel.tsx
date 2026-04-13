@@ -5,11 +5,14 @@ import { PanelWrapper } from "@/features/searchDetail/ui/PanelWrapper.tsx";
 import { PrettyJSON } from "@/features/searchDetail/ui/PrettyJSON.tsx";
 import type { FC } from "react";
 
-type Props = { data: unknown };
+type Props = {
+  data: unknown;
+  tooltipOpen?: boolean;
+};
 
 const MAX_LINES_FOR_HIGHLIGHTER = 10_000;
 
-export const PropertiesPanel: FC<Props> = ({ data }) => {
+export const PropertiesPanel: FC<Props> = ({ data, tooltipOpen = false }) => {
   const properties = JSON.stringify(data, null, 2);
   const lineLength = properties.match(/\n/g)?.length ?? 0;
   const useHighlighter = lineLength <= MAX_LINES_FOR_HIGHLIGHTER;
@@ -18,6 +21,7 @@ export const PropertiesPanel: FC<Props> = ({ data }) => {
       <div className={"flex items-start gap-1 pt-2 text-sm font-bold"}>
         <Tooltip
           content={"Properties short description here"}
+          isOpen={tooltipOpen}
           placement={"top-start"}
           closeDelay={100}
           classNames={{

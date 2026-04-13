@@ -6,6 +6,7 @@ import type { FC, ReactNode } from "react";
 type Props = {
   term: string;
   toolTipContent?: ReactNode;
+  tooltipOpen?: boolean;
   children: ReactNode;
   termsNowrap?: boolean;
   contentNoWrap?: boolean;
@@ -15,6 +16,7 @@ export const InfoListItem: FC<Props> = ({
   children,
   term,
   toolTipContent,
+  tooltipOpen = false,
   termsNowrap = true,
   contentNoWrap = false,
 }) => {
@@ -27,6 +29,7 @@ export const InfoListItem: FC<Props> = ({
         {toolTipContent && (
           <Tooltip
             content={toolTipContent}
+            isOpen={tooltipOpen}
             placement={"top-start"}
             closeDelay={100}
             classNames={{
