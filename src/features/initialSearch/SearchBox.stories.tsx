@@ -1,6 +1,5 @@
 import { expect, fn } from "storybook/test";
 import { SearchBox } from "@/features/initialSearch/SearchBox.tsx";
-import { findByListValue, findBySlot } from "@/utils/storybook.ts";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
@@ -27,10 +26,22 @@ const getOnSearchArgs = (onSearchArgs: unknown[] | undefined) => {
   return { onSearchTypes, onSearchQueries };
 };
 
+const resetOnSearch = (onSearch: unknown) => {
+  if (
+    typeof onSearch === "function" &&
+    "mockClear" in onSearch &&
+    typeof onSearch.mockClear === "function"
+  ) {
+    onSearch.mockClear();
+  }
+};
+
 export const Primary = {} satisfies Story;
 
 export const SearchAsBlank: Story = {
   play: async ({ args, userEvent, canvasElement, step }) => {
+    resetOnSearch(args.onSearch);
+
     //
     await step("click button", async () => {
       const button = canvasElement.querySelector("button#searchButton")!;
@@ -43,17 +54,11 @@ export const SearchAsBlank: Story = {
 
 export const searchWith: Story = {
   play: async ({ args, userEvent, canvasElement, step }) => {
-    //
-    await step("click trigger", async () => {
-      const trigger = await findBySlot("trigger");
-      await userEvent.click(trigger);
-    });
+    resetOnSearch(args.onSearch);
 
     await step("click types", async () => {
-      const bioSample = await findByListValue("biosample");
-      const bioProject = await findByListValue("bioproject");
-      await userEvent.click(bioSample);
-      await userEvent.click(bioProject);
+      const select = canvasElement.querySelector("select[multiple]")!;
+      await userEvent.selectOptions(select, ["biosample", "bioproject"]);
     });
 
     await step("click button", async () => {
@@ -67,19 +72,12 @@ export const searchWith: Story = {
 
 export const overwriteWithAll: Story = {
   play: async ({ args, userEvent, canvasElement, step }) => {
-    //
-    await step("click trigger", async () => {
-      const trigger = await findBySlot("trigger");
-      await userEvent.click(trigger);
-    });
+    resetOnSearch(args.onSearch);
 
     await step("click types", async () => {
-      const all = await findByListValue("all");
-      const bioSample = await findByListValue("biosample");
-      const bioProject = await findByListValue("bioproject");
-      await userEvent.click(bioSample);
-      await userEvent.click(bioProject);
-      await userEvent.click(all);
+      const select = canvasElement.querySelector("select[multiple]")!;
+      await userEvent.selectOptions(select, ["biosample", "bioproject"]);
+      await userEvent.selectOptions(select, ["biosample", "bioproject", "all"]);
     });
 
     await step("click button", async () => {
@@ -93,19 +91,13 @@ export const overwriteWithAll: Story = {
 
 export const overwriteAll: Story = {
   play: async ({ args, userEvent, canvasElement, step }) => {
-    //
-    await step("click trigger", async () => {
-      const trigger = await findBySlot("trigger");
-      await userEvent.click(trigger);
-    });
+    resetOnSearch(args.onSearch);
 
     await step("click types", async () => {
-      const all = await findByListValue("all");
-      const bioSample = await findByListValue("biosample");
-      const bioProject = await findByListValue("bioproject");
-      await userEvent.click(bioSample);
-      await userEvent.click(all);
-      await userEvent.click(bioProject);
+      const select = canvasElement.querySelector("select[multiple]")!;
+      await userEvent.selectOptions(select, ["biosample"]);
+      await userEvent.selectOptions(select, ["all"]);
+      await userEvent.selectOptions(select, ["all", "bioproject"]);
     });
 
     await step("click button", async () => {
@@ -137,6 +129,8 @@ export const overwriteAll: Story = {
 
 export const inputQuery: Story = {
   play: async ({ args, userEvent, canvas, step }) => {
+    resetOnSearch(args.onSearch);
+
     await step("inputQuery", async () => {
       const input = await canvas.findByTestId("queryInput");
       await userEvent.type(input, "foo, hoge");

@@ -1,5 +1,6 @@
+import { ListBox, Select } from "@heroui/react";
 import clsx from "clsx";
-import { type FC, type FormEvent, useRef, useState } from "react";
+import { type FC, type FormEvent, type Key, useRef, useState } from "react";
 import { dbLabels, type DBType } from "@/consts/db.ts";
 import { MagnifierIcon } from "@/features/graphics/MagnifierIcon.tsx";
 import { compileSearchType } from "@/features/initialSearch/searchBoxUtils.ts";
@@ -17,8 +18,9 @@ const inputClasses = clsx(
 const selectWrapperClasses = clsx("w-64 flex-shrink-0 flex-grow-0");
 
 const selectTriggerClasses = clsx(
-  "rounded-tl-lg rounded-tr-none rounded-br-none rounded-bl-lg",
-  "",
+  "min-h-[3.1rem] rounded-tl-lg rounded-tr-none rounded-br-none rounded-bl-lg",
+  "border border-stone-300 bg-white px-3 py-2 shadow-none",
+  "focus:outline-2 focus:-outline-offset-2 focus:outline-fire-bush-600",
 );
 
 const buttonClasses = clsx(
@@ -41,25 +43,22 @@ const defaultOnSearch = (types: DBType[], keywords: string[]) => {
 };
 
 export const SearchBox: FC<Props> = ({ onSearch = defaultOnSearch }) => {
-  const [values, setValues] = useState<Set<string>>(new Set());
+  const [values, setValues] = useState<string[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const onSelectionChange = (selectedOptions: HTMLOptionsCollection) => {
-    const nextValues = new Set(
-      Array.from(selectedOptions)
-        .filter((option) => option.selected)
-        .map((option) => option.value),
-    );
-    const previouslyHadAll = values.has(allKey);
-    const nextHasAll = nextValues.has(allKey);
+  const onSelectionChange = (selection: Key[]) => {
+    const nextValues = selection.map((value) => String(value));
+    const previouslyHadAll = values.includes(allKey);
+    const nextHasAll = nextValues.includes(allKey);
 
     if (nextHasAll && !previouslyHadAll) {
-      setValues(new Set([allKey]));
+      setValues([allKey]);
       return;
     }
 
-    if (nextHasAll && previouslyHadAll && nextValues.size > 1) {
-      nextValues.delete(allKey);
+    if (nextHasAll && previouslyHadAll && nextValues.length > 1) {
+      setValues(nextValues.filter((value) => value !== allKey));
+      return;
     }
 
     setValues(nextValues);
@@ -76,23 +75,32 @@ export const SearchBox: FC<Props> = ({ onSearch = defaultOnSearch }) => {
   };
   return (
     <form className={wrapperClasses} onSubmit={onSubmitForm}>
-      <select
+      <Select
         aria-label="Data Source"
-        className={clsx(
-          selectWrapperClasses,
-          selectTriggerClasses,
-          "border border-stone-300 bg-white px-3 py-2 text-sm",
-        )}
-        multiple
-        value={[...values]}
-        onChange={(event) => onSelectionChange(event.currentTarget.options)}
+        className={selectWrapperClasses}
+        placeholder="Select Database"
+        selectionMode="multiple"
+        value={values}
+        variant="secondary"
+        onChange={onSelectionChange}
       >
-        {selectItems.map((item) => (
-          <option key={item.id} value={item.id}>
-            {item.label}
-          </option>
-        ))}
-      </select>
+        <Select.Trigger className={selectTriggerClasses} data-slot="trigger">
+          <div className="flex min-w-0 flex-1 flex-col items-start gap-0.5 text-left">
+            <span className="text-[10px] font-semibold text-gray-500">Data Source</span>
+            <Select.Value className="w-full truncate text-sm text-gray-700" />
+          </div>
+          <Select.Indicator />
+        </Select.Trigger>
+        <Select.Popover>
+          <ListBox className="max-h-80">
+            {selectItems.map((item) => (
+              <ListBox.Item key={item.id} id={item.id} data-key={item.id} textValue={item.label}>
+                {item.label}
+              </ListBox.Item>
+            ))}
+          </ListBox>
+        </Select.Popover>
+      </Select>
       <input
         name="query"
         type="text"

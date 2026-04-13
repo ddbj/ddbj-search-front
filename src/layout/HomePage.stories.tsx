@@ -1,6 +1,5 @@
-import { expect, userEvent } from "storybook/test";
+import { expect } from "storybook/test";
 import { HomePage } from "@/layout/HomePage.tsx";
-import { findByListValue, findBySlot } from "@/utils/storybook.ts";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
@@ -18,7 +17,7 @@ type Story = StoryObj<typeof meta>;
 export const Primary = {} satisfies Story;
 
 export const Navigate = {
-  play: async ({ canvasElement, canvas }) => {
+  play: async ({ canvasElement, canvas, userEvent }) => {
     const router = window.__STORYBOOK_ROUTER__;
     if (!router) throw new Error("Router not found");
 
@@ -33,17 +32,13 @@ export const Navigate = {
 } satisfies Story;
 
 export const NavigateToSingleType = {
-  play: async ({ canvasElement, canvas, step }) => {
+  play: async ({ canvasElement, canvas, step, userEvent }) => {
     const router = window.__STORYBOOK_ROUTER__;
     if (!router) throw new Error("Router not found");
 
-    await step("click trigger", async () => {
-      const trigger = await findBySlot("trigger");
-      await userEvent.click(trigger);
-    });
     await step("click types", async () => {
-      const bioSample = await findByListValue("biosample");
-      await userEvent.click(bioSample);
+      const select = canvasElement.querySelector("select[multiple]")!;
+      await userEvent.selectOptions(select, ["biosample"]);
     });
     await step("input query", async () => {
       const input = await canvas.findByTestId("queryInput");
