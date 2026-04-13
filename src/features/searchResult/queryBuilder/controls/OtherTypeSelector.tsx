@@ -10,15 +10,21 @@ type Props = {
   moveToEntryRoot: UpdateSearchFunctions["moveToEntryRoot"];
 };
 
+const sectionClasses = "flex flex-col gap-2";
+const titleClasses = "text-sm font-medium leading-5 text-gray-700";
+const listClasses = "flex flex-col gap-2";
+const detailsClasses = "rounded-lg border border-gray-200 bg-white px-3 py-2";
+const summaryClasses = "cursor-pointer text-sm font-medium leading-5 text-gray-700";
+
 export const OtherTypeSelector: FC<Props> = ({
   currentType,
   linkSearchParams,
   moveToEntryRoot,
 }) => {
   return (
-    <div>
-      <div>Type</div>
-      <div>
+    <section className={sectionClasses}>
+      <h2 className={titleClasses}>Type</h2>
+      <div className={listClasses}>
         <CheckboxText
           labelStr={dbLabels[currentType]}
           value={currentType}
@@ -27,9 +33,9 @@ export const OtherTypeSelector: FC<Props> = ({
           search={linkSearchParams}
         />
       </div>
-      <details>
-        <summary>Other types</summary>
-        <div className={"flex flex-col"}>
+      <details className={detailsClasses}>
+        <summary className={summaryClasses}>Other types</summary>
+        <div className={"mt-2 flex flex-col gap-2"}>
           {dbTypeList
             .filter((key) => key !== currentType)
             .map((key) => {
@@ -47,6 +53,6 @@ export const OtherTypeSelector: FC<Props> = ({
             })}
         </div>
       </details>
-    </div>
+    </section>
   );
 };

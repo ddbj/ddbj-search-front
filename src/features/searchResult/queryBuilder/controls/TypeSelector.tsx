@@ -13,6 +13,10 @@ type Props = {
   countData: FacetItem[];
 };
 
+const sectionClasses = "flex flex-col gap-2";
+const titleClasses = "text-sm font-medium leading-5 text-gray-700";
+const listClasses = "flex flex-col gap-2";
+
 export const TypeSelector: FC<Props> = ({ linkSearchParams, value, update, countData }) => {
   const { uiValue, setUiValue } = useDebouncedUiValue(value, update);
   const toggleDBTypes = (key: DBType, value: boolean) => {
@@ -20,9 +24,9 @@ export const TypeSelector: FC<Props> = ({ linkSearchParams, value, update, count
     setUiValue([...new Set(next)]);
   };
   return (
-    <div>
-      Types
-      <div className={"flex flex-col gap-1"}>
+    <section className={sectionClasses}>
+      <h2 className={titleClasses}>Types</h2>
+      <div className={listClasses}>
         {Object.entries(dbLabels).map(([name, label]) => {
           const isSelected = uiValue?.includes(name as DBType);
           const count = countData.find((item) => item.value === name)?.count ?? 0;
@@ -42,6 +46,6 @@ export const TypeSelector: FC<Props> = ({ linkSearchParams, value, update, count
           );
         })}
       </div>
-    </div>
+    </section>
   );
 };

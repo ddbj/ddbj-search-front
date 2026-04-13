@@ -15,8 +15,11 @@ type Props = {
   from?: keyof FileRoutesByFullPath;
 };
 
-const wrapperClasses = clsx("flex overflow-hidden");
-const linkClasses = clsx("text-link-primary");
+const wrapperClasses = clsx("flex min-w-0 items-start gap-2.5");
+const checkboxClasses = clsx("shrink-0");
+const labelClasses = clsx("min-w-0 text-sm leading-6 text-gray-900 break-words");
+const buttonClasses = clsx(labelClasses, "cursor-pointer text-left");
+const linkClasses = clsx(labelClasses, "text-link-primary underline-offset-2 hover:underline");
 export const CheckboxText: FC<Props> = ({
   to,
   labelStr,
@@ -29,7 +32,13 @@ export const CheckboxText: FC<Props> = ({
   if (to) {
     return (
       <div className={wrapperClasses}>
-        <Checkbox value={value} isSelected={isSelected} onChange={setIsSelected} />
+        <Checkbox
+          aria-label={labelStr}
+          className={checkboxClasses}
+          value={value}
+          isSelected={isSelected}
+          onChange={setIsSelected}
+        />
         <Link to={to} className={linkClasses} search={search} from={from} resetScroll={true}>
           {labelStr}
         </Link>
@@ -37,9 +46,22 @@ export const CheckboxText: FC<Props> = ({
     );
   } else {
     return (
-      <Checkbox value={value} isSelected={isSelected} onChange={setIsSelected}>
-        {labelStr}
-      </Checkbox>
+      <div className={wrapperClasses}>
+        <Checkbox
+          aria-label={labelStr}
+          className={checkboxClasses}
+          value={value}
+          isSelected={isSelected}
+          onChange={setIsSelected}
+        />
+        <button
+          type="button"
+          className={buttonClasses}
+          onClick={() => setIsSelected?.(!isSelected)}
+        >
+          {labelStr}
+        </button>
+      </div>
     );
   }
 };

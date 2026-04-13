@@ -10,6 +10,8 @@ type Props = {
   count: number;
 };
 
+const wrapperClasses = "flex flex-col gap-2";
+
 export const Umbrella: FC<Props> = ({ value, update, count }) => {
   const [uiValue, setUiValue] = useState<boolean>(value);
   const [debouncedValue, setDebouncedValue] = useDebounceValue(value, 200);
@@ -27,11 +29,13 @@ export const Umbrella: FC<Props> = ({ value, update, count }) => {
   }, [value, setUiValue]);
 
   return (
-    <CheckboxText
-      labelStr={`Umbrella Project(${formatNumber(count)})`}
-      value={"umbrella"}
-      isSelected={uiValue}
-      setIsSelected={setUiValue}
-    />
+    <div className={wrapperClasses}>
+      <CheckboxText
+        labelStr={`Umbrella Project (${formatNumber(count)})`}
+        value={"umbrella"}
+        isSelected={uiValue}
+        setIsSelected={setUiValue}
+      />
+    </div>
   );
 };
