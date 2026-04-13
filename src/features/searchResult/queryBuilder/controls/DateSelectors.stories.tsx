@@ -1,6 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DateSelectors } from "@/features/searchResult/queryBuilder/controls/DateSelectors.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+
+const StatefulDateSelectors = ({
+  modified: initialModified,
+  published: initialPublished,
+}: {
+  published: string;
+  modified: string;
+}) => {
+  const [published, setPublished] = useState(initialPublished);
+  const [modified, setModified] = useState(initialModified);
+
+  useEffect(() => {
+    setPublished(initialPublished);
+  }, [initialPublished]);
+
+  useEffect(() => {
+    setModified(initialModified);
+  }, [initialModified]);
+
+  return (
+    <DateSelectors
+      published={published}
+      modified={modified}
+      changePublished={setPublished}
+      changeModified={setModified}
+    />
+  );
+};
 
 const meta = {
   component: DateSelectors,
@@ -10,34 +38,25 @@ const meta = {
     changePublished: (_v: string) => {},
     changeModified: (_v: string) => {},
   },
-  decorators: [],
+  render: (args) => <StatefulDateSelectors published={args.published} modified={args.modified} />,
+  decorators: [
+    (Story) => (
+      <div className="w-[320px] p-4">
+        <Story />
+      </div>
+    ),
+  ],
 } satisfies Meta<typeof DateSelectors>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Primary = {
-  decorators: [
-    (Story) => {
-      const [published, setPublished] = useState("");
-      const [modified, setChangeModified] = useState("");
-      const changePublished = (v: string) => {
-        setPublished(v);
-      };
-      const changeModified = (v: string) => {
-        setChangeModified(v);
-      };
-      return (
-        <Story
-          args={{
-            published,
-            modified,
-            changePublished,
-            changeModified,
-          }}
-        />
-      );
-    },
-  ],
+export const Primary = {} satisfies Story;
+
+export const WithSelectedRanges = {
+  args: {
+    published: "2024-01-01,2024-01-31",
+    modified: "2024-02-01,2024-02-15",
+  },
 } satisfies Story;

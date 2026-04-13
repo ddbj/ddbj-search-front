@@ -23,6 +23,9 @@ const config: StorybookConfig = {
   viteFinal: async (config) => {
     const { default: tailwindcss } = await import("@tailwindcss/vite");
     return mergeConfig(config, {
+      optimizeDeps: {
+        include: ["@internationalized/date"],
+      },
       plugins: [tailwindcss()],
       resolve: {
         alias: {
