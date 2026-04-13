@@ -12,7 +12,7 @@ type Props = {
 
 const MAX_LINES_FOR_HIGHLIGHTER = 10_000;
 
-export const PropertiesPanel: FC<Props> = ({ data, tooltipOpen = false }) => {
+export const PropertiesPanel: FC<Props> = ({ data, tooltipOpen }) => {
   const properties = JSON.stringify(data, null, 2);
   const lineLength = properties.match(/\n/g)?.length ?? 0;
   const useHighlighter = lineLength <= MAX_LINES_FOR_HIGHLIGHTER;
@@ -21,7 +21,7 @@ export const PropertiesPanel: FC<Props> = ({ data, tooltipOpen = false }) => {
       <div className={"flex items-start gap-1 pt-2 text-sm font-bold"}>
         <Tooltip
           content={"Properties short description here"}
-          isOpen={tooltipOpen}
+          isOpen={tooltipOpen ? true : undefined}
           placement={"top-start"}
           closeDelay={100}
           classNames={{
