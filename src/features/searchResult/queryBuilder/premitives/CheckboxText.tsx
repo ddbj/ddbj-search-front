@@ -16,17 +16,15 @@ type Props = {
 };
 
 const checkboxClasses = clsx("group/checkbox flex min-w-0 items-start gap-2.5");
-const labelClasses = clsx("min-w-0 text-sm leading-6 text-gray-900 break-words");
+const labelClasses = clsx("min-w-0 text-[15px] leading-6 text-gray-900 break-words");
+const linkWrapperClasses = clsx("min-w-0 break-words");
 const controlClasses = clsx(
-  "mt-1 size-4 shrink-0 rounded-sm border border-gray-400 shadow-none transition-colors before:hidden",
-  "group-data-[selected=true]/checkbox:border-fire-bush-600",
-  "group-data-[selected=true]/checkbox:bg-fire-bush-600",
-  "group-data-[indeterminate=true]/checkbox:border-fire-bush-600",
-  "group-data-[indeterminate=true]/checkbox:bg-fire-bush-600",
+  "mt-0.5 size-5 shrink-0 rounded-sm border border-border shadow-none transition-colors",
+  "before:bg-bg-primary before:rounded-none",
 );
 const indicatorClasses = clsx("text-white");
-const contentClasses = clsx("min-w-0 pt-px");
-const linkClasses = clsx(labelClasses, "text-link-primary underline-offset-2 hover:underline");
+const contentClasses = clsx("min-w-0");
+const linkClasses = clsx("text-link-primary");
 export const CheckboxText: FC<Props> = ({
   to,
   labelStr,
@@ -48,16 +46,18 @@ export const CheckboxText: FC<Props> = ({
           <Checkbox.Indicator className={indicatorClasses} />
         </Checkbox.Control>
         <Checkbox.Content className={contentClasses}>
-          <Link
-            to={to}
-            className={linkClasses}
-            search={search}
-            from={from}
-            resetScroll={true}
-            onClick={(event) => event.stopPropagation()}
-          >
-            {labelStr}
-          </Link>
+          <div className={linkWrapperClasses}>
+            <Link
+              to={to}
+              className={linkClasses}
+              search={search}
+              from={from}
+              resetScroll={true}
+              onClick={(event) => event.stopPropagation()}
+            >
+              {labelStr}
+            </Link>
+          </div>
         </Checkbox.Content>
       </Checkbox>
     );

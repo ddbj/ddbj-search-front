@@ -15,7 +15,7 @@ type Props = {
 
 const sectionClasses = "flex flex-col gap-2";
 const titleClasses = "text-sm font-medium leading-5 text-gray-700";
-const listClasses = "flex flex-col gap-2";
+const listClasses = "flex flex-col gap-1";
 
 export const TypeSelector: FC<Props> = ({ linkSearchParams, value, update, countData }) => {
   const { uiValue, setUiValue } = useDebouncedUiValue(value, update);
