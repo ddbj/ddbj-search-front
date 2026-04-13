@@ -19,7 +19,10 @@ const checkboxClasses = clsx("group/checkbox flex min-w-0 items-start gap-2.5");
 const labelClasses = clsx("min-w-0 text-sm leading-6 text-gray-900 break-words");
 const controlClasses = clsx(
   "mt-1 size-4 shrink-0 rounded-sm border border-gray-400 shadow-none transition-colors before:hidden",
-  "data-[selected=true]:border-fire-bush-600 data-[selected=true]:bg-fire-bush-600",
+  "group-data-[selected=true]/checkbox:border-fire-bush-600",
+  "group-data-[selected=true]/checkbox:bg-fire-bush-600",
+  "group-data-[indeterminate=true]/checkbox:border-fire-bush-600",
+  "group-data-[indeterminate=true]/checkbox:bg-fire-bush-600",
 );
 const indicatorClasses = clsx("text-white");
 const contentClasses = clsx("min-w-0 pt-px");
