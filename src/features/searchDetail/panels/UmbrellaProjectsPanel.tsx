@@ -1,9 +1,7 @@
 import { InfoList } from "@/features/searchDetail/ui/InfoList.tsx";
 import { PanelWrapper } from "@/features/searchDetail/ui/PanelWrapper.tsx";
 import { XrefListItem } from "@/features/searchDetail/ui/XrefListItem.tsx";
-import {
-  parseXrefItem,
-} from "@/features/searchDetail/panels/xrefPanelUtils.ts";
+import { parseXrefItem } from "@/features/searchDetail/panels/xrefPanelUtils.ts";
 import type { Xref } from "@/api/detail/base.ts";
 import type { FC } from "react";
 
