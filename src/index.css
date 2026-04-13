@@ -33,7 +33,6 @@
 }
 
 body {
-  background: var(--background);
   color: var(--color-text-primary);
 }
 
