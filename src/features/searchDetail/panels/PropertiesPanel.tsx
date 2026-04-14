@@ -18,7 +18,7 @@ export const PropertiesPanel: FC<Props> = ({ data, tooltipOpen }) => {
   const useHighlighter = lineLength <= MAX_LINES_FOR_HIGHLIGHTER;
   return (
     <PanelWrapper className={"gap-y-2 pb-4"}>
-      <div className={"flex items-start gap-1 pt-2 text-sm font-bold"}>
+      <div className={"flex min-w-0 items-start gap-1 pt-2 text-sm font-bold"}>
         <Tooltip
           content={"Properties short description here"}
           isOpen={tooltipOpen ? true : undefined}
@@ -28,7 +28,7 @@ export const PropertiesPanel: FC<Props> = ({ data, tooltipOpen }) => {
             content: [clsx("bg-gray-500 text-white")],
           }}
         >
-          <span className={"self-center"}>
+          <span className={"self-center pt-0.5"}>
             <CircleQuestionIcon className={"h-4 fill-text-primary"} />
           </span>
         </Tooltip>

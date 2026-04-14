@@ -30,7 +30,7 @@ export const SearchDetailLayout: FC<Props> = ({ data }) => {
     <main className={"flex flex-col gap-4 p-8 pb-16 shadow-lg"}>
       <GlobalHeader breadcrumbsPaths={breadcrumbsPaths} />
       <div className={"flex items-start gap-8"}>
-        <div data-name={"leftCol"} className={"flex flex-grow-1 flex-col gap-4"}>
+        <div data-name={"leftCol"} className={"flex min-w-0 flex-1 flex-col gap-4"}>
           <InfoPanel data={data} />
           {umbrellaProps && <UmbrellaProjectsPanel {...umbrellaProps} />}
           <PropertiesPanel data={data.properties} />

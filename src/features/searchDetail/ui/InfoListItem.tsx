@@ -20,12 +20,15 @@ export const InfoListItem: FC<Props> = ({
   termsNowrap = true,
   contentNoWrap = false,
 }) => {
-  const termsClass = termsNowrap ? "text-nowrap" : "";
-  const contentClass = contentNoWrap ? "text-nowrap" : "";
+  const termsClass = clsx("min-w-0", termsNowrap ? "whitespace-nowrap" : "whitespace-normal break-words");
+  const contentClass = clsx(
+    "min-w-0",
+    contentNoWrap ? "whitespace-nowrap" : "whitespace-normal break-words",
+  );
 
   return (
-    <li className={"col-span-2 grid grid-cols-subgrid bg-white py-2"}>
-      <div className={"flex items-start gap-1 font-bold"}>
+    <li className={"col-span-2 grid min-w-0 grid-cols-subgrid bg-white py-2"}>
+      <div className={"flex min-w-0 items-start gap-1 font-bold"}>
         {toolTipContent && (
           <Tooltip
             content={toolTipContent}
@@ -36,7 +39,7 @@ export const InfoListItem: FC<Props> = ({
               content: [clsx("bg-gray-500 text-white")],
             }}
           >
-            <span className={"self-center"}>
+            <span className={"self-center pt-0.5"}>
               <CircleQuestionIcon className={"h-4 fill-text-primary"} />
             </span>
           </Tooltip>

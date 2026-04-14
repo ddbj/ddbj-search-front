@@ -20,6 +20,11 @@ describe("PropertiesPanel", () => {
     expect(tooltip.props.isOpen).toBeUndefined();
   });
 
+  it("does not force open when explicitly false", () => {
+    const tooltip = renderTooltip(false);
+    expect(tooltip.props.isOpen).toBeUndefined();
+  });
+
   it("can force tooltip open for story review", () => {
     const tooltip = renderTooltip(true);
     expect(tooltip.props.isOpen).toBe(true);

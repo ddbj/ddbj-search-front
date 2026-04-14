@@ -5,7 +5,7 @@ type Props = { className?: string; children?: ReactNode; useGrid?: boolean; gapX
 
 export const InfoList: FC<Props> = ({ children, className, useGrid = true }) => {
   const baseClass = clsx(
-    useGrid ? `grid grid-cols-[auto_1fr] gap-x-4` : "flex flex-col",
+    useGrid ? `grid min-w-0 grid-cols-[auto_1fr] gap-x-4` : "flex min-w-0 flex-col",
     "gap-y-[1px] bg-gray-100 text-sm",
   );
   const wrapperClass = clsx(baseClass, className);
