@@ -2,14 +2,14 @@
 
 ## この文書の役割
 
-この文書は、名前の付け方と型・スキーマの接尾辞ルールを扱う正本です。
+この文書では、名前の付け方と型・スキーマの接尾辞ルールを定める。
 
 - 対象:
   - 変数名、関数名、型名、ファイル名
-  - API request / response の型名
-  - Zod schema や search parameter の命名
+  - API request / responseの型名
+  - Zod schemaやsearch parameterの命名
 - 対象外:
-  - コードスタイルや関数定義の方針（→ `docs/code-style.md`）
+  - コードスタイルや関数定義の方針（→ [docs/code-style.md](./code-style.md)）
   - 個別機能の設計判断
   - 一時的な実装メモ
   - 日常運用や検証方針
@@ -35,13 +35,13 @@
 
 ### リクエストパラメータ
 
-- **型名**: 複数のパラメータを保持するオブジェクトを定義する場合、末尾は `RequestParams` （複数形）とする。
+- **型名**: 複数のパラメータを保持するオブジェクトを定義する場合は、末尾を `RequestParams` とする。
   - 例: `BaseDetailRequestParams`, `AllFacetListRequestParams`
 - **変数名**: `params` または `...Params` を使用する。
 
 ### Zodスキーマ
 
-- **スキーマ定義**: `z.object` 等で定義されるスキーマ変数は、末尾を `Schema` とする。
+- **スキーマ定義**: `z.object` などで定義されるスキーマ変数は、末尾を `Schema` とする。
   - 例: `allFacetListRequestParamsSchema`
 - **形状（Shape）**: スキーマ定義を拡張（`.extend()`）する際などに利用するオブジェクト形状の定義は、末尾を `Shape` とする。
   - 例: `allEntryListRequestParamsShape`
@@ -55,16 +55,16 @@
 
 ### 検索パラメータ（フロントエンド側）
 
-- **型名**: ブラウザのURL（クエリパラメータ）と同期し、UIや内部処理で使われる検索条件の型は、末尾を `SearchParams` とする。
+- **型名**: ブラウザのURL（クエリパラメータ）と同期し、UIや内部処理で使う検索条件の型は、末尾を `SearchParams` とする。
   - 例: `AnySearchParams`, `BaseSearchParams`
-  - **用途**: TanStack Router の `validateSearch`、UIコンポーネントの `props`、APIを呼び出す `fetch` 関数の引数など。
-- **スキーマ名**: 検索パラメータをバリデーションするための Zod スキーマは、末尾を `SearchSchema` とする。
+  - **用途**: TanStack Routerの `validateSearch`、UIコンポーネントの `props`、APIを呼び出す `fetch` 関数の引数など。
+- **スキーマ名**: 検索パラメータをバリデーションするためのZodスキーマは、末尾を `SearchSchema` とする。
   - 例: `allSearchSchema`
 
 ### 型の使い分けと変換
 
-1. **`SearchParams`**: フロントエンド（ブラウザURL）が保持する型。配列（`keywords` など）や特定のリテラルを含む。
-2. **変換 (Parse)**: `src/fetch/utils/` 配下などの関数で `SearchParams` を `RequestParams` に変換する。
+1. **`SearchParams`**: フロントエンドのURLが保持する型。配列（`keywords` など）や特定のリテラルを含む。
+2. **変換**: `src/fetch/utils/` 配下などの関数で `SearchParams` を `RequestParams` に変換する。
 3. **`RequestParams`**: APIリクエスト時に実際に送信される型。クエリ文字列として送信しやすいように、配列がカンマ区切りの文字列に変換されている。
 
 ## 運用メモ

@@ -2,41 +2,41 @@
 
 ## 決定
 
-- HTTP エラーの解釈は fetch ごとに分散させず、共通レイヤーで扱う
-- detail route 上の API 404 は、必要に応じて Router の notFound へ変換する
-- `application/problem+json` の情報は可能な限り保持する
-- MSW でも failure path を再現できる状態を維持する
+- HTTPエラーの解釈はfetchごとに分散させず、共通レイヤーで扱う
+- detail route上のAPI 404は、必要に応じてRouterの `notFound` へ変換する
+- `application/problem+json` の情報は、可能な限り保持する
+- MSWでも失敗系を再現できる状態を維持する
 
 ## 背景
 
-- fetcher ごとにエラー解釈がばらつくと、UI とデバッグ体験が不安定になる
-- 404 には「未知の route」と「存在しない identifier」があり、同じ扱いにはできない
-- backend では `application/problem+json` が返ってきており、frontend 側でもその情報を活かせる
-- staging でもこの形式の 500 が確認されており、success path だけでなく failure path の整備が必要だった
+- fetcherごとにエラー解釈がばらつくと、UIとデバッグ体験が不安定になる
+- 404には「未知のroute」と「存在しないidentifier」があり、同じ扱いにはできない
+- バックエンドでは `application/problem+json` が返ってきており、フロントエンド側でもその情報を活かせる
+- stagingでもこの形式の500が確認されており、成功系だけでなく失敗系の整備が必要だった
 
 ## 採用した理由
 
-- `response.ok` 判定、`application/problem+json` の parse、`status` / `detail` / `requestId` の保持を共通化すると、各 fetcher の解釈差を防げる
-- route 単位で notFound と error boundary の役割を分けると、ユーザーに見せる状態を整理しやすい
-- problem response の構造を保持すると、問い合わせ導線やデバッグに使いやすい
-- MSW で失敗系も再現できると、UI と fetcher の回帰テストが書きやすい
+- `response.ok` 判定、`application/problem+json` のパース、`status` / `detail` / `requestId` の保持を共通化すると、各fetcherの解釈差を防げる
+- route単位で `notFound` と error boundary の役割を分けると、ユーザーに見せる状態を整理しやすい
+- problem responseの構造を保持すると、問い合わせ導線やデバッグに使いやすい
+- MSWで失敗系も再現できると、UIとfetcherの回帰テストが書きやすい
 
 ## 影響範囲
 
-- fetch 共通処理
-- route loader の 404 変換
+- fetch共通処理
+- route loaderの404変換
 - error boundary と notFound の責務分離
-- MSW の mock 設計
+- MSWのmock設計
 
 ## 補足
 
-- TanStack Router の file-based routing では、`src/routes` 配下の補助ファイルも route と解釈される
-- route ではない helper は `src/routes` の外に置くか、ignore 対象の命名にする
-- route loader の共通処理は `src/utils` などに逃がす方が安全
-- 現在の SPA 配信では、未知の path でも `index.html` が返るため、UI 上の 404 は real HTTP 404 ではない
+- TanStack Routerのfile-based routingでは、`src/routes` 配下の補助ファイルもrouteと解釈される
+- routeではないhelperは `src/routes` の外に置くか、ignore対象の命名にする
+- route loaderの共通処理は `src/utils` などに逃がすほうが安全
+- 現在のSPA配信では、未知のpathでも `index.html` が返るため、UI上の404は実際のHTTP 404ではない
 
 ## 見直し条件
 
-- 配信方式が変わり、real HTTP 404 を frontend 側でも扱う必要が出た場合
-- backend の error response 形式が変わった場合
-- route 構成や loader 設計の方針が大きく変わった場合
+- 配信方式が変わり、実際のHTTP 404をフロントエンド側でも扱う必要が出た場合
+- バックエンドのerror response形式が変わった場合
+- route構成やloader設計の方針が大きく変わった場合

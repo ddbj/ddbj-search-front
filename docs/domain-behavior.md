@@ -2,45 +2,45 @@
 
 ## この文書の役割
 
-この文書は、検索結果や詳細画面の表示・導線に関わるドメイン固有の挙動をまとめるための場所です。
+この文書では、検索結果や詳細画面の表示・導線に関わるドメイン固有の挙動を整理する。
 
 - 画面表示で吸収しているデータ差異
-- download link のようなドメイン依存の例外挙動
+- `download link` のようなドメイン依存の例外挙動
 - 用語表示の使い分け
 
-設計判断そのものは `docs/decisions/` に残し、ここでは現在の挙動と補足ルールを扱います。
+設計判断そのものは [docs/decisions/README.md](./decisions/README.md) に残し、ここでは現在の挙動と補足ルールを扱う。
 
-## Entry Title の扱い
+## Entry Titleの扱い
 
-- 各 Entry には「タイトル」に相当する値が複数存在する場合と、存在しない場合がある
+- 各Entryには、「タイトル」に相当する値が複数存在する場合と、存在しない場合がある
 - `title` と `name` の両方が存在するパターンもある
 - カードタイトルやページタイトルでは、この差異を吸収するために `getEntryTitle()` を利用して表示する
 
-## download link (`downloadUrl`) の扱い
+## `download link`（`downloadUrl`）の扱い
 
-- HTTPS / FTP で実データをダウンロードさせる機能として扱う
-- API 内にある `Distribution` は現時点では実質使用していない
+- HTTPS / FTPで実データをダウンロードさせる機能として扱う
+- API内にある `Distribution` は、現時点では実質使用していない
 
-### JgaDac の場合
+### JgaDacの場合
 
-- download link のエリア自体を表示しない
+- `download link` のエリア自体を表示しない
 
-### BioProject / BioSample の場合
+### BioProject / BioSampleの場合
 
-- `downloadUrl` 内のデータが DB 全体になっており、サイズが大きすぎてダウンロードできないケースがある
-- そのため API の JSON を直接叩く
-  - FTP は作らず HTTPS のリンクのみを扱う
-  - 新 UI / API での URL の見せ方は、必要に応じて別途見直す
+- `downloadUrl` 内のデータがDB全体になっており、サイズが大きすぎてダウンロードできないケースがある
+- そのため、APIのJSONを直接使う
+  - FTPは作らず、HTTPSのリンクのみを扱う
+  - 新UI / APIでのURLの見せ方は、必要に応じて別途見直す
 
 ### それ以外の場合
 
-- リンク切れの可能性があるため、フロント読み込み後に HTTPS リンクを `method: HEAD` で確認する
-- HTTPS のリンクが切れていたら FTP も切れているとみなす
+- リンク切れの可能性があるため、フロントエンドで読み込んだあとにHTTPSリンクを `method: HEAD` で確認する
+- HTTPSのリンクが切れていたら、FTPも切れているとみなす
 - リンクが切れていたら、リンクを貼らずにグレーアウトした文字列のみを表示する
-- CORS 制約により、異なるドメインのリンクに対しては HEAD リクエストが失敗するため、リンクチェックは同一ドメインに限定する
+- CORS制約により、異なるドメインのリンクに対してはHEADリクエストが失敗するため、リンクチェックは同一ドメインに限定する
 
 ## `Modified` と `Updated` の使い分け
 
-- `dateModified` は DB 周りのボキャブラリとして API 付近で使う
-- UI 表示では、より人間に自然な `updated` に寄せる
-- INSDC 側の表現も `updated` に合わせる
+- `dateModified` はDB周りのボキャブラリとしてAPI付近で使う
+- UI表示では、より人間に自然な `updated` に寄せる
+- INSDC側の表現も `updated` に合わせる
