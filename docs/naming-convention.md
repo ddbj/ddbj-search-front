@@ -6,8 +6,8 @@
 
 - 対象:
   - 変数名、関数名、型名、ファイル名
-  - API request / responseの型名
-  - Zod schemaやsearch parameterの命名
+  - APIリクエスト / レスポンスの型名
+  - Zod schemaや検索パラメータの命名
 - 対象外:
   - コードスタイルや関数定義の方針（→ [docs/code-style.md](./code-style.md)）
   - 個別機能の設計判断
@@ -28,8 +28,8 @@
     - 例: `parseBaseEntryParams.spec.ts`
   - **Storybook**: 元のファイル名に `.stories` を付与する。
     - 例: `TypeSelector.stories.tsx`
-  - **ルート定義 (TanStack Router)**: `camelCase` または `index.tsx`
-    - 例: `status.tsx`, `entry/index.tsx`
+  - **ルート定義 (TanStack Router)**: file-based routeの規則に合わせた名前を使う。
+    - 例: `status.tsx`, `index.tsx`, `$identifier.tsx`, `sra-study/index.tsx`
 
 ## API関連
 
@@ -37,7 +37,7 @@
 
 - **型名**: 複数のパラメータを保持するオブジェクトを定義する場合は、末尾を `RequestParams` とする。
   - 例: `BaseDetailRequestParams`, `AllFacetListRequestParams`
-- **変数名**: `params` または `...Params` を使用する。
+- **変数名**: `params` または `...Params` を使う。
 
 ### Zodスキーマ
 
@@ -65,7 +65,7 @@
 
 1. **`SearchParams`**: フロントエンドのURLが保持する型。配列（`keywords` など）や特定のリテラルを含む。
 2. **変換**: `src/fetch/utils/` 配下などの関数で `SearchParams` を `RequestParams` に変換する。
-3. **`RequestParams`**: APIリクエスト時に実際に送信される型。クエリ文字列として送信しやすいように、配列がカンマ区切りの文字列に変換されている。
+3. **`RequestParams`**: APIリクエスト時に実際に送信される型。クエリ文字列として送りやすいように、配列をカンマ区切りの文字列へ変換する。
 
 ## 運用メモ
 

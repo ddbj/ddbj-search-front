@@ -7,19 +7,18 @@
 - 何を使っているかを素早く把握する
 - どのレイヤーでどの技術を使うかを確認する
 - 詳細な設計判断が必要な場合は [docs/decisions/README.md](./decisions/README.md) を参照する
-
-個別の設計判断そのものは、この文書に蓄積しない。
+- 個別の設計判断そのものは、この文書に蓄積しない
 
 ## UI・スタイリング
 
 - HeroUI（旧NextUI）
 - Tailwind CSS
-  - clsx
+- clsx
 
 ## アイコン
 
 - FontAwesome Pro
-  - YOHAK社としてクライアント案件に使用可能なProライセンスを所持している
+  - YOHAK社としてクライアント案件に使えるProライセンスを所持する
   - SVGをダウンロードし、コンポーネント化して使う
 
 ## ルーティング
@@ -33,7 +32,6 @@
 ## 状態管理
 
 - Jotai
-- Immer
 
 ## バリデーション
 
@@ -46,9 +44,10 @@
 ## テスト
 
 - Vitest
-- Playwright (E2E)
-- MSW (Mock Service Worker)
 - Storybook
+- MSW (Mock Service Worker)
+- Playwright
+  - Storybookテストをブラウザ上で動かすために使う
 
 ## APIドキュメント
 

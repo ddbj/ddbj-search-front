@@ -2,11 +2,13 @@
 
 ## この文書の役割
 
-この文書では、このリポジトリで `agent-browser` を使って画面確認するときの運用を扱う。
+この文書では、このリポジトリで `agent-browser` を使って画面確認するときの前提と補足ルールを扱う。
+
+- 一般的な外部ツールの進め方は [docs/external-tool-operation.md](./external-tool-operation.md) を参照する
 
 ## 前提
 
-- `agent-browser` はリポジトリ依存ではなく、各利用者の個人環境で使えるようにしておく
+- `agent-browser` はリポジトリ依存のセットアップ対象ではなく、各利用者の個人環境で使える状態にしておく
 
 ## Storybookでの見方
 
@@ -20,5 +22,5 @@
 
 ## 関連文書
 
-- [docs/development-guide.md](./development-guide.md)
-- [docs/external-tool-operation.md](./external-tool-operation.md)
+- [docs/development-guide.md](./development-guide.md): 日常開発の手順と検証方針
+- [docs/external-tool-operation.md](./external-tool-operation.md): 外部ツール全般の進め方

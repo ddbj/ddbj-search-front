@@ -13,7 +13,7 @@
 - [`development-guide.md`](./development-guide.md): 日常開発で使う手順、検証方針、完了条件
 - [`documentation-guide.md`](./documentation-guide.md): ドキュメントの書き方、置き分け方、一時メモの扱い
 - [`external-tool-operation.md`](./external-tool-operation.md): AIが外部ツールを使うときの進め方、待ち方、進捗共有の標準運用
-- [`agent-browser.md`](./agent-browser.md): `agent-browser` でStorybookや実アプリを確認するときの入口、待機条件、成果物共有の運用メモ
+- [`agent-browser.md`](./agent-browser.md): `agent-browser` でStorybookや実アプリを確認するときの前提と成果物運用
 
 ## 実装規約
 
@@ -28,9 +28,9 @@
 
 ## 設計判断
 
-- [`decisions/README.md`](./decisions/README.md): 設計判断ログの役割、運用ルール、ひな形をまとめた入口
+- [`decisions/README.md`](./decisions/README.md): 設計判断ログの役割、運用ルール、ひな形を示す入口
 - [`decisions/2026-04-09-error-handling.md`](./decisions/2026-04-09-error-handling.md): problem responseの保持、404の扱い、共通エラーレイヤーの方針を記録した判断
-- [`decisions/2026-04-23-mise-source-of-truth.md`](./decisions/2026-04-23-mise-source-of-truth.md): Node.js / pnpm の正本を `mise.toml` に寄せ、`package.json` のバージョン定義を削る判断を記録した文書
+- [`decisions/2026-04-23-mise-source-of-truth.md`](./decisions/2026-04-23-mise-source-of-truth.md): Node.js / pnpm の基準を `mise.toml` に寄せ、`package.json` のバージョン定義を削る判断を記録した文書
 
 ## エージェント向け
 
