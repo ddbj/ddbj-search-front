@@ -48,7 +48,16 @@ export const baseDetailResponseSchema = z.object({
     .nullable()
     .optional(),
   properties: z.unknown(),
-  distribution: z.unknown(),
+  distribution: z
+    .array(
+      z.object({
+        type: z.string("DataDownload"),
+        encodingFormat: z.string().openapi({ example: "JSON" }),
+        contentUrl: z.string().openapi({ example: "https://example.com/data.json" }),
+      }),
+    )
+    .optional()
+    .nullable(),
   // downloadUrl: z.array(
   //   z.object({
   //     name: z.string(),
@@ -67,6 +76,6 @@ export type ExternalLink = NonNullable<BaseDetailResponse["externalLink"]>[0];
 export type DbXrefsCount = BaseDetailResponse["dbXrefsCount"];
 export type Organism = NonNullable<BaseDetailResponse["organism"]>;
 export type Xref = NonNullable<BaseDetailResponse["dbXrefs"]>[0];
-// export type DownloadUrl = BaseDetailResponse["downloadUrl"];
+export type Distribution = NonNullable<BaseDetailResponse["distribution"]>[0];
 export type Accessibility = NonNullable<BaseDetailResponse["accessibility"]>;
 export type Status = NonNullable<BaseDetailResponse["status"]>;

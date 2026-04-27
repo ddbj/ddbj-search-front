@@ -11,6 +11,7 @@ import { getEntryTitle } from "@/utils/getEntryTitle.ts";
 import { useTitle } from "@/utils/useTitle.ts";
 import type { SearchDetailResponse } from "@/api/types.ts";
 import type { FC } from "react";
+import { DownloadPanel } from "@/features/searchDetail/panels/DownloadPanel.tsx";
 
 type Props = {
   data: SearchDetailResponse;
@@ -43,7 +44,7 @@ export const SearchDetailLayout: FC<Props> = ({ data }) => {
 
         <div data-name={"rightCol"} className={"flex w-fit flex-shrink-0 flex-col gap-4"}>
           <StatusPanel data={data} />
-          {/*<DownloadPanel data={data} />*/}
+          <DownloadPanel data={data} />
         </div>
       </div>
     </main>

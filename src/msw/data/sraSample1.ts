@@ -9,11 +9,10 @@ export const sraSample1: SraSampleDetailResponse = {
   accessibility: "public-access",
   distribution: [
     {
-      name: "ERA2380438.sample.xml",
-      ftpUrl:
-        "ftp://ftp.ddbj.nig.ac.jp/ddbj_database/dra/fastq/ERA238/ERA2380438/ERA2380438.sample.xml",
-      type: "meta",
-      url: "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/ERA238/ERA2380438/ERA2380438.sample.xml",
+      type: "DataDownload",
+      encodingFormat: "XML",
+      contentUrl:
+        "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq/ERA238/ERA2380438/ERA2380438.sample.xml",
     },
   ],
   isPartOf: "SRA Sample",
