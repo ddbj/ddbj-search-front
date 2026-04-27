@@ -1,6 +1,7 @@
 import {
   DateField,
   DateRangePicker as HeroDateRangePicker,
+  I18nProvider,
   Label,
   RangeCalendar,
 } from "@heroui/react";
@@ -30,58 +31,78 @@ const fieldGroupClasses = clsx(
   "hover:border-gray-300",
 );
 const popoverClasses = clsx("rounded border border-gray-200 bg-white p-3 shadow-lg");
+const literalSegmentClasses = clsx("mx-1");
+// See docs/decisions/2026-04-27-date-range-picker-locale.md for why en-CA is used here.
+const englishYearMonthDayLocale = "en-CA";
 
 export const DateRangePicker: FC<Props> = ({ label, value, onChange }) => {
   return (
-    <HeroDateRangePicker
-      aria-label={label}
-      className={pickerClasses}
-      // HeroUI resolves a newer @internationalized/date type internally, so the parsed value is passed structurally here.
-      value={stringToDateRange(value) as never}
-      onChange={(nextValue) => onChange(dateRangeToString(nextValue))}
-    >
-      <Label className="text-sm font-medium text-gray-700">{label}</Label>
-      <DateField.Group className={fieldGroupClasses} fullWidth variant="secondary">
-        <DateField.InputContainer>
-          <DateField.Input slot="start">
-            {(segment) => <DateField.Segment segment={segment} />}
-          </DateField.Input>
-          <HeroDateRangePicker.RangeSeparator className="px-2 text-gray-400" />
-          <DateField.Input slot="end">
-            {(segment) => <DateField.Segment segment={segment} />}
-          </DateField.Input>
-        </DateField.InputContainer>
-        <DateField.Suffix>
-          <HeroDateRangePicker.Trigger aria-label={`Open ${label} calendar`}>
-            <HeroDateRangePicker.TriggerIndicator className="text-gray-500">
-              <CalendarIcon className="h-4 w-4 fill-current" />
-            </HeroDateRangePicker.TriggerIndicator>
-          </HeroDateRangePicker.Trigger>
-        </DateField.Suffix>
-      </DateField.Group>
-      <HeroDateRangePicker.Popover className={popoverClasses}>
-        <RangeCalendar aria-label={`${label} calendar`}>
-          <RangeCalendar.Header>
-            <RangeCalendar.YearPickerTrigger>
-              <RangeCalendar.YearPickerTriggerHeading />
-              <RangeCalendar.YearPickerTriggerIndicator />
-            </RangeCalendar.YearPickerTrigger>
-            <RangeCalendar.NavButton slot="previous" />
-            <RangeCalendar.NavButton slot="next" />
-          </RangeCalendar.Header>
-          <RangeCalendar.Grid>
-            <RangeCalendar.GridHeader>
-              {(day) => <RangeCalendar.HeaderCell>{day}</RangeCalendar.HeaderCell>}
-            </RangeCalendar.GridHeader>
-            <RangeCalendar.GridBody>
-              {(date) => <RangeCalendar.Cell date={date} />}
-            </RangeCalendar.GridBody>
-          </RangeCalendar.Grid>
-        </RangeCalendar>
-      </HeroDateRangePicker.Popover>
-    </HeroDateRangePicker>
+    <I18nProvider locale={englishYearMonthDayLocale}>
+      <HeroDateRangePicker
+        aria-label={label}
+        className={pickerClasses}
+        firstDayOfWeek="sun"
+        shouldForceLeadingZeros
+        // HeroUI resolves a newer @internationalized/date type internally, so the parsed value is passed structurally here.
+        value={stringToDateRange(value) as never}
+        onChange={(nextValue) => onChange(dateRangeToString(nextValue))}
+      >
+        <Label className="text-sm font-medium text-gray-700">{label}</Label>
+        <DateField.Group className={fieldGroupClasses} fullWidth variant="secondary">
+          <DateField.InputContainer>
+            <DateField.Input slot="start">
+              {(segment) => <DateRangeSegment segment={segment} />}
+            </DateField.Input>
+            <HeroDateRangePicker.RangeSeparator className="px-2 text-gray-400" />
+            <DateField.Input slot="end">
+              {(segment) => <DateRangeSegment segment={segment} />}
+            </DateField.Input>
+          </DateField.InputContainer>
+          <DateField.Suffix>
+            <HeroDateRangePicker.Trigger aria-label={`Open ${label} calendar`}>
+              <HeroDateRangePicker.TriggerIndicator className="text-gray-500">
+                <CalendarIcon className="h-4 w-4 fill-current" />
+              </HeroDateRangePicker.TriggerIndicator>
+            </HeroDateRangePicker.Trigger>
+          </DateField.Suffix>
+        </DateField.Group>
+        <HeroDateRangePicker.Popover className={popoverClasses}>
+          <RangeCalendar aria-label={`${label} calendar`}>
+            <RangeCalendar.Header>
+              <RangeCalendar.YearPickerTrigger>
+                <RangeCalendar.YearPickerTriggerHeading />
+                <RangeCalendar.YearPickerTriggerIndicator />
+              </RangeCalendar.YearPickerTrigger>
+              <RangeCalendar.NavButton slot="previous" />
+              <RangeCalendar.NavButton slot="next" />
+            </RangeCalendar.Header>
+            <RangeCalendar.Grid>
+              <RangeCalendar.GridHeader>
+                {(day) => <RangeCalendar.HeaderCell>{day}</RangeCalendar.HeaderCell>}
+              </RangeCalendar.GridHeader>
+              <RangeCalendar.GridBody>
+                {(date) => <RangeCalendar.Cell date={date} />}
+              </RangeCalendar.GridBody>
+            </RangeCalendar.Grid>
+          </RangeCalendar>
+        </HeroDateRangePicker.Popover>
+      </HeroDateRangePicker>
+    </I18nProvider>
   );
 };
+
+type DateRangeSegmentProps = {
+  segment: Parameters<NonNullable<Parameters<typeof DateField.Input>[0]["children"]>>[0];
+};
+
+const DateRangeSegment: FC<DateRangeSegmentProps> = ({ segment }) => (
+  <DateField.Segment
+    className={segment.type === "literal" ? literalSegmentClasses : undefined}
+    segment={segment}
+  >
+    {segment.type === "literal" ? "/" : segment.text}
+  </DateField.Segment>
+);
 
 const dateRangeToString = (value: SerializableDateRange): string => {
   if (!value?.start || !value?.end) {

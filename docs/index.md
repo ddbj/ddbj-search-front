@@ -31,6 +31,7 @@
 - [`decisions/README.md`](./decisions/README.md): 設計判断ログの役割、運用ルール、ひな形を示す入口
 - [`decisions/2026-04-09-error-handling.md`](./decisions/2026-04-09-error-handling.md): problem responseの保持、404の扱い、共通エラーレイヤーの方針を記録した判断
 - [`decisions/2026-04-23-mise-source-of-truth.md`](./decisions/2026-04-23-mise-source-of-truth.md): Node.js / pnpm の基準を `mise.toml` に寄せ、`package.json` のバージョン定義を削る判断を記録した文書
+- [`decisions/2026-04-27-date-range-picker-locale.md`](./decisions/2026-04-27-date-range-picker-locale.md): `DateRangePicker` の英語表示と年月日順のために `en-CA` を使う判断を記録した文書
 
 ## エージェント向け
 
