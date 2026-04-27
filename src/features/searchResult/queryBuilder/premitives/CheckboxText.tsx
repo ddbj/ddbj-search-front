@@ -16,10 +16,10 @@ type Props = {
 };
 
 const checkboxClasses = clsx("group/checkbox flex min-w-0 items-start gap-2.5");
-const labelClasses = clsx("min-w-0 text-[15px] leading-6 text-gray-900 break-words");
+const labelClasses = clsx("min-w-0 text-[15px] leading-6 break-words text-gray-900");
 const linkWrapperClasses = clsx("min-w-0 break-words");
 const controlClasses = clsx(
-  "mt-0.5 size-5 shrink-0 rounded-sm border border-border shadow-none transition-colors",
+  "border-border mt-0.5 size-5 shrink-0 rounded-sm border shadow-none transition-colors",
   "before:bg-bg-primary before:rounded-none",
 );
 const indicatorClasses = clsx("text-white");

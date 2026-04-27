@@ -7,6 +7,7 @@ import {
 import { parseDate } from "@internationalized/date";
 import { type FC } from "react";
 import { CalendarIcon } from "@/features/graphics/CalendarIcon.tsx";
+import clsx from "clsx";
 
 type Props = {
   label: string;
@@ -23,10 +24,12 @@ type SerializableDateRange = {
   };
 } | null;
 
-const pickerClasses = "w-full gap-1";
-const fieldGroupClasses =
-  "rounded-lg border border-gray-200 bg-white shadow-none transition data-[focus-visible=true]:border-fire-bush-600";
-const popoverClasses = "rounded-lg border border-gray-200 bg-white p-3 shadow-lg";
+const pickerClasses = clsx("w-full gap-0.5");
+const fieldGroupClasses = clsx(
+  "h-10 w-full rounded border border-gray-200 bg-white",
+  "hover:border-gray-300",
+);
+const popoverClasses = clsx("rounded border border-gray-200 bg-white p-3 shadow-lg");
 
 export const DateRangePicker: FC<Props> = ({ label, value, onChange }) => {
   return (

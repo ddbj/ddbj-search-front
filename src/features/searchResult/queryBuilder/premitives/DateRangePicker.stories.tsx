@@ -27,7 +27,7 @@ const StatefulDateRangePicker = ({
       />
       {withClearButton ? (
         <button
-          className="w-fit text-sm text-fire-bush-700"
+          className="text-fire-bush-700 w-fit text-sm"
           type="button"
           onClick={() => setValue("")}
         >

@@ -36,7 +36,7 @@ export const XrefPanel: FC<Props> = ({ xrefs, identifier, dbType }) => {
 const TruncatedMessage: FC<Pick<Props, "identifier" | "dbType">> = ({ identifier, dbType }) => {
   const apiURL = getDBXrefAPIPath(dbType, identifier);
   return (
-    <div className={"rounded bg-fire-bush-50 p-2 text-sm"}>
+    <div className={"bg-fire-bush-50 rounded p-2 text-sm"}>
       In favor of readability, the list of DB xrefs is truncated to {MAX_DB_XREFS} entries. For the
       complete list, please refer to the{" "}
       <a href={apiURL} target={"_blank"} className={"text-link-primary"}>

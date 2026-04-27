@@ -9,7 +9,7 @@ type Props = {
 };
 
 const wrapperClasses = clsx(
-  "flex w-fit gap-1 rounded-full bg-fire-bush-700 px-2 py-1 text-xs text-white",
+  "bg-fire-bush-700 flex w-fit gap-1 rounded-full px-2 py-1 text-xs text-white",
 );
 const buttonClasses = clsx("cursor-pointer");
 

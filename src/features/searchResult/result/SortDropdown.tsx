@@ -54,7 +54,7 @@ const items: Item[] = [
 
 const triggerClasses = clsx(
   "flex min-h-12 min-w-64 items-center gap-3 rounded-lg border border-gray-200 bg-white px-3 py-2 shadow-none",
-  "focus:outline-2 focus:-outline-offset-2 focus:outline-fire-bush-600",
+  "focus:outline-fire-bush-600 focus:outline-2 focus:-outline-offset-2",
 );
 
 const iconWrapperClasses = clsx(

@@ -29,7 +29,7 @@ export const PropertiesPanel: FC<Props> = ({ data, tooltipOpen }) => {
           }}
         >
           <span className={"self-center pt-0.5"}>
-            <CircleQuestionIcon className={"h-4 fill-text-primary"} />
+            <CircleQuestionIcon className={"fill-text-primary h-4"} />
           </span>
         </Tooltip>
         <span>Properties</span>
