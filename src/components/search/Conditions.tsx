@@ -45,8 +45,8 @@ const queryCustomQuery = (value: any) => {
           { term: { identifier: { value: trimmed, boost: 10 } } },
           // identifier: keyword 型 — 前方一致（accession の部分入力に対応）
           { prefix: { identifier: { value: trimmed, boost: 5 } } },
-          // organism.name: keyword 型 — 完全一致
-          { term: { "organism.name": { value: trimmed, boost: 2 } } },
+          // organism.name.keyword: keyword 型 — 完全一致
+          { term: { "organism.name.keyword": { value: trimmed, boost: 2 } } },
           // title: フレーズ一致ボーナス（語順が一致すれば高スコア）
           { match_phrase: { title: { query: trimmed, boost: 5 } } },
           // text フィールド横断検索（全キーワードがいずれかのフィールドに存在すれば一致）
@@ -128,7 +128,7 @@ export const Conditions: FC = () => {
 
       <SingleList
         componentId="organism"
-        dataField="organism.name"
+        dataField="organism.name.keyword"
         title={"Organism"}
         filterLabel={"Organism"}
         URLParams
