@@ -13,7 +13,7 @@ type Props = {
   countData: FacetItem[];
 };
 
-const sectionClasses = "flex flex-col gap-2";
+const sectionClasses = "flex flex-col gap-0.5";
 const titleClasses = "text-sm font-medium leading-5 text-gray-700";
 const listClasses = "flex flex-col gap-1";
 

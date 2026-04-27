@@ -12,10 +12,11 @@ type Props = {
 };
 
 const sectionClasses = clsx("flex flex-col gap-2");
-const titleClasses = clsx("text-sm leading-5 font-medium text-gray-700");
-const listClasses = clsx("flex flex-col gap-2");
-const detailsClasses = clsx("rounded-lg border border-gray-200 bg-white px-3 py-2");
-const summaryClasses = clsx("cursor-pointer text-sm leading-5 font-medium text-gray-700");
+const wrapperClasses = clsx("flex flex-col gap-0.5");
+const titleClasses = clsx("text-sm font-medium text-gray-700");
+const listClasses = clsx("flex flex-col");
+const summaryClasses = clsx("cursor-pointer text-sm font-medium text-gray-700");
+const contentClasses = clsx("flex flex-col gap-1");
 
 export const OtherTypeSelector: FC<Props> = ({
   currentType,
@@ -24,19 +25,21 @@ export const OtherTypeSelector: FC<Props> = ({
 }) => {
   return (
     <section className={sectionClasses}>
-      <h2 className={titleClasses}>Type</h2>
-      <div className={listClasses}>
-        <CheckboxText
-          labelStr={dbLabels[currentType]}
-          value={currentType}
-          isSelected={true}
-          to={`/entry/${currentType}`}
-          search={linkSearchParams}
-        />
+      <div className={wrapperClasses}>
+        <h2 className={titleClasses}>Type</h2>
+        <div className={listClasses}>
+          <CheckboxText
+            labelStr={dbLabels[currentType]}
+            value={currentType}
+            isSelected={true}
+            to={`/entry/${currentType}`}
+            search={linkSearchParams}
+          />
+        </div>
       </div>
-      <details className={detailsClasses}>
+      <details className={wrapperClasses}>
         <summary className={summaryClasses}>Other types</summary>
-        <div className={"mt-2 flex flex-col gap-2"}>
+        <div className={contentClasses}>
           {dbTypeList
             .filter((key) => key !== currentType)
             .map((key) => {
