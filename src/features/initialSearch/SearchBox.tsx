@@ -19,7 +19,7 @@ const selectWrapperClasses = clsx("w-64 flex-shrink-0 flex-grow-0");
 
 const selectTriggerClasses = clsx(
   "min-h-[3.1rem] rounded-tl-lg rounded-tr-none rounded-br-none rounded-bl-lg",
-  "border border-gray-200 bg-gray-50 px-3 py-2 shadow-none",
+  "border border-gray-200 bg-gray-100 px-3 py-2 shadow-none",
   "focus:outline-fire-bush-600 focus:outline-2 focus:-outline-offset-2",
 );
 
@@ -27,7 +27,17 @@ const buttonClasses = clsx(
   "bg-fire-bush flex w-16 flex-shrink-0 flex-grow-0 cursor-pointer items-center justify-center rounded-tr-lg rounded-br-lg",
 );
 
-const selectPopoverClasses = clsx("max-h-80 overflow-y-auto");
+const selectPopoverClasses = clsx("rounded");
+const selectPopoverInnerClasses = clsx("max-h-80 overflow-y-auto");
+const selectItemClasses = clsx(
+  "rounded-md pr-8 text-sm text-gray-700",
+  "aria-selected:bg-gray-200 data-[selected=true]:bg-gray-200",
+);
+const selectItemLabelClasses = clsx("truncate");
+const selectItemIndicatorClasses = clsx("text-gray-700");
+const selectItemCheckmarkClasses = clsx(
+  "size-3 transition-[stroke-dashoffset] duration-120 ease-in-out motion-reduce:transition-none",
+);
 
 const selectItems = [
   { id: allKey, label: allLabel },
@@ -93,12 +103,37 @@ export const SearchBox: FC<Props> = ({ onSearch = defaultOnSearch }) => {
           </div>
           <Select.Indicator />
         </Select.Trigger>
-        <Select.Popover>
-          <ScrollShadow className={selectPopoverClasses} hideScrollBar={false}>
+        <Select.Popover className={selectPopoverClasses}>
+          <ScrollShadow className={selectPopoverInnerClasses} hideScrollBar={false}>
             <ListBox>
               {selectItems.map((item) => (
-                <ListBox.Item key={item.id} id={item.id} data-key={item.id} textValue={item.label}>
-                  {item.label}
+                <ListBox.Item
+                  key={item.id}
+                  id={item.id}
+                  className={selectItemClasses}
+                  data-key={item.id}
+                  textValue={item.label}
+                >
+                  <span className={selectItemLabelClasses}>{item.label}</span>
+                  <ListBox.Item.Indicator className={selectItemIndicatorClasses}>
+                    {({ isSelected }) => (
+                      <svg
+                        aria-hidden="true"
+                        className={selectItemCheckmarkClasses}
+                        fill="none"
+                        role="presentation"
+                        stroke="currentColor"
+                        strokeDasharray={22}
+                        strokeDashoffset={isSelected ? 44 : 66}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        viewBox="0 0 17 18"
+                      >
+                        <polyline points="1 9 7 14 15 4" />
+                      </svg>
+                    )}
+                  </ListBox.Item.Indicator>
                 </ListBox.Item>
               ))}
             </ListBox>
