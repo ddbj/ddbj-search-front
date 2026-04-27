@@ -1,5 +1,4 @@
 import type {
-  Accessibility,
   DbXrefsCount,
   Distribution,
   ExternalLink,
@@ -7,35 +6,34 @@ import type {
   Organism,
   Organization,
   Publication,
-  Status,
   Xref,
 } from "@/types/api.ts";
 
-export type BioProject = {
-  type: "bioproject";
+export type JgaType = "jga-study" | "jga-dataset" | "jga-dac" | "jga-policy";
+
+export type JGA = {
+  type: JgaType;
   identifier: string;
-  isPartOf: "bioproject";
+  isPartOf: "jga";
   name: string | null;
   url: string;
   organism: Organism | null;
   title: string | null;
   description: string | null;
-  objectType: "UmbrellaBioProject" | "BioProject";
-  projectType: string[];
-  relevance: string[];
   organization: Organization[];
   publication: Publication[];
   grant: Grant[];
   externalLink: ExternalLink[];
-  parentBioProjects: Xref[];
-  childBioProjects: Xref[];
+  studyType: string[];
+  datasetType: string[];
+  vendor: string[];
   sameAs: Xref[];
   dbXrefs: Xref[];
   dbXrefsCount?: DbXrefsCount;
   distribution: Distribution[];
   properties: unknown;
-  status: Status;
-  accessibility: Accessibility;
+  status: "public";
+  accessibility: "controlled-access";
   dateCreated: string | null;
   dateModified: string | null;
   datePublished: string | null;

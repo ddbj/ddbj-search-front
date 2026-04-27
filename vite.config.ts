@@ -38,6 +38,10 @@ export default defineConfig(({ mode }) => ({
             target: baseUrl,
             changeOrigin: true,
           },
+          [`${urlPrefix}/api`]: {
+            target: baseUrl,
+            changeOrigin: true,
+          },
         }
       : undefined,
   },

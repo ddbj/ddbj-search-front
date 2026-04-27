@@ -57,6 +57,20 @@ export const sraRun1: ElasticSearchSource = {
   datePublished: "2014-07-04T04:32:28Z",
   dateCreated: "2013-06-06T01:17:08Z",
   name: "224302",
+  organization: [],
+  publication: [],
+  libraryStrategy: [],
+  librarySource: [],
+  librarySelection: [],
+  libraryLayout: null,
+  platform: null,
+  instrumentModel: [],
+  libraryName: null,
+  libraryConstructionProtocol: null,
+  analysisType: null,
+  collectionDate: null,
+  geoLocName: null,
+  derivedFrom: [],
   properties: {
     EXPERIMENT_REF: {
       refcenter: "WUGSC",
@@ -109,6 +123,6 @@ export const sraRun1: ElasticSearchSource = {
     },
     accession: "SRR885622",
   },
-  sameAs: null,
+  sameAs: [],
   status: "public",
 };

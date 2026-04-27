@@ -1,62 +1,94 @@
-// Elastic search types
+// 共通型は ddbj-search-converter v0.3 の Pydantic schema (`schema.py`) に揃える。
 
-import { BaseDataSet } from "@/types/BaseDataSet.ts";
-import { BioProject } from "@/types/BioProject.ts";
-import { BioSample } from "@/types/BioSample.ts";
-import { JgaDac } from "@/types/JgaDac.ts";
+import type { BioProject } from "@/types/BioProject.ts";
+import type { BioSample } from "@/types/BioSample.ts";
+import type { JGA } from "@/types/JGA.ts";
+import type { SRA } from "@/types/SRA.ts";
 
-export type MultiSearchElasticsearchResponse = MultiSearchResponse<HitSource>;
-export type SingleSearchElasticsearchResponse = SingleSearchResponse<HitSource>;
-export type ElasticSearchSource = HitSource;
+export type EncodingFormat = "JSON" | "JSON-LD" | "XML" | "FASTQ" | "SRA";
 
-type HitSource = JgaDac | BaseDataSet | BioSample | BioProject;
-
-type MultiSearchResponse<T> = {
-  took: number;
-  responses: {
-    took: number;
-    timed_out: boolean;
-    _shards: {
-      total: number;
-      successful: number;
-      skipped: number;
-      failed: number;
-    };
-    hits: {
-      total: {
-        value: number;
-        relation: string;
-      };
-      max_score: number;
-      hits: {
-        _index: string;
-        _type: string;
-        _id: string;
-        _score: number;
-        _ignored?: string[];
-        _source: T;
-      }[];
-    };
-    status: number;
-  }[];
-};
-
-type SingleSearchResponse<T> = {
-  _source: T;
+export type Distribution = {
+  type: string;
+  encodingFormat: EncodingFormat;
+  contentUrl: string;
 };
 
 export type Organism = {
-  identifier: string;
+  identifier: string | null;
   name: string | null;
 };
-export type Distribution = {
-  contentUrl: string;
-  encodingFormat: string;
-  type: string;
+
+export type OrganizationType = "institute" | "center" | "consortium" | "lab";
+export type OrganizationRole = "owner" | "participant" | "submitter" | "broker";
+
+export type Organization = {
+  name: string | null;
+  abbreviation: string | null;
+  role: OrganizationRole | null;
+  organizationType: OrganizationType | null;
+  department: string | null;
+  url: string | null;
 };
+
+export type PublicationDbType = "pubmed" | "doi" | "pmc" | "other";
+
+export type Publication = {
+  id: string | null;
+  title: string | null;
+  date: string | null;
+  reference: string | null;
+  url: string | null;
+  dbType: PublicationDbType | null;
+};
+
+export type Grant = {
+  id: string | null;
+  title: string | null;
+  agency: Organization[];
+};
+
+export type ExternalLink = {
+  url: string;
+  label: string;
+};
+
+export type XrefType =
+  | "biosample"
+  | "bioproject"
+  | "sra-experiment"
+  | "sra-run"
+  | "sra-sample"
+  | "sra-study"
+  | "sra-submission"
+  | "sra-analysis"
+  | "jga-study"
+  | "jga-dataset"
+  | "jga-dac"
+  | "jga-policy"
+  | "gea"
+  | "geo"
+  | "humandbs"
+  | "insdc"
+  | "insdc-assembly"
+  | "insdc-master"
+  | "metabobank"
+  | "pubmed"
+  | "taxonomy";
+
 export type Xref = {
   identifier: string;
-  type: string;
+  type: XrefType;
   url: string;
 };
+
+export type BioSamplePackage = {
+  name: string;
+  displayName: string | null;
+};
+
+export type Status = "public" | "private" | "suppressed" | "withdrawn";
+export type Accessibility = "public-access" | "controlled-access";
+
 export type DbXrefsCount = Record<string, number>;
+
+export type ElasticSearchSource = BioProject | BioSample | SRA | JGA;

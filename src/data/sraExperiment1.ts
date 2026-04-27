@@ -58,6 +58,20 @@ export const sraExperiment1: ElasticSearchSource = {
   datePublished: "2022-05-20T04:02:21Z",
   dateCreated: "2022-05-17T12:56:42Z",
   name: "GSM6160351_r1",
+  organization: [],
+  publication: [],
+  libraryStrategy: ["ChIP-Seq"],
+  librarySource: ["GENOMIC"],
+  librarySelection: ["ChIP"],
+  libraryLayout: null,
+  platform: "ILLUMINA",
+  instrumentModel: ["NextSeq 550"],
+  libraryName: "GSM6160351",
+  libraryConstructionProtocol: "Illumina TruSeq ChIP",
+  analysisType: null,
+  collectionDate: null,
+  geoLocName: null,
+  derivedFrom: [],
   properties: {
     PLATFORM: {
       ILLUMINA: {
@@ -120,6 +134,6 @@ export const sraExperiment1: ElasticSearchSource = {
       accession: "SRP375608",
     },
   },
-  sameAs: null,
+  sameAs: [],
   status: "public",
 };

@@ -1,8 +1,6 @@
 import React, { FC } from "react";
-import { PrettyJSON } from "@/components/ui/detail/rows/Properties.tsx";
-import { DefinitionList, Row } from "@/components/ui/detail/rows/Shared.tsx";
+import { ListRow, ScalarRow } from "@/components/ui/detail/rows/Shared.tsx";
 import { ElasticSearchSource } from "@/types/api.ts";
-import { SraExperimentProperties } from "@/types/sraExperiment.ts";
 
 type Props = {
   data: ElasticSearchSource;
@@ -12,33 +10,14 @@ export const SraExperiment: FC<Props> = ({ data }) => {
   if (data.type !== "sra-experiment") return <></>;
   return (
     <>
-      <Descriptor data={data} />
-      <Platform data={data} />
+      <ListRow label="libraryStrategy" values={data.libraryStrategy} />
+      <ListRow label="librarySource" values={data.librarySource} />
+      <ListRow label="librarySelection" values={data.librarySelection} />
+      <ScalarRow label="libraryLayout" value={data.libraryLayout} />
+      <ScalarRow label="libraryName" value={data.libraryName} />
+      <ScalarRow label="libraryConstructionProtocol" value={data.libraryConstructionProtocol} />
+      <ScalarRow label="platform" value={data.platform} />
+      <ListRow label="instrumentModel" values={data.instrumentModel} />
     </>
-  );
-};
-
-const Descriptor: FC<Props> = ({ data }) => {
-  if (data.type !== "sra-experiment") return <></>;
-  const properties = data.properties as SraExperimentProperties;
-  const libraryDescriptor =
-    properties.EXPERIMENT_SET?.EXPERIMENT?.DESIGN?.LIBRARY_DESCRIPTOR;
-  if (!libraryDescriptor) return <Row dd={"library descriptor"} />;
-  const descriptor = JSON.stringify(libraryDescriptor, null, 2);
-  return <Row dd={"library descriptor"}>{<PrettyJSON code={descriptor} />}</Row>;
-};
-
-const Platform: FC<Props> = ({ data }) => {
-  if (data.type !== "sra-experiment") return <></>;
-  const properties = data.properties as SraExperimentProperties;
-  const platform = properties.EXPERIMENT_SET?.EXPERIMENT?.PLATFORM ?? {};
-  const obj = Object.entries(platform).reduce<Record<string, string>>((acc, [key, value]) => {
-    acc[key] = value?.INSTRUMENT_MODEL || "";
-    return acc;
-  }, {});
-  return (
-    <Row dd={"platform"}>
-      <DefinitionList {...obj} />
-    </Row>
   );
 };

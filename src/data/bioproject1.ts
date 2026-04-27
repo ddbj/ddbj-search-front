@@ -26,11 +26,6 @@ export const bioproject1: BioProject = {
     "<P><B><I>Azotobacter vinelandii</B></I>. This organism will provide information on the proteins involved in nitrogen fixation and the production of PHB and alginate.",
   dbXrefs: [
     {
-      identifier: "GCA_000021045",
-      type: "assemblies",
-      url: "https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_000021045/",
-    },
-    {
       identifier: "SAMN19513674",
       type: "biosample",
       url: "https://ddbj.nig.ac.jp/resource/biosample/SAMN19513674",
@@ -42,7 +37,6 @@ export const bioproject1: BioProject = {
     },
   ],
   dateModified: "2024-11-18T11:15:39Z",
-  accession: "PRJNA16",
   distribution: [
     {
       contentUrl: "https://ddbj.nig.ac.jp/search/entry/bioproject/PRJNA16.json",
@@ -50,11 +44,13 @@ export const bioproject1: BioProject = {
       type: "DataDownload",
     },
   ],
-  isPartOf: "BioProject",
+  isPartOf: "bioproject",
   type: "bioproject",
   title: "Nitrogen-fixing bacterium",
   url: "https://ddbj.nig.ac.jp/search/entry/bioproject/PRJNA16",
   objectType: "BioProject",
+  projectType: ["Genome sequencing"],
+  relevance: [],
   parentBioProjects: [],
   childBioProjects: [],
   datePublished: "2009-04-14T00:00:00Z",
@@ -65,6 +61,7 @@ export const bioproject1: BioProject = {
       role: "participant",
       name: "DOE Joint Genome Institute",
       abbreviation: "DOE Joint Genome Institute",
+      department: null,
       url: "http://genome.jgi-psf.org/draft_microbes/azovi/azovi.home.html",
     },
     {
@@ -72,6 +69,7 @@ export const bioproject1: BioProject = {
       role: "owner",
       name: "US DOE Joint Genome Institute (JGI-PGF)",
       abbreviation: "US DOE Joint Genome Institute (JGI-PGF)",
+      department: null,
       url: "",
     },
     {
@@ -80,19 +78,19 @@ export const bioproject1: BioProject = {
       name: "Virginia Polytechnic Institute and State University, Virginia Bioinformatics Institute, USA, Blacksburg",
       abbreviation:
         "Virginia Polytechnic Institute and State University, Virginia Bioinformatics Institute, USA, Blacksburg",
+      department: null,
       url: "",
     },
   ],
   publication: [
     {
       date: "",
-      Reference: null,
+      reference: null,
       id: "19429624",
       title:
         "Genome sequence of Azotobacter vinelandii, an obligate aerobe specialized to support diverse anaerobic metabolic processes.",
       url: "https://pubmed.ncbi.nlm.nih.gov/19429624/",
-      DbType: "ePubmed",
-      status: "ePublished",
+      dbType: "pubmed",
     },
   ],
   name: "",

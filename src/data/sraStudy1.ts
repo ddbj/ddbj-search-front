@@ -397,6 +397,20 @@ export const sraStudy1: ElasticSearchSource = {
   datePublished: "2022-02-01T09:00:51Z",
   dateCreated: "2022-01-06T17:06:07Z",
   name: "PRJNA794982",
+  organization: [],
+  publication: [],
+  libraryStrategy: [],
+  librarySource: [],
+  librarySelection: [],
+  libraryLayout: null,
+  platform: null,
+  instrumentModel: [],
+  libraryName: null,
+  libraryConstructionProtocol: null,
+  analysisType: null,
+  collectionDate: null,
+  geoLocName: null,
+  derivedFrom: [],
   properties: {
     DESCRIPTOR: {
       STUDY_TYPE: {

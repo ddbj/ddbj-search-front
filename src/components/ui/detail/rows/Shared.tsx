@@ -39,3 +39,19 @@ export const DefinitionList = (obj: Record<string, string | ReactElement>) => (
     })}
   </dl>
 );
+
+export const ScalarRow: FC<{ label: string; value: string | null | undefined }> = ({
+  label,
+  value,
+}) => {
+  if (!value) return <Row dd={label} />;
+  return <Row dd={label}>{value}</Row>;
+};
+
+export const ListRow: FC<{ label: string; values: string[] | null | undefined }> = ({
+  label,
+  values,
+}) => {
+  if (!values || values.length === 0) return <Row dd={label} />;
+  return <Row dd={label}>{values.join(", ")}</Row>;
+};

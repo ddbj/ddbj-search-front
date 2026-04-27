@@ -1,41 +1,40 @@
-import { DbXrefsCount, Xref, Distribution, Organism } from "@/types/api.ts";
+import type {
+  Accessibility,
+  BioSamplePackage,
+  DbXrefsCount,
+  Distribution,
+  Organism,
+  Organization,
+  Status,
+  Xref,
+} from "@/types/api.ts";
 
 export type BioSample = {
-  //--------------------------------
-  // Same as BaseDataSet
   type: "biosample";
   identifier: string;
+  isPartOf: "biosample";
   name: string | null;
-  dateCreated: string;
-  datePublished: string | null;
-  dateModified: string;
-  accessibility: string;
-  status: string;
-  isPartOf: string;
   url: string;
+  organism: Organism | null;
+  title: string | null;
+  description: string | null;
+  derivedFrom: Xref[];
+  geoLocName: string | null;
+  collectionDate: string | null;
+  host: string | null;
+  strain: string | null;
+  isolate: string | null;
+  organization: Organization[];
+  model: string[];
+  package: BioSamplePackage | null;
+  sameAs: Xref[];
+  dbXrefs: Xref[];
+  dbXrefsCount?: DbXrefsCount;
   distribution: Distribution[];
   properties: unknown;
-  sameAs: Xref[] | null;
-  description: string | null;
-  title: string | null;
-  dbXrefs: Xref[] | null;
-  dbXrefsCount?: DbXrefsCount;
-  //--------------------------------
-  // Same as bioSample but not in BaseDataSet
-  organism: Organism | null;
-  //--------------------------------
-  // Unique to BioSample
-  attributes: {
-    attribute_name: string;
-    display_name: string;
-    harmonized_name: string;
-    content: string;
-  }[];
-  model: {
-    name: string;
-  }[];
-  package: {
-    name: string;
-    display_name: string;
-  };
+  status: Status;
+  accessibility: Accessibility;
+  dateCreated: string | null;
+  dateModified: string | null;
+  datePublished: string | null;
 };

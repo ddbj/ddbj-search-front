@@ -1,0 +1,1102 @@
+- generic [active] [ref=e1]:
+  - main [ref=e138]:
+    - navigation [ref=e139]:
+      - link "Home" [ref=e140] [cursor=pointer]:
+        - /url: /search
+        - paragraph [ref=e141]:
+          - img [ref=e142]
+          - generic [ref=e144]: Home
+      - generic [ref=e145]: ">"
+      - generic [ref=e146]: biosample
+      - generic [ref=e147]: ">"
+      - generic [ref=e148]: SAMN24542748
+    - generic [ref=e151]:
+      - generic [ref=e152]:
+        - term [ref=e153]: identifier
+        - definition [ref=e154]: SAMN24542748
+      - generic [ref=e155]:
+        - term [ref=e156]: type
+        - definition [ref=e157]: biosample
+      - generic [ref=e158]:
+        - term [ref=e159]: sameAs
+        - definition [ref=e160]:
+          - generic [ref=e163]:
+            - term [ref=e164]: sra-sample (1)
+            - definition [ref=e165]:
+              - link "SRS13850143" [ref=e166] [cursor=pointer]:
+                - /url: https://ddbj-staging.nig.ac.jp/search/entry/sra-sample/SRS13850143
+      - generic [ref=e167]:
+        - term [ref=e168]: organism
+        - definition [ref=e169]:
+          - link "Severe acute respiratory syndrome coronavirus 2" [ref=e170] [cursor=pointer]:
+            - /url: https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=2697049
+      - generic [ref=e171]:
+        - term [ref=e172]: title
+        - definition [ref=e173]: CDC Sars CoV2 Sequencing Baseline Constellation
+      - generic [ref=e174]:
+        - term [ref=e175]: host
+        - definition [ref=e176]: Homo sapiens
+      - generic [ref=e177]:
+        - term [ref=e178]: strain
+        - definition [ref=e179]
+      - generic [ref=e180]:
+        - term [ref=e181]: isolate
+        - definition [ref=e182]: SARS-CoV-2/Human/USA/CA-CDC-FG-209615/2021
+      - generic [ref=e183]:
+        - term [ref=e184]: geoLocName
+        - definition [ref=e185]: "USA: California"
+      - generic [ref=e186]:
+        - term [ref=e187]: collectionDate
+        - definition [ref=e188]: 2021-12-22
+      - generic [ref=e189]:
+        - term [ref=e190]: properties
+        - definition [ref=e191]:
+          - generic [ref=e192]:
+            - code [ref=e195]:
+              - generic [ref=e196]:
+                - generic [ref=e197]: "1"
+                - generic [ref=e198]: "{"
+              - generic [ref=e199]:
+                - generic [ref=e200]: "2"
+                - generic [ref=e202]: "\"BioSample\""
+                - generic [ref=e203]: ": {"
+              - generic [ref=e204]:
+                - generic [ref=e205]: "3"
+                - generic [ref=e207]: "\"access\""
+                - generic [ref=e208]: ":"
+                - generic [ref=e209]: "\"public\""
+                - generic [ref=e210]: ","
+              - generic [ref=e211]:
+                - generic [ref=e212]: "4"
+                - generic [ref=e214]: "\"publication_date\""
+                - generic [ref=e215]: ":"
+                - generic [ref=e216]: "\"2022-01-01T00:00:00.000\""
+                - generic [ref=e217]: ","
+              - generic [ref=e218]:
+                - generic [ref=e219]: "5"
+                - generic [ref=e221]: "\"last_update\""
+                - generic [ref=e222]: ":"
+                - generic [ref=e223]: "\"2022-07-14T01:14:02.847\""
+                - generic [ref=e224]: ","
+              - generic [ref=e225]:
+                - generic [ref=e226]: "6"
+                - generic [ref=e228]: "\"submission_date\""
+                - generic [ref=e229]: ":"
+                - generic [ref=e230]: "\"2022-01-01T03:59:26.453\""
+                - generic [ref=e231]: ","
+              - generic [ref=e232]:
+                - generic [ref=e233]: "7"
+                - generic [ref=e235]: "\"id\""
+                - generic [ref=e236]: ":"
+                - generic [ref=e237]: "\"24542748\""
+                - generic [ref=e238]: ","
+              - generic [ref=e239]:
+                - generic [ref=e240]: "8"
+                - generic [ref=e242]: "\"accession\""
+                - generic [ref=e243]: ":"
+                - generic [ref=e244]: "\"SAMN24542748\""
+                - generic [ref=e245]: ","
+              - generic [ref=e246]:
+                - generic [ref=e247]: "9"
+                - generic [ref=e249]: "\"Ids\""
+                - generic [ref=e250]: ": {"
+              - generic [ref=e251]:
+                - generic [ref=e252]: "10"
+                - generic [ref=e254]: "\"Id\""
+                - generic [ref=e255]: ": ["
+              - generic [ref=e256]:
+                - generic [ref=e257]: "11"
+                - text: "{"
+              - generic [ref=e258]:
+                - generic [ref=e259]: "12"
+                - generic [ref=e261]: "\"db\""
+                - generic [ref=e262]: ":"
+                - generic [ref=e263]: "\"BioSample\""
+                - generic [ref=e264]: ","
+              - generic [ref=e265]:
+                - generic [ref=e266]: "13"
+                - generic [ref=e268]: "\"is_primary\""
+                - generic [ref=e269]: ":"
+                - generic [ref=e270]: "\"1\""
+                - generic [ref=e271]: ","
+              - generic [ref=e272]:
+                - generic [ref=e273]: "14"
+                - generic [ref=e275]: "\"content\""
+                - generic [ref=e276]: ":"
+                - generic [ref=e277]: "\"SAMN24542748\""
+              - generic [ref=e278]:
+                - generic [ref=e279]: "15"
+                - text: "},"
+              - generic [ref=e280]:
+                - generic [ref=e281]: "16"
+                - text: "{"
+              - generic [ref=e282]:
+                - generic [ref=e283]: "17"
+                - generic [ref=e285]: "\"db\""
+                - generic [ref=e286]: ":"
+                - generic [ref=e287]: "\"SRA\""
+                - generic [ref=e288]: ","
+              - generic [ref=e289]:
+                - generic [ref=e290]: "18"
+                - generic [ref=e292]: "\"content\""
+                - generic [ref=e293]: ":"
+                - generic [ref=e294]: "\"SRS13850143\""
+              - generic [ref=e295]:
+                - generic [ref=e296]: "19"
+                - text: "},"
+              - generic [ref=e297]:
+                - generic [ref=e298]: "20"
+                - text: "{"
+              - generic [ref=e299]:
+                - generic [ref=e300]: "21"
+                - generic [ref=e302]: "\"db\""
+                - generic [ref=e303]: ":"
+                - generic [ref=e304]: "\"CDC-OAMD\""
+                - generic [ref=e305]: ","
+              - generic [ref=e306]:
+                - generic [ref=e307]: "22"
+                - generic [ref=e309]: "\"content\""
+                - generic [ref=e310]: ":"
+                - generic [ref=e311]: "\"SARS-CoV-2/Human/USA/CA-CDC-FG-209615/2021\""
+              - generic [ref=e312]:
+                - generic [ref=e313]: "23"
+                - text: "}"
+              - generic [ref=e314]:
+                - generic [ref=e315]: "24"
+                - text: "]"
+              - generic [ref=e316]:
+                - generic [ref=e317]: "25"
+                - text: "},"
+              - generic [ref=e318]:
+                - generic [ref=e319]: "26"
+                - generic [ref=e321]: "\"Description\""
+                - generic [ref=e322]: ": {"
+              - generic [ref=e323]:
+                - generic [ref=e324]: "27"
+                - generic [ref=e326]: "\"Title\""
+                - generic [ref=e327]: ":"
+                - generic [ref=e328]: "\"CDC Sars CoV2 Sequencing Baseline Constellation\""
+                - generic [ref=e329]: ","
+              - generic [ref=e330]:
+                - generic [ref=e331]: "28"
+                - generic [ref=e333]: "\"Organism\""
+                - generic [ref=e334]: ": {"
+              - generic [ref=e335]:
+                - generic [ref=e336]: "29"
+                - generic [ref=e338]: "\"taxonomy_id\""
+                - generic [ref=e339]: ":"
+                - generic [ref=e340]: "\"2697049\""
+                - generic [ref=e341]: ","
+              - generic [ref=e342]:
+                - generic [ref=e343]: "30"
+                - generic [ref=e345]: "\"taxonomy_name\""
+                - generic [ref=e346]: ":"
+                - generic [ref=e347]: "\"Severe acute respiratory syndrome coronavirus 2\""
+                - generic [ref=e348]: ","
+              - generic [ref=e349]:
+                - generic [ref=e350]: "31"
+                - generic [ref=e352]: "\"OrganismName\""
+                - generic [ref=e353]: ":"
+                - generic [ref=e354]: "\"Severe acute respiratory syndrome coronavirus 2\""
+              - generic [ref=e355]:
+                - generic [ref=e356]: "32"
+                - text: "}"
+              - generic [ref=e357]:
+                - generic [ref=e358]: "33"
+                - text: "},"
+              - generic [ref=e359]:
+                - generic [ref=e360]: "34"
+                - generic [ref=e362]: "\"Owner\""
+                - generic [ref=e363]: ": {"
+              - generic [ref=e364]:
+                - generic [ref=e365]: "35"
+                - generic [ref=e367]: "\"Name\""
+                - generic [ref=e368]: ": {"
+              - generic [ref=e369]:
+                - generic [ref=e370]: "36"
+                - generic [ref=e372]: "\"abbreviation\""
+                - generic [ref=e373]: ":"
+                - generic [ref=e374]: "\"CDC-OAMD\""
+                - generic [ref=e375]: ","
+              - generic [ref=e376]:
+                - generic [ref=e377]: "37"
+                - generic [ref=e379]: "\"content\""
+                - generic [ref=e380]: ":"
+                - generic [ref=e381]: "\"CDC-OAMD\""
+              - generic [ref=e382]:
+                - generic [ref=e383]: "38"
+                - text: "}"
+              - generic [ref=e384]:
+                - generic [ref=e385]: "39"
+                - text: "},"
+              - generic [ref=e386]:
+                - generic [ref=e387]: "40"
+                - generic [ref=e389]: "\"Models\""
+                - generic [ref=e390]: ": {"
+              - generic [ref=e391]:
+                - generic [ref=e392]: "41"
+                - generic [ref=e394]: "\"Model\""
+                - generic [ref=e395]: ": {"
+              - generic [ref=e396]:
+                - generic [ref=e397]: "42"
+                - generic [ref=e399]: "\"content\""
+                - generic [ref=e400]: ":"
+                - generic [ref=e401]: "\"SARS-CoV-2: clinical or host-associated\""
+              - generic [ref=e402]:
+                - generic [ref=e403]: "43"
+                - text: "}"
+              - generic [ref=e404]:
+                - generic [ref=e405]: "44"
+                - text: "},"
+              - generic [ref=e406]:
+                - generic [ref=e407]: "45"
+                - generic [ref=e409]: "\"Package\""
+                - generic [ref=e410]: ": {"
+              - generic [ref=e411]:
+                - generic [ref=e412]: "46"
+                - generic [ref=e414]: "\"display_name\""
+                - generic [ref=e415]: ":"
+                - generic [ref=e416]: "\"SARS-CoV-2: clinical or host-associated; version 1.0\""
+                - generic [ref=e417]: ","
+              - generic [ref=e418]:
+                - generic [ref=e419]: "47"
+                - generic [ref=e421]: "\"content\""
+                - generic [ref=e422]: ":"
+                - generic [ref=e423]: "\"SARS-CoV-2.cl.1.0\""
+              - generic [ref=e424]:
+                - generic [ref=e425]: "48"
+                - text: "},"
+              - generic [ref=e426]:
+                - generic [ref=e427]: "49"
+                - generic [ref=e429]: "\"Attributes\""
+                - generic [ref=e430]: ": {"
+              - generic [ref=e431]:
+                - generic [ref=e432]: "50"
+                - generic [ref=e434]: "\"Attribute\""
+                - generic [ref=e435]: ": ["
+              - generic [ref=e436]:
+                - generic [ref=e437]: "51"
+                - text: "{"
+              - generic [ref=e438]:
+                - generic [ref=e439]: "52"
+                - generic [ref=e441]: "\"attribute_name\""
+                - generic [ref=e442]: ":"
+                - generic [ref=e443]: "\"Isolate\""
+                - generic [ref=e444]: ","
+              - generic [ref=e445]:
+                - generic [ref=e446]: "53"
+                - generic [ref=e448]: "\"harmonized_name\""
+                - generic [ref=e449]: ":"
+                - generic [ref=e450]: "\"isolate\""
+                - generic [ref=e451]: ","
+              - generic [ref=e452]:
+                - generic [ref=e453]: "54"
+                - generic [ref=e455]: "\"display_name\""
+                - generic [ref=e456]: ":"
+                - generic [ref=e457]: "\"isolate\""
+                - generic [ref=e458]: ","
+              - generic [ref=e459]:
+                - generic [ref=e460]: "55"
+                - generic [ref=e462]: "\"content\""
+                - generic [ref=e463]: ":"
+                - generic [ref=e464]: "\"SARS-CoV-2/Human/USA/CA-CDC-FG-209615/2021\""
+              - generic [ref=e465]:
+                - generic [ref=e466]: "56"
+                - text: "},"
+              - generic [ref=e467]:
+                - generic [ref=e468]: "57"
+                - text: "{"
+              - generic [ref=e469]:
+                - generic [ref=e470]: "58"
+                - generic [ref=e472]: "\"attribute_name\""
+                - generic [ref=e473]: ":"
+                - generic [ref=e474]: "\"collected_by\""
+                - generic [ref=e475]: ","
+              - generic [ref=e476]:
+                - generic [ref=e477]: "59"
+                - generic [ref=e479]: "\"harmonized_name\""
+                - generic [ref=e480]: ":"
+                - generic [ref=e481]: "\"collected_by\""
+                - generic [ref=e482]: ","
+              - generic [ref=e483]:
+                - generic [ref=e484]: "60"
+                - generic [ref=e486]: "\"display_name\""
+                - generic [ref=e487]: ":"
+                - generic [ref=e488]: "\"collected by\""
+                - generic [ref=e489]: ","
+              - generic [ref=e490]:
+                - generic [ref=e491]: "61"
+                - generic [ref=e493]: "\"content\""
+                - generic [ref=e494]: ":"
+                - generic [ref=e495]: "\"Fulgent Genetics\""
+              - generic [ref=e496]:
+                - generic [ref=e497]: "62"
+                - text: "},"
+              - generic [ref=e498]:
+                - generic [ref=e499]: "63"
+                - text: "{"
+              - generic [ref=e500]:
+                - generic [ref=e501]: "64"
+                - generic [ref=e503]: "\"attribute_name\""
+                - generic [ref=e504]: ":"
+                - generic [ref=e505]: "\"collection_date\""
+                - generic [ref=e506]: ","
+              - generic [ref=e507]:
+                - generic [ref=e508]: "65"
+                - generic [ref=e510]: "\"harmonized_name\""
+                - generic [ref=e511]: ":"
+                - generic [ref=e512]: "\"collection_date\""
+                - generic [ref=e513]: ","
+              - generic [ref=e514]:
+                - generic [ref=e515]: "66"
+                - generic [ref=e517]: "\"display_name\""
+                - generic [ref=e518]: ":"
+                - generic [ref=e519]: "\"collection date\""
+                - generic [ref=e520]: ","
+              - generic [ref=e521]:
+                - generic [ref=e522]: "67"
+                - generic [ref=e524]: "\"content\""
+                - generic [ref=e525]: ":"
+                - generic [ref=e526]: "\"2021-12-22\""
+              - generic [ref=e527]:
+                - generic [ref=e528]: "68"
+                - text: "},"
+              - generic [ref=e529]:
+                - generic [ref=e530]: "69"
+                - text: "{"
+              - generic [ref=e531]:
+                - generic [ref=e532]: "70"
+                - generic [ref=e534]: "\"attribute_name\""
+                - generic [ref=e535]: ":"
+                - generic [ref=e536]: "\"isolation_source\""
+                - generic [ref=e537]: ","
+              - generic [ref=e538]:
+                - generic [ref=e539]: "71"
+                - generic [ref=e541]: "\"harmonized_name\""
+                - generic [ref=e542]: ":"
+                - generic [ref=e543]: "\"isolation_source\""
+                - generic [ref=e544]: ","
+              - generic [ref=e545]:
+                - generic [ref=e546]: "72"
+                - generic [ref=e548]: "\"display_name\""
+                - generic [ref=e549]: ":"
+                - generic [ref=e550]: "\"isolation source\""
+                - generic [ref=e551]: ","
+              - generic [ref=e552]:
+                - generic [ref=e553]: "73"
+                - generic [ref=e555]: "\"content\""
+                - generic [ref=e556]: ":"
+                - generic [ref=e557]: "\"nasal swab\""
+              - generic [ref=e558]:
+                - generic [ref=e559]: "74"
+                - text: "},"
+              - generic [ref=e560]:
+                - generic [ref=e561]: "75"
+                - text: "{"
+              - generic [ref=e562]:
+                - generic [ref=e563]: "76"
+                - generic [ref=e565]: "\"attribute_name\""
+                - generic [ref=e566]: ":"
+                - generic [ref=e567]: "\"geo_loc_name\""
+                - generic [ref=e568]: ","
+              - generic [ref=e569]:
+                - generic [ref=e570]: "77"
+                - generic [ref=e572]: "\"harmonized_name\""
+                - generic [ref=e573]: ":"
+                - generic [ref=e574]: "\"geo_loc_name\""
+                - generic [ref=e575]: ","
+              - generic [ref=e576]:
+                - generic [ref=e577]: "78"
+                - generic [ref=e579]: "\"display_name\""
+                - generic [ref=e580]: ":"
+                - generic [ref=e581]: "\"geographic location\""
+                - generic [ref=e582]: ","
+              - generic [ref=e583]:
+                - generic [ref=e584]: "79"
+                - generic [ref=e586]: "\"content\""
+                - generic [ref=e587]: ":"
+                - generic [ref=e588]: "\"USA: California\""
+              - generic [ref=e589]:
+                - generic [ref=e590]: "80"
+                - text: "},"
+              - generic [ref=e591]:
+                - generic [ref=e592]: "81"
+                - text: "{"
+              - generic [ref=e593]:
+                - generic [ref=e594]: "82"
+                - generic [ref=e596]: "\"attribute_name\""
+                - generic [ref=e597]: ":"
+                - generic [ref=e598]: "\"host\""
+                - generic [ref=e599]: ","
+              - generic [ref=e600]:
+                - generic [ref=e601]: "83"
+                - generic [ref=e603]: "\"harmonized_name\""
+                - generic [ref=e604]: ":"
+                - generic [ref=e605]: "\"host\""
+                - generic [ref=e606]: ","
+              - generic [ref=e607]:
+                - generic [ref=e608]: "84"
+                - generic [ref=e610]: "\"display_name\""
+                - generic [ref=e611]: ":"
+                - generic [ref=e612]: "\"host\""
+                - generic [ref=e613]: ","
+              - generic [ref=e614]:
+                - generic [ref=e615]: "85"
+                - generic [ref=e617]: "\"content\""
+                - generic [ref=e618]: ":"
+                - generic [ref=e619]: "\"Homo sapiens\""
+              - generic [ref=e620]:
+                - generic [ref=e621]: "86"
+                - text: "},"
+              - generic [ref=e622]:
+                - generic [ref=e623]: "87"
+                - text: "{"
+              - generic [ref=e624]:
+                - generic [ref=e625]: "88"
+                - generic [ref=e627]: "\"attribute_name\""
+                - generic [ref=e628]: ":"
+                - generic [ref=e629]: "\"host_disease\""
+                - generic [ref=e630]: ","
+              - generic [ref=e631]:
+                - generic [ref=e632]: "89"
+                - generic [ref=e634]: "\"harmonized_name\""
+                - generic [ref=e635]: ":"
+                - generic [ref=e636]: "\"host_disease\""
+                - generic [ref=e637]: ","
+              - generic [ref=e638]:
+                - generic [ref=e639]: "90"
+                - generic [ref=e641]: "\"display_name\""
+                - generic [ref=e642]: ":"
+                - generic [ref=e643]: "\"host disease\""
+                - generic [ref=e644]: ","
+              - generic [ref=e645]:
+                - generic [ref=e646]: "91"
+                - generic [ref=e648]: "\"content\""
+                - generic [ref=e649]: ":"
+                - generic [ref=e650]: "\"COVID-19\""
+              - generic [ref=e651]:
+                - generic [ref=e652]: "92"
+                - text: "},"
+              - generic [ref=e653]:
+                - generic [ref=e654]: "93"
+                - text: "{"
+              - generic [ref=e655]:
+                - generic [ref=e656]: "94"
+                - generic [ref=e658]: "\"attribute_name\""
+                - generic [ref=e659]: ":"
+                - generic [ref=e660]: "\"host_sex\""
+                - generic [ref=e661]: ","
+              - generic [ref=e662]:
+                - generic [ref=e663]: "95"
+                - generic [ref=e665]: "\"harmonized_name\""
+                - generic [ref=e666]: ":"
+                - generic [ref=e667]: "\"host_sex\""
+                - generic [ref=e668]: ","
+              - generic [ref=e669]:
+                - generic [ref=e670]: "96"
+                - generic [ref=e672]: "\"display_name\""
+                - generic [ref=e673]: ":"
+                - generic [ref=e674]: "\"host sex\""
+                - generic [ref=e675]: ","
+              - generic [ref=e676]:
+                - generic [ref=e677]: "97"
+                - generic [ref=e679]: "\"content\""
+                - generic [ref=e680]: ":"
+                - generic [ref=e681]: "\"female\""
+              - generic [ref=e682]:
+                - generic [ref=e683]: "98"
+                - text: "},"
+              - generic [ref=e684]:
+                - generic [ref=e685]: "99"
+                - text: "{"
+              - generic [ref=e686]:
+                - generic [ref=e687]: "100"
+                - generic [ref=e689]: "\"attribute_name\""
+                - generic [ref=e690]: ":"
+                - generic [ref=e691]: "\"host_age\""
+                - generic [ref=e692]: ","
+              - generic [ref=e693]:
+                - generic [ref=e694]: "101"
+                - generic [ref=e696]: "\"harmonized_name\""
+                - generic [ref=e697]: ":"
+                - generic [ref=e698]: "\"host_age\""
+                - generic [ref=e699]: ","
+              - generic [ref=e700]:
+                - generic [ref=e701]: "102"
+                - generic [ref=e703]: "\"display_name\""
+                - generic [ref=e704]: ":"
+                - generic [ref=e705]: "\"host age\""
+                - generic [ref=e706]: ","
+              - generic [ref=e707]:
+                - generic [ref=e708]: "103"
+                - generic [ref=e710]: "\"content\""
+                - generic [ref=e711]: ":"
+                - generic [ref=e712]: "\"18\""
+              - generic [ref=e713]:
+                - generic [ref=e714]: "104"
+                - text: "},"
+              - generic [ref=e715]:
+                - generic [ref=e716]: "105"
+                - text: "{"
+              - generic [ref=e717]:
+                - generic [ref=e718]: "106"
+                - generic [ref=e720]: "\"attribute_name\""
+                - generic [ref=e721]: ":"
+                - generic [ref=e722]: "\"host_race\""
+                - generic [ref=e723]: ","
+              - generic [ref=e724]:
+                - generic [ref=e725]: "107"
+                - generic [ref=e727]: "\"content\""
+                - generic [ref=e728]: ":"
+                - generic [ref=e729]: "\"AMR\""
+              - generic [ref=e730]:
+                - generic [ref=e731]: "108"
+                - text: "},"
+              - generic [ref=e732]:
+                - generic [ref=e733]: "109"
+                - text: "{"
+              - generic [ref=e734]:
+                - generic [ref=e735]: "110"
+                - generic [ref=e737]: "\"attribute_name\""
+                - generic [ref=e738]: ":"
+                - generic [ref=e739]: "\"collection_device\""
+                - generic [ref=e740]: ","
+              - generic [ref=e741]:
+                - generic [ref=e742]: "111"
+                - generic [ref=e744]: "\"harmonized_name\""
+                - generic [ref=e745]: ":"
+                - generic [ref=e746]: "\"collection_device\""
+                - generic [ref=e747]: ","
+              - generic [ref=e748]:
+                - generic [ref=e749]: "112"
+                - generic [ref=e751]: "\"display_name\""
+                - generic [ref=e752]: ":"
+                - generic [ref=e753]: "\"collection device\""
+                - generic [ref=e754]: ","
+              - generic [ref=e755]:
+                - generic [ref=e756]: "113"
+                - generic [ref=e758]: "\"content\""
+                - generic [ref=e759]: ":"
+                - generic [ref=e760]: "\"Nasal Swab\""
+              - generic [ref=e761]:
+                - generic [ref=e762]: "114"
+                - text: "},"
+              - generic [ref=e763]:
+                - generic [ref=e764]: "115"
+                - text: "{"
+              - generic [ref=e765]:
+                - generic [ref=e766]: "116"
+                - generic [ref=e768]: "\"attribute_name\""
+                - generic [ref=e769]: ":"
+                - generic [ref=e770]: "\"collection_method\""
+                - generic [ref=e771]: ","
+              - generic [ref=e772]:
+                - generic [ref=e773]: "117"
+                - generic [ref=e775]: "\"harmonized_name\""
+                - generic [ref=e776]: ":"
+                - generic [ref=e777]: "\"collection_method\""
+                - generic [ref=e778]: ","
+              - generic [ref=e779]:
+                - generic [ref=e780]: "118"
+                - generic [ref=e782]: "\"display_name\""
+                - generic [ref=e783]: ":"
+                - generic [ref=e784]: "\"collection method \""
+                - generic [ref=e785]: ","
+              - generic [ref=e786]:
+                - generic [ref=e787]: "119"
+                - generic [ref=e789]: "\"content\""
+                - generic [ref=e790]: ":"
+                - generic [ref=e791]: "\"Nasal Swab\""
+              - generic [ref=e792]:
+                - generic [ref=e793]: "120"
+                - text: "},"
+              - generic [ref=e794]:
+                - generic [ref=e795]: "121"
+                - text: "{"
+              - generic [ref=e796]:
+                - generic [ref=e797]: "122"
+                - generic [ref=e799]: "\"attribute_name\""
+                - generic [ref=e800]: ":"
+                - generic [ref=e801]: "\"purpose_of_sequencing\""
+                - generic [ref=e802]: ","
+              - generic [ref=e803]:
+                - generic [ref=e804]: "123"
+                - generic [ref=e806]: "\"harmonized_name\""
+                - generic [ref=e807]: ":"
+                - generic [ref=e808]: "\"purpose_of_sequencing\""
+                - generic [ref=e809]: ","
+              - generic [ref=e810]:
+                - generic [ref=e811]: "124"
+                - generic [ref=e813]: "\"display_name\""
+                - generic [ref=e814]: ":"
+                - generic [ref=e815]: "\"purpose of sequencing\""
+                - generic [ref=e816]: ","
+              - generic [ref=e817]:
+                - generic [ref=e818]: "125"
+                - generic [ref=e820]: "\"content\""
+                - generic [ref=e821]: ":"
+                - generic [ref=e822]: "\"baseline surveillance (random sampling)\""
+              - generic [ref=e823]:
+                - generic [ref=e824]: "126"
+                - text: "},"
+              - generic [ref=e825]:
+                - generic [ref=e826]: "127"
+                - text: "{"
+              - generic [ref=e827]:
+                - generic [ref=e828]: "128"
+                - generic [ref=e830]: "\"attribute_name\""
+                - generic [ref=e831]: ":"
+                - generic [ref=e832]: "\"diagnostic_gene_name_1\""
+                - generic [ref=e833]: ","
+              - generic [ref=e834]:
+                - generic [ref=e835]: "129"
+                - generic [ref=e837]: "\"content\""
+                - generic [ref=e838]: ":"
+                - generic [ref=e839]: "\"SC2\""
+              - generic [ref=e840]:
+                - generic [ref=e841]: "130"
+                - text: "},"
+              - generic [ref=e842]:
+                - generic [ref=e843]: "131"
+                - text: "{"
+              - generic [ref=e844]:
+                - generic [ref=e845]: "132"
+                - generic [ref=e847]: "\"attribute_name\""
+                - generic [ref=e848]: ":"
+                - generic [ref=e849]: "\"diagnostic_pcr_protocol_1\""
+                - generic [ref=e850]: ","
+              - generic [ref=e851]:
+                - generic [ref=e852]: "133"
+                - generic [ref=e854]: "\"content\""
+                - generic [ref=e855]: ":"
+                - generic [ref=e856]: "\"CDC Flu SC2\""
+              - generic [ref=e857]:
+                - generic [ref=e858]: "134"
+                - text: "},"
+              - generic [ref=e859]:
+                - generic [ref=e860]: "135"
+                - text: "{"
+              - generic [ref=e861]:
+                - generic [ref=e862]: "136"
+                - generic [ref=e864]: "\"attribute_name\""
+                - generic [ref=e865]: ":"
+                - generic [ref=e866]: "\"diagnostic_pcr_Ct_value_1\""
+                - generic [ref=e867]: ","
+              - generic [ref=e868]:
+                - generic [ref=e869]: "137"
+                - generic [ref=e871]: "\"content\""
+                - generic [ref=e872]: ":"
+                - generic [ref=e873]: "\"28.9\""
+              - generic [ref=e874]:
+                - generic [ref=e875]: "138"
+                - text: "},"
+              - generic [ref=e876]:
+                - generic [ref=e877]: "139"
+                - text: "{"
+              - generic [ref=e878]:
+                - generic [ref=e879]: "140"
+                - generic [ref=e881]: "\"attribute_name\""
+                - generic [ref=e882]: ":"
+                - generic [ref=e883]: "\"diagnostic_gene_name_2\""
+                - generic [ref=e884]: ","
+              - generic [ref=e885]:
+                - generic [ref=e886]: "141"
+                - generic [ref=e888]: "\"content\""
+                - generic [ref=e889]: ":"
+                - generic [ref=e890]: "\"N1\""
+              - generic [ref=e891]:
+                - generic [ref=e892]: "142"
+                - text: "},"
+              - generic [ref=e893]:
+                - generic [ref=e894]: "143"
+                - text: "{"
+              - generic [ref=e895]:
+                - generic [ref=e896]: "144"
+                - generic [ref=e898]: "\"attribute_name\""
+                - generic [ref=e899]: ":"
+                - generic [ref=e900]: "\"diagnostic_pcr_protocol_2\""
+                - generic [ref=e901]: ","
+              - generic [ref=e902]:
+                - generic [ref=e903]: "145"
+                - generic [ref=e905]: "\"content\""
+                - generic [ref=e906]: ":"
+                - generic [ref=e907]: "\"CDC Flu SC2\""
+              - generic [ref=e908]:
+                - generic [ref=e909]: "146"
+                - text: "},"
+              - generic [ref=e910]:
+                - generic [ref=e911]: "147"
+                - text: "{"
+              - generic [ref=e912]:
+                - generic [ref=e913]: "148"
+                - generic [ref=e915]: "\"attribute_name\""
+                - generic [ref=e916]: ":"
+                - generic [ref=e917]: "\"diagnostic_pcr_Ct_value_2\""
+                - generic [ref=e918]: ","
+              - generic [ref=e919]:
+                - generic [ref=e920]: "149"
+                - generic [ref=e922]: "\"content\""
+                - generic [ref=e923]: ":"
+                - generic [ref=e924]: "\"Unknown\""
+              - generic [ref=e925]:
+                - generic [ref=e926]: "150"
+                - text: "},"
+              - generic [ref=e927]:
+                - generic [ref=e928]: "151"
+                - text: "{"
+              - generic [ref=e929]:
+                - generic [ref=e930]: "152"
+                - generic [ref=e932]: "\"attribute_name\""
+                - generic [ref=e933]: ":"
+                - generic [ref=e934]: "\"diagnostic_gene_name_3\""
+                - generic [ref=e935]: ","
+              - generic [ref=e936]:
+                - generic [ref=e937]: "153"
+                - generic [ref=e939]: "\"content\""
+                - generic [ref=e940]: ":"
+                - generic [ref=e941]: "\"N2\""
+              - generic [ref=e942]:
+                - generic [ref=e943]: "154"
+                - text: "},"
+              - generic [ref=e944]:
+                - generic [ref=e945]: "155"
+                - text: "{"
+              - generic [ref=e946]:
+                - generic [ref=e947]: "156"
+                - generic [ref=e949]: "\"attribute_name\""
+                - generic [ref=e950]: ":"
+                - generic [ref=e951]: "\"diagnostic_pcr_protocol_3\""
+                - generic [ref=e952]: ","
+              - generic [ref=e953]:
+                - generic [ref=e954]: "157"
+                - generic [ref=e956]: "\"content\""
+                - generic [ref=e957]: ":"
+                - generic [ref=e958]: "\"CDC Flu SC2\""
+              - generic [ref=e959]:
+                - generic [ref=e960]: "158"
+                - text: "},"
+              - generic [ref=e961]:
+                - generic [ref=e962]: "159"
+                - text: "{"
+              - generic [ref=e963]:
+                - generic [ref=e964]: "160"
+                - generic [ref=e966]: "\"attribute_name\""
+                - generic [ref=e967]: ":"
+                - generic [ref=e968]: "\"diagnostic_pcr_Ct_value_3\""
+                - generic [ref=e969]: ","
+              - generic [ref=e970]:
+                - generic [ref=e971]: "161"
+                - generic [ref=e973]: "\"content\""
+                - generic [ref=e974]: ":"
+                - generic [ref=e975]: "\"Unknown\""
+              - generic [ref=e976]:
+                - generic [ref=e977]: "162"
+                - text: "},"
+              - generic [ref=e978]:
+                - generic [ref=e979]: "163"
+                - text: "{"
+              - generic [ref=e980]:
+                - generic [ref=e981]: "164"
+                - generic [ref=e983]: "\"attribute_name\""
+                - generic [ref=e984]: ":"
+                - generic [ref=e985]: "\"lineage/clade name\""
+                - generic [ref=e986]: ","
+              - generic [ref=e987]:
+                - generic [ref=e988]: "165"
+                - generic [ref=e990]: "\"content\""
+                - generic [ref=e991]: ":"
+                - generic [ref=e992]: "\"AY.39\""
+              - generic [ref=e993]:
+                - generic [ref=e994]: "166"
+                - text: "}"
+              - generic [ref=e995]:
+                - generic [ref=e996]: "167"
+                - text: "]"
+              - generic [ref=e997]:
+                - generic [ref=e998]: "168"
+                - text: "},"
+              - generic [ref=e999]:
+                - generic [ref=e1000]: "169"
+                - generic [ref=e1002]: "\"Links\""
+                - generic [ref=e1003]: ": {"
+              - generic [ref=e1004]:
+                - generic [ref=e1005]: "170"
+                - generic [ref=e1007]: "\"Link\""
+                - generic [ref=e1008]: ": {"
+              - generic [ref=e1009]:
+                - generic [ref=e1010]: "171"
+                - generic [ref=e1012]: "\"type\""
+                - generic [ref=e1013]: ":"
+                - generic [ref=e1014]: "\"entrez\""
+                - generic [ref=e1015]: ","
+              - generic [ref=e1016]:
+                - generic [ref=e1017]: "172"
+                - generic [ref=e1019]: "\"target\""
+                - generic [ref=e1020]: ":"
+                - generic [ref=e1021]: "\"bioproject\""
+                - generic [ref=e1022]: ","
+              - generic [ref=e1023]:
+                - generic [ref=e1024]: "173"
+                - generic [ref=e1026]: "\"label\""
+                - generic [ref=e1027]: ":"
+                - generic [ref=e1028]: "\"PRJNA731152\""
+                - generic [ref=e1029]: ","
+              - generic [ref=e1030]:
+                - generic [ref=e1031]: "174"
+                - generic [ref=e1033]: "\"content\""
+                - generic [ref=e1034]: ":"
+                - generic [ref=e1035]: "\"731152\""
+              - generic [ref=e1036]:
+                - generic [ref=e1037]: "175"
+                - text: "}"
+              - generic [ref=e1038]:
+                - generic [ref=e1039]: "176"
+                - text: "},"
+              - generic [ref=e1040]:
+                - generic [ref=e1041]: "177"
+                - generic [ref=e1043]: "\"Status\""
+                - generic [ref=e1044]: ": {"
+              - generic [ref=e1045]:
+                - generic [ref=e1046]: "178"
+                - generic [ref=e1048]: "\"status\""
+                - generic [ref=e1049]: ":"
+                - generic [ref=e1050]: "\"live\""
+                - generic [ref=e1051]: ","
+              - generic [ref=e1052]:
+                - generic [ref=e1053]: "179"
+                - generic [ref=e1055]: "\"when\""
+                - generic [ref=e1056]: ":"
+                - generic [ref=e1057]: "\"2022-01-01T03:59:26.454\""
+              - generic [ref=e1058]:
+                - generic [ref=e1059]: "180"
+                - text: "}"
+              - generic [ref=e1060]:
+                - generic [ref=e1061]: "181"
+                - text: "}"
+              - generic [ref=e1062]:
+                - generic [ref=e1063]: "182"
+                - text: "}"
+            - generic [ref=e1064]:
+              - button [ref=e1065] [cursor=pointer]:
+                - img [ref=e1066]
+              - button [ref=e1068] [cursor=pointer]:
+                - img [ref=e1069]
+      - generic [ref=e1071]:
+        - term [ref=e1072]: dbXrefs
+        - definition [ref=e1073]:
+          - generic [ref=e1075]:
+            - generic [ref=e1076]:
+              - term [ref=e1077]: bioproject (1/1)
+              - definition [ref=e1078]:
+                - link "PRJNA731152" [ref=e1079] [cursor=pointer]:
+                  - /url: https://ddbj.nig.ac.jp/search/entry/bioproject/PRJNA731152
+            - generic [ref=e1080]:
+              - term [ref=e1081]: sra-experiment (1/1)
+              - definition [ref=e1082]:
+                - link "SRX16208882" [ref=e1083] [cursor=pointer]:
+                  - /url: https://ddbj.nig.ac.jp/search/entry/sra-experiment/SRX16208882
+            - generic [ref=e1084]:
+              - term [ref=e1085]: sra-run (1/1)
+              - definition [ref=e1086]:
+                - link "SRR20173781" [ref=e1087] [cursor=pointer]:
+                  - /url: https://ddbj.nig.ac.jp/search/entry/sra-run/SRR20173781
+            - generic [ref=e1088]:
+              - term [ref=e1089]: sra-sample (1/1)
+              - definition [ref=e1090]:
+                - link "SRS13850143" [ref=e1091] [cursor=pointer]:
+                  - /url: https://ddbj.nig.ac.jp/search/entry/sra-sample/SRS13850143
+      - generic [ref=e1092]:
+        - term [ref=e1093]: download
+        - definition [ref=e1094]:
+          - paragraph [ref=e1095]:
+            - link "JSON" [ref=e1096] [cursor=pointer]:
+              - /url: https://ddbj-staging.nig.ac.jp/search/entry/biosample/SAMN24542748.json
+            - link "JSON-LD" [ref=e1097] [cursor=pointer]:
+              - /url: https://ddbj-staging.nig.ac.jp/search/entry/biosample/SAMN24542748.jsonld
+      - generic [ref=e1098]:
+        - term [ref=e1099]: status
+        - definition [ref=e1100]: public
+      - generic [ref=e1101]:
+        - term [ref=e1102]: accessibility
+        - definition [ref=e1103]: public-access
+      - generic [ref=e1104]:
+        - term [ref=e1105]: dateCreated
+        - definition [ref=e1106]: 2022-01-01T03:59:26.453
+      - generic [ref=e1107]:
+        - term [ref=e1108]: dateModified
+        - definition [ref=e1109]: 2022-07-14T01:14:02.847
+      - generic [ref=e1110]:
+        - term [ref=e1111]: datePublished
+        - definition [ref=e1112]: 2022-01-01T00:00:00.000
+  - banner [ref=e6]:
+    - generic [ref=e7]:
+      - link "DDBJ DNA Data Bank of Japan" [ref=e9] [cursor=pointer]:
+        - /url: https://www.ddbj.nig.ac.jp/index-e.html
+      - navigation [ref=e10]:
+        - generic [ref=e11]:
+          - list [ref=e12]:
+            - listitem [ref=e13]:
+              - link "Services" [ref=e14] [cursor=pointer]:
+                - /url: https://www.ddbj.nig.ac.jp/services/index-e.html
+            - listitem [ref=e15]:
+              - link "SuperComputer" [ref=e16] [cursor=pointer]:
+                - /url: https://sc.ddbj.nig.ac.jp/en
+            - listitem [ref=e17]:
+              - link "Statistics" [ref=e18] [cursor=pointer]:
+                - /url: https://www.ddbj.nig.ac.jp/statistics/index-e.html
+            - listitem [ref=e19]:
+              - link "Activities" [ref=e20] [cursor=pointer]:
+                - /url: https://www.ddbj.nig.ac.jp/activities/index-e.html
+            - listitem [ref=e21]:
+              - link "About Us" [ref=e22] [cursor=pointer]:
+                - /url: https://www.ddbj.nig.ac.jp/about/index-e.html
+          - list [ref=e23]:
+            - listitem [ref=e24]:
+              - link "Terms" [ref=e25] [cursor=pointer]:
+                - /url: https://www.ddbj.nig.ac.jp/policies-e.html
+            - listitem [ref=e26]:
+              - link "Contact" [ref=e27] [cursor=pointer]:
+                - /url: https://www.ddbj.nig.ac.jp/contact-ddbj-e.html
+  - generic [ref=e29]:
+    - navigation [ref=e30]:
+      - generic [ref=e31]:
+        - heading "Search" [level=2] [ref=e32]
+        - list [ref=e33]:
+          - listitem [ref=e34]:
+            - link "DDBJ Search" [ref=e35] [cursor=pointer]:
+              - /url: https://ddbj.nig.ac.jp/search
+          - listitem [ref=e36]:
+            - link "getentry" [ref=e37] [cursor=pointer]:
+              - /url: http://getentry.ddbj.nig.ac.jp/top-e.html
+          - listitem [ref=e38]:
+            - link "ARSA" [ref=e39] [cursor=pointer]:
+              - /url: https://www.ddbj.nig.ac.jp/services/arsa-e.html
+          - listitem [ref=e40]:
+            - link "TXSearch" [ref=e41] [cursor=pointer]:
+              - /url: http://ddbj.nig.ac.jp/tx_search/?lang=en
+      - generic [ref=e42]:
+        - heading "Analysis" [level=2] [ref=e43]
+        - list [ref=e44]:
+          - listitem [ref=e45]:
+            - link "Vector Screening System" [ref=e46] [cursor=pointer]:
+              - /url: http://ddbj.nig.ac.jp/vecscreen/
+          - listitem [ref=e47]:
+            - link "WABI (Web API for Biology)" [ref=e48] [cursor=pointer]:
+              - /url: https://www.ddbj.nig.ac.jp/services/wabi-e.html
+          - listitem [ref=e49]:
+            - link "DDBJ FTP Site" [ref=e50] [cursor=pointer]:
+              - /url: https://ddbj.nig.ac.jp/public/
+      - generic [ref=e51]:
+        - heading "Databases" [level=2] [ref=e52]
+        - list [ref=e53]:
+          - listitem [ref=e54]:
+            - link "Annotated/Assembled Sequences (DDBJ)" [ref=e55] [cursor=pointer]:
+              - /url: https://www.ddbj.nig.ac.jp/ddbj/index-e.html
+          - listitem [ref=e56]:
+            - link "Sequence Read Archive (DRA)" [ref=e57] [cursor=pointer]:
+              - /url: https://www.ddbj.nig.ac.jp/dra/index-e.html
+          - listitem [ref=e58]:
+            - link "Genomic Expression Archive (GEA)" [ref=e59] [cursor=pointer]:
+              - /url: https://www.ddbj.nig.ac.jp/gea/index-e.html
+          - listitem [ref=e60]:
+            - link "MetaboBank" [ref=e61] [cursor=pointer]:
+              - /url: https://www.ddbj.nig.ac.jp/metabobank/index-e.html
+          - listitem [ref=e62]:
+            - link "BioProject" [ref=e63] [cursor=pointer]:
+              - /url: https://www.ddbj.nig.ac.jp/bioproject/index-e.html
+          - listitem [ref=e64]:
+            - link "BioSample" [ref=e65] [cursor=pointer]:
+              - /url: https://www.ddbj.nig.ac.jp/biosample/index-e.html
+          - listitem [ref=e66]:
+            - link "Japanese Genotype-phenotype Archive (JGA)" [ref=e67] [cursor=pointer]:
+              - /url: https://www.ddbj.nig.ac.jp/jga/index-e.html
+          - listitem [ref=e68]:
+            - link "Submission portal D-way" [ref=e69] [cursor=pointer]:
+              - /url: https://ddbj.nig.ac.jp/D-way
+      - generic [ref=e70]:
+        - heading "NIG SuperComputer" [level=2] [ref=e71]
+        - list [ref=e72]:
+          - listitem [ref=e73]:
+            - link "NIG SuperComputer" [ref=e74] [cursor=pointer]:
+              - /url: https://sc.ddbj.nig.ac.jp/en
+    - navigation [ref=e75]:
+      - list [ref=e76]:
+        - listitem [ref=e77]:
+          - link "DDBJ RSS" [ref=e78] [cursor=pointer]:
+            - /url: https://www.ddbj.nig.ac.jp/data-feed-e.html
+            - img "DDBJ RSS" [ref=e79]
+        - listitem [ref=e80]:
+          - link "DDBJ on Twitter" [ref=e81] [cursor=pointer]:
+            - /url: https://twitter.com/DDBJ_topics
+            - img "DDBJ on Twitter" [ref=e82]
+        - listitem [ref=e83]:
+          - link "DDBJ on Youtube" [ref=e84] [cursor=pointer]:
+            - /url: https://www.youtube.com/user/ddbjvideo
+            - img "DDBJ on Youtube" [ref=e85]
+        - listitem [ref=e86]:
+          - link "DDBJ on GitHub" [ref=e87] [cursor=pointer]:
+            - /url: http://github.com/ddbj/
+            - img "DDBJ on GitHub" [ref=e88]
+        - listitem [ref=e89]:
+          - link "DDBJ on Google Drive" [ref=e90] [cursor=pointer]:
+            - /url: https://drive.google.com/drive/u/2/folders/1E0cxLbWV8RGYUdNs0oKfXMij0TzJDQVD
+            - img "DDBJ on Google Drive" [ref=e91]
+    - navigation [ref=e92]:
+      - list [ref=e93]:
+        - listitem [ref=e94]:
+          - link "National Institute of Genetics" [ref=e95] [cursor=pointer]:
+            - /url: https://www.nig.ac.jp/nig/
+            - img "National Institute of Genetics" [ref=e96]
+        - listitem [ref=e97]:
+          - link "Research Organization of Information and Systems" [ref=e98] [cursor=pointer]:
+            - /url: http://www.rois.ac.jp/en/index.html
+            - img "Research Organization of Information and Systems" [ref=e99]
+        - listitem [ref=e100]:
+          - link "GLOBAL BIODATA COALITION" [ref=e101] [cursor=pointer]:
+            - /url: https://globalbiodata.org/
+            - img "GLOBAL BIODATA COALITION" [ref=e102]
+        - listitem [ref=e103]:
+          - link "NBDC" [ref=e104] [cursor=pointer]:
+            - /url: https://biosciencedbc.jp/en/
+            - img "NBDC" [ref=e105]
+        - listitem [ref=e106]:
+          - link "DBCLS" [ref=e107] [cursor=pointer]:
+            - /url: https://dbcls.rois.ac.jp/index-en.html
+            - img "DBCLS" [ref=e108]
+        - listitem [ref=e109]:
+          - link "PDBj" [ref=e110] [cursor=pointer]:
+            - /url: https://pdbj.org/
+            - img "PDBj" [ref=e111]
+        - listitem [ref=e112]:
+          - link "JBI portal" [ref=e113] [cursor=pointer]:
+            - /url: http://jbioinfo.jp/
+            - img "JBI portal" [ref=e114]
+  - contentinfo [ref=e115]:
+    - navigation [ref=e117]:
+      - list [ref=e118]:
+        - listitem [ref=e119]:
+          - link "Policies and Disclaimers" [ref=e120] [cursor=pointer]:
+            - /url: https://www.ddbj.nig.ac.jp/policies-e.html
+        - listitem [ref=e121]:
+          - link "News" [ref=e122] [cursor=pointer]:
+            - /url: https://www.ddbj.nig.ac.jp/news/en/index-e.html
+        - listitem [ref=e123]:
+          - link "FAQs" [ref=e124] [cursor=pointer]:
+            - /url: https://www.ddbj.nig.ac.jp/faq/en/index-e.html
+        - listitem [ref=e125]:
+          - link "Sitemap" [ref=e126] [cursor=pointer]:
+            - /url: https://www.ddbj.nig.ac.jp/sitemaps-e.html
+        - listitem [ref=e127]:
+          - link "Address" [ref=e129] [cursor=pointer]:
+            - /url: https://www.ddbj.nig.ac.jp/ddbj-access-e.html
+        - listitem [ref=e130]:
+          - link "Contact" [ref=e131] [cursor=pointer]:
+            - /url: https://www.ddbj.nig.ac.jp/contact-ddbj-e.html
+  - generic [ref=e133]:
+    - generic [ref=e134]:
+      - strong [ref=e135]: Cookie
+      - text: This site uses cookies to function.
+      - link "Find out more" [ref=e136] [cursor=pointer]:
+        - /url: /policies-e.html
+      - text: on how we use cookies and how you can change your settings.
+    - button "Accept" [ref=e137] [cursor=pointer]

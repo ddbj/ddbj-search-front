@@ -1,0 +1,586 @@
+- generic [active] [ref=e1]:
+  - main [ref=e138]:
+    - navigation [ref=e139]:
+      - link "Home" [ref=e140] [cursor=pointer]:
+        - /url: /search
+        - paragraph [ref=e141]:
+          - img [ref=e142]
+          - generic [ref=e144]: Home
+      - generic [ref=e145]: ">"
+      - generic [ref=e146]: sra-experiment
+      - generic [ref=e147]: ">"
+      - generic [ref=e148]: SRX10405429
+    - generic [ref=e151]:
+      - generic [ref=e152]:
+        - term [ref=e153]: identifier
+        - definition [ref=e154]: SRX10405429
+      - generic [ref=e155]:
+        - term [ref=e156]: type
+        - definition [ref=e157]: sra-experiment
+      - generic [ref=e158]:
+        - term [ref=e159]: sameAs
+        - definition [ref=e160]
+      - generic [ref=e161]:
+        - term [ref=e162]: organism
+        - definition [ref=e163]
+      - generic [ref=e164]:
+        - term [ref=e165]: title
+        - definition [ref=e166]: "GSM5195222: AHF250; human gut metagenome; OTHER"
+      - generic [ref=e167]:
+        - term [ref=e168]: libraryStrategy
+        - definition [ref=e169]: OTHER
+      - generic [ref=e170]:
+        - term [ref=e171]: librarySource
+        - definition [ref=e172]: TRANSCRIPTOMIC
+      - generic [ref=e173]:
+        - term [ref=e174]: librarySelection
+        - definition [ref=e175]: other
+      - generic [ref=e176]:
+        - term [ref=e177]: libraryLayout
+        - definition [ref=e178]: PAIRED
+      - generic [ref=e179]:
+        - term [ref=e180]: libraryName
+        - definition [ref=e181]
+      - generic [ref=e182]:
+        - term [ref=e183]: libraryConstructionProtocol
+        - definition [ref=e184]: DNA from fetal tissues was extracted according to the protocol as previously described(Rancati et al., 2008), except that the volume of Breaking Buffer and phenol/chloroform/IAA used was 400μL. Three consecutive phenol/chloroform/isoamylalcohol extractions were performed to reduce protein contamination. A final chloroform extraction was performed to remove phenol contamination, prior to ethanol precipitation. RNA contamination was removed by treating the gDNA samples with 70 ng/μl affinity-purified RNAse A (Ambion) for 1 h at +37 °C. Final yields were quantified with a ND- 1000 spectrophotometer (NanoDrop). Fetal microbiome reagent and environmental controls were concurrently performed during the DNA extraction process. Genomic DNA isolated from fetal tissues and control samples were treated with McrBC restriction enzyme (New England BioLabs) according to manufacturer's instructions, to remove host DNA and to enrich for microbial DNA. The treated DNA samples were purified using 0.8X ratio of AMPure XP beads (Beckman Coulter). The McrBC-treated, purified gDNA was quantified using Quant-iT TM Picogreen® dsDNA Assay kit (Invitrogen). For amplification of the 16S rRNA gene-variable regions three rounds of amplification were performed using 100ng of McrBC-treated gDNA with LongAmp Taq DNA polymerase (New England Biolabs) according to manufacturer's instructions. The first step aimed at enriching microbial sequences was performed using primers that amplify V2-V6 regions (Table S3). PCR cycling parameters consisted of initial denaturation step for 30s at 94°C, followed by 12 cycles of 15s at 94°C, 30s at 45°C, and 1min at 65°C with a final extension for 10 min at 65°C. Subsequently a nested PCR was performed targeting V4-V5 regions using the enriched V2-V6 amplicon as template. PCR Cycling parameters for amplifying V4-V5 regions were similar to V2- V6 PCR cycling profile, except that the extension was for 30s at 65 °C. The final amplification step involved addition of barcodes for identifying, de-multiplexing individual samples and Illumina adapter sequences to the V4-V5 enriched product using communal primers. Communal PCR amplification consisted of initial denaturation step for 30 s at 94 °C, followed by 30 cycles of 15s at 94 °C, 30s at 45°C, and 1 min at 65°C with a final extension for 10 min at 65°C. Equimolar concentrations of the prepared libraries were pooled and electrophoresed using 1% agarose gel. Pooled amplicon libraries were gel-purified using the Qiaquick Gel Extraction Kit (Qiagen). Integrity of gel-purified libraries were validated using the High Sensitivity DNA kit (Agilent Technologies). The libraries were quantified using KAPA Library Quantification Kit (Kapa Biosystems) to ascertain the loading concentration and sequenced on a HiSeq 2500 System (Illumina) operated in Rapid Run Mode to generate 2 ×250 bp paired-end reads 16S rRNA sequencing on HiSeq 2500 System (Illumina)
+      - generic [ref=e185]:
+        - term [ref=e186]: platform
+        - definition [ref=e187]: ILLUMINA
+      - generic [ref=e188]:
+        - term [ref=e189]: instrumentModel
+        - definition [ref=e190]: Illumina HiSeq 2500
+      - generic [ref=e191]:
+        - term [ref=e192]: properties
+        - definition [ref=e193]:
+          - generic [ref=e194]:
+            - code [ref=e197]:
+              - generic [ref=e198]:
+                - generic [ref=e199]: "1"
+                - generic [ref=e200]: "{"
+              - generic [ref=e201]:
+                - generic [ref=e202]: "2"
+                - generic [ref=e204]: "\"EXPERIMENT_SET\""
+                - generic [ref=e205]: ": {"
+              - generic [ref=e206]:
+                - generic [ref=e207]: "3"
+                - generic [ref=e209]: "\"EXPERIMENT\""
+                - generic [ref=e210]: ": {"
+              - generic [ref=e211]:
+                - generic [ref=e212]: "4"
+                - generic [ref=e214]: "\"alias\""
+                - generic [ref=e215]: ":"
+                - generic [ref=e216]: "\"GSM5195222\""
+                - generic [ref=e217]: ","
+              - generic [ref=e218]:
+                - generic [ref=e219]: "5"
+                - generic [ref=e221]: "\"accession\""
+                - generic [ref=e222]: ":"
+                - generic [ref=e223]: "\"SRX10405429\""
+                - generic [ref=e224]: ","
+              - generic [ref=e225]:
+                - generic [ref=e226]: "6"
+                - generic [ref=e228]: "\"IDENTIFIERS\""
+                - generic [ref=e229]: ": {"
+              - generic [ref=e230]:
+                - generic [ref=e231]: "7"
+                - generic [ref=e233]: "\"PRIMARY_ID\""
+                - generic [ref=e234]: ":"
+                - generic [ref=e235]: "\"SRX10405429\""
+                - generic [ref=e236]: ","
+              - generic [ref=e237]:
+                - generic [ref=e238]: "8"
+                - generic [ref=e240]: "\"SUBMITTER_ID\""
+                - generic [ref=e241]: ": {"
+              - generic [ref=e242]:
+                - generic [ref=e243]: "9"
+                - generic [ref=e245]: "\"namespace\""
+                - generic [ref=e246]: ":"
+                - generic [ref=e247]: "\"GEO\""
+                - generic [ref=e248]: ","
+              - generic [ref=e249]:
+                - generic [ref=e250]: "10"
+                - generic [ref=e252]: "\"content\""
+                - generic [ref=e253]: ":"
+                - generic [ref=e254]: "\"GSM5195222\""
+              - generic [ref=e255]:
+                - generic [ref=e256]: "11"
+                - text: "}"
+              - generic [ref=e257]:
+                - generic [ref=e258]: "12"
+                - text: "},"
+              - generic [ref=e259]:
+                - generic [ref=e260]: "13"
+                - generic [ref=e262]: "\"TITLE\""
+                - generic [ref=e263]: ":"
+                - generic [ref=e264]: "\"GSM5195222: AHF250; human gut metagenome; OTHER\""
+                - generic [ref=e265]: ","
+              - generic [ref=e266]:
+                - generic [ref=e267]: "14"
+                - generic [ref=e269]: "\"STUDY_REF\""
+                - generic [ref=e270]: ": {"
+              - generic [ref=e271]:
+                - generic [ref=e272]: "15"
+                - generic [ref=e274]: "\"accession\""
+                - generic [ref=e275]: ":"
+                - generic [ref=e276]: "\"SRP311615\""
+                - generic [ref=e277]: ","
+              - generic [ref=e278]:
+                - generic [ref=e279]: "16"
+                - generic [ref=e281]: "\"IDENTIFIERS\""
+                - generic [ref=e282]: ": {"
+              - generic [ref=e283]:
+                - generic [ref=e284]: "17"
+                - generic [ref=e286]: "\"PRIMARY_ID\""
+                - generic [ref=e287]: ":"
+                - generic [ref=e288]: "\"SRP311615\""
+                - generic [ref=e289]: ","
+              - generic [ref=e290]:
+                - generic [ref=e291]: "18"
+                - generic [ref=e293]: "\"EXTERNAL_ID\""
+                - generic [ref=e294]: ": {"
+              - generic [ref=e295]:
+                - generic [ref=e296]: "19"
+                - generic [ref=e298]: "\"namespace\""
+                - generic [ref=e299]: ":"
+                - generic [ref=e300]: "\"BioProject\""
+                - generic [ref=e301]: ","
+              - generic [ref=e302]:
+                - generic [ref=e303]: "20"
+                - generic [ref=e305]: "\"content\""
+                - generic [ref=e306]: ":"
+                - generic [ref=e307]: "\"PRJNA716244\""
+              - generic [ref=e308]:
+                - generic [ref=e309]: "21"
+                - text: "}"
+              - generic [ref=e310]:
+                - generic [ref=e311]: "22"
+                - text: "}"
+              - generic [ref=e312]:
+                - generic [ref=e313]: "23"
+                - text: "},"
+              - generic [ref=e314]:
+                - generic [ref=e315]: "24"
+                - generic [ref=e317]: "\"DESIGN\""
+                - generic [ref=e318]: ": {"
+              - generic [ref=e319]:
+                - generic [ref=e320]: "25"
+                - generic [ref=e322]: "\"DESIGN_DESCRIPTION\""
+                - generic [ref=e323]: ":"
+                - generic [ref=e324]: "null"
+                - generic [ref=e325]: ","
+              - generic [ref=e326]:
+                - generic [ref=e327]: "26"
+                - generic [ref=e329]: "\"SAMPLE_DESCRIPTOR\""
+                - generic [ref=e330]: ": {"
+              - generic [ref=e331]:
+                - generic [ref=e332]: "27"
+                - generic [ref=e334]: "\"accession\""
+                - generic [ref=e335]: ":"
+                - generic [ref=e336]: "\"SRS8527796\""
+                - generic [ref=e337]: ","
+              - generic [ref=e338]:
+                - generic [ref=e339]: "28"
+                - generic [ref=e341]: "\"IDENTIFIERS\""
+                - generic [ref=e342]: ": {"
+              - generic [ref=e343]:
+                - generic [ref=e344]: "29"
+                - generic [ref=e346]: "\"PRIMARY_ID\""
+                - generic [ref=e347]: ":"
+                - generic [ref=e348]: "\"SRS8527796\""
+                - generic [ref=e349]: ","
+              - generic [ref=e350]:
+                - generic [ref=e351]: "30"
+                - generic [ref=e353]: "\"EXTERNAL_ID\""
+                - generic [ref=e354]: ": {"
+              - generic [ref=e355]:
+                - generic [ref=e356]: "31"
+                - generic [ref=e358]: "\"namespace\""
+                - generic [ref=e359]: ":"
+                - generic [ref=e360]: "\"BioSample\""
+                - generic [ref=e361]: ","
+              - generic [ref=e362]:
+                - generic [ref=e363]: "32"
+                - generic [ref=e365]: "\"content\""
+                - generic [ref=e366]: ":"
+                - generic [ref=e367]: "\"SAMN18402124\""
+              - generic [ref=e368]:
+                - generic [ref=e369]: "33"
+                - text: "}"
+              - generic [ref=e370]:
+                - generic [ref=e371]: "34"
+                - text: "}"
+              - generic [ref=e372]:
+                - generic [ref=e373]: "35"
+                - text: "},"
+              - generic [ref=e374]:
+                - generic [ref=e375]: "36"
+                - generic [ref=e377]: "\"LIBRARY_DESCRIPTOR\""
+                - generic [ref=e378]: ": {"
+              - generic [ref=e379]:
+                - generic [ref=e380]: "37"
+                - generic [ref=e382]: "\"LIBRARY_STRATEGY\""
+                - generic [ref=e383]: ":"
+                - generic [ref=e384]: "\"OTHER\""
+                - generic [ref=e385]: ","
+              - generic [ref=e386]:
+                - generic [ref=e387]: "38"
+                - generic [ref=e389]: "\"LIBRARY_SOURCE\""
+                - generic [ref=e390]: ":"
+                - generic [ref=e391]: "\"TRANSCRIPTOMIC\""
+                - generic [ref=e392]: ","
+              - generic [ref=e393]:
+                - generic [ref=e394]: "39"
+                - generic [ref=e396]: "\"LIBRARY_SELECTION\""
+                - generic [ref=e397]: ":"
+                - generic [ref=e398]: "\"other\""
+                - generic [ref=e399]: ","
+              - generic [ref=e400]:
+                - generic [ref=e401]: "40"
+                - generic [ref=e403]: "\"LIBRARY_LAYOUT\""
+                - generic [ref=e404]: ": {"
+              - generic [ref=e405]:
+                - generic [ref=e406]: "41"
+                - generic [ref=e408]: "\"PAIRED\""
+                - generic [ref=e409]: ":"
+                - generic [ref=e410]: "null"
+              - generic [ref=e411]:
+                - generic [ref=e412]: "42"
+                - text: "},"
+              - generic [ref=e413]:
+                - generic [ref=e414]: "43"
+                - generic [ref=e416]: "\"LIBRARY_CONSTRUCTION_PROTOCOL\""
+                - generic [ref=e417]: ":"
+                - generic [ref=e418]: "\"DNA from fetal tissues was extracted according to the protocol as previously described(Rancati et al., 2008), except that the volume of Breaking Buffer and phenol/chloroform/IAA used was 400μL. Three consecutive phenol/chloroform/isoamylalcohol extractions were performed to reduce protein contamination. A final chloroform extraction was performed to remove phenol contamination, prior to ethanol precipitation. RNA contamination was removed by treating the gDNA samples with 70 ng/μl affinity-purified RNAse A (Ambion) for 1 h at +37 °C. Final yields were quantified with a ND- 1000 spectrophotometer (NanoDrop). Fetal microbiome reagent and environmental controls were concurrently performed during the DNA extraction process. Genomic DNA isolated from fetal tissues and control samples were treated with McrBC restriction enzyme (New England BioLabs) according to manufacturer's instructions, to remove host DNA and to enrich for microbial DNA. The treated DNA samples were purified using 0.8X ratio of AMPure XP beads (Beckman Coulter). The McrBC-treated, purified gDNA was quantified using Quant-iT TM Picogreen® dsDNA Assay kit (Invitrogen). For amplification of the 16S rRNA gene-variable regions three rounds of amplification were performed using 100ng of McrBC-treated gDNA with LongAmp Taq DNA polymerase (New England Biolabs) according to manufacturer's instructions. The first step aimed at enriching microbial sequences was performed using primers that amplify V2-V6 regions (Table S3). PCR cycling parameters consisted of initial denaturation step for 30s at 94°C, followed by 12 cycles of 15s at 94°C, 30s at 45°C, and 1min at 65°C with a final extension for 10 min at 65°C. Subsequently a nested PCR was performed targeting V4-V5 regions using the enriched V2-V6 amplicon as template. PCR Cycling parameters for amplifying V4-V5 regions were similar to V2- V6 PCR cycling profile, except that the extension was for 30s at 65 °C. The final amplification step involved addition of barcodes for identifying, de-multiplexing individual samples and Illumina adapter sequences to the V4-V5 enriched product using communal primers. Communal PCR amplification consisted of initial denaturation step for 30 s at 94 °C, followed by 30 cycles of 15s at 94 °C, 30s at 45°C, and 1 min at 65°C with a final extension for 10 min at 65°C. Equimolar concentrations of the prepared libraries were pooled and electrophoresed using 1% agarose gel. Pooled amplicon libraries were gel-purified using the Qiaquick Gel Extraction Kit (Qiagen). Integrity of gel-purified libraries were validated using the High Sensitivity DNA kit (Agilent Technologies). The libraries were quantified using KAPA Library Quantification Kit (Kapa Biosystems) to ascertain the loading concentration and sequenced on a HiSeq 2500 System (Illumina) operated in Rapid Run Mode to generate 2 ×250 bp paired-end reads 16S rRNA sequencing on HiSeq 2500 System (Illumina)\""
+              - generic [ref=e419]:
+                - generic [ref=e420]: "44"
+                - text: "}"
+              - generic [ref=e421]:
+                - generic [ref=e422]: "45"
+                - text: "},"
+              - generic [ref=e423]:
+                - generic [ref=e424]: "46"
+                - generic [ref=e426]: "\"PLATFORM\""
+                - generic [ref=e427]: ": {"
+              - generic [ref=e428]:
+                - generic [ref=e429]: "47"
+                - generic [ref=e431]: "\"ILLUMINA\""
+                - generic [ref=e432]: ": {"
+              - generic [ref=e433]:
+                - generic [ref=e434]: "48"
+                - generic [ref=e436]: "\"INSTRUMENT_MODEL\""
+                - generic [ref=e437]: ":"
+                - generic [ref=e438]: "\"Illumina HiSeq 2500\""
+              - generic [ref=e439]:
+                - generic [ref=e440]: "49"
+                - text: "}"
+              - generic [ref=e441]:
+                - generic [ref=e442]: "50"
+                - text: "},"
+              - generic [ref=e443]:
+                - generic [ref=e444]: "51"
+                - generic [ref=e446]: "\"EXPERIMENT_LINKS\""
+                - generic [ref=e447]: ": {"
+              - generic [ref=e448]:
+                - generic [ref=e449]: "52"
+                - generic [ref=e451]: "\"EXPERIMENT_LINK\""
+                - generic [ref=e452]: ": {"
+              - generic [ref=e453]:
+                - generic [ref=e454]: "53"
+                - generic [ref=e456]: "\"XREF_LINK\""
+                - generic [ref=e457]: ": {"
+              - generic [ref=e458]:
+                - generic [ref=e459]: "54"
+                - generic [ref=e461]: "\"DB\""
+                - generic [ref=e462]: ":"
+                - generic [ref=e463]: "\"gds\""
+                - generic [ref=e464]: ","
+              - generic [ref=e465]:
+                - generic [ref=e466]: "55"
+                - generic [ref=e468]: "\"ID\""
+                - generic [ref=e469]: ":"
+                - generic [ref=e470]: "\"305195222\""
+                - generic [ref=e471]: ","
+              - generic [ref=e472]:
+                - generic [ref=e473]: "56"
+                - generic [ref=e475]: "\"LABEL\""
+                - generic [ref=e476]: ":"
+                - generic [ref=e477]: "\"GSM5195222\""
+              - generic [ref=e478]:
+                - generic [ref=e479]: "57"
+                - text: "}"
+              - generic [ref=e480]:
+                - generic [ref=e481]: "58"
+                - text: "}"
+              - generic [ref=e482]:
+                - generic [ref=e483]: "59"
+                - text: "},"
+              - generic [ref=e484]:
+                - generic [ref=e485]: "60"
+                - generic [ref=e487]: "\"EXPERIMENT_ATTRIBUTES\""
+                - generic [ref=e488]: ": {"
+              - generic [ref=e489]:
+                - generic [ref=e490]: "61"
+                - generic [ref=e492]: "\"EXPERIMENT_ATTRIBUTE\""
+                - generic [ref=e493]: ": ["
+              - generic [ref=e494]:
+                - generic [ref=e495]: "62"
+                - text: "{"
+              - generic [ref=e496]:
+                - generic [ref=e497]: "63"
+                - generic [ref=e499]: "\"TAG\""
+                - generic [ref=e500]: ":"
+                - generic [ref=e501]: "\"GEO Accession\""
+                - generic [ref=e502]: ","
+              - generic [ref=e503]:
+                - generic [ref=e504]: "64"
+                - generic [ref=e506]: "\"VALUE\""
+                - generic [ref=e507]: ":"
+                - generic [ref=e508]: "\"GSM5195222\""
+              - generic [ref=e509]:
+                - generic [ref=e510]: "65"
+                - text: "}"
+              - generic [ref=e511]:
+                - generic [ref=e512]: "66"
+                - text: "]"
+              - generic [ref=e513]:
+                - generic [ref=e514]: "67"
+                - text: "}"
+              - generic [ref=e515]:
+                - generic [ref=e516]: "68"
+                - text: "}"
+              - generic [ref=e517]:
+                - generic [ref=e518]: "69"
+                - text: "}"
+              - generic [ref=e519]:
+                - generic [ref=e520]: "70"
+                - text: "}"
+            - generic [ref=e521]:
+              - button [ref=e522] [cursor=pointer]:
+                - img [ref=e523]
+              - button [ref=e525] [cursor=pointer]:
+                - img [ref=e526]
+      - generic [ref=e528]:
+        - term [ref=e529]: dbXrefs
+        - definition [ref=e530]:
+          - generic [ref=e532]:
+            - generic [ref=e533]:
+              - term [ref=e534]: bioproject (1/1)
+              - definition [ref=e535]:
+                - link "PRJNA716244" [ref=e536] [cursor=pointer]:
+                  - /url: https://ddbj.nig.ac.jp/search/entry/bioproject/PRJNA716244
+            - generic [ref=e537]:
+              - term [ref=e538]: biosample (1/1)
+              - definition [ref=e539]:
+                - link "SAMN18402124" [ref=e540] [cursor=pointer]:
+                  - /url: https://ddbj.nig.ac.jp/search/entry/biosample/SAMN18402124
+            - generic [ref=e541]:
+              - term [ref=e542]: sra-run (1/1)
+              - definition [ref=e543]:
+                - link "SRR14029125" [ref=e544] [cursor=pointer]:
+                  - /url: https://ddbj.nig.ac.jp/search/entry/sra-run/SRR14029125
+            - generic [ref=e545]:
+              - term [ref=e546]: sra-sample (1/1)
+              - definition [ref=e547]:
+                - link "SRS8527796" [ref=e548] [cursor=pointer]:
+                  - /url: https://ddbj.nig.ac.jp/search/entry/sra-sample/SRS8527796
+            - generic [ref=e549]:
+              - term [ref=e550]: sra-study (1/1)
+              - definition [ref=e551]:
+                - link "SRP311615" [ref=e552] [cursor=pointer]:
+                  - /url: https://ddbj.nig.ac.jp/search/entry/sra-study/SRP311615
+      - generic [ref=e553]:
+        - term [ref=e554]: download
+        - definition [ref=e555]:
+          - paragraph [ref=e556]:
+            - link "JSON" [ref=e557] [cursor=pointer]:
+              - /url: https://ddbj-staging.nig.ac.jp/search/entry/sra-experiment/SRX10405429.json
+            - link "JSON-LD" [ref=e558] [cursor=pointer]:
+              - /url: https://ddbj-staging.nig.ac.jp/search/entry/sra-experiment/SRX10405429.jsonld
+      - generic [ref=e559]:
+        - term [ref=e560]: status
+        - definition [ref=e561]: public
+      - generic [ref=e562]:
+        - term [ref=e563]: accessibility
+        - definition [ref=e564]: public-access
+      - generic [ref=e565]:
+        - term [ref=e566]: dateCreated
+        - definition [ref=e567]: 2021-03-23T00:43:09Z
+      - generic [ref=e568]:
+        - term [ref=e569]: dateModified
+        - definition [ref=e570]: 2021-03-30T02:09:31Z
+      - generic [ref=e571]:
+        - term [ref=e572]: datePublished
+        - definition [ref=e573]: 2021-03-24T06:10:23Z
+  - banner [ref=e6]:
+    - generic [ref=e7]:
+      - link "DDBJ DNA Data Bank of Japan" [ref=e9] [cursor=pointer]:
+        - /url: https://www.ddbj.nig.ac.jp/index-e.html
+      - navigation [ref=e10]:
+        - generic [ref=e11]:
+          - list [ref=e12]:
+            - listitem [ref=e13]:
+              - link "Services" [ref=e14] [cursor=pointer]:
+                - /url: https://www.ddbj.nig.ac.jp/services/index-e.html
+            - listitem [ref=e15]:
+              - link "SuperComputer" [ref=e16] [cursor=pointer]:
+                - /url: https://sc.ddbj.nig.ac.jp/en
+            - listitem [ref=e17]:
+              - link "Statistics" [ref=e18] [cursor=pointer]:
+                - /url: https://www.ddbj.nig.ac.jp/statistics/index-e.html
+            - listitem [ref=e19]:
+              - link "Activities" [ref=e20] [cursor=pointer]:
+                - /url: https://www.ddbj.nig.ac.jp/activities/index-e.html
+            - listitem [ref=e21]:
+              - link "About Us" [ref=e22] [cursor=pointer]:
+                - /url: https://www.ddbj.nig.ac.jp/about/index-e.html
+          - list [ref=e23]:
+            - listitem [ref=e24]:
+              - link "Terms" [ref=e25] [cursor=pointer]:
+                - /url: https://www.ddbj.nig.ac.jp/policies-e.html
+            - listitem [ref=e26]:
+              - link "Contact" [ref=e27] [cursor=pointer]:
+                - /url: https://www.ddbj.nig.ac.jp/contact-ddbj-e.html
+  - generic [ref=e29]:
+    - navigation [ref=e30]:
+      - generic [ref=e31]:
+        - heading "Search" [level=2] [ref=e32]
+        - list [ref=e33]:
+          - listitem [ref=e34]:
+            - link "DDBJ Search" [ref=e35] [cursor=pointer]:
+              - /url: https://ddbj.nig.ac.jp/search
+          - listitem [ref=e36]:
+            - link "getentry" [ref=e37] [cursor=pointer]:
+              - /url: http://getentry.ddbj.nig.ac.jp/top-e.html
+          - listitem [ref=e38]:
+            - link "ARSA" [ref=e39] [cursor=pointer]:
+              - /url: https://www.ddbj.nig.ac.jp/services/arsa-e.html
+          - listitem [ref=e40]:
+            - link "TXSearch" [ref=e41] [cursor=pointer]:
+              - /url: http://ddbj.nig.ac.jp/tx_search/?lang=en
+      - generic [ref=e42]:
+        - heading "Analysis" [level=2] [ref=e43]
+        - list [ref=e44]:
+          - listitem [ref=e45]:
+            - link "Vector Screening System" [ref=e46] [cursor=pointer]:
+              - /url: http://ddbj.nig.ac.jp/vecscreen/
+          - listitem [ref=e47]:
+            - link "WABI (Web API for Biology)" [ref=e48] [cursor=pointer]:
+              - /url: https://www.ddbj.nig.ac.jp/services/wabi-e.html
+          - listitem [ref=e49]:
+            - link "DDBJ FTP Site" [ref=e50] [cursor=pointer]:
+              - /url: https://ddbj.nig.ac.jp/public/
+      - generic [ref=e51]:
+        - heading "Databases" [level=2] [ref=e52]
+        - list [ref=e53]:
+          - listitem [ref=e54]:
+            - link "Annotated/Assembled Sequences (DDBJ)" [ref=e55] [cursor=pointer]:
+              - /url: https://www.ddbj.nig.ac.jp/ddbj/index-e.html
+          - listitem [ref=e56]:
+            - link "Sequence Read Archive (DRA)" [ref=e57] [cursor=pointer]:
+              - /url: https://www.ddbj.nig.ac.jp/dra/index-e.html
+          - listitem [ref=e58]:
+            - link "Genomic Expression Archive (GEA)" [ref=e59] [cursor=pointer]:
+              - /url: https://www.ddbj.nig.ac.jp/gea/index-e.html
+          - listitem [ref=e60]:
+            - link "MetaboBank" [ref=e61] [cursor=pointer]:
+              - /url: https://www.ddbj.nig.ac.jp/metabobank/index-e.html
+          - listitem [ref=e62]:
+            - link "BioProject" [ref=e63] [cursor=pointer]:
+              - /url: https://www.ddbj.nig.ac.jp/bioproject/index-e.html
+          - listitem [ref=e64]:
+            - link "BioSample" [ref=e65] [cursor=pointer]:
+              - /url: https://www.ddbj.nig.ac.jp/biosample/index-e.html
+          - listitem [ref=e66]:
+            - link "Japanese Genotype-phenotype Archive (JGA)" [ref=e67] [cursor=pointer]:
+              - /url: https://www.ddbj.nig.ac.jp/jga/index-e.html
+          - listitem [ref=e68]:
+            - link "Submission portal D-way" [ref=e69] [cursor=pointer]:
+              - /url: https://ddbj.nig.ac.jp/D-way
+      - generic [ref=e70]:
+        - heading "NIG SuperComputer" [level=2] [ref=e71]
+        - list [ref=e72]:
+          - listitem [ref=e73]:
+            - link "NIG SuperComputer" [ref=e74] [cursor=pointer]:
+              - /url: https://sc.ddbj.nig.ac.jp/en
+    - navigation [ref=e75]:
+      - list [ref=e76]:
+        - listitem [ref=e77]:
+          - link "DDBJ RSS" [ref=e78] [cursor=pointer]:
+            - /url: https://www.ddbj.nig.ac.jp/data-feed-e.html
+            - img "DDBJ RSS" [ref=e79]
+        - listitem [ref=e80]:
+          - link "DDBJ on Twitter" [ref=e81] [cursor=pointer]:
+            - /url: https://twitter.com/DDBJ_topics
+            - img "DDBJ on Twitter" [ref=e82]
+        - listitem [ref=e83]:
+          - link "DDBJ on Youtube" [ref=e84] [cursor=pointer]:
+            - /url: https://www.youtube.com/user/ddbjvideo
+            - img "DDBJ on Youtube" [ref=e85]
+        - listitem [ref=e86]:
+          - link "DDBJ on GitHub" [ref=e87] [cursor=pointer]:
+            - /url: http://github.com/ddbj/
+            - img "DDBJ on GitHub" [ref=e88]
+        - listitem [ref=e89]:
+          - link "DDBJ on Google Drive" [ref=e90] [cursor=pointer]:
+            - /url: https://drive.google.com/drive/u/2/folders/1E0cxLbWV8RGYUdNs0oKfXMij0TzJDQVD
+            - img "DDBJ on Google Drive" [ref=e91]
+    - navigation [ref=e92]:
+      - list [ref=e93]:
+        - listitem [ref=e94]:
+          - link "National Institute of Genetics" [ref=e95] [cursor=pointer]:
+            - /url: https://www.nig.ac.jp/nig/
+            - img "National Institute of Genetics" [ref=e96]
+        - listitem [ref=e97]:
+          - link "Research Organization of Information and Systems" [ref=e98] [cursor=pointer]:
+            - /url: http://www.rois.ac.jp/en/index.html
+            - img "Research Organization of Information and Systems" [ref=e99]
+        - listitem [ref=e100]:
+          - link "GLOBAL BIODATA COALITION" [ref=e101] [cursor=pointer]:
+            - /url: https://globalbiodata.org/
+            - img "GLOBAL BIODATA COALITION" [ref=e102]
+        - listitem [ref=e103]:
+          - link "NBDC" [ref=e104] [cursor=pointer]:
+            - /url: https://biosciencedbc.jp/en/
+            - img "NBDC" [ref=e105]
+        - listitem [ref=e106]:
+          - link "DBCLS" [ref=e107] [cursor=pointer]:
+            - /url: https://dbcls.rois.ac.jp/index-en.html
+            - img "DBCLS" [ref=e108]
+        - listitem [ref=e109]:
+          - link "PDBj" [ref=e110] [cursor=pointer]:
+            - /url: https://pdbj.org/
+            - img "PDBj" [ref=e111]
+        - listitem [ref=e112]:
+          - link "JBI portal" [ref=e113] [cursor=pointer]:
+            - /url: http://jbioinfo.jp/
+            - img "JBI portal" [ref=e114]
+  - contentinfo [ref=e115]:
+    - navigation [ref=e117]:
+      - list [ref=e118]:
+        - listitem [ref=e119]:
+          - link "Policies and Disclaimers" [ref=e120] [cursor=pointer]:
+            - /url: https://www.ddbj.nig.ac.jp/policies-e.html
+        - listitem [ref=e121]:
+          - link "News" [ref=e122] [cursor=pointer]:
+            - /url: https://www.ddbj.nig.ac.jp/news/en/index-e.html
+        - listitem [ref=e123]:
+          - link "FAQs" [ref=e124] [cursor=pointer]:
+            - /url: https://www.ddbj.nig.ac.jp/faq/en/index-e.html
+        - listitem [ref=e125]:
+          - link "Sitemap" [ref=e126] [cursor=pointer]:
+            - /url: https://www.ddbj.nig.ac.jp/sitemaps-e.html
+        - listitem [ref=e127]:
+          - link "Address" [ref=e129] [cursor=pointer]:
+            - /url: https://www.ddbj.nig.ac.jp/ddbj-access-e.html
+        - listitem [ref=e130]:
+          - link "Contact" [ref=e131] [cursor=pointer]:
+            - /url: https://www.ddbj.nig.ac.jp/contact-ddbj-e.html
+  - generic [ref=e133]:
+    - generic [ref=e134]:
+      - strong [ref=e135]: Cookie
+      - text: This site uses cookies to function.
+      - link "Find out more" [ref=e136] [cursor=pointer]:
+        - /url: /policies-e.html
+      - text: on how we use cookies and how you can change your settings.
+    - button "Accept" [ref=e137] [cursor=pointer]
