@@ -13,12 +13,7 @@ export const Organization: FC<Props> = ({ value, update }) => {
 
   return (
     <LabeledInput label={"Organization"}>
-      <TextInput
-        label={"Organization"}
-        placeholder={"single query or * for all entries with organization"}
-        value={uiValue}
-        onValueChange={setUiValue}
-      />
+      <TextInput label={"Organization"} value={uiValue} onValueChange={setUiValue} />
     </LabeledInput>
   );
 };

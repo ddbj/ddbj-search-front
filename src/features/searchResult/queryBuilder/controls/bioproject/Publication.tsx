@@ -13,12 +13,7 @@ export const Publication: FC<Props> = ({ value, update }) => {
 
   return (
     <LabeledInput label={"Publication"}>
-      <TextInput
-        label={"Publication"}
-        placeholder={"single query or * for all entries with publication"}
-        value={uiValue}
-        onValueChange={setUiValue}
-      />
+      <TextInput label={"Publication"} value={uiValue} onValueChange={setUiValue} />
     </LabeledInput>
   );
 };

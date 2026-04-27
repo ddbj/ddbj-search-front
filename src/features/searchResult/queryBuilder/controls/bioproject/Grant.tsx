@@ -13,12 +13,7 @@ export const Grant: FC<Props> = ({ value, update }) => {
 
   return (
     <LabeledInput label={"Grant"}>
-      <TextInput
-        label={"Grant"}
-        placeholder={"single query or * for all entries with grant"}
-        value={uiValue}
-        onValueChange={setUiValue}
-      />
+      <TextInput label={"Grant"} value={uiValue} onValueChange={setUiValue} />
     </LabeledInput>
   );
 };
