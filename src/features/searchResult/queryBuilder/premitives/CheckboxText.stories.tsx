@@ -16,9 +16,6 @@ const StatefulCheckboxText = ({
   return (
     <div className="w-[384px] p-4">
       <CheckboxText {...args} isSelected={selected} setIsSelected={setSelected} />
-      <div className="mt-2 text-sm text-gray-500">
-        Selected: <span>{selected ? "true" : "false"}</span>
-      </div>
     </div>
   );
 };

@@ -1,51 +1,61 @@
 ---
 name: Storybook React Component
-description: Storybookに対応するReactコンポーネントを作るための指示です
+description: Storybookに対応するReactコンポーネントを作成するための指示
 ---
 
-## 概要
+## この指示の役割
 
-- Reactコンポーネントと、それに対応するStorybookのstoryファイルを作るための指示です
+- Reactコンポーネントと、それに対応するStorybookファイルを作成するときに使う。
 
-## 指示
+## 手順
 
-- 「Storybookコンポーネントを作りたいです」と依頼されたら、以下の手順で必要事項を確認しながら進めてください。
-- 指示の中に必要な説明が含まれている場合は、その内容を前提に作成してください。
+- Storybookに対応するReactコンポーネントの作成を依頼されたら、次の手順で進める。
+- 指示の中に必要な情報が含まれている場合は、その内容を前提に進める。
 
-1. 必要事項の確認
+1. 必要事項を確認する
 
    - 作成先フォルダ
-     - 指示にファイルが添付されている場合は、そのファイルと同じ階層を意図していることが多いです。必要に応じて、そのフォルダでよいか確認してください。
+     - 指示にファイルが添付されている場合は、そのファイルと同じ階層を第一候補とする。
+     - 作成先が明記されていなければ、そのフォルダでよいか確認する。
    - コンポーネント名
 
-2. コードの生成
+2. 2つのファイルを作成する
 
-   - 以下のテンプレートに従って2つのファイルを生成し、作業フォルダに保存してください。
-   - コンポーネント名は、ユーザーが指定した名前を元に生成してください。
+   - `<ComponentName>.tsx`
+   - `<ComponentName>.stories.tsx`
 
-### Component.tsx
+3. テンプレートを要件に合わせて置き換える
+
+   - `ComponentName` は、ユーザーが指定したコンポーネント名に置き換える。
+   - `Props` と表示内容は、指示に含まれる要件に合わせて調整する。
+   - `import` 文のパスは、作成先の周辺ファイルに合わせて相対パスまたは `@/` を選ぶ。
+   - 必須の `props` がある場合は、`Primary` に `args` を設定する。
+
+## テンプレート
+
+### `<ComponentName>.tsx`
 
 ```typescript jsx
 import type { FC } from "react";
 
 type Props = {};
 
-export const Component: FC<Props> = () => {
-  return <div>Component name as text here</div>;
+export const ComponentName: FC<Props> = () => {
+  return <div>ComponentName</div>;
 };
 ```
 
-### Component.stories.tsx
+### `<ComponentName>.stories.tsx`
 
 ```typescript jsx
-import { Component } from "PathToComponent";
+import { ComponentName } from "PathToComponent";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
-  component: Component,
+  component: ComponentName,
   args: {},
   decorators: [],
-} satisfies Meta<typeof Component>;
+} satisfies Meta<typeof ComponentName>;
 
 export default meta;
 

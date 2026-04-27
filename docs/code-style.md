@@ -19,6 +19,22 @@
 - JavaScriptではなくTypeScriptを優先して使う
 - ユーザーがJavaScriptの概念を質問していても、特に指定がなければ型付きのTypeScriptサンプルで答える
 
+## Reactのimport
+
+- React Hooksは `React.useState` のような名前空間経由ではなく、`useState` のようにnamed importして使う
+
+```typescript
+// NG
+import React from "react";
+
+const [open, setOpen] = React.useState(false);
+
+// OK
+import React, { useState } from "react";
+
+const [open, setOpen] = useState(false);
+```
+
 ## 関数定義
 
 - 原則として、`function` 宣言ではなくアロー関数を使う
