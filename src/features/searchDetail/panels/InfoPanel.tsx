@@ -22,6 +22,10 @@ import type { FC } from "react";
 type Props = { data: SearchDetailResponse };
 
 export const InfoPanel: FC<Props> = ({ data }) => {
+  if (!hasActualData(data)) {
+    return <></>;
+  }
+
   return (
     <PanelWrapper>
       <InfoList>
@@ -39,3 +43,6 @@ export const InfoPanel: FC<Props> = ({ data }) => {
     </PanelWrapper>
   );
 };
+
+const hasActualData = (data: SearchDetailResponse) =>
+  data.title || data.name || data.description || data.organism;
