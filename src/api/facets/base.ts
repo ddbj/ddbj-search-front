@@ -23,7 +23,7 @@ export const baseFacetListResponseSchema = z.object({
   facets: z.object({
     type: facetListShape,
     organism: facetListShape,
-    status: facetListShape,
+    // status: facetListShape,
     accessibility: facetListShape,
   }),
 });

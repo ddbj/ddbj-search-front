@@ -17,7 +17,6 @@ const bioProjectParams: AnySearchParams = {
   organization: "NCBI",
   publication: "Nature",
   grant: "NSF",
-  umbrella: true,
   datePublishedFrom: "2024-01-01",
   datePublishedTo: "2024-01-31",
   dateModifiedFrom: "2024-02-01",

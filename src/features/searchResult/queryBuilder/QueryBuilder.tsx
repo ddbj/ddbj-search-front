@@ -84,6 +84,7 @@ const BioProjectQueries = ({
     () => update,
     [update],
   );
+  console.log(isBioProjectFacetListResponse(facetData), isBioprojectSearchParams(params));
   if (!isBioProjectFacetListResponse(facetData)) return <></>;
   if (!isBioprojectSearchParams(params)) return <></>;
   const { umbrella, organization, publication, grant } = params;
