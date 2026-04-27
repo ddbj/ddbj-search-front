@@ -1,0 +1,934 @@
+- generic [active] [ref=e1]:
+  - main [ref=e4]:
+    - generic [ref=e6]:
+      - generic [ref=e8]:
+        - generic [ref=e9]:
+          - heading "Keyword" [level=2] [ref=e10]
+          - generic [ref=e13]:
+            - textbox "query" [ref=e14]:
+              - /placeholder: Search
+            - img "Search" [ref=e18] [cursor=pointer]
+        - generic [ref=e20]:
+          - heading "Database" [level=2] [ref=e21]
+          - generic [ref=e22] [cursor=pointer]: JGA
+          - generic [ref=e23] [cursor=pointer]: BioProject
+          - generic [ref=e24] [cursor=pointer]: BioSample
+          - generic [ref=e25] [cursor=pointer]: SRA
+        - generic [ref=e26]:
+          - heading "Type" [level=2] [ref=e27]
+          - textbox "type-search" [ref=e28]:
+            - /placeholder: Search
+          - radiogroup "type-items" [ref=e29]:
+            - radio "biosample 53911714" [ref=e30]:
+              - radio "biosample 53911714" [ref=e31]
+              - generic [ref=e33] [cursor=pointer]:
+                - generic [ref=e34]: biosample
+                - generic [ref=e35]: "53911714"
+            - radio "sra-run 41878914" [ref=e36]:
+              - radio "sra-run 41878914" [ref=e37]
+              - generic [ref=e39] [cursor=pointer]:
+                - generic [ref=e40]: sra-run
+                - generic [ref=e41]: "41878914"
+            - radio "sra-sample 40824293" [ref=e42]:
+              - radio "sra-sample 40824293" [ref=e43]
+              - generic [ref=e45] [cursor=pointer]:
+                - generic [ref=e46]: sra-sample
+                - generic [ref=e47]: "40824293"
+            - radio "sra-experiment 39458797" [ref=e48]:
+              - radio "sra-experiment 39458797" [ref=e49]
+              - generic [ref=e51] [cursor=pointer]:
+                - generic [ref=e52]: sra-experiment
+                - generic [ref=e53]: "39458797"
+            - radio "sra-submission 7550576" [ref=e54]:
+              - radio "sra-submission 7550576" [ref=e55]
+              - generic [ref=e57] [cursor=pointer]:
+                - generic [ref=e58]: sra-submission
+                - generic [ref=e59]: "7550576"
+            - radio "bioproject 1060329" [ref=e60]:
+              - radio "bioproject 1060329" [ref=e61]
+              - generic [ref=e63] [cursor=pointer]:
+                - generic [ref=e64]: bioproject
+                - generic [ref=e65]: "1060329"
+            - radio "sra-study 713382" [ref=e66]:
+              - radio "sra-study 713382" [ref=e67]
+              - generic [ref=e69] [cursor=pointer]:
+                - generic [ref=e70]: sra-study
+                - generic [ref=e71]: "713382"
+            - radio "sra-analysis 145442" [ref=e72]:
+              - radio "sra-analysis 145442" [ref=e73]
+              - generic [ref=e75] [cursor=pointer]:
+                - generic [ref=e76]: sra-analysis
+                - generic [ref=e77]: "145442"
+            - radio "jga-dataset 964" [ref=e78]:
+              - radio "jga-dataset 964" [ref=e79]
+              - generic [ref=e81] [cursor=pointer]:
+                - generic [ref=e82]: jga-dataset
+                - generic [ref=e83]: "964"
+            - radio "jga-study 735" [ref=e84]:
+              - radio "jga-study 735" [ref=e85]
+              - generic [ref=e87] [cursor=pointer]:
+                - generic [ref=e88]: jga-study
+                - generic [ref=e89]: "735"
+            - radio "jga-policy 14" [ref=e90]:
+              - radio "jga-policy 14" [ref=e91]
+              - generic [ref=e93] [cursor=pointer]:
+                - generic [ref=e94]: jga-policy
+                - generic [ref=e95]: "14"
+            - radio "jga-dac 2" [ref=e96]:
+              - radio "jga-dac 2" [ref=e97]
+              - generic [ref=e99] [cursor=pointer]:
+                - generic [ref=e100]: jga-dac
+                - generic [ref=e101]: "2"
+        - generic [ref=e102]:
+          - heading "Organism" [level=2] [ref=e103]
+          - textbox "organism-search" [ref=e104]:
+            - /placeholder: Search
+          - radiogroup "organism-items" [ref=e105]:
+            - radio "Homo sapiens 21978982" [ref=e106]:
+              - radio "Homo sapiens 21978982" [ref=e107]
+              - generic [ref=e109] [cursor=pointer]:
+                - generic [ref=e110]: Homo sapiens
+                - generic [ref=e111]: "21978982"
+            - radio "Severe acute respiratory syndrome coronavirus 2 18731859" [ref=e112]:
+              - radio "Severe acute respiratory syndrome coronavirus 2 18731859" [ref=e113]
+              - generic [ref=e115] [cursor=pointer]:
+                - generic [ref=e116]: Severe acute respiratory syndrome coronavirus 2
+                - generic [ref=e117]: "18731859"
+            - radio "Mus musculus 6065695" [ref=e118]:
+              - radio "Mus musculus 6065695" [ref=e119]
+              - generic [ref=e121] [cursor=pointer]:
+                - generic [ref=e122]: Mus musculus
+                - generic [ref=e123]: "6065695"
+            - radio "soil metagenome 2554893" [ref=e124]:
+              - radio "soil metagenome 2554893" [ref=e125]
+              - generic [ref=e127] [cursor=pointer]:
+                - generic [ref=e128]: soil metagenome
+                - generic [ref=e129]: "2554893"
+            - radio "human gut metagenome 2330590" [ref=e130]:
+              - radio "human gut metagenome 2330590" [ref=e131]
+              - generic [ref=e133] [cursor=pointer]:
+                - generic [ref=e134]: human gut metagenome
+                - generic [ref=e135]: "2330590"
+            - radio "metagenome 2150835" [ref=e136]:
+              - radio "metagenome 2150835" [ref=e137]
+              - generic [ref=e139] [cursor=pointer]:
+                - generic [ref=e140]: metagenome
+                - generic [ref=e141]: "2150835"
+            - radio "Escherichia coli 1233797" [ref=e142]:
+              - radio "Escherichia coli 1233797" [ref=e143]
+              - generic [ref=e145] [cursor=pointer]:
+                - generic [ref=e146]: Escherichia coli
+                - generic [ref=e147]: "1233797"
+            - radio "gut metagenome 1210081" [ref=e148]:
+              - radio "gut metagenome 1210081" [ref=e149]
+              - generic [ref=e151] [cursor=pointer]:
+                - generic [ref=e152]: gut metagenome
+                - generic [ref=e153]: "1210081"
+            - radio "Salmonella enterica 1065260" [ref=e154]:
+              - radio "Salmonella enterica 1065260" [ref=e155]
+              - generic [ref=e157] [cursor=pointer]:
+                - generic [ref=e158]: Salmonella enterica
+                - generic [ref=e159]: "1065260"
+            - radio "human metagenome 821728" [ref=e160]:
+              - radio "human metagenome 821728" [ref=e161]
+              - generic [ref=e163] [cursor=pointer]:
+                - generic [ref=e164]: human metagenome
+                - generic [ref=e165]: "821728"
+            - radio "mouse gut metagenome 714118" [ref=e166]:
+              - radio "mouse gut metagenome 714118" [ref=e167]
+              - generic [ref=e169] [cursor=pointer]:
+                - generic [ref=e170]: mouse gut metagenome
+                - generic [ref=e171]: "714118"
+            - radio "marine metagenome 708551" [ref=e172]:
+              - radio "marine metagenome 708551" [ref=e173]
+              - generic [ref=e175] [cursor=pointer]:
+                - generic [ref=e176]: marine metagenome
+                - generic [ref=e177]: "708551"
+            - radio "Plasmodium falciparum 677304" [ref=e178]:
+              - radio "Plasmodium falciparum 677304" [ref=e179]
+              - generic [ref=e181] [cursor=pointer]:
+                - generic [ref=e182]: Plasmodium falciparum
+                - generic [ref=e183]: "677304"
+            - radio "wastewater metagenome 642891" [ref=e184]:
+              - radio "wastewater metagenome 642891" [ref=e185]
+              - generic [ref=e187] [cursor=pointer]:
+                - generic [ref=e188]: wastewater metagenome
+                - generic [ref=e189]: "642891"
+            - radio "Mycobacterium tuberculosis 627749" [ref=e190]:
+              - radio "Mycobacterium tuberculosis 627749" [ref=e191]
+              - generic [ref=e193] [cursor=pointer]:
+                - generic [ref=e194]: Mycobacterium tuberculosis
+                - generic [ref=e195]: "627749"
+            - radio "plant metagenome 590637" [ref=e196]:
+              - radio "plant metagenome 590637" [ref=e197]
+              - generic [ref=e199] [cursor=pointer]:
+                - generic [ref=e200]: plant metagenome
+                - generic [ref=e201]: "590637"
+            - radio "uncultured bacterium 536207" [ref=e202]:
+              - radio "uncultured bacterium 536207" [ref=e203]
+              - generic [ref=e205] [cursor=pointer]:
+                - generic [ref=e206]: uncultured bacterium
+                - generic [ref=e207]: "536207"
+            - radio "Saccharomyces cerevisiae 529353" [ref=e208]:
+              - radio "Saccharomyces cerevisiae 529353" [ref=e209]
+              - generic [ref=e211] [cursor=pointer]:
+                - generic [ref=e212]: Saccharomyces cerevisiae
+                - generic [ref=e213]: "529353"
+            - radio "Arabidopsis thaliana 457814" [ref=e214]:
+              - radio "Arabidopsis thaliana 457814" [ref=e215]
+              - generic [ref=e217] [cursor=pointer]:
+                - generic [ref=e218]: Arabidopsis thaliana
+                - generic [ref=e219]: "457814"
+            - radio "Rattus norvegicus 406483" [ref=e220]:
+              - radio "Rattus norvegicus 406483" [ref=e221]
+              - generic [ref=e223] [cursor=pointer]:
+                - generic [ref=e224]: Rattus norvegicus
+                - generic [ref=e225]: "406483"
+            - radio "Streptococcus pneumoniae 393424" [ref=e226]:
+              - radio "Streptococcus pneumoniae 393424" [ref=e227]
+              - generic [ref=e229] [cursor=pointer]:
+                - generic [ref=e230]: Streptococcus pneumoniae
+                - generic [ref=e231]: "393424"
+            - radio "Staphylococcus aureus 386540" [ref=e232]:
+              - radio "Staphylococcus aureus 386540" [ref=e233]
+              - generic [ref=e235] [cursor=pointer]:
+                - generic [ref=e236]: Staphylococcus aureus
+                - generic [ref=e237]: "386540"
+            - radio "human oral metagenome 366572" [ref=e238]:
+              - radio "human oral metagenome 366572" [ref=e239]
+              - generic [ref=e241] [cursor=pointer]:
+                - generic [ref=e242]: human oral metagenome
+                - generic [ref=e243]: "366572"
+            - radio "Drosophila melanogaster 349029" [ref=e244]:
+              - radio "Drosophila melanogaster 349029" [ref=e245]
+              - generic [ref=e247] [cursor=pointer]:
+                - generic [ref=e248]: Drosophila melanogaster
+                - generic [ref=e249]: "349029"
+            - radio "freshwater metagenome 348462" [ref=e250]:
+              - radio "freshwater metagenome 348462" [ref=e251]
+              - generic [ref=e253] [cursor=pointer]:
+                - generic [ref=e254]: freshwater metagenome
+                - generic [ref=e255]: "348462"
+            - radio "Klebsiella pneumoniae 346743" [ref=e256]:
+              - radio "Klebsiella pneumoniae 346743" [ref=e257]
+              - generic [ref=e259] [cursor=pointer]:
+                - generic [ref=e260]: Klebsiella pneumoniae
+                - generic [ref=e261]: "346743"
+            - radio "feces metagenome 307565" [ref=e262]:
+              - radio "feces metagenome 307565" [ref=e263]
+              - generic [ref=e265] [cursor=pointer]:
+                - generic [ref=e266]: feces metagenome
+                - generic [ref=e267]: "307565"
+            - radio "rhizosphere metagenome 291133" [ref=e268]:
+              - radio "rhizosphere metagenome 291133" [ref=e269]
+              - generic [ref=e271] [cursor=pointer]:
+                - generic [ref=e272]: rhizosphere metagenome
+                - generic [ref=e273]: "291133"
+            - radio "Zea mays 275130" [ref=e274]:
+              - radio "Zea mays 275130" [ref=e275]
+              - generic [ref=e277] [cursor=pointer]:
+                - generic [ref=e278]: Zea mays
+                - generic [ref=e279]: "275130"
+            - radio "Campylobacter jejuni 270610" [ref=e280]:
+              - radio "Campylobacter jejuni 270610" [ref=e281]
+              - generic [ref=e283] [cursor=pointer]:
+                - generic [ref=e284]: Campylobacter jejuni
+                - generic [ref=e285]: "270610"
+            - radio "Oryza sativa 265858" [ref=e286]:
+              - radio "Oryza sativa 265858" [ref=e287]
+              - generic [ref=e289] [cursor=pointer]:
+                - generic [ref=e290]: Oryza sativa
+                - generic [ref=e291]: "265858"
+            - radio "Bos taurus 254495" [ref=e292]:
+              - radio "Bos taurus 254495" [ref=e293]
+              - generic [ref=e295] [cursor=pointer]:
+                - generic [ref=e296]: Bos taurus
+                - generic [ref=e297]: "254495"
+            - radio "Danio rerio 244949" [ref=e298]:
+              - radio "Danio rerio 244949" [ref=e299]
+              - generic [ref=e301] [cursor=pointer]:
+                - generic [ref=e302]: Danio rerio
+                - generic [ref=e303]: "244949"
+            - radio "Vibrio cholerae 219282" [ref=e304]:
+              - radio "Vibrio cholerae 219282" [ref=e305]
+              - generic [ref=e307] [cursor=pointer]:
+                - generic [ref=e308]: Vibrio cholerae
+                - generic [ref=e309]: "219282"
+            - radio "sediment metagenome 218247" [ref=e310]:
+              - radio "sediment metagenome 218247" [ref=e311]
+              - generic [ref=e313] [cursor=pointer]:
+                - generic [ref=e314]: sediment metagenome
+                - generic [ref=e315]: "218247"
+            - radio "seawater metagenome 208601" [ref=e316]:
+              - radio "seawater metagenome 208601" [ref=e317]
+              - generic [ref=e319] [cursor=pointer]:
+                - generic [ref=e320]: seawater metagenome
+                - generic [ref=e321]: "208601"
+            - radio "insect metagenome 207875" [ref=e322]:
+              - radio "insect metagenome 207875" [ref=e323]
+              - generic [ref=e325] [cursor=pointer]:
+                - generic [ref=e326]: insect metagenome
+                - generic [ref=e327]: "207875"
+            - radio "Macaca mulatta 206977" [ref=e328]:
+              - radio "Macaca mulatta 206977" [ref=e329]
+              - generic [ref=e331] [cursor=pointer]:
+                - generic [ref=e332]: Macaca mulatta
+                - generic [ref=e333]: "206977"
+            - radio "unidentified 204057" [ref=e334]:
+              - radio "unidentified 204057" [ref=e335]
+              - generic [ref=e337] [cursor=pointer]:
+                - generic [ref=e338]: unidentified
+                - generic [ref=e339]: "204057"
+            - radio "root metagenome 196704" [ref=e340]:
+              - radio "root metagenome 196704" [ref=e341]
+              - generic [ref=e343] [cursor=pointer]:
+                - generic [ref=e344]: root metagenome
+                - generic [ref=e345]: "196704"
+            - radio "Gallus gallus 195725" [ref=e346]:
+              - radio "Gallus gallus 195725" [ref=e347]
+              - generic [ref=e349] [cursor=pointer]:
+                - generic [ref=e350]: Gallus gallus
+                - generic [ref=e351]: "195725"
+            - radio "Triticum aestivum 189176" [ref=e352]:
+              - radio "Triticum aestivum 189176" [ref=e353]
+              - generic [ref=e355] [cursor=pointer]:
+                - generic [ref=e356]: Triticum aestivum
+                - generic [ref=e357]: "189176"
+            - radio "human skin metagenome 188677" [ref=e358]:
+              - radio "human skin metagenome 188677" [ref=e359]
+              - generic [ref=e361] [cursor=pointer]:
+                - generic [ref=e362]: human skin metagenome
+                - generic [ref=e363]: "188677"
+            - radio "Hordeum vulgare subsp. vulgare 182732" [ref=e364]:
+              - radio "Hordeum vulgare subsp. vulgare 182732" [ref=e365]
+              - generic [ref=e367] [cursor=pointer]:
+                - generic [ref=e368]: Hordeum vulgare subsp. vulgare
+                - generic [ref=e369]: "182732"
+            - radio "Pseudomonas aeruginosa 180029" [ref=e370]:
+              - radio "Pseudomonas aeruginosa 180029" [ref=e371]
+              - generic [ref=e373] [cursor=pointer]:
+                - generic [ref=e374]: Pseudomonas aeruginosa
+                - generic [ref=e375]: "180029"
+            - radio "pig gut metagenome 177522" [ref=e376]:
+              - radio "pig gut metagenome 177522" [ref=e377]
+              - generic [ref=e379] [cursor=pointer]:
+                - generic [ref=e380]: pig gut metagenome
+                - generic [ref=e381]: "177522"
+            - radio "Listeria monocytogenes 176187" [ref=e382]:
+              - radio "Listeria monocytogenes 176187" [ref=e383]
+              - generic [ref=e385] [cursor=pointer]:
+                - generic [ref=e386]: Listeria monocytogenes
+                - generic [ref=e387]: "176187"
+            - radio "Neisseria gonorrhoeae 170850" [ref=e388]:
+              - radio "Neisseria gonorrhoeae 170850" [ref=e389]
+              - generic [ref=e391] [cursor=pointer]:
+                - generic [ref=e392]: Neisseria gonorrhoeae
+                - generic [ref=e393]: "170850"
+            - radio "Sus scrofa 170376" [ref=e394]:
+              - radio "Sus scrofa 170376" [ref=e395]
+              - generic [ref=e397] [cursor=pointer]:
+                - generic [ref=e398]: Sus scrofa
+                - generic [ref=e399]: "170376"
+            - radio "human vaginal metagenome 162362" [ref=e400]:
+              - radio "human vaginal metagenome 162362" [ref=e401]
+              - generic [ref=e403] [cursor=pointer]:
+                - generic [ref=e404]: human vaginal metagenome
+                - generic [ref=e405]: "162362"
+            - radio "Streptococcus pyogenes 160922" [ref=e406]:
+              - radio "Streptococcus pyogenes 160922" [ref=e407]
+              - generic [ref=e409] [cursor=pointer]:
+                - generic [ref=e410]: Streptococcus pyogenes
+                - generic [ref=e411]: "160922"
+            - radio "synthetic construct 158372" [ref=e412]:
+              - radio "synthetic construct 158372" [ref=e413]
+              - generic [ref=e415] [cursor=pointer]:
+                - generic [ref=e416]: synthetic construct
+                - generic [ref=e417]: "158372"
+            - radio "aquatic metagenome 156564" [ref=e418]:
+              - radio "aquatic metagenome 156564" [ref=e419]
+              - generic [ref=e421] [cursor=pointer]:
+                - generic [ref=e422]: aquatic metagenome
+                - generic [ref=e423]: "156564"
+            - radio "chicken gut metagenome 138621" [ref=e424]:
+              - radio "chicken gut metagenome 138621" [ref=e425]
+              - generic [ref=e427] [cursor=pointer]:
+                - generic [ref=e428]: chicken gut metagenome
+                - generic [ref=e429]: "138621"
+            - radio "Canis lupus familiaris 137978" [ref=e430]:
+              - radio "Canis lupus familiaris 137978" [ref=e431]
+              - generic [ref=e433] [cursor=pointer]:
+                - generic [ref=e434]: Canis lupus familiaris
+                - generic [ref=e435]: "137978"
+            - radio "Caenorhabditis elegans 136772" [ref=e436]:
+              - radio "Caenorhabditis elegans 136772" [ref=e437]
+              - generic [ref=e439] [cursor=pointer]:
+                - generic [ref=e440]: Caenorhabditis elegans
+                - generic [ref=e441]: "136772"
+            - radio "bacterium 129808" [ref=e442]:
+              - radio "bacterium 129808" [ref=e443]
+              - generic [ref=e445] [cursor=pointer]:
+                - generic [ref=e446]: bacterium
+                - generic [ref=e447]: "129808"
+            - radio "mouse metagenome 128793" [ref=e448]:
+              - radio "mouse metagenome 128793" [ref=e449]
+              - generic [ref=e451] [cursor=pointer]:
+                - generic [ref=e452]: mouse metagenome
+                - generic [ref=e453]: "128793"
+            - radio "Anopheles gambiae 128622" [ref=e454]:
+              - radio "Anopheles gambiae 128622" [ref=e455]
+              - generic [ref=e457] [cursor=pointer]:
+                - generic [ref=e458]: Anopheles gambiae
+                - generic [ref=e459]: "128622"
+            - radio "Acinetobacter baumannii 125858" [ref=e460]:
+              - radio "Acinetobacter baumannii 125858" [ref=e461]
+              - generic [ref=e463] [cursor=pointer]:
+                - generic [ref=e464]: Acinetobacter baumannii
+                - generic [ref=e465]: "125858"
+            - radio "bovine gut metagenome 125449" [ref=e466]:
+              - radio "bovine gut metagenome 125449" [ref=e467]
+              - generic [ref=e469] [cursor=pointer]:
+                - generic [ref=e470]: bovine gut metagenome
+                - generic [ref=e471]: "125449"
+            - radio "human feces metagenome 119831" [ref=e472]:
+              - radio "human feces metagenome 119831" [ref=e473]
+              - generic [ref=e475] [cursor=pointer]:
+                - generic [ref=e476]: human feces metagenome
+                - generic [ref=e477]: "119831"
+            - radio "Salmonella enterica subsp. enterica serovar Enteritidis 116539" [ref=e478]:
+              - radio "Salmonella enterica subsp. enterica serovar Enteritidis 116539" [ref=e479]
+              - generic [ref=e481] [cursor=pointer]:
+                - generic [ref=e482]: Salmonella enterica subsp. enterica serovar Enteritidis
+                - generic [ref=e483]: "116539"
+            - radio "Apodemus sylvaticus 116435" [ref=e484]:
+              - radio "Apodemus sylvaticus 116435" [ref=e485]
+              - generic [ref=e487] [cursor=pointer]:
+                - generic [ref=e488]: Apodemus sylvaticus
+                - generic [ref=e489]: "116435"
+            - radio "Influenza A virus 113666" [ref=e490]:
+              - radio "Influenza A virus 113666" [ref=e491]
+              - generic [ref=e493] [cursor=pointer]:
+                - generic [ref=e494]: Influenza A virus
+                - generic [ref=e495]: "113666"
+            - radio "Glycine max 109679" [ref=e496]:
+              - radio "Glycine max 109679" [ref=e497]
+              - generic [ref=e499] [cursor=pointer]:
+                - generic [ref=e500]: Glycine max
+                - generic [ref=e501]: "109679"
+            - radio "Streptococcus agalactiae 109538" [ref=e502]:
+              - radio "Streptococcus agalactiae 109538" [ref=e503]
+              - generic [ref=e505] [cursor=pointer]:
+                - generic [ref=e506]: Streptococcus agalactiae
+                - generic [ref=e507]: "109538"
+            - radio "Solanum lycopersicum 109047" [ref=e508]:
+              - radio "Solanum lycopersicum 109047" [ref=e509]
+              - generic [ref=e511] [cursor=pointer]:
+                - generic [ref=e512]: Solanum lycopersicum
+                - generic [ref=e513]: "109047"
+            - radio "human nasopharyngeal metagenome 105536" [ref=e514]:
+              - radio "human nasopharyngeal metagenome 105536" [ref=e515]
+              - generic [ref=e517] [cursor=pointer]:
+                - generic [ref=e518]: human nasopharyngeal metagenome
+                - generic [ref=e519]: "105536"
+            - radio "coral metagenome 105499" [ref=e520]:
+              - radio "coral metagenome 105499" [ref=e521]
+              - generic [ref=e523] [cursor=pointer]:
+                - generic [ref=e524]: coral metagenome
+                - generic [ref=e525]: "105499"
+            - radio "Eubacteriales bacterium 104879" [ref=e526]:
+              - radio "Eubacteriales bacterium 104879" [ref=e527]
+              - generic [ref=e529] [cursor=pointer]:
+                - generic [ref=e530]: Eubacteriales bacterium
+                - generic [ref=e531]: "104879"
+            - radio "Enterococcus faecium 104809" [ref=e532]:
+              - radio "Enterococcus faecium 104809" [ref=e533]
+              - generic [ref=e535] [cursor=pointer]:
+                - generic [ref=e536]: Enterococcus faecium
+                - generic [ref=e537]: "104809"
+            - radio "Oscillospiraceae bacterium 104687" [ref=e538]:
+              - radio "Oscillospiraceae bacterium 104687" [ref=e539]
+              - generic [ref=e541] [cursor=pointer]:
+                - generic [ref=e542]: Oscillospiraceae bacterium
+                - generic [ref=e543]: "104687"
+            - radio "leaf metagenome 103851" [ref=e544]:
+              - radio "leaf metagenome 103851" [ref=e545]
+              - generic [ref=e547] [cursor=pointer]:
+                - generic [ref=e548]: leaf metagenome
+                - generic [ref=e549]: "103851"
+            - radio "marine sediment metagenome 102239" [ref=e550]:
+              - radio "marine sediment metagenome 102239" [ref=e551]
+              - generic [ref=e553] [cursor=pointer]:
+                - generic [ref=e554]: marine sediment metagenome
+                - generic [ref=e555]: "102239"
+            - radio "Lachnospiraceae bacterium 99796" [ref=e556]:
+              - radio "Lachnospiraceae bacterium 99796" [ref=e557]
+              - generic [ref=e559] [cursor=pointer]:
+                - generic [ref=e560]: Lachnospiraceae bacterium
+                - generic [ref=e561]: "99796"
+            - radio "Salmonella enterica subsp. enterica serovar Typhimurium 97990" [ref=e562]:
+              - radio "Salmonella enterica subsp. enterica serovar Typhimurium 97990" [ref=e563]
+              - generic [ref=e565] [cursor=pointer]:
+                - generic [ref=e566]: Salmonella enterica subsp. enterica serovar Typhimurium
+                - generic [ref=e567]: "97990"
+            - radio "synthetic metagenome 93397" [ref=e568]:
+              - radio "synthetic metagenome 93397" [ref=e569]
+              - generic [ref=e571] [cursor=pointer]:
+                - generic [ref=e572]: synthetic metagenome
+                - generic [ref=e573]: "93397"
+            - radio "Campylobacter coli 93248" [ref=e574]:
+              - radio "Campylobacter coli 93248" [ref=e575]
+              - generic [ref=e577] [cursor=pointer]:
+                - generic [ref=e578]: Campylobacter coli
+                - generic [ref=e579]: "93248"
+            - radio "human lung metagenome 92912" [ref=e580]:
+              - radio "human lung metagenome 92912" [ref=e581]
+              - generic [ref=e583] [cursor=pointer]:
+                - generic [ref=e584]: human lung metagenome
+                - generic [ref=e585]: "92912"
+            - radio "Hordeum vulgare 92771" [ref=e586]:
+              - radio "Hordeum vulgare 92771" [ref=e587]
+              - generic [ref=e589] [cursor=pointer]:
+                - generic [ref=e590]: Hordeum vulgare
+                - generic [ref=e591]: "92771"
+            - radio "biofilm metagenome 92335" [ref=e592]:
+              - radio "biofilm metagenome 92335" [ref=e593]
+              - generic [ref=e595] [cursor=pointer]:
+                - generic [ref=e596]: biofilm metagenome
+                - generic [ref=e597]: "92335"
+            - radio "skin metagenome 90685" [ref=e598]:
+              - radio "skin metagenome 90685" [ref=e599]
+              - generic [ref=e601] [cursor=pointer]:
+                - generic [ref=e602]: skin metagenome
+                - generic [ref=e603]: "90685"
+            - radio "Oryza sativa Japonica Group 88106" [ref=e604]:
+              - radio "Oryza sativa Japonica Group 88106" [ref=e605]
+              - generic [ref=e607] [cursor=pointer]:
+                - generic [ref=e608]: Oryza sativa Japonica Group
+                - generic [ref=e609]: "88106"
+            - radio "fish gut metagenome 87855" [ref=e610]:
+              - radio "fish gut metagenome 87855" [ref=e611]
+              - generic [ref=e613] [cursor=pointer]:
+                - generic [ref=e614]: fish gut metagenome
+                - generic [ref=e615]: "87855"
+            - radio "Ovis aries 86155" [ref=e616]:
+              - radio "Ovis aries 86155" [ref=e617]
+              - generic [ref=e619] [cursor=pointer]:
+                - generic [ref=e620]: Ovis aries
+                - generic [ref=e621]: "86155"
+            - radio "Clostridioides difficile 85710" [ref=e622]:
+              - radio "Clostridioides difficile 85710" [ref=e623]
+              - generic [ref=e625] [cursor=pointer]:
+                - generic [ref=e626]: Clostridioides difficile
+                - generic [ref=e627]: "85710"
+            - radio "Neisseria meningitidis 84836" [ref=e628]:
+              - radio "Neisseria meningitidis 84836" [ref=e629]
+              - generic [ref=e631] [cursor=pointer]:
+                - generic [ref=e632]: Neisseria meningitidis
+                - generic [ref=e633]: "84836"
+            - radio "food metagenome 82505" [ref=e634]:
+              - radio "food metagenome 82505" [ref=e635]
+              - generic [ref=e637] [cursor=pointer]:
+                - generic [ref=e638]: food metagenome
+                - generic [ref=e639]: "82505"
+            - radio "insect gut metagenome 81311" [ref=e640]:
+              - radio "insect gut metagenome 81311" [ref=e641]
+              - generic [ref=e643] [cursor=pointer]:
+                - generic [ref=e644]: insect gut metagenome
+                - generic [ref=e645]: "81311"
+            - radio "Sorghum bicolor 80766" [ref=e646]:
+              - radio "Sorghum bicolor 80766" [ref=e647]
+              - generic [ref=e649] [cursor=pointer]:
+                - generic [ref=e650]: Sorghum bicolor
+                - generic [ref=e651]: "80766"
+            - radio "uncultured Eubacteriales bacterium 77603" [ref=e652]:
+              - radio "uncultured Eubacteriales bacterium 77603" [ref=e653]
+              - generic [ref=e655] [cursor=pointer]:
+                - generic [ref=e656]: uncultured Eubacteriales bacterium
+                - generic [ref=e657]: "77603"
+            - radio "sludge metagenome 76213" [ref=e658]:
+              - radio "sludge metagenome 76213" [ref=e659]
+              - generic [ref=e661] [cursor=pointer]:
+                - generic [ref=e662]: sludge metagenome
+                - generic [ref=e663]: "76213"
+            - radio "air metagenome 74966" [ref=e664]:
+              - radio "air metagenome 74966" [ref=e665]
+              - generic [ref=e667] [cursor=pointer]:
+                - generic [ref=e668]: air metagenome
+                - generic [ref=e669]: "74966"
+            - radio "bioreactor metagenome 74549" [ref=e670]:
+              - radio "bioreactor metagenome 74549" [ref=e671]
+              - generic [ref=e673] [cursor=pointer]:
+                - generic [ref=e674]: bioreactor metagenome
+                - generic [ref=e675]: "74549"
+            - radio "Clostridia bacterium 72990" [ref=e676]:
+              - radio "Clostridia bacterium 72990" [ref=e677]
+              - generic [ref=e679] [cursor=pointer]:
+                - generic [ref=e680]: Clostridia bacterium
+                - generic [ref=e681]: "72990"
+            - radio "rat gut metagenome 72872" [ref=e682]:
+              - radio "rat gut metagenome 72872" [ref=e683]
+              - generic [ref=e685] [cursor=pointer]:
+                - generic [ref=e686]: rat gut metagenome
+                - generic [ref=e687]: "72872"
+            - radio "Gossypium hirsutum 72608" [ref=e688]:
+              - radio "Gossypium hirsutum 72608" [ref=e689]
+              - generic [ref=e691] [cursor=pointer]:
+                - generic [ref=e692]: Gossypium hirsutum
+                - generic [ref=e693]: "72608"
+            - radio "Bacteroides uniformis 70324" [ref=e694]:
+              - radio "Bacteroides uniformis 70324" [ref=e695]
+              - generic [ref=e697] [cursor=pointer]:
+                - generic [ref=e698]: Bacteroides uniformis
+                - generic [ref=e699]: "70324"
+            - radio "Shigella sonnei 69462" [ref=e700]:
+              - radio "Shigella sonnei 69462" [ref=e701]
+              - generic [ref=e703] [cursor=pointer]:
+                - generic [ref=e704]: Shigella sonnei
+                - generic [ref=e705]: "69462"
+        - generic [ref=e706]:
+          - heading "Published Date" [level=2] [ref=e707]
+          - generic [ref=e708]:
+            - textbox "datePublished-start-input" [ref=e711]:
+              - /placeholder: Start date
+            - generic [ref=e712]: "-"
+            - textbox "datePublished-end-input" [ref=e715]:
+              - /placeholder: End date
+      - generic [ref=e717]:
+        - generic [ref=e719]: Found more than 10000 entries / Completed searching in 10 ms
+        - generic [ref=e720]:
+          - link "PRJDB42131 bioproject Integrated Microbial Omics Platform for CO2 fixation under the Green Innovation Fund (NITE Consortium) Related to 0 objects Published at 04/20/2026 10:25 AM" [ref=e978] [cursor=pointer]:
+            - /url: /search/entry/bioproject/PRJDB42131
+            - generic [ref=e723]:
+              - generic [ref=e724]: PRJDB42131
+              - generic [ref=e725]: bioproject
+            - heading "Integrated Microbial Omics Platform for CO2 fixation under the Green Innovation Fund (NITE Consortium)" [level=3] [ref=e726]
+            - heading "Related to 0 objects" [level=4] [ref=e979]
+            - generic [ref=e981]:
+              - generic [ref=e982]: Published at
+              - time [ref=e983]:
+                - generic [ref=e984]: 04/20/2026
+                - generic [ref=e985]: 10:25 AM
+          - 'link "PRJDB39956 bioproject Comparative analysis of fish skin microbiota and environmental water microbiota Related to 469 objects biosample : 156 sra-experiment : 156 sra-run : 156 sra-study : 1 Published at 04/20/2026 10:01 PM" [ref=e986] [cursor=pointer]':
+            - /url: /search/entry/bioproject/PRJDB39956
+            - generic [ref=e735]:
+              - generic [ref=e736]: PRJDB39956
+              - generic [ref=e737]: bioproject
+            - heading "Comparative analysis of fish skin microbiota and environmental water microbiota" [level=3] [ref=e738]
+            - heading "Related to 469 objects" [level=4] [ref=e987]
+            - generic [ref=e988]:
+              - generic [ref=e989]:
+                - generic [ref=e990]: "biosample : 156"
+                - generic [ref=e991]: "sra-experiment : 156"
+                - generic [ref=e992]: "sra-run : 156"
+                - generic [ref=e993]: "sra-study : 1"
+              - generic [ref=e994]:
+                - generic [ref=e995]: Published at
+                - time [ref=e996]:
+                  - generic [ref=e997]: 04/20/2026
+                  - generic [ref=e998]: 10:01 PM
+          - 'link "PRJDB40027 bioproject Metagenomic and metatranscriptomic analyses of cultured red seabream (Pagrus major) Related to 5 objects biosample : 1 insdc : 1 sra-experiment : 1 sra-run : 1 sra-study : 1 Published at 04/20/2026 10:00 PM" [ref=e999] [cursor=pointer]':
+            - /url: /search/entry/bioproject/PRJDB40027
+            - generic [ref=e747]:
+              - generic [ref=e748]: PRJDB40027
+              - generic [ref=e749]: bioproject
+            - heading "Metagenomic and metatranscriptomic analyses of cultured red seabream (Pagrus major)" [level=3] [ref=e750]
+            - heading "Related to 5 objects" [level=4] [ref=e1000]
+            - generic [ref=e1001]:
+              - generic [ref=e1002]:
+                - generic [ref=e1003]: "biosample : 1"
+                - generic [ref=e1004]: "insdc : 1"
+                - generic [ref=e1005]: "sra-experiment : 1"
+                - generic [ref=e1006]: "sra-run : 1"
+                - generic [ref=e1007]: "sra-study : 1"
+              - generic [ref=e1008]:
+                - generic [ref=e1009]: Published at
+                - time [ref=e1010]:
+                  - generic [ref=e1011]: 04/20/2026
+                  - generic [ref=e1012]: 10:00 PM
+          - 'link "PRJDB42060 bioproject Genome sequence of Pseudomonas cerasi Related to 5 objects biosample : 1 insdc : 4 Published at 04/20/2026 11:56 AM" [ref=e1013] [cursor=pointer]':
+            - /url: /search/entry/bioproject/PRJDB42060
+            - generic [ref=e759]:
+              - generic [ref=e760]: PRJDB42060
+              - generic [ref=e761]: bioproject
+            - heading "Genome sequence of Pseudomonas cerasi" [level=3] [ref=e762]
+            - heading "Related to 5 objects" [level=4] [ref=e1014]
+            - generic [ref=e1015]:
+              - generic [ref=e1016]:
+                - generic [ref=e1017]: "biosample : 1"
+                - generic [ref=e1018]: "insdc : 4"
+              - generic [ref=e1019]:
+                - generic [ref=e1020]: Published at
+                - time [ref=e1021]:
+                  - generic [ref=e1022]: 04/20/2026
+                  - generic [ref=e1023]: 11:56 AM
+          - 'link "PRJDB42102 bioproject Influence of agricultural practices on soil microbiota and distribution of antibiotic resistance genes during lettuce cultivation Related to 49 objects biosample : 16 sra-experiment : 16 sra-run : 16 sra-study : 1 Published at 04/20/2026 10:00 PM" [ref=e1024] [cursor=pointer]':
+            - /url: /search/entry/bioproject/PRJDB42102
+            - generic [ref=e771]:
+              - generic [ref=e772]: PRJDB42102
+              - generic [ref=e773]: bioproject
+            - heading "Influence of agricultural practices on soil microbiota and distribution of antibiotic resistance genes during lettuce cultivation" [level=3] [ref=e774]
+            - heading "Related to 49 objects" [level=4] [ref=e1025]
+            - generic [ref=e1026]:
+              - generic [ref=e1027]:
+                - generic [ref=e1028]: "biosample : 16"
+                - generic [ref=e1029]: "sra-experiment : 16"
+                - generic [ref=e1030]: "sra-run : 16"
+                - generic [ref=e1031]: "sra-study : 1"
+              - generic [ref=e1032]:
+                - generic [ref=e1033]: Published at
+                - time [ref=e1034]:
+                  - generic [ref=e1035]: 04/20/2026
+                  - generic [ref=e1036]: 10:00 PM
+          - 'link "PRJDB42134 bioproject The genetic characteristics of Lumpy skin disease virus that emerged in Mongolia in 2021-2022 Related to 4 objects biosample : 4 Published at 04/20/2026 12:13 PM" [ref=e1037] [cursor=pointer]':
+            - /url: /search/entry/bioproject/PRJDB42134
+            - generic [ref=e783]:
+              - generic [ref=e784]: PRJDB42134
+              - generic [ref=e785]: bioproject
+            - heading "The genetic characteristics of Lumpy skin disease virus that emerged in Mongolia in 2021-2022" [level=3] [ref=e786]
+            - heading "Related to 4 objects" [level=4] [ref=e1038]
+            - generic [ref=e1039]:
+              - generic [ref=e1041]: "biosample : 4"
+              - generic [ref=e1042]:
+                - generic [ref=e1043]: Published at
+                - time [ref=e1044]:
+                  - generic [ref=e1045]: 04/20/2026
+                  - generic [ref=e1046]: 12:13 PM
+          - 'link "PRJDB42138 bioproject cancer associated fibroblast and normal fibroblast in gastric cancer Related to 6 objects biosample : 6 Published at 04/20/2026 9:16 PM" [ref=e1047] [cursor=pointer]':
+            - /url: /search/entry/bioproject/PRJDB42138
+            - generic [ref=e795]:
+              - generic [ref=e796]: PRJDB42138
+              - generic [ref=e797]: bioproject
+            - heading "cancer associated fibroblast and normal fibroblast in gastric cancer" [level=3] [ref=e798]
+            - heading "Related to 6 objects" [level=4] [ref=e1048]
+            - generic [ref=e1049]:
+              - generic [ref=e1051]: "biosample : 6"
+              - generic [ref=e1052]:
+                - generic [ref=e1053]: Published at
+                - time [ref=e1054]:
+                  - generic [ref=e1055]: 04/20/2026
+                  - generic [ref=e1056]: 9:16 PM
+          - link "PRJDB42148 bioproject Transcriptomic analysis of whole cohclea from Slc12a2Em2 mice Related to 0 objects Published at 04/21/2026 7:05 PM" [ref=e1057] [cursor=pointer]:
+            - /url: /search/entry/bioproject/PRJDB42148
+            - generic [ref=e807]:
+              - generic [ref=e808]: PRJDB42148
+              - generic [ref=e809]: bioproject
+            - heading "Transcriptomic analysis of whole cohclea from Slc12a2Em2 mice" [level=3] [ref=e810]
+            - heading "Related to 0 objects" [level=4] [ref=e1058]
+            - generic [ref=e1060]:
+              - generic [ref=e1061]: Published at
+              - time [ref=e1062]:
+                - generic [ref=e1063]: 04/21/2026
+                - generic [ref=e1064]: 7:05 PM
+          - link "PRJDB42149 bioproject Cladoceran gut microbiome Related to 0 objects Published at 04/21/2026 11:09 PM" [ref=e1065] [cursor=pointer]:
+            - /url: /search/entry/bioproject/PRJDB42149
+            - generic [ref=e819]:
+              - generic [ref=e820]: PRJDB42149
+              - generic [ref=e821]: bioproject
+            - heading "Cladoceran gut microbiome" [level=3] [ref=e822]
+            - heading "Related to 0 objects" [level=4] [ref=e1066]
+            - generic [ref=e1068]:
+              - generic [ref=e1069]: Published at
+              - time [ref=e1070]:
+                - generic [ref=e1071]: 04/21/2026
+                - generic [ref=e1072]: 11:09 PM
+          - 'link "PRJDB16079 bioproject Elucidation of the mechanisms that give rise to driver mutations in colorectal carcinogenesis Related to 15 objects biosample : 4 gea : 1 humandbs : 1 sra-experiment : 4 sra-run : 4 sra-study : 1 Published at 04/18/2024 8:00 PM" [ref=e1073] [cursor=pointer]':
+            - /url: /search/entry/bioproject/PRJDB16079
+            - generic [ref=e831]:
+              - generic [ref=e832]: PRJDB16079
+              - generic [ref=e833]: bioproject
+            - heading "Elucidation of the mechanisms that give rise to driver mutations in colorectal carcinogenesis" [level=3] [ref=e834]
+            - heading "Related to 15 objects" [level=4] [ref=e1074]
+            - generic [ref=e1075]:
+              - generic [ref=e1076]:
+                - generic [ref=e1077]: "biosample : 4"
+                - generic [ref=e1078]: "gea : 1"
+                - generic [ref=e1079]: "humandbs : 1"
+                - generic [ref=e1080]: "sra-experiment : 4"
+                - generic [ref=e1081]: "sra-run : 4"
+                - generic [ref=e1082]: "sra-study : 1"
+              - generic [ref=e1083]:
+                - generic [ref=e1084]: Published at
+                - time [ref=e1085]:
+                  - generic [ref=e1086]: 04/18/2024
+                  - generic [ref=e1087]: 8:00 PM
+        - generic [ref=e841]:
+          - link "1" [ref=e842] [cursor=pointer]:
+            - /url: "?list=1"
+          - link "2" [ref=e843] [cursor=pointer]:
+            - /url: "?list=2"
+          - text: ...
+          - link "1000" [ref=e844] [cursor=pointer]:
+            - /url: "?list=1000"
+          - link "Next" [ref=e845] [cursor=pointer]:
+            - /url: "?list=2"
+  - banner [ref=e846]:
+    - generic [ref=e847]:
+      - link "DDBJ DNA Data Bank of Japan" [ref=e849] [cursor=pointer]:
+        - /url: https://www.ddbj.nig.ac.jp/index-e.html
+      - navigation [ref=e850]:
+        - generic [ref=e851]:
+          - list [ref=e852]:
+            - listitem [ref=e853]:
+              - link "Services" [ref=e854] [cursor=pointer]:
+                - /url: https://www.ddbj.nig.ac.jp/services/index-e.html
+            - listitem [ref=e855]:
+              - link "SuperComputer" [ref=e856] [cursor=pointer]:
+                - /url: https://sc.ddbj.nig.ac.jp/en
+            - listitem [ref=e857]:
+              - link "Statistics" [ref=e858] [cursor=pointer]:
+                - /url: https://www.ddbj.nig.ac.jp/statistics/index-e.html
+            - listitem [ref=e859]:
+              - link "Activities" [ref=e860] [cursor=pointer]:
+                - /url: https://www.ddbj.nig.ac.jp/activities/index-e.html
+            - listitem [ref=e861]:
+              - link "About Us" [ref=e862] [cursor=pointer]:
+                - /url: https://www.ddbj.nig.ac.jp/about/index-e.html
+          - list [ref=e863]:
+            - listitem [ref=e864]:
+              - link "Terms" [ref=e865] [cursor=pointer]:
+                - /url: https://www.ddbj.nig.ac.jp/policies-e.html
+            - listitem [ref=e866]:
+              - link "Contact" [ref=e867] [cursor=pointer]:
+                - /url: https://www.ddbj.nig.ac.jp/contact-ddbj-e.html
+  - generic [ref=e869]:
+    - navigation [ref=e870]:
+      - generic [ref=e871]:
+        - heading "Search" [level=2] [ref=e872]
+        - list [ref=e873]:
+          - listitem [ref=e874]:
+            - link "DDBJ Search" [ref=e875] [cursor=pointer]:
+              - /url: https://ddbj.nig.ac.jp/search
+          - listitem [ref=e876]:
+            - link "getentry" [ref=e877] [cursor=pointer]:
+              - /url: http://getentry.ddbj.nig.ac.jp/top-e.html
+          - listitem [ref=e878]:
+            - link "ARSA" [ref=e879] [cursor=pointer]:
+              - /url: https://www.ddbj.nig.ac.jp/services/arsa-e.html
+          - listitem [ref=e880]:
+            - link "TXSearch" [ref=e881] [cursor=pointer]:
+              - /url: http://ddbj.nig.ac.jp/tx_search/?lang=en
+      - generic [ref=e882]:
+        - heading "Analysis" [level=2] [ref=e883]
+        - list [ref=e884]:
+          - listitem [ref=e885]:
+            - link "Vector Screening System" [ref=e886] [cursor=pointer]:
+              - /url: http://ddbj.nig.ac.jp/vecscreen/
+          - listitem [ref=e887]:
+            - link "WABI (Web API for Biology)" [ref=e888] [cursor=pointer]:
+              - /url: https://www.ddbj.nig.ac.jp/services/wabi-e.html
+          - listitem [ref=e889]:
+            - link "DDBJ FTP Site" [ref=e890] [cursor=pointer]:
+              - /url: https://ddbj.nig.ac.jp/public/
+      - generic [ref=e891]:
+        - heading "Databases" [level=2] [ref=e892]
+        - list [ref=e893]:
+          - listitem [ref=e894]:
+            - link "Annotated/Assembled Sequences (DDBJ)" [ref=e895] [cursor=pointer]:
+              - /url: https://www.ddbj.nig.ac.jp/ddbj/index-e.html
+          - listitem [ref=e896]:
+            - link "Sequence Read Archive (DRA)" [ref=e897] [cursor=pointer]:
+              - /url: https://www.ddbj.nig.ac.jp/dra/index-e.html
+          - listitem [ref=e898]:
+            - link "Genomic Expression Archive (GEA)" [ref=e899] [cursor=pointer]:
+              - /url: https://www.ddbj.nig.ac.jp/gea/index-e.html
+          - listitem [ref=e900]:
+            - link "MetaboBank" [ref=e901] [cursor=pointer]:
+              - /url: https://www.ddbj.nig.ac.jp/metabobank/index-e.html
+          - listitem [ref=e902]:
+            - link "BioProject" [ref=e903] [cursor=pointer]:
+              - /url: https://www.ddbj.nig.ac.jp/bioproject/index-e.html
+          - listitem [ref=e904]:
+            - link "BioSample" [ref=e905] [cursor=pointer]:
+              - /url: https://www.ddbj.nig.ac.jp/biosample/index-e.html
+          - listitem [ref=e906]:
+            - link "Japanese Genotype-phenotype Archive (JGA)" [ref=e907] [cursor=pointer]:
+              - /url: https://www.ddbj.nig.ac.jp/jga/index-e.html
+          - listitem [ref=e908]:
+            - link "Submission portal D-way" [ref=e909] [cursor=pointer]:
+              - /url: https://ddbj.nig.ac.jp/D-way
+      - generic [ref=e910]:
+        - heading "NIG SuperComputer" [level=2] [ref=e911]
+        - list [ref=e912]:
+          - listitem [ref=e913]:
+            - link "NIG SuperComputer" [ref=e914] [cursor=pointer]:
+              - /url: https://sc.ddbj.nig.ac.jp/en
+    - navigation [ref=e915]:
+      - list [ref=e916]:
+        - listitem [ref=e917]:
+          - link "DDBJ RSS" [ref=e918] [cursor=pointer]:
+            - /url: https://www.ddbj.nig.ac.jp/data-feed-e.html
+            - img "DDBJ RSS" [ref=e919]
+        - listitem [ref=e920]:
+          - link "DDBJ on Twitter" [ref=e921] [cursor=pointer]:
+            - /url: https://twitter.com/DDBJ_topics
+            - img "DDBJ on Twitter" [ref=e922]
+        - listitem [ref=e923]:
+          - link "DDBJ on Youtube" [ref=e924] [cursor=pointer]:
+            - /url: https://www.youtube.com/user/ddbjvideo
+            - img "DDBJ on Youtube" [ref=e925]
+        - listitem [ref=e926]:
+          - link "DDBJ on GitHub" [ref=e927] [cursor=pointer]:
+            - /url: http://github.com/ddbj/
+            - img "DDBJ on GitHub" [ref=e928]
+        - listitem [ref=e929]:
+          - link "DDBJ on Google Drive" [ref=e930] [cursor=pointer]:
+            - /url: https://drive.google.com/drive/u/2/folders/1E0cxLbWV8RGYUdNs0oKfXMij0TzJDQVD
+            - img "DDBJ on Google Drive" [ref=e931]
+    - navigation [ref=e932]:
+      - list [ref=e933]:
+        - listitem [ref=e934]:
+          - link "National Institute of Genetics" [ref=e935] [cursor=pointer]:
+            - /url: https://www.nig.ac.jp/nig/
+            - img "National Institute of Genetics" [ref=e936]
+        - listitem [ref=e937]:
+          - link "Research Organization of Information and Systems" [ref=e938] [cursor=pointer]:
+            - /url: http://www.rois.ac.jp/en/index.html
+            - img "Research Organization of Information and Systems" [ref=e939]
+        - listitem [ref=e940]:
+          - link "GLOBAL BIODATA COALITION" [ref=e941] [cursor=pointer]:
+            - /url: https://globalbiodata.org/
+            - img "GLOBAL BIODATA COALITION" [ref=e942]
+        - listitem [ref=e943]:
+          - link "NBDC" [ref=e944] [cursor=pointer]:
+            - /url: https://biosciencedbc.jp/en/
+            - img "NBDC" [ref=e945]
+        - listitem [ref=e946]:
+          - link "DBCLS" [ref=e947] [cursor=pointer]:
+            - /url: https://dbcls.rois.ac.jp/index-en.html
+            - img "DBCLS" [ref=e948]
+        - listitem [ref=e949]:
+          - link "PDBj" [ref=e950] [cursor=pointer]:
+            - /url: https://pdbj.org/
+            - img "PDBj" [ref=e951]
+        - listitem [ref=e952]:
+          - link "JBI portal" [ref=e953] [cursor=pointer]:
+            - /url: http://jbioinfo.jp/
+            - img "JBI portal" [ref=e954]
+  - contentinfo [ref=e955]:
+    - navigation [ref=e957]:
+      - list [ref=e958]:
+        - listitem [ref=e959]:
+          - link "Policies and Disclaimers" [ref=e960] [cursor=pointer]:
+            - /url: https://www.ddbj.nig.ac.jp/policies-e.html
+        - listitem [ref=e961]:
+          - link "News" [ref=e962] [cursor=pointer]:
+            - /url: https://www.ddbj.nig.ac.jp/news/en/index-e.html
+        - listitem [ref=e963]:
+          - link "FAQs" [ref=e964] [cursor=pointer]:
+            - /url: https://www.ddbj.nig.ac.jp/faq/en/index-e.html
+        - listitem [ref=e965]:
+          - link "Sitemap" [ref=e966] [cursor=pointer]:
+            - /url: https://www.ddbj.nig.ac.jp/sitemaps-e.html
+        - listitem [ref=e967]:
+          - link "Address" [ref=e969] [cursor=pointer]:
+            - /url: https://www.ddbj.nig.ac.jp/ddbj-access-e.html
+        - listitem [ref=e970]:
+          - link "Contact" [ref=e971] [cursor=pointer]:
+            - /url: https://www.ddbj.nig.ac.jp/contact-ddbj-e.html
+  - generic [ref=e973]:
+    - generic [ref=e974]:
+      - strong [ref=e975]: Cookie
+      - text: This site uses cookies to function.
+      - link "Find out more" [ref=e976] [cursor=pointer]:
+        - /url: /policies-e.html
+      - text: on how we use cookies and how you can change your settings.
+    - button "Accept" [ref=e977] [cursor=pointer]

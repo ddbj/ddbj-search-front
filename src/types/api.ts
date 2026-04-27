@@ -2,7 +2,9 @@
 
 import type { BioProject } from "@/types/BioProject.ts";
 import type { BioSample } from "@/types/BioSample.ts";
+import type { GEA } from "@/types/GEA.ts";
 import type { JGA } from "@/types/JGA.ts";
+import type { MetaboBank } from "@/types/MetaboBank.ts";
 import type { SRA } from "@/types/SRA.ts";
 
 export type EncodingFormat = "JSON" | "JSON-LD" | "XML" | "FASTQ" | "SRA";
@@ -91,4 +93,4 @@ export type Accessibility = "public-access" | "controlled-access";
 
 export type DbXrefsCount = Record<string, number>;
 
-export type ElasticSearchSource = BioProject | BioSample | SRA | JGA;
+export type ElasticSearchSource = BioProject | BioSample | SRA | JGA | GEA | MetaboBank;

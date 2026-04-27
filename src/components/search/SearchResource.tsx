@@ -7,7 +7,7 @@ import { ELASTICSEARCH_URL } from "@/constants.ts";
 export const SearchResource: React.FC = () => {
   return (
     <ReactiveBase
-      app="jga-*,sra-*,bioproject,biosample"
+      app="jga-*,sra-*,bioproject,biosample,gea,metabobank"
       url={ELASTICSEARCH_URL}
       theme={{
         colors: {

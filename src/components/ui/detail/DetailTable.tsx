@@ -9,6 +9,8 @@ import {
   Organism,
 } from "@/components/ui/detail/rows/CommonRows.tsx";
 import { DownloadLinks } from "@/components/ui/detail/rows/DownloadLinks.tsx";
+import { GEA } from "@/components/ui/detail/rows/GEA.tsx";
+import { MetaboBank } from "@/components/ui/detail/rows/MetaboBank.tsx";
 import { Properties } from "@/components/ui/detail/rows/Properties.tsx";
 import { RefLinks } from "@/components/ui/detail/rows/RefLinks.tsx";
 import { Row } from "@/components/ui/detail/rows/Shared.tsx";
@@ -26,9 +28,19 @@ type Props = {
 
 export const DetailTable: FC<Props> = ({ data }) => {
   const isControlledAccess = data.accessibility === "controlled-access";
+  const isSuppressed = data.status === "suppressed";
 
   return (
     <>
+      {isSuppressed && (
+        <div
+          role="alert"
+          className="mb-3 rounded border-l-4 border-amber-500 bg-amber-50 p-3 text-amber-900"
+        >
+          <strong className="mr-1">Suppressed:</strong>
+          this entry has been suppressed and is no longer publicly indexed.
+        </div>
+      )}
       <div className="overflow-hidden bg-white leading-normal shadow sm:rounded-lg ">
         <div className="border-t border-gray-100">
           <dl className="divide-y divide-gray-100 [&>*:nth-child(2n)]:bg-gray-50">
@@ -49,10 +61,24 @@ export const DetailTable: FC<Props> = ({ data }) => {
             <BioSample data={data} />
             <SraSample data={data} />
             <SraExperiment data={data} />
+            <GEA data={data} />
+            <MetaboBank data={data} />
             <Properties title={"properties"} codeObj={data.properties} />
             <RefLinks refs={getDbXrefs(data)} title={"dbXrefs"} totalCountByType={data.dbXrefsCount} entryType={data.type} entryId={data.identifier} />
             <DownloadLinks data={data} />
-            <Row dd={"status"}>{data.status}</Row>
+            <Row dd={"status"}>
+              {isSuppressed ? (
+                <span
+                  className={
+                    "inline-flex items-center rounded bg-amber-500 px-2 py-0.5 text-xs font-bold uppercase text-white"
+                  }
+                >
+                  {data.status}
+                </span>
+              ) : (
+                data.status
+              )}
+            </Row>
             <Row dd={"accessibility"}>
               {isControlledAccess ? (
                 <span className={"flex items-center gap-x-1"}>

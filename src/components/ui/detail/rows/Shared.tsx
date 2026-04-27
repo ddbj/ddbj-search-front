@@ -2,11 +2,12 @@ import { Link } from "@tanstack/react-router";
 import { clsx } from "clsx";
 import React, { FC, Fragment, ReactElement } from "react";
 import { TailwindElementProps } from "@/types/types.ts";
+import { humanizeLabel } from "@/utils/humanize.ts";
 
 export const Row: FC<TailwindElementProps & { dd: string }> = ({ children, className, dd }) => {
   return (
     <div className={clsx("flex overflow-hidden px-2 py-3", className)}>
-      <dt className="w-40 shrink-0 grow-0 text-sm font-bold text-gray-900">{dd}</dt>
+      <dt className="w-40 shrink-0 grow-0 text-sm font-bold text-gray-900">{humanizeLabel(dd)}</dt>
       <dd className="shrink grow overflow-hidden text-sm text-gray-700">{children}</dd>
     </div>
   );

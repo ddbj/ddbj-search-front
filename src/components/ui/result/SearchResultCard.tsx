@@ -71,7 +71,6 @@ const Wrapper: FC<TailwindElementProps & { href: string }> = ({ href, children, 
       )}
       to={href}
       target="_blank"
-      preload={"intent"}
     >
       {children}
     </Link>
