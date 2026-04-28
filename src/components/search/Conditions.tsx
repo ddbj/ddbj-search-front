@@ -83,50 +83,123 @@ const dateRangeCustomQuery = (value: any, props: any) => {
 // text 型フィールド（analyzed）のみ。keyword 型は cross_fields に混ぜられないため別クエリにする
 const SEARCH_TEXT_FIELDS = ["title^3", "name^2", "description^0.5"];
 
-const queryCustomQuery = (value: any) => {
-  if (!value) return undefined;
-  const trimmed = String(value).trim();
-  if (!trimmed) return undefined;
+// SSOT:
+//   - ID パターン: ddbj-search-converter/ddbj_search_converter/id_patterns.py
+//   - 完全一致判定: ddbj-search-api/ddbj_search_api/search/accession.py
+//   - status filter: ddbj-search-api/ddbj_search_api/es/query.py (build_status_filter)
+//   - 仕様: ddbj-search-api/docs/api-spec.md § データ可視性 (status 制御)
+// DbType (ddbj-search-api/ddbj_search_api/schemas/common.py) に列挙されているタイプのみ採用。
+// geo / insdc-* / humandbs / pubmed / taxonomy は DbType 外なので除外。
+export const ID_PATTERNS: ReadonlyArray<RegExp> = Object.freeze([
+  /^SAM[NED](\w)?\d+$/, // biosample
+  /^PRJ[DEN][A-Z]\d+$/, // bioproject
+  /^[SDE]RA\d+$/, // sra-submission
+  /^[SDE]RP\d+$/, // sra-study
+  /^[SDE]RX\d+$/, // sra-experiment
+  /^[SDE]RR\d+$/, // sra-run
+  /^[SDE]RS\d+$/, // sra-sample
+  /^[SDE]RZ\d+$/, // sra-analysis
+  /^JGAS\d+$/, // jga-study
+  /^JGAD\d+$/, // jga-dataset
+  /^JGAC\d+$/, // jga-dac
+  /^JGAP\d+$/, // jga-policy
+  /^E-GEAD-\d+$/, // gea
+  /^MTBKS\d+$/, // metabobank
+]);
+
+export const detectAccessionExactMatch = (
+  raw: string | null | undefined,
+): string | null => {
+  if (raw == null) return null;
+  if (raw.includes(",")) return null;
+
+  let token = raw.trim();
+  if (token === "") return null;
+
+  if (
+    token.length >= 2 &&
+    token[0] === token[token.length - 1] &&
+    (token[0] === '"' || token[0] === "'")
+  ) {
+    token = token.slice(1, -1).trim();
+  }
+  if (token === "") return null;
+
+  if (token.includes("*") || token.includes("?")) return null;
+
+  return ID_PATTERNS.some((p) => p.test(token)) ? token : null;
+};
+
+const PUBLIC_ONLY_FILTER = Object.freeze({
+  term: { status: "public" },
+});
+const INCLUDE_SUPPRESSED_FILTER = Object.freeze({
+  terms: { status: ["public", "suppressed"] },
+});
+
+export const queryCustomQuery = (value: unknown) => {
+  const trimmed = (value == null ? "" : String(value)).trim();
+  const exact = detectAccessionExactMatch(trimmed);
+  const statusFilter = exact != null ? INCLUDE_SUPPRESSED_FILTER : PUBLIC_ONLY_FILTER;
+
+  // 空キーワード時は status filter のみ返す。undefined を返すと
+  // reactivesearch v3.40.1 の getQuery が空 entry を捨てて status filter が
+  // ReactiveList の bool.must に乗らなくなる。
+  if (trimmed === "") {
+    return { query: { bool: { filter: [statusFilter] } } };
+  }
+
+  // accession 完全一致のとき should の検索語にも剥がし後の ID を使う。
+  // クオート込み文字列を identifier に検索すると 0 hit になり、suppressed を
+  // 許可しても結局期待エントリーが返らない。
+  const queryString = exact != null ? exact : trimmed;
 
   return {
     query: {
       bool: {
-        should: [
-          // identifier: keyword 型 — 完全一致（最優先）
-          { term: { identifier: { value: trimmed, boost: 10 } } },
-          // identifier: keyword 型 — 前方一致（accession の部分入力に対応）
-          { prefix: { identifier: { value: trimmed, boost: 5 } } },
-          // organism.name.keyword: keyword 型 — 完全一致
-          { term: { "organism.name.keyword": { value: trimmed, boost: 2 } } },
-          // title: フレーズ一致ボーナス（語順が一致すれば高スコア）
-          { match_phrase: { title: { query: trimmed, boost: 5 } } },
-          // text フィールド横断検索（全キーワードがいずれかのフィールドに存在すれば一致）
+        must: [
           {
-            multi_match: {
-              query: trimmed,
-              fields: SEARCH_TEXT_FIELDS,
-              type: "cross_fields",
-              operator: "and",
-            },
-          },
-          // text フィールド: フレーズ一致（語順一致ボーナス）
-          {
-            multi_match: {
-              query: trimmed,
-              fields: SEARCH_TEXT_FIELDS,
-              type: "phrase",
-            },
-          },
-          // text フィールド: 前方一致（入力途中の部分一致に対応）
-          {
-            multi_match: {
-              query: trimmed,
-              fields: SEARCH_TEXT_FIELDS,
-              type: "phrase_prefix",
+            bool: {
+              should: [
+                // identifier: keyword 型 — 完全一致（最優先）
+                { term: { identifier: { value: queryString, boost: 10 } } },
+                // identifier: keyword 型 — 前方一致（accession の部分入力に対応）
+                { prefix: { identifier: { value: queryString, boost: 5 } } },
+                // organism.name.keyword: keyword 型 — 完全一致
+                { term: { "organism.name.keyword": { value: queryString, boost: 2 } } },
+                // title: フレーズ一致ボーナス（語順が一致すれば高スコア）
+                { match_phrase: { title: { query: queryString, boost: 5 } } },
+                // text フィールド横断検索（全キーワードがいずれかのフィールドに存在すれば一致）
+                {
+                  multi_match: {
+                    query: queryString,
+                    fields: SEARCH_TEXT_FIELDS,
+                    type: "cross_fields",
+                    operator: "and",
+                  },
+                },
+                // text フィールド: フレーズ一致（語順一致ボーナス）
+                {
+                  multi_match: {
+                    query: queryString,
+                    fields: SEARCH_TEXT_FIELDS,
+                    type: "phrase",
+                  },
+                },
+                // text フィールド: 前方一致（入力途中の部分一致に対応）
+                {
+                  multi_match: {
+                    query: queryString,
+                    fields: SEARCH_TEXT_FIELDS,
+                    type: "phrase_prefix",
+                  },
+                },
+              ],
+              minimum_should_match: 1,
             },
           },
         ],
-        minimum_should_match: 1,
+        filter: [statusFilter],
       },
     },
   };
@@ -311,15 +384,6 @@ export const Conditions: FC = () => {
         customQuery={singleListCustomQuery}
         react={REACTIVE_SEARCH_PROPS_REACT}
       />
-      {/*<SingleList*/}
-      {/*  componentId="visibility"*/}
-      {/*  dataField="visibility.keyword"*/}
-      {/*  title={"Visibility"}*/}
-      {/*  filterLabel={"Visibility"}*/}
-      {/*  URLParams*/}
-      {/*  showSearch={false}*/}
-      {/*  react={REACTIVE_SEARCH_PROPS_REACT}*/}
-      {/*/>*/}
       <DateRange
         componentId="datePublished"
         dataField="datePublished"
