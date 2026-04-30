@@ -1,15 +1,15 @@
 import {
   DataSearch,
   DateRange,
+  MultiList,
   SelectedFilters,
-  SingleList,
   StateProvider,
   ToggleButton,
 } from "@appbaseio/reactivesearch";
 import { endOfDay, format, startOfDay } from "date-fns";
 import { FC } from "react";
 
-const REACTIVE_SEARCH_PROPS_REACT = Object.freeze({
+export const REACTIVE_SEARCH_PROPS_REACT = Object.freeze({
   and: [
     "query",
     "isPartOf",
@@ -28,11 +28,24 @@ const REACTIVE_SEARCH_PROPS_REACT = Object.freeze({
   ],
 });
 
-// reactivesearch ToggleButton / SingleList の searchState.value は、
+// MultiList の aggregation request に自身の filter が含まれると、選択した値以外の bucket が
+// 消えて複数選択不能 / 他 facet が空になる。自分自身の componentId を除外した react を渡す。
+const reactExceptCache = new Map<string, Readonly<{ and: readonly string[] }>>();
+const reactExceptSelf = (componentId: string): Readonly<{ and: readonly string[] }> => {
+  let cached = reactExceptCache.get(componentId);
+  if (!cached) {
+    cached = Object.freeze({
+      and: REACTIVE_SEARCH_PROPS_REACT.and.filter((id) => id !== componentId),
+    });
+    reactExceptCache.set(componentId, cached);
+  }
+  return cached;
+};
+
+// reactivesearch ToggleButton の searchState.value は、
 // click 時は data entry の value、URL hydrate 時は文字列の label と
 // 来るパスによって異なる。比較側で吸収するため lowercase に正規化する。
-// type (sra-experiment 等) や organism.name (Homo sapiens 等) は元々 fixed case なので
-// lowercase 化しても比較ターゲットが lowercase 想定なら問題ない。
+// isPartOf の比較対象 ("bioproject", "sra" 等) は lowercase なので問題ない。
 const readSelected = (entry: any): string | undefined => {
   const v = entry?.value;
   if (v == null) return undefined;
@@ -50,17 +63,6 @@ const readSelected = (entry: any): string | undefined => {
     if (typeof o.label === "string") return o.label;
   }
   return undefined;
-};
-
-// reactivesearch 3.40.1 の SingleList は URLParams から hydrate された
-// value が配列形式 (["jga-study"] 等) のとき、内部生成 query が
-// `{"term":{"<field>":["jga-study"]}}` となり ES が 400 を返す。
-// customQuery で必ず単一値の term に変換する。
-const singleListCustomQuery = (value: unknown, props: { dataField: string }) => {
-  if (value == null) return undefined;
-  const v = Array.isArray(value) ? value[0] : value;
-  if (typeof v !== "string" || v === "") return undefined;
-  return { query: { term: { [props.dataField]: v } } };
 };
 
 const dateRangeCustomQuery = (value: any, props: any) => {
@@ -107,9 +109,7 @@ export const ID_PATTERNS: ReadonlyArray<RegExp> = Object.freeze([
   /^MTBKS\d+$/, // metabobank
 ]);
 
-export const detectAccessionExactMatch = (
-  raw: string | null | undefined,
-): string | null => {
+export const detectAccessionExactMatch = (raw: string | null | undefined): string | null => {
   if (raw == null) return null;
   if (raw.includes(",")) return null;
 
@@ -210,13 +210,7 @@ export const Conditions: FC = () => {
     <div className="flex flex-col gap-4">
       <DataSearch
         componentId="query"
-        dataField={[
-          "identifier",
-          "title",
-          "description",
-          "name",
-          "organism.name",
-        ]}
+        dataField={["identifier", "title", "description", "name", "organism.name"]}
         title={"Keyword"}
         filterLabel={"Keyword"}
         autosuggest={false}
@@ -243,14 +237,15 @@ export const Conditions: FC = () => {
           { label: "MetaboBank", value: "metabobank" },
         ]}
       />
-      <SingleList
+      <MultiList
+        showCheckbox
         componentId="type"
         dataField="type"
         title={"Type"}
         filterLabel={"Type"}
         URLParams
-        customQuery={singleListCustomQuery}
-        react={REACTIVE_SEARCH_PROPS_REACT}
+        queryFormat="or"
+        react={reactExceptSelf("type")}
       />
       <StateProvider componentIds={["isPartOf"]}>
         {({ searchState }: { searchState: Record<string, any> }) => {
@@ -258,115 +253,126 @@ export const Conditions: FC = () => {
           return (
             <>
               {isPartOf === "bioproject" && (
-                <SingleList
+                <MultiList
+                  showCheckbox
                   componentId="objectType"
                   dataField="objectType"
                   title={"Object Type"}
                   filterLabel={"Object Type"}
                   URLParams
-                  customQuery={singleListCustomQuery}
-                  react={REACTIVE_SEARCH_PROPS_REACT}
+                  queryFormat="or"
+                  react={reactExceptSelf("objectType")}
                 />
               )}
               {isPartOf === "sra" && (
                 <>
-                  <SingleList
+                  <MultiList
+                    showCheckbox
                     componentId="libraryStrategy"
                     dataField="libraryStrategy.keyword"
                     title={"Library Strategy"}
                     filterLabel={"Library Strategy"}
                     URLParams
-                    customQuery={singleListCustomQuery}
-                    react={REACTIVE_SEARCH_PROPS_REACT}
+                    queryFormat="or"
+                    react={reactExceptSelf("libraryStrategy")}
                   />
-                  <SingleList
+                  <MultiList
+                    showCheckbox
                     componentId="librarySource"
                     dataField="librarySource.keyword"
                     title={"Library Source"}
                     filterLabel={"Library Source"}
                     URLParams
-                    customQuery={singleListCustomQuery}
-                    react={REACTIVE_SEARCH_PROPS_REACT}
+                    queryFormat="or"
+                    react={reactExceptSelf("librarySource")}
                   />
-                  <SingleList
+                  <MultiList
+                    showCheckbox
                     componentId="librarySelection"
                     dataField="librarySelection.keyword"
                     title={"Library Selection"}
                     filterLabel={"Library Selection"}
                     URLParams
-                    customQuery={singleListCustomQuery}
-                    react={REACTIVE_SEARCH_PROPS_REACT}
+                    queryFormat="or"
+                    react={reactExceptSelf("librarySelection")}
                   />
-                  <SingleList
+                  <MultiList
+                    showCheckbox
                     componentId="platform"
                     dataField="platform.keyword"
                     title={"Platform"}
                     filterLabel={"Platform"}
                     URLParams
-                    customQuery={singleListCustomQuery}
-                    react={REACTIVE_SEARCH_PROPS_REACT}
+                    queryFormat="or"
+                    react={reactExceptSelf("platform")}
                   />
-                  <SingleList
+                  <MultiList
+                    showCheckbox
                     componentId="instrumentModel"
                     dataField="instrumentModel.keyword"
                     title={"Instrument Model"}
                     filterLabel={"Instrument Model"}
                     URLParams
-                    customQuery={singleListCustomQuery}
-                    react={REACTIVE_SEARCH_PROPS_REACT}
+                    queryFormat="or"
+                    react={reactExceptSelf("instrumentModel")}
                   />
                 </>
               )}
               {isPartOf === "jga" && (
-                <SingleList
+                <MultiList
+                  showCheckbox
                   componentId="studyType"
                   dataField="studyType.keyword"
                   title={"Study Type"}
                   filterLabel={"Study Type"}
                   URLParams
-                  customQuery={singleListCustomQuery}
-                  react={REACTIVE_SEARCH_PROPS_REACT}
+                  queryFormat="or"
+                  react={reactExceptSelf("studyType")}
                 />
               )}
               {isPartOf === "gea" && (
-                <SingleList
+                <MultiList
+                  showCheckbox
                   componentId="experimentType"
                   dataField="experimentType.keyword"
                   title={"Experiment Type"}
                   filterLabel={"Experiment Type"}
                   URLParams
-                  customQuery={singleListCustomQuery}
-                  react={REACTIVE_SEARCH_PROPS_REACT}
+                  queryFormat="or"
+                  react={reactExceptSelf("experimentType")}
                 />
               )}
               {isPartOf === "metabobank" && (
                 <>
-                  <SingleList
+                  <MultiList
+                    showCheckbox
                     componentId="studyType"
                     dataField="studyType.keyword"
                     title={"Study Type"}
                     filterLabel={"Study Type"}
                     URLParams
-                    customQuery={singleListCustomQuery}
-                    react={REACTIVE_SEARCH_PROPS_REACT}
+                    queryFormat="or"
+                    react={reactExceptSelf("studyType")}
                   />
-                  <SingleList
+                  <MultiList
+                    showCheckbox
                     componentId="experimentType"
                     dataField="experimentType.keyword"
                     title={"Experiment Type"}
                     filterLabel={"Experiment Type"}
                     URLParams
-                    customQuery={singleListCustomQuery}
-                    react={REACTIVE_SEARCH_PROPS_REACT}
+                    queryFormat="or"
+                    react={reactExceptSelf("experimentType")}
                   />
-                  <SingleList
+                  <MultiList
+                    showCheckbox
                     componentId="submissionType"
                     dataField="submissionType.keyword"
                     title={"Submission Type"}
                     filterLabel={"Submission Type"}
                     URLParams
-                    customQuery={singleListCustomQuery}
-                    react={REACTIVE_SEARCH_PROPS_REACT}
+                    queryFormat="or"
+                    react={reactExceptSelf("submissionType")}
                   />
                 </>
               )}
@@ -375,14 +381,15 @@ export const Conditions: FC = () => {
         }}
       </StateProvider>
 
-      <SingleList
+      <MultiList
+        showCheckbox
         componentId="organism"
         dataField="organism.name.keyword"
         title={"Organism"}
         filterLabel={"Organism"}
         URLParams
-        customQuery={singleListCustomQuery}
-        react={REACTIVE_SEARCH_PROPS_REACT}
+        queryFormat="or"
+        react={reactExceptSelf("organism")}
       />
       <DateRange
         componentId="datePublished"
@@ -393,7 +400,15 @@ export const Conditions: FC = () => {
         customQuery={dateRangeCustomQuery}
         react={REACTIVE_SEARCH_PROPS_REACT}
       />
-      <SelectedFilters />
+      <SelectedFilters
+        onClear={() => {
+          // SelectedFilters の Clear All は selectedValues を wipe するが、
+          // reactivesearch v3.40.1 の aggsReducer が CLEAR_VALUES を handle しないため
+          // 各 MultiList の表示中 buckets が古いまま残る。URL を素にしてフルリロードで
+          // store ごと初期化する。
+          window.location.assign(window.location.pathname);
+        }}
+      />
     </div>
   );
 };

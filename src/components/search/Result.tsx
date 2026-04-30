@@ -1,5 +1,6 @@
 import { ReactiveList } from "@appbaseio/reactivesearch";
 import { FC } from "react";
+import { REACTIVE_SEARCH_PROPS_REACT } from "@/components/search/Conditions.tsx";
 import { Pagination } from "@/components/ui/result/Pagination.tsx";
 import { SearchResultCard } from "@/components/ui/result/SearchResultCard.tsx";
 import { SearchResultSkeleton } from "@/components/ui/result/SearchResultSkeleton.tsx";
@@ -50,19 +51,7 @@ export const Result = () => {
           />
         );
       }}
-      react={{
-        and: [
-          "query",
-          "title",
-          "description",
-          "name",
-          "isPartOf",
-          "type",
-          "organism",
-          "datePublished",
-          "accessibility",
-        ],
-      }}
+      react={REACTIVE_SEARCH_PROPS_REACT}
       renderResultStats={(stats) => {
         const total: number = stats.numberOfResults;
         const completeTimeInfo = `Completed searching in ${stats.time} ms`;
