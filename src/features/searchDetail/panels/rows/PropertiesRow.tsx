@@ -6,7 +6,6 @@ import { PrettyJSON } from "@/features/searchDetail/ui/PrettyJSON.tsx";
 const MAX_LINES_FOR_HIGHLIGHTER = 10_000;
 type Props = {
   data: unknown;
-  tooltipOpen?: boolean;
 };
 
 export const PropertiesRow: FC<Props> = ({ data }) => {

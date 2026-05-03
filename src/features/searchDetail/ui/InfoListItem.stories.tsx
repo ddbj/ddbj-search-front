@@ -29,12 +29,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary = {} satisfies Story;
 
-export const TooltipOpen = {
-  args: {
-    tooltipOpen: true,
-  },
-} satisfies Story;
-
 export const WrappedContent = {
   args: {
     term: "Extremely Long Example Term That Should Wrap In Review",

@@ -7,12 +7,11 @@ import { PrettyJSON } from "@/features/searchDetail/ui/PrettyJSON.tsx";
 
 type Props = {
   data: unknown;
-  tooltipOpen?: boolean;
 };
 
 const MAX_LINES_FOR_HIGHLIGHTER = 10_000;
 
-export const PropertiesPanel: FC<Props> = ({ data, tooltipOpen }) => {
+export const PropertiesPanel: FC<Props> = ({ data }) => {
   const properties = JSON.stringify(data, null, 2);
   const lineLength = properties.match(/\n/g)?.length ?? 0;
   const useHighlighter = lineLength <= MAX_LINES_FOR_HIGHLIGHTER;
@@ -21,7 +20,6 @@ export const PropertiesPanel: FC<Props> = ({ data, tooltipOpen }) => {
       <div className={"flex min-w-0 items-start gap-1 pt-2 text-sm font-bold"}>
         <Tooltip
           content={"Properties short description here"}
-          isOpen={tooltipOpen ? true : undefined}
           placement={"top start"}
           closeDelay={100}
           classNames={{

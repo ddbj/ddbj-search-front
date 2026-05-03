@@ -41,9 +41,3 @@ export const LargePayloadFallback = {
     data: largeProperties,
   },
 } satisfies Story;
-
-export const TooltipOpen = {
-  args: {
-    tooltipOpen: true,
-  },
-} satisfies Story;
