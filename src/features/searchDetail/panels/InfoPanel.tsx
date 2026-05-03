@@ -23,10 +23,6 @@ import { PanelWrapper } from "@/features/searchDetail/ui/PanelWrapper.tsx";
 type Props = { data: SearchDetailResponse };
 
 export const InfoPanel: FC<Props> = ({ data }) => {
-  if (!hasActualData(data)) {
-    return <></>;
-  }
-
   return (
     <PanelWrapper>
       <InfoList>
@@ -40,11 +36,8 @@ export const InfoPanel: FC<Props> = ({ data }) => {
         <ExternalLinksRow externalLinks={getExternalLinks(data)} />
         <SameAsRow sameAs={getSameAs(data)} />
         <AttributeRow attributes={getAttributes(data)} />
-        <PropertiesRow />
+        <PropertiesRow data={data.properties} />
       </InfoList>
     </PanelWrapper>
   );
 };
-
-const hasActualData = (data: SearchDetailResponse) =>
-  data.title || data.name || data.description || data.organism;
