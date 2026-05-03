@@ -72,12 +72,12 @@ pnpm format
 pnpm lint
 pnpm test
 pnpm type-check
+pnpm test:storybook
 ```
 
 必要に応じて追加する確認:
 
 - `pnpm build`: 本番ビルドへの影響を確認する
-- `pnpm test:storybook`: Storybook設定、story、decoratorを変更した場合に実行する
 - `pnpm build-storybook`: Storybookのaddon、framework、builderを変更した場合に実行する
 - `pnpm dev:msw`: mockやエラー系UIの確認が必要な場合に実行する
 

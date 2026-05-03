@@ -44,6 +44,7 @@ const RouterDecorator: Decorator = (Story) => {
     history,
     defaultComponent: () => <Story />,
     defaultErrorComponent: () => <Story />,
+    trailingSlash: "always",
   });
   // eslint-disable-next-line
   window.__STORYBOOK_ROUTER__ = router as any as RouterType;
