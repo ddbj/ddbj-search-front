@@ -48,7 +48,7 @@ export const WithLink = {
   args: {
     labelStr: "BioProject details",
     value: "bioproject",
-    to: "/entry/bioproject",
+    to: "/entry/bioproject/",
     isSelected: true,
     setIsSelected: mockSetIsSelected,
   },

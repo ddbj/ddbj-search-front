@@ -32,7 +32,7 @@ export const OtherTypeSelector: FC<Props> = ({
             labelStr={dbLabels[currentType]}
             value={currentType}
             isSelected={true}
-            to={`/entry/${currentType}`}
+            to={`/entry/${currentType}/`}
             search={linkSearchParams}
           />
         </div>
@@ -49,7 +49,7 @@ export const OtherTypeSelector: FC<Props> = ({
                   key={key}
                   labelStr={dbLabels[key]}
                   value={key}
-                  to={`/entry/${key}`}
+                  to={`/entry/${key}/`}
                   search={linkSearchParams}
                   setIsSelected={() => moveToEntryRoot({ ...linkSearchParams, types })}
                 />

@@ -27,7 +27,7 @@ export const ResultCard: FC<Props> = ({
   submittedAt,
   updatedAt,
 }) => {
-  const to = `/entry/${type}/${id}`;
+  const to = `/entry/${type}/${id}/`;
   const total = Object.values(relations).reduce((a, b) => a + b, 0);
   return (
     <Link to={to} from={"/"} search={{}}>

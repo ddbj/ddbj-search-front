@@ -35,7 +35,7 @@ const makeNavigateArgs = (
   _query: string[],
 ): { to: string; search: BaseSearchParams } => {
   const query = _query.filter((q) => q !== "");
-  const to = types.length === 1 ? `/entry/${types[0]}` : "/entry";
+  const to = types.length === 1 ? `/entry/${types[0]}/` : "/entry/";
   const search = {
     keywords: query.length ? query : undefined,
     types: types.length > 1 ? types : undefined,

@@ -35,7 +35,7 @@ export const TypeSelector: FC<Props> = ({ linkSearchParams, value, update, count
               key={name}
               labelStr={label + ` (${formatNumber(count)})`}
               value={name}
-              to={`/entry/${name}`}
+              to={`/entry/${name}/`}
               isSelected={isSelected}
               setIsSelected={(v) => {
                 if (!isDBType(name)) return;

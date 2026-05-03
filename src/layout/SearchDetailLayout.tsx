@@ -21,8 +21,8 @@ export const SearchDetailLayout: FC<Props> = ({ data }) => {
   const dbType = data.type as DBType;
   const identifier = data.identifier;
   const breadcrumbsPaths = [
-    { label: "Entries", to: "/entry" },
-    { label: dbLabels[dbType], to: `/entry/${dbType}` },
+    { label: "Entries", to: "/entry/" },
+    { label: dbLabels[dbType], to: `/entry/${dbType}/` },
     { label: identifier },
   ];
   const umbrellaProps = getUmbrellaProjectsProps(data);
