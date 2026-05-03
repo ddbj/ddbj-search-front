@@ -1,32 +1,23 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { type ComponentProps, useEffect, useState } from "react";
-import { expect } from "storybook/test";
+import { expect, fn } from "storybook/test";
 import { CheckboxText } from "./CheckboxText.tsx";
 
-const StatefulCheckboxText = ({
-  isSelected = false,
-  ...args
-}: ComponentProps<typeof CheckboxText>) => {
-  const [selected, setSelected] = useState(isSelected);
-
-  useEffect(() => {
-    setSelected(isSelected);
-  }, [isSelected]);
-
-  return (
-    <div className="w-[384px] p-4">
-      <CheckboxText {...args} isSelected={selected} setIsSelected={setSelected} />
-    </div>
-  );
-};
+const mockSetIsSelected = fn((_value: boolean) => {});
 
 const meta = {
   component: CheckboxText,
   args: {
     labelStr: "BioProject",
     value: "bioproject",
+    setIsSelected: mockSetIsSelected,
   },
-  render: (args) => <StatefulCheckboxText {...args} />,
+  decorators: [
+    (Story) => (
+      <div className="w-[384px] p-4">
+        <Story />
+      </div>
+    ),
+  ],
 } satisfies Meta<typeof CheckboxText>;
 
 export default meta;
@@ -35,16 +26,21 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary = {
   play: async ({ canvas, userEvent }) => {
-    await expect(canvas.getByText("Selected:")).toBeInTheDocument();
-    await expect(canvas.getByText("false")).toBeInTheDocument();
-    await userEvent.click(await canvas.findByRole("checkbox", { name: "BioProject" }));
-    await expect(canvas.getByText("true")).toBeInTheDocument();
+    mockSetIsSelected.mockReset();
+    const checkbox = await canvas.findByRole("checkbox", { name: "BioProject" });
+    await expect(checkbox).not.toBeChecked();
+    await userEvent.click(checkbox);
+    await expect(mockSetIsSelected).toHaveBeenCalledTimes(1);
+    await expect(mockSetIsSelected).toHaveBeenLastCalledWith(true);
   },
 } satisfies Story;
 
 export const Checked = {
   args: {
     isSelected: true,
+  },
+  play: async ({ canvas }) => {
+    await expect(await canvas.findByRole("checkbox", { name: "BioProject" })).toBeChecked();
   },
 } satisfies Story;
 
@@ -54,10 +50,15 @@ export const WithLink = {
     value: "bioproject",
     to: "/entry/bioproject",
     isSelected: true,
+    setIsSelected: mockSetIsSelected,
   },
-  play: async ({ canvas }) => {
-    await expect(await canvas.findByRole("checkbox", { name: "BioProject details" })).toBeChecked();
+  play: async ({ canvas, userEvent }) => {
+    mockSetIsSelected.mockReset();
+    const checkbox = await canvas.findByRole("checkbox", { name: "BioProject details" });
+    await expect(checkbox).toBeChecked();
     const link = await canvas.findByRole("link", { name: "BioProject details" });
     await expect(link).toHaveAttribute("href", expect.stringContaining("/entry/bioproject"));
+    await userEvent.click(link);
+    await expect(mockSetIsSelected).not.toHaveBeenCalled();
   },
 } satisfies Story;
