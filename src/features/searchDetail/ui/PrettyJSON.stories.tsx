@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { expect } from "storybook/test";
 import { bioproject1 } from "@/msw/data/bioproject1.ts";
 import { bioproject2 } from "@/msw/data/bioproject2.ts";
 import { PrettyJSON } from "./PrettyJSON.tsx";
@@ -44,9 +45,28 @@ export const LargePayloadFallback = {
   },
 } satisfies Story;
 
+export const ForceExpanded = {
+  args: {
+    code: stringify(bioproject1.properties),
+    forceExpand: true,
+  },
+  play: async ({ canvas }) => {
+    await expect(await canvas.findByRole("button", { name: "Copy JSON" })).toBeInTheDocument();
+    await expect(canvas.queryByRole("button", { name: "Expand JSON" })).not.toBeInTheDocument();
+    await expect(canvas.queryByRole("button", { name: "Collapse JSON" })).not.toBeInTheDocument();
+  },
+} satisfies Story;
+
 export const CustomHighlighterLimit = {
   args: {
     code: stringify(bioproject1.properties),
     maxLinesForHighlighter: 3,
+  },
+} satisfies Story;
+
+export const CustomInitialHeight = {
+  args: {
+    code: stringify(bioproject1.properties),
+    initialHeight: "18rem",
   },
 } satisfies Story;

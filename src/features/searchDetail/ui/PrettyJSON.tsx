@@ -8,14 +8,20 @@ import { SquareMinusIcon } from "@/features/graphics/SquareMinusIcon.tsx";
 import { SquarePlusIcon } from "@/features/graphics/SquarePlusIcon.tsx";
 
 SyntaxHighlighter.registerLanguage("json", json);
-type Props = { code: string; forceExpand?: boolean; maxLinesForHighlighter?: number };
+type Props = {
+  code: string;
+  forceExpand?: boolean;
+  initialHeight?: string;
+  maxLinesForHighlighter?: number;
+};
 
-const initialHeight = "11rem";
+const DEFAULT_INITIAL_HEIGHT = "11rem";
 const DEFAULT_MAX_LINES_FOR_HIGHLIGHTER = 10_000;
 
 export const PrettyJSON: FC<Props> = ({
   code,
   forceExpand = false,
+  initialHeight = DEFAULT_INITIAL_HEIGHT,
   maxLinesForHighlighter = DEFAULT_MAX_LINES_FOR_HIGHLIGHTER,
 }) => {
   const [isExpanded, setIsExpanded] = useState(forceExpand);
@@ -23,23 +29,23 @@ export const PrettyJSON: FC<Props> = ({
   const [rowHeight, setRowHeight] = useState(initialHeight);
   const lineLength = code.match(/\n/g)?.length ?? 0;
   const useHighlighter = lineLength <= maxLinesForHighlighter;
+  const isForceExpanded = forceExpand;
+  const isDisplayExpanded = isForceExpanded || isExpanded;
   const classNames = clsx("relative grid w-full overflow-hidden transition-all duration-500");
-  const ref = useRef(null);
+  const ref = useRef<HTMLPreElement | null>(null);
   const PreWithRef: FC = (preProps) => (
     <pre className={"overflow-y-scroll"} {...preProps} ref={ref} />
   );
   const init = useCallback(() => {
     if (!ref.current) return;
     const { scrollHeight, clientHeight } = ref.current;
-    if (scrollHeight > clientHeight) {
-      setShowExpand(true);
-    }
-  }, []);
+    setShowExpand(!isForceExpanded && useHighlighter && scrollHeight > clientHeight);
+  }, [isForceExpanded, useHighlighter]);
   const toggleExpand = useCallback(() => {
     if (!ref.current) return;
     const { scrollHeight } = ref.current;
-    isExpanded ? setRowHeight(`${scrollHeight}px`) : setRowHeight(initialHeight);
-  }, [isExpanded]);
+    isDisplayExpanded ? setRowHeight(`${scrollHeight}px`) : setRowHeight(initialHeight);
+  }, [initialHeight, isDisplayExpanded]);
   useEffect(() => {
     init();
   }, [init]);
@@ -47,9 +53,9 @@ export const PrettyJSON: FC<Props> = ({
     toggleExpand();
   }, [isExpanded, toggleExpand]);
   useEffect(() => {
-    setIsExpanded(false);
+    setIsExpanded(isForceExpanded);
     init();
-  }, [code, init]);
+  }, [code, init, initialHeight, isForceExpanded]);
 
   return (
     <div className="relative overflow-hidden rounded-md">
@@ -67,7 +73,10 @@ export const PrettyJSON: FC<Props> = ({
           </SyntaxHighlighter>
         ) : (
           <>
-            <pre className={"overflow-x-clip overflow-y-scroll bg-gray-800 p-2 text-gray-300"}>
+            <pre
+              ref={ref}
+              className={"overflow-x-clip overflow-y-scroll bg-gray-800 p-2 text-gray-300"}
+            >
               <span className={"text-red-500"}>
                 // Too large to apply syntax highlighter and block expansion
               </span>
@@ -79,17 +88,19 @@ export const PrettyJSON: FC<Props> = ({
       </div>
       <div className="absolute top-1.5 right-5 box-content flex gap-2">
         <button
+          aria-label="Copy JSON"
           onClick={() => handleCopy(code)}
           className="flex h-fit w-fit cursor-pointer rounded-sm bg-white fill-gray-800 p-0.5 align-middle"
         >
           <CopyIcon className={"w-4"} />
         </button>
-        {showExpand && (
+        {showExpand && !isForceExpanded && (
           <button
+            aria-label={isDisplayExpanded ? "Collapse JSON" : "Expand JSON"}
             onClick={() => setIsExpanded(!isExpanded)}
             className="flex h-fit w-fit cursor-pointer rounded-sm bg-white fill-gray-800 p-0.5 align-middle"
           >
-            {isExpanded ? (
+            {isDisplayExpanded ? (
               <SquareMinusIcon className={"w-4"} />
             ) : (
               <SquarePlusIcon className={"w-4"} />
