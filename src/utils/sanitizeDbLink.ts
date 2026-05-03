@@ -1,5 +1,7 @@
 import { dbTypeList } from "@/consts/db.ts";
 
+const APP_BASE_URL = "/search/";
+
 export const sanitizeDbLink = (link: string) => {
   if (!isInternalDbLink(link)) return link;
   const myType = dbTypeList.find((type) => link.includes(type))!;
@@ -7,7 +9,7 @@ export const sanitizeDbLink = (link: string) => {
     .split("/")
     .filter((item) => item !== "")
     .pop();
-  return `/entry/${myType}/${accession}/`;
+  return `${APP_BASE_URL}entry/${myType}/${accession}/`;
   //
 };
 

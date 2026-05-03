@@ -3,9 +3,11 @@ import {
   createRootRouteWithContext,
   Outlet,
   type ErrorComponentProps,
+  useRouterState,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { isAppHttpError } from "@/fetch/utils/httpError.ts";
+import { HomePage } from "@/layout/HomePage.tsx";
 import { RouteErrorPage } from "@/layout/RouteErrorPage.tsx";
 
 export type RouterContext = {
@@ -44,6 +46,11 @@ function RootComponent() {
 }
 
 function RootNotFoundComponent() {
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+  if (pathname === "/index.html" || pathname === "/index.html/") {
+    return <HomePage />;
+  }
+
   return (
     <RouteErrorPage
       statusCode={404}

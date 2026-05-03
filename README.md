@@ -34,8 +34,9 @@ mise exec -- pnpm dev
 ## プロジェクトのメモ
 
 - ルートは `src/routes` 配下のfile-based routesで生成される
-- HTMLエントリポイントは `index.html` の1つ
-- APIドキュメントは TanStack Router の `/api-doc/` ルートで表示する
+- SPAのHTMLエントリポイントは `search/index.html`
+- ルート直下の `index.html` は `search/index.html` への案内ページ
+- APIドキュメントは TanStack Router の `/search/api-doc/` ルートで表示する
 - `VITE_MSW=true` でローカルモックを有効にできる
 
 ## ドキュメント

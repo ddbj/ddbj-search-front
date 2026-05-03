@@ -19,6 +19,7 @@ const queryClient = new QueryClient({
 // const originalReplaceState = window.history.replaceState;
 export const router = createRouter({
   routeTree,
+  basepath: "/search",
   context: { queryClient },
   scrollRestoration: true,
   // getScrollRestorationKey: (location) => {

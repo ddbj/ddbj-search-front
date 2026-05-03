@@ -128,6 +128,6 @@ pnpm type-check
 ## ビルドに関するメモ
 
 - `pnpm build` は `tsc -b` のあとに `vite build` を実行する
-- Viteのビルドでは、`index.html` を単一entrypointとして出力する
-- APIドキュメントは TanStack Router の `/api-doc/` ルートで表示する
+- Viteのビルドでは、ルート直下の案内ページ `index.html` とSPA本体の `search/index.html` を出力する
+- APIドキュメントは TanStack Router の `/search/api-doc/` ルートで表示する
 - `vite-tsconfig-paths` は、現時点ではTanStack Routerのsplit routeと相性問題があるため維持している

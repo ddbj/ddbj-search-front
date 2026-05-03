@@ -7,12 +7,12 @@ status = 200
 
 
 [[redirects]]
-from = "/assets/*"
-to = "/assets/:splat"
+from = "/search/assets/*"
+to = "/search/assets/:splat"
 status = 200
 force = true
 
 [[redirects]]
-from = "/*"
-to = "/index.html"
+from = "/search/*"
+to = "/search/index.html"
 status = 200
