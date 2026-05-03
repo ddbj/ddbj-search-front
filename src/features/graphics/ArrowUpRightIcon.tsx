@@ -2,7 +2,7 @@ import { type TailwindElementProps } from "@/types.ts";
 
 // https://fontawesome.com/icons/arrow-up-right?f=sharp&s=solid
 export const ArrowUpRightIcon = ({ className }: TailwindElementProps) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className={className}>
-    <path d="M384.3 64l32 0 0 288-64 0 0-178.7-265.4 265.4-22.6 22.6-45.3-45.3 22.6-22.6 265.4-265.4-178.7 0 0-64 256 0z" />
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" className={className}>
+    <path d="M480.3 128L512.3 128L512.3 416L448.3 416L448.3 237.3L182.9 502.7L160.3 525.3L115 480L137.6 457.4L403 192L224.3 192L224.3 128L480.3 128z" />
   </svg>
 );

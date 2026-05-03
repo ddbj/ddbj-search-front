@@ -2,7 +2,7 @@ import { type TailwindElementProps } from "@/types.ts";
 
 // https://fontawesome.com/icons/square-info?f=sharp&s=regular
 export const InfoIcon = ({ className }: TailwindElementProps) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className={className}>
-    <path d="M48 80l0 352 352 0 0-352-352 0zM0 32l448 0 0 448-448 0 0-448zM184 336l24 0 0-64-48 0 0-48 96 0 0 112 32 0 0 48-128 0 0-48 24 0zm72-208l0 64-64 0 0-64 64 0z" />
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" className={className}>
+    <path d="M144 144L144 496L496 496L496 144L144 144zM96 96L544 96L544 544L96 544L96 96zM280 400L304 400L304 336L256 336L256 288L352 288L352 400L384 400L384 448L256 448L256 400L280 400zM352 192L352 256L288 256L288 192L352 192z" />
   </svg>
 );

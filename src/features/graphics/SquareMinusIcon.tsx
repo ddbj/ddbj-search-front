@@ -2,7 +2,7 @@ import { type TailwindElementProps } from "@/types.ts";
 
 // https://fontawesome.com/icons/square-minus?f=sharp&s=regular
 export const SquareMinusIcon = ({ className }: TailwindElementProps) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className={className}>
-    <path d="M48 80l0 352 352 0 0-352-352 0zM0 32l448 0 0 448-448 0 0-448zM136 232l200 0 0 48-224 0 0-48 24 0z" />
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" className={className}>
+    <path d="M144 144L144 496L496 496L496 144L144 144zM96 96L544 96L544 544L96 544L96 96zM232 296L432 296L432 344L208 344L208 296L232 296z" />
   </svg>
 );

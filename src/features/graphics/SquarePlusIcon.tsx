@@ -2,7 +2,7 @@ import { type TailwindElementProps } from "@/types.ts";
 
 // https://fontawesome.com/icons/square-plus?f=sharp&s=regular
 export const SquarePlusIcon = ({ className }: TailwindElementProps) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className={className}>
-    <path d="M48 80l0 352 352 0 0-352-352 0zM0 32l448 0 0 448-448 0 0-448zM200 368l0-88-88 0 0-44 88 0 0-88 48 0 0 88 88 0 0 44-88 0 0 88-48 0z" />
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" className={className}>
+    <path d="M144 144L144 496L496 496L496 144L144 144zM96 96L544 96L544 544L96 544L96 96zM296 432L296 344L208 344L208 296L296 296L296 208L344 208L344 296L432 296L432 344L344 344L344 432L296 432z" />
   </svg>
 );
