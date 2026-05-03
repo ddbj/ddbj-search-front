@@ -23,7 +23,7 @@ export const PropertiesPanel: FC<Props> = ({ data }) => {
           }}
         >
           <span className={"self-center pt-0.5"}>
-            <CircleQuestionIcon className={"fill-text-primary h-4"} />
+            <CircleQuestionIcon className={"fill-text-primary h-5"} />
           </span>
         </Tooltip>
         <span>Properties</span>

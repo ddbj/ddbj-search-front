@@ -6,9 +6,18 @@ import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { CopyIcon } from "@/features/graphics/CopyIcon.tsx";
 import { SquareMinusIcon } from "@/features/graphics/SquareMinusIcon.tsx";
 import { SquarePlusIcon } from "@/features/graphics/SquarePlusIcon.tsx";
+import { type TailwindElementProps } from "@/types.ts";
 
 SyntaxHighlighter.registerLanguage("json", json);
+type ToolbarIcon = FC<TailwindElementProps>;
+type ToolbarAction = {
+  Icon: ToolbarIcon;
+  label: string;
+  onPress: () => void;
+};
+
 type Props = {
+  additionalActions?: ToolbarAction[];
   code: string;
   forceExpand?: boolean;
   initialHeight?: string;
@@ -18,8 +27,11 @@ type Props = {
 
 const DEFAULT_INITIAL_HEIGHT = "11rem";
 const DEFAULT_MAX_LINES_FOR_HIGHLIGHTER = 10_000;
+const TOOLBAR_BUTTON_CLASS =
+  "flex h-fit w-fit cursor-pointer rounded-sm bg-white fill-gray-800 p-0.5 align-middle";
 
 export const PrettyJSON: FC<Props> = ({
+  additionalActions,
   code,
   forceExpand = false,
   initialHeight = DEFAULT_INITIAL_HEIGHT,
@@ -46,7 +58,9 @@ export const PrettyJSON: FC<Props> = ({
   const toggleExpand = useCallback(() => {
     if (!ref.current) return;
     const { scrollHeight } = ref.current;
-    isDisplayExpanded ? setRowHeight(maxExpandedHeight ?? `${scrollHeight}px`) : setRowHeight(initialHeight);
+    isDisplayExpanded
+      ? setRowHeight(maxExpandedHeight ?? `${scrollHeight}px`)
+      : setRowHeight(initialHeight);
   }, [initialHeight, isDisplayExpanded, maxExpandedHeight]);
   useEffect(() => {
     init();
@@ -92,23 +106,34 @@ export const PrettyJSON: FC<Props> = ({
         <button
           aria-label="Copy JSON"
           onClick={() => handleCopy(code)}
-          className="flex h-fit w-fit cursor-pointer rounded-sm bg-white fill-gray-800 p-0.5 align-middle"
+          className={TOOLBAR_BUTTON_CLASS}
         >
-          <CopyIcon className={"w-4"} />
+          <CopyIcon className={"w-5"} />
         </button>
         {showExpand && !isForceExpanded && (
           <button
             aria-label={isDisplayExpanded ? "Collapse JSON" : "Expand JSON"}
             onClick={() => setIsExpanded(!isExpanded)}
-            className="flex h-fit w-fit cursor-pointer rounded-sm bg-white fill-gray-800 p-0.5 align-middle"
+            className={TOOLBAR_BUTTON_CLASS}
           >
             {isDisplayExpanded ? (
-              <SquareMinusIcon className={"w-4"} />
+              <SquareMinusIcon className={"w-5"} />
             ) : (
-              <SquarePlusIcon className={"w-4"} />
+              <SquarePlusIcon className={"w-5"} />
             )}
           </button>
         )}
+        {additionalActions?.map((action) => (
+          <button
+            aria-label={action.label}
+            key={action.label}
+            type={"button"}
+            onClick={action.onPress}
+            className={TOOLBAR_BUTTON_CLASS}
+          >
+            <action.Icon className={"w-5"} />
+          </button>
+        ))}
       </div>
     </div>
   );

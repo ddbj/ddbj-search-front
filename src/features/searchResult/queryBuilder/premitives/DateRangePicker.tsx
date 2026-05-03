@@ -60,8 +60,8 @@ export const DateRangePicker: FC<Props> = ({ label, value, onChange }) => {
           </DateField.InputContainer>
           <DateField.Suffix>
             <HeroDateRangePicker.Trigger aria-label={`Open ${label} calendar`}>
-              <HeroDateRangePicker.TriggerIndicator className="text-gray-500">
-                <CalendarIcon className="h-4 w-4 fill-current" />
+              <HeroDateRangePicker.TriggerIndicator className="w-5 text-gray-500">
+                <CalendarIcon className="fill-current" />
               </HeroDateRangePicker.TriggerIndicator>
             </HeroDateRangePicker.Trigger>
           </DateField.Suffix>
