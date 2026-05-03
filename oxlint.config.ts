@@ -1,17 +1,18 @@
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": [],
-  "categories": {
-    "correctness": "off"
+import { defineConfig } from "oxlint";
+
+export default defineConfig({
+  plugins: [],
+  categories: {
+    correctness: "off",
   },
-  "env": {
-    "builtin": true
+  env: {
+    builtin: true,
   },
-  "ignorePatterns": ["dist"],
-  "overrides": [
+  ignorePatterns: ["dist", "src/routeTree.gen.ts"],
+  overrides: [
     {
-      "files": ["**/*.{ts,tsx,js}"],
-      "rules": {
+      files: ["**/*.{ts,tsx,js}"],
+      rules: {
         "constructor-super": "off",
         "for-direction": "error",
         "no-async-promise-executor": "error",
@@ -63,9 +64,9 @@
         "no-unused-vars": [
           "warn",
           {
-            "argsIgnorePattern": "^_",
-            "ignoreRestSiblings": true
-          }
+            argsIgnorePattern: "^_",
+            ignoreRestSiblings: true,
+          },
         ],
         "no-useless-backreference": "error",
         "no-useless-catch": "error",
@@ -82,8 +83,8 @@
         "no-unused-expressions": [
           "error",
           {
-            "allowTernary": true
-          }
+            allowTernary: true,
+          },
         ],
         "typescript/ban-ts-comment": "error",
         "typescript/no-duplicate-enum-values": "error",
@@ -114,30 +115,30 @@
         "react/only-export-components": [
           "warn",
           {
-            "allowConstantExport": true
-          }
-        ]
+            allowConstantExport: true,
+          },
+        ],
       },
-      "plugins": ["typescript", "import", "react"],
-      "jsPlugins": ["@tanstack/eslint-plugin-router"],
-      "env": {
-        "es2018": true,
-        "es2020": true,
-        "browser": true
+      plugins: ["typescript", "import", "react"],
+      jsPlugins: ["@tanstack/eslint-plugin-router"],
+      env: {
+        es2018: true,
+        es2020: true,
+        browser: true,
       },
-      "globals": {
-        "AudioWorkletGlobalScope": "readonly",
-        "AudioWorkletProcessor": "readonly",
-        "currentFrame": "readonly",
-        "currentTime": "readonly",
-        "registerProcessor": "readonly",
-        "sampleRate": "readonly",
-        "WorkletGlobalScope": "readonly"
-      }
+      globals: {
+        AudioWorkletGlobalScope: "readonly",
+        AudioWorkletProcessor: "readonly",
+        currentFrame: "readonly",
+        currentTime: "readonly",
+        registerProcessor: "readonly",
+        sampleRate: "readonly",
+        WorkletGlobalScope: "readonly",
+      },
     },
     {
-      "files": ["**/*.stories.@(ts|tsx|js|jsx|mjs|cjs)", "**/*.story.@(ts|tsx|js|jsx|mjs|cjs)"],
-      "rules": {
+      files: ["**/*.stories.@(ts|tsx|js|jsx|mjs|cjs)", "**/*.story.@(ts|tsx|js|jsx|mjs|cjs)"],
+      rules: {
         "storybook/await-interactions": "error",
         "storybook/context-in-play-function": "error",
         "storybook/default-exports": "error",
@@ -149,17 +150,17 @@
         "storybook/use-storybook-expect": "error",
         "storybook/use-storybook-testing-library": "error",
         "import/no-anonymous-default-export": "off",
-        "react/rules-of-hooks": "off"
+        "react/rules-of-hooks": "off",
       },
-      "jsPlugins": ["eslint-plugin-storybook"],
-      "plugins": ["react", "import"]
+      jsPlugins: ["eslint-plugin-storybook"],
+      plugins: ["react", "import"],
     },
     {
-      "files": [".storybook/main.@(js|cjs|mjs|ts)"],
-      "rules": {
-        "storybook/no-uninstalled-addons": "error"
+      files: [".storybook/main.@(js|cjs|mjs|ts)"],
+      rules: {
+        "storybook/no-uninstalled-addons": "error",
       },
-      "jsPlugins": ["eslint-plugin-storybook"]
-    }
-  ]
-}
+      jsPlugins: ["eslint-plugin-storybook"],
+    },
+  ],
+});
