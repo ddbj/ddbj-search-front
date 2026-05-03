@@ -1,3 +1,4 @@
+import { toast } from "@heroui/react";
 import { clsx } from "clsx";
 import { type FC, useCallback, useEffect, useRef, useState } from "react";
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -140,6 +141,6 @@ export const PrettyJSON: FC<Props> = ({
 };
 const handleCopy = (text: string) => {
   navigator.clipboard.writeText(text).then(() => {
-    window.alert("Copied to clipboard");
+    toast.success("Copied to clipboard");
   });
 };

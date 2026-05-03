@@ -1,3 +1,4 @@
+import { ToastProvider } from "@heroui/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { createRouter, RouterProvider } from "@tanstack/react-router";
@@ -55,6 +56,7 @@ enableMocking().then(() => {
     <StrictMode>
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools />
+        <ToastProvider />
         <RouterProvider router={router} />
       </QueryClientProvider>
     </StrictMode>,
