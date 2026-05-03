@@ -26,7 +26,7 @@ export const getJgaDacDetail = http.get<BaseDetailRequestParams>(path, ({ params
     description: "This is a mock JGA DAC detail for testing purposes.",
     type: "jga-dac",
     accessibility: "public-access",
-    status: "live",
+    status: "public",
     dbXrefs: [],
     dbXrefsCount: {},
     properties: {},

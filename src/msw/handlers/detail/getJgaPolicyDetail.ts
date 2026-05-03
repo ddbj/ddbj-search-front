@@ -26,7 +26,7 @@ export const getJgaPolicyDetail = http.get<BaseDetailRequestParams>(path, ({ par
     description: "This is a mock JGA policy detail for testing purposes.",
     type: "jga-policy",
     accessibility: "public-access",
-    status: "live",
+    status: "public",
     dbXrefs: [],
     dbXrefsCount: {},
     properties: {},

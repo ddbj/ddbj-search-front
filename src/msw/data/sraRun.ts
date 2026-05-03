@@ -10,7 +10,7 @@ export const makeSraRunDetail = (identifier: string): SraRunDetailResponse => ({
   description: "This is a mock SRA Run detail for testing purposes.",
   type: "sra-run",
   accessibility: "public-access",
-  status: "live",
+  status: "public",
   dbXrefs: [],
   dbXrefsCount: {},
   properties: {},

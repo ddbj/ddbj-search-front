@@ -248,7 +248,7 @@ export const bioproject1: BioProjectDetailResponse = {
     },
   ],
   sameAs: [],
-  status: "live",
+  status: "public",
   accessibility: "public-access",
   dateCreated: "2003-02-25",
   dateModified: null,

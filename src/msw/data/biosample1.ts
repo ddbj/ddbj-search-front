@@ -13,7 +13,7 @@ export const biosample1: BioSampleDetailResponse = {
   },
   description: "",
   accessibility: "public-access",
-  status: "live",
+  status: "public",
   dbXrefs: [
     {
       identifier: "SRS13979220",

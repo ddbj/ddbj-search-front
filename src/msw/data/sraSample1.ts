@@ -142,5 +142,5 @@ export const sraSample1: SraSampleDetailResponse = {
       ],
     },
   },
-  status: "live",
+  status: "public",
 };

@@ -20,12 +20,13 @@ export const getAccessibilityLabels = (str: string) => {
   const result = accessibilityLabels[str as AccessibilityValue];
   return result ?? str;
 };
-export const statusValues = ["live", "suppressed", "unpublished"] as const;
+export const statusValues = ["public", "suppressed", "withdrawn", "private"] as const;
 export type StatusValue = (typeof statusValues)[number];
 export const statusLabels: Record<StatusValue, string> = {
-  live: "Live",
+  public: "Public",
   suppressed: "Suppressed",
-  unpublished: "Unpublished",
+  withdrawn: "Withdrawn",
+  private: "Private",
 };
 export const getStatusLabels = (str: string) => {
   const result = statusLabels[str as StatusValue];

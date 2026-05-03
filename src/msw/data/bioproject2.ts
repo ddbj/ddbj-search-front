@@ -96,7 +96,7 @@ export const bioproject2: BioProjectDetailResponse = {
   childBioProjects: [],
   externalLink: [],
   sameAs: [],
-  status: "live",
+  status: "public",
   accessibility: "public-access",
   dateCreated: "2016-02-25",
   dateModified: "2016-02-25",

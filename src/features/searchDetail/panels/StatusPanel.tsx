@@ -47,11 +47,13 @@ export const StatusPanel: FC<Props> = ({ data }) => {
 const StatusHelp: FC = () => {
   return (
     <dl className={"grid grid-cols-[auto_1fr] gap-x-2"}>
-      <dt>[{statusLabels["live"]}]</dt>
+      <dt>[{statusLabels["public"]}]</dt>
       <dd>short description here</dd>
       <dt>[{statusLabels["suppressed"]}]</dt>
       <dd>short description here</dd>
-      <dt>[{statusLabels["unpublished"]}]</dt>
+      <dt>[{statusLabels["withdrawn"]}]</dt>
+      <dd>short description here</dd>
+      <dt>[{statusLabels["private"]}]</dt>
       <dd>short description here</dd>
     </dl>
   );

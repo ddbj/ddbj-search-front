@@ -13,7 +13,7 @@ const bioSampleResponse = {
   description: null,
   type: "biosample",
   accessibility: "public-access",
-  status: "live",
+  status: "public",
   dbXrefs: [],
   dbXrefsCount: {},
   properties: {},

@@ -26,7 +26,7 @@ export const getSraSubmissionDetail = http.get<BaseDetailRequestParams>(path, ({
     description: "This is a mock SRA Submission detail for testing purposes.",
     type: "sra-submission",
     accessibility: "public-access",
-    status: "live",
+    status: "public",
     dbXrefs: [],
     dbXrefsCount: {},
     properties: {},
