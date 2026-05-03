@@ -35,5 +35,6 @@ export const getJgaDatasetDetail = http.get<BaseDetailRequestParams>(path, ({ pa
     name: null,
     url: `https://ddbj-staging.nig.ac.jp/search/entry/jga-dataset/${identifier}`,
     sameAs: [],
+    organization: null,
   });
 });

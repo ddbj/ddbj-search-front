@@ -35,5 +35,6 @@ export const getJgaStudyDetail = http.get<BaseDetailRequestParams>(path, ({ para
     name: null,
     url: `https://ddbj-staging.nig.ac.jp/search/entry/jga-study/${identifier}`,
     sameAs: [],
+    organization: null,
   });
 });

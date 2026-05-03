@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import type { Organization } from "@/api/detail/bioProject.ts";
+import type { Organization } from "@/api/consts.ts";
 import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
 
 type Props = { organizations: Organization[] | null };

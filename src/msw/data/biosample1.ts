@@ -198,4 +198,5 @@ export const biosample1: BioSampleDetailResponse = {
   name: null,
   url: "https://ddbj.nig.ac.jp/resource/biosample/SAMN29827045",
   sameAs: [],
+  organization: null,
 };

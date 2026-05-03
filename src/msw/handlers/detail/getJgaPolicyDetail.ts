@@ -35,5 +35,6 @@ export const getJgaPolicyDetail = http.get<BaseDetailRequestParams>(path, ({ par
     name: null,
     url: `https://ddbj-staging.nig.ac.jp/search/entry/jga-policy/${identifier}`,
     sameAs: [],
+    organization: null,
   });
 });

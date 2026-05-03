@@ -17,11 +17,7 @@ export const getGrants = (res: SearchDetailResponse) => {
 };
 
 export const getOrganizations = (res: SearchDetailResponse) => {
-  if (res.type === "bioproject") {
-    return res.organization;
-  } else {
-    return null;
-  }
+  return res.organization;
 };
 
 export const getExternalLinks = (res: SearchDetailResponse) => {

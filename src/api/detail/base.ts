@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { accessibilityValues, statusValues } from "@/api/consts.ts";
+import { accessibilityValues, organizationListSchema, statusValues } from "@/api/consts.ts";
 import { extendZod } from "@/utils/extendZod.ts";
 
 extendZod();
@@ -28,6 +28,7 @@ export const baseDetailResponseSchema = z.object({
     })
     .nullable(),
   description: z.string().nullable(),
+  organization: organizationListSchema,
   type: z.string(),
   accessibility: z.enum(accessibilityValues),
   status: z.enum(statusValues),

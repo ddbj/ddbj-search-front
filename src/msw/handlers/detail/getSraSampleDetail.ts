@@ -35,5 +35,6 @@ export const getSraSampleDetail = http.get<BaseDetailRequestParams>(path, ({ par
     name: null,
     url: `https://ddbj-staging.nig.ac.jp/search/entry/sra-sample/${identifier}`,
     sameAs: [],
+    organization: null,
   });
 });

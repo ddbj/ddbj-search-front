@@ -35,5 +35,6 @@ export const getJgaDacDetail = http.get<BaseDetailRequestParams>(path, ({ params
     name: null,
     url: `https://ddbj-staging.nig.ac.jp/search/entry/jga-dac/${identifier}`,
     sameAs: [],
+    organization: null,
   });
 });
