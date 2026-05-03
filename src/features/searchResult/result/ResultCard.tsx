@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import clsx from "clsx";
-import { type FC, useMemo } from "react";
+import { Fragment, type FC, useMemo } from "react";
 import { getDbLabel, getXrefDbLabel } from "@/consts/db.ts";
 import { reorderXrefs } from "@/utils/reorderXrefs.ts";
 
@@ -75,10 +75,10 @@ const DateTable: FC<DataTableProps> = ({ publishedAt, submittedAt, updatedAt }) 
   return (
     <dl className={"grid grid-cols-[auto_auto] gap-x-2"}>
       {Object.entries(data).map(([key, value]) => (
-        <>
+        <Fragment key={key}>
           <dt className={"text-nowrap"}>{key}</dt>
           <dd className={"font-mono text-nowrap"}>{value}</dd>
-        </>
+        </Fragment>
       ))}
     </dl>
   );
