@@ -1,6 +1,6 @@
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 import { z } from "zod";
-import { tags } from "@/api/consts.ts";
+import { organizationListSchema, tags } from "@/api/consts.ts";
 import {
   baseDetailRequestSchema,
   baseDetailResponseSchema,
@@ -16,15 +16,7 @@ const bioProjectDetailResponseSchema = baseDetailResponseSchema
   })
   .extend({
     objectType: z.string(),
-    organization: z.array(
-      z.object({
-        abbreviation: z.string().nullable(),
-        name: z.string().nullable(),
-        organizationType: z.string().nullable(),
-        role: z.string().nullable(),
-        url: z.string().nullable(),
-      }),
-    ),
+    organization: organizationListSchema,
     publication: z.array(
       z.object({
         date: z.string().nullable(),
@@ -54,7 +46,7 @@ const bioProjectDetailResponseSchema = baseDetailResponseSchema
 export type BioProjectDetailResponse = z.infer<typeof bioProjectDetailResponseSchema>;
 export type Publication = BioProjectDetailResponse["publication"][0];
 export type Grant = BioProjectDetailResponse["grant"][0];
-export type Organization = BioProjectDetailResponse["organization"][0];
+export type { Organization } from "@/api/consts.ts";
 
 const path = addIdentifierToPath(API_PATH_BIOPROJECT_LIST, "openAPI");
 export const bioProjectDetailRequestDoc: RouteConfig = {
