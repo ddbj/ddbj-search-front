@@ -68,6 +68,7 @@ pnpm type-check
 最低限の確認:
 
 ```bash
+pnpm format
 pnpm lint
 pnpm test
 pnpm type-check
@@ -82,7 +83,7 @@ pnpm type-check
 
 ## 変更後の整え方
 
-- 編集後は必要に応じて `pnpm format` を実行する
+- コード変更後は `pnpm format` を実行する
 - 実行した検証結果は、完了報告時に共有する
 - ドキュメントや運用ルールを変えた場合は、関連文書も更新する
 
