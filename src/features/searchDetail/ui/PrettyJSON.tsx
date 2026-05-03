@@ -12,6 +12,7 @@ type Props = {
   code: string;
   forceExpand?: boolean;
   initialHeight?: string;
+  maxExpandedHeight?: string;
   maxLinesForHighlighter?: number;
 };
 
@@ -22,6 +23,7 @@ export const PrettyJSON: FC<Props> = ({
   code,
   forceExpand = false,
   initialHeight = DEFAULT_INITIAL_HEIGHT,
+  maxExpandedHeight,
   maxLinesForHighlighter = DEFAULT_MAX_LINES_FOR_HIGHLIGHTER,
 }) => {
   const [isExpanded, setIsExpanded] = useState(forceExpand);
@@ -44,8 +46,8 @@ export const PrettyJSON: FC<Props> = ({
   const toggleExpand = useCallback(() => {
     if (!ref.current) return;
     const { scrollHeight } = ref.current;
-    isDisplayExpanded ? setRowHeight(`${scrollHeight}px`) : setRowHeight(initialHeight);
-  }, [initialHeight, isDisplayExpanded]);
+    isDisplayExpanded ? setRowHeight(maxExpandedHeight ?? `${scrollHeight}px`) : setRowHeight(initialHeight);
+  }, [initialHeight, isDisplayExpanded, maxExpandedHeight]);
   useEffect(() => {
     init();
   }, [init]);
