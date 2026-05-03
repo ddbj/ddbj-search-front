@@ -10,7 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as StatusRouteImport } from './routes/status'
-import { Route as ApiDoc_RouteImport } from './routes/api-doc__'
+import { Route as ApiDocRouteImport } from './routes/api-doc'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as EntryIndexRouteImport } from './routes/entry/index'
@@ -44,9 +44,9 @@ const StatusRoute = StatusRouteImport.update({
   path: '/status',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiDoc_Route = ApiDoc_RouteImport.update({
-  id: '/api-doc__',
-  path: '/api-doc_',
+const ApiDocRoute = ApiDocRouteImport.update({
+  id: '/api-doc',
+  path: '/api-doc',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -196,7 +196,7 @@ const EntryBioprojectIdentifierRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/api-doc_': typeof ApiDoc_Route
+  '/api-doc': typeof ApiDocRoute
   '/status': typeof StatusRoute
   '/entry/': typeof EntryIndexRoute
   '/entry/bioproject/$identifier': typeof EntryBioprojectIdentifierRoute
@@ -227,7 +227,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/api-doc_': typeof ApiDoc_Route
+  '/api-doc': typeof ApiDocRoute
   '/status': typeof StatusRoute
   '/entry': typeof EntryIndexRoute
   '/entry/bioproject/$identifier': typeof EntryBioprojectIdentifierRoute
@@ -259,7 +259,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/api-doc__': typeof ApiDoc_Route
+  '/api-doc': typeof ApiDocRoute
   '/status': typeof StatusRoute
   '/entry/': typeof EntryIndexRoute
   '/entry/bioproject/$identifier': typeof EntryBioprojectIdentifierRoute
@@ -292,7 +292,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
-    | '/api-doc_'
+    | '/api-doc'
     | '/status'
     | '/entry/'
     | '/entry/bioproject/$identifier'
@@ -323,7 +323,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
-    | '/api-doc_'
+    | '/api-doc'
     | '/status'
     | '/entry'
     | '/entry/bioproject/$identifier'
@@ -354,7 +354,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
-    | '/api-doc__'
+    | '/api-doc'
     | '/status'
     | '/entry/'
     | '/entry/bioproject/$identifier'
@@ -386,7 +386,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  ApiDoc_Route: typeof ApiDoc_Route
+  ApiDocRoute: typeof ApiDocRoute
   StatusRoute: typeof StatusRoute
   EntryIndexRoute: typeof EntryIndexRoute
   EntryBioprojectIdentifierRoute: typeof EntryBioprojectIdentifierRoute
@@ -424,11 +424,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StatusRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api-doc__': {
-      id: '/api-doc__'
-      path: '/api-doc_'
-      fullPath: '/api-doc_'
-      preLoaderRoute: typeof ApiDoc_RouteImport
+    '/api-doc': {
+      id: '/api-doc'
+      path: '/api-doc'
+      fullPath: '/api-doc'
+      preLoaderRoute: typeof ApiDocRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -626,7 +626,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  ApiDoc_Route: ApiDoc_Route,
+  ApiDocRoute: ApiDocRoute,
   StatusRoute: StatusRoute,
   EntryIndexRoute: EntryIndexRoute,
   EntryBioprojectIdentifierRoute: EntryBioprojectIdentifierRoute,

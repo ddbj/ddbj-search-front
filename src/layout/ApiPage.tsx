@@ -13,6 +13,16 @@ export const ApiPage: FC<Props> = () => {
         configuration={{
           content: getDocs(),
           orderSchemaPropertiesBy: "preserve",
+          darkMode: false,
+          forceDarkModeState: "light",
+          hideDarkModeToggle: true,
+          showDeveloperTools: "never",
+          mcp: {
+            disabled: true,
+          },
+          agent: {
+            disabled: true,
+          },
         }}
       />
     </main>
