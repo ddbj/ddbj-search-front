@@ -18,8 +18,8 @@ export const DownloadPanel: FC<Props> = ({ data }) => {
       <div className={"pt-2 text-sm font-bold"}>Download</div>
       <InfoList useGrid={false}>
         {items.map((item, i) => (
-          <li key={i}>
-            <a className={"text-fire-bush flex bg-white"} target={"_blank"} href={item.contentUrl}>
+          <li key={i} className={"bg-white py-2"}>
+            <a className={"text-fire-bush"} target={"_blank"} href={item.contentUrl}>
               {item.encodingFormat}
             </a>
           </li>
