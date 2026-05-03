@@ -25,6 +25,7 @@
 
 - [`spec.md`](./spec.md): 採用している主要ライブラリと技術構成の入口
 - [`domain-behavior.md`](./domain-behavior.md): 画面表示や `download link` など、ドメイン固有の挙動を整理した文書
+- [`routing-guide.md`](./routing-guide.md): `/search/` 配下でSPAを配信するためのルーティング注意点
 
 ## 設計判断
 

@@ -131,3 +131,4 @@ pnpm type-check
 - Viteのビルドでは、ルート直下の案内ページ `index.html` とSPA本体の `search/index.html` を出力する
 - APIドキュメントは TanStack Router の `/search/api-doc/` ルートで表示する
 - `vite-tsconfig-paths` は、現時点ではTanStack Routerのsplit routeと相性問題があるため維持している
+- ルーティングまわりの注意点は [routing-guide.md](./routing-guide.md) を参照する
