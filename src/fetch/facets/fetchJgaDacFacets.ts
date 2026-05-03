@@ -1,6 +1,6 @@
+import type { JgaDacFacetListRequestParams, JgaDacFacetListResponse } from "@/api/facets/jgaDac.ts";
 import { API_PATH_JGA_DAC_FACET_LIST } from "@/api/paths.ts";
 import { parseBaseFacetParams } from "@/fetch/utils/parseBaseFacetParams.ts";
-import type { JgaDacFacetListRequestParams, JgaDacFacetListResponse } from "@/api/facets/jgaDac.ts";
 import type { JgaDacSearchParams } from "@/schema/search/jgaDac.ts";
 export const fetchJgaDacFacets = async (params: JgaDacSearchParams) => {
   const searchParams = parseParams(params) as unknown as Record<string, string>;

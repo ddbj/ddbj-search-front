@@ -1,5 +1,5 @@
-import { ArrowDownRightIcon } from "@/features/graphics/ArrowDownRightIcon.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { ArrowDownRightIcon } from "@/features/graphics/ArrowDownRightIcon.tsx";
 
 const meta = {
   component: ArrowDownRightIcon,

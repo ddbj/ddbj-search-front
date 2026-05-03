@@ -1,9 +1,9 @@
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { EntryListResponse } from "@/api/entries/base.ts";
 import { dbTypes } from "@/consts/db.ts";
 import { __SB_updateFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
-import { SearchResultLayout } from "./SearchResultLayout.tsx";
-import type { EntryListResponse } from "@/api/entries/base.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import { SearchResultLayout } from "./SearchResultLayout.tsx";
 
 const primaryParams: AnySearchParams = {
   keywords: ["human microbiome"],

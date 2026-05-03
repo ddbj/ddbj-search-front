@@ -1,7 +1,7 @@
 import { type FC, useMemo } from "react";
+import type { BreadcrumbsPath } from "@/features/shared/Breadcrumbs.tsx";
 import { GlobalHeader } from "@/features/shared/GlobalHeader.tsx";
 import { useTitle } from "@/utils/useTitle.ts";
-import type { BreadcrumbsPath } from "@/features/shared/Breadcrumbs.tsx";
 
 type Props = {};
 

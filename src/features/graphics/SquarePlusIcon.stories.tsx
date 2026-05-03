@@ -1,5 +1,5 @@
-import { SquarePlusIcon } from "@/features/graphics/SquarePlusIcon.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { SquarePlusIcon } from "@/features/graphics/SquarePlusIcon.tsx";
 
 const meta = {
   component: SquarePlusIcon,

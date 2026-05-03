@@ -1,5 +1,5 @@
-import { ResultCard, type ResultCardProps } from "@/features/searchResult/result/ResultCard.tsx";
 import type { FC } from "react";
+import { ResultCard, type ResultCardProps } from "@/features/searchResult/result/ResultCard.tsx";
 
 type Props = {
   data: ResultCardProps[];

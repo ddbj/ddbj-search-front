@@ -1,9 +1,9 @@
 import clsx from "clsx";
+import type { FC } from "react";
 import { Tooltip } from "@/components/heroui/Tooltip.tsx";
 import { CircleQuestionIcon } from "@/features/graphics/CircleQuestionIcon.tsx";
 import { PanelWrapper } from "@/features/searchDetail/ui/PanelWrapper.tsx";
 import { PrettyJSON } from "@/features/searchDetail/ui/PrettyJSON.tsx";
-import type { FC } from "react";
 
 type Props = {
   data: unknown;

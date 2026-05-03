@@ -1,11 +1,11 @@
-import { dbTypes } from "@/consts/db.ts";
-import { __SB_updateFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
-import { QueryBuilder } from "@/features/searchResult/queryBuilder/QueryBuilder.tsx";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { expect } from "storybook/test";
 import type { BioProjectFacetListResponse } from "@/api/facets/bioProject.ts";
+import { dbTypes } from "@/consts/db.ts";
+import { __SB_updateFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
+import { QueryBuilder } from "@/features/searchResult/queryBuilder/QueryBuilder.tsx";
 import type { AnySearchParams } from "@/schema/search/any.ts";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const primaryParams: AnySearchParams = {
   keywords: ["human microbiome"],

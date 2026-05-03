@@ -1,7 +1,7 @@
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { InfoList } from "@/features/searchDetail/ui/InfoList.tsx";
 import { PanelWrapper } from "@/features/searchDetail/ui/PanelWrapper.tsx";
 import { OrganismRow } from "./OrganismRow.tsx";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
   component: OrganismRow,

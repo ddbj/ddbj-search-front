@@ -1,6 +1,6 @@
-import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
-import type { Organism } from "@/api/detail/base.ts";
 import type { FC } from "react";
+import type { Organism } from "@/api/detail/base.ts";
+import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
 
 type Props = { organism: Organism | null };
 

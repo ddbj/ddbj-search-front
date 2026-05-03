@@ -1,7 +1,7 @@
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, fn } from "storybook/test";
 import { sleep } from "@/utils/sleep.ts";
 import { Umbrella } from "./Umbrella.tsx";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const mockUpdateUmbrella = fn((_v: boolean) => {});
 

@@ -1,7 +1,7 @@
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, fn } from "storybook/test";
 import { dbTypes } from "@/consts/db.ts";
 import { OtherTypeSelector } from "./OtherTypeSelector.tsx";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const mockMoveToEntryRoot = fn(() => {});
 

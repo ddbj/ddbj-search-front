@@ -1,5 +1,5 @@
-import { CopyIcon } from "@/features/graphics/CopyIcon.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { CopyIcon } from "@/features/graphics/CopyIcon.tsx";
 
 const meta = {
   component: CopyIcon,

@@ -1,6 +1,6 @@
-import { UmbrellaProjectsPanel } from "@/features/searchDetail/panels/UmbrellaProjectsPanel.tsx";
-import type { Xref } from "@/api/detail/base.ts";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Xref } from "@/api/detail/base.ts";
+import { UmbrellaProjectsPanel } from "@/features/searchDetail/panels/UmbrellaProjectsPanel.tsx";
 
 const meta = {
   component: UmbrellaProjectsPanel,

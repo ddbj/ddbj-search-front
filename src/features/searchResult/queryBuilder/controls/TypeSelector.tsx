@@ -1,10 +1,10 @@
 import { type FC } from "react";
+import type { FacetItem } from "@/api/facets/base.ts";
 import { dbLabels, type DBType, isDBType } from "@/consts/db.ts";
 import { useDebouncedUiValue } from "@/features/searchResult/queryBuilder/hooks/useDebouncedUiValue.ts";
 import { CheckboxText } from "@/features/searchResult/queryBuilder/premitives/CheckboxText.tsx";
-import { formatNumber } from "@/utils/formatNumber.ts";
-import type { FacetItem } from "@/api/facets/base.ts";
 import type { BaseSearchParams } from "@/schema/search/base.ts";
+import { formatNumber } from "@/utils/formatNumber.ts";
 
 type Props = {
   value: DBType[];

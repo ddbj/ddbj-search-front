@@ -1,7 +1,7 @@
 import clsx from "clsx";
+import type { FC, ReactNode } from "react";
 import { Tooltip } from "@/components/heroui/Tooltip.tsx";
 import { CircleQuestionIcon } from "@/features/graphics/CircleQuestionIcon.tsx";
-import type { FC, ReactNode } from "react";
 
 type Props = {
   term: string;

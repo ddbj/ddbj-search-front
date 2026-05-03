@@ -1,6 +1,6 @@
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { AppHttpError } from "@/fetch/utils/httpError.ts";
 import { RouteErrorPage } from "./RouteErrorPage.tsx";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
   component: RouteErrorPage,

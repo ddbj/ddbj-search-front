@@ -1,3 +1,4 @@
+import type { QueryClient } from "@tanstack/react-query";
 import {
   createRootRouteWithContext,
   Outlet,
@@ -6,7 +7,6 @@ import {
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { isAppHttpError } from "@/fetch/utils/httpError.ts";
 import { RouteErrorPage } from "@/layout/RouteErrorPage.tsx";
-import type { QueryClient } from "@tanstack/react-query";
 
 export type RouterContext = {
   queryClient: QueryClient;

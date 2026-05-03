@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { __TEST__fetchTypeCount } from "@/fetch/count/fetchTypeCount.ts";
 import type { CountTypesRequestParams } from "@/api/count/types.ts";
+import { __TEST__fetchTypeCount } from "@/fetch/count/fetchTypeCount.ts";
 
 const { parseParams } = __TEST__fetchTypeCount;
 

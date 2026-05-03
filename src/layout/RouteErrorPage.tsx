@@ -1,10 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import clsx from "clsx";
+import type { FC } from "react";
+import type { BreadcrumbsPath } from "@/features/shared/Breadcrumbs.tsx";
 import { GlobalHeader } from "@/features/shared/GlobalHeader.tsx";
 import { isAppHttpError } from "@/fetch/utils/httpError.ts";
 import { useTitle } from "@/utils/useTitle.ts";
-import type { BreadcrumbsPath } from "@/features/shared/Breadcrumbs.tsx";
-import type { FC } from "react";
 
 type Props = {
   statusCode?: number;

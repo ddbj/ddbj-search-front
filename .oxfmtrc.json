@@ -3,5 +3,8 @@
   "ignorePatterns": [],
   "sortTailwindcss": {
     "functions": ["clsx"]
+  },
+  "sortImports": {
+    "newlinesBetween": false
   }
 }

@@ -1,11 +1,11 @@
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
+import type { ComponentProps } from "react";
 import { baseDetailRequestSchema } from "@/api/detail/base.ts";
 import { API_PATH_SRA_SAMPLE_LIST } from "@/api/paths.ts";
 import { fetchSraSampleDetail } from "@/fetch/detail/fetchSraSampleDetail.ts";
 import { SearchDetailLayout } from "@/layout/SearchDetailLayout.tsx";
 import { ensureDetailQueryData } from "@/utils/ensureDetailQueryData.ts";
-import type { ComponentProps } from "react";
 
 const makeQuery = (identifier: string) =>
   queryOptions({

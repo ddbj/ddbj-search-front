@@ -1,5 +1,5 @@
-import { ResultCard } from "./ResultCard.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { ResultCard } from "./ResultCard.tsx";
 
 const meta = {
   component: ResultCard,

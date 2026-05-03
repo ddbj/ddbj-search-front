@@ -1,5 +1,5 @@
-import { StarShineIcon } from "@/features/graphics/StarShineIcon.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { StarShineIcon } from "@/features/graphics/StarShineIcon.tsx";
 
 const meta = {
   component: StarShineIcon,

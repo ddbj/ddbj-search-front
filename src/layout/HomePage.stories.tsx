@@ -1,6 +1,6 @@
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect } from "storybook/test";
 import { HomePage } from "@/layout/HomePage.tsx";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
   component: HomePage,

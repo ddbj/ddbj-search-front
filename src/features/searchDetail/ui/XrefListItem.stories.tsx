@@ -1,5 +1,5 @@
-import { XrefListItem } from "./XrefListItem.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { XrefListItem } from "./XrefListItem.tsx";
 
 const meta = {
   component: XrefListItem,

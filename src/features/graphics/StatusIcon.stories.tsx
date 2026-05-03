@@ -1,5 +1,5 @@
-import { StatusIcon } from "@/features/graphics/StatusIcon.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { StatusIcon } from "@/features/graphics/StatusIcon.tsx";
 
 const meta = {
   component: StatusIcon,

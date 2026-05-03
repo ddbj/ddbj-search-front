@@ -1,10 +1,10 @@
 import { ListBox, Select } from "@heroui/react";
 import clsx from "clsx";
 import { type FC, type Key, type ReactNode, useEffect, useMemo, useState } from "react";
+import type { SortKey } from "@/api/consts.ts";
 import { ArrowDownRightIcon } from "@/features/graphics/ArrowDownRightIcon.tsx";
 import { ArrowUpRightIcon } from "@/features/graphics/ArrowUpRightIcon.tsx";
 import { StarShineIcon } from "@/features/graphics/StarShineIcon.tsx";
-import type { SortKey } from "@/api/consts.ts";
 import type { UpdateSearchFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 
 type Props = {

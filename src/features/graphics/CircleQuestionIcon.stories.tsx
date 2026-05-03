@@ -1,5 +1,5 @@
-import { CircleQuestionIcon } from "@/features/graphics/CircleQuestionIcon.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { CircleQuestionIcon } from "@/features/graphics/CircleQuestionIcon.tsx";
 
 const meta = {
   component: CircleQuestionIcon,

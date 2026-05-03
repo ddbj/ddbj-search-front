@@ -1,5 +1,5 @@
-import { CalendarIcon } from "@/features/graphics/CalendarIcon.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { CalendarIcon } from "@/features/graphics/CalendarIcon.tsx";
 
 const meta = {
   component: CalendarIcon,

@@ -1,6 +1,6 @@
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, fn } from "storybook/test";
 import { SearchBox } from "@/features/initialSearch/SearchBox.tsx";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
   component: SearchBox,

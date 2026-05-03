@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { parseBaseEntryParams } from "@/fetch/utils/parseBaseEntryParams.ts";
 import type { BaseEntryListRequestParams } from "@/api/entries/base.ts";
+import { parseBaseEntryParams } from "@/fetch/utils/parseBaseEntryParams.ts";
 
 const expectKeyNotExists = (
   result: BaseEntryListRequestParams,

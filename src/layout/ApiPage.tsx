@@ -1,7 +1,7 @@
 import { ApiReferenceReact } from "@scalar/api-reference-react";
+import type { FC } from "react";
 import { getDocs } from "@/api/openapi.ts";
 import { GlobalHeader } from "@/features/shared/GlobalHeader.tsx";
-import type { FC } from "react";
 
 type Props = {};
 const breadcrumbsPaths = [{ label: "API" }];

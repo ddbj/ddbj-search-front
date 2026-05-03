@@ -1,6 +1,6 @@
+import type { FC } from "react";
 import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
 import { sanitizeHTML } from "@/utils/sanitizeHTML.ts";
-import type { FC } from "react";
 
 type Props = {
   term: string;

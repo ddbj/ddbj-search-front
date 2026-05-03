@@ -1,8 +1,8 @@
+import type { EntryListResponse } from "@/api/entries/base.ts";
+import type { JgaDatasetListRequestParams } from "@/api/entries/jgaDataset.ts";
 import { API_PATH_JGA_DATASET_LIST } from "@/api/paths.ts";
 import { parseJsonResponse } from "@/fetch/utils/httpError.ts";
 import { parseBaseEntryParams } from "@/fetch/utils/parseBaseEntryParams.ts";
-import type { EntryListResponse } from "@/api/entries/base.ts";
-import type { JgaDatasetListRequestParams } from "@/api/entries/jgaDataset.ts";
 import type { JgaDatasetSearchParams } from "@/schema/search/jgaDataset.ts";
 
 export const fetchJgaDatasets = async (params: JgaDatasetSearchParams) => {

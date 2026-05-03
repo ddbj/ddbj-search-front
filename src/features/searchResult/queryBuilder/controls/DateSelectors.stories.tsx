@@ -1,6 +1,6 @@
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useEffect, useState } from "react";
 import { DateSelectors } from "@/features/searchResult/queryBuilder/controls/DateSelectors.tsx";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const StatefulDateSelectors = ({
   modified: initialModified,

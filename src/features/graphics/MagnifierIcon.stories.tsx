@@ -1,5 +1,5 @@
-import { MagnifierIcon } from "@/features/graphics/MagnifierIcon.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { MagnifierIcon } from "@/features/graphics/MagnifierIcon.tsx";
 
 const meta = {
   component: MagnifierIcon,

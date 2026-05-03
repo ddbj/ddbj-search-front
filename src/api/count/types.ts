@@ -1,9 +1,9 @@
+import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 import { z } from "zod";
 import { tags } from "@/api/consts.ts";
 import { allEntryListRequestParamsSchema } from "@/api/entries/all.ts";
 import { API_PATH_TYPE_COUNT, omitBaseApiPath } from "@/api/paths.ts";
 import { dbTypes } from "@/consts/db.ts";
-import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
 const countTypesResponseSchema = z.object({}).extend(
   Object.keys(dbTypes).reduce<Record<string, z.ZodNumber>>((acc, val) => {

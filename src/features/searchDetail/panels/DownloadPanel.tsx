@@ -1,7 +1,7 @@
+import type { FC } from "react";
+import type { SearchDetailResponse } from "@/api/types.ts";
 import { InfoList } from "@/features/searchDetail/ui/InfoList.tsx";
 import { PanelWrapper } from "@/features/searchDetail/ui/PanelWrapper.tsx";
-import type { SearchDetailResponse } from "@/api/types.ts";
-import type { FC } from "react";
 
 type Props = {
   className?: string;

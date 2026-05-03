@@ -1,5 +1,5 @@
-import { ApiIcon } from "@/features/graphics/ApiIcon.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { ApiIcon } from "@/features/graphics/ApiIcon.tsx";
 
 const meta = {
   component: ApiIcon,

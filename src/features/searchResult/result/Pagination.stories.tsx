@@ -1,5 +1,5 @@
-import { Pagination } from "./Pagination.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Pagination } from "./Pagination.tsx";
 
 const meta = {
   component: Pagination,

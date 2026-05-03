@@ -1,5 +1,5 @@
-import { GlobalHeader } from "./GlobalHeader.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { GlobalHeader } from "./GlobalHeader.tsx";
 
 const meta = {
   component: GlobalHeader,

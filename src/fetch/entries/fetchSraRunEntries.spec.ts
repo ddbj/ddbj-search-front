@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { __TEST__fetchSraRunEntries } from "@/fetch/entries/fetchSraRunEntries.ts";
 import type { SraRunListRequestParams } from "@/api/entries/sraRun.ts";
+import { __TEST__fetchSraRunEntries } from "@/fetch/entries/fetchSraRunEntries.ts";
 
 const { parseParams } = __TEST__fetchSraRunEntries;
 

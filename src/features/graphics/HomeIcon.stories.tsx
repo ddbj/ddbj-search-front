@@ -1,5 +1,5 @@
-import { HomeIcon } from "@/features/graphics/HomeIcon.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { HomeIcon } from "@/features/graphics/HomeIcon.tsx";
 
 const meta = {
   component: HomeIcon,

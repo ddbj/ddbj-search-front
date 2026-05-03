@@ -1,5 +1,5 @@
-import { PanelWrapper } from "./PanelWrapper.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { PanelWrapper } from "./PanelWrapper.tsx";
 
 const meta = {
   component: PanelWrapper,

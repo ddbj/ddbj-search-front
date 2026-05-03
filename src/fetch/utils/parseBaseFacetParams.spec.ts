@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { parseBaseFacetParams } from "@/fetch/utils/parseBaseFacetParams.ts";
 import type { AllFacetListRequestParams } from "@/api/facets/all.ts";
+import { parseBaseFacetParams } from "@/fetch/utils/parseBaseFacetParams.ts";
 
 const expectKeyNotExists = (
   result: AllFacetListRequestParams,

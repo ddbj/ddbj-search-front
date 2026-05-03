@@ -1,8 +1,8 @@
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { __TEST_updateFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 import { QueryTipList } from "@/features/searchResult/result/QueryTipList.tsx";
 import type { AnySearchParams, AnySearchParamsKey } from "@/schema/search/any.ts";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const { removeFromSearch } = __TEST_updateFunctions;
 const meta = {

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { __TEST__fetchJgaDacEntries } from "@/fetch/entries/fetchJgaDacEntries.ts";
 import type { JgaDacListRequestParams } from "@/api/entries/jgaDac.ts";
+import { __TEST__fetchJgaDacEntries } from "@/fetch/entries/fetchJgaDacEntries.ts";
 
 const { parseParams } = __TEST__fetchJgaDacEntries;
 

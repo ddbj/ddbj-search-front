@@ -1,9 +1,9 @@
-import { API_PATH_BIOPROJECT_FACET_LIST } from "@/api/paths.ts";
-import { parseBaseFacetParams } from "@/fetch/utils/parseBaseFacetParams.ts";
 import type {
   BioProjectFacetListRequestParams,
   BioProjectFacetListResponse,
 } from "@/api/facets/bioProject.ts";
+import { API_PATH_BIOPROJECT_FACET_LIST } from "@/api/paths.ts";
+import { parseBaseFacetParams } from "@/fetch/utils/parseBaseFacetParams.ts";
 import type { BioprojectSearchParams } from "@/schema/search/bioProject.ts";
 
 export const fetchBioProjectFacets = async (params: BioprojectSearchParams) => {

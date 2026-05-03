@@ -1,8 +1,8 @@
+import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 import { z } from "zod";
 import { tags } from "@/api/consts.ts";
 import { baseEntryListRequestParamsSchema, entryListResponseSchema } from "@/api/entries/base.ts";
 import { API_PATH_ALL_ENTRIES_LIST, omitBaseApiPath } from "@/api/paths.ts";
-import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
 export const allEntryListRequestParamsShape = {
   types: z

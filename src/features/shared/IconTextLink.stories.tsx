@@ -1,6 +1,6 @@
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { HomeIcon } from "@/features/graphics/HomeIcon.tsx";
 import { IconTextLink } from "./IconTextLink.tsx";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
   component: IconTextLink,

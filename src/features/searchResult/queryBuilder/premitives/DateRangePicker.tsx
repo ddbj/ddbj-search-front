@@ -6,9 +6,9 @@ import {
   RangeCalendar,
 } from "@heroui/react";
 import { parseDate } from "@internationalized/date";
+import clsx from "clsx";
 import { type FC } from "react";
 import { CalendarIcon } from "@/features/graphics/CalendarIcon.tsx";
-import clsx from "clsx";
 
 type Props = {
   label: string;

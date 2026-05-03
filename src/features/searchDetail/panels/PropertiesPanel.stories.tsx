@@ -1,7 +1,7 @@
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { bioproject1 } from "@/msw/data/bioproject1.ts";
 import { bioproject2 } from "@/msw/data/bioproject2.ts";
 import { PropertiesPanel } from "./PropertiesPanel.tsx";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const largeProperties = Object.fromEntries(
   Array.from({ length: 10_050 }, (_, index) => [

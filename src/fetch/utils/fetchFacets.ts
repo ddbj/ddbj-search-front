@@ -1,3 +1,4 @@
+import type { FacetListResponse } from "@/api/types.ts";
 import { type DBType, dbTypes } from "@/consts/db.ts";
 import { fetchAllFacets } from "@/fetch/facets/fetchAllFacets.ts";
 import { fetchBioProjectFacets } from "@/fetch/facets/fetchBioProjectFacets.ts";
@@ -12,7 +13,6 @@ import { fetchSraRunFacets } from "@/fetch/facets/fetchSraRunFacets.ts";
 import { fetchSraSampleFacets } from "@/fetch/facets/fetchSraSampleFacets.ts";
 import { fetchSraStudyFacets } from "@/fetch/facets/fetchSraStudyFacets.ts";
 import { fetchSraSubmissionFacets } from "@/fetch/facets/fetchSraSubmissionFacets.ts";
-import type { FacetListResponse } from "@/api/types.ts";
 import type { AllSearchParams } from "@/schema/search/all.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
 import type { BioprojectSearchParams } from "@/schema/search/bioProject.ts";

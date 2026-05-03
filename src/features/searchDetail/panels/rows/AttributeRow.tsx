@@ -1,6 +1,6 @@
-import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
-import type { Attribute } from "@/api/detail/bioSample.ts";
 import type { FC } from "react";
+import type { Attribute } from "@/api/detail/bioSample.ts";
+import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
 
 type Props = { attributes: Attribute[] | null };
 

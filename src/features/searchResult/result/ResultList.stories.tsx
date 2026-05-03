@@ -1,5 +1,5 @@
-import { ResultList } from "./ResultList.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { ResultList } from "./ResultList.tsx";
 
 const meta = {
   component: ResultList,

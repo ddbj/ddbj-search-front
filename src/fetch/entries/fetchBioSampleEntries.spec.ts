@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { __TEST__fetchBioSampleEntries } from "@/fetch/entries/fetchBioSampleEntries.ts";
 import type { BiosampleListRequestParams } from "@/api/entries/bioSample.ts";
+import { __TEST__fetchBioSampleEntries } from "@/fetch/entries/fetchBioSampleEntries.ts";
 
 const { parseParams } = __TEST__fetchBioSampleEntries;
 

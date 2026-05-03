@@ -1,7 +1,7 @@
-import { expect } from "storybook/test";
-import { type ComponentProps, useEffect, useState } from "react";
-import { CheckboxText } from "./CheckboxText.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { type ComponentProps, useEffect, useState } from "react";
+import { expect } from "storybook/test";
+import { CheckboxText } from "./CheckboxText.tsx";
 
 const StatefulCheckboxText = ({
   isSelected = false,

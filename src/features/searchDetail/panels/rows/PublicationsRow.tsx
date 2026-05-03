@@ -1,7 +1,7 @@
+import type { FC } from "react";
+import type { Publication } from "@/api/detail/bioProject.ts";
 import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
 import { sanitizeHTML } from "@/utils/sanitizeHTML.ts";
-import type { Publication } from "@/api/detail/bioProject.ts";
-import type { FC } from "react";
 
 type Props = { publications: Publication[] | null };
 

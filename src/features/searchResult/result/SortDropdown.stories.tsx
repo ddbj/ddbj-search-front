@@ -1,6 +1,6 @@
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, fn, screen, within } from "storybook/test";
 import { SortDropdown } from "@/features/searchResult/result/SortDropdown.tsx";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const mockChangeSort = fn();
 

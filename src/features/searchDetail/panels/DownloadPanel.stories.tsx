@@ -1,7 +1,7 @@
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { bioproject1 } from "@/msw/data/bioproject1.ts";
 import { sraSample1 } from "@/msw/data/sraSample1.ts";
 import { DownloadPanel } from "./DownloadPanel.tsx";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
   component: DownloadPanel,

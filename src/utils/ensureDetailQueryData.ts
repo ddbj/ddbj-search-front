@@ -1,6 +1,6 @@
+import type { EnsureQueryDataOptions, QueryClient, QueryKey } from "@tanstack/react-query";
 import { notFound } from "@tanstack/react-router";
 import { isAppHttpError } from "@/fetch/utils/httpError.ts";
-import type { EnsureQueryDataOptions, QueryClient, QueryKey } from "@tanstack/react-query";
 
 export const ensureDetailQueryData = async <
   TQueryFnData,

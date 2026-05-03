@@ -1,6 +1,6 @@
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { bioproject1 } from "@/msw/data/bioproject1.ts";
 import { InfoPanel } from "./InfoPanel.tsx";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
   component: InfoPanel,

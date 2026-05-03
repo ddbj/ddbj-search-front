@@ -1,6 +1,6 @@
+import type { EntryListResponse } from "@/api/entries/base.ts";
 import { formatToDateStr } from "@/utils/dateTime.ts";
 import { getEntryTitle } from "@/utils/getEntryTitle.ts";
-import type { EntryListResponse } from "@/api/entries/base.ts";
 import type { ResultCardProps } from "./ResultCard.tsx";
 
 export const parseResultCardProps = (res: EntryListResponse["items"][0]): ResultCardProps => {

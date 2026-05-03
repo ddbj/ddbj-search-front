@@ -1,7 +1,7 @@
 import { http, HttpResponse } from "msw";
+import type { BaseDetailRequestParams } from "@/api/detail/base.ts";
 import { addIdentifierToPath, API_PATH_SRA_STUDY_LIST } from "@/api/paths.ts";
 import { resolveDetailFailureResponse } from "@/msw/handlers/detail/detailFailure.ts";
-import type { BaseDetailRequestParams } from "@/api/detail/base.ts";
 
 const path = addIdentifierToPath(API_PATH_SRA_STUDY_LIST, "MSW");
 

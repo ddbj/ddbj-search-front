@@ -1,6 +1,6 @@
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { InfoList } from "@/features/searchDetail/ui/InfoList.tsx";
 import { InfoListItem } from "./InfoListItem.tsx";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
   component: InfoListItem,

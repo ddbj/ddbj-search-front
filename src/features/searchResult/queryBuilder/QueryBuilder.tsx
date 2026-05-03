@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { type FC, useMemo } from "react";
 import { isBioProjectFacetListResponse } from "@/api/facets/bioProject.ts";
+import type { FacetListResponse } from "@/api/types.ts";
 import { type DBType } from "@/consts/db.ts";
 import { Grant } from "@/features/searchResult/queryBuilder/controls/bioproject/Grant.tsx";
 import { Organization } from "@/features/searchResult/queryBuilder/controls/bioproject/Organization.tsx";
@@ -9,14 +10,13 @@ import { Umbrella } from "@/features/searchResult/queryBuilder/controls/bioproje
 import { DateSelectors } from "@/features/searchResult/queryBuilder/controls/DateSelectors.tsx";
 import { KeywordInput } from "@/features/searchResult/queryBuilder/controls/KeywordInput.tsx";
 import { OtherTypeSelector } from "@/features/searchResult/queryBuilder/controls/OtherTypeSelector.tsx";
+import type { UpdateSearchFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 import { fetchFacets } from "@/fetch/utils/fetchFacets.ts";
+import type { AnySearchParams } from "@/schema/search/any.ts";
 import { type BaseSearchParams, isBaseSearchKey } from "@/schema/search/base.ts";
 import { isBioprojectSearchParams } from "@/schema/search/bioProject.ts";
-import { TypeSelector } from "./controls/TypeSelector.tsx";
-import type { FacetListResponse } from "@/api/types.ts";
-import type { UpdateSearchFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
-import type { AnySearchParams } from "@/schema/search/any.ts";
 import type { SearchParams } from "@/schema/search/types.ts";
+import { TypeSelector } from "./controls/TypeSelector.tsx";
 
 type Props = {
   currentType: DBType | null;

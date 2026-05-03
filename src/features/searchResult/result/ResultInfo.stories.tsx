@@ -1,10 +1,10 @@
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { expect, fn, within } from "storybook/test";
-import { __TEST_updateFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
-import { ResultInfo } from "./ResultInfo.tsx";
-import type { AnySearchParams, AnySearchParamsKey } from "@/schema/search/any.ts";
 import type { SortKey } from "@/api/consts.ts";
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import { __TEST_updateFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
+import type { AnySearchParams, AnySearchParamsKey } from "@/schema/search/any.ts";
+import { ResultInfo } from "./ResultInfo.tsx";
 
 const { removeFromSearch } = __TEST_updateFunctions;
 const mockChangeSort = fn();

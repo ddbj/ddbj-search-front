@@ -1,7 +1,7 @@
+import type { FC } from "react";
 import { LabeledInput } from "@/components/heroui/LabeledInput.tsx";
 import { useDebouncedUiValue } from "@/features/searchResult/queryBuilder/hooks/useDebouncedUiValue.ts";
 import { TextInput } from "@/features/searchResult/queryBuilder/premitives/TextInput.tsx";
-import type { FC } from "react";
 
 type Props = {
   value: string;

@@ -1,6 +1,6 @@
 import { Input } from "@heroui/react";
-import type { FC } from "react";
 import { clsx } from "clsx";
+import type { FC } from "react";
 
 type Props = {
   placeholder?: string;

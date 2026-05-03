@@ -1,3 +1,4 @@
+import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 import { z } from "zod";
 import { tags } from "@/api/consts.ts";
 import { sraSubmissionListRequestParamsShape } from "@/api/entries/sraSubmission.ts";
@@ -6,7 +7,6 @@ import {
   baseFacetListResponseSchema,
 } from "@/api/facets/base.ts";
 import { API_PATH_SRA_SUBMISSION_FACET_LIST, omitBaseApiPath } from "@/api/paths.ts";
-import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 
 const sraSubmissionFacetListRequestParamsSchema = baseFacetListRequestParamsSchema.extend({
   ...sraSubmissionListRequestParamsShape,

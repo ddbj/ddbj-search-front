@@ -1,8 +1,8 @@
 import { type FC, useEffect, useState } from "react";
 import { useDebounceValue } from "usehooks-ts";
+import type { UpdateSearchFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 import { CheckboxText } from "@/features/searchResult/queryBuilder/premitives/CheckboxText.tsx";
 import { formatNumber } from "@/utils/formatNumber.ts";
-import type { UpdateSearchFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 
 type Props = {
   value: boolean;

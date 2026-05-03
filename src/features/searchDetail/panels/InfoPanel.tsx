@@ -1,10 +1,14 @@
+import type { FC } from "react";
+import type { SearchDetailResponse } from "@/api/types.ts";
 import { AttributeRow } from "@/features/searchDetail/panels/rows/AttributeRow.tsx";
 import { ExternalLinksRow } from "@/features/searchDetail/panels/rows/ExternalLinksRow.tsx";
 import { GrantsRow } from "@/features/searchDetail/panels/rows/GrantsRow.tsx";
 import { OrganismRow } from "@/features/searchDetail/panels/rows/OrganismRow.tsx";
 import { OrganizationsRow } from "@/features/searchDetail/panels/rows/OrganizationsRow.tsx";
+import { PropertiesRow } from "@/features/searchDetail/panels/rows/PropertiesRow.tsx";
 import { PublicationsRow } from "@/features/searchDetail/panels/rows/PublicationsRow.tsx";
 import { SameAsRow } from "@/features/searchDetail/panels/rows/SameAsRow.tsx";
+import { SanitizedRow } from "@/features/searchDetail/panels/rows/SanitizedRow.tsx";
 import {
   getAttributes,
   getExternalLinks,
@@ -13,11 +17,8 @@ import {
   getPublications,
   getSameAs,
 } from "@/features/searchDetail/panels/searchDetailRowSelectors.ts";
-import { SanitizedRow } from "@/features/searchDetail/panels/rows/SanitizedRow.tsx";
 import { InfoList } from "@/features/searchDetail/ui/InfoList.tsx";
 import { PanelWrapper } from "@/features/searchDetail/ui/PanelWrapper.tsx";
-import type { SearchDetailResponse } from "@/api/types.ts";
-import type { FC } from "react";
 
 type Props = { data: SearchDetailResponse };
 
@@ -39,6 +40,7 @@ export const InfoPanel: FC<Props> = ({ data }) => {
         <ExternalLinksRow externalLinks={getExternalLinks(data)} />
         <SameAsRow sameAs={getSameAs(data)} />
         <AttributeRow attributes={getAttributes(data)} />
+        <PropertiesRow />
       </InfoList>
     </PanelWrapper>
   );

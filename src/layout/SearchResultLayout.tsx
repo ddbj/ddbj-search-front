@@ -1,5 +1,7 @@
 import { type FC, useMemo } from "react";
+import type { EntryListResponse } from "@/api/entries/base.ts";
 import { dbLabels, type DBType } from "@/consts/db.ts";
+import type { UpdateSearchFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 import { QueryBuilder } from "@/features/searchResult/queryBuilder/QueryBuilder.tsx";
 import { Pagination } from "@/features/searchResult/result/Pagination.tsx";
 import { parseResultCardProps } from "@/features/searchResult/result/resultCardUtils.ts";
@@ -7,8 +9,6 @@ import { ResultInfo } from "@/features/searchResult/result/ResultInfo.tsx";
 import { ResultList } from "@/features/searchResult/result/ResultList.tsx";
 import { type BreadcrumbsPath } from "@/features/shared/Breadcrumbs.tsx";
 import { GlobalHeader } from "@/features/shared/GlobalHeader.tsx";
-import type { EntryListResponse } from "@/api/entries/base.ts";
-import type { UpdateSearchFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
 
 type Props = {

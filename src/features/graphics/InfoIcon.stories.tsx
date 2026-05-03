@@ -1,5 +1,5 @@
-import { InfoIcon } from "@/features/graphics/InfoIcon.tsx";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { InfoIcon } from "@/features/graphics/InfoIcon.tsx";
 
 const meta = {
   component: InfoIcon,
