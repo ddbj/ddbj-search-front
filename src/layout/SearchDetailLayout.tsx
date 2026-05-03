@@ -3,7 +3,6 @@ import type { SearchDetailResponse } from "@/api/types.ts";
 import { dbLabels, type DBType } from "@/consts/db.ts";
 import { DownloadPanel } from "@/features/searchDetail/panels/DownloadPanel.tsx";
 import { InfoPanel } from "@/features/searchDetail/panels/InfoPanel.tsx";
-import { PropertiesPanel } from "@/features/searchDetail/panels/PropertiesPanel.tsx";
 import { StatusPanel } from "@/features/searchDetail/panels/StatusPanel.tsx";
 import { UmbrellaProjectsPanel } from "@/features/searchDetail/panels/UmbrellaProjectsPanel.tsx";
 import { getUmbrellaProjectsProps } from "@/features/searchDetail/panels/umbrellaProjectsPanelUtils.ts";

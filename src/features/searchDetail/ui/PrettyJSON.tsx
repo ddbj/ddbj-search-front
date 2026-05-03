@@ -8,14 +8,21 @@ import { SquareMinusIcon } from "@/features/graphics/SquareMinusIcon.tsx";
 import { SquarePlusIcon } from "@/features/graphics/SquarePlusIcon.tsx";
 
 SyntaxHighlighter.registerLanguage("json", json);
-type Props = { code: string; useHighlighter?: boolean; forceExpand?: boolean };
+type Props = { code: string; forceExpand?: boolean; maxLinesForHighlighter?: number };
 
 const initialHeight = "11rem";
+const DEFAULT_MAX_LINES_FOR_HIGHLIGHTER = 10_000;
 
-export const PrettyJSON: FC<Props> = ({ code, useHighlighter = true, forceExpand = false }) => {
+export const PrettyJSON: FC<Props> = ({
+  code,
+  forceExpand = false,
+  maxLinesForHighlighter = DEFAULT_MAX_LINES_FOR_HIGHLIGHTER,
+}) => {
   const [isExpanded, setIsExpanded] = useState(forceExpand);
   const [showExpand, setShowExpand] = useState(false);
   const [rowHeight, setRowHeight] = useState(initialHeight);
+  const lineLength = code.match(/\n/g)?.length ?? 0;
+  const useHighlighter = lineLength <= maxLinesForHighlighter;
   const classNames = clsx("relative grid w-full overflow-hidden transition-all duration-500");
   const ref = useRef(null);
   const PreWithRef: FC = (preProps) => (
