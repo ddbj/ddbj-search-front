@@ -22,7 +22,7 @@ export const entryListItemResponseSchema = z.object({
 });
 export type EntryListItemResponse = z.infer<typeof entryListItemResponseSchema>;
 
-export const paginationResponseSchema = z.object({
+const paginationResponseSchema = z.object({
   page: z.number().int().min(1).openapi({ example: 1 }),
   perPage: z.number().int().min(1).max(100).openapi({ example: 10 }),
   total: z.number().int().min(0).openapi({ example: 10000 }),

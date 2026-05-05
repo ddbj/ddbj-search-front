@@ -8,7 +8,7 @@ import {
 } from "@/api/facets/base.ts";
 import { API_PATH_ALL_FACET_LIST, omitBaseApiPath } from "@/api/paths.ts";
 
-export const allFacetListRequestParamsSchema = baseFacetListRequestParamsSchema.extend({
+const allFacetListRequestParamsSchema = baseFacetListRequestParamsSchema.extend({
   // add allFacetSpecificFields here
   ...allEntryListRequestParamsShape,
 });
