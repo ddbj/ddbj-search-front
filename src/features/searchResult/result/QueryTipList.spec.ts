@@ -63,17 +63,4 @@ describe("parseQueryStateToTipList", () => {
     expect(result.length).toBe(0);
   });
 
-  it("", () => {
-    const state: AnySearchParams = {};
-    state.umbrella = true;
-    const result = parseQueryStateToTipList(state);
-    expect(result.length).toBe(1);
-    expect(result[0].data.value).toBe("true");
-  });
-  it("", () => {
-    const state: AnySearchParams = {};
-    state.umbrella = false;
-    const result = parseQueryStateToTipList(state);
-    expect(result.length).toBe(0);
-  });
 });

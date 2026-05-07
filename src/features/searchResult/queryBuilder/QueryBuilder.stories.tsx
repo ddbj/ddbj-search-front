@@ -21,7 +21,6 @@ const bioProjectParams: AnySearchParams = {
   organization: "NCBI",
   publication: "Nature",
   grant: "NSF",
-  umbrella: true,
   datePublishedFrom: "2024-01-01",
   datePublishedTo: "2024-01-31",
   dateModifiedFrom: "2024-02-01",
@@ -84,9 +83,6 @@ export const BioProject = {
     </QueryClientProvider>
   ),
   play: async ({ canvas }) => {
-    await expect(
-      await canvas.findByRole("checkbox", { name: "Umbrella Project (12)" }),
-    ).toBeInTheDocument();
     await expect(await canvas.findByRole("textbox", { name: "Organization" })).toHaveValue("NCBI");
     await expect(await canvas.findByRole("textbox", { name: "Publication" })).toHaveValue("Nature");
     await expect(await canvas.findByRole("textbox", { name: "Grant" })).toHaveValue("NSF");

@@ -6,7 +6,6 @@ import { type DBType } from "@/consts/db.ts";
 import { Grant } from "@/features/searchResult/queryBuilder/controls/bioproject/Grant.tsx";
 import { Organization } from "@/features/searchResult/queryBuilder/controls/bioproject/Organization.tsx";
 import { Publication } from "@/features/searchResult/queryBuilder/controls/bioproject/Publication.tsx";
-import { Umbrella } from "@/features/searchResult/queryBuilder/controls/bioproject/Umbrella.tsx";
 import { DateSelectors } from "@/features/searchResult/queryBuilder/controls/DateSelectors.tsx";
 import { KeywordInput } from "@/features/searchResult/queryBuilder/controls/KeywordInput.tsx";
 import { OtherTypeSelector } from "@/features/searchResult/queryBuilder/controls/OtherTypeSelector.tsx";
@@ -80,20 +79,15 @@ const BioProjectQueries = ({
   facetData: FacetListResponse | undefined;
   params: SearchParams;
 }) => {
-  const { changeUmbrella, changeOrganization, changePublication, changeGrant } = useMemo(
+  const { changeOrganization, changePublication, changeGrant } = useMemo(
     () => update,
     [update],
   );
-  console.log(isBioProjectFacetListResponse(facetData), isBioprojectSearchParams(params));
   if (!isBioProjectFacetListResponse(facetData)) return <></>;
   if (!isBioprojectSearchParams(params)) return <></>;
-  const { umbrella, organization, publication, grant } = params;
-  // console.log(facetData);
-  const count =
-    facetData?.facets?.objectType?.find((v) => v.value === "UmbrellaBioProject")?.count || 0;
+  const { organization, publication, grant } = params;
   return (
     <>
-      <Umbrella value={umbrella ?? false} update={changeUmbrella} count={count} />
       <Organization value={organization ?? ""} update={changeOrganization} />
       <Publication value={publication ?? ""} update={changePublication} />
       <Grant value={grant ?? ""} update={changeGrant} />

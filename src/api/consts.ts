@@ -2,6 +2,8 @@ import { z } from "zod";
 
 export const booleanStrings = ["true", "false"] as const;
 export type BooleanString = (typeof booleanStrings)[number];
+export const bioProjectObjectTypeValues = ["BioProject", "UmbrellaBioProject"] as const;
+export type BioProjectObjectType = (typeof bioProjectObjectTypeValues)[number];
 export const tags = {
   searchResultList: "search result list",
   searchResultDetail: "search result detail",

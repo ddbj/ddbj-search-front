@@ -76,7 +76,6 @@ const parseQueryStateToTipList = (state: AnySearchParams): QueryTipProps[] => {
     "Publication",
   );
   const grant = parseSingleStringToQueryTipProps(state.grant, "grant", "Grant");
-  const umbrella = parseSingleBooleanToQueryTipProps(state.umbrella, "umbrella", "Umbrella");
 
   const result: QueryTipProps[] = [
     ...keywords,
@@ -85,7 +84,6 @@ const parseQueryStateToTipList = (state: AnySearchParams): QueryTipProps[] => {
     ...organization,
     ...publication,
     ...grant,
-    ...umbrella,
   ];
 
   return result;
@@ -118,20 +116,6 @@ const parseSingleStringToQueryTipProps = (
     .map((value) => {
       const data = { name: dataName, value };
       const label = { name: labelName, value };
-      return { data, label };
-    });
-};
-
-const parseSingleBooleanToQueryTipProps = (
-  stateValue: boolean | undefined,
-  dataName: AnySearchParamsKey,
-  labelName: string,
-): QueryTipProps[] => {
-  return [stateValue]
-    .filter((v) => v)
-    .map(() => {
-      const data = { name: dataName, value: "true" };
-      const label = { name: labelName, value: "true" };
       return { data, label };
     });
 };

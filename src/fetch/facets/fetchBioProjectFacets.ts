@@ -29,8 +29,8 @@ const parseParams = (params: BioprojectSearchParams): BioProjectFacetListRequest
   if (params.grant) {
     result.grant = params.grant;
   }
-  if (params.umbrella !== undefined) {
-    result.umbrella = params.umbrella ? "true" : "false";
+  if (params.objectTypes && params.objectTypes.length) {
+    result.objectTypes = params.objectTypes.join(",");
   }
   return result;
 };

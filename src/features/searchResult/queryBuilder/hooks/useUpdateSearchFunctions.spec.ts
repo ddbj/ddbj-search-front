@@ -10,7 +10,6 @@ const {
   composeDBTypes,
   composeDateModified,
   composeDatePublished,
-  composeUmbrella,
   composeOrganization,
   composePublication,
   composeGrant,
@@ -372,64 +371,6 @@ describe("composeDatePublished", () => {
       page: 2,
     };
     const result = composeDatePublished(prev, "");
-    const expected: AnySearchParams = {
-      types: [dbTypes.bioproject],
-      page: 2,
-    };
-    expect(result).toEqual(expected);
-  });
-});
-
-describe("composeUmbrella", () => {
-  it("should add umbrella when none is present", () => {
-    const prev: AnySearchParams = { types: [dbTypes.bioproject] };
-    const result = composeUmbrella(prev, true);
-    const expected: AnySearchParams = {
-      types: [dbTypes.bioproject],
-      umbrella: true,
-    };
-    expect(result).toEqual(expected);
-  });
-  it("should remove umbrella the input is false", () => {
-    const prev: AnySearchParams = {
-      types: [dbTypes.bioproject],
-      umbrella: true,
-    };
-    const result = composeUmbrella(prev, false);
-    const expected: AnySearchParams = {
-      types: [dbTypes.bioproject],
-    };
-    expect(result).toEqual(expected);
-  });
-  it("should reset the page number when umbrella is changed", () => {
-    const prev: AnySearchParams = { types: [dbTypes.bioproject], page: 2 };
-    const result = composeUmbrella(prev, true);
-    const expected: AnySearchParams = {
-      types: [dbTypes.bioproject],
-      umbrella: true,
-    };
-    expect(result).toEqual(expected);
-  });
-  it("should preserve the page number when umbrella is not changed", () => {
-    const prev: AnySearchParams = {
-      types: [dbTypes.bioproject],
-      page: 2,
-      umbrella: true,
-    };
-    const result = composeUmbrella(prev, true);
-    const expected: AnySearchParams = {
-      types: [dbTypes.bioproject],
-      page: 2,
-      umbrella: true,
-    };
-    expect(result).toEqual(expected);
-  });
-  it("should preserve the page number when umbrella remains false", () => {
-    const prev: AnySearchParams = {
-      types: [dbTypes.bioproject],
-      page: 2,
-    };
-    const result = composeUmbrella(prev, false);
     const expected: AnySearchParams = {
       types: [dbTypes.bioproject],
       page: 2,

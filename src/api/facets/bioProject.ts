@@ -1,11 +1,10 @@
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 import { z } from "zod";
-import { tags } from "@/api/consts.ts";
+import { bioProjectObjectTypeValues, tags } from "@/api/consts.ts";
 import { bioProjectListRequestParamsShape } from "@/api/entries/bioProject.ts";
 import {
   baseFacetListRequestParamsSchema,
   baseFacetListResponseSchema,
-  facetListShape,
 } from "@/api/facets/base.ts";
 import { API_PATH_BIOPROJECT_FACET_LIST, omitBaseApiPath } from "@/api/paths.ts";
 
@@ -16,9 +15,18 @@ export type BioProjectFacetListRequestParams = z.infer<
   typeof bioProjectFacetListRequestParamsSchema
 >;
 
+const bioProjectObjectTypeFacetListShape = z
+  .array(
+    z.object({
+      value: z.enum(bioProjectObjectTypeValues),
+      count: z.number().int(),
+    }),
+  )
+  .nullable();
+
 const bioProjectFacetListResponseSchema = baseFacetListResponseSchema.extend({
   facets: baseFacetListResponseSchema.shape.facets.extend({
-    objectType: facetListShape,
+    objectType: bioProjectObjectTypeFacetListShape,
   }),
 });
 export type BioProjectFacetListResponse = z.infer<typeof bioProjectFacetListResponseSchema>;

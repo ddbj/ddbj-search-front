@@ -16,7 +16,6 @@ export type UpdateSearchFunctions<TSearch extends AnySearchParams = AnySearchPar
   setDBTypes: (v: DBType[]) => void;
   changeDateModifiedRange: (v: string) => void;
   changeDatePublishedRange: (v: string) => void;
-  changeUmbrella: (v: boolean) => void;
   changeOrganization: (v: string) => void;
   changePublication: (v: string) => void;
   changeGrant: (v: string) => void;
@@ -55,9 +54,6 @@ export const useUpdateSearchFunctions = <TSearch extends AnySearchParams>(
       },
       changeDatePublishedRange: (v: string) => {
         navigate({ search: (prev: TSearch) => composeDatePublished(prev, v) as TSearch, replace });
-      },
-      changeUmbrella: (v: boolean) => {
-        navigate({ search: (prev: TSearch) => composeUmbrella(prev, v) as TSearch, replace });
       },
       changeOrganization: (v: string) => {
         navigate({ search: (prev: TSearch) => composeOrganization(prev, v) as TSearch, replace });
@@ -145,11 +141,6 @@ const composeDatePublished = (params: P, value: string): P => {
   // otherwise returns updated without page
   return { ...rest, datePublishedFrom: from, datePublishedTo: to };
 };
-const composeUmbrella = (params: P, value: boolean): P => {
-  if ((params.umbrella ?? false) === value) return params;
-  const { umbrella: prev, page, ...rest } = params;
-  return value ? { ...rest, umbrella: value } : rest;
-};
 const composeOrganization = (params: P, value: string) => {
   if ((params.organization ?? "") === value) return params;
   const { organization: prev, page, ...rest } = params;
@@ -174,7 +165,6 @@ export const __SB_updateFunctions: UpdateSearchFunctions = {
   setDBTypes: (_v: DBType[]) => {},
   changeDateModifiedRange: (_v: string) => {},
   changeDatePublishedRange: (_v: string) => {},
-  changeUmbrella: (_v: boolean) => {},
   changeOrganization: (_v: string) => {},
   changePublication: (_v: string) => {},
   changeGrant: (_v: string) => {},
@@ -188,7 +178,6 @@ export const __TEST_updateFunctions = {
   composeDBTypes,
   composeDateModified,
   composeDatePublished,
-  composeUmbrella,
   composeOrganization,
   composePublication,
   composeGrant,

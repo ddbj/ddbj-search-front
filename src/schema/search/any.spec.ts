@@ -18,6 +18,14 @@ describe("isAnySearchParamsKey", () => {
     expect(result).toBe(true);
   });
   it("", () => {
+    const result = isAnySearchParamsKey("objectTypes");
+    expect(result).toBe(true);
+  });
+  it("", () => {
+    const result = isAnySearchParamsKey("umbrella");
+    expect(result).toBe(false);
+  });
+  it("", () => {
     const result = isAnySearchParamsKey("price");
     expect(result).toBe(false);
   });

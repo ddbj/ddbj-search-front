@@ -9,7 +9,7 @@ describe("parseParams", () => {
     expect(result.organization).toBeUndefined();
     expect(result.publication).toBeUndefined();
     expect(result.grant).toBeUndefined();
-    expect(result.umbrella).toBeUndefined();
+    expect(result.objectTypes).toBeUndefined();
   });
 
   it("includes organization when provided", () => {
@@ -27,14 +27,14 @@ describe("parseParams", () => {
     expect(result.grant).toBe("test grant");
   });
 
-  it("serializes umbrella=true as 'true'", () => {
-    const result = parseParams({ umbrella: true });
-    expect(result.umbrella).toBe("true");
+  it("serializes a single objectType", () => {
+    const result = parseParams({ objectTypes: ["BioProject"] });
+    expect(result.objectTypes).toBe("BioProject");
   });
 
-  it("serializes umbrella=false as 'false'", () => {
-    const result = parseParams({ umbrella: false });
-    expect(result.umbrella).toBe("false");
+  it("serializes multiple objectTypes as a comma-separated string", () => {
+    const result = parseParams({ objectTypes: ["BioProject", "UmbrellaBioProject"] });
+    expect(result.objectTypes).toBe("BioProject,UmbrellaBioProject");
   });
 
   it("serializes keywords array as a comma-separated string", () => {
