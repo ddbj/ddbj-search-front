@@ -54,6 +54,12 @@
 - Scalar
 - Zod to OpenAPI
 
+## 外部API参考資料
+
+- [DDBJ Search API behavior spec](https://github.com/ddbj/ddbj-search-api/blob/main/docs/api-spec.md)
+- [DDBJ Search staging API docs](https://ddbj-staging.nig.ac.jp/search/api/docs)
+- このリポジトリ内のAPIドキュメントは、ローカル起動時の `/search/api-doc/` で確認する
+
 ## 関連ドキュメント
 
 - [docs/development-guide.md](./development-guide.md): 日常開発の手順、検証方針、完了条件
