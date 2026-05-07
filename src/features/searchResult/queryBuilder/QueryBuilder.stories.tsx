@@ -32,7 +32,10 @@ const bioProjectFacetData: BioProjectFacetListResponse = {
     type: null,
     organism: null,
     accessibility: null,
-    objectType: [{ value: "UmbrellaBioProject", count: 12 }],
+    objectType: [
+      { value: "BioProject", count: 900 },
+      { value: "UmbrellaBioProject", count: 100 },
+    ],
   },
 };
 
@@ -83,6 +86,10 @@ export const BioProject = {
     </QueryClientProvider>
   ),
   play: async ({ canvas }) => {
+    await expect(await canvas.findByRole("checkbox", { name: "BioProject (900)" })).toBeEnabled();
+    await expect(
+      await canvas.findByRole("checkbox", { name: "Umbrella BioProject (100)" }),
+    ).toBeEnabled();
     await expect(await canvas.findByRole("textbox", { name: "Organization" })).toHaveValue("NCBI");
     await expect(await canvas.findByRole("textbox", { name: "Publication" })).toHaveValue("Nature");
     await expect(await canvas.findByRole("textbox", { name: "Grant" })).toHaveValue("NSF");

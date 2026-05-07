@@ -10,6 +10,7 @@ describe("parseParams", () => {
     expect(result.publication).toBeUndefined();
     expect(result.grant).toBeUndefined();
     expect(result.objectTypes).toBeUndefined();
+    expect(result.facets).toBe("organism,accessibility,objectType");
   });
 
   it("includes organization when provided", () => {

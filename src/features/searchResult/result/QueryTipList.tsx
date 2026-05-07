@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { isUndefined } from "is-what";
 import { type ComponentProps, type FC } from "react";
+import { getBioProjectObjectTypeLabel } from "@/api/consts.ts";
 import { getDbLabel } from "@/consts/db.ts";
 import type { UpdateSearchFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 import { QueryTip } from "@/features/searchResult/queryBuilder/premitives/QueryTip.tsx";
@@ -52,6 +53,11 @@ const parseQueryStateToTipList = (state: AnySearchParams): QueryTipProps[] => {
     const label = { name: "Type", value: getDbLabel(value) };
     return { data, label };
   });
+  const objectTypes: QueryTipProps[] = (state.objectTypes ?? []).map((value) => {
+    const data = { name: "objectTypes", value } as const;
+    const label = { name: "Object Type", value: getBioProjectObjectTypeLabel(value) };
+    return { data, label };
+  });
   const dates: QueryTipProps[] = [
     ...parseDateRangeToQueryTipProps(
       [state.datePublishedFrom, state.datePublishedTo],
@@ -80,6 +86,7 @@ const parseQueryStateToTipList = (state: AnySearchParams): QueryTipProps[] => {
   const result: QueryTipProps[] = [
     ...keywords,
     ...types,
+    ...objectTypes,
     ...dates,
     ...organization,
     ...publication,

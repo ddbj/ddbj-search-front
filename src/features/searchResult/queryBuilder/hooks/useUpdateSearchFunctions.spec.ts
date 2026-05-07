@@ -8,6 +8,7 @@ const {
   composeSort,
   composeKeywords,
   composeDBTypes,
+  composeObjectTypes,
   composeDateModified,
   composeDatePublished,
   composeOrganization,
@@ -243,6 +244,57 @@ describe("composeDBTypes", () => {
     const result = composeDBTypes(prev, []);
     const expected: AnySearchParams = {
       keywords: ["a"],
+      page: 2,
+    };
+    expect(result).toEqual(expected);
+  });
+});
+
+describe("composeObjectTypes", () => {
+  it("should add objectTypes when none are present", () => {
+    const prev: AnySearchParams = { types: [dbTypes.bioproject] };
+    const result = composeObjectTypes(prev, ["BioProject"]);
+    const expected: AnySearchParams = {
+      types: [dbTypes.bioproject],
+      objectTypes: ["BioProject"],
+    };
+    expect(result).toEqual(expected);
+  });
+
+  it("should remove objectTypes when the input is an empty array", () => {
+    const prev: AnySearchParams = {
+      types: [dbTypes.bioproject],
+      objectTypes: ["BioProject"],
+    };
+    const result = composeObjectTypes(prev, []);
+    const expected: AnySearchParams = { types: [dbTypes.bioproject] };
+    expect(result).toEqual(expected);
+  });
+
+  it("should reset the page number when objectTypes are changed", () => {
+    const prev: AnySearchParams = {
+      types: [dbTypes.bioproject],
+      objectTypes: ["BioProject"],
+      page: 2,
+    };
+    const result = composeObjectTypes(prev, ["UmbrellaBioProject"]);
+    const expected: AnySearchParams = {
+      types: [dbTypes.bioproject],
+      objectTypes: ["UmbrellaBioProject"],
+    };
+    expect(result).toEqual(expected);
+  });
+
+  it("should preserve the page number when objectTypes are not changed", () => {
+    const prev: AnySearchParams = {
+      types: [dbTypes.bioproject],
+      objectTypes: ["BioProject", "UmbrellaBioProject"],
+      page: 2,
+    };
+    const result = composeObjectTypes(prev, ["BioProject", "UmbrellaBioProject"]);
+    const expected: AnySearchParams = {
+      types: [dbTypes.bioproject],
+      objectTypes: ["BioProject", "UmbrellaBioProject"],
       page: 2,
     };
     expect(result).toEqual(expected);

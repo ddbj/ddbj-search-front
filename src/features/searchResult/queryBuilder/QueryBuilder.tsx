@@ -4,6 +4,7 @@ import { isBioProjectFacetListResponse } from "@/api/facets/bioProject.ts";
 import type { FacetListResponse } from "@/api/types.ts";
 import { type DBType } from "@/consts/db.ts";
 import { Grant } from "@/features/searchResult/queryBuilder/controls/bioproject/Grant.tsx";
+import { ObjectTypeSelector } from "@/features/searchResult/queryBuilder/controls/bioproject/ObjectTypeSelector.tsx";
 import { Organization } from "@/features/searchResult/queryBuilder/controls/bioproject/Organization.tsx";
 import { Publication } from "@/features/searchResult/queryBuilder/controls/bioproject/Publication.tsx";
 import { DateSelectors } from "@/features/searchResult/queryBuilder/controls/DateSelectors.tsx";
@@ -79,15 +80,20 @@ const BioProjectQueries = ({
   facetData: FacetListResponse | undefined;
   params: SearchParams;
 }) => {
-  const { changeOrganization, changePublication, changeGrant } = useMemo(
+  const { changeObjectTypes, changeOrganization, changePublication, changeGrant } = useMemo(
     () => update,
     [update],
   );
   if (!isBioProjectFacetListResponse(facetData)) return <></>;
   if (!isBioprojectSearchParams(params)) return <></>;
-  const { organization, publication, grant } = params;
+  const { objectTypes, organization, publication, grant } = params;
   return (
     <>
+      <ObjectTypeSelector
+        value={objectTypes ?? []}
+        update={changeObjectTypes}
+        countData={facetData.facets.objectType}
+      />
       <Organization value={organization ?? ""} update={changeOrganization} />
       <Publication value={publication ?? ""} update={changePublication} />
       <Grant value={grant ?? ""} update={changeGrant} />

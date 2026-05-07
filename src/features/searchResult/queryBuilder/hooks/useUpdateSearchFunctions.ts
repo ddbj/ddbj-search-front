@@ -1,6 +1,6 @@
 import { isEqual } from "@ver0/deep-equal";
 import { useMemo } from "react";
-import type { SortKey } from "@/api/consts.ts";
+import type { BioProjectObjectType, SortKey } from "@/api/consts.ts";
 import type { DBType } from "@/consts/db.ts";
 import type { AnySearchParams, AnySearchParamsKey } from "@/schema/search/any.ts";
 type NavigateLike<TSearch extends AnySearchParams> = (opts: {
@@ -14,6 +14,7 @@ export type UpdateSearchFunctions<TSearch extends AnySearchParams = AnySearchPar
   moveToPage: (page: number) => void;
   changeKeywords: (v: string[]) => void;
   setDBTypes: (v: DBType[]) => void;
+  changeObjectTypes: (v: BioProjectObjectType[]) => void;
   changeDateModifiedRange: (v: string) => void;
   changeDatePublishedRange: (v: string) => void;
   changeOrganization: (v: string) => void;
@@ -48,6 +49,9 @@ export const useUpdateSearchFunctions = <TSearch extends AnySearchParams>(
       setDBTypes: (v: DBType[]) => {
         // console.log("setDBTypes", v);
         navigate({ search: (prev: TSearch) => composeDBTypes(prev, v) as TSearch, replace });
+      },
+      changeObjectTypes: (v: BioProjectObjectType[]) => {
+        navigate({ search: (prev: TSearch) => composeObjectTypes(prev, v) as TSearch, replace });
       },
       changeDateModifiedRange: (v: string) => {
         navigate({ search: (prev: TSearch) => composeDateModified(prev, v) as TSearch, replace });
@@ -121,6 +125,11 @@ const composeDBTypes = (params: P, value: DBType[]): P => {
   const { types: prev, page, ...rest } = params;
   return value.length ? { ...rest, types: value } : rest;
 };
+const composeObjectTypes = (params: P, value: BioProjectObjectType[]): P => {
+  if (isEqual(params.objectTypes ?? [], value)) return params;
+  const { objectTypes: prev, page, ...rest } = params;
+  return value.length ? { ...rest, objectTypes: value } : rest;
+};
 const composeDateModified = (params: P, value: string): P => {
   const [from = "", to = ""] = value.split(",");
   const { dateModifiedFrom = "", dateModifiedTo = "", page, ...rest } = params;
@@ -163,6 +172,7 @@ export const __SB_updateFunctions: UpdateSearchFunctions = {
   changeSort: (_v: string | null) => {},
   changeKeywords: (_v: string[]) => {},
   setDBTypes: (_v: DBType[]) => {},
+  changeObjectTypes: (_v: BioProjectObjectType[]) => {},
   changeDateModifiedRange: (_v: string) => {},
   changeDatePublishedRange: (_v: string) => {},
   changeOrganization: (_v: string) => {},
@@ -176,6 +186,7 @@ export const __TEST_updateFunctions = {
   composeSort,
   composeKeywords,
   composeDBTypes,
+  composeObjectTypes,
   composeDateModified,
   composeDatePublished,
   composeOrganization,

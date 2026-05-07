@@ -6,6 +6,8 @@ import { API_PATH_BIOPROJECT_FACET_LIST } from "@/api/paths.ts";
 import { parseBaseFacetParams } from "@/fetch/utils/parseBaseFacetParams.ts";
 import type { BioprojectSearchParams } from "@/schema/search/bioProject.ts";
 
+const BIOPROJECT_FACETS = "organism,accessibility,objectType";
+
 export const fetchBioProjectFacets = async (params: BioprojectSearchParams) => {
   const searchParams = parseParams(params) as unknown as Record<string, string>;
   const response = await fetch(
@@ -19,7 +21,10 @@ export const fetchBioProjectFacets = async (params: BioprojectSearchParams) => {
 };
 
 const parseParams = (params: BioprojectSearchParams): BioProjectFacetListRequestParams => {
-  const result: BioProjectFacetListRequestParams = parseBaseFacetParams(params);
+  const result: BioProjectFacetListRequestParams = {
+    ...parseBaseFacetParams(params),
+    facets: BIOPROJECT_FACETS,
+  };
   if (params.organization) {
     result.organization = params.organization;
   }

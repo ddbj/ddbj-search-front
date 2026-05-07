@@ -25,6 +25,15 @@ describe("parseQueryStateToTipList", () => {
     expect(result.length).toBe(2);
   });
 
+  it("should parse objectTypes to QueryTipProps array", () => {
+    const state: AnySearchParams = {};
+    state.objectTypes = ["BioProject", "UmbrellaBioProject"];
+    const result = parseQueryStateToTipList(state);
+    expect(result.length).toBe(2);
+    expect(result[0].label.value).toBe("BioProject");
+    expect(result[1].label.value).toBe("Umbrella BioProject");
+  });
+
   it("should parse date ranges to QueryTipProps array", () => {
     const state: AnySearchParams = {};
     state.datePublishedFrom = "2025-07-01";
@@ -62,5 +71,4 @@ describe("parseQueryStateToTipList", () => {
     const result = parseQueryStateToTipList(state);
     expect(result.length).toBe(0);
   });
-
 });
