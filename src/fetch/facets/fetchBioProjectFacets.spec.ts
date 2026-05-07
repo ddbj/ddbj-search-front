@@ -13,6 +13,12 @@ describe("parseParams", () => {
     expect(result.facets).toBe("organism,accessibility,objectType");
   });
 
+  it("serializes requested facets as a comma-separated string", () => {
+    const result = parseParams({}, { facets: ["objectType"] });
+
+    expect(result.facets).toBe("objectType");
+  });
+
   it("includes organization when provided", () => {
     const result = parseParams({ organization: "NCBI" });
     expect(result.organization).toBe("NCBI");
@@ -41,5 +47,20 @@ describe("parseParams", () => {
   it("serializes keywords array as a comma-separated string", () => {
     const result = parseParams({ keywords: ["human", "cat"] });
     expect(result.keywords).toBe("human,cat");
+  });
+
+  it("keeps bioproject-specific filters other than objectTypes", () => {
+    const result = parseParams(
+      {
+        organization: "NCBI",
+        publication: "Nature",
+        grant: "test grant",
+      },
+      { facets: ["objectType"] },
+    );
+
+    expect(result.organization).toBe("NCBI");
+    expect(result.publication).toBe("Nature");
+    expect(result.grant).toBe("test grant");
   });
 });

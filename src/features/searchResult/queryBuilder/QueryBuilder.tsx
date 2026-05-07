@@ -1,7 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
 import { type FC, useMemo } from "react";
-import { isBioProjectFacetListResponse } from "@/api/facets/bioProject.ts";
-import type { FacetListResponse } from "@/api/types.ts";
 import { type DBType } from "@/consts/db.ts";
 import { Grant } from "@/features/searchResult/queryBuilder/controls/bioproject/Grant.tsx";
 import { ObjectTypeSelector } from "@/features/searchResult/queryBuilder/controls/bioproject/ObjectTypeSelector.tsx";
@@ -11,7 +8,7 @@ import { DateSelectors } from "@/features/searchResult/queryBuilder/controls/Dat
 import { KeywordInput } from "@/features/searchResult/queryBuilder/controls/KeywordInput.tsx";
 import { OtherTypeSelector } from "@/features/searchResult/queryBuilder/controls/OtherTypeSelector.tsx";
 import type { UpdateSearchFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
-import { fetchFacets } from "@/fetch/utils/fetchFacets.ts";
+import type { AllSearchParams } from "@/schema/search/all.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
 import { type BaseSearchParams, isBaseSearchKey } from "@/schema/search/base.ts";
 import { isBioprojectSearchParams } from "@/schema/search/bioProject.ts";
@@ -36,18 +33,13 @@ export const QueryBuilder: FC<Props> = ({ currentType, update, params }) => {
     changeDatePublishedRange,
   } = useMemo(() => update, [update]);
   const typeLinkParams = makeTypeLinkParams(params);
-  const { data: facetData } = useQuery({
-    queryKey: ["fetchFacets", ...Object.entries(params), currentType],
-    queryFn: () => fetchFacets(currentType, params),
-    placeholderData: (previousData) => previousData,
-  });
 
   return (
     <aside className={wrapperClasses}>
       <KeywordInput value={keywords ?? []} update={changeKeywords} />
       {!currentType && (
         <TypeSelector
-          countData={facetData?.facets.type ?? []}
+          params={params as AllSearchParams}
           update={setDBTypes}
           value={types ?? []}
           linkSearchParams={typeLinkParams}
@@ -60,7 +52,7 @@ export const QueryBuilder: FC<Props> = ({ currentType, update, params }) => {
           linkSearchParams={typeLinkParams}
         />
       )}
-      {currentType === "bioproject" && <BioProjectQueries {...{ update, facetData, params }} />}
+      {currentType === "bioproject" && <BioProjectQueries {...{ update, params }} />}
       <DateSelectors
         published={`${datePublishedFrom ?? ""},${datePublishedTo ?? ""}`}
         modified={`${dateModifiedFrom ?? ""},${dateModifiedTo ?? ""}`}
@@ -73,27 +65,20 @@ export const QueryBuilder: FC<Props> = ({ currentType, update, params }) => {
 
 const BioProjectQueries = ({
   update,
-  facetData,
   params,
 }: {
   update: UpdateSearchFunctions;
-  facetData: FacetListResponse | undefined;
   params: SearchParams;
 }) => {
   const { changeObjectTypes, changeOrganization, changePublication, changeGrant } = useMemo(
     () => update,
     [update],
   );
-  if (!isBioProjectFacetListResponse(facetData)) return <></>;
   if (!isBioprojectSearchParams(params)) return <></>;
   const { objectTypes, organization, publication, grant } = params;
   return (
     <>
-      <ObjectTypeSelector
-        value={objectTypes ?? []}
-        update={changeObjectTypes}
-        countData={facetData.facets.objectType}
-      />
+      <ObjectTypeSelector value={objectTypes ?? []} params={params} update={changeObjectTypes} />
       <Organization value={organization ?? ""} update={changeOrganization} />
       <Publication value={publication ?? ""} update={changePublication} />
       <Grant value={grant ?? ""} update={changeGrant} />

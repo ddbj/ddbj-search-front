@@ -91,9 +91,9 @@ DBTypeの例:
 
 ## 追加候補
 
-| field | observedType | present | nonEmpty | sampleValue | 実値が観測できる identifier | notes |
-|---|---:|---:|---:|---|---|---|
-| `exampleField` | `array<string>` | 20/20 | 12/20 | `["example"]` | [`ID000001`](https://ddbj-staging.nig.ac.jp/search/api/entries/<dbType>/ID000001?dbXrefsLimit=0) | 実値あり |
+| field          |    observedType | present | nonEmpty | sampleValue   | 実値が観測できる identifier                                                                      | notes    |
+| -------------- | --------------: | ------: | -------: | ------------- | ------------------------------------------------------------------------------------------------ | -------- |
+| `exampleField` | `array<string>` |   20/20 |    12/20 | `["example"]` | [`ID000001`](https://ddbj-staging.nig.ac.jp/search/api/entries/<dbType>/ID000001?dbXrefsLimit=0) | 実値あり |
 
 ## 補足
 

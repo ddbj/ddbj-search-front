@@ -1,26 +1,50 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { expect, fn } from "storybook/test";
 import type { BioProjectObjectType } from "@/api/consts.ts";
+import type { BioProjectFacetListResponse } from "@/api/facets/bioProject.ts";
 import { sleep } from "@/utils/sleep.ts";
 import { ObjectTypeSelector } from "./ObjectTypeSelector.tsx";
 
 const mockUpdateObjectTypes = fn((_value: BioProjectObjectType[]) => {});
+const facetData: BioProjectFacetListResponse = {
+  facets: {
+    type: null,
+    organism: null,
+    accessibility: null,
+    objectType: [
+      { value: "BioProject", count: 900 },
+      { value: "UmbrellaBioProject", count: 100 },
+    ],
+  },
+};
+
+const makeQueryClient = () => {
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        staleTime: Infinity,
+      },
+    },
+  });
+  queryClient.setQueryData(["fetchBioProjectFacets", "objectType"], facetData);
+  return queryClient;
+};
 
 const meta = {
   component: ObjectTypeSelector,
   args: {
     value: [],
+    params: {},
     update: mockUpdateObjectTypes,
-    countData: [
-      { value: "BioProject", count: 900 },
-      { value: "UmbrellaBioProject", count: 100 },
-    ],
   },
   decorators: [
     (Story) => (
-      <div className="w-[384px] p-4">
-        <Story />
-      </div>
+      <QueryClientProvider client={makeQueryClient()}>
+        <div className="w-[384px] p-4">
+          <Story />
+        </div>
+      </QueryClientProvider>
     ),
   ],
 } satisfies Meta<typeof ObjectTypeSelector>;

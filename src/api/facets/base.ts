@@ -9,16 +9,18 @@ export type FacetCount = z.infer<typeof facetCountShape>;
 export const facetListShape = z.array(facetCountShape).nullable();
 export type FacetItem = NonNullable<z.infer<typeof facetListShape>>[0];
 
-export const baseFacetListRequestParamsSchema = baseEntryListRequestParamsSchema.omit({
-  page: true,
-  perPage: true,
-  includeFacets: true,
-  includeProperties: true,
-  dbXrefsLimit: true,
-  sort: true,
-}).extend({
-  facets: z.string().optional(),
-});
+export const baseFacetListRequestParamsSchema = baseEntryListRequestParamsSchema
+  .omit({
+    page: true,
+    perPage: true,
+    includeFacets: true,
+    includeProperties: true,
+    dbXrefsLimit: true,
+    sort: true,
+  })
+  .extend({
+    facets: z.string().optional(),
+  });
 export type BaseFacetListRequestParams = z.infer<typeof baseFacetListRequestParamsSchema>;
 
 export const baseFacetListResponseSchema = z.object({

@@ -3,8 +3,15 @@ import { API_PATH_ALL_FACET_LIST } from "@/api/paths.ts";
 import { parseBaseFacetParams } from "@/fetch/utils/parseBaseFacetParams.ts";
 import type { AllSearchParams } from "@/schema/search/all.ts";
 
-export const fetchAllFacets = async (params: AllSearchParams) => {
-  const searchParams = parseParams(params);
+type FetchAllFacetsOptions = {
+  facets?: string[];
+};
+
+export const fetchAllFacets = async (
+  params: AllSearchParams,
+  options: FetchAllFacetsOptions = {},
+) => {
+  const searchParams = parseParams(params, options);
   const response = await fetch(`${API_PATH_ALL_FACET_LIST}?${new URLSearchParams(searchParams)}`, {
     method: "GET",
   });
@@ -12,9 +19,20 @@ export const fetchAllFacets = async (params: AllSearchParams) => {
   return data;
 };
 
-const parseParams = (params: AllSearchParams): AllFacetListRequestParams => {
-  return {
+const parseParams = (
+  params: AllSearchParams,
+  options: FetchAllFacetsOptions = {},
+): AllFacetListRequestParams => {
+  const result: AllFacetListRequestParams = {
     ...parseBaseFacetParams(params),
     // add all facet specific params here
   };
+  if (options.facets) {
+    result.facets = options.facets.join(",");
+  }
+  return result;
+};
+
+export const __TEST__fetchAllFacets = {
+  parseParams,
 };

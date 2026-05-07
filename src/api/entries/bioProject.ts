@@ -12,14 +12,11 @@ export const bioProjectListRequestParamsShape = {
   organization: z.string().optional(),
   publication: z.string().optional(),
   grant: z.string().optional(),
-  objectTypes: z
-    .string()
-    .optional()
-    .openapi({
-      description:
-        "Filter by BioProject objectType (comma-separated). Allowed: BioProject, UmbrellaBioProject. Specifying both is equivalent to omitting the filter.",
-      example: "BioProject",
-    }),
+  objectTypes: z.string().optional().openapi({
+    description:
+      "Filter by BioProject objectType (comma-separated). Allowed: BioProject, UmbrellaBioProject. Specifying both is equivalent to omitting the filter.",
+    example: "BioProject",
+  }),
 };
 const bioProjectListRequestParamsSchema = baseEntryListRequestParamsSchema.extend({
   ...bioProjectListRequestParamsShape,

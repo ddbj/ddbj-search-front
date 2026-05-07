@@ -19,7 +19,7 @@ export const UmbrellaProjectsPanel: FC<Props> = ({ childProjects, parentProjects
       <InfoList>
         {parentProjects.length > 0 && (
           <XrefListItem
-            dbName={"Parent Bioprojects"}
+            dbName={"Parent BioProjects"}
             actualCount={parentProjects.length}
             items={parentProjects.map(parseXrefItem)}
             isTruncated={false}
@@ -27,7 +27,7 @@ export const UmbrellaProjectsPanel: FC<Props> = ({ childProjects, parentProjects
         )}
         {childProjects.length > 0 && (
           <XrefListItem
-            dbName={"Child Bioprojects"}
+            dbName={"Child BioProjects"}
             actualCount={childProjects.length}
             items={childProjects.map(parseXrefItem)}
             isTruncated={false}
