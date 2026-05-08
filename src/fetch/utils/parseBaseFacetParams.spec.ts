@@ -26,6 +26,12 @@ describe("parseBaseFacetParams", () => {
     expect(result.keywords).toBe("human,cat");
   });
 
+  // organism
+  it("should set organism", () => {
+    const result = parseBaseFacetParams({ organism: "562" });
+    expect(result.organism).toBe("562");
+  });
+
   // datePublished
   it("should set datePublishedFrom", () => {
     const result = parseBaseFacetParams({ datePublishedFrom: "2025-07-01" });

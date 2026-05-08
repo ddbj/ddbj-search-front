@@ -6,7 +6,7 @@ describe("isBioProjectFacetListResponse", () => {
     const result = isBioProjectFacetListResponse({
       facets: {
         type: null,
-        organism: null,
+        organism: [{ value: "562", count: 1232567, label: "Escherichia coli" }],
         accessibility: null,
         objectType: [
           { value: "BioProject", count: 900 },

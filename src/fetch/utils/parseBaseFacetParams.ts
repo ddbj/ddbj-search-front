@@ -6,6 +6,9 @@ export const parseBaseFacetParams = (params: AnySearchParams): AllFacetListReque
   if (params.keywords && params.keywords.length) {
     result.keywords = params.keywords.join(",");
   }
+  if (params.organism) {
+    result.organism = params.organism;
+  }
   if (params.datePublishedFrom) {
     result.datePublishedFrom = params.datePublishedFrom;
   }

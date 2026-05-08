@@ -8,6 +8,7 @@ export const paginationShape = {
 //
 export const baseSearchSchema = z.object({
   keywords: z.array(z.string()).optional(),
+  organism: z.string().optional(),
   datePublishedFrom: z.string().optional(),
   datePublishedTo: z.string().optional(),
   dateModifiedFrom: z.string().optional(),

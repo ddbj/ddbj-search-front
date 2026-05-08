@@ -13,6 +13,7 @@ export type UpdateSearchFunctions<TSearch extends AnySearchParams = AnySearchPar
   moveToEntryRoot: (params: TSearch) => void;
   moveToPage: (page: number) => void;
   changeKeywords: (v: string[]) => void;
+  changeOrganism: (v: string | null) => void;
   setDBTypes: (v: DBType[]) => void;
   changeObjectTypes: (v: BioProjectObjectType[]) => void;
   changeDateModifiedRange: (v: string) => void;
@@ -45,6 +46,9 @@ export const useUpdateSearchFunctions = <TSearch extends AnySearchParams>(
       changeKeywords: (v: string[]) => {
         // console.log("changeKeywords", v);
         navigate({ search: (prev: TSearch) => composeKeywords(prev, v) as TSearch, replace });
+      },
+      changeOrganism: (v: string | null) => {
+        navigate({ search: (prev: TSearch) => composeOrganism(prev, v) as TSearch, replace });
       },
       setDBTypes: (v: DBType[]) => {
         // console.log("setDBTypes", v);
@@ -120,6 +124,12 @@ const composeKeywords = (params: P, value: string[]): P => {
   const { keywords: prev, page, ...rest } = params;
   return value.length ? { ...rest, keywords: value } : rest;
 };
+const composeOrganism = (params: P, value: string | null): P => {
+  const nextValue = value ?? "";
+  if ((params.organism ?? "") === nextValue) return params;
+  const { organism: prev, page, ...rest } = params;
+  return nextValue ? { ...rest, organism: nextValue } : rest;
+};
 const composeDBTypes = (params: P, value: DBType[]): P => {
   if (isEqual(params.types ?? [], value)) return params;
   const { types: prev, page, ...rest } = params;
@@ -171,6 +181,7 @@ export const __SB_updateFunctions: UpdateSearchFunctions = {
   moveToPage: (_page: number) => {},
   changeSort: (_v: string | null) => {},
   changeKeywords: (_v: string[]) => {},
+  changeOrganism: (_v: string | null) => {},
   setDBTypes: (_v: DBType[]) => {},
   changeObjectTypes: (_v: BioProjectObjectType[]) => {},
   changeDateModifiedRange: (_v: string) => {},
@@ -185,6 +196,7 @@ export const __TEST_updateFunctions = {
   removeFromSearch,
   composeSort,
   composeKeywords,
+  composeOrganism,
   composeDBTypes,
   composeObjectTypes,
   composeDateModified,

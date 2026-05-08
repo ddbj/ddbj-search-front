@@ -69,6 +69,13 @@ describe("parseBaseParams", () => {
     expectDefault(result);
   });
 
+  //organism
+  it("", () => {
+    const result = parseBaseEntryParams({ organism: "562" });
+    expect(result.organism).toBe("562");
+    expectDefault(result);
+  });
+
   //datePublished
   it("", () => {
     const result = parseBaseEntryParams({ datePublishedFrom: "2025-07-01" });

@@ -6,6 +6,10 @@ describe("isAnySearchParamsKey", () => {
     expect(result).toBe(true);
   });
   it("", () => {
+    const result = isAnySearchParamsKey("organism");
+    expect(result).toBe(true);
+  });
+  it("", () => {
     const result = isAnySearchParamsKey("page");
     expect(result).toBe(true);
   });

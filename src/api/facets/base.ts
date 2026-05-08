@@ -4,6 +4,7 @@ import { baseEntryListRequestParamsSchema } from "@/api/entries/base.ts";
 const facetCountShape = z.object({
   value: z.string(),
   count: z.number().int(),
+  label: z.string().optional(),
 });
 export type FacetCount = z.infer<typeof facetCountShape>;
 export const facetListShape = z.array(facetCountShape).nullable();

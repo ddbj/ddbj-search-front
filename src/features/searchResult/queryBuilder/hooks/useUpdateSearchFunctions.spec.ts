@@ -7,6 +7,7 @@ const {
   removeFromSearch,
   composeSort,
   composeKeywords,
+  composeOrganism,
   composeDBTypes,
   composeObjectTypes,
   composeDateModified,
@@ -85,6 +86,17 @@ describe("removeFromSearch", () => {
         types: ["sra-analysis", "jga-study"],
         datePublishedFrom: "2025-07-01",
         datePublishedTo: "2025-07-10",
+      });
+    });
+    it("", () => {
+      const result = removeFromSearch({ ...current, organism: "562" }, "organism", "562");
+      expect(result).toEqual({
+        keywords: ["human", " cat"],
+        types: ["sra-analysis", "jga-study"],
+        datePublishedFrom: "2025-07-01",
+        datePublishedTo: "2025-07-10",
+        dateModifiedFrom: "2024-07-01",
+        dateModifiedTo: "2024-07-10",
       });
     });
   });
@@ -182,6 +194,59 @@ describe("composeKeywords", () => {
   it("should preserve the page number when keywords remain empty", () => {
     const prev: AnySearchParams = { types: [dbTypes.bioproject], page: 2 };
     const result = composeKeywords(prev, []);
+    const expected: AnySearchParams = {
+      types: [dbTypes.bioproject],
+      page: 2,
+    };
+    expect(result).toEqual(expected);
+  });
+});
+
+describe("composeOrganism", () => {
+  it("should add organism when none is present", () => {
+    const prev: AnySearchParams = { types: [dbTypes.bioproject] };
+    const result = composeOrganism(prev, "562");
+    const expected: AnySearchParams = {
+      types: [dbTypes.bioproject],
+      organism: "562",
+    };
+    expect(result).toEqual(expected);
+  });
+
+  it("should remove organism when the input is null", () => {
+    const prev: AnySearchParams = {
+      types: [dbTypes.bioproject],
+      organism: "562",
+    };
+    const result = composeOrganism(prev, null);
+    const expected: AnySearchParams = { types: [dbTypes.bioproject] };
+    expect(result).toEqual(expected);
+  });
+
+  it("should reset the page number when organism is changed", () => {
+    const prev: AnySearchParams = { types: [dbTypes.bioproject], organism: "562", page: 2 };
+    const result = composeOrganism(prev, "9606");
+    const expected: AnySearchParams = {
+      types: [dbTypes.bioproject],
+      organism: "9606",
+    };
+    expect(result).toEqual(expected);
+  });
+
+  it("should preserve the page number when organism is not changed", () => {
+    const prev: AnySearchParams = { types: [dbTypes.bioproject], organism: "562", page: 2 };
+    const result = composeOrganism(prev, "562");
+    const expected: AnySearchParams = {
+      types: [dbTypes.bioproject],
+      organism: "562",
+      page: 2,
+    };
+    expect(result).toEqual(expected);
+  });
+
+  it("should preserve the page number when organism remains empty", () => {
+    const prev: AnySearchParams = { types: [dbTypes.bioproject], page: 2 };
+    const result = composeOrganism(prev, null);
     const expected: AnySearchParams = {
       types: [dbTypes.bioproject],
       page: 2,
