@@ -76,7 +76,7 @@ const bioProjectFacetData: BioProjectFacetListResponse = {
   },
 };
 
-const makeQueryClient = () => {
+const makeQueryClient = (organismItems: FacetItem[] = organismFacetData) => {
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
@@ -88,18 +88,18 @@ const makeQueryClient = () => {
     ["fetchAllFacets", "type", ...Object.entries(primaryFacetParams)],
     typeFacetData,
   );
-  queryClient.setQueryData(makeOrganismFacetQueryKey(null, primaryParams), organismFacetData);
+  queryClient.setQueryData(makeOrganismFacetQueryKey(null, primaryParams), organismItems);
   queryClient.setQueryData(
     ["fetchBioProjectFacets", "objectType", ...Object.entries(bioProjectParams)],
     bioProjectFacetData,
   );
   queryClient.setQueryData(
     makeOrganismFacetQueryKey(dbTypes.bioproject, bioProjectParams),
-    organismFacetData,
+    organismItems,
   );
   queryClient.setQueryData(
     makeOrganismFacetQueryKey(dbTypes.biosample, bioSampleParams),
-    organismFacetData,
+    organismItems,
   );
   return queryClient;
 };
@@ -112,8 +112,10 @@ const meta = {
     params: primaryParams,
   },
   decorators: [
-    (Story) => (
-      <QueryClientProvider client={makeQueryClient()}>
+    (Story, context) => (
+      <QueryClientProvider
+        client={makeQueryClient(context.parameters.organismFacetItems as FacetItem[] | undefined)}
+      >
         <div className="bg-bg-canvas p-6">
           <Story />
         </div>
@@ -136,6 +138,15 @@ export const Primary = {
     await expect(
       await canvas.findByRole("checkbox", { name: "Escherichia coli (1,232,567)" }),
     ).toBeEnabled();
+  },
+} satisfies Story;
+export const WithoutOrganismFacet = {
+  parameters: {
+    organismFacetItems: [],
+  },
+  play: async ({ canvas }) => {
+    await expect(await canvas.findByRole("heading", { name: "Types" })).toBeVisible();
+    await expect(canvas.queryByRole("heading", { name: "Organism" })).not.toBeInTheDocument();
   },
 } satisfies Story;
 export const BioProject = {

@@ -141,7 +141,7 @@ const bioProjectData: EntryListResponse = {
   ],
 };
 
-const makeQueryClient = () => {
+const makeQueryClient = (organismItems: FacetItem[] = organismFacetData) => {
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
@@ -153,14 +153,14 @@ const makeQueryClient = () => {
     ["fetchAllFacets", "type", ...Object.entries(primaryFacetParams)],
     typeFacetData,
   );
-  queryClient.setQueryData(makeOrganismFacetQueryKey(null, primaryParams), organismFacetData);
+  queryClient.setQueryData(makeOrganismFacetQueryKey(null, primaryParams), organismItems);
   queryClient.setQueryData(
     ["fetchBioProjectFacets", "objectType", ...Object.entries(bioProjectParams)],
     bioProjectFacetData,
   );
   queryClient.setQueryData(
     makeOrganismFacetQueryKey(dbTypes.bioproject, bioProjectParams),
-    organismFacetData,
+    organismItems,
   );
   return queryClient;
 };
@@ -174,8 +174,10 @@ const meta = {
     data: primaryData,
   },
   decorators: [
-    (Story) => (
-      <QueryClientProvider client={makeQueryClient()}>
+    (Story, context) => (
+      <QueryClientProvider
+        client={makeQueryClient(context.parameters.organismFacetItems as FacetItem[] | undefined)}
+      >
         <Story />
       </QueryClientProvider>
     ),
@@ -201,6 +203,15 @@ export const All = {
     ).toBeEnabled();
   },
 } satisfies Story;
+export const AllWithoutOrganismFacet = {
+  parameters: {
+    organismFacetItems: [],
+  },
+  play: async ({ canvas }) => {
+    await expect(await canvas.findByRole("heading", { name: "Types" })).toBeVisible();
+    await expect(canvas.queryByRole("heading", { name: "Organism" })).not.toBeInTheDocument();
+  },
+} satisfies Story;
 export const BioProject = {
   args: {
     entryType: dbTypes.bioproject,
@@ -216,5 +227,20 @@ export const BioProject = {
     await expect(
       await canvas.findByRole("checkbox", { name: "Escherichia coli (1,232,567)" }),
     ).toBeChecked();
+  },
+} satisfies Story;
+export const BioProjectWithoutOrganismFacet = {
+  args: {
+    entryType: dbTypes.bioproject,
+    params: bioProjectParams,
+    data: bioProjectData,
+  },
+  parameters: {
+    organismFacetItems: [],
+  },
+  play: async ({ canvas }) => {
+    await expect(await canvas.findByRole("heading", { name: "Type" })).toBeVisible();
+    await expect(canvas.queryByRole("heading", { name: "Organism" })).not.toBeInTheDocument();
+    await expect(await canvas.findByRole("heading", { name: "Object Type" })).toBeVisible();
   },
 } satisfies Story;

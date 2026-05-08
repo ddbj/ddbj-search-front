@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { type FC, useMemo } from "react";
+import type { FacetItem } from "@/api/facets/base.ts";
 import { type DBType } from "@/consts/db.ts";
 import { Grant } from "@/features/searchResult/queryBuilder/controls/bioproject/Grant.tsx";
 import { ObjectTypeSelector } from "@/features/searchResult/queryBuilder/controls/bioproject/ObjectTypeSelector.tsx";
@@ -94,13 +95,22 @@ const OrganismFacetSelector = ({
   value: string | null;
   update: UpdateSearchFunctions["changeOrganism"];
 }) => {
-  const { data } = useQuery({
+  const { data, isSuccess } = useQuery({
     queryKey: makeOrganismFacetQueryKey(currentType, params),
     queryFn: () => fetchOrganismFacets(currentType, params),
     placeholderData: (previousData) => previousData,
   });
+  if (!shouldShowOrganismSelector(data, isSuccess)) return null;
 
   return <OrganismSelector value={value} items={data ?? []} update={update} />;
+};
+
+const shouldShowOrganismSelector = (
+  items: FacetItem[] | undefined,
+  isFetchSuccess: boolean,
+): boolean => {
+  if (!isFetchSuccess) return true;
+  return (items?.length ?? 0) > 0;
 };
 
 const BioProjectQueries = ({
@@ -134,4 +144,4 @@ const makeTypeLinkParams = (params: AnySearchParams): BaseSearchParams => {
 };
 
 // eslint-disable-next-line react-refresh/only-export-components -- Test helper stays colocated with query builder state shaping logic.
-export const __TEST__QUERY_BUILDER = { makeTypeLinkParams };
+export const __TEST__QUERY_BUILDER = { makeTypeLinkParams, shouldShowOrganismSelector };
