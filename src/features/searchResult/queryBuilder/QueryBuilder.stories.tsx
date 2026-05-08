@@ -131,7 +131,7 @@ export const Primary = {
     const organismHeading = await canvas.findByRole("heading", { name: "Organism" });
     const typesHeading = await canvas.findByRole("heading", { name: "Types" });
     expect(
-      organismHeading.compareDocumentPosition(typesHeading) & Node.DOCUMENT_POSITION_FOLLOWING,
+      typesHeading.compareDocumentPosition(organismHeading) & Node.DOCUMENT_POSITION_FOLLOWING,
     ).toBeTruthy();
     await expect(
       await canvas.findByRole("checkbox", { name: "Escherichia coli (1,232,567)" }),
@@ -144,6 +144,11 @@ export const BioProject = {
     params: bioProjectParams,
   },
   play: async ({ canvas }) => {
+    const typeHeading = await canvas.findByRole("heading", { name: "Type" });
+    const organismHeading = await canvas.findByRole("heading", { name: "Organism" });
+    expect(
+      typeHeading.compareDocumentPosition(organismHeading) & Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
     await expect(
       await canvas.findByRole("checkbox", { name: "Escherichia coli (1,232,567)" }),
     ).toBeChecked();
@@ -162,7 +167,11 @@ export const BioSample = {
     params: bioSampleParams,
   },
   play: async ({ canvas }) => {
-    await expect(await canvas.findByRole("heading", { name: "Organism" })).toBeVisible();
+    const typeHeading = await canvas.findByRole("heading", { name: "Type" });
+    const organismHeading = await canvas.findByRole("heading", { name: "Organism" });
+    expect(
+      typeHeading.compareDocumentPosition(organismHeading) & Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
     await expect(
       await canvas.findByRole("checkbox", { name: "Homo sapiens (987,654)" }),
     ).toBeChecked();

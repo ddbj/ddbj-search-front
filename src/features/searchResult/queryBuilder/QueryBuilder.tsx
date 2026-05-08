@@ -51,12 +51,6 @@ export const QueryBuilder: FC<Props> = ({ currentType, update, params }) => {
   return (
     <aside className={wrapperClasses}>
       <KeywordInput value={keywords ?? []} update={changeKeywords} />
-      <OrganismFacetSelector
-        currentType={currentType}
-        params={params}
-        value={organism ?? null}
-        update={changeOrganism}
-      />
       {!currentType && (
         <TypeSelector
           params={params as AllSearchParams}
@@ -72,6 +66,12 @@ export const QueryBuilder: FC<Props> = ({ currentType, update, params }) => {
           linkSearchParams={typeLinkParams}
         />
       )}
+      <OrganismFacetSelector
+        currentType={currentType}
+        params={params}
+        value={organism ?? null}
+        update={changeOrganism}
+      />
       {currentType === "bioproject" && <BioProjectQueries {...{ update, params }} />}
       <DateSelectors
         published={`${datePublishedFrom ?? ""},${datePublishedTo ?? ""}`}

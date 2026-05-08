@@ -1,7 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { expect } from "storybook/test";
 import type { EntryListResponse } from "@/api/entries/base.ts";
+import type { AllFacetListResponse } from "@/api/facets/all.ts";
+import type { FacetItem } from "@/api/facets/base.ts";
+import type { BioProjectFacetListResponse } from "@/api/facets/bioProject.ts";
 import { dbTypes } from "@/consts/db.ts";
 import { __SB_updateFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
+import { makeOrganismFacetQueryKey } from "@/fetch/facets/fetchOrganismFacets.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
 import { SearchResultLayout } from "./SearchResultLayout.tsx";
 
@@ -14,6 +20,7 @@ const primaryParams: AnySearchParams = {
 
 const bioProjectParams: AnySearchParams = {
   keywords: ["metagenome"],
+  organism: "562",
   organization: "NCBI",
   publication: "Nature",
   grant: "NSF",
@@ -22,6 +29,42 @@ const bioProjectParams: AnySearchParams = {
   dateModifiedFrom: "2024-02-01",
   dateModifiedTo: "2024-02-15",
 } as const;
+
+const primaryFacetParams: AnySearchParams = {
+  keywords: primaryParams.keywords,
+  datePublishedFrom: primaryParams.datePublishedFrom,
+  datePublishedTo: primaryParams.datePublishedTo,
+} as const;
+
+const typeFacetData: AllFacetListResponse = {
+  facets: {
+    type: [
+      { value: "bioproject", count: 90 },
+      { value: "biosample", count: 120 },
+      { value: "sra-analysis", count: 21 },
+    ],
+    organism: null,
+    accessibility: null,
+  },
+};
+
+const organismFacetData: FacetItem[] = [
+  { value: "562", label: "Escherichia coli", count: 1232567 },
+  { value: "9606", label: "Homo sapiens", count: 987654 },
+  { value: "10090", label: "Mus musculus", count: 456789 },
+];
+
+const bioProjectFacetData: BioProjectFacetListResponse = {
+  facets: {
+    type: null,
+    organism: null,
+    accessibility: null,
+    objectType: [
+      { value: "BioProject", count: 72 },
+      { value: "UmbrellaBioProject", count: 12 },
+    ],
+  },
+};
 
 const primaryData: EntryListResponse = {
   pagination: {
@@ -98,6 +141,30 @@ const bioProjectData: EntryListResponse = {
   ],
 };
 
+const makeQueryClient = () => {
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        staleTime: Infinity,
+      },
+    },
+  });
+  queryClient.setQueryData(
+    ["fetchAllFacets", "type", ...Object.entries(primaryFacetParams)],
+    typeFacetData,
+  );
+  queryClient.setQueryData(makeOrganismFacetQueryKey(null, primaryParams), organismFacetData);
+  queryClient.setQueryData(
+    ["fetchBioProjectFacets", "objectType", ...Object.entries(bioProjectParams)],
+    bioProjectFacetData,
+  );
+  queryClient.setQueryData(
+    makeOrganismFacetQueryKey(dbTypes.bioproject, bioProjectParams),
+    organismFacetData,
+  );
+  return queryClient;
+};
+
 const meta = {
   component: SearchResultLayout,
   args: {
@@ -106,7 +173,13 @@ const meta = {
     params: primaryParams,
     data: primaryData,
   },
-  decorators: [],
+  decorators: [
+    (Story) => (
+      <QueryClientProvider client={makeQueryClient()}>
+        <Story />
+      </QueryClientProvider>
+    ),
+  ],
   parameters: {
     layout: "fullscreen",
   },
@@ -116,11 +189,32 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const All = {} satisfies Story;
+export const All = {
+  play: async ({ canvas }) => {
+    const typesHeading = await canvas.findByRole("heading", { name: "Types" });
+    const organismHeading = await canvas.findByRole("heading", { name: "Organism" });
+    expect(
+      typesHeading.compareDocumentPosition(organismHeading) & Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+    await expect(
+      await canvas.findByRole("checkbox", { name: "Escherichia coli (1,232,567)" }),
+    ).toBeEnabled();
+  },
+} satisfies Story;
 export const BioProject = {
   args: {
     entryType: dbTypes.bioproject,
     params: bioProjectParams,
     data: bioProjectData,
+  },
+  play: async ({ canvas }) => {
+    const typeHeading = await canvas.findByRole("heading", { name: "Type" });
+    const organismHeading = await canvas.findByRole("heading", { name: "Organism" });
+    expect(
+      typeHeading.compareDocumentPosition(organismHeading) & Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+    await expect(
+      await canvas.findByRole("checkbox", { name: "Escherichia coli (1,232,567)" }),
+    ).toBeChecked();
   },
 } satisfies Story;
