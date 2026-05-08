@@ -1,3 +1,4 @@
+import { ScrollShadow } from "@heroui/react";
 import { type FC, useEffect, useMemo, useState } from "react";
 import type { FacetItem } from "@/api/facets/base.ts";
 import { useDebouncedUiValue } from "@/features/searchResult/queryBuilder/hooks/useDebouncedUiValue.ts";
@@ -15,6 +16,7 @@ const sectionClasses = "flex flex-col gap-2";
 const headingClasses = "flex flex-col gap-0.5";
 const titleClasses = "text-sm font-medium leading-5 text-gray-700";
 const listClasses = "flex flex-col gap-1";
+const listScrollClasses = "max-h-[300px] overflow-y-auto";
 
 export const OrganismSelector: FC<Props> = ({ value, items, update }) => {
   const { uiValue, setUiValue } = useDebouncedUiValue(value, update);
@@ -40,22 +42,28 @@ export const OrganismSelector: FC<Props> = ({ value, items, update }) => {
           onValueChange={setFilterValue}
         />
       </div>
-      <div className={listClasses}>
-        {filteredItems.map((item) => {
-          const isSelected = uiValue === item.value;
-          return (
-            <CheckboxText
-              key={item.value}
-              labelStr={getOrganismItemLabel(item)}
-              value={item.value}
-              isSelected={isSelected}
-              setIsSelected={(nextIsSelected) => {
-                setUiValue(nextIsSelected ? item.value : null);
-              }}
-            />
-          );
-        })}
-      </div>
+      <ScrollShadow
+        className={listScrollClasses}
+        data-testid="organism-option-list"
+        hideScrollBar={false}
+      >
+        <div className={listClasses}>
+          {filteredItems.map((item) => {
+            const isSelected = uiValue === item.value;
+            return (
+              <CheckboxText
+                key={item.value}
+                labelStr={getOrganismItemLabel(item)}
+                value={item.value}
+                isSelected={isSelected}
+                setIsSelected={(nextIsSelected) => {
+                  setUiValue(nextIsSelected ? item.value : null);
+                }}
+              />
+            );
+          })}
+        </div>
+      </ScrollShadow>
     </section>
   );
 };

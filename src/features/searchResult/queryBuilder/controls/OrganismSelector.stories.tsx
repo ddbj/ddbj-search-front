@@ -30,6 +30,15 @@ const fallbackLabelFacetData: BaseFacetListResponse = {
   },
 };
 
+const manyOrganismItems = Array.from({ length: 100 }, (_, index) => {
+  const number = index + 1;
+  return {
+    value: String(100000 + number),
+    count: 10000 - index,
+    label: `Organism species ${String(number).padStart(3, "0")}`,
+  };
+});
+
 const meta = {
   component: OrganismSelector,
   args: {
@@ -74,6 +83,22 @@ export const Selected = {
 export const LabelFallback = {
   args: {
     items: fallbackLabelFacetData.facets.organism ?? [],
+  },
+} satisfies Story;
+
+export const ManyItems = {
+  args: {
+    items: manyOrganismItems,
+  },
+  play: async ({ canvas }) => {
+    const list = await canvas.findByTestId("organism-option-list");
+
+    await expect(
+      await canvas.findByRole("checkbox", { name: "Organism species 001 (10,000)" }),
+    ).toBeVisible();
+    await expect(list).toBeVisible();
+    await expect(list.clientHeight).toBeLessThanOrEqual(300);
+    await expect(list.scrollHeight).toBeGreaterThan(list.clientHeight);
   },
 } satisfies Story;
 
