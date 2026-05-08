@@ -113,3 +113,36 @@ export const ClearSelection = {
     await expect(mockUpdateOrganism).toHaveBeenLastCalledWith(null);
   },
 } satisfies Story;
+
+export const ClearSelectedWhenFilteredOut = {
+  args: {
+    value: "562",
+  },
+  play: async ({ canvas, userEvent }) => {
+    mockUpdateOrganism.mockReset();
+    const input = await canvas.findByRole("textbox", { name: "Organism" });
+    const selectedCheckbox = await canvas.findByRole("checkbox", {
+      name: "Escherichia coli (1,232,567)",
+    });
+
+    await expect(selectedCheckbox).toBeChecked();
+    await userEvent.type(input, "Homo");
+
+    await expect(
+      canvas.queryByRole("checkbox", { name: "Escherichia coli (1,232,567)" }),
+    ).toBeNull();
+    await expect(
+      await canvas.findByRole("checkbox", { name: "Homo sapiens (987,654)" }),
+    ).not.toBeChecked();
+    await expect(mockUpdateOrganism).toHaveBeenCalledTimes(0);
+    await sleep(300);
+    await expect(mockUpdateOrganism).toHaveBeenCalledTimes(1);
+    await expect(mockUpdateOrganism).toHaveBeenLastCalledWith(null);
+
+    await userEvent.clear(input);
+
+    await expect(
+      await canvas.findByRole("checkbox", { name: "Escherichia coli (1,232,567)" }),
+    ).not.toBeChecked();
+  },
+} satisfies Story;

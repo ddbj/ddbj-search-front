@@ -2,7 +2,8 @@ import { describe, expect, it } from "vitest";
 import type { FacetItem } from "@/api/facets/base.ts";
 import { __TEST__ORGANISM_SELECTOR } from "@/features/searchResult/queryBuilder/controls/OrganismSelector.tsx";
 
-const { filterOrganismItems, getOrganismItemLabel } = __TEST__ORGANISM_SELECTOR;
+const { filterOrganismItems, getOrganismItemLabel, shouldClearSelectedOrganism } =
+  __TEST__ORGANISM_SELECTOR;
 
 const items: FacetItem[] = [
   { value: "562", count: 1232567, label: "Escherichia coli" },
@@ -31,5 +32,23 @@ describe("getOrganismItemLabel", () => {
 
   it("falls back to value when label is absent", () => {
     expect(getOrganismItemLabel(items[2])).toBe("3702 (1,200)");
+  });
+});
+
+describe("shouldClearSelectedOrganism", () => {
+  it("clears the selected organism when an active filter excludes it", () => {
+    const filteredItems = filterOrganismItems(items, "Homo");
+
+    expect(shouldClearSelectedOrganism(filteredItems, "562", "Homo")).toBe(true);
+  });
+
+  it("keeps the selected organism when an active filter includes it", () => {
+    const filteredItems = filterOrganismItems(items, "coli");
+
+    expect(shouldClearSelectedOrganism(filteredItems, "562", "coli")).toBe(false);
+  });
+
+  it("keeps the selected organism when the filter is empty", () => {
+    expect(shouldClearSelectedOrganism([], "562", "")).toBe(false);
   });
 });

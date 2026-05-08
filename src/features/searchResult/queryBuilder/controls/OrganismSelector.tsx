@@ -1,4 +1,4 @@
-import { type FC, useMemo, useState } from "react";
+import { type FC, useEffect, useMemo, useState } from "react";
 import type { FacetItem } from "@/api/facets/base.ts";
 import { useDebouncedUiValue } from "@/features/searchResult/queryBuilder/hooks/useDebouncedUiValue.ts";
 import { CheckboxText } from "@/features/searchResult/queryBuilder/premitives/CheckboxText.tsx";
@@ -22,6 +22,12 @@ export const OrganismSelector: FC<Props> = ({ value, items, update }) => {
   const filteredItems = useMemo(() => {
     return filterOrganismItems(items, filterValue);
   }, [items, filterValue]);
+
+  useEffect(() => {
+    if (shouldClearSelectedOrganism(filteredItems, uiValue, filterValue)) {
+      setUiValue(null);
+    }
+  }, [filteredItems, filterValue, setUiValue, uiValue]);
 
   return (
     <section className={sectionClasses}>
@@ -72,8 +78,19 @@ const filterOrganismItems = (items: FacetItem[], filterValue: string) => {
   });
 };
 
+const shouldClearSelectedOrganism = (
+  filteredItems: FacetItem[],
+  selectedValue: string | null,
+  filterValue: string,
+) => {
+  if (!selectedValue) return false;
+  if (!normalizeFilterText(filterValue)) return false;
+  return !filteredItems.some((item) => item.value === selectedValue);
+};
+
 // eslint-disable-next-line react-refresh/only-export-components -- Test helper stays colocated with selector filtering logic.
 export const __TEST__ORGANISM_SELECTOR = {
   filterOrganismItems,
   getOrganismItemLabel,
+  shouldClearSelectedOrganism,
 };
