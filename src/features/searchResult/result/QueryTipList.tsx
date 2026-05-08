@@ -58,6 +58,11 @@ const parseQueryStateToTipList = (state: AnySearchParams): QueryTipProps[] => {
     const label = { name: "Object Type", value: getBioProjectObjectTypeLabel(value) };
     return { data, label };
   });
+  const organism: QueryTipProps[] = parseSingleStringToQueryTipProps(
+    state.organism,
+    "organism",
+    "Organism",
+  );
   const dates: QueryTipProps[] = [
     ...parseDateRangeToQueryTipProps(
       [state.datePublishedFrom, state.datePublishedTo],
@@ -86,6 +91,7 @@ const parseQueryStateToTipList = (state: AnySearchParams): QueryTipProps[] => {
   const result: QueryTipProps[] = [
     ...keywords,
     ...types,
+    ...organism,
     ...objectTypes,
     ...dates,
     ...organization,

@@ -27,6 +27,9 @@ const parseParams = (
     ...parseBaseFacetParams(params),
     // add all facet specific params here
   };
+  if (params.types && params.types.length > 0) {
+    result.types = params.types.join(",");
+  }
   if (options.facets) {
     result.facets = options.facets.join(",");
   }

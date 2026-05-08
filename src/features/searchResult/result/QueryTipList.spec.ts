@@ -34,6 +34,15 @@ describe("parseQueryStateToTipList", () => {
     expect(result[1].label.value).toBe("Umbrella BioProject");
   });
 
+  it("should parse organism to QueryTipProps array", () => {
+    const state: AnySearchParams = {};
+    state.organism = "562";
+    const result = parseQueryStateToTipList(state);
+    expect(result).toHaveLength(1);
+    expect(result[0].data).toEqual({ name: "organism", value: "562" });
+    expect(result[0].label).toEqual({ name: "Organism", value: "562" });
+  });
+
   it("should parse date ranges to QueryTipProps array", () => {
     const state: AnySearchParams = {};
     state.datePublishedFrom = "2025-07-01";

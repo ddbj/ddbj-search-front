@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import { type FC, useMemo } from "react";
 import { type DBType } from "@/consts/db.ts";
 import { Grant } from "@/features/searchResult/queryBuilder/controls/bioproject/Grant.tsx";
@@ -6,8 +7,13 @@ import { Organization } from "@/features/searchResult/queryBuilder/controls/biop
 import { Publication } from "@/features/searchResult/queryBuilder/controls/bioproject/Publication.tsx";
 import { DateSelectors } from "@/features/searchResult/queryBuilder/controls/DateSelectors.tsx";
 import { KeywordInput } from "@/features/searchResult/queryBuilder/controls/KeywordInput.tsx";
+import { OrganismSelector } from "@/features/searchResult/queryBuilder/controls/OrganismSelector.tsx";
 import { OtherTypeSelector } from "@/features/searchResult/queryBuilder/controls/OtherTypeSelector.tsx";
 import type { UpdateSearchFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
+import {
+  fetchOrganismFacets,
+  makeOrganismFacetQueryKey,
+} from "@/fetch/facets/fetchOrganismFacets.ts";
 import type { AllSearchParams } from "@/schema/search/all.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
 import { type BaseSearchParams, isBaseSearchKey } from "@/schema/search/base.ts";
@@ -23,11 +29,19 @@ type Props = {
 const wrapperClasses = "flex w-96 shrink-0 flex-col gap-4";
 
 export const QueryBuilder: FC<Props> = ({ currentType, update, params }) => {
-  const { keywords, types, datePublishedFrom, datePublishedTo, dateModifiedFrom, dateModifiedTo } =
-    params;
+  const {
+    keywords,
+    types,
+    organism,
+    datePublishedFrom,
+    datePublishedTo,
+    dateModifiedFrom,
+    dateModifiedTo,
+  } = params;
   const {
     moveToEntryRoot,
     changeKeywords,
+    changeOrganism,
     setDBTypes,
     changeDateModifiedRange,
     changeDatePublishedRange,
@@ -37,6 +51,12 @@ export const QueryBuilder: FC<Props> = ({ currentType, update, params }) => {
   return (
     <aside className={wrapperClasses}>
       <KeywordInput value={keywords ?? []} update={changeKeywords} />
+      <OrganismFacetSelector
+        currentType={currentType}
+        params={params}
+        value={organism ?? null}
+        update={changeOrganism}
+      />
       {!currentType && (
         <TypeSelector
           params={params as AllSearchParams}
@@ -61,6 +81,26 @@ export const QueryBuilder: FC<Props> = ({ currentType, update, params }) => {
       />
     </aside>
   );
+};
+
+const OrganismFacetSelector = ({
+  currentType,
+  params,
+  value,
+  update,
+}: {
+  currentType: DBType | null;
+  params: AnySearchParams;
+  value: string | null;
+  update: UpdateSearchFunctions["changeOrganism"];
+}) => {
+  const { data } = useQuery({
+    queryKey: makeOrganismFacetQueryKey(currentType, params),
+    queryFn: () => fetchOrganismFacets(currentType, params),
+    placeholderData: (previousData) => previousData,
+  });
+
+  return <OrganismSelector value={value} items={data ?? []} update={update} />;
 };
 
 const BioProjectQueries = ({

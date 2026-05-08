@@ -10,10 +10,10 @@ describe("parseParams", () => {
     expect(result.facets).toBe("type");
   });
 
-  it("does not serialize types for facet count requests", () => {
-    const result = parseParams({ types: ["bioproject"] }, { facets: ["type"] });
+  it("serializes types when the caller preserves them", () => {
+    const result = parseParams({ types: ["bioproject", "biosample"] }, { facets: ["organism"] });
 
-    expect(result.types).toBeUndefined();
+    expect(result.types).toBe("bioproject,biosample");
   });
 
   it("keeps base filters", () => {

@@ -34,6 +34,7 @@ export const HasSearch = {
       const [searchParams, setParams] = useState<AnySearchParams>({
         types: ["biosample", "sra-analysis"],
         keywords: ["hogemoge", "mogemoge"],
+        organism: "562",
       });
       const removeParamFunc = (key: AnySearchParamsKey | AnySearchParamsKey[], v: string) => {
         setParams((prev) => {

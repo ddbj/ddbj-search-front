@@ -1,0 +1,94 @@
+import type { BaseFacetListResponse, FacetItem } from "@/api/facets/base.ts";
+import {
+  API_PATH_BIOSAMPLE_FACET_LIST,
+  API_PATH_JGA_DAC_FACET_LIST,
+  API_PATH_JGA_DATASET_FACET_LIST,
+  API_PATH_JGA_POLICY_FACET_LIST,
+  API_PATH_JGA_STUDY_FACET_LIST,
+  API_PATH_SRA_ANALYSIS_FACET_LIST,
+  API_PATH_SRA_EXPERIMENT_FACET_LIST,
+  API_PATH_SRA_RUN_FACET_LIST,
+  API_PATH_SRA_SAMPLE_FACET_LIST,
+  API_PATH_SRA_STUDY_FACET_LIST,
+  API_PATH_SRA_SUBMISSION_FACET_LIST,
+} from "@/api/paths.ts";
+import { dbTypes, type DBType } from "@/consts/db.ts";
+import { fetchAllFacets } from "@/fetch/facets/fetchAllFacets.ts";
+import { fetchBioProjectFacets } from "@/fetch/facets/fetchBioProjectFacets.ts";
+import { parseBaseFacetParams } from "@/fetch/utils/parseBaseFacetParams.ts";
+import type { AllSearchParams } from "@/schema/search/all.ts";
+import type { AnySearchParams } from "@/schema/search/any.ts";
+import type { BioprojectSearchParams } from "@/schema/search/bioProject.ts";
+
+const organismFacetOptions = { facets: ["organism"] };
+
+const organismFacetPathByType: Record<Exclude<DBType, "bioproject">, string> = {
+  [dbTypes.biosample]: API_PATH_BIOSAMPLE_FACET_LIST,
+  [dbTypes["sra-run"]]: API_PATH_SRA_RUN_FACET_LIST,
+  [dbTypes["sra-experiment"]]: API_PATH_SRA_EXPERIMENT_FACET_LIST,
+  [dbTypes["sra-sample"]]: API_PATH_SRA_SAMPLE_FACET_LIST,
+  [dbTypes["sra-analysis"]]: API_PATH_SRA_ANALYSIS_FACET_LIST,
+  [dbTypes["sra-submission"]]: API_PATH_SRA_SUBMISSION_FACET_LIST,
+  [dbTypes["sra-study"]]: API_PATH_SRA_STUDY_FACET_LIST,
+  [dbTypes["jga-dataset"]]: API_PATH_JGA_DATASET_FACET_LIST,
+  [dbTypes["jga-study"]]: API_PATH_JGA_STUDY_FACET_LIST,
+  [dbTypes["jga-policy"]]: API_PATH_JGA_POLICY_FACET_LIST,
+  [dbTypes["jga-dac"]]: API_PATH_JGA_DAC_FACET_LIST,
+};
+
+export const fetchOrganismFacets = async (
+  currentType: DBType | null,
+  params: AnySearchParams,
+): Promise<FacetItem[]> => {
+  const facetParams = makeOrganismFacetParams(params);
+
+  if (!currentType) {
+    const data = await fetchAllFacets(facetParams as AllSearchParams, organismFacetOptions);
+    return data.facets.organism ?? [];
+  }
+
+  if (currentType === dbTypes.bioproject) {
+    const data = await fetchBioProjectFacets(
+      facetParams as BioprojectSearchParams,
+      organismFacetOptions,
+    );
+    return data.facets.organism ?? [];
+  }
+
+  return fetchBaseOrganismFacets(organismFacetPathByType[currentType], facetParams);
+};
+
+export const makeOrganismFacetParams = (params: AnySearchParams): AnySearchParams => {
+  const { organism: _organism, page: _page, perPage: _perPage, ...facetParams } = params;
+  return facetParams;
+};
+
+export const makeOrganismFacetQueryKey = (currentType: DBType | null, params: AnySearchParams) => [
+  "fetchOrganismFacets",
+  currentType ?? "all",
+  ...Object.entries(makeOrganismFacetParams(params)),
+];
+
+const fetchBaseOrganismFacets = async (
+  path: string,
+  params: AnySearchParams,
+): Promise<FacetItem[]> => {
+  const searchParams = parseBaseOrganismFacetParams(params);
+  const response = await fetch(`${path}?${new URLSearchParams(searchParams)}`, {
+    method: "GET",
+  });
+  const data = (await response.json()) as BaseFacetListResponse;
+  return data.facets.organism ?? [];
+};
+
+const parseBaseOrganismFacetParams = (params: AnySearchParams): Record<string, string> => ({
+  ...parseBaseFacetParams(makeOrganismFacetParams(params)),
+  facets: "organism",
+});
+
+// eslint-disable-next-line react-refresh/only-export-components -- Test helper stays colocated with organism facet routing logic.
+export const __TEST__fetchOrganismFacets = {
+  makeOrganismFacetParams,
+  makeOrganismFacetQueryKey,
+  parseBaseOrganismFacetParams,
+};
