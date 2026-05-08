@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, fn } from "storybook/test";
 import type { BaseFacetListResponse } from "@/api/facets/base.ts";
 import { OrganismSelector } from "@/features/searchResult/queryBuilder/controls/OrganismSelector.tsx";
+import { sleep } from "@/utils/sleep.ts";
 
 const mockUpdateOrganism = fn((_organism: string | null) => {});
 
@@ -85,6 +86,9 @@ export const ToggleSelection = {
 
     await userEvent.click(checkbox);
 
+    await expect(checkbox).toBeChecked();
+    await expect(mockUpdateOrganism).toHaveBeenCalledTimes(0);
+    await sleep(300);
     await expect(mockUpdateOrganism).toHaveBeenCalledTimes(1);
     await expect(mockUpdateOrganism).toHaveBeenLastCalledWith("562");
   },
@@ -102,6 +106,9 @@ export const ClearSelection = {
 
     await userEvent.click(checkbox);
 
+    await expect(checkbox).not.toBeChecked();
+    await expect(mockUpdateOrganism).toHaveBeenCalledTimes(0);
+    await sleep(300);
     await expect(mockUpdateOrganism).toHaveBeenCalledTimes(1);
     await expect(mockUpdateOrganism).toHaveBeenLastCalledWith(null);
   },

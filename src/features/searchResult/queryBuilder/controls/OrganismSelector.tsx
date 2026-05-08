@@ -1,5 +1,6 @@
 import { type FC, useMemo, useState } from "react";
 import type { FacetItem } from "@/api/facets/base.ts";
+import { useDebouncedUiValue } from "@/features/searchResult/queryBuilder/hooks/useDebouncedUiValue.ts";
 import { CheckboxText } from "@/features/searchResult/queryBuilder/premitives/CheckboxText.tsx";
 import { TextInput } from "@/features/searchResult/queryBuilder/premitives/TextInput.tsx";
 import { formatNumber } from "@/utils/formatNumber.ts";
@@ -16,6 +17,7 @@ const titleClasses = "text-sm font-medium leading-5 text-gray-700";
 const listClasses = "flex flex-col gap-1";
 
 export const OrganismSelector: FC<Props> = ({ value, items, update }) => {
+  const { uiValue, setUiValue } = useDebouncedUiValue(value, update);
   const [filterValue, setFilterValue] = useState("");
   const filteredItems = useMemo(() => {
     return filterOrganismItems(items, filterValue);
@@ -34,7 +36,7 @@ export const OrganismSelector: FC<Props> = ({ value, items, update }) => {
       </div>
       <div className={listClasses}>
         {filteredItems.map((item) => {
-          const isSelected = value === item.value;
+          const isSelected = uiValue === item.value;
           return (
             <CheckboxText
               key={item.value}
@@ -42,7 +44,7 @@ export const OrganismSelector: FC<Props> = ({ value, items, update }) => {
               value={item.value}
               isSelected={isSelected}
               setIsSelected={(nextIsSelected) => {
-                update(nextIsSelected ? item.value : null);
+                setUiValue(nextIsSelected ? item.value : null);
               }}
             />
           );
