@@ -7,6 +7,7 @@ import { Pagination } from "@/features/searchResult/result/Pagination.tsx";
 import { parseResultCardProps } from "@/features/searchResult/result/resultCardUtils.ts";
 import { ResultInfo } from "@/features/searchResult/result/ResultInfo.tsx";
 import { ResultList } from "@/features/searchResult/result/ResultList.tsx";
+import { useMinimumSkeletonLoading } from "@/features/searchResult/result/useMinimumSkeletonLoading.ts";
 import { type BreadcrumbsPath } from "@/features/shared/Breadcrumbs.tsx";
 import { GlobalHeader } from "@/features/shared/GlobalHeader.tsx";
 import type { AnySearchParams } from "@/schema/search/any.ts";
@@ -27,6 +28,7 @@ export const SearchResultLayout: FC<Props> = ({
   isLoading = false,
 }) => {
   const pagination = data.pagination;
+  const isSkeletonLoading = useMinimumSkeletonLoading(isLoading);
   const breadcrumbsPaths: BreadcrumbsPath[] = useMemo(() => {
     return entryType
       ? [{ label: "Entries", to: "/entry" }, { label: dbLabels[entryType] }]
@@ -52,15 +54,15 @@ export const SearchResultLayout: FC<Props> = ({
               currentPage={pagination?.page ?? 1}
               perPage={pagination?.perPage ?? 20}
               itemCount={pagination?.total ?? 0}
-              isLoading={isLoading}
+              isLoading={isSkeletonLoading}
             />
           </aside>
           <div className={"flex min-w-0 flex-1 flex-col gap-8 py-4"}>
             <ResultList
               data={(data?.items ?? []).map((item) => parseResultCardProps(item))}
-              isLoading={isLoading}
+              isLoading={isSkeletonLoading}
             />
-            {!isLoading && (
+            {!isSkeletonLoading && (
               <Pagination
                 searchParams={params}
                 current={pagination?.page ?? 1}
