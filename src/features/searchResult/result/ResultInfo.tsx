@@ -15,6 +15,7 @@ type Props = {
   itemCount: number;
   perPage: number;
   currentPage: number;
+  isLoading?: boolean;
 };
 
 const wrapperClasses = clsx(
@@ -23,6 +24,16 @@ const wrapperClasses = clsx(
 
 const headerClasses = clsx("flex flex-col gap-3 md:flex-row md:items-start md:justify-between");
 
+const countPlaceholderClasses = clsx(
+  "mx-1 inline-block h-4 animate-pulse rounded-sm bg-gray-100 align-middle",
+);
+
+const CountPlaceholder: FC<{ widthClassName: string }> = ({ widthClassName }) => {
+  return (
+    <span aria-label="Loading count" className={clsx(countPlaceholderClasses, widthClassName)} />
+  );
+};
+
 export const ResultInfo: FC<Props> = ({
   searchParams,
   removeParamFunc,
@@ -30,6 +41,7 @@ export const ResultInfo: FC<Props> = ({
   itemCount,
   perPage,
   currentPage,
+  isLoading = false,
 }) => {
   const totalPages = getTotalPages(itemCount, perPage);
   return (
@@ -38,9 +50,12 @@ export const ResultInfo: FC<Props> = ({
       <div className={wrapperClasses}>
         <div className={headerClasses}>
           <p className="text-sm leading-6 text-gray-700">
-            Found {formatNumber(itemCount)} entries / Displaying {currentPage} of{" "}
-            {formatNumber(totalPages)} pages
-            {itemCount > MAX_ENTRIES && (
+            Found {isLoading ? <CountPlaceholder widthClassName="w-16" /> : formatNumber(itemCount)}{" "}
+            entries / Displaying{" "}
+            {isLoading ? <CountPlaceholder widthClassName="w-6" /> : currentPage} of{" "}
+            {isLoading ? <CountPlaceholder widthClassName="w-10" /> : formatNumber(totalPages)}{" "}
+            pages
+            {!isLoading && itemCount > MAX_ENTRIES && (
               <>
                 <br />
                 <span>

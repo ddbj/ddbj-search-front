@@ -16,9 +16,16 @@ type Props = {
   params: AnySearchParams;
   entryType: DBType | null;
   data: EntryListResponse;
+  isLoading?: boolean;
 };
 
-export const SearchResultLayout: FC<Props> = ({ entryType, updateFunctions, params, data }) => {
+export const SearchResultLayout: FC<Props> = ({
+  entryType,
+  updateFunctions,
+  params,
+  data,
+  isLoading = false,
+}) => {
   const pagination = data.pagination;
   const breadcrumbsPaths: BreadcrumbsPath[] = useMemo(() => {
     return entryType
@@ -45,16 +52,22 @@ export const SearchResultLayout: FC<Props> = ({ entryType, updateFunctions, para
               currentPage={pagination?.page ?? 1}
               perPage={pagination?.perPage ?? 20}
               itemCount={pagination?.total ?? 0}
+              isLoading={isLoading}
             />
           </aside>
           <div className={"flex min-w-0 flex-1 flex-col gap-8 py-4"}>
-            <ResultList data={(data?.items ?? []).map((item) => parseResultCardProps(item))} />
-            <Pagination
-              searchParams={params}
-              current={pagination?.page ?? 1}
-              itemCount={pagination?.total ?? 0}
-              perPage={pagination?.perPage ?? 20}
+            <ResultList
+              data={(data?.items ?? []).map((item) => parseResultCardProps(item))}
+              isLoading={isLoading}
             />
+            {!isLoading && (
+              <Pagination
+                searchParams={params}
+                current={pagination?.page ?? 1}
+                itemCount={pagination?.total ?? 0}
+                perPage={pagination?.perPage ?? 20}
+              />
+            )}
           </div>
         </div>
       </div>

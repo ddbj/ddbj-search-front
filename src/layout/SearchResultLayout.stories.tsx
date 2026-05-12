@@ -141,6 +141,15 @@ const bioProjectData: EntryListResponse = {
   ],
 };
 
+const loadingData: EntryListResponse = {
+  pagination: {
+    page: 1,
+    perPage: 10,
+    total: 0,
+  },
+  items: [],
+};
+
 const makeQueryClient = (organismItems: FacetItem[] = organismFacetData) => {
   const queryClient = new QueryClient({
     defaultOptions: {
@@ -210,6 +219,19 @@ export const AllWithoutOrganismFacet = {
   play: async ({ canvas }) => {
     await expect(await canvas.findByRole("heading", { name: "Types" })).toBeVisible();
     await expect(canvas.queryByRole("heading", { name: "Organism" })).not.toBeInTheDocument();
+  },
+} satisfies Story;
+export const Loading = {
+  args: {
+    data: loadingData,
+    isLoading: true,
+  },
+  play: async ({ canvas }) => {
+    await expect(
+      await canvas.findAllByRole("status", { name: "Loading search result" }),
+    ).toHaveLength(3);
+    await expect(await canvas.findByRole("button", { name: "Sort search results" })).toBeVisible();
+    await expect(canvas.queryByText("Prev")).not.toBeInTheDocument();
   },
 } satisfies Story;
 export const BioProject = {
