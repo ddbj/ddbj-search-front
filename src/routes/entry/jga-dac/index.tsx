@@ -1,14 +1,13 @@
-import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
+import { queryOptions } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { zodValidator } from "@tanstack/zod-adapter";
-import type { ComponentProps } from "react";
 import { API_PATH_JGA_DAC_LIST } from "@/api/paths.ts";
 import { dbTypes } from "@/consts/db.ts";
 import { useUpdateSearchFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 import { fetchJgaDacs } from "@/fetch/entries/fetchJgaDacEntries.ts";
-import { SearchResultLayout } from "@/layout/SearchResultLayout.tsx";
 import type { AnySearchParams } from "@/schema/search/any.ts";
 import { jgaDacSearchSchema } from "@/schema/search/jgaDac.ts";
+import { EntryListRouteContent } from "../-entryListRouteContent.tsx";
 
 const makeQuery = (params: AnySearchParams) => {
   return queryOptions({
@@ -21,20 +20,16 @@ type SearchParams = ReturnType<typeof Route.useSearch>;
 export const Route = createFileRoute("/entry/jga-dac/")({
   component: PageComponent,
   validateSearch: zodValidator(jgaDacSearchSchema),
-  loaderDeps: ({ search }) => ({ ...search }),
-  loader: async ({ context, deps }) => await context.queryClient.ensureQueryData(makeQuery(deps)),
 });
 
 function PageComponent() {
   const search = Route.useSearch();
-  const query = makeQuery(search);
-  const { data } = useSuspenseQuery(query);
-
-  const props = {
-    entryType: dbTypes["jga-dac"],
-    params: search,
-    updateFunctions: useUpdateSearchFunctions<SearchParams>(Route.useNavigate()),
-    data,
-  } satisfies ComponentProps<typeof SearchResultLayout>;
-  return <SearchResultLayout {...props} />;
+  return (
+    <EntryListRouteContent
+      entryType={dbTypes["jga-dac"]}
+      params={search}
+      updateFunctions={useUpdateSearchFunctions<SearchParams>(Route.useNavigate())}
+      queryOptions={makeQuery(search)}
+    />
+  );
 }
