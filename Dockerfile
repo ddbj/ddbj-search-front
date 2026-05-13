@@ -12,7 +12,7 @@ LABEL org.opencontainers.image.title="ddbj-search-front" \
 RUN corepack enable
 
 WORKDIR /app
-COPY package.json pnpm-lock.yaml ./
+COPY package.json pnpm-lock.yaml .npmrc ./
 
 ENV PNPM_STORE_DIR=/app/.pnpm-store
 RUN pnpm install --frozen-lockfile

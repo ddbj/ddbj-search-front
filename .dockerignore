@@ -1,6 +1,7 @@
 # Ignore everything
 **
 
+!.npmrc
 !.storybook
 !index.html
 !package.json
