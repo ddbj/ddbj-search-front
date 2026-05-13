@@ -30,6 +30,8 @@
     - 例: `TypeSelector.stories.tsx`
   - **ルート定義 (TanStack Router)**: file-based routeの規則に合わせた名前を使う。
     - 例: `status.tsx`, `index.tsx`, `$identifier.tsx`, `sra-study/index.tsx`
+  - **ルート配下の非ルートファイル (TanStack Router)**: route treeに含めないroute固有の共有実装は、TanStack Routerのfile-based routing規則に合わせて先頭に `-` を付けてよい。
+    - 例: `src/routes/entry/-entryListRouteContent.tsx`, `src/routes/entry/-useEntryListRouteQuery.ts`
 
 ## API関連
 
