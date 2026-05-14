@@ -12,11 +12,11 @@ describe("parseParams", () => {
 
   it("serializes types when the caller preserves them", () => {
     const result = parseParams(
-      { types: ["bioproject", "biosample", "gea"] },
+      { types: ["bioproject", "biosample", "gea", "metabobank"] },
       { facets: ["organism"] },
     );
 
-    expect(result.types).toBe("bioproject,biosample,gea");
+    expect(result.types).toBe("bioproject,biosample,gea,metabobank");
   });
 
   it("keeps base filters", () => {

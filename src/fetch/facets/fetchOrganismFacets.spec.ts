@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { API_PATH_GEA_FACET_LIST } from "@/api/paths.ts";
+import { API_PATH_GEA_FACET_LIST, API_PATH_METABOBANK_FACET_LIST } from "@/api/paths.ts";
 import { dbTypes } from "@/consts/db.ts";
 import {
   __TEST__fetchOrganismFacets,
@@ -89,6 +89,36 @@ describe("fetchOrganismFacets", () => {
 
     expect(mockFetch).toHaveBeenCalledWith(
       `${API_PATH_GEA_FACET_LIST}?keywords=human&facets=organism`,
+      { method: "GET" },
+    );
+    expect(result).toEqual([{ label: "Homo sapiens", value: "9606", count: 1 }]);
+
+    vi.unstubAllGlobals();
+  });
+
+  it("calls the MetaboBank facet endpoint for metabobank", async () => {
+    const mockFetch = vi.fn().mockResolvedValue(
+      new Response(
+        JSON.stringify({
+          facets: {
+            organism: [{ label: "Homo sapiens", value: "9606", count: 1 }],
+          },
+        }),
+        {
+          status: 200,
+          headers: {
+            "content-type": "application/json",
+          },
+        },
+      ),
+    );
+
+    vi.stubGlobal("fetch", mockFetch);
+
+    const result = await fetchOrganismFacets(dbTypes.metabobank, { keywords: ["human"] });
+
+    expect(mockFetch).toHaveBeenCalledWith(
+      `${API_PATH_METABOBANK_FACET_LIST}?keywords=human&facets=organism`,
       { method: "GET" },
     );
     expect(result).toEqual([{ label: "Homo sapiens", value: "9606", count: 1 }]);

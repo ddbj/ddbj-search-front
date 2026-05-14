@@ -8,6 +8,7 @@ import {
   API_PATH_JGA_DATASET_LIST,
   API_PATH_JGA_POLICY_LIST,
   API_PATH_JGA_STUDY_LIST,
+  API_PATH_METABOBANK_LIST,
   API_PATH_SRA_ANALYSIS_LIST,
   API_PATH_SRA_EXPERIMENT_LIST,
   API_PATH_SRA_RUN_LIST,
@@ -23,6 +24,7 @@ import { fetchJgaDacs } from "@/fetch/entries/fetchJgaDacEntries.ts";
 import { fetchJgaDatasets } from "@/fetch/entries/fetchJgaDatasetEntries.ts";
 import { fetchJgaPolicies } from "@/fetch/entries/fetchJgaPolicyEntries.ts";
 import { fetchJgaStudies } from "@/fetch/entries/fetchJgaStudyEntries.ts";
+import { fetchMetaboBankEntries } from "@/fetch/entries/fetchMetaboBankEntries.ts";
 import { fetchSraAnalyses } from "@/fetch/entries/fetchSraAnalysisEntries.ts";
 import { fetchSraExperiments } from "@/fetch/entries/fetchSraExperimentEntries.ts";
 import { fetchSraRuns } from "@/fetch/entries/fetchSraRunEntries.ts";
@@ -45,6 +47,7 @@ const cases: Case[] = [
   { name: "jga-dataset", basePath: API_PATH_JGA_DATASET_LIST, fn: fetchJgaDatasets },
   { name: "jga-policy", basePath: API_PATH_JGA_POLICY_LIST, fn: fetchJgaPolicies },
   { name: "jga-study", basePath: API_PATH_JGA_STUDY_LIST, fn: fetchJgaStudies },
+  { name: "metabobank", basePath: API_PATH_METABOBANK_LIST, fn: fetchMetaboBankEntries },
   { name: "sra-analysis", basePath: API_PATH_SRA_ANALYSIS_LIST, fn: fetchSraAnalyses },
   { name: "sra-experiment", basePath: API_PATH_SRA_EXPERIMENT_LIST, fn: fetchSraExperiments },
   { name: "sra-run", basePath: API_PATH_SRA_RUN_LIST, fn: fetchSraRuns },

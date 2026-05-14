@@ -6,6 +6,7 @@ import type { JgaDacSearchParams } from "@/schema/search/jgaDac.ts";
 import type { JgaDatasetSearchParams } from "@/schema/search/jgaDataset.ts";
 import type { JgaPolicySearchParams } from "@/schema/search/jgaPolicy.ts";
 import type { JgaStudySearchParams } from "@/schema/search/jgaStudy.ts";
+import type { MetaboBankSearchParams } from "@/schema/search/metaboBank.ts";
 import type { SraAnalysisSearchParams } from "@/schema/search/sraAnalysis.ts";
 import type { SraExperimentSearchParams } from "@/schema/search/sraExperiment.ts";
 import type { SraRunSearchParams } from "@/schema/search/sraRun.ts";
@@ -18,6 +19,7 @@ export type SearchParams =
   | BioprojectSearchParams
   | BiosampleSearchParams
   | GeaSearchParams
+  | MetaboBankSearchParams
   | SraRunSearchParams
   | SraExperimentSearchParams
   | SraSampleSearchParams
