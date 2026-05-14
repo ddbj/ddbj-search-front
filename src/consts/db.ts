@@ -11,6 +11,7 @@ export const dbTypes = {
   "jga-study": "jga-study",
   "jga-policy": "jga-policy",
   "jga-dac": "jga-dac",
+  gea: "gea",
 } as const;
 
 const umbrellaBioProject = {
@@ -36,6 +37,7 @@ export const dbLabels: { [K in DBType]: string } = {
   "jga-study": "JGA Study",
   "jga-policy": "JGA Policy",
   "jga-dac": "JGA DAC",
+  gea: "GEA",
 } as const;
 export type DBLabel = (typeof dbLabels)[DBType];
 

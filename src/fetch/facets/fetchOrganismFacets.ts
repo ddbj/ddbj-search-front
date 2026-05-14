@@ -1,6 +1,7 @@
 import type { BaseFacetListResponse, FacetItem } from "@/api/facets/base.ts";
 import {
   API_PATH_BIOSAMPLE_FACET_LIST,
+  API_PATH_GEA_FACET_LIST,
   API_PATH_JGA_DAC_FACET_LIST,
   API_PATH_JGA_DATASET_FACET_LIST,
   API_PATH_JGA_POLICY_FACET_LIST,
@@ -24,6 +25,7 @@ const organismFacetOptions = { facets: ["organism"] };
 
 const organismFacetPathByType: Record<Exclude<DBType, "bioproject">, string> = {
   [dbTypes.biosample]: API_PATH_BIOSAMPLE_FACET_LIST,
+  [dbTypes.gea]: API_PATH_GEA_FACET_LIST,
   [dbTypes["sra-run"]]: API_PATH_SRA_RUN_FACET_LIST,
   [dbTypes["sra-experiment"]]: API_PATH_SRA_EXPERIMENT_FACET_LIST,
   [dbTypes["sra-sample"]]: API_PATH_SRA_SAMPLE_FACET_LIST,
