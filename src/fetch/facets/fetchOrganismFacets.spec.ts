@@ -1,5 +1,10 @@
-import { describe, expect, it } from "vitest";
-import { __TEST__fetchOrganismFacets } from "@/fetch/facets/fetchOrganismFacets.ts";
+import { describe, expect, it, vi } from "vitest";
+import { API_PATH_GEA_FACET_LIST } from "@/api/paths.ts";
+import { dbTypes } from "@/consts/db.ts";
+import {
+  __TEST__fetchOrganismFacets,
+  fetchOrganismFacets,
+} from "@/fetch/facets/fetchOrganismFacets.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
 
 const { makeOrganismFacetParams, makeOrganismFacetQueryKey, parseBaseOrganismFacetParams } =
@@ -57,5 +62,37 @@ describe("parseBaseOrganismFacetParams", () => {
       dateModifiedTo: "2024-02-29",
       facets: "organism",
     });
+  });
+});
+
+describe("fetchOrganismFacets", () => {
+  it("calls the GEA facet endpoint for gea", async () => {
+    const mockFetch = vi.fn().mockResolvedValue(
+      new Response(
+        JSON.stringify({
+          facets: {
+            organism: [{ label: "Homo sapiens", value: "9606", count: 1 }],
+          },
+        }),
+        {
+          status: 200,
+          headers: {
+            "content-type": "application/json",
+          },
+        },
+      ),
+    );
+
+    vi.stubGlobal("fetch", mockFetch);
+
+    const result = await fetchOrganismFacets(dbTypes.gea, { keywords: ["human"] });
+
+    expect(mockFetch).toHaveBeenCalledWith(
+      `${API_PATH_GEA_FACET_LIST}?keywords=human&facets=organism`,
+      { method: "GET" },
+    );
+    expect(result).toEqual([{ label: "Homo sapiens", value: "9606", count: 1 }]);
+
+    vi.unstubAllGlobals();
   });
 });

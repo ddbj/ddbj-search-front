@@ -2,6 +2,7 @@ import { describe, expect, it, vi } from "vitest";
 import {
   API_PATH_BIOPROJECT_LIST,
   API_PATH_BIOSAMPLE_LIST,
+  API_PATH_GEA_LIST,
   API_PATH_JGA_DAC_LIST,
   API_PATH_JGA_DATASET_LIST,
   API_PATH_JGA_POLICY_LIST,
@@ -15,6 +16,7 @@ import {
 } from "@/api/paths.ts";
 import { fetchBioProjectDetail } from "@/fetch/detail/fetchBioProjectDetail.ts";
 import { fetchBioSampleDetail } from "@/fetch/detail/fetchBioSampleDetail.ts";
+import { fetchGeaDetail } from "@/fetch/detail/fetchGeaDetail.ts";
 import { fetchJgaDacDetail } from "@/fetch/detail/fetchJgaDacDetail.ts";
 import { fetchJgaDatasetDetail } from "@/fetch/detail/fetchJgaDatasetDetail.ts";
 import { fetchJgaPolicyDetail } from "@/fetch/detail/fetchJgaPolicyDetail.ts";
@@ -42,6 +44,11 @@ const cases: Case[] = [
     name: "biosample",
     basePath: API_PATH_BIOSAMPLE_LIST,
     fn: fetchBioSampleDetail,
+  },
+  {
+    name: "gea",
+    basePath: API_PATH_GEA_LIST,
+    fn: fetchGeaDetail,
   },
   {
     name: "jga-dac",

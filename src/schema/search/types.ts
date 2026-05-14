@@ -1,6 +1,7 @@
 import type { AllSearchParams } from "@/schema/search/all.ts";
 import type { BioprojectSearchParams } from "@/schema/search/bioProject.ts";
 import type { BiosampleSearchParams } from "@/schema/search/bioSample.ts";
+import type { GeaSearchParams } from "@/schema/search/gea.ts";
 import type { JgaDacSearchParams } from "@/schema/search/jgaDac.ts";
 import type { JgaDatasetSearchParams } from "@/schema/search/jgaDataset.ts";
 import type { JgaPolicySearchParams } from "@/schema/search/jgaPolicy.ts";
@@ -16,6 +17,7 @@ export type SearchParams =
   | AllSearchParams
   | BioprojectSearchParams
   | BiosampleSearchParams
+  | GeaSearchParams
   | SraRunSearchParams
   | SraExperimentSearchParams
   | SraSampleSearchParams

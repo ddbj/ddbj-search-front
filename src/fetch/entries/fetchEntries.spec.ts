@@ -3,6 +3,7 @@ import {
   API_PATH_ALL_ENTRIES_LIST,
   API_PATH_BIOPROJECT_LIST,
   API_PATH_BIOSAMPLE_LIST,
+  API_PATH_GEA_LIST,
   API_PATH_JGA_DAC_LIST,
   API_PATH_JGA_DATASET_LIST,
   API_PATH_JGA_POLICY_LIST,
@@ -17,6 +18,7 @@ import {
 import { fetchAllEntries } from "@/fetch/entries/fetchAllEntries.ts";
 import { fetchBioProjects } from "@/fetch/entries/fetchBioProjectEntries.ts";
 import { fetchBioSamples } from "@/fetch/entries/fetchBioSampleEntries.ts";
+import { fetchGeaEntries } from "@/fetch/entries/fetchGeaEntries.ts";
 import { fetchJgaDacs } from "@/fetch/entries/fetchJgaDacEntries.ts";
 import { fetchJgaDatasets } from "@/fetch/entries/fetchJgaDatasetEntries.ts";
 import { fetchJgaPolicies } from "@/fetch/entries/fetchJgaPolicyEntries.ts";
@@ -38,6 +40,7 @@ const cases: Case[] = [
   { name: "all", basePath: API_PATH_ALL_ENTRIES_LIST, fn: fetchAllEntries },
   { name: "bioproject", basePath: API_PATH_BIOPROJECT_LIST, fn: fetchBioProjects },
   { name: "biosample", basePath: API_PATH_BIOSAMPLE_LIST, fn: fetchBioSamples },
+  { name: "gea", basePath: API_PATH_GEA_LIST, fn: fetchGeaEntries },
   { name: "jga-dac", basePath: API_PATH_JGA_DAC_LIST, fn: fetchJgaDacs },
   { name: "jga-dataset", basePath: API_PATH_JGA_DATASET_LIST, fn: fetchJgaDatasets },
   { name: "jga-policy", basePath: API_PATH_JGA_POLICY_LIST, fn: fetchJgaPolicies },
