@@ -24,6 +24,7 @@ import { Route as EntryJgaStudyIndexRouteImport } from './routes/entry/jga-study
 import { Route as EntryJgaPolicyIndexRouteImport } from './routes/entry/jga-policy/index'
 import { Route as EntryJgaDatasetIndexRouteImport } from './routes/entry/jga-dataset/index'
 import { Route as EntryJgaDacIndexRouteImport } from './routes/entry/jga-dac/index'
+import { Route as EntryGeaIndexRouteImport } from './routes/entry/gea/index'
 import { Route as EntryBiosampleIndexRouteImport } from './routes/entry/biosample/index'
 import { Route as EntryBioprojectIndexRouteImport } from './routes/entry/bioproject/index'
 import { Route as EntrySraSubmissionIdentifierRouteImport } from './routes/entry/sra-submission/$identifier'
@@ -36,6 +37,7 @@ import { Route as EntryJgaStudyIdentifierRouteImport } from './routes/entry/jga-
 import { Route as EntryJgaPolicyIdentifierRouteImport } from './routes/entry/jga-policy/$identifier'
 import { Route as EntryJgaDatasetIdentifierRouteImport } from './routes/entry/jga-dataset/$identifier'
 import { Route as EntryJgaDacIdentifierRouteImport } from './routes/entry/jga-dac/$identifier'
+import { Route as EntryGeaIdentifierRouteImport } from './routes/entry/gea/$identifier'
 import { Route as EntryBiosampleIdentifierRouteImport } from './routes/entry/biosample/$identifier'
 import { Route as EntryBioprojectIdentifierRouteImport } from './routes/entry/bioproject/$identifier'
 
@@ -114,6 +116,11 @@ const EntryJgaDacIndexRoute = EntryJgaDacIndexRouteImport.update({
   path: '/entry/jga-dac/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EntryGeaIndexRoute = EntryGeaIndexRouteImport.update({
+  id: '/entry/gea/',
+  path: '/entry/gea/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EntryBiosampleIndexRoute = EntryBiosampleIndexRouteImport.update({
   id: '/entry/biosample/',
   path: '/entry/biosample/',
@@ -180,6 +187,11 @@ const EntryJgaDacIdentifierRoute = EntryJgaDacIdentifierRouteImport.update({
   path: '/entry/jga-dac/$identifier',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EntryGeaIdentifierRoute = EntryGeaIdentifierRouteImport.update({
+  id: '/entry/gea/$identifier',
+  path: '/entry/gea/$identifier',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EntryBiosampleIdentifierRoute =
   EntryBiosampleIdentifierRouteImport.update({
     id: '/entry/biosample/$identifier',
@@ -201,6 +213,7 @@ export interface FileRoutesByFullPath {
   '/entry/': typeof EntryIndexRoute
   '/entry/bioproject/$identifier': typeof EntryBioprojectIdentifierRoute
   '/entry/biosample/$identifier': typeof EntryBiosampleIdentifierRoute
+  '/entry/gea/$identifier': typeof EntryGeaIdentifierRoute
   '/entry/jga-dac/$identifier': typeof EntryJgaDacIdentifierRoute
   '/entry/jga-dataset/$identifier': typeof EntryJgaDatasetIdentifierRoute
   '/entry/jga-policy/$identifier': typeof EntryJgaPolicyIdentifierRoute
@@ -213,6 +226,7 @@ export interface FileRoutesByFullPath {
   '/entry/sra-submission/$identifier': typeof EntrySraSubmissionIdentifierRoute
   '/entry/bioproject/': typeof EntryBioprojectIndexRoute
   '/entry/biosample/': typeof EntryBiosampleIndexRoute
+  '/entry/gea/': typeof EntryGeaIndexRoute
   '/entry/jga-dac/': typeof EntryJgaDacIndexRoute
   '/entry/jga-dataset/': typeof EntryJgaDatasetIndexRoute
   '/entry/jga-policy/': typeof EntryJgaPolicyIndexRoute
@@ -232,6 +246,7 @@ export interface FileRoutesByTo {
   '/entry': typeof EntryIndexRoute
   '/entry/bioproject/$identifier': typeof EntryBioprojectIdentifierRoute
   '/entry/biosample/$identifier': typeof EntryBiosampleIdentifierRoute
+  '/entry/gea/$identifier': typeof EntryGeaIdentifierRoute
   '/entry/jga-dac/$identifier': typeof EntryJgaDacIdentifierRoute
   '/entry/jga-dataset/$identifier': typeof EntryJgaDatasetIdentifierRoute
   '/entry/jga-policy/$identifier': typeof EntryJgaPolicyIdentifierRoute
@@ -244,6 +259,7 @@ export interface FileRoutesByTo {
   '/entry/sra-submission/$identifier': typeof EntrySraSubmissionIdentifierRoute
   '/entry/bioproject': typeof EntryBioprojectIndexRoute
   '/entry/biosample': typeof EntryBiosampleIndexRoute
+  '/entry/gea': typeof EntryGeaIndexRoute
   '/entry/jga-dac': typeof EntryJgaDacIndexRoute
   '/entry/jga-dataset': typeof EntryJgaDatasetIndexRoute
   '/entry/jga-policy': typeof EntryJgaPolicyIndexRoute
@@ -264,6 +280,7 @@ export interface FileRoutesById {
   '/entry/': typeof EntryIndexRoute
   '/entry/bioproject/$identifier': typeof EntryBioprojectIdentifierRoute
   '/entry/biosample/$identifier': typeof EntryBiosampleIdentifierRoute
+  '/entry/gea/$identifier': typeof EntryGeaIdentifierRoute
   '/entry/jga-dac/$identifier': typeof EntryJgaDacIdentifierRoute
   '/entry/jga-dataset/$identifier': typeof EntryJgaDatasetIdentifierRoute
   '/entry/jga-policy/$identifier': typeof EntryJgaPolicyIdentifierRoute
@@ -276,6 +293,7 @@ export interface FileRoutesById {
   '/entry/sra-submission/$identifier': typeof EntrySraSubmissionIdentifierRoute
   '/entry/bioproject/': typeof EntryBioprojectIndexRoute
   '/entry/biosample/': typeof EntryBiosampleIndexRoute
+  '/entry/gea/': typeof EntryGeaIndexRoute
   '/entry/jga-dac/': typeof EntryJgaDacIndexRoute
   '/entry/jga-dataset/': typeof EntryJgaDatasetIndexRoute
   '/entry/jga-policy/': typeof EntryJgaPolicyIndexRoute
@@ -297,6 +315,7 @@ export interface FileRouteTypes {
     | '/entry/'
     | '/entry/bioproject/$identifier'
     | '/entry/biosample/$identifier'
+    | '/entry/gea/$identifier'
     | '/entry/jga-dac/$identifier'
     | '/entry/jga-dataset/$identifier'
     | '/entry/jga-policy/$identifier'
@@ -309,6 +328,7 @@ export interface FileRouteTypes {
     | '/entry/sra-submission/$identifier'
     | '/entry/bioproject/'
     | '/entry/biosample/'
+    | '/entry/gea/'
     | '/entry/jga-dac/'
     | '/entry/jga-dataset/'
     | '/entry/jga-policy/'
@@ -328,6 +348,7 @@ export interface FileRouteTypes {
     | '/entry'
     | '/entry/bioproject/$identifier'
     | '/entry/biosample/$identifier'
+    | '/entry/gea/$identifier'
     | '/entry/jga-dac/$identifier'
     | '/entry/jga-dataset/$identifier'
     | '/entry/jga-policy/$identifier'
@@ -340,6 +361,7 @@ export interface FileRouteTypes {
     | '/entry/sra-submission/$identifier'
     | '/entry/bioproject'
     | '/entry/biosample'
+    | '/entry/gea'
     | '/entry/jga-dac'
     | '/entry/jga-dataset'
     | '/entry/jga-policy'
@@ -359,6 +381,7 @@ export interface FileRouteTypes {
     | '/entry/'
     | '/entry/bioproject/$identifier'
     | '/entry/biosample/$identifier'
+    | '/entry/gea/$identifier'
     | '/entry/jga-dac/$identifier'
     | '/entry/jga-dataset/$identifier'
     | '/entry/jga-policy/$identifier'
@@ -371,6 +394,7 @@ export interface FileRouteTypes {
     | '/entry/sra-submission/$identifier'
     | '/entry/bioproject/'
     | '/entry/biosample/'
+    | '/entry/gea/'
     | '/entry/jga-dac/'
     | '/entry/jga-dataset/'
     | '/entry/jga-policy/'
@@ -391,6 +415,7 @@ export interface RootRouteChildren {
   EntryIndexRoute: typeof EntryIndexRoute
   EntryBioprojectIdentifierRoute: typeof EntryBioprojectIdentifierRoute
   EntryBiosampleIdentifierRoute: typeof EntryBiosampleIdentifierRoute
+  EntryGeaIdentifierRoute: typeof EntryGeaIdentifierRoute
   EntryJgaDacIdentifierRoute: typeof EntryJgaDacIdentifierRoute
   EntryJgaDatasetIdentifierRoute: typeof EntryJgaDatasetIdentifierRoute
   EntryJgaPolicyIdentifierRoute: typeof EntryJgaPolicyIdentifierRoute
@@ -403,6 +428,7 @@ export interface RootRouteChildren {
   EntrySraSubmissionIdentifierRoute: typeof EntrySraSubmissionIdentifierRoute
   EntryBioprojectIndexRoute: typeof EntryBioprojectIndexRoute
   EntryBiosampleIndexRoute: typeof EntryBiosampleIndexRoute
+  EntryGeaIndexRoute: typeof EntryGeaIndexRoute
   EntryJgaDacIndexRoute: typeof EntryJgaDacIndexRoute
   EntryJgaDatasetIndexRoute: typeof EntryJgaDatasetIndexRoute
   EntryJgaPolicyIndexRoute: typeof EntryJgaPolicyIndexRoute
@@ -522,6 +548,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EntryJgaDacIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/entry/gea/': {
+      id: '/entry/gea/'
+      path: '/entry/gea'
+      fullPath: '/entry/gea/'
+      preLoaderRoute: typeof EntryGeaIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/entry/biosample/': {
       id: '/entry/biosample/'
       path: '/entry/biosample'
@@ -606,6 +639,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EntryJgaDacIdentifierRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/entry/gea/$identifier': {
+      id: '/entry/gea/$identifier'
+      path: '/entry/gea/$identifier'
+      fullPath: '/entry/gea/$identifier'
+      preLoaderRoute: typeof EntryGeaIdentifierRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/entry/biosample/$identifier': {
       id: '/entry/biosample/$identifier'
       path: '/entry/biosample/$identifier'
@@ -631,6 +671,7 @@ const rootRouteChildren: RootRouteChildren = {
   EntryIndexRoute: EntryIndexRoute,
   EntryBioprojectIdentifierRoute: EntryBioprojectIdentifierRoute,
   EntryBiosampleIdentifierRoute: EntryBiosampleIdentifierRoute,
+  EntryGeaIdentifierRoute: EntryGeaIdentifierRoute,
   EntryJgaDacIdentifierRoute: EntryJgaDacIdentifierRoute,
   EntryJgaDatasetIdentifierRoute: EntryJgaDatasetIdentifierRoute,
   EntryJgaPolicyIdentifierRoute: EntryJgaPolicyIdentifierRoute,
@@ -643,6 +684,7 @@ const rootRouteChildren: RootRouteChildren = {
   EntrySraSubmissionIdentifierRoute: EntrySraSubmissionIdentifierRoute,
   EntryBioprojectIndexRoute: EntryBioprojectIndexRoute,
   EntryBiosampleIndexRoute: EntryBiosampleIndexRoute,
+  EntryGeaIndexRoute: EntryGeaIndexRoute,
   EntryJgaDacIndexRoute: EntryJgaDacIndexRoute,
   EntryJgaDatasetIndexRoute: EntryJgaDatasetIndexRoute,
   EntryJgaPolicyIndexRoute: EntryJgaPolicyIndexRoute,
