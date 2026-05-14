@@ -1,6 +1,7 @@
 import { countTypes } from "@/msw/handlers/count/countTypes.ts";
 import { getBioProjectDetail } from "@/msw/handlers/detail/getBioProjectDetail.ts";
 import { getBioSampleDetail } from "@/msw/handlers/detail/getBioSampleDetail.ts";
+import { getGeaDetail } from "@/msw/handlers/detail/getGeaDetail.ts";
 import { getJgaDacDetail } from "@/msw/handlers/detail/getJgaDacDetail.ts";
 import { getJgaDatasetDetail } from "@/msw/handlers/detail/getJgaDatasetDetail.ts";
 import { getJgaPolicyDetail } from "@/msw/handlers/detail/getJgaPolicyDetail.ts";
@@ -14,6 +15,7 @@ import { getSraSubmissionDetail } from "@/msw/handlers/detail/getSraSubmissionDe
 import { getAllEntryList } from "@/msw/handlers/entries/getAllEntryList.ts";
 import { getBioProjectList } from "@/msw/handlers/entries/getBioProjectList.ts";
 import { getBioSampleList } from "@/msw/handlers/entries/getBioSampleList.ts";
+import { getGeaList } from "@/msw/handlers/entries/getGeaList.ts";
 import { getJgaDacList } from "@/msw/handlers/entries/getJgaDacList.ts";
 import { getJgaDatasetList } from "@/msw/handlers/entries/getJgaDatasetList.ts";
 import { getJgaPolicyList } from "@/msw/handlers/entries/getJgaPolicyList.ts";
@@ -40,6 +42,7 @@ export const handlers = [
   getJgaStudyList,
   getJgaPolicyList,
   getJgaDacList,
+  getGeaList,
   countTypes,
 
   // details
@@ -55,4 +58,5 @@ export const handlers = [
   getJgaStudyDetail,
   getJgaPolicyDetail,
   getJgaDacDetail,
+  getGeaDetail,
 ];

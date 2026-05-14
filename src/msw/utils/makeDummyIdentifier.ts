@@ -13,6 +13,7 @@ const typePrefixes: { [key: string]: string } = {
   "jga-study": "JGAS",
   "jga-policy": "JGAP",
   "jga-dac": "JGAC",
+  gea: "GEA",
 };
 
 export const makeDummyIdentifier = (type: string, length: number = 6): string => {
