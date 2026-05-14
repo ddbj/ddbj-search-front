@@ -6,6 +6,7 @@ import { getJgaDacDetail } from "@/msw/handlers/detail/getJgaDacDetail.ts";
 import { getJgaDatasetDetail } from "@/msw/handlers/detail/getJgaDatasetDetail.ts";
 import { getJgaPolicyDetail } from "@/msw/handlers/detail/getJgaPolicyDetail.ts";
 import { getJgaStudyDetail } from "@/msw/handlers/detail/getJgaStudyDetail.ts";
+import { getMetaboBankDetail } from "@/msw/handlers/detail/getMetaboBankDetail.ts";
 import { getSraAnalysisDetail } from "@/msw/handlers/detail/getSraAnalysisDetail.ts";
 import { getSraExperimentDetail } from "@/msw/handlers/detail/getSraExperimentDetail.ts";
 import { getSraRunDetail } from "@/msw/handlers/detail/getSraRunDetail.ts";
@@ -20,6 +21,7 @@ import { getJgaDacList } from "@/msw/handlers/entries/getJgaDacList.ts";
 import { getJgaDatasetList } from "@/msw/handlers/entries/getJgaDatasetList.ts";
 import { getJgaPolicyList } from "@/msw/handlers/entries/getJgaPolicyList.ts";
 import { getJgaStudyList } from "@/msw/handlers/entries/getJgaStudyList.ts";
+import { getMetaboBankList } from "@/msw/handlers/entries/getMetaboBankList.ts";
 import { getSraAnalysisList } from "@/msw/handlers/entries/getSraAnalysisList.ts";
 import { getSraExperimentList } from "@/msw/handlers/entries/getSraExperimentList.ts";
 import { getSraRunList } from "@/msw/handlers/entries/getSraRunList.ts";
@@ -43,6 +45,7 @@ export const handlers = [
   getJgaPolicyList,
   getJgaDacList,
   getGeaList,
+  getMetaboBankList,
   countTypes,
 
   // details
@@ -59,4 +62,5 @@ export const handlers = [
   getJgaPolicyDetail,
   getJgaDacDetail,
   getGeaDetail,
+  getMetaboBankDetail,
 ];

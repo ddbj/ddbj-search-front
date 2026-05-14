@@ -14,6 +14,7 @@ const typePrefixes: { [key: string]: string } = {
   "jga-policy": "JGAP",
   "jga-dac": "JGAC",
   gea: "GEA",
+  metabobank: "MTBKS",
 };
 
 export const makeDummyIdentifier = (type: string, length: number = 6): string => {
