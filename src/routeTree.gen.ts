@@ -20,6 +20,7 @@ import { Route as EntrySraSampleIndexRouteImport } from './routes/entry/sra-samp
 import { Route as EntrySraRunIndexRouteImport } from './routes/entry/sra-run/index'
 import { Route as EntrySraExperimentIndexRouteImport } from './routes/entry/sra-experiment/index'
 import { Route as EntrySraAnalysisIndexRouteImport } from './routes/entry/sra-analysis/index'
+import { Route as EntryMetabobankIndexRouteImport } from './routes/entry/metabobank/index'
 import { Route as EntryJgaStudyIndexRouteImport } from './routes/entry/jga-study/index'
 import { Route as EntryJgaPolicyIndexRouteImport } from './routes/entry/jga-policy/index'
 import { Route as EntryJgaDatasetIndexRouteImport } from './routes/entry/jga-dataset/index'
@@ -33,6 +34,7 @@ import { Route as EntrySraSampleIdentifierRouteImport } from './routes/entry/sra
 import { Route as EntrySraRunIdentifierRouteImport } from './routes/entry/sra-run/$identifier'
 import { Route as EntrySraExperimentIdentifierRouteImport } from './routes/entry/sra-experiment/$identifier'
 import { Route as EntrySraAnalysisIdentifierRouteImport } from './routes/entry/sra-analysis/$identifier'
+import { Route as EntryMetabobankIdentifierRouteImport } from './routes/entry/metabobank/$identifier'
 import { Route as EntryJgaStudyIdentifierRouteImport } from './routes/entry/jga-study/$identifier'
 import { Route as EntryJgaPolicyIdentifierRouteImport } from './routes/entry/jga-policy/$identifier'
 import { Route as EntryJgaDatasetIdentifierRouteImport } from './routes/entry/jga-dataset/$identifier'
@@ -94,6 +96,11 @@ const EntrySraExperimentIndexRoute = EntrySraExperimentIndexRouteImport.update({
 const EntrySraAnalysisIndexRoute = EntrySraAnalysisIndexRouteImport.update({
   id: '/entry/sra-analysis/',
   path: '/entry/sra-analysis/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntryMetabobankIndexRoute = EntryMetabobankIndexRouteImport.update({
+  id: '/entry/metabobank/',
+  path: '/entry/metabobank/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EntryJgaStudyIndexRoute = EntryJgaStudyIndexRouteImport.update({
@@ -165,6 +172,12 @@ const EntrySraAnalysisIdentifierRoute =
     path: '/entry/sra-analysis/$identifier',
     getParentRoute: () => rootRouteImport,
   } as any)
+const EntryMetabobankIdentifierRoute =
+  EntryMetabobankIdentifierRouteImport.update({
+    id: '/entry/metabobank/$identifier',
+    path: '/entry/metabobank/$identifier',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const EntryJgaStudyIdentifierRoute = EntryJgaStudyIdentifierRouteImport.update({
   id: '/entry/jga-study/$identifier',
   path: '/entry/jga-study/$identifier',
@@ -218,6 +231,7 @@ export interface FileRoutesByFullPath {
   '/entry/jga-dataset/$identifier': typeof EntryJgaDatasetIdentifierRoute
   '/entry/jga-policy/$identifier': typeof EntryJgaPolicyIdentifierRoute
   '/entry/jga-study/$identifier': typeof EntryJgaStudyIdentifierRoute
+  '/entry/metabobank/$identifier': typeof EntryMetabobankIdentifierRoute
   '/entry/sra-analysis/$identifier': typeof EntrySraAnalysisIdentifierRoute
   '/entry/sra-experiment/$identifier': typeof EntrySraExperimentIdentifierRoute
   '/entry/sra-run/$identifier': typeof EntrySraRunIdentifierRoute
@@ -231,6 +245,7 @@ export interface FileRoutesByFullPath {
   '/entry/jga-dataset/': typeof EntryJgaDatasetIndexRoute
   '/entry/jga-policy/': typeof EntryJgaPolicyIndexRoute
   '/entry/jga-study/': typeof EntryJgaStudyIndexRoute
+  '/entry/metabobank/': typeof EntryMetabobankIndexRoute
   '/entry/sra-analysis/': typeof EntrySraAnalysisIndexRoute
   '/entry/sra-experiment/': typeof EntrySraExperimentIndexRoute
   '/entry/sra-run/': typeof EntrySraRunIndexRoute
@@ -251,6 +266,7 @@ export interface FileRoutesByTo {
   '/entry/jga-dataset/$identifier': typeof EntryJgaDatasetIdentifierRoute
   '/entry/jga-policy/$identifier': typeof EntryJgaPolicyIdentifierRoute
   '/entry/jga-study/$identifier': typeof EntryJgaStudyIdentifierRoute
+  '/entry/metabobank/$identifier': typeof EntryMetabobankIdentifierRoute
   '/entry/sra-analysis/$identifier': typeof EntrySraAnalysisIdentifierRoute
   '/entry/sra-experiment/$identifier': typeof EntrySraExperimentIdentifierRoute
   '/entry/sra-run/$identifier': typeof EntrySraRunIdentifierRoute
@@ -264,6 +280,7 @@ export interface FileRoutesByTo {
   '/entry/jga-dataset': typeof EntryJgaDatasetIndexRoute
   '/entry/jga-policy': typeof EntryJgaPolicyIndexRoute
   '/entry/jga-study': typeof EntryJgaStudyIndexRoute
+  '/entry/metabobank': typeof EntryMetabobankIndexRoute
   '/entry/sra-analysis': typeof EntrySraAnalysisIndexRoute
   '/entry/sra-experiment': typeof EntrySraExperimentIndexRoute
   '/entry/sra-run': typeof EntrySraRunIndexRoute
@@ -285,6 +302,7 @@ export interface FileRoutesById {
   '/entry/jga-dataset/$identifier': typeof EntryJgaDatasetIdentifierRoute
   '/entry/jga-policy/$identifier': typeof EntryJgaPolicyIdentifierRoute
   '/entry/jga-study/$identifier': typeof EntryJgaStudyIdentifierRoute
+  '/entry/metabobank/$identifier': typeof EntryMetabobankIdentifierRoute
   '/entry/sra-analysis/$identifier': typeof EntrySraAnalysisIdentifierRoute
   '/entry/sra-experiment/$identifier': typeof EntrySraExperimentIdentifierRoute
   '/entry/sra-run/$identifier': typeof EntrySraRunIdentifierRoute
@@ -298,6 +316,7 @@ export interface FileRoutesById {
   '/entry/jga-dataset/': typeof EntryJgaDatasetIndexRoute
   '/entry/jga-policy/': typeof EntryJgaPolicyIndexRoute
   '/entry/jga-study/': typeof EntryJgaStudyIndexRoute
+  '/entry/metabobank/': typeof EntryMetabobankIndexRoute
   '/entry/sra-analysis/': typeof EntrySraAnalysisIndexRoute
   '/entry/sra-experiment/': typeof EntrySraExperimentIndexRoute
   '/entry/sra-run/': typeof EntrySraRunIndexRoute
@@ -320,6 +339,7 @@ export interface FileRouteTypes {
     | '/entry/jga-dataset/$identifier'
     | '/entry/jga-policy/$identifier'
     | '/entry/jga-study/$identifier'
+    | '/entry/metabobank/$identifier'
     | '/entry/sra-analysis/$identifier'
     | '/entry/sra-experiment/$identifier'
     | '/entry/sra-run/$identifier'
@@ -333,6 +353,7 @@ export interface FileRouteTypes {
     | '/entry/jga-dataset/'
     | '/entry/jga-policy/'
     | '/entry/jga-study/'
+    | '/entry/metabobank/'
     | '/entry/sra-analysis/'
     | '/entry/sra-experiment/'
     | '/entry/sra-run/'
@@ -353,6 +374,7 @@ export interface FileRouteTypes {
     | '/entry/jga-dataset/$identifier'
     | '/entry/jga-policy/$identifier'
     | '/entry/jga-study/$identifier'
+    | '/entry/metabobank/$identifier'
     | '/entry/sra-analysis/$identifier'
     | '/entry/sra-experiment/$identifier'
     | '/entry/sra-run/$identifier'
@@ -366,6 +388,7 @@ export interface FileRouteTypes {
     | '/entry/jga-dataset'
     | '/entry/jga-policy'
     | '/entry/jga-study'
+    | '/entry/metabobank'
     | '/entry/sra-analysis'
     | '/entry/sra-experiment'
     | '/entry/sra-run'
@@ -386,6 +409,7 @@ export interface FileRouteTypes {
     | '/entry/jga-dataset/$identifier'
     | '/entry/jga-policy/$identifier'
     | '/entry/jga-study/$identifier'
+    | '/entry/metabobank/$identifier'
     | '/entry/sra-analysis/$identifier'
     | '/entry/sra-experiment/$identifier'
     | '/entry/sra-run/$identifier'
@@ -399,6 +423,7 @@ export interface FileRouteTypes {
     | '/entry/jga-dataset/'
     | '/entry/jga-policy/'
     | '/entry/jga-study/'
+    | '/entry/metabobank/'
     | '/entry/sra-analysis/'
     | '/entry/sra-experiment/'
     | '/entry/sra-run/'
@@ -420,6 +445,7 @@ export interface RootRouteChildren {
   EntryJgaDatasetIdentifierRoute: typeof EntryJgaDatasetIdentifierRoute
   EntryJgaPolicyIdentifierRoute: typeof EntryJgaPolicyIdentifierRoute
   EntryJgaStudyIdentifierRoute: typeof EntryJgaStudyIdentifierRoute
+  EntryMetabobankIdentifierRoute: typeof EntryMetabobankIdentifierRoute
   EntrySraAnalysisIdentifierRoute: typeof EntrySraAnalysisIdentifierRoute
   EntrySraExperimentIdentifierRoute: typeof EntrySraExperimentIdentifierRoute
   EntrySraRunIdentifierRoute: typeof EntrySraRunIdentifierRoute
@@ -433,6 +459,7 @@ export interface RootRouteChildren {
   EntryJgaDatasetIndexRoute: typeof EntryJgaDatasetIndexRoute
   EntryJgaPolicyIndexRoute: typeof EntryJgaPolicyIndexRoute
   EntryJgaStudyIndexRoute: typeof EntryJgaStudyIndexRoute
+  EntryMetabobankIndexRoute: typeof EntryMetabobankIndexRoute
   EntrySraAnalysisIndexRoute: typeof EntrySraAnalysisIndexRoute
   EntrySraExperimentIndexRoute: typeof EntrySraExperimentIndexRoute
   EntrySraRunIndexRoute: typeof EntrySraRunIndexRoute
@@ -518,6 +545,13 @@ declare module '@tanstack/react-router' {
       path: '/entry/sra-analysis'
       fullPath: '/entry/sra-analysis/'
       preLoaderRoute: typeof EntrySraAnalysisIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entry/metabobank/': {
+      id: '/entry/metabobank/'
+      path: '/entry/metabobank'
+      fullPath: '/entry/metabobank/'
+      preLoaderRoute: typeof EntryMetabobankIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/entry/jga-study/': {
@@ -611,6 +645,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EntrySraAnalysisIdentifierRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/entry/metabobank/$identifier': {
+      id: '/entry/metabobank/$identifier'
+      path: '/entry/metabobank/$identifier'
+      fullPath: '/entry/metabobank/$identifier'
+      preLoaderRoute: typeof EntryMetabobankIdentifierRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/entry/jga-study/$identifier': {
       id: '/entry/jga-study/$identifier'
       path: '/entry/jga-study/$identifier'
@@ -676,6 +717,7 @@ const rootRouteChildren: RootRouteChildren = {
   EntryJgaDatasetIdentifierRoute: EntryJgaDatasetIdentifierRoute,
   EntryJgaPolicyIdentifierRoute: EntryJgaPolicyIdentifierRoute,
   EntryJgaStudyIdentifierRoute: EntryJgaStudyIdentifierRoute,
+  EntryMetabobankIdentifierRoute: EntryMetabobankIdentifierRoute,
   EntrySraAnalysisIdentifierRoute: EntrySraAnalysisIdentifierRoute,
   EntrySraExperimentIdentifierRoute: EntrySraExperimentIdentifierRoute,
   EntrySraRunIdentifierRoute: EntrySraRunIdentifierRoute,
@@ -689,6 +731,7 @@ const rootRouteChildren: RootRouteChildren = {
   EntryJgaDatasetIndexRoute: EntryJgaDatasetIndexRoute,
   EntryJgaPolicyIndexRoute: EntryJgaPolicyIndexRoute,
   EntryJgaStudyIndexRoute: EntryJgaStudyIndexRoute,
+  EntryMetabobankIndexRoute: EntryMetabobankIndexRoute,
   EntrySraAnalysisIndexRoute: EntrySraAnalysisIndexRoute,
   EntrySraExperimentIndexRoute: EntrySraExperimentIndexRoute,
   EntrySraRunIndexRoute: EntrySraRunIndexRoute,
