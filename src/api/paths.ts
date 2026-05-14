@@ -20,6 +20,7 @@ export const API_PATH_JGA_STUDY_LIST = `${BASE_API_PATH}entries/jga-study/`;
 export const API_PATH_JGA_POLICY_LIST = `${BASE_API_PATH}entries/jga-policy/`;
 export const API_PATH_JGA_DAC_LIST = `${BASE_API_PATH}entries/jga-dac/`;
 export const API_PATH_GEA_LIST = `${BASE_API_PATH}entries/gea/`;
+export const API_PATH_METABOBANK_LIST = `${BASE_API_PATH}entries/metabobank/`;
 export const API_PATH_ALL_FACET_LIST = `${BASE_API_PATH}facets`;
 export const API_PATH_BIOPROJECT_FACET_LIST = `${BASE_API_PATH}facets/bioproject`;
 export const API_PATH_BIOSAMPLE_FACET_LIST = `${BASE_API_PATH}facets/biosample`;
@@ -34,6 +35,7 @@ export const API_PATH_JGA_STUDY_FACET_LIST = `${BASE_API_PATH}facets/jga-study`;
 export const API_PATH_JGA_POLICY_FACET_LIST = `${BASE_API_PATH}facets/jga-policy`;
 export const API_PATH_JGA_DAC_FACET_LIST = `${BASE_API_PATH}facets/jga-dac`;
 export const API_PATH_GEA_FACET_LIST = `${BASE_API_PATH}facets/gea`;
+export const API_PATH_METABOBANK_FACET_LIST = `${BASE_API_PATH}facets/metabobank`;
 
 export const API_PATH_TYPE_COUNT = `${BASE_API_PATH}count/types/`;
 

@@ -5,6 +5,7 @@ import type { JgaDacDetailResponse } from "@/api/detail/jgaDac.ts";
 import type { JgaDatasetDetailResponse } from "@/api/detail/jgaDataset.ts";
 import type { JgaPolicyDetailResponse } from "@/api/detail/jgaPolicy.ts";
 import type { JgaStudyDetailResponse } from "@/api/detail/jgaStudy.ts";
+import type { MetaboBankDetailResponse } from "@/api/detail/metaboBank.ts";
 import type { SraAnalysisDetailResponse } from "@/api/detail/sraAnalysis.ts";
 import type { SraExperimentDetailResponse } from "@/api/detail/sraExperiment.ts";
 import type { SraRunDetailResponse } from "@/api/detail/sraRun.ts";
@@ -35,6 +36,10 @@ import type {
   JgaStudyFacetListResponse,
 } from "@/api/facets/jgaStudy.ts";
 import type {
+  MetaboBankFacetListRequestParams,
+  MetaboBankFacetListResponse,
+} from "@/api/facets/metaboBank.ts";
+import type {
   SraAnalysisFacetListRequestParams,
   SraAnalysisFacetListResponse,
 } from "@/api/facets/sraAnalysis.ts";
@@ -60,6 +65,7 @@ export type SearchDetailResponse =
   | BioProjectDetailResponse
   | BioSampleDetailResponse
   | GeaDetailResponse
+  | MetaboBankDetailResponse
   | SraRunDetailResponse
   | SraExperimentDetailResponse
   | SraSampleDetailResponse
@@ -76,6 +82,7 @@ export type FacetListResponse =
   | BioProjectFacetListResponse
   | BioSampleFacetListResponse
   | GeaFacetListResponse
+  | MetaboBankFacetListResponse
   | SraRunFacetListResponse
   | SraExperimentFacetListResponse
   | SraSampleFacetListResponse
@@ -92,6 +99,7 @@ export type FetchFacetListParams =
   | BioProjectFacetListRequestParams
   | BioSampleFacetListRequestParams
   | GeaFacetListRequestParams
+  | MetaboBankFacetListRequestParams
   | SraRunFacetListRequestParams
   | SraExperimentFacetListRequestParams
   | SraSampleFacetListRequestParams
