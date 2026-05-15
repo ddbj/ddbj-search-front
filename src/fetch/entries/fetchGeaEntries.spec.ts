@@ -15,7 +15,15 @@ describe("parseParams", () => {
   });
 
   it("should handle base params", () => {
-    const result = parseParams({ keywords: ["human", "cat"] });
+    const result = parseParams({
+      keywords: ["human", "cat"],
+      organization: "NCBI",
+      publication: "Nature",
+      grant: "NSF",
+    });
     expect(result.keywords).toBe("human,cat");
+    expect(result.organization).toBe("NCBI");
+    expect(result.publication).toBe("Nature");
+    expect(result.grant).toBe("NSF");
   });
 });

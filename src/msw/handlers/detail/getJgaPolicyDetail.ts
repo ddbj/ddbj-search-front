@@ -24,6 +24,8 @@ export const getJgaPolicyDetail = http.get<BaseDetailRequestParams>(path, ({ par
     title: "MSW JGA Policy Title",
     organism: null,
     description: "This is a mock JGA policy detail for testing purposes.",
+    publication: [],
+    grant: [],
     type: "jga-policy",
     accessibility: "public-access",
     status: "public",

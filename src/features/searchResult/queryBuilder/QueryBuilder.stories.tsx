@@ -34,6 +34,9 @@ const bioProjectParams: AnySearchParams = {
 const bioSampleParams: AnySearchParams = {
   keywords: ["rna seq"],
   organism: "9606",
+  organization: "DDBJ",
+  publication: "Cell",
+  grant: "AMED",
   datePublishedFrom: "2023-01-01",
   datePublishedTo: "2023-12-31",
 } as const;
@@ -187,5 +190,8 @@ export const BioSample = {
       await canvas.findByRole("checkbox", { name: "Homo sapiens (987,654)" }),
     ).toBeChecked();
     await expect(await canvas.findByRole("checkbox", { name: "BioSample" })).toBeEnabled();
+    await expect(await canvas.findByRole("textbox", { name: "Organization" })).toHaveValue("DDBJ");
+    await expect(await canvas.findByRole("textbox", { name: "Publication" })).toHaveValue("Cell");
+    await expect(await canvas.findByRole("textbox", { name: "Grant" })).toHaveValue("AMED");
   },
 } satisfies Story;

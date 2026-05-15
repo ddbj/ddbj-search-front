@@ -47,6 +47,9 @@ export const baseEntryListRequestParamsSchema = z.object({
     .optional()
     .openapi({ description: "Comma separated keywords", example: "homo sapience,Draparnaldia" }),
   organism: z.string().optional().openapi({ description: "NCBI Taxonomy ID", example: "9606" }),
+  organization: z.string().optional(),
+  publication: z.string().optional(),
+  grant: z.string().optional(),
   datePublishedFrom: z.string().optional().openapi({ example: "2020-05-01" }),
   datePublishedTo: z.string().optional().openapi({ example: "2021-04-30" }),
   dateModifiedFrom: z.string().optional().openapi({ example: "2020-05-01" }),

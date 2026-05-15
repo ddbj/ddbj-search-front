@@ -24,6 +24,8 @@ export const getJgaDatasetDetail = http.get<BaseDetailRequestParams>(path, ({ pa
     title: "MSW JGA Dataset Title",
     organism: null,
     description: "This is a mock JGA dataset detail for testing purposes.",
+    publication: [],
+    grant: [],
     type: "jga-dataset",
     accessibility: "public-access",
     status: "public",

@@ -3,9 +3,6 @@ import { bioProjectObjectTypeValues } from "@/api/consts.ts";
 import { baseSearchSchema, paginationShape } from "@/schema/search/base.ts";
 
 export const bioProjectSpecificShape = {
-  organization: z.string().optional(),
-  publication: z.string().optional(),
-  grant: z.string().optional(),
   objectTypes: z.array(z.enum(bioProjectObjectTypeValues)).optional(),
 } as const;
 export const bioprojectSearchSchema = baseSearchSchema.extend({

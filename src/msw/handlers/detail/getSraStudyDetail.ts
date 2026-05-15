@@ -24,6 +24,8 @@ export const getSraStudyDetail = http.get<BaseDetailRequestParams>(path, ({ para
     title: "MSW SRA Study Title",
     organism: null,
     description: "This is a mock SRA Study detail for testing purposes.",
+    publication: [],
+    grant: [],
     type: "sra-study",
     accessibility: "public-access",
     status: "public",

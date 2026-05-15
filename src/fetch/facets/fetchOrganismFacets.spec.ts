@@ -19,12 +19,18 @@ describe("makeOrganismFacetParams", () => {
       perPage: 25,
       datePublishedFrom: "2024-01-01",
       datePublishedTo: "2024-01-31",
+      organization: "NCBI",
+      publication: "Nature",
+      grant: "NSF",
     };
 
     expect(makeOrganismFacetParams(params)).toEqual({
       keywords: ["human"],
       datePublishedFrom: "2024-01-01",
       datePublishedTo: "2024-01-31",
+      organization: "NCBI",
+      publication: "Nature",
+      grant: "NSF",
     });
   });
 });
@@ -54,12 +60,18 @@ describe("parseBaseOrganismFacetParams", () => {
       perPage: 25,
       dateModifiedFrom: "2024-02-01",
       dateModifiedTo: "2024-02-29",
+      organization: "NCBI",
+      publication: "Nature",
+      grant: "NSF",
     };
 
     expect(parseBaseOrganismFacetParams(params)).toEqual({
       keywords: "human,cat",
       dateModifiedFrom: "2024-02-01",
       dateModifiedTo: "2024-02-29",
+      organization: "NCBI",
+      publication: "Nature",
+      grant: "NSF",
       facets: "organism",
     });
   });

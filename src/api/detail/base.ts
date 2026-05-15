@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { accessibilityValues, organizationListSchema, statusValues } from "@/api/consts.ts";
+import { accessibilityValues, statusValues } from "@/api/consts.ts";
 import { extendZod } from "@/utils/extendZod.ts";
 
 extendZod();
@@ -15,6 +15,35 @@ export const XrefSchema = z.object({
   url: z.string(),
 });
 
+export const organizationSchema = z.object({
+  abbreviation: z.string().nullable(),
+  name: z.string().nullable(),
+  organizationType: z.string().nullable(),
+  role: z.string().nullable(),
+  url: z.string().nullable(),
+});
+
+export const publicationSchema = z.object({
+  date: z.string().nullable(),
+  Reference: z.string().nullable(),
+  id: z.string(),
+  title: z.string().nullable(),
+  url: z.string().nullable(),
+  DbType: z.string().nullable(),
+  status: z.string().nullable(),
+});
+
+const grantAgencySchema = z.object({
+  abbreviation: z.string().nullable(),
+  name: z.string().nullable(),
+});
+
+export const grantSchema = z.object({
+  title: z.string().nullable(),
+  id: z.string(),
+  agency: z.array(grantAgencySchema),
+});
+
 export const baseDetailResponseSchema = z.object({
   identifier: z.string(),
   dateCreated: z.string().nullable(),
@@ -28,7 +57,9 @@ export const baseDetailResponseSchema = z.object({
     })
     .nullable(),
   description: z.string().nullable(),
-  organization: organizationListSchema,
+  organization: z.array(organizationSchema).nullable(),
+  publication: z.array(publicationSchema).nullable(),
+  grant: z.array(grantSchema).nullable(),
   type: z.string(),
   accessibility: z.enum(accessibilityValues),
   status: z.enum(statusValues),
@@ -76,7 +107,10 @@ export type BaseDetailResponse = z.infer<typeof baseDetailResponseSchema>;
 export type ExternalLink = NonNullable<BaseDetailResponse["externalLink"]>[0];
 export type DbXrefsCount = BaseDetailResponse["dbXrefsCount"];
 export type Organism = NonNullable<BaseDetailResponse["organism"]>;
+export type Organization = NonNullable<BaseDetailResponse["organization"]>[number];
 export type Xref = NonNullable<BaseDetailResponse["dbXrefs"]>[0];
 export type Distribution = NonNullable<BaseDetailResponse["distribution"]>[0];
 export type Accessibility = NonNullable<BaseDetailResponse["accessibility"]>;
 export type Status = NonNullable<BaseDetailResponse["status"]>;
+export type Publication = NonNullable<BaseDetailResponse["publication"]>[number];
+export type Grant = NonNullable<BaseDetailResponse["grant"]>[number];

@@ -8,6 +8,8 @@ export const makeSraRunDetail = (identifier: string): SraRunDetailResponse => ({
   title: "MSW SRA Run Title",
   organism: null,
   description: "This is a mock SRA Run detail for testing purposes.",
+  publication: [],
+  grant: [],
   type: "sra-run",
   accessibility: "public-access",
   status: "public",

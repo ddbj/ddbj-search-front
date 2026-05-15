@@ -199,4 +199,6 @@ export const biosample1: BioSampleDetailResponse = {
   url: "https://ddbj.nig.ac.jp/resource/biosample/SAMN29827045",
   sameAs: [],
   organization: null,
+  publication: [],
+  grant: [],
 };

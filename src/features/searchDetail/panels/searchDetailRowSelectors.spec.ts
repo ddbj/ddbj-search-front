@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import type { SearchDetailResponse } from "@/api/types.ts";
 import { makeSraRunDetail } from "@/msw/data/sraRun.ts";
-import { getOrganizations } from "./searchDetailRowSelectors.ts";
+import { getGrants, getOrganizations, getPublications } from "./searchDetailRowSelectors.ts";
 
 const bioSampleResponse = {
   identifier: "SAMN000001",
@@ -23,6 +23,8 @@ const bioSampleResponse = {
   url: null,
   sameAs: [],
   organization: null,
+  publication: [],
+  grant: [],
   attributes: [],
 } satisfies SearchDetailResponse;
 
@@ -39,5 +41,21 @@ describe("getOrganizations", () => {
     const result = getOrganizations(bioSampleResponse);
 
     expect(result).toEqual(bioSampleResponse.organization);
+  });
+});
+
+describe("getPublications", () => {
+  it("returns publication field for every detail response", () => {
+    const result = getPublications(bioSampleResponse);
+
+    expect(result).toEqual(bioSampleResponse.publication);
+  });
+});
+
+describe("getGrants", () => {
+  it("returns grant field for every detail response", () => {
+    const result = getGrants(bioSampleResponse);
+
+    expect(result).toEqual(bioSampleResponse.grant);
   });
 });

@@ -19,7 +19,6 @@ import type { AllSearchParams } from "@/schema/search/all.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
 import { type BaseSearchParams, isBaseSearchKey } from "@/schema/search/base.ts";
 import { isBioprojectSearchParams } from "@/schema/search/bioProject.ts";
-import type { SearchParams } from "@/schema/search/types.ts";
 import { TypeSelector } from "./controls/TypeSelector.tsx";
 
 type Props = {
@@ -73,7 +72,8 @@ export const QueryBuilder: FC<Props> = ({ currentType, update, params }) => {
         value={organism ?? null}
         update={changeOrganism}
       />
-      {currentType === "bioproject" && <BioProjectQueries {...{ update, params }} />}
+      <CommonDetailQueries update={update} params={params} />
+      {currentType === "bioproject" && <BioProjectQueries update={update} params={params} />}
       <DateSelectors
         published={`${datePublishedFrom ?? ""},${datePublishedTo ?? ""}`}
         modified={`${dateModifiedFrom ?? ""},${dateModifiedTo ?? ""}`}
@@ -118,17 +118,27 @@ const BioProjectQueries = ({
   params,
 }: {
   update: UpdateSearchFunctions;
-  params: SearchParams;
+  params: AnySearchParams;
 }) => {
-  const { changeObjectTypes, changeOrganization, changePublication, changeGrant } = useMemo(
-    () => update,
-    [update],
-  );
+  const { changeObjectTypes } = useMemo(() => update, [update]);
   if (!isBioprojectSearchParams(params)) return <></>;
-  const { objectTypes, organization, publication, grant } = params;
+  const { objectTypes } = params;
+  return (
+    <ObjectTypeSelector value={objectTypes ?? []} params={params} update={changeObjectTypes} />
+  );
+};
+
+const CommonDetailQueries = ({
+  update,
+  params,
+}: {
+  update: UpdateSearchFunctions;
+  params: AnySearchParams;
+}) => {
+  const { changeOrganization, changePublication, changeGrant } = useMemo(() => update, [update]);
+  const { organization, publication, grant } = params;
   return (
     <>
-      <ObjectTypeSelector value={objectTypes ?? []} params={params} update={changeObjectTypes} />
       <Organization value={organization ?? ""} update={changeOrganization} />
       <Publication value={publication ?? ""} update={changePublication} />
       <Grant value={grant ?? ""} update={changeGrant} />

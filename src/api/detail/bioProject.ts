@@ -16,35 +16,10 @@ const bioProjectDetailResponseSchema = baseDetailResponseSchema
   })
   .extend({
     objectType: z.string(),
-    publication: z.array(
-      z.object({
-        date: z.string().nullable(),
-        Reference: z.string().nullable(),
-        id: z.string(),
-        title: z.string().nullable(),
-        url: z.string().nullable(),
-        DbType: z.string().nullable(),
-        status: z.string().nullable(),
-      }),
-    ),
-    grant: z.array(
-      z.object({
-        title: z.string().nullable(),
-        id: z.string(),
-        agency: z.array(
-          z.object({
-            abbreviation: z.string().nullable(),
-            name: z.string().nullable(),
-          }),
-        ),
-      }),
-    ),
     parentBioProjects: z.array(XrefSchema),
     childBioProjects: z.array(XrefSchema),
   });
 export type BioProjectDetailResponse = z.infer<typeof bioProjectDetailResponseSchema>;
-export type Publication = BioProjectDetailResponse["publication"][0];
-export type Grant = BioProjectDetailResponse["grant"][0];
 
 const path = addIdentifierToPath(API_PATH_BIOPROJECT_LIST, "openAPI");
 export const bioProjectDetailRequestDoc: RouteConfig = {

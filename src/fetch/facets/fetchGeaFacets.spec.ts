@@ -9,10 +9,16 @@ describe("parseParams", () => {
       keywords: ["human", "cat"],
       dateModifiedFrom: "2024-02-01",
       dateModifiedTo: "2024-02-29",
+      organization: "NCBI",
+      publication: "Nature",
+      grant: "NSF",
     });
 
     expect(result.keywords).toBe("human,cat");
     expect(result.dateModifiedFrom).toBe("2024-02-01");
     expect(result.dateModifiedTo).toBe("2024-02-29");
+    expect(result.organization).toBe("NCBI");
+    expect(result.publication).toBe("Nature");
+    expect(result.grant).toBe("NSF");
   });
 });

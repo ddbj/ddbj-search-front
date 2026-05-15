@@ -27,6 +27,9 @@ describe("parseParams", () => {
         datePublishedTo: "2024-01-31",
         dateModifiedFrom: "2024-02-01",
         dateModifiedTo: "2024-02-29",
+        organization: "NCBI",
+        publication: "Nature",
+        grant: "NSF",
       },
       { facets: ["type"] },
     );
@@ -36,5 +39,8 @@ describe("parseParams", () => {
     expect(result.datePublishedTo).toBe("2024-01-31");
     expect(result.dateModifiedFrom).toBe("2024-02-01");
     expect(result.dateModifiedTo).toBe("2024-02-29");
+    expect(result.organization).toBe("NCBI");
+    expect(result.publication).toBe("Nature");
+    expect(result.grant).toBe("NSF");
   });
 });

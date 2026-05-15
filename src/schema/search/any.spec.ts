@@ -22,6 +22,10 @@ describe("isAnySearchParamsKey", () => {
     expect(result).toBe(true);
   });
   it("", () => {
+    const result = isAnySearchParamsKey("publication");
+    expect(result).toBe(true);
+  });
+  it("", () => {
     const result = isAnySearchParamsKey("objectTypes");
     expect(result).toBe(true);
   });

@@ -27,6 +27,8 @@ export const getMetaboBankDetail = http.get<BaseDetailRequestParams>(path, ({ pa
       name: "Homo sapiens",
     },
     description: "This is a mock MetaboBank detail for testing purposes.",
+    publication: [],
+    grant: [],
     type: "metabobank",
     accessibility: "public-access",
     status: "public",

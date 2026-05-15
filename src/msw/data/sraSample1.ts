@@ -20,6 +20,8 @@ export const sraSample1: SraSampleDetailResponse = {
   url: "https://ddbj.nig.ac.jp/resource/sra-sample/ERS2785606",
   sameAs: [],
   organization: null,
+  publication: [],
+  grant: [],
   description: null,
   dateModified: "2021-09-27T14:01:30Z",
   title: "pneuDEEP7565425",

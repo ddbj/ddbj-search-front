@@ -27,6 +27,8 @@ export const getGeaDetail = http.get<BaseDetailRequestParams>(path, ({ params })
       name: "Homo sapiens",
     },
     description: "This is a mock GEA detail for testing purposes.",
+    publication: [],
+    grant: [],
     type: "gea",
     accessibility: "public-access",
     status: "public",

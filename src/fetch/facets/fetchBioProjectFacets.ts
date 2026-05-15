@@ -35,15 +35,6 @@ const parseParams = (
     ...parseBaseFacetParams(params),
     facets: options.facets?.join(",") ?? BIOPROJECT_FACETS,
   };
-  if (params.organization) {
-    result.organization = params.organization;
-  }
-  if (params.publication) {
-    result.publication = params.publication;
-  }
-  if (params.grant) {
-    result.grant = params.grant;
-  }
   if (params.objectTypes && params.objectTypes.length) {
     result.objectTypes = params.objectTypes.join(",");
   }

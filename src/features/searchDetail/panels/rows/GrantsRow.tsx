@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import type { Grant } from "@/api/detail/bioProject.ts";
+import type { Grant } from "@/api/detail/base.ts";
 import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
 
 type Props = { grants: Grant[] | null };

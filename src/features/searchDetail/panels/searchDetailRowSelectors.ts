@@ -1,19 +1,11 @@
 import type { SearchDetailResponse } from "@/api/types.ts";
 
 export const getPublications = (res: SearchDetailResponse) => {
-  if (res.type === "bioproject") {
-    return res.publication;
-  } else {
-    return null;
-  }
+  return res.publication;
 };
 
 export const getGrants = (res: SearchDetailResponse) => {
-  if (res.type === "bioproject") {
-    return res.grant;
-  } else {
-    return null;
-  }
+  return res.grant;
 };
 
 export const getOrganizations = (res: SearchDetailResponse) => {

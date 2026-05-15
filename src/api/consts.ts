@@ -1,5 +1,3 @@
-import { z } from "zod";
-
 export const booleanStrings = ["true", "false"] as const;
 export type BooleanString = (typeof booleanStrings)[number];
 export const bioProjectObjectTypeValues = ["BioProject", "UmbrellaBioProject"] as const;
@@ -41,16 +39,6 @@ export const getStatusLabels = (str: string) => {
   const result = statusLabels[str as StatusValue];
   return result ?? str;
 };
-
-const organizationSchema = z.object({
-  abbreviation: z.string().nullable(),
-  name: z.string().nullable(),
-  organizationType: z.string().nullable(),
-  role: z.string().nullable(),
-  url: z.string().nullable(),
-});
-export const organizationListSchema = z.array(organizationSchema).nullable();
-export type Organization = NonNullable<z.infer<typeof organizationListSchema>>[0];
 
 export const sortKeyValues = [
   "dateModified:asc",

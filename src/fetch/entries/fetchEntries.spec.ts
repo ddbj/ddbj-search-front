@@ -35,7 +35,12 @@ import { fetchSraSubmissions } from "@/fetch/entries/fetchSraSubmissionEntries.t
 type Case = {
   name: string;
   basePath: string;
-  fn: (params: { keywords: string[] }) => Promise<unknown>;
+  fn: (params: {
+    keywords: string[];
+    organization: string;
+    publication: string;
+    grant: string;
+  }) => Promise<unknown>;
 };
 
 const cases: Case[] = [
@@ -56,7 +61,14 @@ const cases: Case[] = [
   { name: "sra-submission", basePath: API_PATH_SRA_SUBMISSION_LIST, fn: fetchSraSubmissions },
 ];
 
-const expectedQuery = "includeFacets=false&includeProperties=false&dbXrefsLimit=0&keywords=human";
+const searchParams = {
+  keywords: ["human"],
+  organization: "NCBI",
+  publication: "Nature",
+  grant: "NSF",
+};
+const expectedQuery =
+  "includeFacets=false&includeProperties=false&dbXrefsLimit=0&keywords=human&organization=NCBI&publication=Nature&grant=NSF";
 
 describe("fetch*Entries", () => {
   it.each(cases)("should call GET $basePath: $name", async ({ basePath, fn }) => {
@@ -80,7 +92,7 @@ describe("fetch*Entries", () => {
 
     vi.stubGlobal("fetch", mockFetch);
 
-    const result = await fn({ keywords: ["human"] });
+    const result = await fn(searchParams);
 
     expect(mockFetch).toHaveBeenCalledWith(`${basePath}?${expectedQuery}`, { method: "GET" });
     expect(result).toEqual(mockData);
@@ -111,7 +123,7 @@ describe("fetch*Entries", () => {
 
       vi.stubGlobal("fetch", mockFetch);
 
-      await expect(fn({ keywords: ["human"] })).rejects.toMatchObject({
+      await expect(fn(searchParams)).rejects.toMatchObject({
         name: "AppHttpError",
         status: 500,
         requestId: "request-500",

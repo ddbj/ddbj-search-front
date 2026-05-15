@@ -24,6 +24,8 @@ export const getJgaStudyDetail = http.get<BaseDetailRequestParams>(path, ({ para
     title: "MSW JGA Study Title",
     organism: null,
     description: "This is a mock JGA Study detail for testing purposes.",
+    publication: [],
+    grant: [],
     type: "jga-study",
     accessibility: "public-access",
     status: "public",
