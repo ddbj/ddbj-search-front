@@ -38,7 +38,7 @@ export const SearchResultLayout: FC<Props> = ({
     <main className={"p-8 pb-16 shadow-lg"}>
       <GlobalHeader breadcrumbsPaths={breadcrumbsPaths} />
       <div className={"relative flex items-start gap-4"}>
-        <aside className={"sticky top-0 w-96 shrink-0 py-4"}>
+        <aside className={"top-0 shrink-0 py-4"}>
           <QueryBuilder
             currentType={entryType}
             update={updateFunctions}
