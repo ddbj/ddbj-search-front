@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { booleanStrings, sortKeyValues } from "@/api/consts.ts";
+import { accessibilityValues, booleanStrings, sortKeyValues } from "@/api/consts.ts";
 import { extendZod } from "@/utils/extendZod.ts";
 
 extendZod();
@@ -16,6 +16,7 @@ export const entryListItemResponseSchema = z.object({
   dbXrefsCount: z.record(z.string(), z.number()).openapi({
     example: { bioproject: 1, biosample: 1, "sra-study": 2 },
   }),
+  accessibility: z.enum(accessibilityValues),
   datePublished: z.string().nullable().openapi({ example: "2026-02-09T01:13:54Z" }),
   dateModified: z.string().nullable().openapi({ example: "2026-02-09T01:13:54Z" }),
   dateCreated: z.string().nullable().openapi({ example: "2026-02-09T01:13:54Z" }),

@@ -17,3 +17,12 @@ export const Primary = {
     data: bioproject1,
   },
 } satisfies Story;
+
+export const ControlledAccess = {
+  args: {
+    data: {
+      ...bioproject1,
+      accessibility: "controlled-access",
+    },
+  },
+} satisfies Story;

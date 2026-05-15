@@ -26,6 +26,7 @@ export const getJgaStudyList = http.get<never, never, EntryListResponse>(
             name: "Genome-wide association study of complex diseases",
             description: "Genome-wide association study of complex diseases",
             dbXrefsCount: { "jga-dataset": 3, "jga-policy": 1, "jga-dac": 1 },
+            accessibility: "controlled-access",
             datePublished: "2023-04-15",
             dateModified: "2023-04-15",
             dateCreated: "2023-04-15",

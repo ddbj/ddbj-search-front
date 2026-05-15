@@ -30,6 +30,7 @@ export const getAllEntryList = http.get<never, never, EntryListResponse>(
             name: "Draparnaldia sp. CCAC 6921, genomic data.",
             description: "Draparnaldia sp. CCAC 6921, genomic data.",
             dbXrefsCount: { "sra-study": 1, "sra-run": 18, "sra-experiment": 4, biosample: 1 },
+            accessibility: type.startsWith("jga-") ? "controlled-access" : "public-access",
             datePublished: "2013-05-31",
             dateModified: "2013-05-31",
             dateCreated: "2013-05-31",

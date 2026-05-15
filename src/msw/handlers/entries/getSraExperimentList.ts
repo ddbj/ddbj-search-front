@@ -26,6 +26,7 @@ export const getSraExperimentList = http.get<never, never, EntryListResponse>(
             name: "Illumina HiSeq 2000 paired end sequencing",
             description: "Illumina HiSeq 2000 paired end sequencing",
             dbXrefsCount: { "sra-run": 3, "sra-sample": 1, biosample: 1, bioproject: 1 },
+            accessibility: "public-access",
             datePublished: "2023-04-15",
             dateModified: "2023-04-15",
             dateCreated: "2023-04-15",

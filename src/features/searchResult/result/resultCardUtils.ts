@@ -12,6 +12,7 @@ export const parseResultCardProps = (res: EntryListResponse["items"][0]): Result
     id: res.identifier,
     type: res.type,
     relations: res.dbXrefsCount,
+    accessibility: res.accessibility,
     updatedAt,
     submittedAt,
     publishedAt,

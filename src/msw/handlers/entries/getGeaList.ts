@@ -26,6 +26,7 @@ export const getGeaList = http.get<never, never, EntryListResponse>(
             name: "Gene expression archive experiment for transcriptome analysis",
             description: "Gene expression archive experiment for transcriptome analysis",
             dbXrefsCount: { bioproject: 1, biosample: 4, "sra-study": 1 },
+            accessibility: "public-access",
             datePublished: "2024-05-01",
             dateModified: "2024-05-02",
             dateCreated: "2024-04-30",

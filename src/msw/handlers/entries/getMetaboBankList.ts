@@ -26,6 +26,7 @@ export const getMetaboBankList = http.get<never, never, EntryListResponse>(
             name: "Metabolome study for plasma biomarker analysis",
             description: "Metabolome study for plasma biomarker analysis",
             dbXrefsCount: { bioproject: 1, biosample: 6 },
+            accessibility: "public-access",
             datePublished: "2024-06-01",
             dateModified: "2024-06-02",
             dateCreated: "2024-05-30",

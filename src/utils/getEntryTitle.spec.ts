@@ -9,6 +9,7 @@ const makeEntry = (overrides: Partial<EntryListItemResponse> = {}): EntryListIte
   name: null,
   description: null,
   dbXrefsCount: {},
+  accessibility: "public-access",
   datePublished: null,
   dateModified: null,
   dateCreated: null,

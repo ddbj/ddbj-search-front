@@ -32,8 +32,8 @@ export const InfoListItem: FC<Props> = ({
   );
 
   return (
-    <li className={"col-span-2 grid min-w-0 grid-cols-subgrid bg-white py-2"}>
-      <div className={clsx("flex min-w-0 gap-1 font-bold", `items-${verticalAlign}`)}>
+    <li className={"col-span-2 grid min-w-0 grid-cols-subgrid bg-white py-2 leading-5"}>
+      <div className={clsx("flex min-w-0 gap-0.5 font-bold", `items-${verticalAlign}`)}>
         {toolTipContent && (
           <Tooltip
             content={toolTipContent}
@@ -43,7 +43,7 @@ export const InfoListItem: FC<Props> = ({
               content: [clsx("bg-gray-500 text-white")],
             }}
           >
-            <span className={"self-center pt-0.5"}>
+            <span className={"inline-flex h-5 shrink-0 items-center"}>
               <CircleQuestionIcon className={"fill-text-primary h-5"} />
             </span>
           </Tooltip>

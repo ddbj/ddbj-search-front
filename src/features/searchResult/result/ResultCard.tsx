@@ -1,7 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import clsx from "clsx";
 import { Fragment, type FC, useMemo } from "react";
+import { getAccessibilityLabels, type AccessibilityValue } from "@/api/consts.ts";
 import { getDbLabel, getXrefDbLabel } from "@/consts/db.ts";
+import { LockIcon } from "@/features/graphics/LockIcon.tsx";
 import { reorderXrefs } from "@/utils/reorderXrefs.ts";
 
 type Props = {
@@ -9,6 +11,7 @@ type Props = {
   id: string;
   type: string;
   relations: Record<string, number>;
+  accessibility: AccessibilityValue;
   publishedAt?: string | null;
   updatedAt?: string | null;
   submittedAt?: string | null;
@@ -23,6 +26,7 @@ export const ResultCard: FC<Props> = ({
   type,
   title,
   relations,
+  accessibility,
   publishedAt,
   submittedAt,
   updatedAt,
@@ -32,10 +36,22 @@ export const ResultCard: FC<Props> = ({
   return (
     <Link to={to} from={"/"} search={{}}>
       <div className={wrapperClasses}>
-        <p className={"flex gap-4"}>
-          <span>{id}</span>
-          <span className={""}>{getDbLabel(type)}</span>
-        </p>
+        <div className={"flex items-start justify-between gap-2"}>
+          <p className={"flex min-w-0 flex-wrap gap-x-4 gap-y-1"}>
+            <span>{id}</span>
+            <span>{getDbLabel(type)}</span>
+          </p>
+          {accessibility === "controlled-access" && (
+            <p
+              className={
+                "bg-bg-light flex shrink-0 items-center gap-x-0.5 rounded-sm px-1 py-0.5 text-xs text-white"
+              }
+            >
+              <LockIcon className={"size-4 fill-current"} />
+              <span>{getAccessibilityLabels(accessibility)}</span>
+            </p>
+          )}
+        </div>
         <h3 className={"mb-2 text-2xl leading-none wrap-anywhere"}>{title}</h3>
         <div className={"flex items-end justify-between gap-x-2"}>
           <div className={"flex flex-col gap-1"}>

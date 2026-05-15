@@ -16,6 +16,7 @@
   --color-fire-bush: var(--color-fire-bush-500);
   --color-link-primary: var(--color-fire-bush-500);
   --color-link-primary-hover: var(--color-fire-bush-300);
+  --color-bg-light: var(--color-fire-bush-400);
   --color-bg-primary: var(--color-fire-bush-700);
   --color-text-primary: var(--color-stone-700);
 }

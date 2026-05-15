@@ -26,6 +26,7 @@ export const getJgaDacList = http.get<never, never, EntryListResponse>(
             name: "Data Access Committee for controlled genomic data",
             description: "Data Access Committee for controlled genomic data",
             dbXrefsCount: { "jga-dataset": 10, "jga-study": 4, "jga-policy": 2 },
+            accessibility: "controlled-access",
             datePublished: "2023-04-15",
             dateModified: "2023-04-15",
             dateCreated: "2023-04-15",

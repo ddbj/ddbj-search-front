@@ -26,6 +26,7 @@ export const getSraSampleList = http.get<never, never, EntryListResponse>(
             name: "Sample from agricultural field experiment",
             description: "Sample from agricultural field experiment",
             dbXrefsCount: { "sra-experiment": 2, biosample: 1, bioproject: 1 },
+            accessibility: "public-access",
             datePublished: "2023-04-15",
             dateModified: "2023-04-15",
             dateCreated: "2023-04-15",

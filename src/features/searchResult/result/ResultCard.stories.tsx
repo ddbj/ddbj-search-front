@@ -16,6 +16,7 @@ export const Primary = {
     title: "Invertebrate sample from Magallana gigas",
     id: "SAMN30489498",
     type: "biosample",
+    accessibility: "public-access",
     relations: {
       "insdc-sample": 1,
       bioproject: 1,

@@ -26,6 +26,7 @@ export const getSraSubmissionList = http.get<never, never, EntryListResponse>(
             name: "Sequence Read Archive submission",
             description: "Sequence Read Archive submission",
             dbXrefsCount: { "sra-study": 1, "sra-experiment": 4, "sra-run": 8, biosample: 2 },
+            accessibility: "public-access",
             datePublished: "2023-04-15",
             dateModified: "2023-04-15",
             dateCreated: "2023-04-15",

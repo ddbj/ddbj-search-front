@@ -27,7 +27,7 @@ export const getJgaPolicyDetail = http.get<BaseDetailRequestParams>(path, ({ par
     publication: [],
     grant: [],
     type: "jga-policy",
-    accessibility: "public-access",
+    accessibility: "controlled-access",
     status: "public",
     dbXrefs: [],
     dbXrefsCount: {},

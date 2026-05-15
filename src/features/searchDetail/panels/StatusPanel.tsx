@@ -7,6 +7,7 @@ import {
 } from "@/api/consts.ts";
 import type { SearchDetailResponse } from "@/api/types.ts";
 import { dbLabels } from "@/consts/db.ts";
+import { LockIcon } from "@/features/graphics/LockIcon.tsx";
 import { SanitizedRow } from "@/features/searchDetail/panels/rows/SanitizedRow.tsx";
 import { InfoList } from "@/features/searchDetail/ui/InfoList.tsx";
 import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
@@ -19,6 +20,7 @@ export const StatusPanel: FC<Props> = ({ data }) => {
   const createdDate: string = data.dateCreated ? formatToDateStr(data.dateCreated) : "N/A";
   const modifiedDate: string = data.dateModified ? formatToDateStr(data.dateModified) : "N/A";
   const publishedDate: string = data.datePublished ? formatToDateStr(data.datePublished) : "N/A";
+  const accessibilityLabel = getAccessibilityLabels(data.accessibility);
   return (
     <PanelWrapper>
       <InfoList gapX={4}>
@@ -28,7 +30,16 @@ export const StatusPanel: FC<Props> = ({ data }) => {
           {getStatusLabels(data.status)}
         </InfoListItem>
         <InfoListItem term={"Accessibility"} toolTipContent={<AccessibilityHelp />}>
-          {getAccessibilityLabels(data.accessibility)}
+          {data.accessibility === "controlled-access" ? (
+            <span className={"flex h-5 items-center gap-x-0.5 leading-5"}>
+              <span className={"inline-flex h-5 shrink-0 items-center"}>
+                <LockIcon className={"h-5 fill-current"} />
+              </span>
+              <span>{accessibilityLabel}</span>
+            </span>
+          ) : (
+            accessibilityLabel
+          )}
         </InfoListItem>
         <InfoListItem term={"Submitted date"} contentNoWrap={true}>
           {createdDate}
