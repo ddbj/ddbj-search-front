@@ -46,8 +46,8 @@ export const PropertiesRow: FC<Props> = ({ data }) => {
               ]}
               code={properties}
               forceExpand={true}
-              initialHeight={"calc(100dvh - 5rem)"}
-              maxExpandedHeight={"calc(100dvh - 5rem)"}
+              initialHeight={"calc(100dvh - 10rem)"}
+              maxExpandedHeight={"calc(100dvh - 10rem)"}
             />
           </Modal.Dialog>
         </Modal.Container>
