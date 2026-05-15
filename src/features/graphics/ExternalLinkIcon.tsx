@@ -1,0 +1,8 @@
+import { type TailwindElementProps } from "@/types.ts";
+
+// https://fontawesome.com/icons/sharp/regular/arrow-up-right-from-square
+export const ExternalLinkIcon = ({ className }: TailwindElementProps) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" className={className}>
+    <path d="M376 64L352 64L352 112L494.1 112L263.1 343L246.1 360L280 393.9L297 376.9L528 145.9L528 288L576 288L576 64L376 64zM88 160L64 160L64 576L480 576L480 384L432 384L432 528L112 528L112 208L256 208L256 160L88 160z" />
+  </svg>
+);
