@@ -4,7 +4,7 @@ import type { AnySearchParams } from "@/schema/search/any.ts";
 const { makeTypeLinkParams, shouldShowOrganismSelector } = __TEST__QUERY_BUILDER;
 
 describe("makeTypeLinkParams", () => {
-  it("", () => {
+  it("should remove type and page params from link params", () => {
     const result = makeTypeLinkParams({
       types: ["sra-analysis"],
       keywords: ["human"],

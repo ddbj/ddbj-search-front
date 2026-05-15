@@ -20,7 +20,7 @@ const {
 describe("removeFromSearch", () => {
   describe("emptyObject", () => {
     const current: BaseSearchParams = {};
-    it("", () => {
+    it("should return a new empty search when field is absent", () => {
       const result = removeFromSearch(current, "keywords", "");
       expect(result).not.toBe(current);
       expect(result).toEqual({});
@@ -36,7 +36,7 @@ describe("removeFromSearch", () => {
       dateModifiedTo: "2024-07-10",
       page: 2,
     };
-    it("", () => {
+    it("should remove a keyword and reset page", () => {
       const result = removeFromSearch(current, "keywords", "cat");
       expect(result).toEqual({
         keywords: ["human"],
@@ -47,7 +47,7 @@ describe("removeFromSearch", () => {
         dateModifiedTo: "2024-07-10",
       });
     });
-    it("", () => {
+    it("should remove keywords when the last keyword is removed", () => {
       const result1 = removeFromSearch(current, "keywords", "cat");
       const result2 = removeFromSearch(result1, "keywords", "human");
       expect(result2).toEqual({
@@ -58,7 +58,7 @@ describe("removeFromSearch", () => {
         dateModifiedTo: "2024-07-10",
       });
     });
-    it("", () => {
+    it("should remove a type and reset page", () => {
       const result = removeFromSearch(current, "types", "sra-analysis");
       expect(result).toEqual({
         keywords: ["human", " cat"],
@@ -69,7 +69,7 @@ describe("removeFromSearch", () => {
         dateModifiedTo: "2024-07-10",
       });
     });
-    it("", () => {
+    it("should remove a published date range and reset page", () => {
       const result = removeFromSearch(current, ["datePublishedFrom", "datePublishedTo"], "");
       expect(result).toEqual({
         keywords: ["human", " cat"],
@@ -78,7 +78,7 @@ describe("removeFromSearch", () => {
         dateModifiedTo: "2024-07-10",
       });
     });
-    it("", () => {
+    it("should remove a modified date range and reset page", () => {
       const result1 = removeFromSearch(current, "dateModifiedFrom", "");
       const result2 = removeFromSearch(result1, "dateModifiedTo", "");
       expect(result2).toEqual({
@@ -88,7 +88,7 @@ describe("removeFromSearch", () => {
         datePublishedTo: "2025-07-10",
       });
     });
-    it("", () => {
+    it("should remove organism and reset page", () => {
       const result = removeFromSearch({ ...current, organism: "562" }, "organism", "562");
       expect(result).toEqual({
         keywords: ["human", " cat"],

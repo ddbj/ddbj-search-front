@@ -59,7 +59,7 @@ describe("parseQueryStateToTipList", () => {
     );
   });
 
-  it("", () => {
+  it("should trim grant values in QueryTipProps array", () => {
     const state: AnySearchParams = {};
     state.grant = "test grant ";
     const result = parseQueryStateToTipList(state);
@@ -67,14 +67,14 @@ describe("parseQueryStateToTipList", () => {
     expect(result[0].data.value).toBe("test grant");
   });
 
-  it("", () => {
+  it("should ignore empty grant values", () => {
     const state: AnySearchParams = {};
     state.grant = "";
     const result = parseQueryStateToTipList(state);
     expect(result.length).toBe(0);
   });
 
-  it("", () => {
+  it("should ignore undefined grant values", () => {
     const state: AnySearchParams = {};
     state.grant = undefined;
     const result = parseQueryStateToTipList(state);

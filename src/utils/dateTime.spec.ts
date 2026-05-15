@@ -3,18 +3,18 @@ import { describe, it } from "vitest";
 import { formatToDateStr } from "@/utils/dateTime.ts";
 
 describe("formatToDateStr", () => {
-  it("", () => {
+  it("formats an ISO datetime as a date string", () => {
     const str = "2024-11-18T11:15:39Z";
     const result = formatToDateStr(str);
     expect(result).toBe("2024-11-18");
   });
-  it("", () => {
+  it("keeps a date-only string unchanged", () => {
     const str = "2024-02-18";
     const result = formatToDateStr(str);
     expect(result).toBe("2024-02-18");
   });
 
-  it("", () => {
+  it("returns Invalid Date for invalid input", () => {
     const str = "fewafree";
     const result = formatToDateStr(str);
     expect(result).toBe("Invalid Date");
