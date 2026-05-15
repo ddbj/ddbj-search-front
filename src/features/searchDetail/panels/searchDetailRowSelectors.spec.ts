@@ -25,7 +25,6 @@ const bioSampleResponse = {
   organization: null,
   publication: [],
   grant: [],
-  attributes: [],
 } satisfies SearchDetailResponse;
 
 describe("getOrganizations", () => {

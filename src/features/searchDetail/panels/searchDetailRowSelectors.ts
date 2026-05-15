@@ -19,11 +19,3 @@ export const getExternalLinks = (res: SearchDetailResponse) => {
 export const getSameAs = (res: SearchDetailResponse) => {
   return res.sameAs;
 };
-
-export const getAttributes = (res: SearchDetailResponse) => {
-  if (res.type === "biosample") {
-    return res.attributes;
-  } else {
-    return null;
-  }
-};

@@ -1,6 +1,5 @@
 import type { FC } from "react";
 import type { SearchDetailResponse } from "@/api/types.ts";
-import { AttributeRow } from "@/features/searchDetail/panels/rows/AttributeRow.tsx";
 import { ExternalLinksRow } from "@/features/searchDetail/panels/rows/ExternalLinksRow.tsx";
 import { GrantsRow } from "@/features/searchDetail/panels/rows/GrantsRow.tsx";
 import { OrganismRow } from "@/features/searchDetail/panels/rows/OrganismRow.tsx";
@@ -9,7 +8,6 @@ import { PublicationsRow } from "@/features/searchDetail/panels/rows/Publication
 import { SameAsRow } from "@/features/searchDetail/panels/rows/SameAsRow.tsx";
 import { SanitizedRow } from "@/features/searchDetail/panels/rows/SanitizedRow.tsx";
 import {
-  getAttributes,
   getExternalLinks,
   getGrants,
   getOrganizations,
@@ -34,7 +32,6 @@ export const InfoPanel: FC<Props> = ({ data }) => {
         <OrganizationsRow organizations={getOrganizations(data)} />
         <ExternalLinksRow externalLinks={getExternalLinks(data)} />
         <SameAsRow sameAs={getSameAs(data)} />
-        <AttributeRow attributes={getAttributes(data)} />
       </InfoList>
     </PanelWrapper>
   );

@@ -9,19 +9,8 @@ const bioProjectDetailResponseSchema = baseDetailResponseSchema
   .omit({ type: true })
   .extend({
     type: z.literal("biosample"),
-  })
-  .extend({
-    attributes: z.array(
-      z.object({
-        attribute_name: z.string().nullable(),
-        display_name: z.string().nullable(),
-        harmonized_name: z.string().nullable(),
-        content: z.string(),
-      }),
-    ),
   });
 export type BioSampleDetailResponse = z.infer<typeof bioProjectDetailResponseSchema>;
-export type Attribute = BioSampleDetailResponse["attributes"][0];
 
 const path = addIdentifierToPath(API_PATH_BIOSAMPLE_LIST, "openAPI");
 
