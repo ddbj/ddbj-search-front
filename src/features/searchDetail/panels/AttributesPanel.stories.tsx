@@ -6,22 +6,16 @@ const meta = {
   args: {
     attributes: [
       {
-        attribute_name: "source_name",
-        display_name: "source name",
-        harmonized_name: "source_name",
-        content: "ATCC cell line cells",
+        key: "source name",
+        value: "ATCC cell line cells",
       },
       {
-        attribute_name: "cell type",
-        display_name: "cell type",
-        harmonized_name: "cell_type",
-        content: "ATCC cell line cells",
+        key: "cell type",
+        value: "ATCC cell line cells",
       },
       {
-        attribute_name: "patient donor/cell_line",
-        display_name: "",
-        harmonized_name: "",
-        content: "BPH-1",
+        key: "patient donor/cell_line",
+        value: "BPH-1",
       },
     ],
   },

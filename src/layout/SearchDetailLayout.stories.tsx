@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { expect, screen } from "storybook/test";
 import { SearchDetailLayout } from "@/layout/SearchDetailLayout.tsx";
 import { bioproject1 } from "@/msw/data/bioproject1.ts";
 import { bioproject2 } from "@/msw/data/bioproject2.ts";
@@ -30,6 +31,11 @@ export const BioProject2 = {
 export const BioSample = {
   args: {
     data: biosample1,
+  },
+  play: async () => {
+    await expect(await screen.findByText("Attributes")).toBeInTheDocument();
+    await expect(await screen.findByText("source name")).toBeInTheDocument();
+    await expect((await screen.findAllByText("ATCC cell line cells")).length).toBeGreaterThan(0);
   },
 } satisfies Story;
 
