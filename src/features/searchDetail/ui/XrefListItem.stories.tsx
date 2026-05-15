@@ -16,12 +16,17 @@ export const Primary = {
     dbName: "ddbj",
     actualCount: 3,
     items: [
-      { label: "DDBJ 123", url: "https://www.ddbj.nig.ac.jp/index-e.html", isExternal: false },
-      { label: "DDBJ 456", url: "https://www.ddbj.nig.ac.jp/dra/index-e.html", isExternal: false },
+      {
+        label: "DDBJ 123",
+        link: { kind: "external", href: "https://www.ddbj.nig.ac.jp/index-e.html" },
+      },
+      {
+        label: "DDBJ 456",
+        link: { kind: "external", href: "https://www.ddbj.nig.ac.jp/dra/index-e.html" },
+      },
       {
         label: "DDBJ 789",
-        url: "https://www.ddbj.nig.ac.jp/biosample/index-e.html",
-        isExternal: false,
+        link: { kind: "external", href: "https://www.ddbj.nig.ac.jp/biosample/index-e.html" },
       },
     ],
     isTruncated: false,

@@ -5,11 +5,9 @@ import { baseDetailRequestSchema, baseDetailResponseSchema } from "@/api/detail/
 import { addIdentifierToPath, API_PATH_BIOSAMPLE_LIST, omitBaseApiPath } from "@/api/paths.ts";
 
 const bioProjectDetailRequestParamsSchema = baseDetailRequestSchema.extend({});
-const bioProjectDetailResponseSchema = baseDetailResponseSchema
-  .omit({ type: true })
-  .extend({
-    type: z.literal("biosample"),
-  });
+const bioProjectDetailResponseSchema = baseDetailResponseSchema.omit({ type: true }).extend({
+  type: z.literal("biosample"),
+});
 export type BioSampleDetailResponse = z.infer<typeof bioProjectDetailResponseSchema>;
 
 const path = addIdentifierToPath(API_PATH_BIOSAMPLE_LIST, "openAPI");

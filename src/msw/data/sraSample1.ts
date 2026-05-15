@@ -69,79 +69,87 @@ export const sraSample1: SraSampleDetailResponse = {
   datePublished: "2020-02-15T02:48:42Z",
   dateCreated: "2020-02-14T02:09:50Z",
   properties: {
-    SAMPLE_NAME: {
-      TAXON_ID: 1313,
-      SCIENTIFIC_NAME: "Streptococcus pneumoniae",
-    },
-    alias: "SAMEA4967388",
-    IDENTIFIERS: {
-      PRIMARY_ID: {
-        content: "ERS2785606",
+    SAMPLE_SET: {
+      SAMPLE: {
+        SAMPLE_NAME: {
+          TAXON_ID: 1313,
+          SCIENTIFIC_NAME: "Streptococcus pneumoniae",
+        },
+        alias: "SAMEA4967388",
+        IDENTIFIERS: {
+          PRIMARY_ID: {
+            content: "ERS2785606",
+          },
+          EXTERNAL_ID: [
+            {
+              namespace: "BioSample",
+              content: "SAMEA4967388",
+            },
+          ],
+        },
+        TITLE: "pneuDEEP7565425",
+        accession: "ERS2785606",
+        SAMPLE_ATTRIBUTES: {
+          SAMPLE_ATTRIBUTE: [
+            {
+              TAG: "ArrayExpress-SPECIES",
+              VALUE: "Streptococcus pneumoniae",
+            },
+            {
+              TAG: "ENA first public",
+              VALUE: "2020-02-12",
+            },
+            {
+              TAG: "ENA first public",
+              VALUE: "2020-02-12T17:04:34Z",
+            },
+            {
+              TAG: "ENA last update",
+              VALUE: "2018-10-09",
+            },
+            {
+              TAG: "External Id",
+              VALUE: "SAMEA4967388",
+            },
+            {
+              TAG: "INSDC center alias",
+              VALUE: "SC",
+            },
+            {
+              TAG: "INSDC center name",
+              VALUE: "Wellcome Sanger Institute",
+            },
+            {
+              TAG: "INSDC first public",
+              VALUE: "2020-02-12T17:04:34Z",
+            },
+            {
+              TAG: "INSDC last update",
+              VALUE: "2018-10-09T16:37:40Z",
+            },
+            {
+              TAG: "INSDC status",
+              VALUE: "public",
+            },
+            {
+              TAG: "Submitter Id",
+              VALUE: "32d87eae-80f8-11e8-ac10-3c4a9275d6c8",
+            },
+            {
+              TAG: "common name",
+              VALUE: "Streptococcus pneumoniae",
+            },
+            {
+              TAG: "sample name",
+              VALUE: "32d87eae-80f8-11e8-ac10-3c4a9275d6c8",
+            },
+            {
+              TAG: "subject id",
+              VALUE: "09B13607",
+            },
+          ],
+        },
       },
-      EXTERNAL_ID: [
-        {
-          namespace: "BioSample",
-          content: "SAMEA4967388",
-        },
-      ],
-    },
-    TITLE: "pneuDEEP7565425",
-    accession: "ERS2785606",
-    SAMPLE_ATTRIBUTES: {
-      SAMPLE_ATTRIBUTE: [
-        {
-          TAG: "ArrayExpress-SPECIES",
-          VALUE: "Streptococcus pneumoniae",
-        },
-        {
-          TAG: "ENA first public",
-          VALUE: "2020-02-12",
-        },
-        {
-          TAG: "ENA last update",
-          VALUE: "2018-10-09",
-        },
-        {
-          TAG: "External Id",
-          VALUE: "SAMEA4967388",
-        },
-        {
-          TAG: "INSDC center alias",
-          VALUE: "SC",
-        },
-        {
-          TAG: "INSDC center name",
-          VALUE: "Wellcome Sanger Institute",
-        },
-        {
-          TAG: "INSDC first public",
-          VALUE: "2020-02-12T17:04:34Z",
-        },
-        {
-          TAG: "INSDC last update",
-          VALUE: "2018-10-09T16:37:40Z",
-        },
-        {
-          TAG: "INSDC status",
-          VALUE: "public",
-        },
-        {
-          TAG: "Submitter Id",
-          VALUE: "32d87eae-80f8-11e8-ac10-3c4a9275d6c8",
-        },
-        {
-          TAG: "common name",
-          VALUE: "Streptococcus pneumoniae",
-        },
-        {
-          TAG: "sample name",
-          VALUE: "32d87eae-80f8-11e8-ac10-3c4a9275d6c8",
-        },
-        {
-          TAG: "subject id",
-          VALUE: "09B13607",
-        },
-      ],
     },
   },
   status: "public",

@@ -19,7 +19,10 @@ describe("getNullableString", () => {
     expect(getNullableString("value")).toBe("value");
   });
 
-  it.each([null, undefined, 1, true, {}, ["value"]])("returns null for non-string values: %s", (value) => {
-    expect(getNullableString(value)).toBeNull();
-  });
+  it.each([null, undefined, 1, true, {}, ["value"]])(
+    "returns null for non-string values: %s",
+    (value) => {
+      expect(getNullableString(value)).toBeNull();
+    },
+  );
 });

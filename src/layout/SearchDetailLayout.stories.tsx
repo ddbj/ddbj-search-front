@@ -5,6 +5,7 @@ import { bioproject1 } from "@/msw/data/bioproject1.ts";
 import { bioproject2 } from "@/msw/data/bioproject2.ts";
 import { biosample1 } from "@/msw/data/biosample1.ts";
 import { makeSraRunDetail } from "@/msw/data/sraRun.ts";
+import { sraSample1 } from "@/msw/data/sraSample1.ts";
 
 const meta = {
   component: SearchDetailLayout,
@@ -36,6 +37,19 @@ export const BioSample = {
     await expect(await screen.findByText("Attributes")).toBeInTheDocument();
     await expect(await screen.findByText("source name")).toBeInTheDocument();
     await expect((await screen.findAllByText("ATCC cell line cells")).length).toBeGreaterThan(0);
+  },
+} satisfies Story;
+
+export const SraSample = {
+  args: {
+    data: sraSample1,
+  },
+  play: async () => {
+    await expect(await screen.findByText("Attributes")).toBeInTheDocument();
+    await expect(await screen.findByText("ArrayExpress-SPECIES")).toBeInTheDocument();
+    await expect((await screen.findAllByText("Streptococcus pneumoniae")).length).toBeGreaterThan(
+      0,
+    );
   },
 } satisfies Story;
 

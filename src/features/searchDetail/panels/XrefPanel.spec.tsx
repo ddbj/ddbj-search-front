@@ -43,8 +43,16 @@ describe("parseRefs", () => {
     expect(result[0].dbName).toBe("BioSample");
     expect(result[0].actualCount).toBe(2);
     expect(result[0].items[0].label).toBe("SAMN02604349");
+    expect(result[0].items[0].link).toEqual({
+      kind: "internal",
+      to: "/entry/biosample/SAMN02604349/",
+    });
     expect(result[1].dbName).toBe("SRA Run");
     expect(result[2].dbName).toBe("assemblies");
+    expect(result[2].items[0].link).toEqual({
+      kind: "external",
+      href: "https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_000021045/",
+    });
   });
   it("should handle umbrella project", () => {
     const data: Xref[] = [

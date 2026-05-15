@@ -2,7 +2,7 @@ import type { DbXrefsCount, Xref } from "@/api/detail/base.ts";
 import { getXrefDbLabel } from "@/consts/db.ts";
 import type { XrefListItemProps } from "@/features/searchDetail/ui/XrefListItem.tsx";
 import { reorderXrefs } from "@/utils/reorderXrefs.ts";
-import { isInternalDbLink, sanitizeDbLink } from "@/utils/sanitizeDbLink.ts";
+import { resolveDbLink } from "@/utils/sanitizeDbLink.ts";
 
 export const parseRefs = (refs: Xref[] | null, count: DbXrefsCount): XrefListItemProps[] => {
   return reorderXrefs(count).map(([dbKey, actualCount]) => {
@@ -16,8 +16,6 @@ export const parseRefs = (refs: Xref[] | null, count: DbXrefsCount): XrefListIte
 };
 
 export const parseXrefItem = (ref: Xref): XrefListItemProps["items"][0] => {
-  const url = sanitizeDbLink(ref.url);
-  const isExternal = !isInternalDbLink(ref.url);
   const label = ref.identifier;
-  return { url, isExternal, label };
+  return { link: resolveDbLink(ref.url), label };
 };

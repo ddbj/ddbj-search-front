@@ -1,9 +1,11 @@
 import type { FC } from "react";
+import { DbLink } from "@/features/searchDetail/ui/DbLink.tsx";
+import type { ResolvedDbLink } from "@/utils/sanitizeDbLink.ts";
 
 type Props = {
   dbName: string;
   actualCount: number;
-  items: { label: string; url: string; isExternal: boolean }[];
+  items: { label: string; link: ResolvedDbLink }[];
   isTruncated: boolean;
 };
 export type XrefListItemProps = Omit<Props, "isTruncated">;
@@ -16,15 +18,10 @@ export const XrefListItem: FC<Props> = ({ dbName, items, actualCount, isTruncate
         {dbName} ({countString})
       </div>
       <div className={"grid grid-cols-[repeat(auto-fill,_160px)] gap-y-1"}>
-        {items.map(({ label, url, isExternal }) => (
-          <a
-            href={url}
-            target={isExternal ? "_blank" : undefined}
-            className={"text-link-primary"}
-            key={label}
-          >
+        {items.map(({ label, link }, index) => (
+          <DbLink link={link} className={"text-link-primary"} key={`${label}-${index}`}>
             {label}
-          </a>
+          </DbLink>
         ))}
       </div>
     </li>

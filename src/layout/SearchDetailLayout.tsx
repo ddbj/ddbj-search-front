@@ -1,8 +1,14 @@
 import type { FC } from "react";
 import type { SearchDetailResponse } from "@/api/types.ts";
 import { dbLabels, type DBType } from "@/consts/db.ts";
-import { AttributesPanel } from "@/features/searchDetail/panels/AttributesPanel.tsx";
-import { parseBioSampleAttributes } from "@/features/searchDetail/panels/attributesPanelUtils.ts";
+import {
+  type AttributeKeyValue,
+  AttributesPanel,
+} from "@/features/searchDetail/panels/AttributesPanel.tsx";
+import {
+  parseBioSampleAttributes,
+  parseSraSampleAttributes,
+} from "@/features/searchDetail/panels/attributesPanelUtils.ts";
 import { DownloadPanel } from "@/features/searchDetail/panels/DownloadPanel.tsx";
 import { InfoPanel } from "@/features/searchDetail/panels/InfoPanel.tsx";
 import { PropertiesPanel } from "@/features/searchDetail/panels/PropertiesPanel.tsx";
@@ -29,14 +35,15 @@ export const SearchDetailLayout: FC<Props> = ({ data }) => {
     { label: identifier },
   ];
   const umbrellaProps = getUmbrellaProjectsProps(data);
-  const attributes = data.type === "biosample" ? parseBioSampleAttributes(data.properties) : [];
+  const attributes = getAttributes(data);
+  const showsAttributesPanel = data.type === "biosample" || data.type === "sra-sample";
   return (
     <main className={"flex flex-col gap-4 p-8 pb-16 shadow-lg"}>
       <GlobalHeader breadcrumbsPaths={breadcrumbsPaths} />
       <div className={"flex items-start gap-8"}>
         <div data-name={"leftCol"} className={"flex min-w-0 flex-1 flex-col gap-4"}>
           <InfoPanel data={data} />
-          {data.type === "biosample" && <AttributesPanel attributes={attributes} />}
+          {showsAttributesPanel && <AttributesPanel attributes={attributes} />}
           {umbrellaProps && <UmbrellaProjectsPanel {...umbrellaProps} />}
           <PropertiesPanel data={data.properties} />
           <XrefPanel
@@ -53,4 +60,15 @@ export const SearchDetailLayout: FC<Props> = ({ data }) => {
       </div>
     </main>
   );
+};
+
+const getAttributes = (data: SearchDetailResponse): AttributeKeyValue[] => {
+  switch (data.type) {
+    case "biosample":
+      return parseBioSampleAttributes(data.properties);
+    case "sra-sample":
+      return parseSraSampleAttributes(data.properties);
+    default:
+      return [];
+  }
 };

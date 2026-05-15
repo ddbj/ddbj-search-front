@@ -1,7 +1,8 @@
 import type { FC } from "react";
 import type { Xref } from "@/api/detail/base.ts";
+import { DbLink } from "@/features/searchDetail/ui/DbLink.tsx";
 import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
-import { isInternalDbLink, sanitizeDbLink } from "@/utils/sanitizeDbLink.ts";
+import { resolveDbLink } from "@/utils/sanitizeDbLink.ts";
 
 type Props = { sameAs: Xref[] | null };
 
@@ -14,14 +15,9 @@ export const SameAsRow: FC<Props> = ({ sameAs }) => {
       <ul className={"flex gap-2"}>
         {sameAs.map((item, index) => (
           <li key={index}>
-            <a
-              href={sanitizeDbLink(item.url)}
-              target={isInternalDbLink(item.url) ? undefined : "_blank"}
-              rel={isInternalDbLink(item.url) ? undefined : "noreferrer"}
-              className={"text-link-primary"}
-            >
+            <DbLink link={resolveDbLink(item.url)} className={"text-link-primary"}>
               {item.identifier}
-            </a>
+            </DbLink>
           </li>
         ))}
       </ul>
