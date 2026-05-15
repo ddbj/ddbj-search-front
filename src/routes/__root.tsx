@@ -20,9 +20,10 @@ export const Route = createRootRouteWithContext<RouterContext>()({
   errorComponent: RootErrorComponent,
 });
 
-const getRootErrorPageCopy = (error: unknown) => {
+const getRootErrorPageModel = (error: unknown) => {
   if (isAppHttpError(error) && error.status >= 500) {
     return {
+      statusCode: error.status,
       title: "Server Error",
       description:
         "The server returned an error while loading this page. You can try again or return to a stable page.",
@@ -30,6 +31,7 @@ const getRootErrorPageCopy = (error: unknown) => {
   }
 
   return {
+    statusCode: isAppHttpError(error) ? error.status : undefined,
     title: "Unexpected Error",
     description:
       "An unexpected error occurred while loading this page. You can try again or return to a stable page.",
@@ -63,11 +65,11 @@ function RootNotFoundComponent() {
 }
 
 function RootErrorComponent({ error, reset }: ErrorComponentProps) {
-  const { title, description } = getRootErrorPageCopy(error);
+  const { statusCode, title, description } = getRootErrorPageModel(error);
 
   return (
     <RouteErrorPage
-      statusCode={500}
+      statusCode={statusCode}
       title={title}
       description={description}
       error={error}
@@ -79,5 +81,5 @@ function RootErrorComponent({ error, reset }: ErrorComponentProps) {
 
 // eslint-disable-next-line react-refresh/only-export-components -- Test helper stays colocated with root route error mapping.
 export const __TEST__RootRoute = {
-  getRootErrorPageCopy,
+  getRootErrorPageModel,
 };
