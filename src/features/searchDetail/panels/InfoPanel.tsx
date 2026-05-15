@@ -5,7 +5,6 @@ import { ExternalLinksRow } from "@/features/searchDetail/panels/rows/ExternalLi
 import { GrantsRow } from "@/features/searchDetail/panels/rows/GrantsRow.tsx";
 import { OrganismRow } from "@/features/searchDetail/panels/rows/OrganismRow.tsx";
 import { OrganizationsRow } from "@/features/searchDetail/panels/rows/OrganizationsRow.tsx";
-import { PropertiesRow } from "@/features/searchDetail/panels/rows/PropertiesRow.tsx";
 import { PublicationsRow } from "@/features/searchDetail/panels/rows/PublicationsRow.tsx";
 import { SameAsRow } from "@/features/searchDetail/panels/rows/SameAsRow.tsx";
 import { SanitizedRow } from "@/features/searchDetail/panels/rows/SanitizedRow.tsx";
@@ -36,7 +35,6 @@ export const InfoPanel: FC<Props> = ({ data }) => {
         <ExternalLinksRow externalLinks={getExternalLinks(data)} />
         <SameAsRow sameAs={getSameAs(data)} />
         <AttributeRow attributes={getAttributes(data)} />
-        <PropertiesRow data={data.properties} />
       </InfoList>
     </PanelWrapper>
   );
