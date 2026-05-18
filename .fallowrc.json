@@ -1,13 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/fallow-rs/fallow/main/schema.json",
   "entry": ["src/index.{ts,tsx,js,jsx}", "src/main.{ts,tsx,js,jsx}"],
-  "ignorePatterns": [
-    ".storybook/**",
-    "**/mockServiceWorker.js",
-    "**/routeTree.gen.ts",
-    "**/*.spec.ts",
-    "**/*.stories.tsx"
-  ],
+  "ignorePatterns": [".storybook/**", "**/mockServiceWorker.js", "**/routeTree.gen.ts"],
   "duplicates": {},
   "rules": {
     "unused-dependencies": "warn"

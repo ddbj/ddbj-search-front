@@ -15,7 +15,7 @@ export const XrefSchema = z.object({
   url: z.string(),
 });
 
-export const organizationSchema = z.object({
+const organizationSchema = z.object({
   abbreviation: z.string().nullable(),
   name: z.string().nullable(),
   organizationType: z.string().nullable(),
@@ -23,7 +23,7 @@ export const organizationSchema = z.object({
   url: z.string().nullable(),
 });
 
-export const publicationSchema = z.object({
+const publicationSchema = z.object({
   date: z.string().nullable(),
   Reference: z.string().nullable(),
   id: z.string(),
@@ -38,7 +38,7 @@ const grantAgencySchema = z.object({
   name: z.string().nullable(),
 });
 
-export const grantSchema = z.object({
+const grantSchema = z.object({
   title: z.string().nullable(),
   id: z.string(),
   agency: z.array(grantAgencySchema),

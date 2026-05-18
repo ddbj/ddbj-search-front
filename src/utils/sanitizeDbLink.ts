@@ -13,15 +13,6 @@ export type ResolvedDbLink =
       href: string;
     };
 
-export const sanitizeDbLink = (link: string) => {
-  const resolved = resolveDbLink(link);
-  return resolved.kind === "internal" ? `${APP_BASE_PATH}${resolved.to}` : resolved.href;
-};
-
-export const isInternalDbLink = (link: string) => {
-  return resolveDbLink(link).kind === "internal";
-};
-
 export const resolveDbLink = (link: string): ResolvedDbLink => {
   const url = parseUrl(link);
   if (!url || !isDdbjHost(url)) return { kind: "external", href: link };

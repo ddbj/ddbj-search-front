@@ -1,6 +1,6 @@
 export const booleanStrings = ["true", "false"] as const;
 export type BooleanString = (typeof booleanStrings)[number];
-export const bioProjectObjectTypeValues = ["BioProject", "UmbrellaBioProject"] as const;
+const bioProjectObjectTypeValues = ["BioProject", "UmbrellaBioProject"] as const;
 export type BioProjectObjectType = (typeof bioProjectObjectTypeValues)[number];
 export const bioProjectObjectTypeLabels: Record<BioProjectObjectType, string> = {
   BioProject: "BioProject",

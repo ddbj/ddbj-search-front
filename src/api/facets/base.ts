@@ -7,7 +7,7 @@ const facetCountShape = z.object({
   label: z.string().optional(),
 });
 export type FacetCount = z.infer<typeof facetCountShape>;
-export const facetListShape = z.array(facetCountShape).nullable();
+const facetListShape = z.array(facetCountShape).nullable();
 export type FacetItem = NonNullable<z.infer<typeof facetListShape>>[0];
 
 export const baseFacetListRequestParamsSchema = baseEntryListRequestParamsSchema
