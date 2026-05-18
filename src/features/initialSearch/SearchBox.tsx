@@ -2,8 +2,8 @@ import { ListBox, ScrollShadow, Select } from "@heroui/react";
 import clsx from "clsx";
 import { type FC, type FormEvent, type Key, useRef, useState } from "react";
 import { dbLabels, type DBType } from "@/consts/db.ts";
-import { MagnifierIcon } from "@/features/graphics/MagnifierIcon.tsx";
 import { compileSearchType } from "@/features/initialSearch/searchBoxUtils.ts";
+import { MagnifierIcon } from "@/features/shared/graphics/MagnifierIcon.tsx";
 
 const allLabel = "From all Data Type";
 const allKey = "all";

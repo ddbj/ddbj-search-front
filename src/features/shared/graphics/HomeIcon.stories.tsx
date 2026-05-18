@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { StarShineIcon } from "@/features/graphics/StarShineIcon.tsx";
+import { HomeIcon } from "@/features/shared/graphics/HomeIcon.tsx";
 
 const meta = {
-  component: StarShineIcon,
+  component: HomeIcon,
   args: {},
   decorators: [],
-} satisfies Meta<typeof StarShineIcon>;
+} satisfies Meta<typeof HomeIcon>;
 
 export default meta;
 
@@ -16,4 +16,4 @@ export const AcceptClass = {
   args: {
     className: "w-6 h-6 fill-blue-500 bg-yellow-200",
   },
-} satisfies Story;
+};

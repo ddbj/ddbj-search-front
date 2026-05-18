@@ -8,7 +8,7 @@ import {
 import { parseDate } from "@internationalized/date";
 import clsx from "clsx";
 import { type FC } from "react";
-import { CalendarIcon } from "@/features/graphics/CalendarIcon.tsx";
+import { CalendarIcon } from "@/features/shared/graphics/CalendarIcon.tsx";
 
 type Props = {
   label: string;

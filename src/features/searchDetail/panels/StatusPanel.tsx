@@ -7,11 +7,11 @@ import {
 } from "@/api/consts.ts";
 import type { SearchDetailResponse } from "@/api/types.ts";
 import { dbLabels } from "@/consts/db.ts";
-import { LockIcon } from "@/features/graphics/LockIcon.tsx";
 import { SanitizedRow } from "@/features/searchDetail/panels/rows/SanitizedRow.tsx";
 import { InfoList } from "@/features/searchDetail/ui/InfoList.tsx";
 import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
 import { PanelWrapper } from "@/features/searchDetail/ui/PanelWrapper.tsx";
+import { LockIcon } from "@/features/shared/graphics/LockIcon.tsx";
 import { formatToDateStr } from "@/utils/dateTime.ts";
 
 type Props = { data: SearchDetailResponse };

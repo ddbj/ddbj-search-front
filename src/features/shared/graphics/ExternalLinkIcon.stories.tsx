@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { MagnifierIcon } from "@/features/graphics/MagnifierIcon.tsx";
+import { ExternalLinkIcon } from "@/features/shared/graphics/ExternalLinkIcon.tsx";
 
 const meta = {
-  component: MagnifierIcon,
+  component: ExternalLinkIcon,
   args: {},
   decorators: [],
-} satisfies Meta<typeof MagnifierIcon>;
+} satisfies Meta<typeof ExternalLinkIcon>;
 
 export default meta;
 
@@ -16,4 +16,4 @@ export const AcceptClass = {
   args: {
     className: "w-6 h-6 fill-blue-500 bg-yellow-200",
   },
-};
+} satisfies Story;

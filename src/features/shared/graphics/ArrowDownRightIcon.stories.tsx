@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { ExternalLinkIcon } from "@/features/graphics/ExternalLinkIcon.tsx";
+import { ArrowDownRightIcon } from "@/features/shared/graphics/ArrowDownRightIcon.tsx";
 
 const meta = {
-  component: ExternalLinkIcon,
+  component: ArrowDownRightIcon,
   args: {},
   decorators: [],
-} satisfies Meta<typeof ExternalLinkIcon>;
+} satisfies Meta<typeof ArrowDownRightIcon>;
 
 export default meta;
 

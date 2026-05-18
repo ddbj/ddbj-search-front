@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { LockIcon } from "@/features/graphics/LockIcon.tsx";
+import { CopyIcon } from "@/features/shared/graphics/CopyIcon.tsx";
 
 const meta = {
-  component: LockIcon,
+  component: CopyIcon,
   args: {},
   decorators: [],
-} satisfies Meta<typeof LockIcon>;
+} satisfies Meta<typeof CopyIcon>;
 
 export default meta;
 

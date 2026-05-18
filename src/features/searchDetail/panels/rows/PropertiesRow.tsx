@@ -1,9 +1,9 @@
 import { Button, Modal } from "@heroui/react";
 import clsx from "clsx";
 import { type FC, useState } from "react";
-import { CircleCloseIcon } from "@/features/graphics/CircleCloseIcon.tsx";
 import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
 import { PrettyJSON } from "@/features/searchDetail/ui/PrettyJSON.tsx";
+import { CircleCloseIcon } from "@/features/shared/graphics/CircleCloseIcon.tsx";
 
 type Props = {
   data: unknown;

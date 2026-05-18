@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { CopyIcon } from "@/features/graphics/CopyIcon.tsx";
+import { SquarePlusIcon } from "@/features/shared/graphics/SquarePlusIcon.tsx";
 
 const meta = {
-  component: CopyIcon,
+  component: SquarePlusIcon,
   args: {},
   decorators: [],
-} satisfies Meta<typeof CopyIcon>;
+} satisfies Meta<typeof SquarePlusIcon>;
 
 export default meta;
 

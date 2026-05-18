@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { InfoIcon } from "@/features/graphics/InfoIcon.tsx";
+import { ApiIcon } from "@/features/shared/graphics/ApiIcon.tsx";
 
 const meta = {
-  component: InfoIcon,
+  component: ApiIcon,
   args: {},
   decorators: [],
-} satisfies Meta<typeof InfoIcon>;
+} satisfies Meta<typeof ApiIcon>;
 
 export default meta;
 

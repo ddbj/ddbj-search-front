@@ -1,7 +1,7 @@
 import { type FC, useEffect, useState } from "react";
 import { useDebounceValue } from "usehooks-ts";
-import { LabeledInput } from "@/components/heroui/LabeledInput.tsx";
 import { TextInput } from "@/features/searchResult/queryBuilder/premitives/TextInput.tsx";
+import { LabeledInput } from "@/features/shared/LabeledInput.tsx";
 
 type Props = {
   value: string[];

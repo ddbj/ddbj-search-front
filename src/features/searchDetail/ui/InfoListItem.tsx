@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import type { FC, ReactNode } from "react";
-import { Tooltip } from "@/components/heroui/Tooltip.tsx";
-import { CircleQuestionIcon } from "@/features/graphics/CircleQuestionIcon.tsx";
+import { CircleQuestionIcon } from "@/features/shared/graphics/CircleQuestionIcon.tsx";
+import { Tooltip } from "@/features/shared/Tooltip.tsx";
 
 type VerticalAlign = "start" | "center";
 

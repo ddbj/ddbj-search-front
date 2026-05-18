@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { ArrowDownRightIcon } from "@/features/graphics/ArrowDownRightIcon.tsx";
+import { ArrowUpRightIcon } from "@/features/shared/graphics/ArrowUpRightIcon.tsx";
 
 const meta = {
-  component: ArrowDownRightIcon,
+  component: ArrowUpRightIcon,
   args: {},
   decorators: [],
-} satisfies Meta<typeof ArrowDownRightIcon>;
+} satisfies Meta<typeof ArrowUpRightIcon>;
 
 export default meta;
 

@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { HomeIcon } from "@/features/graphics/HomeIcon.tsx";
+import { CircleCloseIcon } from "@/features/shared/graphics/CircleCloseIcon.tsx";
 
 const meta = {
-  component: HomeIcon,
+  component: CircleCloseIcon,
   args: {},
   decorators: [],
-} satisfies Meta<typeof HomeIcon>;
+} satisfies Meta<typeof CircleCloseIcon>;
 
 export default meta;
 
@@ -16,4 +16,4 @@ export const AcceptClass = {
   args: {
     className: "w-6 h-6 fill-blue-500 bg-yellow-200",
   },
-};
+} satisfies Story;

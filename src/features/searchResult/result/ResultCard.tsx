@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { Fragment, type FC, useMemo } from "react";
 import { getAccessibilityLabels, type AccessibilityValue } from "@/api/consts.ts";
 import { getDbLabel, getXrefDbLabel } from "@/consts/db.ts";
-import { LockIcon } from "@/features/graphics/LockIcon.tsx";
+import { LockIcon } from "@/features/shared/graphics/LockIcon.tsx";
 import { reorderXrefs } from "@/utils/reorderXrefs.ts";
 
 type Props = {

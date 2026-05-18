@@ -2,8 +2,8 @@ import { useNavigate } from "@tanstack/react-router";
 import clsx from "clsx";
 import type { ComponentProps, FC } from "react";
 import type { DBType } from "@/consts/db.ts";
-import { Logo } from "@/features/graphics/logo.tsx";
 import { SearchBox } from "@/features/initialSearch/SearchBox.tsx";
+import { Logo } from "@/features/shared/graphics/logo.tsx";
 import type { BaseSearchParams } from "@/schema/search/base.ts";
 
 const wrapperClasses = clsx("flex w-full flex-col items-center gap-8 bg-white py-24 shadow-lg");

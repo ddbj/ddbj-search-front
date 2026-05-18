@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { StatusIcon } from "@/features/graphics/StatusIcon.tsx";
+import { SquareMinusIcon } from "@/features/shared/graphics/SquareMinusIcon.tsx";
 
 const meta = {
-  component: StatusIcon,
+  component: SquareMinusIcon,
   args: {},
   decorators: [],
-} satisfies Meta<typeof StatusIcon>;
+} satisfies Meta<typeof SquareMinusIcon>;
 
 export default meta;
 

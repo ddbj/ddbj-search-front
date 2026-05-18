@@ -4,9 +4,9 @@ import { type FC, useCallback, useEffect, useRef, useState } from "react";
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
 import json from "react-syntax-highlighter/dist/esm/languages/hljs/json";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
-import { CopyIcon } from "@/features/graphics/CopyIcon.tsx";
-import { SquareMinusIcon } from "@/features/graphics/SquareMinusIcon.tsx";
-import { SquarePlusIcon } from "@/features/graphics/SquarePlusIcon.tsx";
+import { CopyIcon } from "@/features/shared/graphics/CopyIcon.tsx";
+import { SquareMinusIcon } from "@/features/shared/graphics/SquareMinusIcon.tsx";
+import { SquarePlusIcon } from "@/features/shared/graphics/SquarePlusIcon.tsx";
 import { type TailwindElementProps } from "@/types.ts";
 
 SyntaxHighlighter.registerLanguage("json", json);

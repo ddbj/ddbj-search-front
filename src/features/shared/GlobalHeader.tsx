@@ -1,8 +1,8 @@
 import type { FC } from "react";
-import { ApiIcon } from "@/features/graphics/ApiIcon.tsx";
-import { InfoIcon } from "@/features/graphics/InfoIcon.tsx";
-import { StatusIcon } from "@/features/graphics/StatusIcon.tsx";
 import { Breadcrumbs, type BreadcrumbsPath } from "@/features/shared/Breadcrumbs.tsx";
+import { ApiIcon } from "@/features/shared/graphics/ApiIcon.tsx";
+import { InfoIcon } from "@/features/shared/graphics/InfoIcon.tsx";
+import { StatusIcon } from "@/features/shared/graphics/StatusIcon.tsx";
 import { IconTextLink } from "@/features/shared/IconTextLink.tsx";
 
 type Props = {

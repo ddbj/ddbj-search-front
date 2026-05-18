@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import clsx from "clsx";
 import type { FC } from "react";
-import { HomeIcon } from "@/features/graphics/HomeIcon.tsx";
+import { HomeIcon } from "@/features/shared/graphics/HomeIcon.tsx";
 import { IconTextLink } from "@/features/shared/IconTextLink.tsx";
 
 type Props = {

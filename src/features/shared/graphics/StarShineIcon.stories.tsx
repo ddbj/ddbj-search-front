@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { CircleCloseIcon } from "@/features/graphics/CircleCloseIcon.tsx";
+import { StarShineIcon } from "@/features/shared/graphics/StarShineIcon.tsx";
 
 const meta = {
-  component: CircleCloseIcon,
+  component: StarShineIcon,
   args: {},
   decorators: [],
-} satisfies Meta<typeof CircleCloseIcon>;
+} satisfies Meta<typeof StarShineIcon>;
 
 export default meta;
 

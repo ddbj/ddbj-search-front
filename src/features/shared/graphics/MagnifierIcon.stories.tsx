@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { SquarePlusIcon } from "@/features/graphics/SquarePlusIcon.tsx";
+import { MagnifierIcon } from "@/features/shared/graphics/MagnifierIcon.tsx";
 
 const meta = {
-  component: SquarePlusIcon,
+  component: MagnifierIcon,
   args: {},
   decorators: [],
-} satisfies Meta<typeof SquarePlusIcon>;
+} satisfies Meta<typeof MagnifierIcon>;
 
 export default meta;
 
@@ -16,4 +16,4 @@ export const AcceptClass = {
   args: {
     className: "w-6 h-6 fill-blue-500 bg-yellow-200",
   },
-} satisfies Story;
+};
