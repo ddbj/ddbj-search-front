@@ -3,6 +3,7 @@ import type { SearchDetailResponse } from "@/api/types.ts";
 import { bioproject1 } from "@/msw/data/bioproject1.ts";
 import { bioproject2 } from "@/msw/data/bioproject2.ts";
 import { biosample1 } from "@/msw/data/biosample1.ts";
+import { makeSraExperimentDetail } from "@/msw/data/sraExperiment.ts";
 import { makeSraRunDetail } from "@/msw/data/sraRun.ts";
 import { sraSample1 } from "@/msw/data/sraSample1.ts";
 import { normalizeDetailMetadataRows } from "./rows/detailMetadataRowUtils.ts";
@@ -147,6 +148,45 @@ describe("getAdditionalMetadataRows", () => {
     } satisfies SearchDetailResponse;
 
     const result = normalizeDetailMetadataRows(getAdditionalMetadataRows(emptySraSample));
+
+    expect(result).toEqual([]);
+  });
+
+  it("returns SRA Experiment-specific metadata rows", () => {
+    const sraExperiment = makeSraExperimentDetail("SRX000001");
+
+    const result = getAdditionalMetadataRows(sraExperiment);
+
+    expect(result).toEqual([
+      { kind: "string", term: "Instrument Model", value: "NextSeq 500" },
+      { kind: "string", term: "Library Layout", value: "PAIRED" },
+      { kind: "string", term: "Library Selection", value: "PCR" },
+      { kind: "string", term: "Library Source", value: "TRANSCRIPTOMIC" },
+      { kind: "string", term: "Library Strategy", value: "RNA-Seq" },
+      { kind: "string", term: "Platform", value: "ILLUMINA" },
+      { kind: "string", term: "Library Name", value: "MSW SRA Experiment Library" },
+      {
+        kind: "string",
+        term: "Library Construction Protocol",
+        value: "PolyA RNA was isolated and prepared for paired-end sequencing.",
+      },
+    ]);
+  });
+
+  it("lets the display layer hide empty SRA Experiment metadata values", () => {
+    const emptySraExperiment = {
+      ...makeSraExperimentDetail("SRX000001"),
+      instrumentModel: null,
+      libraryLayout: "",
+      librarySelection: null,
+      librarySource: "",
+      libraryStrategy: null,
+      platform: "",
+      libraryName: null,
+      libraryConstructionProtocol: "",
+    } satisfies SearchDetailResponse;
+
+    const result = normalizeDetailMetadataRows(getAdditionalMetadataRows(emptySraExperiment));
 
     expect(result).toEqual([]);
   });

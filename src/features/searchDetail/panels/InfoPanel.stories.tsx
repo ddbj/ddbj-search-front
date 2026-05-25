@@ -3,6 +3,7 @@ import { expect } from "storybook/test";
 import { bioproject1 } from "@/msw/data/bioproject1.ts";
 import { bioproject2 } from "@/msw/data/bioproject2.ts";
 import { biosample1 } from "@/msw/data/biosample1.ts";
+import { makeSraExperimentDetail } from "@/msw/data/sraExperiment.ts";
 import { makeSraRunDetail } from "@/msw/data/sraRun.ts";
 import { sraSample1 } from "@/msw/data/sraSample1.ts";
 import { InfoPanel } from "./InfoPanel.tsx";
@@ -78,6 +79,32 @@ export const SraSample = {
     await expect(await canvas.findByText("United Kingdom")).toBeInTheDocument();
     await expect(await canvas.findByText("Derived From")).toBeInTheDocument();
     await expect(await canvas.findByRole("link", { name: "SAMEA4967388" })).toBeInTheDocument();
+  },
+} satisfies Story;
+
+export const SraExperiment = {
+  args: {
+    data: makeSraExperimentDetail("SRX000001"),
+  },
+  play: async ({ canvas }) => {
+    await expect(await canvas.findByText("Instrument Model")).toBeInTheDocument();
+    await expect(await canvas.findByText("NextSeq 500")).toBeInTheDocument();
+    await expect(await canvas.findByText("Library Layout")).toBeInTheDocument();
+    await expect(await canvas.findByText("PAIRED")).toBeInTheDocument();
+    await expect(await canvas.findByText("Library Selection")).toBeInTheDocument();
+    await expect(await canvas.findByText("PCR")).toBeInTheDocument();
+    await expect(await canvas.findByText("Library Source")).toBeInTheDocument();
+    await expect(await canvas.findByText("TRANSCRIPTOMIC")).toBeInTheDocument();
+    await expect(await canvas.findByText("Library Strategy")).toBeInTheDocument();
+    await expect(await canvas.findByText("RNA-Seq")).toBeInTheDocument();
+    await expect(await canvas.findByText("Platform")).toBeInTheDocument();
+    await expect(await canvas.findByText("ILLUMINA")).toBeInTheDocument();
+    await expect(await canvas.findByText("Library Name")).toBeInTheDocument();
+    await expect(await canvas.findByText("MSW SRA Experiment Library")).toBeInTheDocument();
+    await expect(await canvas.findByText("Library Construction Protocol")).toBeInTheDocument();
+    await expect(
+      await canvas.findByText("PolyA RNA was isolated and prepared for paired-end sequencing."),
+    ).toBeInTheDocument();
   },
 } satisfies Story;
 

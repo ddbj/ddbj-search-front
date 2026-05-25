@@ -33,6 +33,20 @@ const additionalMetadataFieldsByType: Partial<
     { key: "geoLocName", term: "Geographic Location", kind: "string" },
     { key: "derivedFrom", term: "Derived From", kind: "xrefArray" },
   ],
+  "sra-experiment": [
+    { key: "instrumentModel", term: "Instrument Model", kind: "string" },
+    { key: "libraryLayout", term: "Library Layout", kind: "string" },
+    { key: "librarySelection", term: "Library Selection", kind: "string" },
+    { key: "librarySource", term: "Library Source", kind: "string" },
+    { key: "libraryStrategy", term: "Library Strategy", kind: "string" },
+    { key: "platform", term: "Platform", kind: "string" },
+    { key: "libraryName", term: "Library Name", kind: "string" },
+    {
+      key: "libraryConstructionProtocol",
+      term: "Library Construction Protocol",
+      kind: "string",
+    },
+  ],
 };
 
 const getRecordValue = (res: SearchDetailResponse, key: string) => {
