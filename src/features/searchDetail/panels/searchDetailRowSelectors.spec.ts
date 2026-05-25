@@ -1,7 +1,13 @@
 import { describe, expect, it } from "vitest";
 import type { SearchDetailResponse } from "@/api/types.ts";
 import { makeSraRunDetail } from "@/msw/data/sraRun.ts";
-import { getGrants, getOrganizations, getPublications } from "./searchDetailRowSelectors.ts";
+import {
+  createDetailMetadataRow,
+  getAdditionalMetadataRows,
+  getGrants,
+  getOrganizations,
+  getPublications,
+} from "./searchDetailRowSelectors.ts";
 
 const bioSampleResponse = {
   identifier: "SAMN000001",
@@ -26,6 +32,10 @@ const bioSampleResponse = {
   publication: [],
   grant: [],
 } satisfies SearchDetailResponse;
+
+const withAdditionalMetadata = (metadata: Record<string, unknown>) => {
+  return { ...bioSampleResponse, ...metadata } as SearchDetailResponse;
+};
 
 describe("getOrganizations", () => {
   it("returns organizations for sra-run responses", () => {
@@ -56,5 +66,83 @@ describe("getGrants", () => {
     const result = getGrants(bioSampleResponse);
 
     expect(result).toEqual(bioSampleResponse.grant);
+  });
+});
+
+describe("getAdditionalMetadataRows", () => {
+  it("returns no rows until DBType-specific metadata fields are configured", () => {
+    const result = getAdditionalMetadataRows(bioSampleResponse);
+
+    expect(result).toEqual([]);
+  });
+});
+
+describe("createDetailMetadataRow", () => {
+  it("creates a string metadata row", () => {
+    const result = createDetailMetadataRow(withAdditionalMetadata({ centerName: "DDBJ" }), {
+      key: "centerName",
+      term: "Center Name",
+      kind: "string",
+    });
+
+    expect(result).toEqual({ kind: "string", term: "Center Name", value: "DDBJ" });
+  });
+
+  it("creates an array<string> metadata row", () => {
+    const result = createDetailMetadataRow(
+      withAdditionalMetadata({ keywords: ["genome", "metagenome"] }),
+      { key: "keywords", term: "Keywords", kind: "stringArray" },
+    );
+
+    expect(result).toEqual({
+      kind: "stringArray",
+      term: "Keywords",
+      value: ["genome", "metagenome"],
+    });
+  });
+
+  it("creates a derivedFrom metadata row for Xref arrays", () => {
+    const derivedFrom = [
+      {
+        identifier: "SAMN000001",
+        type: "biosample",
+        url: "https://ddbj.nig.ac.jp/search/entry/biosample/SAMN000001",
+      },
+    ];
+
+    const result = createDetailMetadataRow(withAdditionalMetadata({ derivedFrom }), {
+      key: "derivedFrom",
+      term: "Derived From",
+      kind: "xrefArray",
+    });
+
+    expect(result).toEqual({
+      kind: "xrefArray",
+      term: "Derived From",
+      value: derivedFrom,
+    });
+  });
+
+  it("creates a package metadata row", () => {
+    const result = createDetailMetadataRow(
+      withAdditionalMetadata({ package: { displayName: "MIGS", name: "migs" } }),
+      { key: "package", term: "Package", kind: "package" },
+    );
+
+    expect(result).toEqual({
+      kind: "package",
+      term: "Package",
+      value: { displayName: "MIGS", name: "migs" },
+    });
+  });
+
+  it("ignores values that do not match the configured metadata kind", () => {
+    const result = createDetailMetadataRow(withAdditionalMetadata({ keywords: ["genome", 1] }), {
+      key: "keywords",
+      term: "Keywords",
+      kind: "stringArray",
+    });
+
+    expect(result).toBeNull();
   });
 });
