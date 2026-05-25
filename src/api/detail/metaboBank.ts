@@ -8,6 +8,9 @@ const metaboBankDetailRequestParamsSchema = baseDetailRequestSchema.extend({});
 
 const metaboBankDetailResponseSchema = baseDetailResponseSchema.omit({ type: true }).extend({
   type: z.literal("metabobank"),
+  studyType: z.array(z.string()),
+  experimentType: z.array(z.string()),
+  submissionType: z.array(z.string()),
 });
 
 export type MetaboBankDetailResponse = z.infer<typeof metaboBankDetailResponseSchema>;

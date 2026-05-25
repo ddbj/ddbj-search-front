@@ -29,6 +29,11 @@ const additionalMetadataFieldsByType: Partial<
     { key: "derivedFrom", term: "Derived From", kind: "xrefArray" },
   ],
   gea: [{ key: "experimentType", term: "Experiment Type", kind: "stringArray" }],
+  metabobank: [
+    { key: "studyType", term: "Study Type", kind: "stringArray" },
+    { key: "experimentType", term: "Experiment Type", kind: "stringArray" },
+    { key: "submissionType", term: "Submission Type", kind: "stringArray" },
+  ],
   "sra-sample": [
     { key: "collectionDate", term: "Collection Date", kind: "string" },
     { key: "geoLocName", term: "Geographic Location", kind: "string" },

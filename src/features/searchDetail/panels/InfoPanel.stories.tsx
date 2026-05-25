@@ -6,6 +6,7 @@ import { biosample1 } from "@/msw/data/biosample1.ts";
 import { makeGeaDetail } from "@/msw/data/gea.ts";
 import { makeJgaDatasetDetail } from "@/msw/data/jgaDataset.ts";
 import { makeJgaStudyDetail } from "@/msw/data/jgaStudy.ts";
+import { makeMetaboBankDetail } from "@/msw/data/metaboBank.ts";
 import { makeSraAnalysisDetail } from "@/msw/data/sraAnalysis.ts";
 import { makeSraExperimentDetail } from "@/msw/data/sraExperiment.ts";
 import { makeSraRunDetail } from "@/msw/data/sraRun.ts";
@@ -91,6 +92,40 @@ export const GeaWithoutExperimentType = {
   },
   play: async ({ canvas }) => {
     await expect(canvas.queryByText("Experiment Type")).not.toBeInTheDocument();
+  },
+} satisfies Story;
+
+export const MetaboBank = {
+  args: {
+    data: makeMetaboBankDetail("MTBKS102"),
+  },
+  play: async ({ canvas }) => {
+    await expect(await canvas.findByText("Study Type")).toBeInTheDocument();
+    await expect(await canvas.findByText("untargeted metabolite profiling")).toBeInTheDocument();
+    await expect(await canvas.findByText("Experiment Type")).toBeInTheDocument();
+    await expect(
+      await canvas.findByText(
+        "liquid chromatography-mass spectrometry, fourier transform ion cyclotron resonance mass spectrometry",
+      ),
+    ).toBeInTheDocument();
+    await expect(await canvas.findByText("Submission Type")).toBeInTheDocument();
+    await expect(await canvas.findByText("LC-DAD-MS")).toBeInTheDocument();
+  },
+} satisfies Story;
+
+export const MetaboBankWithoutAdditionalMetadata = {
+  args: {
+    data: {
+      ...makeMetaboBankDetail("MTBKS103"),
+      studyType: [],
+      experimentType: [],
+      submissionType: [],
+    },
+  },
+  play: async ({ canvas }) => {
+    await expect(canvas.queryByText("Study Type")).not.toBeInTheDocument();
+    await expect(canvas.queryByText("Experiment Type")).not.toBeInTheDocument();
+    await expect(canvas.queryByText("Submission Type")).not.toBeInTheDocument();
   },
 } satisfies Story;
 

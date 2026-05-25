@@ -6,6 +6,7 @@ import { biosample1 } from "@/msw/data/biosample1.ts";
 import { makeGeaDetail } from "@/msw/data/gea.ts";
 import { makeJgaDatasetDetail } from "@/msw/data/jgaDataset.ts";
 import { makeJgaStudyDetail } from "@/msw/data/jgaStudy.ts";
+import { makeMetaboBankDetail } from "@/msw/data/metaboBank.ts";
 import { makeSraAnalysisDetail } from "@/msw/data/sraAnalysis.ts";
 import { makeSraExperimentDetail } from "@/msw/data/sraExperiment.ts";
 import { makeSraRunDetail } from "@/msw/data/sraRun.ts";
@@ -152,6 +153,40 @@ describe("getAdditionalMetadataRows", () => {
     } satisfies SearchDetailResponse;
 
     const result = normalizeDetailMetadataRows(getAdditionalMetadataRows(emptyGea));
+
+    expect(result).toEqual([]);
+  });
+
+  it("returns MetaboBank-specific metadata rows", () => {
+    const result = getAdditionalMetadataRows(makeMetaboBankDetail("MTBKS102"));
+
+    expect(result).toEqual([
+      {
+        kind: "stringArray",
+        term: "Study Type",
+        value: ["untargeted metabolite profiling"],
+      },
+      {
+        kind: "stringArray",
+        term: "Experiment Type",
+        value: [
+          "liquid chromatography-mass spectrometry",
+          "fourier transform ion cyclotron resonance mass spectrometry",
+        ],
+      },
+      { kind: "stringArray", term: "Submission Type", value: ["LC-DAD-MS"] },
+    ]);
+  });
+
+  it("lets the display layer hide empty MetaboBank metadata values", () => {
+    const emptyMetaboBank = {
+      ...makeMetaboBankDetail("MTBKS102"),
+      studyType: [],
+      experimentType: [],
+      submissionType: [],
+    } satisfies SearchDetailResponse;
+
+    const result = normalizeDetailMetadataRows(getAdditionalMetadataRows(emptyMetaboBank));
 
     expect(result).toEqual([]);
   });
