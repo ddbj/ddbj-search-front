@@ -8,6 +8,7 @@ const geaDetailRequestParamsSchema = baseDetailRequestSchema.extend({});
 
 const geaDetailResponseSchema = baseDetailResponseSchema.omit({ type: true }).extend({
   type: z.literal("gea"),
+  experimentType: z.array(z.string()),
 });
 
 export type GeaDetailResponse = z.infer<typeof geaDetailResponseSchema>;

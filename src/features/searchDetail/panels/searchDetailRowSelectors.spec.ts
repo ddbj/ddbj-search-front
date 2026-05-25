@@ -3,6 +3,7 @@ import type { SearchDetailResponse } from "@/api/types.ts";
 import { bioproject1 } from "@/msw/data/bioproject1.ts";
 import { bioproject2 } from "@/msw/data/bioproject2.ts";
 import { biosample1 } from "@/msw/data/biosample1.ts";
+import { makeGeaDetail } from "@/msw/data/gea.ts";
 import { makeJgaDatasetDetail } from "@/msw/data/jgaDataset.ts";
 import { makeJgaStudyDetail } from "@/msw/data/jgaStudy.ts";
 import { makeSraAnalysisDetail } from "@/msw/data/sraAnalysis.ts";
@@ -128,6 +129,29 @@ describe("getAdditionalMetadataRows", () => {
 
   it("lets the display layer hide empty BioSample metadata values", () => {
     const result = normalizeDetailMetadataRows(getAdditionalMetadataRows(bioSampleResponse));
+
+    expect(result).toEqual([]);
+  });
+
+  it("returns GEA-specific metadata rows", () => {
+    const result = getAdditionalMetadataRows(makeGeaDetail("E-GEAD-1000"));
+
+    expect(result).toEqual([
+      {
+        kind: "stringArray",
+        term: "Experiment Type",
+        value: ["transcription profiling by array"],
+      },
+    ]);
+  });
+
+  it("lets the display layer hide empty GEA metadata values", () => {
+    const emptyGea = {
+      ...makeGeaDetail("E-GEAD-1000"),
+      experimentType: [],
+    } satisfies SearchDetailResponse;
+
+    const result = normalizeDetailMetadataRows(getAdditionalMetadataRows(emptyGea));
 
     expect(result).toEqual([]);
   });

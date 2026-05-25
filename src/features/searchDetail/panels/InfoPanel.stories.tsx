@@ -3,6 +3,7 @@ import { expect } from "storybook/test";
 import { bioproject1 } from "@/msw/data/bioproject1.ts";
 import { bioproject2 } from "@/msw/data/bioproject2.ts";
 import { biosample1 } from "@/msw/data/biosample1.ts";
+import { makeGeaDetail } from "@/msw/data/gea.ts";
 import { makeJgaDatasetDetail } from "@/msw/data/jgaDataset.ts";
 import { makeJgaStudyDetail } from "@/msw/data/jgaStudy.ts";
 import { makeSraAnalysisDetail } from "@/msw/data/sraAnalysis.ts";
@@ -68,6 +69,28 @@ export const BioSample = {
     await expect(await canvas.findAllByText("BPH-1-M-E2")).toHaveLength(2);
     await expect(await canvas.findByText("Derived From")).toBeInTheDocument();
     await expect(await canvas.findByRole("link", { name: "PRJNA860307" })).toBeInTheDocument();
+  },
+} satisfies Story;
+
+export const Gea = {
+  args: {
+    data: makeGeaDetail("E-GEAD-1000"),
+  },
+  play: async ({ canvas }) => {
+    await expect(await canvas.findByText("Experiment Type")).toBeInTheDocument();
+    await expect(await canvas.findByText("transcription profiling by array")).toBeInTheDocument();
+  },
+} satisfies Story;
+
+export const GeaWithoutExperimentType = {
+  args: {
+    data: {
+      ...makeGeaDetail("E-GEAD-1001"),
+      experimentType: [],
+    },
+  },
+  play: async ({ canvas }) => {
+    await expect(canvas.queryByText("Experiment Type")).not.toBeInTheDocument();
   },
 } satisfies Story;
 
