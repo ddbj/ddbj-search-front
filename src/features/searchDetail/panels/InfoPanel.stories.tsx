@@ -4,6 +4,7 @@ import { bioproject1 } from "@/msw/data/bioproject1.ts";
 import { bioproject2 } from "@/msw/data/bioproject2.ts";
 import { biosample1 } from "@/msw/data/biosample1.ts";
 import { makeSraRunDetail } from "@/msw/data/sraRun.ts";
+import { sraSample1 } from "@/msw/data/sraSample1.ts";
 import { InfoPanel } from "./InfoPanel.tsx";
 
 const meta = {
@@ -63,6 +64,20 @@ export const BioSample = {
     await expect(await canvas.findAllByText("BPH-1-M-E2")).toHaveLength(2);
     await expect(await canvas.findByText("Derived From")).toBeInTheDocument();
     await expect(await canvas.findByRole("link", { name: "PRJNA860307" })).toBeInTheDocument();
+  },
+} satisfies Story;
+
+export const SraSample = {
+  args: {
+    data: sraSample1,
+  },
+  play: async ({ canvas }) => {
+    await expect(await canvas.findByText("Collection Date")).toBeInTheDocument();
+    await expect(await canvas.findByText("2020-02-12")).toBeInTheDocument();
+    await expect(await canvas.findByText("Geographic Location")).toBeInTheDocument();
+    await expect(await canvas.findByText("United Kingdom")).toBeInTheDocument();
+    await expect(await canvas.findByText("Derived From")).toBeInTheDocument();
+    await expect(await canvas.findByRole("link", { name: "SAMEA4967388" })).toBeInTheDocument();
   },
 } satisfies Story;
 

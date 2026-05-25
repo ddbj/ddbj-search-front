@@ -26,6 +26,15 @@ export const sraSample1: SraSampleDetailResponse = {
   dateModified: "2021-09-27T14:01:30Z",
   title: "pneuDEEP7565425",
   type: "sra-sample",
+  collectionDate: "2020-02-12",
+  geoLocName: "United Kingdom",
+  derivedFrom: [
+    {
+      identifier: "SAMEA4967388",
+      type: "biosample",
+      url: "https://ddbj.nig.ac.jp/search/entry/biosample/SAMEA4967388",
+    },
+  ],
   dbXrefs: [
     {
       identifier: "PRJEB22771",

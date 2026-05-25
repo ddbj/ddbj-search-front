@@ -4,6 +4,7 @@ import { bioproject1 } from "@/msw/data/bioproject1.ts";
 import { bioproject2 } from "@/msw/data/bioproject2.ts";
 import { biosample1 } from "@/msw/data/biosample1.ts";
 import { makeSraRunDetail } from "@/msw/data/sraRun.ts";
+import { sraSample1 } from "@/msw/data/sraSample1.ts";
 import { normalizeDetailMetadataRows } from "./rows/detailMetadataRowUtils.ts";
 import {
   createDetailMetadataRow,
@@ -123,6 +124,29 @@ describe("getAdditionalMetadataRows", () => {
 
   it("lets the display layer hide empty BioSample metadata values", () => {
     const result = normalizeDetailMetadataRows(getAdditionalMetadataRows(bioSampleResponse));
+
+    expect(result).toEqual([]);
+  });
+
+  it("returns SRA Sample-specific metadata rows", () => {
+    const result = getAdditionalMetadataRows(sraSample1);
+
+    expect(result).toEqual([
+      { kind: "string", term: "Collection Date", value: "2020-02-12" },
+      { kind: "string", term: "Geographic Location", value: "United Kingdom" },
+      { kind: "xrefArray", term: "Derived From", value: sraSample1.derivedFrom },
+    ]);
+  });
+
+  it("lets the display layer hide empty SRA Sample metadata values", () => {
+    const emptySraSample = {
+      ...sraSample1,
+      collectionDate: null,
+      geoLocName: null,
+      derivedFrom: [],
+    } satisfies SearchDetailResponse;
+
+    const result = normalizeDetailMetadataRows(getAdditionalMetadataRows(emptySraSample));
 
     expect(result).toEqual([]);
   });

@@ -28,6 +28,11 @@ const additionalMetadataFieldsByType: Partial<
     { key: "isolate", term: "Isolate", kind: "string" },
     { key: "derivedFrom", term: "Derived From", kind: "xrefArray" },
   ],
+  "sra-sample": [
+    { key: "collectionDate", term: "Collection Date", kind: "string" },
+    { key: "geoLocName", term: "Geographic Location", kind: "string" },
+    { key: "derivedFrom", term: "Derived From", kind: "xrefArray" },
+  ],
 };
 
 const getRecordValue = (res: SearchDetailResponse, key: string) => {
