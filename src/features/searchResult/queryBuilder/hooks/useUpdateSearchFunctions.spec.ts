@@ -69,6 +69,25 @@ describe("removeFromSearch", () => {
         dateModifiedTo: "2024-07-10",
       });
     });
+    it("should remove an object type and reset page", () => {
+      const result = removeFromSearch(
+        {
+          ...current,
+          objectTypes: ["BioProject", "UmbrellaBioProject"],
+        },
+        "objectTypes",
+        "BioProject",
+      );
+      expect(result).toEqual({
+        keywords: ["human", " cat"],
+        types: ["sra-analysis", "jga-study"],
+        objectTypes: ["UmbrellaBioProject"],
+        datePublishedFrom: "2025-07-01",
+        datePublishedTo: "2025-07-10",
+        dateModifiedFrom: "2024-07-01",
+        dateModifiedTo: "2024-07-10",
+      });
+    });
     it("should remove a published date range and reset page", () => {
       const result = removeFromSearch(current, ["datePublishedFrom", "datePublishedTo"], "");
       expect(result).toEqual({

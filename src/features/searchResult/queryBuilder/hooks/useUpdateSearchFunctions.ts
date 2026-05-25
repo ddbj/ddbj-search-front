@@ -99,13 +99,17 @@ const removeFromSearch = (
     return rest;
   } else {
     const { [key]: prev, page, ...rest } = current;
-    if (Array.isArray(prev)) {
+    if (isStringArray(prev)) {
       const filtered = prev.filter((t) => t.trim() !== value.trim());
       return { ...rest, ...(filtered.length ? { [key]: filtered } : {}) };
     } else {
       return rest;
     }
   }
+};
+
+const isStringArray = (value: unknown): value is string[] => {
+  return Array.isArray(value) && value.every((item) => typeof item === "string");
 };
 
 const composePageNumber = (params: P, value: number): P => {
