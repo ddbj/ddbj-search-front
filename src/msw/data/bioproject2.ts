@@ -76,6 +76,8 @@ export const bioproject2: BioProjectDetailResponse = {
   isPartOf: "BioProject",
   type: "bioproject",
   objectType: "BioProject",
+  projectType: ["raw sequence reads"],
+  relevance: ["Agricultural"],
   name: null,
   url: "https://ddbj-staging.nig.ac.jp/search/entry/bioproject/PRJNA313191",
   organism: { identifier: "410658", name: "soil metagenome" },

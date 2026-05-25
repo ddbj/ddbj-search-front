@@ -16,6 +16,8 @@ const bioProjectDetailResponseSchema = baseDetailResponseSchema
   })
   .extend({
     objectType: z.string(),
+    projectType: z.array(z.string()),
+    relevance: z.array(z.string()),
     parentBioProjects: z.array(XrefSchema),
     childBioProjects: z.array(XrefSchema),
   });

@@ -13,7 +13,12 @@ export type DetailMetadataFieldConfig = {
 
 const additionalMetadataFieldsByType: Partial<
   Record<SearchDetailResponse["type"], DetailMetadataFieldConfig[]>
-> = {};
+> = {
+  bioproject: [
+    { key: "projectType", term: "Project Type", kind: "stringArray" },
+    { key: "relevance", term: "Relevance", kind: "stringArray" },
+  ],
+};
 
 const getRecordValue = (res: SearchDetailResponse, key: string) => {
   return (res as SearchDetailResponse & Record<string, unknown>)[key];

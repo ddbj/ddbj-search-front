@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
 import type { SearchDetailResponse } from "@/api/types.ts";
+import { bioproject1 } from "@/msw/data/bioproject1.ts";
+import { bioproject2 } from "@/msw/data/bioproject2.ts";
 import { makeSraRunDetail } from "@/msw/data/sraRun.ts";
 import {
   createDetailMetadataRow,
@@ -70,10 +72,28 @@ describe("getGrants", () => {
 });
 
 describe("getAdditionalMetadataRows", () => {
-  it("returns no rows until DBType-specific metadata fields are configured", () => {
+  it("returns no rows for DBTypes without additional metadata fields", () => {
     const result = getAdditionalMetadataRows(bioSampleResponse);
 
     expect(result).toEqual([]);
+  });
+
+  it("returns BioProject project type and relevance rows", () => {
+    const result = getAdditionalMetadataRows(bioproject2);
+
+    expect(result).toEqual([
+      { kind: "stringArray", term: "Project Type", value: ["raw sequence reads"] },
+      { kind: "stringArray", term: "Relevance", value: ["Agricultural"] },
+    ]);
+  });
+
+  it("keeps BioProject empty arrays for the display layer to hide", () => {
+    const result = getAdditionalMetadataRows(bioproject1);
+
+    expect(result).toEqual([
+      { kind: "stringArray", term: "Project Type", value: ["Genome sequencing"] },
+      { kind: "stringArray", term: "Relevance", value: [] },
+    ]);
   });
 });
 

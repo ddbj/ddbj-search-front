@@ -194,6 +194,8 @@ export const bioproject1: BioProjectDetailResponse = {
   isPartOf: "BioProject",
   type: "bioproject",
   objectType: "BioProject",
+  projectType: ["Genome sequencing"],
+  relevance: [],
   name: null,
   url: "https://ddbj-staging.nig.ac.jp/search/entry/bioproject/PRJNA16",
   organism: { identifier: "322710", name: "Azotobacter vinelandii DJ" },
