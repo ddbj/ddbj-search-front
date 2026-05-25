@@ -4,6 +4,7 @@ import { bioproject1 } from "@/msw/data/bioproject1.ts";
 import { bioproject2 } from "@/msw/data/bioproject2.ts";
 import { biosample1 } from "@/msw/data/biosample1.ts";
 import { makeJgaDatasetDetail } from "@/msw/data/jgaDataset.ts";
+import { makeJgaStudyDetail } from "@/msw/data/jgaStudy.ts";
 import { makeSraAnalysisDetail } from "@/msw/data/sraAnalysis.ts";
 import { makeSraExperimentDetail } from "@/msw/data/sraExperiment.ts";
 import { makeSraRunDetail } from "@/msw/data/sraRun.ts";
@@ -155,6 +156,39 @@ export const JgaDatasetWithoutDatasetType = {
   },
   play: async ({ canvas }) => {
     await expect(canvas.queryByText("Dataset Type")).not.toBeInTheDocument();
+    await expect(await canvas.findByText("External Links")).toBeInTheDocument();
+  },
+} satisfies Story;
+
+export const JgaStudy = {
+  args: {
+    data: makeJgaStudyDetail("JGAS000001"),
+  },
+  play: async ({ canvas }) => {
+    await expect(await canvas.findByText("Study Type")).toBeInTheDocument();
+    await expect(await canvas.findByText("Case-Control")).toBeInTheDocument();
+    await expect(await canvas.findByText("Vendor")).toBeInTheDocument();
+    await expect(
+      await canvas.findByText("Japanese Genotype-phenotype Archive"),
+    ).toBeInTheDocument();
+    await expect(await canvas.findByText("External Links")).toBeInTheDocument();
+    await expect(
+      await canvas.findByRole("link", { name: "JGA Study Browser" }),
+    ).toBeInTheDocument();
+  },
+} satisfies Story;
+
+export const JgaStudyWithoutStudyTypeOrVendor = {
+  args: {
+    data: {
+      ...makeJgaStudyDetail("JGAS000002"),
+      studyType: [],
+      vendor: [],
+    },
+  },
+  play: async ({ canvas }) => {
+    await expect(canvas.queryByText("Study Type")).not.toBeInTheDocument();
+    await expect(canvas.queryByText("Vendor")).not.toBeInTheDocument();
     await expect(await canvas.findByText("External Links")).toBeInTheDocument();
   },
 } satisfies Story;

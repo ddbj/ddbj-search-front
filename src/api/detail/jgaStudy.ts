@@ -8,6 +8,8 @@ const jgaStudyDetailRequestParamsSchema = baseDetailRequestSchema.extend({});
 
 const jgaStudyDetailResponseSchema = baseDetailResponseSchema.omit({ type: true }).extend({
   type: z.literal("jga-study"),
+  studyType: z.array(z.string()),
+  vendor: z.array(z.string()),
 });
 
 export type JgaStudyDetailResponse = z.infer<typeof jgaStudyDetailResponseSchema>;
