@@ -48,6 +48,7 @@ const additionalMetadataFieldsByType: Partial<
     },
   ],
   "sra-analysis": [{ key: "analysisType", term: "Analysis Type", kind: "string" }],
+  "jga-dataset": [{ key: "datasetType", term: "Dataset Type", kind: "stringArray" }],
 };
 
 const getRecordValue = (res: SearchDetailResponse, key: string) => {

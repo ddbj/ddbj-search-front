@@ -3,6 +3,7 @@ import type { SearchDetailResponse } from "@/api/types.ts";
 import { bioproject1 } from "@/msw/data/bioproject1.ts";
 import { bioproject2 } from "@/msw/data/bioproject2.ts";
 import { biosample1 } from "@/msw/data/biosample1.ts";
+import { makeJgaDatasetDetail } from "@/msw/data/jgaDataset.ts";
 import { makeSraAnalysisDetail } from "@/msw/data/sraAnalysis.ts";
 import { makeSraExperimentDetail } from "@/msw/data/sraExperiment.ts";
 import { makeSraRunDetail } from "@/msw/data/sraRun.ts";
@@ -207,6 +208,23 @@ describe("getAdditionalMetadataRows", () => {
     } satisfies SearchDetailResponse;
 
     const result = normalizeDetailMetadataRows(getAdditionalMetadataRows(emptySraAnalysis));
+
+    expect(result).toEqual([]);
+  });
+
+  it("returns JGA Dataset-specific metadata rows", () => {
+    const result = getAdditionalMetadataRows(makeJgaDatasetDetail("JGAD000001"));
+
+    expect(result).toEqual([{ kind: "stringArray", term: "Dataset Type", value: ["Exome"] }]);
+  });
+
+  it("lets the display layer hide empty JGA Dataset metadata values", () => {
+    const emptyJgaDataset = {
+      ...makeJgaDatasetDetail("JGAD000001"),
+      datasetType: [],
+    } satisfies SearchDetailResponse;
+
+    const result = normalizeDetailMetadataRows(getAdditionalMetadataRows(emptyJgaDataset));
 
     expect(result).toEqual([]);
   });

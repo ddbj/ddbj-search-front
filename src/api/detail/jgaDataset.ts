@@ -8,6 +8,7 @@ const jgaDatasetDetailRequestParamsSchema = baseDetailRequestSchema.extend({});
 
 const jgaDatasetDetailResponseSchema = baseDetailResponseSchema.omit({ type: true }).extend({
   type: z.literal("jga-dataset"),
+  datasetType: z.array(z.string()),
 });
 
 export type JgaDatasetDetailResponse = z.infer<typeof jgaDatasetDetailResponseSchema>;
