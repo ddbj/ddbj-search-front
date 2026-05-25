@@ -6,14 +6,10 @@ import { resolveDbLink } from "@/utils/sanitizeDbLink.ts";
 
 type Props = {
   term: string;
-  xrefs: Xref[] | null | undefined;
+  xrefs: Xref[];
 };
 
 export const XrefLinksRow: FC<Props> = ({ term, xrefs }) => {
-  if (!xrefs || xrefs.length === 0) {
-    return <></>;
-  }
-
   return (
     <InfoListItem term={term}>
       <ul className={"flex flex-wrap gap-2"}>

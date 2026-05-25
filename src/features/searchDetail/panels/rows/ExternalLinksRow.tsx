@@ -2,12 +2,9 @@ import type { FC } from "react";
 import type { ExternalLink } from "@/api/detail/base.ts";
 import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
 
-type Props = { externalLinks: ExternalLink[] | null | undefined };
+type Props = { externalLinks: ExternalLink[] };
 
 export const ExternalLinksRow: FC<Props> = ({ externalLinks }) => {
-  if (!externalLinks || externalLinks.length === 0) {
-    return <></>;
-  }
   return (
     <InfoListItem term={"External Links"}>
       <ul className={"flex flex-col"}>

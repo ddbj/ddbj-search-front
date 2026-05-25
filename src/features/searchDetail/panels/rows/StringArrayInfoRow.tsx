@@ -4,11 +4,14 @@ import { sanitizeHTML } from "@/utils/sanitizeHTML.ts";
 
 type Props = {
   term: string;
-  value: string | null | undefined;
+  value: string[] | null | undefined;
 };
 
-export const SanitizedRow: FC<Props> = ({ value, term }) => {
-  const displayValue = sanitizeHTML(value?.trim());
+export const StringArrayInfoRow: FC<Props> = ({ term, value }) => {
+  const displayValue = value
+    ?.map((item) => sanitizeHTML(item.trim()))
+    .filter((item) => item.length > 0)
+    .join(", ");
 
   if (!displayValue) {
     return null;

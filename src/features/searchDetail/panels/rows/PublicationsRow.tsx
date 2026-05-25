@@ -3,12 +3,9 @@ import type { Publication } from "@/api/detail/base.ts";
 import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
 import { sanitizeHTML } from "@/utils/sanitizeHTML.ts";
 
-type Props = { publications: Publication[] | null };
+type Props = { publications: Publication[] };
 
 export const PublicationsRow: FC<Props> = ({ publications }) => {
-  if (!publications || publications.length === 0) {
-    return <></>;
-  }
   return (
     <InfoListItem term={"Publications"}>
       <ul className={"flex flex-col gap-y-2"}>

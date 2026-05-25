@@ -23,12 +23,6 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Null = {
-  args: {
-    organism: null,
-  },
-} satisfies Story;
-
 export const Primary = {
   args: {
     organism: {

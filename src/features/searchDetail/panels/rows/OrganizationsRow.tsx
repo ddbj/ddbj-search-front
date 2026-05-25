@@ -2,12 +2,9 @@ import type { FC } from "react";
 import type { Organization } from "@/api/detail/base.ts";
 import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
 
-type Props = { organizations: Organization[] | null };
+type Props = { organizations: Organization[] };
 
 export const OrganizationsRow: FC<Props> = ({ organizations }) => {
-  if (!organizations || organizations.length === 0) {
-    return <></>;
-  }
   return (
     <InfoListItem term={"Organizations"}>
       <ul className={"flex flex-col gap-y-2"}>

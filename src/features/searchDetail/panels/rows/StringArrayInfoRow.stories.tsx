@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { InfoList } from "@/features/searchDetail/ui/InfoList.tsx";
-import { ExternalLinksRow } from "./ExternalLinksRow.tsx";
+import { StringArrayInfoRow } from "./StringArrayInfoRow.tsx";
 
 const meta = {
-  component: ExternalLinksRow,
+  component: StringArrayInfoRow,
   decorators: [
     (Story) => (
       <InfoList>
@@ -11,7 +11,7 @@ const meta = {
       </InfoList>
     ),
   ],
-} satisfies Meta<typeof ExternalLinksRow>;
+} satisfies Meta<typeof StringArrayInfoRow>;
 
 export default meta;
 
@@ -19,15 +19,14 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary = {
   args: {
-    externalLinks: [
-      {
-        label: "DDBJ",
-        url: "https://www.ddbj.nig.ac.jp/",
-      },
-      {
-        label: "NCBI",
-        url: "https://www.ncbi.nlm.nih.gov/",
-      },
-    ],
+    term: "Library Selection",
+    value: ["RANDOM", "PCR"],
+  },
+} satisfies Story;
+
+export const Empty = {
+  args: {
+    term: "Library Selection",
+    value: [],
   },
 } satisfies Story;

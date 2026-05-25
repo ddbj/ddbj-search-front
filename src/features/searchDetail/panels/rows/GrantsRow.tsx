@@ -2,12 +2,9 @@ import type { FC } from "react";
 import type { Grant } from "@/api/detail/base.ts";
 import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
 
-type Props = { grants: Grant[] | null };
+type Props = { grants: Grant[] };
 
 export const GrantsRow: FC<Props> = ({ grants }) => {
-  if (!grants || grants.length === 0) {
-    return <></>;
-  }
   return (
     <InfoListItem term={"Grants"}>
       <ul className={"flex flex-col gap-y-2"}>

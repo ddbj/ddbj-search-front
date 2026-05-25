@@ -17,12 +17,6 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Null = {
-  args: {
-    publications: null,
-  },
-};
-
 export const Primary = {
   args: {
     publications: [
