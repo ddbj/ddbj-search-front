@@ -8,6 +8,7 @@ const sraAnalysisDetailRequestParamsSchema = baseDetailRequestSchema.extend({});
 
 const sraAnalysisDetailResponseSchema = baseDetailResponseSchema.omit({ type: true }).extend({
   type: z.literal("sra-analysis"),
+  analysisType: z.string().nullable(),
 });
 export type SraAnalysisDetailResponse = z.infer<typeof sraAnalysisDetailResponseSchema>;
 

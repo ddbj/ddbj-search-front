@@ -3,6 +3,7 @@ import { expect } from "storybook/test";
 import { bioproject1 } from "@/msw/data/bioproject1.ts";
 import { bioproject2 } from "@/msw/data/bioproject2.ts";
 import { biosample1 } from "@/msw/data/biosample1.ts";
+import { makeSraAnalysisDetail } from "@/msw/data/sraAnalysis.ts";
 import { makeSraExperimentDetail } from "@/msw/data/sraExperiment.ts";
 import { makeSraRunDetail } from "@/msw/data/sraRun.ts";
 import { sraSample1 } from "@/msw/data/sraSample1.ts";
@@ -105,6 +106,28 @@ export const SraExperiment = {
     await expect(
       await canvas.findByText("PolyA RNA was isolated and prepared for paired-end sequencing."),
     ).toBeInTheDocument();
+  },
+} satisfies Story;
+
+export const SraAnalysis = {
+  args: {
+    data: makeSraAnalysisDetail("SRZ000001"),
+  },
+  play: async ({ canvas }) => {
+    await expect(await canvas.findByText("Analysis Type")).toBeInTheDocument();
+    await expect(await canvas.findByText("SEQUENCE_VARIATION")).toBeInTheDocument();
+  },
+} satisfies Story;
+
+export const SraAnalysisWithoutAnalysisType = {
+  args: {
+    data: {
+      ...makeSraAnalysisDetail("SRZ000002"),
+      analysisType: null,
+    },
+  },
+  play: async ({ canvas }) => {
+    await expect(canvas.queryByText("Analysis Type")).not.toBeInTheDocument();
   },
 } satisfies Story;
 

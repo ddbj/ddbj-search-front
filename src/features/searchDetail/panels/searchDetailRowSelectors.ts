@@ -47,6 +47,7 @@ const additionalMetadataFieldsByType: Partial<
       kind: "string",
     },
   ],
+  "sra-analysis": [{ key: "analysisType", term: "Analysis Type", kind: "string" }],
 };
 
 const getRecordValue = (res: SearchDetailResponse, key: string) => {

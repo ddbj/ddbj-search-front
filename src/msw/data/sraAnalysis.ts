@@ -1,0 +1,26 @@
+import type { SraAnalysisDetailResponse } from "@/api/detail/sraAnalysis.ts";
+
+export const makeSraAnalysisDetail = (identifier: string): SraAnalysisDetailResponse => ({
+  identifier,
+  dateCreated: "2024-01-01T00:00:00Z",
+  dateModified: "2024-01-02T00:00:00Z",
+  datePublished: "2024-01-03T00:00:00Z",
+  title: "MSW SRA Analysis Title",
+  organism: null,
+  description: "This is a mock SRA analysis detail for testing purposes.",
+  publication: [],
+  grant: [],
+  type: "sra-analysis",
+  accessibility: "public-access",
+  status: "public",
+  dbXrefs: [],
+  dbXrefsCount: {},
+  properties: {},
+  distribution: [],
+  isPartOf: "SRA Analysis",
+  name: null,
+  url: `https://ddbj-staging.nig.ac.jp/search/entry/sra-analysis/${identifier}`,
+  sameAs: [],
+  organization: null,
+  analysisType: "SEQUENCE_VARIATION",
+});

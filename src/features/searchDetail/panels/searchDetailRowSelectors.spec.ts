@@ -3,6 +3,7 @@ import type { SearchDetailResponse } from "@/api/types.ts";
 import { bioproject1 } from "@/msw/data/bioproject1.ts";
 import { bioproject2 } from "@/msw/data/bioproject2.ts";
 import { biosample1 } from "@/msw/data/biosample1.ts";
+import { makeSraAnalysisDetail } from "@/msw/data/sraAnalysis.ts";
 import { makeSraExperimentDetail } from "@/msw/data/sraExperiment.ts";
 import { makeSraRunDetail } from "@/msw/data/sraRun.ts";
 import { sraSample1 } from "@/msw/data/sraSample1.ts";
@@ -187,6 +188,25 @@ describe("getAdditionalMetadataRows", () => {
     } satisfies SearchDetailResponse;
 
     const result = normalizeDetailMetadataRows(getAdditionalMetadataRows(emptySraExperiment));
+
+    expect(result).toEqual([]);
+  });
+
+  it("returns SRA Analysis-specific metadata rows", () => {
+    const result = getAdditionalMetadataRows(makeSraAnalysisDetail("SRZ000001"));
+
+    expect(result).toEqual([
+      { kind: "string", term: "Analysis Type", value: "SEQUENCE_VARIATION" },
+    ]);
+  });
+
+  it("lets the display layer hide empty SRA Analysis metadata values", () => {
+    const emptySraAnalysis = {
+      ...makeSraAnalysisDetail("SRZ000001"),
+      analysisType: "",
+    } satisfies SearchDetailResponse;
+
+    const result = normalizeDetailMetadataRows(getAdditionalMetadataRows(emptySraAnalysis));
 
     expect(result).toEqual([]);
   });
