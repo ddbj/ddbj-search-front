@@ -24,4 +24,4 @@ export const OrganismRow: FC<Props> = ({ organism }) => {
 };
 
 const makeNcbiTaxLink = (taxId: string) =>
-  `https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=${taxId}`;
+  `https://www.ncbi.nlm.nih.gov/datasets/taxonomy/${taxId}/`;
