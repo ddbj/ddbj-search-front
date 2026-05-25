@@ -91,23 +91,21 @@ export const SraExperiment = {
   },
   play: async ({ canvas }) => {
     await expect(await canvas.findByText("Instrument Model")).toBeInTheDocument();
-    await expect(await canvas.findByText("NextSeq 500")).toBeInTheDocument();
+    await expect(await canvas.findByText("HiSeq X Ten")).toBeInTheDocument();
+    await expect(await canvas.findByText("Platform")).toBeInTheDocument();
+    await expect(await canvas.findByText("ILLUMINA")).toBeInTheDocument();
     await expect(await canvas.findByText("Library Layout")).toBeInTheDocument();
     await expect(await canvas.findByText("PAIRED")).toBeInTheDocument();
     await expect(await canvas.findByText("Library Selection")).toBeInTheDocument();
-    await expect(await canvas.findByText("PCR")).toBeInTheDocument();
+    await expect(await canvas.findByText("RANDOM")).toBeInTheDocument();
     await expect(await canvas.findByText("Library Source")).toBeInTheDocument();
-    await expect(await canvas.findByText("TRANSCRIPTOMIC")).toBeInTheDocument();
+    await expect(await canvas.findByText("GENOMIC")).toBeInTheDocument();
     await expect(await canvas.findByText("Library Strategy")).toBeInTheDocument();
-    await expect(await canvas.findByText("RNA-Seq")).toBeInTheDocument();
-    await expect(await canvas.findByText("Platform")).toBeInTheDocument();
-    await expect(await canvas.findByText("ILLUMINA")).toBeInTheDocument();
+    await expect(await canvas.findByText("WGS")).toBeInTheDocument();
     await expect(await canvas.findByText("Library Name")).toBeInTheDocument();
-    await expect(await canvas.findByText("MSW SRA Experiment Library")).toBeInTheDocument();
+    await expect(await canvas.findByText("DN539379D:A12")).toBeInTheDocument();
     await expect(await canvas.findByText("Library Construction Protocol")).toBeInTheDocument();
-    await expect(
-      await canvas.findByText("PolyA RNA was isolated and prepared for paired-end sequencing."),
-    ).toBeInTheDocument();
+    await expect(await canvas.findByText("Standard")).toBeInTheDocument();
   },
 } satisfies Story;
 

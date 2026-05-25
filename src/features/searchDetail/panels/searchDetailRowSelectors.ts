@@ -34,12 +34,12 @@ const additionalMetadataFieldsByType: Partial<
     { key: "derivedFrom", term: "Derived From", kind: "xrefArray" },
   ],
   "sra-experiment": [
-    { key: "instrumentModel", term: "Instrument Model", kind: "string" },
-    { key: "libraryLayout", term: "Library Layout", kind: "string" },
-    { key: "librarySelection", term: "Library Selection", kind: "string" },
-    { key: "librarySource", term: "Library Source", kind: "string" },
-    { key: "libraryStrategy", term: "Library Strategy", kind: "string" },
+    { key: "instrumentModel", term: "Instrument Model", kind: "stringArray" },
     { key: "platform", term: "Platform", kind: "string" },
+    { key: "libraryLayout", term: "Library Layout", kind: "string" },
+    { key: "librarySelection", term: "Library Selection", kind: "stringArray" },
+    { key: "librarySource", term: "Library Source", kind: "stringArray" },
+    { key: "libraryStrategy", term: "Library Strategy", kind: "stringArray" },
     { key: "libraryName", term: "Library Name", kind: "string" },
     {
       key: "libraryConstructionProtocol",

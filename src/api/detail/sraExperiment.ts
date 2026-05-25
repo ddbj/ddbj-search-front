@@ -8,11 +8,11 @@ const sraExperimentDetailRequestParamsSchema = baseDetailRequestSchema.extend({}
 
 const sraExperimentDetailResponseSchema = baseDetailResponseSchema.omit({ type: true }).extend({
   type: z.literal("sra-experiment"),
-  instrumentModel: z.string().nullable(),
+  instrumentModel: z.array(z.string()).nullable(),
   libraryLayout: z.string().nullable(),
-  librarySelection: z.string().nullable(),
-  librarySource: z.string().nullable(),
-  libraryStrategy: z.string().nullable(),
+  librarySelection: z.array(z.string()).nullable(),
+  librarySource: z.array(z.string()).nullable(),
+  libraryStrategy: z.array(z.string()).nullable(),
   platform: z.string().nullable(),
   libraryName: z.string().nullable(),
   libraryConstructionProtocol: z.string().nullable(),

@@ -161,17 +161,17 @@ describe("getAdditionalMetadataRows", () => {
     const result = getAdditionalMetadataRows(sraExperiment);
 
     expect(result).toEqual([
-      { kind: "string", term: "Instrument Model", value: "NextSeq 500" },
-      { kind: "string", term: "Library Layout", value: "PAIRED" },
-      { kind: "string", term: "Library Selection", value: "PCR" },
-      { kind: "string", term: "Library Source", value: "TRANSCRIPTOMIC" },
-      { kind: "string", term: "Library Strategy", value: "RNA-Seq" },
+      { kind: "stringArray", term: "Instrument Model", value: ["HiSeq X Ten"] },
       { kind: "string", term: "Platform", value: "ILLUMINA" },
-      { kind: "string", term: "Library Name", value: "MSW SRA Experiment Library" },
+      { kind: "string", term: "Library Layout", value: "PAIRED" },
+      { kind: "stringArray", term: "Library Selection", value: ["RANDOM"] },
+      { kind: "stringArray", term: "Library Source", value: ["GENOMIC"] },
+      { kind: "stringArray", term: "Library Strategy", value: ["WGS"] },
+      { kind: "string", term: "Library Name", value: "DN539379D:A12" },
       {
         kind: "string",
         term: "Library Construction Protocol",
-        value: "PolyA RNA was isolated and prepared for paired-end sequencing.",
+        value: "Standard",
       },
     ]);
   });
@@ -179,11 +179,11 @@ describe("getAdditionalMetadataRows", () => {
   it("lets the display layer hide empty SRA Experiment metadata values", () => {
     const emptySraExperiment = {
       ...makeSraExperimentDetail("SRX000001"),
-      instrumentModel: null,
+      instrumentModel: [],
       libraryLayout: "",
-      librarySelection: null,
-      librarySource: "",
-      libraryStrategy: null,
+      librarySelection: [],
+      librarySource: [],
+      libraryStrategy: [],
       platform: "",
       libraryName: null,
       libraryConstructionProtocol: "",
