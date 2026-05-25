@@ -2,7 +2,9 @@ import { describe, expect, it } from "vitest";
 import type { SearchDetailResponse } from "@/api/types.ts";
 import { bioproject1 } from "@/msw/data/bioproject1.ts";
 import { bioproject2 } from "@/msw/data/bioproject2.ts";
+import { biosample1 } from "@/msw/data/biosample1.ts";
 import { makeSraRunDetail } from "@/msw/data/sraRun.ts";
+import { normalizeDetailMetadataRows } from "./rows/detailMetadataRowUtils.ts";
 import {
   createDetailMetadataRow,
   getAdditionalMetadataRows,
@@ -33,6 +35,14 @@ const bioSampleResponse = {
   organization: null,
   publication: [],
   grant: [],
+  model: [],
+  package: null,
+  collectionDate: null,
+  geoLocName: null,
+  strain: null,
+  host: null,
+  isolate: null,
+  derivedFrom: [],
 } satisfies SearchDetailResponse;
 
 const withAdditionalMetadata = (metadata: Record<string, unknown>) => {
@@ -73,7 +83,7 @@ describe("getGrants", () => {
 
 describe("getAdditionalMetadataRows", () => {
   it("returns no rows for DBTypes without additional metadata fields", () => {
-    const result = getAdditionalMetadataRows(bioSampleResponse);
+    const result = getAdditionalMetadataRows(makeSraRunDetail("DRR000001"));
 
     expect(result).toEqual([]);
   });
@@ -94,6 +104,27 @@ describe("getAdditionalMetadataRows", () => {
       { kind: "stringArray", term: "Project Type", value: ["Genome sequencing"] },
       { kind: "stringArray", term: "Relevance", value: [] },
     ]);
+  });
+
+  it("returns BioSample-specific metadata rows", () => {
+    const result = getAdditionalMetadataRows(biosample1);
+
+    expect(result).toEqual([
+      { kind: "stringArray", term: "Model", value: ["Generic"] },
+      { kind: "package", term: "Package", value: { displayName: "Generic", name: "Generic.1.0" } },
+      { kind: "string", term: "Collection Date", value: "2022-07-19" },
+      { kind: "string", term: "Geographic Location", value: "USA" },
+      { kind: "string", term: "Strain", value: "BPH-1" },
+      { kind: "string", term: "Host", value: "Homo sapiens" },
+      { kind: "string", term: "Isolate", value: "BPH-1-M-E2" },
+      { kind: "xrefArray", term: "Derived From", value: biosample1.derivedFrom },
+    ]);
+  });
+
+  it("lets the display layer hide empty BioSample metadata values", () => {
+    const result = normalizeDetailMetadataRows(getAdditionalMetadataRows(bioSampleResponse));
+
+    expect(result).toEqual([]);
   });
 });
 

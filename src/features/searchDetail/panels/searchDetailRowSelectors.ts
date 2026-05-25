@@ -18,6 +18,16 @@ const additionalMetadataFieldsByType: Partial<
     { key: "projectType", term: "Project Type", kind: "stringArray" },
     { key: "relevance", term: "Relevance", kind: "stringArray" },
   ],
+  biosample: [
+    { key: "model", term: "Model", kind: "stringArray" },
+    { key: "package", term: "Package", kind: "package" },
+    { key: "collectionDate", term: "Collection Date", kind: "string" },
+    { key: "geoLocName", term: "Geographic Location", kind: "string" },
+    { key: "strain", term: "Strain", kind: "string" },
+    { key: "host", term: "Host", kind: "string" },
+    { key: "isolate", term: "Isolate", kind: "string" },
+    { key: "derivedFrom", term: "Derived From", kind: "xrefArray" },
+  ],
 };
 
 const getRecordValue = (res: SearchDetailResponse, key: string) => {

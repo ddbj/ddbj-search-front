@@ -159,4 +159,21 @@ export const biosample1: BioSampleDetailResponse = {
   organization: null,
   publication: [],
   grant: [],
+  model: ["Generic"],
+  package: {
+    displayName: "Generic",
+    name: "Generic.1.0",
+  },
+  collectionDate: "2022-07-19",
+  geoLocName: "USA",
+  strain: "BPH-1",
+  host: "Homo sapiens",
+  isolate: "BPH-1-M-E2",
+  derivedFrom: [
+    {
+      identifier: "PRJNA860307",
+      type: "bioproject",
+      url: "https://ddbj.nig.ac.jp/search/entry/bioproject/PRJNA860307",
+    },
+  ],
 };
