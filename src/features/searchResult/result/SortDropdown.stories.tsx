@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { expect, fn, screen, within } from "storybook/test";
+import { expect, fn, screen, waitFor, within } from "storybook/test";
 import { SortDropdown } from "@/features/searchResult/result/SortDropdown.tsx";
 
 const mockChangeSort = fn();
@@ -24,20 +24,29 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const findVisibleOption = async (name: RegExp) => {
-  const options = await screen.findAllByRole("option", { hidden: true, name });
-  const option = options.find((element) => {
-    return (
-      element instanceof HTMLElement &&
-      element.getClientRects().length > 0 &&
-      window.getComputedStyle(element).visibility !== "hidden"
-    );
+  let visibleOption: HTMLElement | undefined;
+
+  await waitFor(() => {
+    const options = screen.queryAllByRole("option", { hidden: true, name });
+    const option = options.find((element): element is HTMLElement => {
+      if (!(element instanceof HTMLElement)) return false;
+
+      try {
+        expect(element).toBeVisible();
+        return true;
+      } catch {
+        return false;
+      }
+    });
+
+    if (option === undefined) {
+      throw new Error(`Visible option not found: ${String(name)}`);
+    }
+
+    visibleOption = option;
   });
 
-  if (!(option instanceof HTMLElement)) {
-    throw new Error(`Visible option not found: ${String(name)}`);
-  }
-
-  return option;
+  return visibleOption!;
 };
 
 export const Primary = {} satisfies Story;
