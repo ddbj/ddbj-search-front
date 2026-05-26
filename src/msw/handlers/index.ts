@@ -1,4 +1,3 @@
-import { countTypes } from "@/msw/handlers/count/countTypes.ts";
 import { getBioProjectDetail } from "@/msw/handlers/detail/getBioProjectDetail.ts";
 import { getBioSampleDetail } from "@/msw/handlers/detail/getBioSampleDetail.ts";
 import { getGeaDetail } from "@/msw/handlers/detail/getGeaDetail.ts";
@@ -46,7 +45,6 @@ export const handlers = [
   getJgaDacList,
   getGeaList,
   getMetaboBankList,
-  countTypes,
 
   // details
   getBioProjectDetail,

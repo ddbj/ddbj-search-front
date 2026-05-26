@@ -37,8 +37,6 @@ export const API_PATH_JGA_DAC_FACET_LIST = `${BASE_API_PATH}facets/jga-dac`;
 export const API_PATH_GEA_FACET_LIST = `${BASE_API_PATH}facets/gea`;
 export const API_PATH_METABOBANK_FACET_LIST = `${BASE_API_PATH}facets/metabobank`;
 
-export const API_PATH_TYPE_COUNT = `${BASE_API_PATH}count/types/`;
-
 export const getDBXrefAPIPath = (type: string, id: string) =>
   `${API_PATH_ALL_ENTRIES_LIST}${type}/${id}/dbxrefs.json`;
 extendZod();
