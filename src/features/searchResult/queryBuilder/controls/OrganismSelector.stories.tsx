@@ -59,18 +59,46 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+const waitForDebounce = () => sleep(300);
+
 export const Primary = {} satisfies Story;
 
-export const Filtered = {
+export const TaxIdInput = {
   play: async ({ canvas, userEvent }) => {
+    mockUpdateOrganism.mockReset();
     const input = await canvas.findByRole("textbox", { name: "Organism" });
 
-    await userEvent.type(input, "coli");
+    await userEvent.type(input, "562");
 
+    await expect(input).toHaveValue("562");
     await expect(
       await canvas.findByRole("checkbox", { name: "Escherichia coli (1,232,567)" }),
+    ).toBeChecked();
+    await expect(
+      await canvas.findByRole("checkbox", { name: "Homo sapiens (987,654)" }),
     ).toBeVisible();
-    await expect(canvas.queryByRole("checkbox", { name: "Homo sapiens (987,654)" })).toBeNull();
+    await expect(mockUpdateOrganism).toHaveBeenCalledTimes(0);
+    await waitForDebounce();
+    await expect(mockUpdateOrganism).toHaveBeenCalledTimes(1);
+    await expect(mockUpdateOrganism).toHaveBeenLastCalledWith("562");
+  },
+} satisfies Story;
+
+export const TrimmedTaxIdInput = {
+  play: async ({ canvas, userEvent }) => {
+    mockUpdateOrganism.mockReset();
+    const input = await canvas.findByRole("textbox", { name: "Organism" });
+
+    await userEvent.type(input, " 562 ");
+
+    await expect(input).toHaveValue(" 562 ");
+    await expect(
+      await canvas.findByRole("checkbox", { name: "Escherichia coli (1,232,567)" }),
+    ).toBeChecked();
+    await expect(mockUpdateOrganism).toHaveBeenCalledTimes(0);
+    await waitForDebounce();
+    await expect(mockUpdateOrganism).toHaveBeenCalledTimes(1);
+    await expect(mockUpdateOrganism).toHaveBeenLastCalledWith("562");
   },
 } satisfies Story;
 
@@ -105,15 +133,17 @@ export const ManyItems = {
 export const ToggleSelection = {
   play: async ({ canvas, userEvent }) => {
     mockUpdateOrganism.mockReset();
+    const input = await canvas.findByRole("textbox", { name: "Organism" });
     const checkbox = await canvas.findByRole("checkbox", {
       name: "Escherichia coli (1,232,567)",
     });
 
     await userEvent.click(checkbox);
 
+    await expect(input).toHaveValue("562");
     await expect(checkbox).toBeChecked();
     await expect(mockUpdateOrganism).toHaveBeenCalledTimes(0);
-    await sleep(300);
+    await waitForDebounce();
     await expect(mockUpdateOrganism).toHaveBeenCalledTimes(1);
     await expect(mockUpdateOrganism).toHaveBeenLastCalledWith("562");
   },
@@ -125,49 +155,42 @@ export const ClearSelection = {
   },
   play: async ({ canvas, userEvent }) => {
     mockUpdateOrganism.mockReset();
+    const input = await canvas.findByRole("textbox", { name: "Organism" });
     const checkbox = await canvas.findByRole("checkbox", {
       name: "Escherichia coli (1,232,567)",
     });
 
     await userEvent.click(checkbox);
 
+    await expect(input).toHaveValue("");
     await expect(checkbox).not.toBeChecked();
     await expect(mockUpdateOrganism).toHaveBeenCalledTimes(0);
-    await sleep(300);
+    await waitForDebounce();
     await expect(mockUpdateOrganism).toHaveBeenCalledTimes(1);
     await expect(mockUpdateOrganism).toHaveBeenLastCalledWith(null);
   },
 } satisfies Story;
 
-export const ClearSelectedWhenFilteredOut = {
+export const ClearTaxIdInput = {
   args: {
     value: "562",
   },
   play: async ({ canvas, userEvent }) => {
     mockUpdateOrganism.mockReset();
     const input = await canvas.findByRole("textbox", { name: "Organism" });
-    const selectedCheckbox = await canvas.findByRole("checkbox", {
+    const checkbox = await canvas.findByRole("checkbox", {
       name: "Escherichia coli (1,232,567)",
     });
 
-    await expect(selectedCheckbox).toBeChecked();
-    await userEvent.type(input, "Homo");
-
-    await expect(
-      canvas.queryByRole("checkbox", { name: "Escherichia coli (1,232,567)" }),
-    ).toBeNull();
-    await expect(
-      await canvas.findByRole("checkbox", { name: "Homo sapiens (987,654)" }),
-    ).not.toBeChecked();
-    await expect(mockUpdateOrganism).toHaveBeenCalledTimes(0);
-    await sleep(300);
-    await expect(mockUpdateOrganism).toHaveBeenCalledTimes(1);
-    await expect(mockUpdateOrganism).toHaveBeenLastCalledWith(null);
-
+    await expect(input).toHaveValue("562");
+    await expect(checkbox).toBeChecked();
     await userEvent.clear(input);
 
-    await expect(
-      await canvas.findByRole("checkbox", { name: "Escherichia coli (1,232,567)" }),
-    ).not.toBeChecked();
+    await expect(input).toHaveValue("");
+    await expect(checkbox).not.toBeChecked();
+    await expect(mockUpdateOrganism).toHaveBeenCalledTimes(0);
+    await waitForDebounce();
+    await expect(mockUpdateOrganism).toHaveBeenCalledTimes(1);
+    await expect(mockUpdateOrganism).toHaveBeenLastCalledWith(null);
   },
 } satisfies Story;

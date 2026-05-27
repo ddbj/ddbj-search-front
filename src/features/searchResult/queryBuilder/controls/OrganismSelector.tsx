@@ -1,5 +1,5 @@
 import { ScrollShadow } from "@heroui/react";
-import { type FC, useEffect, useMemo, useState } from "react";
+import { type FC, useCallback } from "react";
 import type { FacetItem } from "@/api/facets/base.ts";
 import { useDebouncedUiValue } from "@/features/searchResult/queryBuilder/hooks/useDebouncedUiValue.ts";
 import { CheckboxText } from "@/features/searchResult/queryBuilder/premitives/CheckboxText.tsx";
@@ -19,17 +19,13 @@ const listClasses = "flex flex-col gap-1";
 const listScrollClasses = "max-h-[300px] overflow-y-auto";
 
 export const OrganismSelector: FC<Props> = ({ value, items, update }) => {
-  const { uiValue, setUiValue } = useDebouncedUiValue(value, update);
-  const [filterValue, setFilterValue] = useState("");
-  const filteredItems = useMemo(() => {
-    return filterOrganismItems(items, filterValue);
-  }, [items, filterValue]);
-
-  useEffect(() => {
-    if (shouldClearSelectedOrganism(filteredItems, uiValue, filterValue)) {
-      setUiValue(null);
-    }
-  }, [filteredItems, filterValue, setUiValue, uiValue]);
+  const updateTaxId = useCallback(
+    (nextValue: string) => {
+      update(normalizeTaxIdInput(nextValue));
+    },
+    [update],
+  );
+  const { uiValue, setUiValue } = useDebouncedUiValue(value ?? "", updateTaxId);
 
   return (
     <section className={sectionClasses}>
@@ -37,9 +33,9 @@ export const OrganismSelector: FC<Props> = ({ value, items, update }) => {
         <h2 className={titleClasses}>Organism</h2>
         <TextInput
           label="Organism"
-          placeholder="Search organism"
-          value={filterValue}
-          onValueChange={setFilterValue}
+          placeholder="Enter TaxID"
+          value={uiValue}
+          onValueChange={setUiValue}
         />
       </div>
       <ScrollShadow
@@ -48,8 +44,8 @@ export const OrganismSelector: FC<Props> = ({ value, items, update }) => {
         hideScrollBar={false}
       >
         <div className={listClasses}>
-          {filteredItems.map((item) => {
-            const isSelected = uiValue === item.value;
+          {items.map((item) => {
+            const isSelected = normalizeTaxIdInput(uiValue) === item.value;
             return (
               <CheckboxText
                 key={item.value}
@@ -57,7 +53,7 @@ export const OrganismSelector: FC<Props> = ({ value, items, update }) => {
                 value={item.value}
                 isSelected={isSelected}
                 setIsSelected={(nextIsSelected) => {
-                  setUiValue(nextIsSelected ? item.value : null);
+                  setUiValue(nextIsSelected ? item.value : "");
                 }}
               />
             );
@@ -68,7 +64,10 @@ export const OrganismSelector: FC<Props> = ({ value, items, update }) => {
   );
 };
 
-const normalizeFilterText = (value: string) => value.trim().toLocaleLowerCase();
+const normalizeTaxIdInput = (value: string): string | null => {
+  const trimmedValue = value.trim();
+  return trimmedValue ? trimmedValue : null;
+};
 
 const getOrganismDisplayName = (item: FacetItem) => item.label ?? item.value;
 
@@ -76,29 +75,8 @@ const getOrganismItemLabel = (item: FacetItem) => {
   return `${getOrganismDisplayName(item)} (${formatNumber(item.count)})`;
 };
 
-const filterOrganismItems = (items: FacetItem[], filterValue: string) => {
-  const normalizedFilterValue = normalizeFilterText(filterValue);
-  if (!normalizedFilterValue) return items;
-  return items.filter((item) => {
-    const label = item.label ? normalizeFilterText(item.label) : "";
-    const value = normalizeFilterText(item.value);
-    return label.includes(normalizedFilterValue) || value.includes(normalizedFilterValue);
-  });
-};
-
-const shouldClearSelectedOrganism = (
-  filteredItems: FacetItem[],
-  selectedValue: string | null,
-  filterValue: string,
-) => {
-  if (!selectedValue) return false;
-  if (!normalizeFilterText(filterValue)) return false;
-  return !filteredItems.some((item) => item.value === selectedValue);
-};
-
-// eslint-disable-next-line react-refresh/only-export-components -- Test helper stays colocated with selector filtering logic.
+// eslint-disable-next-line react-refresh/only-export-components -- Test helper stays colocated with selector input logic.
 export const __TEST__ORGANISM_SELECTOR = {
-  filterOrganismItems,
   getOrganismItemLabel,
-  shouldClearSelectedOrganism,
+  normalizeTaxIdInput,
 };
