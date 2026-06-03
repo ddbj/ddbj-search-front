@@ -5,10 +5,13 @@ import {
   baseEntryListRequestParamsSchema,
   entryListItemResponseSchema,
   entryListResponseSchema,
+  publicationRequestParamsShape,
 } from "@/api/entries/base.ts";
 import { API_PATH_JGA_DATASET_LIST, omitBaseApiPath } from "@/api/paths.ts";
 
-export const jgaDatasetListRequestParamsShape = {};
+export const jgaDatasetListRequestParamsShape = {
+  ...publicationRequestParamsShape,
+};
 const jgaDatasetListRequestParamsSchema = baseEntryListRequestParamsSchema.extend({
   ...jgaDatasetListRequestParamsShape,
 });

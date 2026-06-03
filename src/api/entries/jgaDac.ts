@@ -5,10 +5,13 @@ import {
   baseEntryListRequestParamsSchema,
   entryListItemResponseSchema,
   entryListResponseSchema,
+  publicationRequestParamsShape,
 } from "@/api/entries/base.ts";
 import { API_PATH_JGA_DAC_LIST, omitBaseApiPath } from "@/api/paths.ts";
 
-export const jgaDacListRequestParamsShape = {};
+export const jgaDacListRequestParamsShape = {
+  ...publicationRequestParamsShape,
+};
 const jgaDacListRequestParamsSchema = baseEntryListRequestParamsSchema.extend({
   ...jgaDacListRequestParamsShape,
 });

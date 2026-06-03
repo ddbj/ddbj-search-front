@@ -59,7 +59,7 @@ export const fetchOrganismFacets = async (
     return data.facets.organism ?? [];
   }
 
-  return fetchBaseOrganismFacets(organismFacetPathByType[currentType], facetParams);
+  return fetchBaseOrganismFacets(organismFacetPathByType[currentType], currentType, facetParams);
 };
 
 export const makeOrganismFacetParams = (params: AnySearchParams): AnySearchParams => {
@@ -75,9 +75,10 @@ export const makeOrganismFacetQueryKey = (currentType: DBType | null, params: An
 
 const fetchBaseOrganismFacets = async (
   path: string,
+  currentType: Exclude<DBType, "bioproject">,
   params: AnySearchParams,
 ): Promise<FacetItem[]> => {
-  const searchParams = parseBaseOrganismFacetParams(params);
+  const searchParams = parseBaseOrganismFacetParams(currentType, params);
   const response = await fetch(`${path}?${new URLSearchParams(searchParams)}`, {
     method: "GET",
   });
@@ -85,10 +86,28 @@ const fetchBaseOrganismFacets = async (
   return data.facets.organism ?? [];
 };
 
-const parseBaseOrganismFacetParams = (params: AnySearchParams): Record<string, string> => ({
-  ...parseBaseFacetParams(makeOrganismFacetParams(params)),
-  facets: "organism",
-});
+const supportsPublication = (currentType: Exclude<DBType, "bioproject">) =>
+  currentType !== dbTypes.biosample;
+
+const supportsGrant = (currentType: Exclude<DBType, "bioproject">) =>
+  currentType === dbTypes["jga-study"];
+
+const parseBaseOrganismFacetParams = (
+  currentType: Exclude<DBType, "bioproject"> | null,
+  params: AnySearchParams,
+): Record<string, string> => {
+  const facetParams = makeOrganismFacetParams(params);
+  return {
+    ...parseBaseFacetParams(facetParams),
+    ...(currentType && supportsPublication(currentType) && facetParams.publication
+      ? { publication: facetParams.publication }
+      : {}),
+    ...(currentType && supportsGrant(currentType) && facetParams.grant
+      ? { grant: facetParams.grant }
+      : {}),
+    facets: "organism",
+  };
+};
 
 // eslint-disable-next-line react-refresh/only-export-components -- Test helper stays colocated with organism facet routing logic.
 export const __TEST__fetchOrganismFacets = {

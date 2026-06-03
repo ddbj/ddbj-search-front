@@ -52,7 +52,7 @@ describe("makeOrganismFacetQueryKey", () => {
 });
 
 describe("parseBaseOrganismFacetParams", () => {
-  it("serializes base filters with facets=organism", () => {
+  it("serializes only base filters for all endpoint organism facets", () => {
     const params: AnySearchParams = {
       keywords: ["human", "cat"],
       organism: "562",
@@ -65,11 +65,42 @@ describe("parseBaseOrganismFacetParams", () => {
       grant: "NSF",
     };
 
-    expect(parseBaseOrganismFacetParams(params)).toEqual({
+    expect(parseBaseOrganismFacetParams(null, params)).toEqual({
       keywords: "human,cat",
       dateModifiedFrom: "2024-02-01",
       dateModifiedTo: "2024-02-29",
       organization: "NCBI",
+      facets: "organism",
+    });
+  });
+
+  it("serializes publication for DB-specific organism facets except BioSample", () => {
+    const params: AnySearchParams = {
+      keywords: ["human", "cat"],
+      publication: "Nature",
+      grant: "NSF",
+    };
+
+    expect(parseBaseOrganismFacetParams(dbTypes.gea, params)).toEqual({
+      keywords: "human,cat",
+      publication: "Nature",
+      facets: "organism",
+    });
+    expect(parseBaseOrganismFacetParams(dbTypes.biosample, params)).toEqual({
+      keywords: "human,cat",
+      facets: "organism",
+    });
+  });
+
+  it("serializes grant only for JGA Study organism facets", () => {
+    const params: AnySearchParams = {
+      keywords: ["human", "cat"],
+      publication: "Nature",
+      grant: "NSF",
+    };
+
+    expect(parseBaseOrganismFacetParams(dbTypes["jga-study"], params)).toEqual({
+      keywords: "human,cat",
       publication: "Nature",
       grant: "NSF",
       facets: "organism",

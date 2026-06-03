@@ -18,7 +18,10 @@ export const fetchJgaPolicyFacets = async (params: JgaPolicySearchParams) => {
 };
 
 const parseParams = (params: JgaPolicySearchParams): JgaPolicyFacetListRequestParams => {
-  return parseBaseFacetParams(params);
+  return {
+    ...parseBaseFacetParams(params),
+    ...(params.publication ? { publication: params.publication } : {}),
+  };
 };
 
 export const __TEST__fetchJgaPolicyFacets = {

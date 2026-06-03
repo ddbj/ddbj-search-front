@@ -16,7 +16,7 @@ export const fetchMetaboBankEntries = async (params: MetaboBankSearchParams) => 
 const parseParams = (params: MetaboBankSearchParams): MetaboBankListRequestParams => {
   return {
     ...parseBaseEntryParams(params),
-    // Add MetaboBank-specific parameters here if needed
+    ...(params.publication ? { publication: params.publication } : {}),
   };
 };
 

@@ -1,5 +1,5 @@
-import { describe, expect, it } from "vitest";
-import { __TEST__fetchAllFacets } from "@/fetch/facets/fetchAllFacets.ts";
+import { describe, expect, it, vi } from "vitest";
+import { __TEST__fetchAllFacets, fetchAllFacets } from "@/fetch/facets/fetchAllFacets.ts";
 
 const { parseParams } = __TEST__fetchAllFacets;
 
@@ -40,7 +40,40 @@ describe("parseParams", () => {
     expect(result.dateModifiedFrom).toBe("2024-02-01");
     expect(result.dateModifiedTo).toBe("2024-02-29");
     expect(result.organization).toBe("NCBI");
-    expect(result.publication).toBe("Nature");
-    expect(result.grant).toBe("NSF");
+    expect("publication" in result).toBe(false);
+    expect("grant" in result).toBe(false);
+  });
+});
+
+describe("fetchAllFacets", () => {
+  it("returns empty facets for invalid organism query errors", async () => {
+    const mockFetch = vi.fn().mockResolvedValue(
+      new Response(
+        JSON.stringify({
+          title: "Unprocessable Entity",
+          status: 422,
+          detail: "query.organism: String should match pattern '^\\d+$'",
+        }),
+        {
+          status: 422,
+          statusText: "Unprocessable Entity",
+          headers: {
+            "content-type": "application/problem+json",
+          },
+        },
+      ),
+    );
+
+    vi.stubGlobal("fetch", mockFetch);
+
+    await expect(fetchAllFacets({ organism: "abc" }, { facets: ["type"] })).resolves.toEqual({
+      facets: {
+        type: null,
+        organism: null,
+        accessibility: null,
+      },
+    });
+
+    vi.unstubAllGlobals();
   });
 });

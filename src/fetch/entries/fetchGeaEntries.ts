@@ -16,7 +16,7 @@ export const fetchGeaEntries = async (params: GeaSearchParams) => {
 const parseParams = (params: GeaSearchParams): GeaListRequestParams => {
   return {
     ...parseBaseEntryParams(params),
-    // Add GEA-specific parameters here if needed
+    ...(params.publication ? { publication: params.publication } : {}),
   };
 };
 

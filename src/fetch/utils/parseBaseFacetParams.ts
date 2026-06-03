@@ -12,12 +12,6 @@ export const parseBaseFacetParams = (params: AnySearchParams): AllFacetListReque
   if (params.organization) {
     result.organization = params.organization;
   }
-  if (params.publication) {
-    result.publication = params.publication;
-  }
-  if (params.grant) {
-    result.grant = params.grant;
-  }
   if (params.datePublishedFrom) {
     result.datePublishedFrom = params.datePublishedFrom;
   }

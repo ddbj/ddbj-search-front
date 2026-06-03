@@ -19,7 +19,7 @@ export const fetchSraAnalyses = async (params: SraAnalysisSearchParams) => {
 const parseParams = (params: SraAnalysisSearchParams): SraAnalysisListRequestParams => {
   return {
     ...parseBaseEntryParams(params),
-    // Add SRA Analysis-specific parameters here if needed
+    ...(params.publication ? { publication: params.publication } : {}),
   };
 };
 

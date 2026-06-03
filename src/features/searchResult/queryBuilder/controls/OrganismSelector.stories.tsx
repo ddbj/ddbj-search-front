@@ -84,7 +84,7 @@ export const TaxIdInput = {
   },
 } satisfies Story;
 
-export const TrimmedTaxIdInput = {
+export const RawTaxIdInput = {
   play: async ({ canvas, userEvent }) => {
     mockUpdateOrganism.mockReset();
     const input = await canvas.findByRole("textbox", { name: "Organism" });
@@ -92,13 +92,25 @@ export const TrimmedTaxIdInput = {
     await userEvent.type(input, " 562 ");
 
     await expect(input).toHaveValue(" 562 ");
-    await expect(
-      await canvas.findByRole("checkbox", { name: "Escherichia coli (1,232,567)" }),
-    ).toBeChecked();
     await expect(mockUpdateOrganism).toHaveBeenCalledTimes(0);
     await waitForDebounce();
     await expect(mockUpdateOrganism).toHaveBeenCalledTimes(1);
-    await expect(mockUpdateOrganism).toHaveBeenLastCalledWith("562");
+    await expect(mockUpdateOrganism).toHaveBeenLastCalledWith(" 562 ");
+  },
+} satisfies Story;
+
+export const NonNumericTaxIdInput = {
+  play: async ({ canvas, userEvent }) => {
+    mockUpdateOrganism.mockReset();
+    const input = await canvas.findByRole("textbox", { name: "Organism" });
+
+    await userEvent.type(input, "abc");
+
+    await expect(input).toHaveValue("abc");
+    await expect(mockUpdateOrganism).toHaveBeenCalledTimes(0);
+    await waitForDebounce();
+    await expect(mockUpdateOrganism).toHaveBeenCalledTimes(1);
+    await expect(mockUpdateOrganism).toHaveBeenLastCalledWith("abc");
   },
 } satisfies Story;
 

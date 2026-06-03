@@ -13,7 +13,10 @@ export const fetchGeaFacets = async (params: GeaSearchParams) => {
 };
 
 const parseParams = (params: GeaSearchParams): GeaFacetListRequestParams => {
-  return parseBaseFacetParams(params);
+  return {
+    ...parseBaseFacetParams(params),
+    ...(params.publication ? { publication: params.publication } : {}),
+  };
 };
 
 export const __TEST__fetchGeaFacets = {

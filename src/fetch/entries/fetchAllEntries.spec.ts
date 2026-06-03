@@ -35,7 +35,7 @@ describe("parseParams", () => {
     });
     expect(result.keywords).toBe("human,cat");
     expect(result.organization).toBe("NCBI");
-    expect(result.publication).toBe("Nature");
-    expect(result.grant).toBe("NSF");
+    expect("publication" in result).toBe(false);
+    expect("grant" in result).toBe(false);
   });
 });

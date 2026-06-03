@@ -5,10 +5,13 @@ import {
   baseEntryListRequestParamsSchema,
   entryListItemResponseSchema,
   entryListResponseSchema,
+  publicationRequestParamsShape,
 } from "@/api/entries/base.ts";
 import { API_PATH_GEA_LIST, omitBaseApiPath } from "@/api/paths.ts";
 
-export const geaListRequestParamsShape = {};
+export const geaListRequestParamsShape = {
+  ...publicationRequestParamsShape,
+};
 const geaListRequestParamsSchema = baseEntryListRequestParamsSchema.extend({
   ...geaListRequestParamsShape,
 });

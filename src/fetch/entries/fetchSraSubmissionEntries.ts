@@ -19,7 +19,7 @@ export const fetchSraSubmissions = async (params: SraSubmissionSearchParams) => 
 const parseParams = (params: SraSubmissionSearchParams): SraSubmissionListRequestParams => {
   return {
     ...parseBaseEntryParams(params),
-    // Add SRA Submission-specific parameters here if needed
+    ...(params.publication ? { publication: params.publication } : {}),
   };
 };
 

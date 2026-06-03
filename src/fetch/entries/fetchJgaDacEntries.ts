@@ -16,7 +16,7 @@ export const fetchJgaDacs = async (params: JgaDacSearchParams) => {
 const parseParams = (params: JgaDacSearchParams): JgaDacListRequestParams => {
   return {
     ...parseBaseEntryParams(params),
-    // Add JGA DAC-specific parameters here if needed
+    ...(params.publication ? { publication: params.publication } : {}),
   };
 };
 

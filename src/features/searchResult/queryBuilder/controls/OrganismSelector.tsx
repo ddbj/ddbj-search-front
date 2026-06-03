@@ -65,8 +65,7 @@ export const OrganismSelector: FC<Props> = ({ value, items, update }) => {
 };
 
 const normalizeTaxIdInput = (value: string): string | null => {
-  const trimmedValue = value.trim();
-  return trimmedValue ? trimmedValue : null;
+  return value === "" ? null : value;
 };
 
 const getOrganismDisplayName = (item: FacetItem) => item.label ?? item.value;

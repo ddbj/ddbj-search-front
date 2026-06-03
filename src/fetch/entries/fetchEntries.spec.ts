@@ -41,24 +41,105 @@ type Case = {
     publication: string;
     grant: string;
   }) => Promise<unknown>;
+  expectedQuery: string;
 };
 
+const baseExpectedQuery =
+  "includeFacets=false&includeProperties=false&dbXrefsLimit=0&keywords=human&organization=NCBI";
+const publicationExpectedQuery = `${baseExpectedQuery}&publication=Nature`;
+const publicationAndGrantExpectedQuery = `${publicationExpectedQuery}&grant=NSF`;
+
 const cases: Case[] = [
-  { name: "all", basePath: API_PATH_ALL_ENTRIES_LIST, fn: fetchAllEntries },
-  { name: "bioproject", basePath: API_PATH_BIOPROJECT_LIST, fn: fetchBioProjects },
-  { name: "biosample", basePath: API_PATH_BIOSAMPLE_LIST, fn: fetchBioSamples },
-  { name: "gea", basePath: API_PATH_GEA_LIST, fn: fetchGeaEntries },
-  { name: "jga-dac", basePath: API_PATH_JGA_DAC_LIST, fn: fetchJgaDacs },
-  { name: "jga-dataset", basePath: API_PATH_JGA_DATASET_LIST, fn: fetchJgaDatasets },
-  { name: "jga-policy", basePath: API_PATH_JGA_POLICY_LIST, fn: fetchJgaPolicies },
-  { name: "jga-study", basePath: API_PATH_JGA_STUDY_LIST, fn: fetchJgaStudies },
-  { name: "metabobank", basePath: API_PATH_METABOBANK_LIST, fn: fetchMetaboBankEntries },
-  { name: "sra-analysis", basePath: API_PATH_SRA_ANALYSIS_LIST, fn: fetchSraAnalyses },
-  { name: "sra-experiment", basePath: API_PATH_SRA_EXPERIMENT_LIST, fn: fetchSraExperiments },
-  { name: "sra-run", basePath: API_PATH_SRA_RUN_LIST, fn: fetchSraRuns },
-  { name: "sra-sample", basePath: API_PATH_SRA_SAMPLE_LIST, fn: fetchSraSamples },
-  { name: "sra-study", basePath: API_PATH_SRA_STUDY_LIST, fn: fetchSraStudies },
-  { name: "sra-submission", basePath: API_PATH_SRA_SUBMISSION_LIST, fn: fetchSraSubmissions },
+  {
+    name: "all",
+    basePath: API_PATH_ALL_ENTRIES_LIST,
+    fn: fetchAllEntries,
+    expectedQuery: baseExpectedQuery,
+  },
+  {
+    name: "bioproject",
+    basePath: API_PATH_BIOPROJECT_LIST,
+    fn: fetchBioProjects,
+    expectedQuery: publicationAndGrantExpectedQuery,
+  },
+  {
+    name: "biosample",
+    basePath: API_PATH_BIOSAMPLE_LIST,
+    fn: fetchBioSamples,
+    expectedQuery: baseExpectedQuery,
+  },
+  {
+    name: "gea",
+    basePath: API_PATH_GEA_LIST,
+    fn: fetchGeaEntries,
+    expectedQuery: publicationExpectedQuery,
+  },
+  {
+    name: "jga-dac",
+    basePath: API_PATH_JGA_DAC_LIST,
+    fn: fetchJgaDacs,
+    expectedQuery: publicationExpectedQuery,
+  },
+  {
+    name: "jga-dataset",
+    basePath: API_PATH_JGA_DATASET_LIST,
+    fn: fetchJgaDatasets,
+    expectedQuery: publicationExpectedQuery,
+  },
+  {
+    name: "jga-policy",
+    basePath: API_PATH_JGA_POLICY_LIST,
+    fn: fetchJgaPolicies,
+    expectedQuery: publicationExpectedQuery,
+  },
+  {
+    name: "jga-study",
+    basePath: API_PATH_JGA_STUDY_LIST,
+    fn: fetchJgaStudies,
+    expectedQuery: publicationAndGrantExpectedQuery,
+  },
+  {
+    name: "metabobank",
+    basePath: API_PATH_METABOBANK_LIST,
+    fn: fetchMetaboBankEntries,
+    expectedQuery: publicationExpectedQuery,
+  },
+  {
+    name: "sra-analysis",
+    basePath: API_PATH_SRA_ANALYSIS_LIST,
+    fn: fetchSraAnalyses,
+    expectedQuery: publicationExpectedQuery,
+  },
+  {
+    name: "sra-experiment",
+    basePath: API_PATH_SRA_EXPERIMENT_LIST,
+    fn: fetchSraExperiments,
+    expectedQuery: publicationExpectedQuery,
+  },
+  {
+    name: "sra-run",
+    basePath: API_PATH_SRA_RUN_LIST,
+    fn: fetchSraRuns,
+    expectedQuery: publicationExpectedQuery,
+  },
+  {
+    name: "sra-sample",
+    basePath: API_PATH_SRA_SAMPLE_LIST,
+    fn: fetchSraSamples,
+    expectedQuery: publicationExpectedQuery,
+  },
+  {
+    name: "sra-study",
+    basePath: API_PATH_SRA_STUDY_LIST,
+    fn: fetchSraStudies,
+    expectedQuery: publicationExpectedQuery,
+  },
+  {
+    name: "sra-submission",
+    basePath: API_PATH_SRA_SUBMISSION_LIST,
+    fn: fetchSraSubmissions,
+    expectedQuery: publicationExpectedQuery,
+  },
 ];
 
 const searchParams = {
@@ -67,11 +148,9 @@ const searchParams = {
   publication: "Nature",
   grant: "NSF",
 };
-const expectedQuery =
-  "includeFacets=false&includeProperties=false&dbXrefsLimit=0&keywords=human&organization=NCBI&publication=Nature&grant=NSF";
 
 describe("fetch*Entries", () => {
-  it.each(cases)("should call GET $basePath: $name", async ({ basePath, fn }) => {
+  it.each(cases)("should call GET $basePath: $name", async ({ basePath, fn, expectedQuery }) => {
     const mockData = {
       items: [],
       pagination: {
@@ -102,7 +181,7 @@ describe("fetch*Entries", () => {
 
   it.each(cases)(
     "should throw AppHttpError for a problem response: $name",
-    async ({ basePath, fn }) => {
+    async ({ basePath, fn, expectedQuery }) => {
       const mockFetch = vi.fn().mockResolvedValue(
         new Response(
           JSON.stringify({

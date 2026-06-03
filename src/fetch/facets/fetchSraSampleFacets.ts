@@ -18,7 +18,10 @@ export const fetchSraSampleFacets = async (params: SraSampleSearchParams) => {
 };
 
 const parseParams = (params: SraSampleSearchParams): SraSampleFacetListRequestParams => {
-  return parseBaseFacetParams(params);
+  return {
+    ...parseBaseFacetParams(params),
+    ...(params.publication ? { publication: params.publication } : {}),
+  };
 };
 
 export const __TEST__fetchSraSampleFacets = {

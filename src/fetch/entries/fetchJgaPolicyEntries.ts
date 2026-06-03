@@ -16,7 +16,7 @@ export const fetchJgaPolicies = async (params: JgaPolicySearchParams) => {
 const parseParams = (params: JgaPolicySearchParams): JgaPolicyListRequestParams => {
   return {
     ...parseBaseEntryParams(params),
-    // Add JGA Policy-specific parameters here if needed
+    ...(params.publication ? { publication: params.publication } : {}),
   };
 };
 

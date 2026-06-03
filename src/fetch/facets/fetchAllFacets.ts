@@ -1,10 +1,19 @@
 import type { AllFacetListRequestParams, AllFacetListResponse } from "@/api/facets/all.ts";
 import { API_PATH_ALL_FACET_LIST } from "@/api/paths.ts";
+import { createAppHttpError, isInvalidOrganismSearchParamError } from "@/fetch/utils/httpError.ts";
 import { parseBaseFacetParams } from "@/fetch/utils/parseBaseFacetParams.ts";
 import type { AllSearchParams } from "@/schema/search/all.ts";
 
 type FetchAllFacetsOptions = {
   facets?: string[];
+};
+
+const emptyAllFacetListResponse: AllFacetListResponse = {
+  facets: {
+    type: null,
+    organism: null,
+    accessibility: null,
+  },
 };
 
 export const fetchAllFacets = async (
@@ -15,6 +24,11 @@ export const fetchAllFacets = async (
   const response = await fetch(`${API_PATH_ALL_FACET_LIST}?${new URLSearchParams(searchParams)}`, {
     method: "GET",
   });
+  if (!response.ok) {
+    const error = await createAppHttpError(response);
+    if (isInvalidOrganismSearchParamError(error)) return emptyAllFacetListResponse;
+    throw error;
+  }
   const data = (await response.json()) as AllFacetListResponse;
   return data;
 };

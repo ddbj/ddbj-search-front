@@ -19,6 +19,6 @@ describe("parseParams", () => {
     expect(result.dateModifiedTo).toBe("2024-02-29");
     expect(result.organization).toBe("NCBI");
     expect(result.publication).toBe("Nature");
-    expect(result.grant).toBe("NSF");
+    expect("grant" in result).toBe(false);
   });
 });

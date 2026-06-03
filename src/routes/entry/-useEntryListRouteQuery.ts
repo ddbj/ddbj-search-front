@@ -1,5 +1,6 @@
 import { useQuery, type QueryKey, type UseQueryOptions } from "@tanstack/react-query";
 import type { EntryListResponse } from "@/api/entries/base.ts";
+import { isInvalidOrganismSearchParamError } from "@/fetch/utils/httpError.ts";
 
 export type EntryListQueryOptions<TQueryKey extends QueryKey> = UseQueryOptions<
   EntryListResponse,
@@ -20,13 +21,15 @@ const emptyEntryListResponse: EntryListResponse = {
 export const useEntryListRouteQuery = <TQueryKey extends QueryKey>(
   options: EntryListQueryOptions<TQueryKey>,
 ) => {
-  const { data, isLoading } = useQuery({
+  const { data, error, isLoading } = useQuery({
     ...options,
-    throwOnError: true,
+    throwOnError: (error) => !isInvalidOrganismSearchParamError(error),
   });
 
   return {
-    data: data ?? emptyEntryListResponse,
+    data: isInvalidOrganismSearchParamError(error)
+      ? emptyEntryListResponse
+      : (data ?? emptyEntryListResponse),
     isLoading,
   };
 };

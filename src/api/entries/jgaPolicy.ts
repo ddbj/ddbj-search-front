@@ -5,10 +5,13 @@ import {
   baseEntryListRequestParamsSchema,
   entryListItemResponseSchema,
   entryListResponseSchema,
+  publicationRequestParamsShape,
 } from "@/api/entries/base.ts";
 import { API_PATH_JGA_POLICY_LIST, omitBaseApiPath } from "@/api/paths.ts";
 
-export const jgaPolicyListRequestParamsShape = {};
+export const jgaPolicyListRequestParamsShape = {
+  ...publicationRequestParamsShape,
+};
 const jgaPolicyListRequestParamsSchema = baseEntryListRequestParamsSchema.extend({
   ...jgaPolicyListRequestParamsShape,
 });

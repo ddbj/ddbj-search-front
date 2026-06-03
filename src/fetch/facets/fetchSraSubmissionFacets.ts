@@ -18,7 +18,10 @@ export const fetchSraSubmissionFacets = async (params: SraSubmissionSearchParams
 };
 
 const parseParams = (params: SraSubmissionSearchParams): SraSubmissionFacetListRequestParams => {
-  return parseBaseFacetParams(params);
+  return {
+    ...parseBaseFacetParams(params),
+    ...(params.publication ? { publication: params.publication } : {}),
+  };
 };
 
 export const __TEST__fetchSraSubmissionFacets = {

@@ -28,7 +28,7 @@ export const TypeSelector: FC<Props> = ({ linkSearchParams, params, value, updat
     queryFn: () => fetchAllFacets(facetParams, { facets: ["type"] }),
     placeholderData: (previousData) => previousData,
   });
-  const countData: FacetItem[] = facetData?.facets.type ?? [];
+  const countData: FacetItem[] = facetData?.facets?.type ?? [];
   const toggleDBTypes = (key: DBType, value: boolean) => {
     const next = value ? [...uiValue, key] : uiValue.filter((v) => v !== key);
     setUiValue([...new Set(next)]);

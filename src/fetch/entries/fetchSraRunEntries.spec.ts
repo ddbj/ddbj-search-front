@@ -17,8 +17,9 @@ describe("parseParams", () => {
     expectKeyNotExists(result, "keywords");
   });
 
-  it("should handle base params", () => {
-    const result = parseParams({ keywords: ["human", "cat"] });
+  it("should handle supported params", () => {
+    const result = parseParams({ keywords: ["human", "cat"], publication: "Nature" });
     expect(result.keywords).toBe("human,cat");
+    expect(result.publication).toBe("Nature");
   });
 });

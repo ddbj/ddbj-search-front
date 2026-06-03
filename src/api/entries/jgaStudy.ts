@@ -5,10 +5,15 @@ import {
   baseEntryListRequestParamsSchema,
   entryListItemResponseSchema,
   entryListResponseSchema,
+  grantRequestParamsShape,
+  publicationRequestParamsShape,
 } from "@/api/entries/base.ts";
 import { API_PATH_JGA_STUDY_LIST, omitBaseApiPath } from "@/api/paths.ts";
 
-export const jgaStudyListRequestParamsShape = {};
+export const jgaStudyListRequestParamsShape = {
+  ...publicationRequestParamsShape,
+  ...grantRequestParamsShape,
+};
 const jgaStudyListRequestParamsSchema = baseEntryListRequestParamsSchema.extend({
   ...jgaStudyListRequestParamsShape,
 });

@@ -5,10 +5,13 @@ import {
   baseEntryListRequestParamsSchema,
   entryListItemResponseSchema,
   entryListResponseSchema,
+  publicationRequestParamsShape,
 } from "@/api/entries/base.ts";
 import { API_PATH_SRA_ANALYSIS_LIST, omitBaseApiPath } from "@/api/paths.ts";
 
-export const sraAnalysisListRequestParamsShape = {};
+export const sraAnalysisListRequestParamsShape = {
+  ...publicationRequestParamsShape,
+};
 const sraAnalysisListRequestParamsSchema = baseEntryListRequestParamsSchema.extend({
   ...sraAnalysisListRequestParamsShape,
 });

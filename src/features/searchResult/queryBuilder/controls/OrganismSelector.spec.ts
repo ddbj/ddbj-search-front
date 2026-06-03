@@ -21,11 +21,15 @@ describe("getOrganismItemLabel", () => {
 });
 
 describe("normalizeTaxIdInput", () => {
-  it("trims surrounding spaces", () => {
-    expect(normalizeTaxIdInput(" 562 ")).toBe("562");
+  it("keeps surrounding spaces", () => {
+    expect(normalizeTaxIdInput(" 562 ")).toBe(" 562 ");
   });
 
-  it("returns null when the input is blank", () => {
-    expect(normalizeTaxIdInput(" ")).toBeNull();
+  it("returns null when the input is empty", () => {
+    expect(normalizeTaxIdInput("")).toBeNull();
+  });
+
+  it("keeps non-digit characters", () => {
+    expect(normalizeTaxIdInput("abc")).toBe("abc");
   });
 });

@@ -3,6 +3,7 @@ import type {
   BioProjectFacetListResponse,
 } from "@/api/facets/bioProject.ts";
 import { API_PATH_BIOPROJECT_FACET_LIST } from "@/api/paths.ts";
+import { createAppHttpError, isInvalidOrganismSearchParamError } from "@/fetch/utils/httpError.ts";
 import { parseBaseFacetParams } from "@/fetch/utils/parseBaseFacetParams.ts";
 import type { BioprojectSearchParams } from "@/schema/search/bioProject.ts";
 
@@ -10,6 +11,15 @@ const BIOPROJECT_FACETS = "organism,accessibility,objectType";
 
 type FetchBioProjectFacetsOptions = {
   facets?: string[];
+};
+
+const emptyBioProjectFacetListResponse: BioProjectFacetListResponse = {
+  facets: {
+    type: null,
+    organism: null,
+    accessibility: null,
+    objectType: null,
+  },
 };
 
 export const fetchBioProjectFacets = async (
@@ -23,6 +33,11 @@ export const fetchBioProjectFacets = async (
       method: "GET",
     },
   );
+  if (!response.ok) {
+    const error = await createAppHttpError(response);
+    if (isInvalidOrganismSearchParamError(error)) return emptyBioProjectFacetListResponse;
+    throw error;
+  }
   const data = (await response.json()) as BioProjectFacetListResponse;
   return data;
 };
@@ -35,6 +50,12 @@ const parseParams = (
     ...parseBaseFacetParams(params),
     facets: options.facets?.join(",") ?? BIOPROJECT_FACETS,
   };
+  if (params.publication) {
+    result.publication = params.publication;
+  }
+  if (params.grant) {
+    result.grant = params.grant;
+  }
   if (params.objectTypes && params.objectTypes.length) {
     result.objectTypes = params.objectTypes.join(",");
   }

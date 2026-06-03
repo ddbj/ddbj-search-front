@@ -16,7 +16,7 @@ export const fetchSraSamples = async (params: SraSampleSearchParams) => {
 const parseParams = (params: SraSampleSearchParams): SraSampleListRequestParams => {
   return {
     ...parseBaseEntryParams(params),
-    // Add SRA Sample-specific parameters here if needed
+    ...(params.publication ? { publication: params.publication } : {}),
   };
 };
 

@@ -16,7 +16,7 @@ export const fetchSraStudies = async (params: SraStudySearchParams) => {
 const parseParams = (params: SraStudySearchParams): SraStudyListRequestParams => {
   return {
     ...parseBaseEntryParams(params),
-    // Add SRA Study-specific parameters here if needed
+    ...(params.publication ? { publication: params.publication } : {}),
   };
 };
 

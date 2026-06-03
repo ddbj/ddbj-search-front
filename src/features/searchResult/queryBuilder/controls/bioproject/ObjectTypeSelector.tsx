@@ -31,7 +31,7 @@ export const ObjectTypeSelector: FC<Props> = ({ value, params, update }) => {
     placeholderData: (previousData) => previousData,
   });
   const countData: BioProjectFacetListResponse["facets"]["objectType"] =
-    facetData?.facets.objectType ?? [];
+    facetData?.facets?.objectType ?? [];
   const toggleObjectTypes = (key: BioProjectObjectType, value: boolean) => {
     const next = value ? [...uiValue, key] : uiValue.filter((v) => v !== key);
     setUiValue([...new Set(next)]);

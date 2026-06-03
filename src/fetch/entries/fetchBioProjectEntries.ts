@@ -14,6 +14,12 @@ export const fetchBioProjects = async (params: BioprojectSearchParams) => {
 };
 const parseParams = (params: BioprojectSearchParams): BioProjectListRequestParams => {
   const result: BioProjectListRequestParams = parseBaseEntryParams(params);
+  if (params.publication) {
+    result.publication = params.publication;
+  }
+  if (params.grant) {
+    result.grant = params.grant;
+  }
   if (params.objectTypes && params.objectTypes.length) {
     result.objectTypes = params.objectTypes.join(",");
   }

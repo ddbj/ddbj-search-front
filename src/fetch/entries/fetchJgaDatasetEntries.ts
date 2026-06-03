@@ -19,7 +19,7 @@ export const fetchJgaDatasets = async (params: JgaDatasetSearchParams) => {
 const parseParams = (params: JgaDatasetSearchParams): JgaDatasetListRequestParams => {
   return {
     ...parseBaseEntryParams(params),
-    // Add JGA Dataset-specific parameters here if needed
+    ...(params.publication ? { publication: params.publication } : {}),
   };
 };
 

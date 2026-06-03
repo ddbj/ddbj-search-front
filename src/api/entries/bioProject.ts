@@ -5,10 +5,14 @@ import {
   baseEntryListRequestParamsSchema,
   entryListItemResponseSchema,
   entryListResponseSchema,
+  grantRequestParamsShape,
+  publicationRequestParamsShape,
 } from "@/api/entries/base.ts";
 import { API_PATH_BIOPROJECT_LIST, omitBaseApiPath } from "@/api/paths.ts";
 
 export const bioProjectListRequestParamsShape = {
+  ...publicationRequestParamsShape,
+  ...grantRequestParamsShape,
   objectTypes: z.string().optional().openapi({
     description:
       "Filter by BioProject objectType (comma-separated). Allowed: BioProject, UmbrellaBioProject. Specifying both is equivalent to omitting the filter.",

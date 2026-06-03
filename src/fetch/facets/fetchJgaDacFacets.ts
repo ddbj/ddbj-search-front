@@ -15,7 +15,10 @@ export const fetchJgaDacFacets = async (params: JgaDacSearchParams) => {
 };
 
 const parseParams = (params: JgaDacSearchParams): JgaDacFacetListRequestParams => {
-  return parseBaseFacetParams(params);
+  return {
+    ...parseBaseFacetParams(params),
+    ...(params.publication ? { publication: params.publication } : {}),
+  };
 };
 
 export const __TEST__fetchJgaDacFacets = {

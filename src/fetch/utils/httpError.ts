@@ -103,3 +103,12 @@ export const parseJsonResponse = async <T>(response: Response): Promise<T> => {
 export const isAppHttpError = (error: unknown): error is AppHttpError => {
   return error instanceof AppHttpError;
 };
+
+export const isInvalidOrganismSearchParamError = (error: unknown): error is AppHttpError => {
+  return (
+    isAppHttpError(error) &&
+    error.status === 422 &&
+    typeof error.problem?.detail === "string" &&
+    error.problem.detail.includes("query.organism")
+  );
+};

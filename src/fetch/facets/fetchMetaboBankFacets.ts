@@ -19,7 +19,10 @@ export const fetchMetaboBankFacets = async (params: MetaboBankSearchParams) => {
 };
 
 const parseParams = (params: MetaboBankSearchParams): MetaboBankFacetListRequestParams => {
-  return parseBaseFacetParams(params);
+  return {
+    ...parseBaseFacetParams(params),
+    ...(params.publication ? { publication: params.publication } : {}),
+  };
 };
 
 export const __TEST__fetchMetaboBankFacets = {

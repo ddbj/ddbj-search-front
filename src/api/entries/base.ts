@@ -35,8 +35,14 @@ export const entryListResponseSchema = z.object({
   items: z.array(entryListItemResponseSchema),
 });
 export type EntryListResponse = z.infer<typeof entryListResponseSchema>;
-//
-//
+
+export const publicationRequestParamsShape = {
+  publication: z.string().optional(),
+};
+export const grantRequestParamsShape = {
+  grant: z.string().optional(),
+};
+
 export const baseEntryListRequestParamsSchema = z.object({
   page: z.string().optional().openapi({ description: "integer string; treat as '1' if omitted." }),
   perPage: z
@@ -49,8 +55,6 @@ export const baseEntryListRequestParamsSchema = z.object({
     .openapi({ description: "Comma separated keywords", example: "homo sapience,Draparnaldia" }),
   organism: z.string().optional().openapi({ description: "NCBI Taxonomy ID", example: "9606" }),
   organization: z.string().optional(),
-  publication: z.string().optional(),
-  grant: z.string().optional(),
   datePublishedFrom: z.string().optional().openapi({ example: "2020-05-01" }),
   datePublishedTo: z.string().optional().openapi({ example: "2021-04-30" }),
   dateModifiedFrom: z.string().optional().openapi({ example: "2020-05-01" }),

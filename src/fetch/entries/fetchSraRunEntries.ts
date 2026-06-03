@@ -16,7 +16,7 @@ export const fetchSraRuns = async (params: SraRunSearchParams) => {
 const parseParams = (params: SraRunSearchParams): SraRunListRequestParams => {
   return {
     ...parseBaseEntryParams(params),
-    // Add SRA Run-specific parameters here if needed
+    ...(params.publication ? { publication: params.publication } : {}),
   };
 };
 

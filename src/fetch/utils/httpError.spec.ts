@@ -3,6 +3,7 @@ import {
   AppHttpError,
   createAppHttpError,
   isAppHttpError,
+  isInvalidOrganismSearchParamError,
   parseJsonResponse,
 } from "@/fetch/utils/httpError.ts";
 
@@ -70,5 +71,20 @@ describe("httpError", () => {
       isAppHttpError(new AppHttpError("Failed", { status: 500, statusText: "Error", url: "" })),
     ).toBe(true);
     expect(isAppHttpError(new Error("Failed"))).toBe(false);
+  });
+
+  it("should detect invalid organism query errors", () => {
+    expect(
+      isInvalidOrganismSearchParamError(
+        new AppHttpError("Invalid organism", {
+          status: 422,
+          statusText: "Unprocessable Entity",
+          url: "",
+          problem: {
+            detail: "query.organism: String should match pattern '^\\d+$'",
+          },
+        }),
+      ),
+    ).toBe(true);
   });
 });

@@ -18,7 +18,11 @@ export const fetchJgaStudyFacets = async (params: JgaStudySearchParams) => {
 };
 
 const parseParams = (params: JgaStudySearchParams): JgaStudyFacetListRequestParams => {
-  return parseBaseFacetParams(params);
+  return {
+    ...parseBaseFacetParams(params),
+    ...(params.publication ? { publication: params.publication } : {}),
+    ...(params.grant ? { grant: params.grant } : {}),
+  };
 };
 
 export const __TEST__fetchJgaStudyFacets = {

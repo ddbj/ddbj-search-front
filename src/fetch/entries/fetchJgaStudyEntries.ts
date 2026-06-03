@@ -16,7 +16,8 @@ export const fetchJgaStudies = async (params: JgaStudySearchParams) => {
 const parseParams = (params: JgaStudySearchParams): JgaStudyListRequestParams => {
   return {
     ...parseBaseEntryParams(params),
-    // Add JGA Study-specific parameters here if needed
+    ...(params.publication ? { publication: params.publication } : {}),
+    ...(params.grant ? { grant: params.grant } : {}),
   };
 };
 
