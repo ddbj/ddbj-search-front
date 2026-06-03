@@ -12,7 +12,7 @@ type Props = {
   currentSort: SortKey | null | undefined;
 };
 
-const SELECT_DEFAULT = "relevance";
+const SELECT_DEFAULT = "default";
 type DropDownKey = typeof SELECT_DEFAULT | SortKey;
 type Item = {
   label: string;
@@ -22,7 +22,8 @@ type Item = {
 };
 const items: Item[] = [
   {
-    label: "Relevance",
+    label: "Default",
+    caption: "Database ranking",
     value: SELECT_DEFAULT,
     icon: <StarShineIcon className="h-3.5 w-3.5" />,
   },
