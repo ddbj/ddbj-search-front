@@ -41,6 +41,26 @@ const bioSampleParams: AnySearchParams = {
   datePublishedTo: "2023-12-31",
 } as const;
 
+const jgaStudyParams: AnySearchParams = {
+  keywords: ["controlled access"],
+  organism: "10090",
+  organization: "DDBJ",
+  publication: "Science",
+  grant: "AMED",
+  dateModifiedFrom: "2025-01-01",
+  dateModifiedTo: "2025-01-31",
+} as const;
+
+const geaParams: AnySearchParams = {
+  keywords: ["expression atlas"],
+  organism: "562",
+  organization: "DDBJ",
+  publication: "Nucleic Acids Research",
+  grant: "NSF",
+  datePublishedFrom: "2022-01-01",
+  datePublishedTo: "2022-12-31",
+} as const;
+
 const primaryFacetParams: AnySearchParams = {
   keywords: primaryParams.keywords,
   datePublishedFrom: primaryParams.datePublishedFrom,
@@ -104,6 +124,11 @@ const makeQueryClient = (organismItems: FacetItem[] = organismFacetData) => {
     makeOrganismFacetQueryKey(dbTypes.biosample, bioSampleParams),
     organismItems,
   );
+  queryClient.setQueryData(
+    makeOrganismFacetQueryKey(dbTypes["jga-study"], jgaStudyParams),
+    organismItems,
+  );
+  queryClient.setQueryData(makeOrganismFacetQueryKey(dbTypes.gea, geaParams), organismItems);
   return queryClient;
 };
 
@@ -141,6 +166,9 @@ export const Primary = {
     await expect(
       await canvas.findByRole("checkbox", { name: "Escherichia coli (1,232,567)" }),
     ).toBeEnabled();
+    await expect(await canvas.findByRole("textbox", { name: "Organization" })).toBeVisible();
+    await expect(canvas.queryByRole("textbox", { name: "Publication" })).not.toBeInTheDocument();
+    await expect(canvas.queryByRole("textbox", { name: "Grant" })).not.toBeInTheDocument();
   },
 } satisfies Story;
 export const WithoutOrganismFacet = {
@@ -191,7 +219,41 @@ export const BioSample = {
     ).toBeChecked();
     await expect(await canvas.findByRole("checkbox", { name: "BioSample" })).toBeEnabled();
     await expect(await canvas.findByRole("textbox", { name: "Organization" })).toHaveValue("DDBJ");
-    await expect(await canvas.findByRole("textbox", { name: "Publication" })).toHaveValue("Cell");
+    await expect(canvas.queryByRole("textbox", { name: "Publication" })).not.toBeInTheDocument();
+    await expect(canvas.queryByRole("textbox", { name: "Grant" })).not.toBeInTheDocument();
+  },
+} satisfies Story;
+export const JgaStudy = {
+  args: {
+    currentType: dbTypes["jga-study"],
+    params: jgaStudyParams,
+  },
+  play: async ({ canvas }) => {
+    await expect(
+      await canvas.findByRole("checkbox", { name: "Mus musculus (456,789)" }),
+    ).toBeChecked();
+    await expect(await canvas.findByRole("checkbox", { name: "JGA Study" })).toBeEnabled();
+    await expect(await canvas.findByRole("textbox", { name: "Organization" })).toHaveValue("DDBJ");
+    await expect(await canvas.findByRole("textbox", { name: "Publication" })).toHaveValue(
+      "Science",
+    );
     await expect(await canvas.findByRole("textbox", { name: "Grant" })).toHaveValue("AMED");
+  },
+} satisfies Story;
+export const Gea = {
+  args: {
+    currentType: dbTypes.gea,
+    params: geaParams,
+  },
+  play: async ({ canvas }) => {
+    await expect(
+      await canvas.findByRole("checkbox", { name: "Escherichia coli (1,232,567)" }),
+    ).toBeChecked();
+    await expect(await canvas.findByRole("checkbox", { name: "GEA" })).toBeEnabled();
+    await expect(await canvas.findByRole("textbox", { name: "Organization" })).toHaveValue("DDBJ");
+    await expect(await canvas.findByRole("textbox", { name: "Publication" })).toHaveValue(
+      "Nucleic Acids Research",
+    );
+    await expect(canvas.queryByRole("textbox", { name: "Grant" })).not.toBeInTheDocument();
   },
 } satisfies Story;

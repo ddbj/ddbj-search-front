@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { type FC, useMemo } from "react";
 import type { FacetItem } from "@/api/facets/base.ts";
-import { type DBType } from "@/consts/db.ts";
+import { dbTypes, type DBType } from "@/consts/db.ts";
 import { Grant } from "@/features/searchResult/queryBuilder/controls/bioproject/Grant.tsx";
 import { ObjectTypeSelector } from "@/features/searchResult/queryBuilder/controls/bioproject/ObjectTypeSelector.tsx";
 import { Organization } from "@/features/searchResult/queryBuilder/controls/bioproject/Organization.tsx";
@@ -72,7 +72,7 @@ export const QueryBuilder: FC<Props> = ({ currentType, update, params }) => {
         value={organism ?? null}
         update={changeOrganism}
       />
-      <CommonDetailQueries update={update} params={params} />
+      <CommonDetailQueries currentType={currentType} update={update} params={params} />
       {currentType === "bioproject" && <BioProjectQueries update={update} params={params} />}
       <DateSelectors
         published={`${datePublishedFrom ?? ""},${datePublishedTo ?? ""}`}
@@ -129,22 +129,31 @@ const BioProjectQueries = ({
 };
 
 const CommonDetailQueries = ({
+  currentType,
   update,
   params,
 }: {
+  currentType: DBType | null;
   update: UpdateSearchFunctions;
   params: AnySearchParams;
 }) => {
   const { changeOrganization, changePublication, changeGrant } = useMemo(() => update, [update]);
   const { organization, publication, grant } = params;
+  const support = getDetailFilterSupport(currentType);
   return (
     <>
       <Organization value={organization ?? ""} update={changeOrganization} />
-      <Publication value={publication ?? ""} update={changePublication} />
-      <Grant value={grant ?? ""} update={changeGrant} />
+      {support.publication && <Publication value={publication ?? ""} update={changePublication} />}
+      {support.grant && <Grant value={grant ?? ""} update={changeGrant} />}
     </>
   );
 };
+
+const getDetailFilterSupport = (currentType: DBType | null) => ({
+  organization: true,
+  publication: currentType !== null && currentType !== dbTypes.biosample,
+  grant: currentType === dbTypes.bioproject || currentType === dbTypes["jga-study"],
+});
 
 const makeTypeLinkParams = (params: AnySearchParams): BaseSearchParams => {
   const result = Object.fromEntries(
@@ -154,4 +163,8 @@ const makeTypeLinkParams = (params: AnySearchParams): BaseSearchParams => {
 };
 
 // eslint-disable-next-line react-refresh/only-export-components -- Test helper stays colocated with query builder state shaping logic.
-export const __TEST__QUERY_BUILDER = { makeTypeLinkParams, shouldShowOrganismSelector };
+export const __TEST__QUERY_BUILDER = {
+  getDetailFilterSupport,
+  makeTypeLinkParams,
+  shouldShowOrganismSelector,
+};
