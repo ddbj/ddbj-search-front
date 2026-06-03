@@ -217,4 +217,41 @@ describe("fetch*Entries", () => {
       vi.unstubAllGlobals();
     },
   );
+
+  it("does not include unsupported publication or grant in BioSample entry requests", async () => {
+    const mockData = {
+      items: [],
+      pagination: {
+        page: 1,
+        perPage: 10,
+        total: 0,
+      },
+    };
+
+    const mockFetch = vi.fn().mockResolvedValue(
+      new Response(JSON.stringify(mockData), {
+        status: 200,
+        headers: {
+          "content-type": "application/json",
+        },
+      }),
+    );
+
+    vi.stubGlobal("fetch", mockFetch);
+
+    await fetchBioSamples({
+      keywords: ["human"],
+      organization: "NCBI",
+      publication: "Nature",
+      grant: "AMED",
+    });
+
+    expect(mockFetch).toHaveBeenCalledWith(`${API_PATH_BIOSAMPLE_LIST}?${baseExpectedQuery}`, {
+      method: "GET",
+    });
+    expect(mockFetch.mock.calls[0][0]).not.toContain("publication=Nature");
+    expect(mockFetch.mock.calls[0][0]).not.toContain("grant=AMED");
+
+    vi.unstubAllGlobals();
+  });
 });
