@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import { Fragment, type FC } from "react";
 import {
   accessibilityLabels,
   getAccessibilityLabels,
@@ -7,6 +7,12 @@ import {
 } from "@/api/consts.ts";
 import type { SearchDetailResponse } from "@/api/types.ts";
 import { dbLabels } from "@/consts/db.ts";
+import {
+  accessibilityTooltipDescriptions,
+  statusTooltipDescriptions,
+  visibleAccessibilityTooltipValues,
+  visibleStatusTooltipValues,
+} from "@/consts/tooltipDescriptions.ts";
 import { SanitizedRow } from "@/features/searchDetail/panels/rows/SanitizedRow.tsx";
 import { InfoList } from "@/features/searchDetail/ui/InfoList.tsx";
 import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
@@ -58,14 +64,12 @@ export const StatusPanel: FC<Props> = ({ data }) => {
 const StatusHelp: FC = () => {
   return (
     <dl className={"grid grid-cols-[auto_1fr] gap-x-2"}>
-      <dt>[{statusLabels["public"]}]</dt>
-      <dd>short description here</dd>
-      <dt>[{statusLabels["suppressed"]}]</dt>
-      <dd>short description here</dd>
-      <dt>[{statusLabels["withdrawn"]}]</dt>
-      <dd>short description here</dd>
-      <dt>[{statusLabels["private"]}]</dt>
-      <dd>short description here</dd>
+      {visibleStatusTooltipValues.map((value) => (
+        <Fragment key={value}>
+          <dt>[{statusLabels[value]}]</dt>
+          <dd>{statusTooltipDescriptions[value]}</dd>
+        </Fragment>
+      ))}
     </dl>
   );
 };
@@ -73,10 +77,12 @@ const StatusHelp: FC = () => {
 const AccessibilityHelp: FC = () => {
   return (
     <dl className={"grid grid-cols-[auto_1fr] gap-x-2"}>
-      <dt>[{accessibilityLabels["public-access"]}]</dt>
-      <dd>short description here</dd>
-      <dt>[{accessibilityLabels["controlled-access"]}]</dt>
-      <dd>short description here</dd>
+      {visibleAccessibilityTooltipValues.map((value) => (
+        <Fragment key={value}>
+          <dt>[{accessibilityLabels[value]}]</dt>
+          <dd>{accessibilityTooltipDescriptions[value]}</dd>
+        </Fragment>
+      ))}
     </dl>
   );
 };
