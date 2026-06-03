@@ -6,13 +6,13 @@ import { useDebouncedUiValue } from "@/features/searchResult/queryBuilder/hooks/
 import { CheckboxText } from "@/features/searchResult/queryBuilder/premitives/CheckboxText.tsx";
 import { fetchAllFacets } from "@/fetch/facets/fetchAllFacets.ts";
 import type { AllSearchParams } from "@/schema/search/all.ts";
-import type { BaseSearchParams } from "@/schema/search/base.ts";
+import type { AnySearchParams } from "@/schema/search/any.ts";
 import { formatNumber } from "@/utils/formatNumber.ts";
 
 type Props = {
   value: DBType[];
   params: AllSearchParams;
-  linkSearchParams: BaseSearchParams;
+  linkSearchParams: AnySearchParams | ((targetType: DBType) => AnySearchParams);
   update: (types: DBType[]) => void;
 };
 
@@ -38,6 +38,7 @@ export const TypeSelector: FC<Props> = ({ linkSearchParams, params, value, updat
       <h2 className={titleClasses}>Types</h2>
       <div className={listClasses}>
         {Object.entries(dbLabels).map(([name, label]) => {
+          if (!isDBType(name)) return null;
           const isSelected = uiValue?.includes(name as DBType);
           const count = countData.find((item) => item.value === name)?.count ?? 0;
           return (
@@ -48,10 +49,9 @@ export const TypeSelector: FC<Props> = ({ linkSearchParams, params, value, updat
               to={`/entry/${name}/`}
               isSelected={isSelected}
               setIsSelected={(v) => {
-                if (!isDBType(name)) return;
                 toggleDBTypes(name, v);
               }}
-              search={linkSearchParams}
+              search={resolveLinkSearchParams(linkSearchParams, name)}
             />
           );
         })}
@@ -63,6 +63,13 @@ export const TypeSelector: FC<Props> = ({ linkSearchParams, params, value, updat
 const makeTypeFacetParams = (params: AllSearchParams): AllSearchParams => {
   const { types: _types, page: _page, perPage: _perPage, ...rest } = params;
   return rest;
+};
+
+const resolveLinkSearchParams = (
+  linkSearchParams: Props["linkSearchParams"],
+  targetType: DBType,
+): AnySearchParams => {
+  return typeof linkSearchParams === "function" ? linkSearchParams(targetType) : linkSearchParams;
 };
 
 // eslint-disable-next-line react-refresh/only-export-components -- Test helper stays colocated with selector param shaping logic.

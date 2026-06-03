@@ -61,14 +61,84 @@ describe("getDetailFilterSupport", () => {
 
 describe("makeTypeLinkParams", () => {
   it("should remove type and page params from link params", () => {
-    const result = makeTypeLinkParams({
-      types: ["sra-analysis"],
-      keywords: ["human"],
-      page: 5,
-    });
+    const result = makeTypeLinkParams(
+      {
+        types: ["sra-analysis"],
+        keywords: ["human"],
+        page: 5,
+      },
+      null,
+    );
     expect((result as AnySearchParams).page).toBeUndefined();
     expect((result as AnySearchParams).types).toBeUndefined();
     expect(result.keywords).toEqual(["human"]);
+  });
+
+  it("strips publication and grant when linking to BioSample", () => {
+    const result = makeTypeLinkParams(
+      {
+        keywords: ["human"],
+        organization: "DDBJ",
+        publication: "Nature",
+        grant: "AMED",
+      },
+      dbTypes.biosample,
+    );
+
+    expect(result).toEqual({
+      keywords: ["human"],
+      organization: "DDBJ",
+    });
+  });
+
+  it("strips publication and grant when linking back to the all-entry route", () => {
+    const result = makeTypeLinkParams(
+      {
+        keywords: ["human"],
+        organization: "DDBJ",
+        publication: "Nature",
+        grant: "AMED",
+      },
+      null,
+    );
+
+    expect(result).toEqual({
+      keywords: ["human"],
+      organization: "DDBJ",
+    });
+  });
+
+  it("preserves publication and grant when linking to JGA Study", () => {
+    const result = makeTypeLinkParams(
+      {
+        keywords: ["human"],
+        publication: "Nature",
+        grant: "AMED",
+      },
+      dbTypes["jga-study"],
+    );
+
+    expect(result).toEqual({
+      keywords: ["human"],
+      publication: "Nature",
+      grant: "AMED",
+    });
+  });
+
+  it("preserves publication but strips grant when linking to publication-only DBs", () => {
+    const result = makeTypeLinkParams(
+      {
+        keywords: ["human"],
+        publication: "Nature",
+        grant: "AMED",
+      },
+      dbTypes.gea,
+    );
+
+    expect(result).toEqual({
+      keywords: ["human"],
+      publication: "Nature",
+    });
   });
 });
 

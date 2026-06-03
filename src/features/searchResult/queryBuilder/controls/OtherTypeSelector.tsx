@@ -3,11 +3,11 @@ import { type FC } from "react";
 import { dbLabels, type DBType, dbTypeList } from "@/consts/db.ts";
 import type { UpdateSearchFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 import { CheckboxText } from "@/features/searchResult/queryBuilder/premitives/CheckboxText.tsx";
-import type { BaseSearchParams } from "@/schema/search/base.ts";
+import type { AnySearchParams } from "@/schema/search/any.ts";
 
 type Props = {
   currentType: DBType;
-  linkSearchParams: BaseSearchParams;
+  linkSearchParams: AnySearchParams | ((targetType: DBType | null) => AnySearchParams);
   moveToEntryRoot: UpdateSearchFunctions["moveToEntryRoot"];
 };
 
@@ -33,7 +33,7 @@ export const OtherTypeSelector: FC<Props> = ({
             value={currentType}
             isSelected={true}
             to={`/entry/${currentType}/`}
-            search={linkSearchParams}
+            search={resolveLinkSearchParams(linkSearchParams, currentType)}
           />
         </div>
       </div>
@@ -50,8 +50,10 @@ export const OtherTypeSelector: FC<Props> = ({
                   labelStr={dbLabels[key]}
                   value={key}
                   to={`/entry/${key}/`}
-                  search={linkSearchParams}
-                  setIsSelected={() => moveToEntryRoot({ ...linkSearchParams, types })}
+                  search={resolveLinkSearchParams(linkSearchParams, key)}
+                  setIsSelected={() =>
+                    moveToEntryRoot({ ...resolveLinkSearchParams(linkSearchParams, null), types })
+                  }
                 />
               );
             })}
@@ -59,4 +61,11 @@ export const OtherTypeSelector: FC<Props> = ({
       </details>
     </section>
   );
+};
+
+const resolveLinkSearchParams = (
+  linkSearchParams: Props["linkSearchParams"],
+  targetType: DBType | null,
+): AnySearchParams => {
+  return typeof linkSearchParams === "function" ? linkSearchParams(targetType) : linkSearchParams;
 };

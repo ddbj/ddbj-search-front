@@ -17,7 +17,7 @@ import {
 } from "@/fetch/facets/fetchOrganismFacets.ts";
 import type { AllSearchParams } from "@/schema/search/all.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
-import { type BaseSearchParams, isBaseSearchKey } from "@/schema/search/base.ts";
+import { isBaseSearchKey } from "@/schema/search/base.ts";
 import { isBioprojectSearchParams } from "@/schema/search/bioProject.ts";
 import { TypeSelector } from "./controls/TypeSelector.tsx";
 
@@ -46,7 +46,8 @@ export const QueryBuilder: FC<Props> = ({ currentType, update, params }) => {
     changeDateModifiedRange,
     changeDatePublishedRange,
   } = useMemo(() => update, [update]);
-  const typeLinkParams = makeTypeLinkParams(params);
+  const makeLinkSearchParams = (targetType: DBType | null) =>
+    makeTypeLinkParams(params, targetType);
 
   return (
     <aside className={wrapperClasses}>
@@ -56,14 +57,14 @@ export const QueryBuilder: FC<Props> = ({ currentType, update, params }) => {
           params={params as AllSearchParams}
           update={setDBTypes}
           value={types ?? []}
-          linkSearchParams={typeLinkParams}
+          linkSearchParams={makeLinkSearchParams}
         />
       )}
       {currentType && (
         <OtherTypeSelector
           currentType={currentType}
           moveToEntryRoot={moveToEntryRoot}
-          linkSearchParams={typeLinkParams}
+          linkSearchParams={makeLinkSearchParams}
         />
       )}
       <OrganismFacetSelector
@@ -155,11 +156,21 @@ const getDetailFilterSupport = (currentType: DBType | null) => ({
   grant: currentType === dbTypes.bioproject || currentType === dbTypes["jga-study"],
 });
 
-const makeTypeLinkParams = (params: AnySearchParams): BaseSearchParams => {
+const makeTypeLinkParams = (
+  params: AnySearchParams,
+  targetType: DBType | null,
+): AnySearchParams => {
+  const support = getDetailFilterSupport(targetType);
   const result = Object.fromEntries(
     Object.entries(params).filter(([key, _value]) => isBaseSearchKey(key)),
   );
-  return result;
+  return {
+    ...result,
+    ...(support.publication && params.publication !== undefined
+      ? { publication: params.publication }
+      : {}),
+    ...(support.grant && params.grant !== undefined ? { grant: params.grant } : {}),
+  };
 };
 
 // eslint-disable-next-line react-refresh/only-export-components -- Test helper stays colocated with query builder state shaping logic.
