@@ -1,5 +1,6 @@
 import type { FC } from "react";
 import type { SearchDetailResponse } from "@/api/types.ts";
+import { detailFieldLabels } from "@/consts/entryDisplayLabels.ts";
 import { ExternalLinksRow as ExternalLinksValueRow } from "@/features/searchDetail/panels/rows/ExternalLinksRow.tsx";
 import { GrantsRow as GrantsValueRow } from "@/features/searchDetail/panels/rows/GrantsRow.tsx";
 import { OrganismRow as OrganismValueRow } from "@/features/searchDetail/panels/rows/OrganismRow.tsx";
@@ -60,15 +61,15 @@ export const InfoPanel: FC<Props> = ({ data }) => {
 type DetailRowProps = { data: SearchDetailResponse };
 
 const TitleRow: FC<DetailRowProps> = ({ data }) => {
-  return <SanitizedRow term={"Title"} value={data.title} />;
+  return <SanitizedRow term={detailFieldLabels.title} value={data.title} />;
 };
 
 const NameRow: FC<DetailRowProps> = ({ data }) => {
-  return <SanitizedRow term={"Name"} value={data.name} />;
+  return <SanitizedRow term={detailFieldLabels.name} value={data.name} />;
 };
 
 const DescriptionRow: FC<DetailRowProps> = ({ data }) => {
-  return <SanitizedRow term={"Description"} value={data.description} />;
+  return <SanitizedRow term={detailFieldLabels.description} value={data.description} />;
 };
 
 const OrganismRow: FC<DetailRowProps> = ({ data }) => {
@@ -84,7 +85,7 @@ const ProjectTypeRow: FC<DetailRowProps> = ({ data }) => {
     return null;
   }
 
-  return <StringArrayInfoRow term={"Project Type"} value={data.projectType} />;
+  return <StringArrayInfoRow term={detailFieldLabels.projectType} value={data.projectType} />;
 };
 
 const RelevanceRow: FC<DetailRowProps> = ({ data }) => {
@@ -92,7 +93,7 @@ const RelevanceRow: FC<DetailRowProps> = ({ data }) => {
     return null;
   }
 
-  return <StringArrayInfoRow term={"Relevance"} value={data.relevance} />;
+  return <StringArrayInfoRow term={detailFieldLabels.relevance} value={data.relevance} />;
 };
 
 const ModelRow: FC<DetailRowProps> = ({ data }) => {
@@ -100,7 +101,7 @@ const ModelRow: FC<DetailRowProps> = ({ data }) => {
     return null;
   }
 
-  return <StringArrayInfoRow term={"Model"} value={data.model} />;
+  return <StringArrayInfoRow term={detailFieldLabels.model} value={data.model} />;
 };
 
 const PackageRow: FC<DetailRowProps> = ({ data }) => {
@@ -117,7 +118,7 @@ const PackageRow: FC<DetailRowProps> = ({ data }) => {
 
   const displayValue = displayName && name ? `${displayName} (${name})` : displayName || name;
 
-  return <InfoListItem term={"Package"}>{displayValue}</InfoListItem>;
+  return <InfoListItem term={detailFieldLabels.package}>{displayValue}</InfoListItem>;
 };
 
 const CollectionDateRow: FC<DetailRowProps> = ({ data }) => {
@@ -125,7 +126,7 @@ const CollectionDateRow: FC<DetailRowProps> = ({ data }) => {
     return null;
   }
 
-  return <SanitizedRow term={"Collection Date"} value={data.collectionDate} />;
+  return <SanitizedRow term={detailFieldLabels.collectionDate} value={data.collectionDate} />;
 };
 
 const GeographicLocationRow: FC<DetailRowProps> = ({ data }) => {
@@ -133,7 +134,7 @@ const GeographicLocationRow: FC<DetailRowProps> = ({ data }) => {
     return null;
   }
 
-  return <SanitizedRow term={"Geographic Location"} value={data.geoLocName} />;
+  return <SanitizedRow term={detailFieldLabels.geoLocName} value={data.geoLocName} />;
 };
 
 const StrainRow: FC<DetailRowProps> = ({ data }) => {
@@ -141,7 +142,7 @@ const StrainRow: FC<DetailRowProps> = ({ data }) => {
     return null;
   }
 
-  return <SanitizedRow term={"Strain"} value={data.strain} />;
+  return <SanitizedRow term={detailFieldLabels.strain} value={data.strain} />;
 };
 
 const HostRow: FC<DetailRowProps> = ({ data }) => {
@@ -149,7 +150,7 @@ const HostRow: FC<DetailRowProps> = ({ data }) => {
     return null;
   }
 
-  return <SanitizedRow term={"Host"} value={data.host} />;
+  return <SanitizedRow term={detailFieldLabels.host} value={data.host} />;
 };
 
 const IsolateRow: FC<DetailRowProps> = ({ data }) => {
@@ -157,7 +158,7 @@ const IsolateRow: FC<DetailRowProps> = ({ data }) => {
     return null;
   }
 
-  return <SanitizedRow term={"Isolate"} value={data.isolate} />;
+  return <SanitizedRow term={detailFieldLabels.isolate} value={data.isolate} />;
 };
 
 const DerivedFromRow: FC<DetailRowProps> = ({ data }) => {
@@ -165,7 +166,7 @@ const DerivedFromRow: FC<DetailRowProps> = ({ data }) => {
     return null;
   }
 
-  return <XrefLinksRow term={"Derived From"} xrefs={data.derivedFrom} />;
+  return <XrefLinksRow term={detailFieldLabels.derivedFrom} xrefs={data.derivedFrom} />;
 };
 
 const StudyTypeRow: FC<DetailRowProps> = ({ data }) => {
@@ -173,7 +174,7 @@ const StudyTypeRow: FC<DetailRowProps> = ({ data }) => {
     return null;
   }
 
-  return <StringArrayInfoRow term={"Study Type"} value={data.studyType} />;
+  return <StringArrayInfoRow term={detailFieldLabels.studyType} value={data.studyType} />;
 };
 
 const ExperimentTypeRow: FC<DetailRowProps> = ({ data }) => {
@@ -181,7 +182,7 @@ const ExperimentTypeRow: FC<DetailRowProps> = ({ data }) => {
     return null;
   }
 
-  return <StringArrayInfoRow term={"Experiment Type"} value={data.experimentType} />;
+  return <StringArrayInfoRow term={detailFieldLabels.experimentType} value={data.experimentType} />;
 };
 
 const SubmissionTypeRow: FC<DetailRowProps> = ({ data }) => {
@@ -189,7 +190,7 @@ const SubmissionTypeRow: FC<DetailRowProps> = ({ data }) => {
     return null;
   }
 
-  return <StringArrayInfoRow term={"Submission Type"} value={data.submissionType} />;
+  return <StringArrayInfoRow term={detailFieldLabels.submissionType} value={data.submissionType} />;
 };
 
 const InstrumentModelRow: FC<DetailRowProps> = ({ data }) => {
@@ -197,7 +198,9 @@ const InstrumentModelRow: FC<DetailRowProps> = ({ data }) => {
     return null;
   }
 
-  return <StringArrayInfoRow term={"Instrument Model"} value={data.instrumentModel} />;
+  return (
+    <StringArrayInfoRow term={detailFieldLabels.instrumentModel} value={data.instrumentModel} />
+  );
 };
 
 const PlatformRow: FC<DetailRowProps> = ({ data }) => {
@@ -205,7 +208,7 @@ const PlatformRow: FC<DetailRowProps> = ({ data }) => {
     return null;
   }
 
-  return <SanitizedRow term={"Platform"} value={data.platform} />;
+  return <SanitizedRow term={detailFieldLabels.platform} value={data.platform} />;
 };
 
 const LibraryLayoutRow: FC<DetailRowProps> = ({ data }) => {
@@ -213,7 +216,7 @@ const LibraryLayoutRow: FC<DetailRowProps> = ({ data }) => {
     return null;
   }
 
-  return <SanitizedRow term={"Library Layout"} value={data.libraryLayout} />;
+  return <SanitizedRow term={detailFieldLabels.libraryLayout} value={data.libraryLayout} />;
 };
 
 const LibrarySelectionRow: FC<DetailRowProps> = ({ data }) => {
@@ -221,7 +224,9 @@ const LibrarySelectionRow: FC<DetailRowProps> = ({ data }) => {
     return null;
   }
 
-  return <StringArrayInfoRow term={"Library Selection"} value={data.librarySelection} />;
+  return (
+    <StringArrayInfoRow term={detailFieldLabels.librarySelection} value={data.librarySelection} />
+  );
 };
 
 const LibrarySourceRow: FC<DetailRowProps> = ({ data }) => {
@@ -229,7 +234,7 @@ const LibrarySourceRow: FC<DetailRowProps> = ({ data }) => {
     return null;
   }
 
-  return <StringArrayInfoRow term={"Library Source"} value={data.librarySource} />;
+  return <StringArrayInfoRow term={detailFieldLabels.librarySource} value={data.librarySource} />;
 };
 
 const LibraryStrategyRow: FC<DetailRowProps> = ({ data }) => {
@@ -237,7 +242,9 @@ const LibraryStrategyRow: FC<DetailRowProps> = ({ data }) => {
     return null;
   }
 
-  return <StringArrayInfoRow term={"Library Strategy"} value={data.libraryStrategy} />;
+  return (
+    <StringArrayInfoRow term={detailFieldLabels.libraryStrategy} value={data.libraryStrategy} />
+  );
 };
 
 const LibraryNameRow: FC<DetailRowProps> = ({ data }) => {
@@ -245,7 +252,7 @@ const LibraryNameRow: FC<DetailRowProps> = ({ data }) => {
     return null;
   }
 
-  return <SanitizedRow term={"Library Name"} value={data.libraryName} />;
+  return <SanitizedRow term={detailFieldLabels.libraryName} value={data.libraryName} />;
 };
 
 const LibraryConstructionProtocolRow: FC<DetailRowProps> = ({ data }) => {
@@ -254,7 +261,10 @@ const LibraryConstructionProtocolRow: FC<DetailRowProps> = ({ data }) => {
   }
 
   return (
-    <SanitizedRow term={"Library Construction Protocol"} value={data.libraryConstructionProtocol} />
+    <SanitizedRow
+      term={detailFieldLabels.libraryConstructionProtocol}
+      value={data.libraryConstructionProtocol}
+    />
   );
 };
 
@@ -263,7 +273,7 @@ const AnalysisTypeRow: FC<DetailRowProps> = ({ data }) => {
     return null;
   }
 
-  return <SanitizedRow term={"Analysis Type"} value={data.analysisType} />;
+  return <SanitizedRow term={detailFieldLabels.analysisType} value={data.analysisType} />;
 };
 
 const DatasetTypeRow: FC<DetailRowProps> = ({ data }) => {
@@ -271,7 +281,7 @@ const DatasetTypeRow: FC<DetailRowProps> = ({ data }) => {
     return null;
   }
 
-  return <StringArrayInfoRow term={"Dataset Type"} value={data.datasetType} />;
+  return <StringArrayInfoRow term={detailFieldLabels.datasetType} value={data.datasetType} />;
 };
 
 const VendorRow: FC<DetailRowProps> = ({ data }) => {
@@ -279,7 +289,7 @@ const VendorRow: FC<DetailRowProps> = ({ data }) => {
     return null;
   }
 
-  return <StringArrayInfoRow term={"Vendor"} value={data.vendor} />;
+  return <StringArrayInfoRow term={detailFieldLabels.vendor} value={data.vendor} />;
 };
 
 const PublicationsRow: FC<DetailRowProps> = ({ data }) => {
@@ -319,5 +329,5 @@ const SameAsRow: FC<DetailRowProps> = ({ data }) => {
     return null;
   }
 
-  return <XrefLinksRow term={"Same As"} xrefs={data.sameAs} />;
+  return <XrefLinksRow term={detailFieldLabels.sameAs} xrefs={data.sameAs} />;
 };

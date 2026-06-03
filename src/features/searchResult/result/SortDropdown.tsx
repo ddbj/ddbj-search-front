@@ -2,6 +2,7 @@ import { ListBox, Select } from "@heroui/react";
 import clsx from "clsx";
 import { type FC, type Key, type ReactNode, useEffect, useMemo, useState } from "react";
 import type { SortKey } from "@/api/consts.ts";
+import { searchResultDateLabels } from "@/consts/entryDisplayLabels.ts";
 import type { UpdateSearchFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 import { ArrowDownRightIcon } from "@/features/shared/graphics/ArrowDownRightIcon.tsx";
 import { ArrowUpRightIcon } from "@/features/shared/graphics/ArrowUpRightIcon.tsx";
@@ -28,25 +29,25 @@ const items: Item[] = [
     icon: <StarShineIcon className="h-3.5 w-3.5" />,
   },
   {
-    label: "Updated Date",
+    label: searchResultDateLabels.dateModifiedSort,
     caption: "Newest first",
     value: "dateModified:desc",
     icon: <ArrowDownRightIcon className="h-3.5 w-3.5" />,
   },
   {
-    label: "Updated Date",
+    label: searchResultDateLabels.dateModifiedSort,
     caption: "Oldest first",
     value: "dateModified:asc",
     icon: <ArrowUpRightIcon className="h-3.5 w-3.5" />,
   },
   {
-    label: "Published Date",
+    label: searchResultDateLabels.datePublishedSort,
     caption: "Newest first",
     value: "datePublished:desc",
     icon: <ArrowDownRightIcon className="h-3.5 w-3.5" />,
   },
   {
-    label: "Published Date",
+    label: searchResultDateLabels.datePublishedSort,
     caption: "Oldest first",
     value: "datePublished:asc",
     icon: <ArrowUpRightIcon className="h-3.5 w-3.5" />,

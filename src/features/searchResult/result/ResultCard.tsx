@@ -3,6 +3,7 @@ import clsx from "clsx";
 import { Fragment, type FC, useMemo } from "react";
 import { getAccessibilityLabels, type AccessibilityValue } from "@/api/consts.ts";
 import { getDbLabel, getXrefDbLabel } from "@/consts/db.ts";
+import { relatedLinkLabels, searchResultDateLabels } from "@/consts/entryDisplayLabels.ts";
 import { LockIcon } from "@/features/shared/graphics/LockIcon.tsx";
 import { reorderXrefs } from "@/utils/reorderXrefs.ts";
 
@@ -55,7 +56,9 @@ export const ResultCard: FC<Props> = ({
         <h3 className={"mb-2 text-2xl leading-none wrap-anywhere"}>{title}</h3>
         <div className={"flex items-end justify-between gap-x-2"}>
           <div className={"flex flex-col gap-1"}>
-            <span>Related to {total} objects</span>
+            <span>
+              {relatedLinkLabels.resultCount}: {total}
+            </span>
             <ul className={"flex flex-wrap gap-1"}>
               {reorderXrefs(relations).map(([key, value]) => (
                 <li className={"rounded-sm bg-gray-100 px-2 py-1 text-xs font-bold"} key={key}>
@@ -80,9 +83,9 @@ const DateTable: FC<DataTableProps> = ({ publishedAt, submittedAt, updatedAt }) 
   const hasDate = publishedAt || submittedAt || updatedAt;
   const data: Record<string, string | null> = useMemo(() => {
     const result: Record<string, string | null> = {};
-    if (submittedAt) result["Submitted at"] = submittedAt;
-    if (publishedAt) result["Published at"] = publishedAt;
-    if (updatedAt) result["Updated at"] = updatedAt;
+    if (submittedAt) result[searchResultDateLabels.dateCreated] = submittedAt;
+    if (publishedAt) result[searchResultDateLabels.datePublished] = publishedAt;
+    if (updatedAt) result[searchResultDateLabels.dateModified] = updatedAt;
     return result;
   }, [publishedAt, updatedAt, submittedAt]);
   if (!hasDate) {

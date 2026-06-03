@@ -1,12 +1,13 @@
 import type { FC } from "react";
 import type { Organization } from "@/api/detail/base.ts";
+import { detailFieldLabels } from "@/consts/entryDisplayLabels.ts";
 import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
 
 type Props = { organizations: Organization[] };
 
 export const OrganizationsRow: FC<Props> = ({ organizations }) => {
   return (
-    <InfoListItem term={"Organizations"}>
+    <InfoListItem term={detailFieldLabels.organizations}>
       <ul className={"flex flex-col gap-y-2"}>
         {organizations.sort(sortOrganizations).map((org, index) => (
           <li key={index} className={"flex flex-col"}>

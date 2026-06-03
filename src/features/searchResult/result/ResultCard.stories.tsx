@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { expect } from "storybook/test";
 import { ResultCard } from "./ResultCard.tsx";
 
 const meta = {
@@ -25,5 +26,8 @@ export const Primary = {
       "sra-sample": 1,
       "sra-experiment": 1,
     },
+  },
+  play: async ({ canvas }) => {
+    await expect(await canvas.findByText("Related Links: 9")).toBeInTheDocument();
   },
 } satisfies Story;

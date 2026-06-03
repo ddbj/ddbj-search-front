@@ -25,7 +25,16 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary = {
   args: {
-    data: bioproject1,
+    data: {
+      ...bioproject1,
+      sameAs: [
+        {
+          identifier: "PRJNA000001",
+          type: "bioproject",
+          url: "https://ddbj-staging.nig.ac.jp/search/entry/bioproject/PRJNA000001",
+        },
+      ],
+    },
   },
   play: async ({ canvas }) => {
     await expect(await canvas.findByText("Project Type")).toBeInTheDocument();
@@ -33,6 +42,8 @@ export const Primary = {
     await expect(canvas.queryByText("Relevance")).not.toBeInTheDocument();
     await expect(await canvas.findByText("External Links")).toBeInTheDocument();
     await expect(await canvas.findByRole("link", { name: "Azotobacter Org" })).toBeInTheDocument();
+    await expect(await canvas.findByText("Other Identifiers")).toBeInTheDocument();
+    await expect(await canvas.findByRole("link", { name: "PRJNA000001" })).toBeInTheDocument();
   },
 } satisfies Story;
 

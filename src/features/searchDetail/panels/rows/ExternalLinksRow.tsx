@@ -1,12 +1,13 @@
 import type { FC } from "react";
 import type { ExternalLink } from "@/api/detail/base.ts";
+import { detailFieldLabels } from "@/consts/entryDisplayLabels.ts";
 import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
 
 type Props = { externalLinks: ExternalLink[] };
 
 export const ExternalLinksRow: FC<Props> = ({ externalLinks }) => {
   return (
-    <InfoListItem term={"External Links"}>
+    <InfoListItem term={detailFieldLabels.externalLinks}>
       <ul className={"flex flex-col"}>
         {externalLinks.map((link, index) => (
           <li key={index}>

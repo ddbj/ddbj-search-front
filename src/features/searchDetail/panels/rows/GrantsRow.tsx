@@ -1,12 +1,13 @@
 import type { FC } from "react";
 import type { Grant } from "@/api/detail/base.ts";
+import { detailFieldLabels } from "@/consts/entryDisplayLabels.ts";
 import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
 
 type Props = { grants: Grant[] };
 
 export const GrantsRow: FC<Props> = ({ grants }) => {
   return (
-    <InfoListItem term={"Grants"}>
+    <InfoListItem term={detailFieldLabels.grants}>
       <ul className={"flex flex-col gap-y-2"}>
         {grants.map((g) => (
           <li key={g.id} className={"flex flex-col"}>

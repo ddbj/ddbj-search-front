@@ -3,6 +3,7 @@ import { isUndefined } from "is-what";
 import { type ComponentProps, type FC } from "react";
 import { getBioProjectObjectTypeLabel } from "@/api/consts.ts";
 import { getDbLabel } from "@/consts/db.ts";
+import { searchResultDateLabels } from "@/consts/entryDisplayLabels.ts";
 import type { UpdateSearchFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 import { QueryTip } from "@/features/searchResult/queryBuilder/premitives/QueryTip.tsx";
 import type { AnySearchParams, AnySearchParamsKey } from "@/schema/search/any.ts";
@@ -67,12 +68,12 @@ const parseQueryStateToTipList = (state: AnySearchParams): QueryTipProps[] => {
     ...parseDateRangeToQueryTipProps(
       [state.datePublishedFrom, state.datePublishedTo],
       ["datePublishedFrom", "datePublishedTo"],
-      "Published",
+      searchResultDateLabels.datePublishedTip,
     ),
     ...parseDateRangeToQueryTipProps(
       [state.dateModifiedFrom, state.dateModifiedTo],
       ["dateModifiedFrom", "dateModifiedTo"],
-      "Modified",
+      searchResultDateLabels.dateModifiedTip,
     ),
   ].filter((v) => !!v);
   //todo make date QueryTips

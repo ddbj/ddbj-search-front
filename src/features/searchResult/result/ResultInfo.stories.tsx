@@ -98,7 +98,7 @@ export const ChangeSort = {
 
     await step("reflect selected sort in trigger", async () => {
       const trigger = await canvas.findByRole("button", { name: "Sort search results" });
-      await expect(within(trigger).getByText("Published Date")).toBeVisible();
+      await expect(within(trigger).getByText("Date First Published")).toBeVisible();
       await expect(within(trigger).getByText("Oldest first")).toBeVisible();
     });
   },

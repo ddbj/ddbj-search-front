@@ -15,8 +15,8 @@
 - `title` と `name` が両方入るパターンもある
 - カードタイトルやページタイトルでは、この差異を吸収するために `getEntryTitle()` を使う
 
-## `Modified` と `Updated` の使い分け
+## 表示項目ラベルの管理
 
-- API付近では、DB側の語彙に合わせて `dateModified` を使う
-- UI表示では、人間に自然な `updated` に寄せる
-- INSDC側の表現も `updated` に合わせる
+- APIの項目名とUIで表示する語彙は異なる場合がある。
+- 表示ラベルは [`src/consts/entryDisplayLabels.ts`](../src/consts/entryDisplayLabels.ts) で管理する。
+- API付近では、API定義上のfield名をそのまま使う。

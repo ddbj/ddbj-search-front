@@ -65,14 +65,14 @@ export const MenuOpen = {
     });
 
     await step("show listbox", async () => {
-      const updatedDateDesc = await findVisibleOption(/Updated Date\s+Newest first/);
+      const updatedDateDesc = await findVisibleOption(/Date Last Published\s+Newest first/);
       await expect(updatedDateDesc).toBeVisible();
     });
 
     await step("show sort captions", async () => {
-      const updatedDateDesc = await findVisibleOption(/Updated Date\s+Newest first/);
+      const updatedDateDesc = await findVisibleOption(/Date Last Published\s+Newest first/);
       await expect(updatedDateDesc).toBeVisible();
-      await expect(updatedDateDesc).toHaveTextContent("Updated Date");
+      await expect(updatedDateDesc).toHaveTextContent("Date Last Published");
       await expect(updatedDateDesc).toHaveTextContent("Newest first");
     });
   },
@@ -97,7 +97,7 @@ export const SelectPublishedOldest = {
 
     await step("update selected label", async () => {
       const trigger = await canvas.findByRole("button", { name: "Sort search results" });
-      await expect(within(trigger).getByText("Published Date")).toBeVisible();
+      await expect(within(trigger).getByText("Date First Published")).toBeVisible();
       await expect(within(trigger).getByText("Oldest first")).toBeVisible();
     });
   },

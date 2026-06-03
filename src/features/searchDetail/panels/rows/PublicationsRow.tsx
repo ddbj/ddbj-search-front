@@ -1,5 +1,6 @@
 import type { FC } from "react";
 import type { Publication } from "@/api/detail/base.ts";
+import { detailFieldLabels } from "@/consts/entryDisplayLabels.ts";
 import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
 import { sanitizeHTML } from "@/utils/sanitizeHTML.ts";
 
@@ -7,7 +8,7 @@ type Props = { publications: Publication[] };
 
 export const PublicationsRow: FC<Props> = ({ publications }) => {
   return (
-    <InfoListItem term={"Publications"}>
+    <InfoListItem term={detailFieldLabels.publications}>
       <ul className={"flex flex-col gap-y-2"}>
         {publications.map((p) => (
           <li className={"flex flex-col"} key={p.id}>

@@ -1,5 +1,6 @@
 import type { FC } from "react";
 import type { Organism } from "@/api/detail/base.ts";
+import { detailFieldLabels } from "@/consts/entryDisplayLabels.ts";
 import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
 
 type Props = { organism: Organism };
@@ -8,7 +9,7 @@ export const OrganismRow: FC<Props> = ({ organism }) => {
   const label = organism.name || organism.identifier || "";
 
   return (
-    <InfoListItem term={"Organism"}>
+    <InfoListItem term={detailFieldLabels.organism}>
       <a
         href={makeNcbiTaxLink(organism.identifier)}
         className={"text-link-primary"}

@@ -8,6 +8,7 @@ import {
 } from "@/api/consts.ts";
 import type { SearchDetailResponse } from "@/api/types.ts";
 import { dbLabels } from "@/consts/db.ts";
+import { detailFieldLabels } from "@/consts/entryDisplayLabels.ts";
 import {
   accessibilityTooltipDescriptions,
   statusTooltipDescriptions,
@@ -31,12 +32,12 @@ export const StatusPanel: FC<Props> = ({ data }) => {
   return (
     <PanelWrapper>
       <InfoList gapX={4}>
-        <SanitizedRow term={"Type"} value={dbLabels[data.type]} />
-        <SanitizedRow term={"Accession"} value={data.identifier} />
-        <InfoListItem term={"Status"} toolTipContent={<StatusHelp />}>
+        <SanitizedRow term={detailFieldLabels.type} value={dbLabels[data.type]} />
+        <SanitizedRow term={detailFieldLabels.accession} value={data.identifier} />
+        <InfoListItem term={detailFieldLabels.status} toolTipContent={<StatusHelp />}>
           {getStatusLabels(data.status)}
         </InfoListItem>
-        <InfoListItem term={"Accessibility"} toolTipContent={<AccessibilityHelp />}>
+        <InfoListItem term={detailFieldLabels.accessibility} toolTipContent={<AccessibilityHelp />}>
           {data.accessibility === "controlled-access" ? (
             <span className={"flex h-5 items-center gap-x-0.5 leading-5"}>
               <span className={"inline-flex h-5 shrink-0 items-center"}>
@@ -48,13 +49,13 @@ export const StatusPanel: FC<Props> = ({ data }) => {
             accessibilityLabel
           )}
         </InfoListItem>
-        <InfoListItem term={"Submitted date"} contentNoWrap={true}>
+        <InfoListItem term={detailFieldLabels.dateCreated} contentNoWrap={true}>
           {createdDate}
         </InfoListItem>
-        <InfoListItem term={"Published date"} contentNoWrap={true}>
+        <InfoListItem term={detailFieldLabels.datePublished} contentNoWrap={true}>
           {publishedDate}
         </InfoListItem>
-        <InfoListItem term={"Updated date"} contentNoWrap={true}>
+        <InfoListItem term={detailFieldLabels.dateModified} contentNoWrap={true}>
           {modifiedDate}
         </InfoListItem>
       </InfoList>

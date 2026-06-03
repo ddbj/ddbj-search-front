@@ -41,7 +41,7 @@ const StatefulDateRangePicker = ({
 const meta = {
   component: DateRangePicker,
   args: {
-    label: "Published Date",
+    label: "Date First Published",
     value: "",
     onChange: fn(),
   },
@@ -70,13 +70,15 @@ export const WithSelectedRange = {
 export const PopoverOpen = {
   play: async ({ canvas, step }) => {
     await step("open popover", async () => {
-      const trigger = await canvas.findByRole("button", { name: /Open Published Date calendar/ });
+      const trigger = await canvas.findByRole("button", {
+        name: /Open Date First Published calendar/,
+      });
       await userEvent.click(trigger);
     });
 
     await step("show calendar overlay", async () => {
       const heading = await screen.findByRole("heading", {
-        name: /Published Date calendar, /,
+        name: /Date First Published calendar, /,
       });
       await expect(heading).toBeVisible();
     });
@@ -90,7 +92,9 @@ export const ClearFromParent = {
   render: (args) => <StatefulDateRangePicker {...args} withClearButton />,
   play: async ({ canvas, step }) => {
     await step("show selected range before clearing", async () => {
-      const picker = await canvas.findByRole("group", { name: /Published Date Published Date/ });
+      const picker = await canvas.findByRole("group", {
+        name: /Date First Published Date First Published/,
+      });
       const monthStart = within(picker).getByRole("spinbutton", { name: /month, Start Date/ });
       await expect(monthStart).toHaveValue(1);
     });
@@ -103,7 +107,7 @@ export const ClearFromParent = {
     await step("return to empty placeholder state", async () => {
       await waitFor(async () => {
         const picker = await canvas.findByRole("group", {
-          name: /Published Date Published Date/,
+          name: /Date First Published Date First Published/,
         });
         const monthStart = within(picker).getByRole("spinbutton", { name: /month, Start Date/ });
         const monthEnd = within(picker).getByRole("spinbutton", { name: /month, End Date/ });

@@ -1,4 +1,5 @@
 import { type FC } from "react";
+import { searchResultDateLabels } from "@/consts/entryDisplayLabels.ts";
 import { useDebouncedUiValue } from "@/features/searchResult/queryBuilder/hooks/useDebouncedUiValue.ts";
 import { DateRangePicker } from "@/features/searchResult/queryBuilder/premitives/DateRangePicker.tsx";
 
@@ -28,8 +29,16 @@ export const DateSelectors: FC<Props> = ({
 
   return (
     <div className={wrapperClasses}>
-      <DateRangePicker label={"Published Date"} value={uiPublished} onChange={setUiPublished} />
-      <DateRangePicker label={"Updated Date"} value={uiUpdated} onChange={setUiUpdated} />
+      <DateRangePicker
+        label={searchResultDateLabels.datePublishedFilter}
+        value={uiPublished}
+        onChange={setUiPublished}
+      />
+      <DateRangePicker
+        label={searchResultDateLabels.dateModifiedFilter}
+        value={uiUpdated}
+        onChange={setUiUpdated}
+      />
     </div>
   );
 };

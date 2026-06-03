@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { expect } from "storybook/test";
 import type { Xref } from "@/api/detail/base.ts";
 import { XrefPanel } from "./XrefPanel.tsx";
 import { parseRefs } from "./xrefPanelUtils.ts";
@@ -45,5 +46,8 @@ export const Primary = {
     }),
     identifier: "AAAA",
     dbType: "biosample",
+  },
+  play: async ({ canvas }) => {
+    await expect(await canvas.findByText("Related Links")).toBeInTheDocument();
   },
 } satisfies Story;
