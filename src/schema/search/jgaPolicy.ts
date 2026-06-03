@@ -1,7 +1,9 @@
 import * as z from "zod";
-import { baseSearchSchema, paginationShape } from "@/schema/search/base.ts";
+import { baseSearchSchema, paginationShape, publicationSearchShape } from "@/schema/search/base.ts";
 
-export const jgaPolicySpecificShape = {} as const;
+export const jgaPolicySpecificShape = {
+  ...publicationSearchShape,
+} as const;
 export const jgaPolicySearchSchema = baseSearchSchema.extend({
   ...paginationShape,
   ...jgaPolicySpecificShape,

@@ -1,11 +1,18 @@
 import * as z from "zod";
 import { allSearchSpecificShape } from "@/schema/search/all.ts";
-import { baseSearchSchema, paginationShape } from "@/schema/search/base.ts";
+import {
+  baseSearchSchema,
+  grantSearchShape,
+  paginationShape,
+  publicationSearchShape,
+} from "@/schema/search/base.ts";
 import { bioProjectSpecificShape } from "@/schema/search/bioProject.ts";
 import { bioSampleSpecificShape } from "@/schema/search/bioSample.ts";
 
 export const anySearchSchema = baseSearchSchema.extend({
   ...paginationShape,
+  ...publicationSearchShape,
+  ...grantSearchShape,
   ...allSearchSpecificShape,
   ...bioProjectSpecificShape,
   ...bioSampleSpecificShape,

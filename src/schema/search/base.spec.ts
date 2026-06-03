@@ -9,4 +9,14 @@ describe("baseSearchSchema", () => {
   it("keeps non-numeric organism values", () => {
     expect(baseSearchSchema.parse({ organism: "abc" }).organism).toBe("abc");
   });
+
+  it("strips filters that are not common to all entry routes", () => {
+    const result = baseSearchSchema.parse({
+      organization: "DDBJ",
+      publication: "Nature",
+      grant: "AMED",
+    });
+
+    expect(result).toEqual({ organization: "DDBJ" });
+  });
 });

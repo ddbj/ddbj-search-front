@@ -1,6 +1,9 @@
 import { describe, expect, it } from "vitest";
 import { __QUERY_LISTS_TEST__ } from "@/features/searchResult/result/QueryTipList.tsx";
+import { allSearchSchema } from "@/schema/search/all.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
+import { bioprojectSearchSchema } from "@/schema/search/bioProject.ts";
+import { biosampleSearchSchema } from "@/schema/search/bioSample.ts";
 
 const { parseQueryStateToTipList } = __QUERY_LISTS_TEST__;
 
@@ -79,5 +82,38 @@ describe("parseQueryStateToTipList", () => {
     state.grant = undefined;
     const result = parseQueryStateToTipList(state);
     expect(result.length).toBe(0);
+  });
+
+  it("should not show unsupported all-entry filters after route state sanitization", () => {
+    const state = allSearchSchema.parse({
+      organization: "DDBJ",
+      publication: "Nature",
+      grant: "AMED",
+    });
+    const result = parseQueryStateToTipList(state);
+
+    expect(result.map((tip) => tip.label.name)).toEqual(["Organization"]);
+  });
+
+  it("should not show unsupported BioSample filters after route state sanitization", () => {
+    const state = biosampleSearchSchema.parse({
+      organization: "DDBJ",
+      publication: "Nature",
+      grant: "AMED",
+    });
+    const result = parseQueryStateToTipList(state);
+
+    expect(result.map((tip) => tip.label.name)).toEqual(["Organization"]);
+  });
+
+  it("should show supported BioProject filters after route state sanitization", () => {
+    const state = bioprojectSearchSchema.parse({
+      organization: "DDBJ",
+      publication: "Nature",
+      grant: "AMED",
+    });
+    const result = parseQueryStateToTipList(state);
+
+    expect(result.map((tip) => tip.label.name)).toEqual(["Organization", "Publication", "Grant"]);
   });
 });

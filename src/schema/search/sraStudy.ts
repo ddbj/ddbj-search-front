@@ -1,7 +1,9 @@
 import * as z from "zod";
-import { baseSearchSchema, paginationShape } from "@/schema/search/base.ts";
+import { baseSearchSchema, paginationShape, publicationSearchShape } from "@/schema/search/base.ts";
 
-export const sraStudySpecificShape = {} as const;
+export const sraStudySpecificShape = {
+  ...publicationSearchShape,
+} as const;
 export const sraStudySearchSchema = baseSearchSchema.extend({
   ...paginationShape,
   ...sraStudySpecificShape,

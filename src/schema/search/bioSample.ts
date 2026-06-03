@@ -1,5 +1,9 @@
 import * as z from "zod";
-import { baseSearchSchema, paginationShape } from "@/schema/search/base.ts";
+import {
+  baseSearchSchema,
+  paginationShape,
+  type SearchParamsWithUnsupportedDetailFilters,
+} from "@/schema/search/base.ts";
 
 export const bioSampleSpecificShape = {
   // Add BioSample-specific parameters here if needed
@@ -8,4 +12,6 @@ export const biosampleSearchSchema = baseSearchSchema.extend({
   ...paginationShape,
   ...bioSampleSpecificShape,
 });
-export type BiosampleSearchParams = z.infer<typeof biosampleSearchSchema>;
+export type BiosampleSearchParams = SearchParamsWithUnsupportedDetailFilters<
+  z.infer<typeof biosampleSearchSchema>
+>;
