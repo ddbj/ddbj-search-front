@@ -55,3 +55,16 @@ export const NavigateToSingleType = {
     });
   },
 } satisfies Story;
+
+export const NavigateBySampleQuery = {
+  play: async ({ canvas, userEvent }) => {
+    const router = window.__STORYBOOK_ROUTER__;
+    if (!router) throw new Error("Router not found");
+
+    const sampleQuery = await canvas.findByTestId("sample-query-bioproject-crest");
+    await userEvent.click(sampleQuery);
+
+    expect(router.state.location.pathname).toBe("/entry/bioproject/");
+    expect(router.state.location.search).toEqual({ grant: "CREST" });
+  },
+} satisfies Story;
