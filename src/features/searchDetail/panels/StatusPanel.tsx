@@ -1,3 +1,4 @@
+import { clsx } from "clsx";
 import { Fragment, type FC } from "react";
 import {
   accessibilityLabels,
@@ -61,14 +62,15 @@ export const StatusPanel: FC<Props> = ({ data }) => {
   );
 };
 
+const helpWrapperClasses = clsx("flex flex-col gap-y-1");
 const StatusHelp: FC = () => {
   return (
-    <dl className={"grid grid-cols-[auto_1fr] gap-x-2"}>
+    <dl className={helpWrapperClasses}>
       {visibleStatusTooltipValues.map((value) => (
-        <Fragment key={value}>
+        <div key={value}>
           <dt>[{statusLabels[value]}]</dt>
           <dd>{statusTooltipDescriptions[value]}</dd>
-        </Fragment>
+        </div>
       ))}
     </dl>
   );
@@ -76,12 +78,12 @@ const StatusHelp: FC = () => {
 
 const AccessibilityHelp: FC = () => {
   return (
-    <dl className={"grid grid-cols-[auto_1fr] gap-x-2"}>
+    <dl className={helpWrapperClasses}>
       {visibleAccessibilityTooltipValues.map((value) => (
-        <Fragment key={value}>
+        <div key={value}>
           <dt>[{accessibilityLabels[value]}]</dt>
           <dd>{accessibilityTooltipDescriptions[value]}</dd>
-        </Fragment>
+        </div>
       ))}
     </dl>
   );

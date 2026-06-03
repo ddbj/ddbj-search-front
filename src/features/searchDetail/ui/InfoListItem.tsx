@@ -34,10 +34,11 @@ export const InfoListItem: FC<Props> = ({
   return (
     <li className={"col-span-2 grid min-w-0 grid-cols-subgrid bg-white py-2 leading-5"}>
       <div className={clsx("flex min-w-0 gap-0.5 font-bold", `items-${verticalAlign}`)}>
+        <span className={termsClass}>{term}</span>
         {toolTipContent && (
           <Tooltip
             content={toolTipContent}
-            placement={"top start"}
+            placement={"top"}
             closeDelay={100}
             classNames={{
               content: [clsx("bg-gray-500 text-white")],
@@ -48,7 +49,6 @@ export const InfoListItem: FC<Props> = ({
             </span>
           </Tooltip>
         )}
-        <span className={termsClass}>{term}</span>
       </div>
       <div className={contentClass}>{children}</div>
     </li>
