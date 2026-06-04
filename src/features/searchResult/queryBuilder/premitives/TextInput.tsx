@@ -1,4 +1,4 @@
-import { Input, InputGroup } from "@heroui/react";
+import { InputGroup } from "@heroui/react";
 import { clsx } from "clsx";
 import type { FC } from "react";
 import { ClearButton } from "@/features/searchResult/queryBuilder/premitives/ClearButton.tsx";

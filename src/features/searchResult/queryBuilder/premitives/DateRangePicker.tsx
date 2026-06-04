@@ -4,15 +4,12 @@ import {
   I18nProvider,
   Label,
   RangeCalendar,
-  CloseButton,
-  CloseIcon,
 } from "@heroui/react";
 import { parseDate } from "@internationalized/date";
 import clsx from "clsx";
 import { type FC } from "react";
 import { ClearButton } from "@/features/searchResult/queryBuilder/premitives/ClearButton.tsx";
 import { CalendarIcon } from "@/features/shared/graphics/CalendarIcon.tsx";
-import { CircleCloseIcon } from "@/features/shared/graphics/CircleCloseIcon.tsx";
 
 type Props = {
   label: string;
