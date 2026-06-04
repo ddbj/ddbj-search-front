@@ -20,7 +20,7 @@ type Props = {
 
 const sectionClasses = "flex flex-col gap-0.5";
 const titleClasses = "text-sm font-medium leading-5 text-gray-700";
-const listClasses = "flex flex-col gap-1";
+const listClasses = "flex flex-col gap-1 items-start";
 
 export const ObjectTypeSelector: FC<Props> = ({ value, params, update }) => {
   const { uiValue, setUiValue } = useDebouncedUiValue(value, update);

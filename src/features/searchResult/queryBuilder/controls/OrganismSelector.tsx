@@ -15,7 +15,7 @@ type Props = {
 const sectionClasses = "flex flex-col gap-2";
 const headingClasses = "flex flex-col gap-0.5";
 const titleClasses = "text-sm font-medium leading-5 text-gray-700";
-const listClasses = "flex flex-col gap-1";
+const listClasses = "flex flex-col gap-1 items-start";
 const listScrollClasses = "max-h-[200px] overflow-y-auto";
 
 export const OrganismSelector: FC<Props> = ({ value, items, update }) => {

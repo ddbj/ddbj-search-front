@@ -14,9 +14,9 @@ type Props = {
 const sectionClasses = clsx("flex flex-col gap-2");
 const wrapperClasses = clsx("flex flex-col gap-0.5");
 const titleClasses = clsx("text-sm font-medium text-gray-700");
-const listClasses = clsx("flex flex-col");
+const listClasses = clsx("flex flex-col items-start");
 const summaryClasses = clsx("cursor-pointer text-sm font-medium text-gray-700");
-const contentClasses = clsx("flex flex-col gap-1");
+const contentClasses = clsx("flex flex-col items-start gap-1");
 
 export const OtherTypeSelector: FC<Props> = ({
   currentType,
