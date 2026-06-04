@@ -45,7 +45,7 @@ export const Tooltip: FC<Props> = ({
 }) => {
   return (
     <HeroTooltip isOpen={isOpen} delay={closeDelay}>
-      <HeroTooltip.Trigger>{children}</HeroTooltip.Trigger>
+      <HeroTooltip.Trigger className={"leading-none"}>{children}</HeroTooltip.Trigger>
       <HeroTooltip.Content className={clsx(classNames?.content)} placement={placement} showArrow>
         {content}
       </HeroTooltip.Content>
