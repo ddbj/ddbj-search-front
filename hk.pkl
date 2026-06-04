@@ -1,0 +1,34 @@
+amends "package://github.com/jdx/hk/releases/download/v1.44.2/hk@1.44.2#/Config.pkl"
+
+local linters = new Mapping<String, Step> {
+  ["oxfmt"] {
+    glob = List("**/*.{js,jsx,ts,tsx,json,jsonc,css,scss,html,md}")
+    check = "pnpm exec oxfmt --config oxfmt.config.ts --check {{files}}"
+    fix = "pnpm exec oxfmt --config oxfmt.config.ts {{files}}"
+  }
+  ["oxlint"] {
+    glob = List("**/*.{js,jsx,ts,tsx}")
+    check = "pnpm exec oxlint --config oxlint.config.ts {{files}}"
+    fix = "pnpm exec oxlint --config oxlint.config.ts --fix {{files}}"
+  }
+  ["stylelint"] {
+    glob = List("**/*.{css,scss}")
+    check = "pnpm exec stylelint {{files}}"
+    fix = "pnpm exec stylelint {{files}} --fix"
+  }
+}
+
+hooks {
+  ["pre-commit"] {
+    fix = true
+    stash = "git"
+    steps = linters
+  }
+  ["check"] {
+    steps = linters
+  }
+  ["fix"] {
+    fix = true
+    steps = linters
+  }
+}
