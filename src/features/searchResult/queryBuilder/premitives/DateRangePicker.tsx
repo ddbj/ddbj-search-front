@@ -31,7 +31,7 @@ const fieldGroupClasses = clsx(
   "hover:border-gray-300",
 );
 const popoverClasses = clsx("rounded border border-gray-200 bg-white p-3 shadow-lg");
-const literalSegmentClasses = clsx("mx-1");
+const literalSegmentClasses = clsx("");
 // See docs/decisions/2026-04-27-date-range-picker-locale.md for why en-CA is used here.
 const englishYearMonthDayLocale = "en-CA";
 
@@ -53,7 +53,7 @@ export const DateRangePicker: FC<Props> = ({ label, value, onChange }) => {
             <DateField.Input slot="start">
               {(segment) => <DateRangeSegment segment={segment} />}
             </DateField.Input>
-            <HeroDateRangePicker.RangeSeparator className="px-2 text-gray-400" />
+            <HeroDateRangePicker.RangeSeparator className="p-0.5 text-gray-400" />
             <DateField.Input slot="end">
               {(segment) => <DateRangeSegment segment={segment} />}
             </DateField.Input>

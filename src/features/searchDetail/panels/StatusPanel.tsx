@@ -1,5 +1,5 @@
 import { clsx } from "clsx";
-import { Fragment, type FC } from "react";
+import { type FC } from "react";
 import {
   accessibilityLabels,
   getAccessibilityLabels,
