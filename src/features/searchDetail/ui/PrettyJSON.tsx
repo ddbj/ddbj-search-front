@@ -28,8 +28,9 @@ type Props = {
 
 const DEFAULT_INITIAL_HEIGHT = "11rem";
 const DEFAULT_MAX_LINES_FOR_HIGHLIGHTER = 10_000;
-const TOOLBAR_BUTTON_CLASS =
-  "flex h-fit w-fit cursor-pointer rounded-sm bg-white fill-gray-800 p-0.5 align-middle";
+const TOOLBAR_BUTTON_CLASS = clsx(
+  "flex h-fit w-fit cursor-pointer rounded-sm bg-white fill-gray-800 p-0.5 align-middle",
+);
 
 export const PrettyJSON: FC<Props> = ({
   additionalActions,

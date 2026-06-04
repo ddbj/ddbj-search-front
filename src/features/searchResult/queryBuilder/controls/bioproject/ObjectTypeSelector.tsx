@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { clsx } from "clsx";
 import { type FC } from "react";
 import {
   type BioProjectObjectType,
@@ -18,9 +19,9 @@ type Props = {
   update: (objectTypes: BioProjectObjectType[]) => void;
 };
 
-const sectionClasses = "flex flex-col gap-0.5";
-const titleClasses = "text-sm font-medium leading-5 text-gray-700";
-const listClasses = "flex flex-col gap-1 items-start";
+const sectionClasses = clsx("flex flex-col gap-0.5");
+const titleClasses = clsx("text-sm leading-5 font-medium text-gray-700");
+const listClasses = clsx("flex flex-col items-start gap-1");
 
 export const ObjectTypeSelector: FC<Props> = ({ value, params, update }) => {
   const { uiValue, setUiValue } = useDebouncedUiValue(value, update);

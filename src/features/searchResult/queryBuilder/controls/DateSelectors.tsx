@@ -1,3 +1,4 @@
+import { clsx } from "clsx";
 import { type FC } from "react";
 import { searchResultDateLabels } from "@/consts/entryDisplayLabels.ts";
 import { useDebouncedUiValue } from "@/features/searchResult/queryBuilder/hooks/useDebouncedUiValue.ts";
@@ -10,7 +11,7 @@ type Props = {
   changeModified: (v: string) => void;
 };
 
-const wrapperClasses = "flex flex-col gap-4";
+const wrapperClasses = clsx("flex flex-col gap-4");
 
 export const DateSelectors: FC<Props> = ({
   published,

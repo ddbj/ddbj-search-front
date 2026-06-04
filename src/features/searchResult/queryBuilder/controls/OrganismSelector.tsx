@@ -1,4 +1,5 @@
 import { ScrollShadow } from "@heroui/react";
+import { clsx } from "clsx";
 import { type FC, useCallback } from "react";
 import type { FacetItem } from "@/api/facets/base.ts";
 import { useDebouncedUiValue } from "@/features/searchResult/queryBuilder/hooks/useDebouncedUiValue.ts";
@@ -12,11 +13,11 @@ type Props = {
   update: (organism: string | null) => void;
 };
 
-const sectionClasses = "flex flex-col gap-2";
-const headingClasses = "flex flex-col gap-0.5";
-const titleClasses = "text-sm font-medium leading-5 text-gray-700";
-const listClasses = "flex flex-col gap-1 items-start";
-const listScrollClasses = "max-h-[200px] overflow-y-auto";
+const sectionClasses = clsx("flex flex-col gap-2");
+const headingClasses = clsx("flex flex-col gap-0.5");
+const titleClasses = clsx("text-sm leading-5 font-medium text-gray-700");
+const listClasses = clsx("flex flex-col items-start gap-1");
+const listScrollClasses = clsx("max-h-[200px] overflow-y-auto");
 
 export const OrganismSelector: FC<Props> = ({ value, items, update }) => {
   const updateTaxId = useCallback(

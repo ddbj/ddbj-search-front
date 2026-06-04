@@ -1,11 +1,12 @@
+import { clsx } from "clsx";
 import type { FC, PropsWithChildren } from "react";
 
 type Props = {
   label: string;
 } & PropsWithChildren;
 
-const wrapperClasses = "flex flex-col gap-0.5";
-const labelClasses = "text-sm font-medium leading-5 text-gray-700";
+const wrapperClasses = clsx("flex flex-col gap-0.5");
+const labelClasses = clsx("text-sm leading-5 font-medium text-gray-700");
 
 export const LabeledInput: FC<Props> = ({ label, children }) => {
   return (

@@ -50,10 +50,19 @@ export const ResultInfo: FC<Props> = ({
       <div className={wrapperClasses}>
         <div className={headerClasses}>
           <p className="text-sm leading-6 text-gray-700">
-            Found {isLoading ? <CountPlaceholder widthClassName="w-16" /> : formatNumber(itemCount)}{" "}
+            Found{" "}
+            {isLoading ? (
+              <CountPlaceholder widthClassName={clsx("w-16")} />
+            ) : (
+              formatNumber(itemCount)
+            )}{" "}
             entries / Displaying{" "}
-            {isLoading ? <CountPlaceholder widthClassName="w-6" /> : currentPage} of{" "}
-            {isLoading ? <CountPlaceholder widthClassName="w-10" /> : formatNumber(totalPages)}{" "}
+            {isLoading ? <CountPlaceholder widthClassName={clsx("w-6")} /> : currentPage} of{" "}
+            {isLoading ? (
+              <CountPlaceholder widthClassName={clsx("w-10")} />
+            ) : (
+              formatNumber(totalPages)
+            )}{" "}
             pages
             {!isLoading && itemCount > MAX_ENTRIES && (
               <>

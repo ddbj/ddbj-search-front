@@ -1,6 +1,7 @@
+import { clsx } from "clsx";
 import type { FC } from "react";
 
-const blockClasses = "rounded-sm bg-gray-100";
+const blockClasses = clsx("rounded-sm bg-gray-100");
 
 export const ResultCardSkeleton: FC = () => {
   return (

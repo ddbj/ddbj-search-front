@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { clsx } from "clsx";
 import { type FC, useMemo } from "react";
 import type { FacetItem } from "@/api/facets/base.ts";
 import { dbTypes, type DBType } from "@/consts/db.ts";
@@ -26,7 +27,7 @@ type Props = {
   update: UpdateSearchFunctions;
   params: AnySearchParams;
 };
-const wrapperClasses = "flex w-72 shrink-0 flex-col gap-4";
+const wrapperClasses = clsx("flex w-72 shrink-0 flex-col gap-4");
 
 export const QueryBuilder: FC<Props> = ({ currentType, update, params }) => {
   const {
