@@ -2,6 +2,8 @@ import type { FC } from "react";
 import type { Publication } from "@/api/detail/base.ts";
 import { detailFieldLabels } from "@/consts/entryDisplayLabels.ts";
 import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
+import { ExternalLinkIcon } from "@/features/shared/graphics/ExternalLinkIcon.tsx";
+import { linkIconClasses } from "@/styles/classTokens.ts";
 import { sanitizeHTML } from "@/utils/sanitizeHTML.ts";
 
 type Props = { publications: Publication[] };
@@ -16,6 +18,7 @@ export const PublicationsRow: FC<Props> = ({ publications }) => {
             {p.url ? (
               <a href={p.url} target={"_blank"} className={"text-link-primary"}>
                 {composeTitle(p)}
+                <ExternalLinkIcon className={linkIconClasses} />
               </a>
             ) : (
               <span>{composeTitle(p)}</span>

@@ -2,6 +2,8 @@ import type { FC } from "react";
 import type { Organization } from "@/api/detail/base.ts";
 import { detailFieldLabels } from "@/consts/entryDisplayLabels.ts";
 import { InfoListItem } from "@/features/searchDetail/ui/InfoListItem.tsx";
+import { ExternalLinkIcon } from "@/features/shared/graphics/ExternalLinkIcon.tsx";
+import { linkIconClasses } from "@/styles/classTokens.ts";
 
 type Props = { organizations: Organization[] };
 
@@ -28,6 +30,7 @@ const OrganizationItem: FC<{ org: Organization }> = ({ org }) => {
         {org.url ? (
           <a href={org.url} target={"_blank"} className={"text-link-primary"}>
             {org.name}
+            <ExternalLinkIcon className={linkIconClasses} />
           </a>
         ) : (
           <span>{org.name}</span>
