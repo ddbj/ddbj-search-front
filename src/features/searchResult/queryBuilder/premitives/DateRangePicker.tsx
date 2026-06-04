@@ -4,11 +4,15 @@ import {
   I18nProvider,
   Label,
   RangeCalendar,
+  CloseButton,
+  CloseIcon,
 } from "@heroui/react";
 import { parseDate } from "@internationalized/date";
 import clsx from "clsx";
 import { type FC } from "react";
+import { ClearButton } from "@/features/searchResult/queryBuilder/premitives/ClearButton.tsx";
 import { CalendarIcon } from "@/features/shared/graphics/CalendarIcon.tsx";
+import { CircleCloseIcon } from "@/features/shared/graphics/CircleCloseIcon.tsx";
 
 type Props = {
   label: string;
@@ -49,8 +53,15 @@ export const DateRangePicker: FC<Props> = ({ label, value, onChange }) => {
       >
         <Label className="text-sm font-medium text-gray-700">{label}</Label>
         <DateField.Group className={fieldGroupClasses} fullWidth variant="secondary">
+          <DateField.Prefix className={"ml-1"}>
+            <HeroDateRangePicker.Trigger aria-label={`Open ${label} calendar`}>
+              <HeroDateRangePicker.TriggerIndicator className="w-5 text-gray-500">
+                <CalendarIcon className="fill-current" />
+              </HeroDateRangePicker.TriggerIndicator>
+            </HeroDateRangePicker.Trigger>
+          </DateField.Prefix>
           <DateField.InputContainer>
-            <DateField.Input slot="start">
+            <DateField.Input slot="start" className={"pl-0"}>
               {(segment) => <DateRangeSegment segment={segment} />}
             </DateField.Input>
             <HeroDateRangePicker.RangeSeparator className="p-0.5 text-gray-400" />
@@ -58,12 +69,8 @@ export const DateRangePicker: FC<Props> = ({ label, value, onChange }) => {
               {(segment) => <DateRangeSegment segment={segment} />}
             </DateField.Input>
           </DateField.InputContainer>
-          <DateField.Suffix>
-            <HeroDateRangePicker.Trigger aria-label={`Open ${label} calendar`}>
-              <HeroDateRangePicker.TriggerIndicator className="w-5 text-gray-500">
-                <CalendarIcon className="fill-current" />
-              </HeroDateRangePicker.TriggerIndicator>
-            </HeroDateRangePicker.Trigger>
+          <DateField.Suffix className={"mr-2"}>
+            <ClearButton onClick={() => onChange("")} />
           </DateField.Suffix>
         </DateField.Group>
         <HeroDateRangePicker.Popover className={popoverClasses}>
