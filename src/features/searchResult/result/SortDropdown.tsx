@@ -24,7 +24,6 @@ type Item = {
 const items: Item[] = [
   {
     label: "Default",
-    caption: "Database ranking",
     value: SELECT_DEFAULT,
     icon: <StarShineIcon className="h-3.5 w-3.5" />,
   },
