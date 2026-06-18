@@ -3,10 +3,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { zodValidator } from "@tanstack/zod-adapter";
 import { API_PATH_JGA_DATASET_LIST } from "@/api/paths.ts";
 import { dbTypes } from "@/consts/db.ts";
-import { useUpdateSearchFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 import { fetchJgaDatasets } from "@/fetch/entries/fetchJgaDatasetEntries.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
 import { jgaDatasetSearchSchema } from "@/schema/search/jgaDataset.ts";
+import { useUpdateSearchFunctions } from "@/views/searchResult/components/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 import { EntryListRouteContent } from "../-entryListRouteContent.tsx";
 
 const makeQuery = (params: AnySearchParams) => {

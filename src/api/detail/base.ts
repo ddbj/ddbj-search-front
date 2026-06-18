@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { accessibilityValues, statusValues } from "@/api/consts.ts";
+import { accessibilityValues, statusValues } from "@/api/valueTypes.ts";
 import { extendZod } from "@/utils/extendZod.ts";
 
 extendZod();

@@ -4,8 +4,8 @@ import type { ComponentProps } from "react";
 import { baseDetailRequestSchema } from "@/api/detail/base.ts";
 import { API_PATH_SRA_EXPERIMENT_LIST } from "@/api/paths.ts";
 import { fetchSraExperimentDetail } from "@/fetch/detail/fetchSraExperimentDetail.ts";
-import { SearchDetailLayout } from "@/layout/SearchDetailLayout.tsx";
 import { ensureDetailQueryData } from "@/utils/ensureDetailQueryData.ts";
+import { SearchDetailView } from "@/views/searchDetail/SearchDetailView.tsx";
 
 const makeQuery = (identifier: string) =>
   queryOptions({
@@ -27,6 +27,6 @@ function RouteComponent() {
 
   const props = {
     data,
-  } satisfies ComponentProps<typeof SearchDetailLayout>;
-  return <SearchDetailLayout {...props} />;
+  } satisfies ComponentProps<typeof SearchDetailView>;
+  return <SearchDetailView {...props} />;
 }

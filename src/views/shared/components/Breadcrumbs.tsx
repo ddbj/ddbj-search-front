@@ -1,0 +1,40 @@
+import { Link } from "@tanstack/react-router";
+import clsx from "clsx";
+import type { FC } from "react";
+import { IconTextLink } from "@/views/shared/components/IconTextLink.tsx";
+import { HomeIcon } from "@/views/shared/icons/HomeIcon.tsx";
+
+type Props = {
+  paths: {
+    label: string;
+    to?: string;
+  }[];
+};
+
+export type BreadcrumbsPath = Props["paths"][0];
+
+const wrapperClasses = clsx("flex gap-x-3 text-base");
+const linkClasses = clsx(
+  "fill-link-primary text-link-primary hover:fill-link-primary-hover hover:text-link-primary-hover block w-fit",
+);
+
+export const Breadcrumbs: FC<Props> = ({ paths }) => {
+  return (
+    <nav className={wrapperClasses}>
+      <IconTextLink label={"DDBJ Search Home"} to={"/"} Icon={HomeIcon} />
+      {paths.map(({ label, to }, index) => {
+        return (
+          <span key={`${label}-${index}`} className={"flex w-fit gap-x-3"}>
+            <span>&gt;</span>
+            {to && (
+              <Link to={to} className={linkClasses} from={"/"}>
+                {label}
+              </Link>
+            )}
+            {!to && <span>{label}</span>}
+          </span>
+        );
+      })}
+    </nav>
+  );
+};

@@ -1,8 +1,8 @@
 import type { QueryKey } from "@tanstack/react-query";
 import type { DBType } from "@/consts/db.ts";
-import type { UpdateSearchFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
-import { SearchResultLayout } from "@/layout/SearchResultLayout.tsx";
 import type { AnySearchParams } from "@/schema/search/any.ts";
+import type { UpdateSearchFunctions } from "@/views/searchResult/components/queryBuilder/hooks/useUpdateSearchFunctions.ts";
+import { SearchResultView } from "@/views/searchResult/SearchResultView.tsx";
 import { type EntryListQueryOptions, useEntryListRouteQuery } from "./-useEntryListRouteQuery.ts";
 
 type EntryListRouteContentProps<TQueryKey extends QueryKey> = {
@@ -21,7 +21,7 @@ export const EntryListRouteContent = <TQueryKey extends QueryKey>({
   const { data, isLoading } = useEntryListRouteQuery(queryOptions);
 
   return (
-    <SearchResultLayout
+    <SearchResultView
       entryType={entryType}
       params={params}
       updateFunctions={updateFunctions}

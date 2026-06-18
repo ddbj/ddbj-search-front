@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ApiPage } from "@/layout/ApiPage.tsx";
+import { ApiView } from "@/views/api/ApiView.tsx";
 import "@scalar/api-reference-react/style.css";
 
 export const Route = createFileRoute("/api-doc")({
-  component: ApiPage,
+  component: ApiView,
 });

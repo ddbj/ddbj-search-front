@@ -7,8 +7,8 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { isAppHttpError } from "@/fetch/utils/httpError.ts";
-import { HomePage } from "@/layout/HomePage.tsx";
-import { RouteErrorPage } from "@/layout/RouteErrorPage.tsx";
+import { RouteErrorView } from "@/views/error/RouteErrorView.tsx";
+import { HomeView } from "@/views/home/HomeView.tsx";
 
 export type RouterContext = {
   queryClient: QueryClient;
@@ -50,11 +50,11 @@ function RootComponent() {
 function RootNotFoundComponent() {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
   if (pathname === "/index.html" || pathname === "/index.html/") {
-    return <HomePage />;
+    return <HomeView />;
   }
 
   return (
-    <RouteErrorPage
+    <RouteErrorView
       statusCode={404}
       title={"Page Not Found"}
       description={
@@ -68,7 +68,7 @@ function RootErrorComponent({ error, reset }: ErrorComponentProps) {
   const { statusCode, title, description } = getRootErrorPageModel(error);
 
   return (
-    <RouteErrorPage
+    <RouteErrorView
       statusCode={statusCode}
       title={title}
       description={description}

@@ -1,11 +1,11 @@
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 import { z } from "zod";
-import { tags } from "@/api/consts.ts";
 import { bioSampleListRequestParamsShape } from "@/api/entries/bioSample.ts";
 import {
   baseFacetListRequestParamsSchema,
   baseFacetListResponseSchema,
 } from "@/api/facets/base.ts";
+import { tags } from "@/api/openapiTags.ts";
 import { API_PATH_BIOSAMPLE_FACET_LIST, omitBaseApiPath } from "@/api/paths.ts";
 
 const bioSampleFacetListRequestParamsSchema = baseFacetListRequestParamsSchema.extend({

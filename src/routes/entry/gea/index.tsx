@@ -3,10 +3,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { zodValidator } from "@tanstack/zod-adapter";
 import { API_PATH_GEA_LIST } from "@/api/paths.ts";
 import { dbTypes } from "@/consts/db.ts";
-import { useUpdateSearchFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 import { fetchGeaEntries } from "@/fetch/entries/fetchGeaEntries.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
 import { geaSearchSchema } from "@/schema/search/gea.ts";
+import { useUpdateSearchFunctions } from "@/views/searchResult/components/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 import { EntryListRouteContent } from "../-entryListRouteContent.tsx";
 
 const makeQuery = (params: AnySearchParams) => {

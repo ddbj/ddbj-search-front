@@ -1,0 +1,51 @@
+import { useMemo, type FC } from "react";
+import { getDBXrefAPIPath } from "@/api/paths.ts";
+import { MAX_DB_XREFS } from "@/consts/counts.ts";
+import { relatedLinkLabels } from "@/consts/entryDisplayLabels.ts";
+import { InfoList } from "@/views/searchDetail/components/ui/InfoList.tsx";
+import { PanelWrapper } from "@/views/searchDetail/components/ui/PanelWrapper.tsx";
+import {
+  XrefListItem,
+  type XrefListItemProps,
+} from "@/views/searchDetail/components/ui/XrefListItem.tsx";
+
+type Props = {
+  xrefs: XrefListItemProps[];
+  identifier: string;
+  dbType: string;
+};
+
+export const XrefPanel: FC<Props> = ({ xrefs, identifier, dbType }) => {
+  const isTruncated = useMemo(() => {
+    return xrefs.some((entry) => entry.items.length !== entry.actualCount);
+  }, [xrefs]);
+
+  return xrefs.length === 0 ? (
+    <></>
+  ) : (
+    <PanelWrapper>
+      <div className={"pt-2 text-sm font-bold"}>{relatedLinkLabels.panelTitle}</div>
+      {isTruncated && <TruncatedMessage identifier={identifier} dbType={dbType} />}
+      <InfoList>
+        {xrefs.map((entry) => {
+          return (
+            <XrefListItem key={`${entry.dbName}`} {...{ ...entry, isTruncated }}></XrefListItem>
+          );
+        })}
+      </InfoList>
+    </PanelWrapper>
+  );
+};
+
+const TruncatedMessage: FC<Pick<Props, "identifier" | "dbType">> = ({ identifier, dbType }) => {
+  const apiURL = getDBXrefAPIPath(dbType, identifier);
+  return (
+    <div className={"bg-fire-bush-50 rounded p-2 text-sm"}>
+      In favor of readability, the list of {relatedLinkLabels.truncatedListName} is truncated to{" "}
+      {MAX_DB_XREFS} entries. For the complete list, please refer to the{" "}
+      <a href={apiURL} target={"_blank"} className={"text-link-primary"}>
+        dedicated API.
+      </a>
+    </div>
+  );
+};

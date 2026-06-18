@@ -4,8 +4,8 @@ import type { ComponentProps } from "react";
 import { baseDetailRequestSchema } from "@/api/detail/base.ts";
 import { API_PATH_BIOSAMPLE_LIST } from "@/api/paths.ts";
 import { fetchBioSampleDetail } from "@/fetch/detail/fetchBioSampleDetail.ts";
-import { SearchDetailLayout } from "@/layout/SearchDetailLayout.tsx";
 import { ensureDetailQueryData } from "@/utils/ensureDetailQueryData.ts";
+import { SearchDetailView } from "@/views/searchDetail/SearchDetailView.tsx";
 
 //
 const makeQuery = (identifier: string) =>
@@ -27,6 +27,6 @@ function RouteComponent() {
   const { data } = useSuspenseQuery(makeQuery(identifier));
   const props = {
     data,
-  } satisfies ComponentProps<typeof SearchDetailLayout>;
-  return <SearchDetailLayout {...props} />;
+  } satisfies ComponentProps<typeof SearchDetailView>;
+  return <SearchDetailView {...props} />;
 }

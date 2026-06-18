@@ -1,4 +1,4 @@
-import type { AccessibilityValue, StatusValue } from "@/api/consts.ts";
+import type { AccessibilityValue, StatusValue } from "@/api/valueTypes.ts";
 
 export const statusTooltipDescriptions: Record<StatusValue, string> = {
   public: "Searchable by accession number and keywords",

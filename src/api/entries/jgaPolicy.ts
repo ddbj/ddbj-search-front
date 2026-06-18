@@ -1,12 +1,12 @@
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 import { z } from "zod";
-import { tags } from "@/api/consts.ts";
 import {
   baseEntryListRequestParamsSchema,
   entryListItemResponseSchema,
   entryListResponseSchema,
   publicationRequestParamsShape,
 } from "@/api/entries/base.ts";
+import { tags } from "@/api/openapiTags.ts";
 import { API_PATH_JGA_POLICY_LIST, omitBaseApiPath } from "@/api/paths.ts";
 
 export const jgaPolicyListRequestParamsShape = {

@@ -1,0 +1,36 @@
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { InfoList } from "@/views/searchDetail/components/ui/InfoList.tsx";
+import { PanelWrapper } from "@/views/searchDetail/components/ui/PanelWrapper.tsx";
+import { OrganismRow } from "./OrganismRow.tsx";
+
+const meta = {
+  component: OrganismRow,
+  args: {},
+  decorators: [
+    (Story) => {
+      return (
+        <PanelWrapper>
+          <InfoList>
+            <Story />
+          </InfoList>
+        </PanelWrapper>
+      );
+    },
+  ],
+} satisfies Meta<typeof OrganismRow>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Primary = {
+  args: {
+    organism: {
+      name: "Homo sapiens",
+      identifier: "9606",
+    },
+  },
+} satisfies Story;
+
+// TODO: identifier が有効でないケース
+// TODO: nameが存在していないケース

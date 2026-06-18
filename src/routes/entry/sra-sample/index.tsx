@@ -3,10 +3,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { zodValidator } from "@tanstack/zod-adapter";
 import { API_PATH_SRA_SAMPLE_LIST } from "@/api/paths.ts";
 import { dbTypes } from "@/consts/db.ts";
-import { useUpdateSearchFunctions } from "@/features/searchResult/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 import { fetchSraSamples } from "@/fetch/entries/fetchSraSampleEntries.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
 import { sraSampleSearchSchema } from "@/schema/search/sraSample.ts";
+import { useUpdateSearchFunctions } from "@/views/searchResult/components/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 import { EntryListRouteContent } from "../-entryListRouteContent.tsx";
 
 const makeQuery = (params: AnySearchParams) => {

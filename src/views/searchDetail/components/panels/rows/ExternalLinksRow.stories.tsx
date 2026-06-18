@@ -1,0 +1,33 @@
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { InfoList } from "@/views/searchDetail/components/ui/InfoList.tsx";
+import { ExternalLinksRow } from "./ExternalLinksRow.tsx";
+
+const meta = {
+  component: ExternalLinksRow,
+  decorators: [
+    (Story) => (
+      <InfoList>
+        <Story />
+      </InfoList>
+    ),
+  ],
+} satisfies Meta<typeof ExternalLinksRow>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Primary = {
+  args: {
+    externalLinks: [
+      {
+        label: "DDBJ",
+        url: "https://www.ddbj.nig.ac.jp/",
+      },
+      {
+        label: "NCBI",
+        url: "https://www.ncbi.nlm.nih.gov/",
+      },
+    ],
+  },
+} satisfies Story;
