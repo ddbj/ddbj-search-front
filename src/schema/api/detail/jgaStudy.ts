@@ -2,7 +2,11 @@ import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-re
 import { z } from "zod";
 import { baseDetailRequestSchema, baseDetailResponseSchema } from "@/schema/api/detail/base.ts";
 import { tags } from "@/schema/api/openapiTags.ts";
-import { addIdentifierToPath, API_PATH_JGA_STUDY_LIST, omitBaseApiPath } from "@/schema/api/paths.ts";
+import {
+  addIdentifierToPath,
+  API_PATH_JGA_STUDY_LIST,
+  omitBaseApiPath,
+} from "@/schema/api/paths.ts";
 
 const jgaStudyDetailRequestParamsSchema = baseDetailRequestSchema.extend({});
 

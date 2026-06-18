@@ -22,7 +22,10 @@ import type {
   BioSampleFacetListResponse,
 } from "@/schema/api/facets/bioSample.ts";
 import type { GeaFacetListRequestParams, GeaFacetListResponse } from "@/schema/api/facets/gea.ts";
-import type { JgaDacFacetListRequestParams, JgaDacFacetListResponse } from "@/schema/api/facets/jgaDac.ts";
+import type {
+  JgaDacFacetListRequestParams,
+  JgaDacFacetListResponse,
+} from "@/schema/api/facets/jgaDac.ts";
 import type {
   JgaDatasetFacetListRequestParams,
   JgaDatasetFacetListResponse,
@@ -47,7 +50,10 @@ import type {
   SraExperimentFacetListRequestParams,
   SraExperimentFacetListResponse,
 } from "@/schema/api/facets/sraExperiment.ts";
-import type { SraRunFacetListRequestParams, SraRunFacetListResponse } from "@/schema/api/facets/sraRun.ts";
+import type {
+  SraRunFacetListRequestParams,
+  SraRunFacetListResponse,
+} from "@/schema/api/facets/sraRun.ts";
 import type {
   SraSampleFacetListRequestParams,
   SraSampleFacetListResponse,

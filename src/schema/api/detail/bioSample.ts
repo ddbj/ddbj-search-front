@@ -6,7 +6,11 @@ import {
   XrefSchema,
 } from "@/schema/api/detail/base.ts";
 import { tags } from "@/schema/api/openapiTags.ts";
-import { addIdentifierToPath, API_PATH_BIOSAMPLE_LIST, omitBaseApiPath } from "@/schema/api/paths.ts";
+import {
+  addIdentifierToPath,
+  API_PATH_BIOSAMPLE_LIST,
+  omitBaseApiPath,
+} from "@/schema/api/paths.ts";
 
 const bioSamplePackageSchema = z.object({
   displayName: z.string().nullable().optional(),

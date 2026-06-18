@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { accessibilityValues, booleanStrings, sortKeyValues } from "@/schema/api/valueTypes.ts";
 import { extendZod } from "@/lib/zod/extendZod.ts";
+import { accessibilityValues, booleanStrings, sortKeyValues } from "@/schema/api/valueTypes.ts";
 
 extendZod();
 

@@ -6,7 +6,11 @@ import {
   XrefSchema,
 } from "@/schema/api/detail/base.ts";
 import { tags } from "@/schema/api/openapiTags.ts";
-import { addIdentifierToPath, API_PATH_BIOPROJECT_LIST, omitBaseApiPath } from "@/schema/api/paths.ts";
+import {
+  addIdentifierToPath,
+  API_PATH_BIOPROJECT_LIST,
+  omitBaseApiPath,
+} from "@/schema/api/paths.ts";
 
 const bioProjectDetailRequestParamsSchema = baseDetailRequestSchema.extend({});
 const bioProjectDetailResponseSchema = baseDetailResponseSchema

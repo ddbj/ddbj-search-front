@@ -1,6 +1,9 @@
 import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
 import { z } from "zod";
-import { baseEntryListRequestParamsSchema, entryListResponseSchema } from "@/schema/api/entries/base.ts";
+import {
+  baseEntryListRequestParamsSchema,
+  entryListResponseSchema,
+} from "@/schema/api/entries/base.ts";
 import { tags } from "@/schema/api/openapiTags.ts";
 import { API_PATH_ALL_ENTRIES_LIST, omitBaseApiPath } from "@/schema/api/paths.ts";
 

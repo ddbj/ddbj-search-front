@@ -1,4 +1,6 @@
 import { OpenApiGeneratorV31, OpenAPIRegistry } from "@asteasolutions/zod-to-openapi";
+import { API_PATH_LIVE, API_PATH_STAGING } from "@/consts/paths.ts";
+import { extendZod } from "@/lib/zod/extendZod.ts";
 import { bioProjectDetailRequestDoc } from "@/schema/api/detail/bioProject.ts";
 import { bioSampleDetailRequestDoc } from "@/schema/api/detail/bioSample.ts";
 import { geaDetailRequestDoc } from "@/schema/api/detail/gea.ts";
@@ -43,8 +45,6 @@ import { sraRunFacetListRequestDoc } from "@/schema/api/facets/sraRun.ts";
 import { sraSampleFacetListRequestDoc } from "@/schema/api/facets/sraSample.ts";
 import { sraStudyFacetListRequestDoc } from "@/schema/api/facets/sraStudy.ts";
 import { sraSubmissionFacetListRequestDoc } from "@/schema/api/facets/sraSubmission.ts";
-import { API_PATH_LIVE, API_PATH_STAGING } from "@/consts/paths.ts";
-import { extendZod } from "@/lib/zod/extendZod.ts";
 
 extendZod();
 
