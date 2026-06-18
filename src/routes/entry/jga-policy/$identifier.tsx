@@ -3,8 +3,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import type { ComponentProps } from "react";
 import { baseDetailRequestSchema } from "@/api/detail/base.ts";
 import { API_PATH_JGA_POLICY_LIST } from "@/api/paths.ts";
-import { fetchJgaPolicyDetail } from "@/fetch/detail/fetchJgaPolicyDetail.ts";
-import { ensureDetailQueryData } from "@/utils/ensureDetailQueryData.ts";
+import { fetchJgaPolicyDetail } from "@/lib/fetch/detail/fetchJgaPolicyDetail.ts";
+import { ensureDetailQueryData } from "@/lib/router/ensureDetailQueryData.ts";
 import { SearchDetailView } from "@/views/searchDetail/SearchDetailView.tsx";
 
 const makeQuery = (identifier: string) =>

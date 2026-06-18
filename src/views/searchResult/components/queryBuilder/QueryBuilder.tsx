@@ -6,7 +6,7 @@ import { dbTypes, type DBType } from "@/consts/db.ts";
 import {
   fetchOrganismFacets,
   makeOrganismFacetQueryKey,
-} from "@/fetch/facets/fetchOrganismFacets.ts";
+} from "@/lib/fetch/facets/fetchOrganismFacets.ts";
 import type { AllSearchParams } from "@/schema/search/all.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
 import { isBaseSearchKey } from "@/schema/search/base.ts";

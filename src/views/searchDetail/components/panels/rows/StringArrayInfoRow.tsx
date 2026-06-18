@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { sanitizeHTML } from "@/utils/sanitizeHTML.ts";
+import { sanitizeHTML } from "@/lib/sanitizing/sanitizeHTML.ts";
 import { InfoListItem } from "@/views/searchDetail/components/ui/InfoListItem.tsx";
 
 type Props = {

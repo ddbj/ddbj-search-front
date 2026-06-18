@@ -5,7 +5,7 @@ import type { AllFacetListResponse } from "@/api/facets/all.ts";
 import type { FacetItem } from "@/api/facets/base.ts";
 import type { BioProjectFacetListResponse } from "@/api/facets/bioProject.ts";
 import { dbTypes } from "@/consts/db.ts";
-import { makeOrganismFacetQueryKey } from "@/fetch/facets/fetchOrganismFacets.ts";
+import { makeOrganismFacetQueryKey } from "@/lib/fetch/facets/fetchOrganismFacets.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
 import { __SB_updateFunctions } from "@/views/searchResult/components/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 import { QueryBuilder } from "@/views/searchResult/components/queryBuilder/QueryBuilder.tsx";

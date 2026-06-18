@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { AppHttpError } from "@/fetch/utils/httpError.ts";
+import { AppHttpError } from "@/lib/fetch/http/httpError.ts";
 import { __TEST__RouteErrorView } from "@/views/error/RouteErrorView.tsx";
 
 const { getRouteErrorViewModel } = __TEST__RouteErrorView;

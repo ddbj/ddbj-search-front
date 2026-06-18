@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, fn } from "storybook/test";
-import { sleep } from "@/utils/sleep.ts";
+import { sleep } from "@/lib/storybook/sleep.ts";
 import { KeywordInput } from "./KeywordInput.tsx";
 
 const mockChangeKeywords = fn((_value: string[]) => {});

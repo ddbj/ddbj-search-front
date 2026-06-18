@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { zodValidator } from "@tanstack/zod-adapter";
 import { API_PATH_SRA_SUBMISSION_LIST } from "@/api/paths.ts";
 import { dbTypes } from "@/consts/db.ts";
-import { fetchSraSubmissions } from "@/fetch/entries/fetchSraSubmissionEntries.ts";
+import { fetchSraSubmissions } from "@/lib/fetch/entries/fetchSraSubmissionEntries.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
 import { sraSubmissionSearchSchema } from "@/schema/search/sraSubmission.ts";
 import { useUpdateSearchFunctions } from "@/views/searchResult/components/queryBuilder/hooks/useUpdateSearchFunctions.ts";

@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { zodValidator } from "@tanstack/zod-adapter";
 import { API_PATH_BIOPROJECT_LIST } from "@/api/paths.ts";
 import { dbTypes } from "@/consts/db.ts";
-import { fetchBioProjects } from "@/fetch/entries/fetchBioProjectEntries.ts";
+import { fetchBioProjects } from "@/lib/fetch/entries/fetchBioProjectEntries.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
 import { bioprojectSearchSchema } from "@/schema/search/bioProject.ts";
 import { useUpdateSearchFunctions } from "@/views/searchResult/components/queryBuilder/hooks/useUpdateSearchFunctions.ts";

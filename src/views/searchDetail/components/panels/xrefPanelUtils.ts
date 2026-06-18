@@ -1,7 +1,7 @@
 import type { DbXrefsCount, Xref } from "@/api/detail/base.ts";
 import { getXrefDbLabel } from "@/consts/db.ts";
-import { reorderXrefs } from "@/utils/reorderXrefs.ts";
-import { resolveDbLink } from "@/utils/sanitizeDbLink.ts";
+import { reorderXrefs } from "@/lib/entry/reorderXrefs.ts";
+import { resolveDbLink } from "@/lib/sanitizing/sanitizeDbLink.ts";
 import type { XrefListItemProps } from "@/views/searchDetail/components/ui/XrefListItem.tsx";
 
 export const parseRefs = (refs: Xref[] | null, count: DbXrefsCount): XrefListItemProps[] => {

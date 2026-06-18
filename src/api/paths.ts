@@ -1,5 +1,5 @@
 import { BASE_API_PATH } from "@/consts/paths";
-import { extendZod } from "@/utils/extendZod.ts";
+import { extendZod } from "@/lib/zod/extendZod.ts";
 
 export const API_PATH_ALL_ENTRIES_LIST = `${BASE_API_PATH}entries/`;
 export const API_PATH_BIOPROJECT_LIST = `${BASE_API_PATH}entries/bioproject/`;

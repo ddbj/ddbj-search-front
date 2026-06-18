@@ -3,10 +3,10 @@ import { clsx } from "clsx";
 import { type FC } from "react";
 import type { FacetItem } from "@/api/facets/base.ts";
 import { dbLabels, type DBType, isDBType } from "@/consts/db.ts";
-import { fetchAllFacets } from "@/fetch/facets/fetchAllFacets.ts";
+import { fetchAllFacets } from "@/lib/fetch/facets/fetchAllFacets.ts";
+import { formatNumber } from "@/lib/formatting/formatNumber.ts";
 import type { AllSearchParams } from "@/schema/search/all.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
-import { formatNumber } from "@/utils/formatNumber.ts";
 import { useDebouncedUiValue } from "@/views/searchResult/components/queryBuilder/hooks/useDebouncedUiValue.ts";
 import { CheckboxText } from "@/views/searchResult/components/queryBuilder/primitives/CheckboxText.tsx";
 

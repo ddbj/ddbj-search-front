@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import type { ResolvedDbLink } from "@/utils/sanitizeDbLink.ts";
+import type { ResolvedDbLink } from "@/lib/sanitizing/sanitizeDbLink.ts";
 import { DbLink } from "@/views/searchDetail/components/ui/DbLink.tsx";
 
 type Props = {

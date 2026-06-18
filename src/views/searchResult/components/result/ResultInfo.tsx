@@ -1,9 +1,9 @@
 import clsx from "clsx";
 import type { FC } from "react";
 import { MAX_ENTRIES } from "@/consts/counts.ts";
+import { formatNumber } from "@/lib/formatting/formatNumber.ts";
+import { getTotalPages } from "@/lib/pagination/getTotalPages.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
-import { formatNumber } from "@/utils/formatNumber.ts";
-import { getTotalPages } from "@/utils/getTotalPages.ts";
 import type { UpdateSearchFunctions } from "@/views/searchResult/components/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 import { QueryTipList } from "@/views/searchResult/components/result/QueryTipList.tsx";
 import { SortDropdown } from "@/views/searchResult/components/result/SortDropdown.tsx";

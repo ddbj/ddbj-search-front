@@ -1,8 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { clsx } from "clsx";
 import { type FC, Fragment } from "react";
+import { getTotalPages } from "@/lib/pagination/getTotalPages.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
-import { getTotalPages } from "@/utils/getTotalPages.ts";
 
 type Props = {
   current: number;

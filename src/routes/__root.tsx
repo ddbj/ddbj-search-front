@@ -6,7 +6,7 @@ import {
   useRouterState,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
-import { isAppHttpError } from "@/fetch/utils/httpError.ts";
+import { isAppHttpError } from "@/lib/fetch/http/httpError.ts";
 import { RouteErrorView } from "@/views/error/RouteErrorView.tsx";
 import { HomeView } from "@/views/home/HomeView.tsx";
 

@@ -1,0 +1,23 @@
+import type { EnsureQueryDataOptions, QueryClient, QueryKey } from "@tanstack/react-query";
+import { notFound } from "@tanstack/react-router";
+import { isAppHttpError } from "@/lib/fetch/http/httpError.ts";
+
+export const ensureDetailQueryData = async <
+  TQueryFnData,
+  TError = Error,
+  TData = TQueryFnData,
+  TQueryKey extends QueryKey = QueryKey,
+>(
+  queryClient: Pick<QueryClient, "ensureQueryData">,
+  queryOptions: EnsureQueryDataOptions<TQueryFnData, TError, TData, TQueryKey>,
+) => {
+  try {
+    await queryClient.ensureQueryData(queryOptions);
+  } catch (error) {
+    if (isAppHttpError(error) && error.status === 404) {
+      throw notFound();
+    }
+
+    throw error;
+  }
+};

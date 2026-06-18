@@ -1,8 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import clsx from "clsx";
 import type { FC } from "react";
-import { isAppHttpError } from "@/fetch/utils/httpError.ts";
-import { useTitle } from "@/utils/useTitle.ts";
+import { isAppHttpError } from "@/lib/fetch/http/httpError.ts";
+import { useTitle } from "@/lib/react/useTitle.ts";
 import type { BreadcrumbsPath } from "@/views/shared/components/Breadcrumbs.tsx";
 import { GlobalHeader } from "@/views/shared/components/GlobalHeader.tsx";
 

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { AppHttpError } from "@/fetch/utils/httpError.ts";
+import { AppHttpError } from "@/lib/fetch/http/httpError.ts";
 import { RouteErrorView } from "./RouteErrorView.tsx";
 
 const meta = {

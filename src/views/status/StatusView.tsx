@@ -1,5 +1,5 @@
 import { type FC, useMemo } from "react";
-import { useTitle } from "@/utils/useTitle.ts";
+import { useTitle } from "@/lib/react/useTitle.ts";
 import type { BreadcrumbsPath } from "@/views/shared/components/Breadcrumbs.tsx";
 import { GlobalHeader } from "@/views/shared/components/GlobalHeader.tsx";
 

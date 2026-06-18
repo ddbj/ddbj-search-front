@@ -44,7 +44,7 @@ import { sraSampleFacetListRequestDoc } from "@/api/facets/sraSample.ts";
 import { sraStudyFacetListRequestDoc } from "@/api/facets/sraStudy.ts";
 import { sraSubmissionFacetListRequestDoc } from "@/api/facets/sraSubmission.ts";
 import { API_PATH_LIVE, API_PATH_STAGING } from "@/consts/paths.ts";
-import { extendZod } from "@/utils/extendZod.ts";
+import { extendZod } from "@/lib/zod/extendZod.ts";
 
 extendZod();
 

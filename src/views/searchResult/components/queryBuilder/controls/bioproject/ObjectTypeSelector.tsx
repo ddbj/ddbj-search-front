@@ -7,9 +7,9 @@ import {
   bioProjectObjectTypeValues,
   getBioProjectObjectTypeLabel,
 } from "@/api/valueTypes.ts";
-import { fetchBioProjectFacets } from "@/fetch/facets/fetchBioProjectFacets.ts";
+import { fetchBioProjectFacets } from "@/lib/fetch/facets/fetchBioProjectFacets.ts";
+import { formatNumber } from "@/lib/formatting/formatNumber.ts";
 import type { BioprojectSearchParams } from "@/schema/search/bioProject.ts";
-import { formatNumber } from "@/utils/formatNumber.ts";
 import { useDebouncedUiValue } from "@/views/searchResult/components/queryBuilder/hooks/useDebouncedUiValue.ts";
 import { CheckboxText } from "@/views/searchResult/components/queryBuilder/primitives/CheckboxText.tsx";
 

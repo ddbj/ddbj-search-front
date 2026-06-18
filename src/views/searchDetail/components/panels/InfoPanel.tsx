@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import type { SearchDetailResponse } from "@/api/types.ts";
 import { detailFieldLabels } from "@/consts/entryDisplayLabels.ts";
-import { sanitizeHTML } from "@/utils/sanitizeHTML.ts";
+import { sanitizeHTML } from "@/lib/sanitizing/sanitizeHTML.ts";
 import { ExternalLinksRow as ExternalLinksValueRow } from "@/views/searchDetail/components/panels/rows/ExternalLinksRow.tsx";
 import { GrantsRow as GrantsValueRow } from "@/views/searchDetail/components/panels/rows/GrantsRow.tsx";
 import { OrganismRow as OrganismValueRow } from "@/views/searchDetail/components/panels/rows/OrganismRow.tsx";

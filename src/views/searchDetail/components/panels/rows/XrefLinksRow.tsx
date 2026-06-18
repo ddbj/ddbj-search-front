@@ -1,6 +1,6 @@
 import type { FC } from "react";
 import type { Xref } from "@/api/detail/base.ts";
-import { resolveDbLink } from "@/utils/sanitizeDbLink.ts";
+import { resolveDbLink } from "@/lib/sanitizing/sanitizeDbLink.ts";
 import { DbLink } from "@/views/searchDetail/components/ui/DbLink.tsx";
 import { InfoListItem } from "@/views/searchDetail/components/ui/InfoListItem.tsx";
 

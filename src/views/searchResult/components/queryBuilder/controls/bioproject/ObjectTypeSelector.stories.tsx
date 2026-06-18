@@ -3,7 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { expect, fn } from "storybook/test";
 import type { BioProjectFacetListResponse } from "@/api/facets/bioProject.ts";
 import type { BioProjectObjectType } from "@/api/valueTypes.ts";
-import { sleep } from "@/utils/sleep.ts";
+import { sleep } from "@/lib/storybook/sleep.ts";
 import { ObjectTypeSelector } from "./ObjectTypeSelector.tsx";
 
 const mockUpdateObjectTypes = fn((_value: BioProjectObjectType[]) => {});

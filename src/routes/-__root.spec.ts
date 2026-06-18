@@ -1,7 +1,7 @@
 // This file stays under src/routes for colocation, and the leading "-"
 // keeps TanStack Router from treating it as a route module.
 import { describe, expect, it } from "vitest";
-import { AppHttpError } from "@/fetch/utils/httpError.ts";
+import { AppHttpError } from "@/lib/fetch/http/httpError.ts";
 import { __TEST__RootRoute } from "@/routes/__root.tsx";
 
 const { getRootErrorPageModel } = __TEST__RootRoute;

@@ -1,4 +1,4 @@
-import { getNullableString, getUnknownRecord } from "@/utils/unknown.ts";
+import { getNullableString, getUnknownRecord } from "@/lib/parsing/unknown.ts";
 import type { AttributeKeyValue } from "@/views/searchDetail/components/panels/AttributesPanel.tsx";
 
 export const parseBioSampleAttributes = (properties: unknown): AttributeKeyValue[] => {

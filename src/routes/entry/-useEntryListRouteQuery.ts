@@ -1,6 +1,6 @@
 import { useQuery, type QueryKey, type UseQueryOptions } from "@tanstack/react-query";
 import type { EntryListResponse } from "@/api/entries/base.ts";
-import { isInvalidOrganismSearchParamError } from "@/fetch/utils/httpError.ts";
+import { isInvalidOrganismSearchParamError } from "@/lib/fetch/http/httpError.ts";
 
 export type EntryListQueryOptions<TQueryKey extends QueryKey> = UseQueryOptions<
   EntryListResponse,

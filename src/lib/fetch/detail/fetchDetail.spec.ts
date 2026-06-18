@@ -1,0 +1,176 @@
+import { describe, expect, it, vi } from "vitest";
+import {
+  API_PATH_BIOPROJECT_LIST,
+  API_PATH_BIOSAMPLE_LIST,
+  API_PATH_GEA_LIST,
+  API_PATH_JGA_DAC_LIST,
+  API_PATH_JGA_DATASET_LIST,
+  API_PATH_JGA_POLICY_LIST,
+  API_PATH_JGA_STUDY_LIST,
+  API_PATH_METABOBANK_LIST,
+  API_PATH_SRA_ANALYSIS_LIST,
+  API_PATH_SRA_EXPERIMENT_LIST,
+  API_PATH_SRA_RUN_LIST,
+  API_PATH_SRA_SAMPLE_LIST,
+  API_PATH_SRA_STUDY_LIST,
+  API_PATH_SRA_SUBMISSION_LIST,
+} from "@/api/paths.ts";
+import { fetchBioProjectDetail } from "@/lib/fetch/detail/fetchBioProjectDetail.ts";
+import { fetchBioSampleDetail } from "@/lib/fetch/detail/fetchBioSampleDetail.ts";
+import { fetchGeaDetail } from "@/lib/fetch/detail/fetchGeaDetail.ts";
+import { fetchJgaDacDetail } from "@/lib/fetch/detail/fetchJgaDacDetail.ts";
+import { fetchJgaDatasetDetail } from "@/lib/fetch/detail/fetchJgaDatasetDetail.ts";
+import { fetchJgaPolicyDetail } from "@/lib/fetch/detail/fetchJgaPolicyDetail.ts";
+import { fetchJgaStudyDetail } from "@/lib/fetch/detail/fetchJgaStudyDetail.ts";
+import { fetchMetaboBankDetail } from "@/lib/fetch/detail/fetchMetaboBankDetail.ts";
+import { fetchSraAnalysisDetail } from "@/lib/fetch/detail/fetchSraAnalysisDetail.ts";
+import { fetchSraExperimentDetail } from "@/lib/fetch/detail/fetchSraExperimentDetail.ts";
+import { fetchSraRunDetail } from "@/lib/fetch/detail/fetchSraRunDetail.ts";
+import { fetchSraSampleDetail } from "@/lib/fetch/detail/fetchSraSampleDetail.ts";
+import { fetchSraStudyDetail } from "@/lib/fetch/detail/fetchSraStudyDetail.ts";
+import { fetchSraSubmissionDetail } from "@/lib/fetch/detail/fetchSraSubmissionDetail.ts";
+
+type Case = {
+  name: string;
+  basePath: string;
+  fn: (identifier: string) => Promise<unknown>;
+};
+
+const cases: Case[] = [
+  {
+    name: "bioproject",
+    basePath: API_PATH_BIOPROJECT_LIST,
+    fn: fetchBioProjectDetail,
+  },
+  {
+    name: "biosample",
+    basePath: API_PATH_BIOSAMPLE_LIST,
+    fn: fetchBioSampleDetail,
+  },
+  {
+    name: "gea",
+    basePath: API_PATH_GEA_LIST,
+    fn: fetchGeaDetail,
+  },
+  {
+    name: "jga-dac",
+    basePath: API_PATH_JGA_DAC_LIST,
+    fn: fetchJgaDacDetail,
+  },
+  {
+    name: "jga-dataset",
+    basePath: API_PATH_JGA_DATASET_LIST,
+    fn: fetchJgaDatasetDetail,
+  },
+  {
+    name: "jga-policy",
+    basePath: API_PATH_JGA_POLICY_LIST,
+    fn: fetchJgaPolicyDetail,
+  },
+  {
+    name: "jga-study",
+    basePath: API_PATH_JGA_STUDY_LIST,
+    fn: fetchJgaStudyDetail,
+  },
+  {
+    name: "metabobank",
+    basePath: API_PATH_METABOBANK_LIST,
+    fn: fetchMetaboBankDetail,
+  },
+  {
+    name: "sra-analysis",
+    basePath: API_PATH_SRA_ANALYSIS_LIST,
+    fn: fetchSraAnalysisDetail,
+  },
+  {
+    name: "sra-experiment",
+    basePath: API_PATH_SRA_EXPERIMENT_LIST,
+    fn: fetchSraExperimentDetail,
+  },
+  {
+    name: "sra-run",
+    basePath: API_PATH_SRA_RUN_LIST,
+    fn: fetchSraRunDetail,
+  },
+  {
+    name: "sra-sample",
+    basePath: API_PATH_SRA_SAMPLE_LIST,
+    fn: fetchSraSampleDetail,
+  },
+  {
+    name: "sra-study",
+    basePath: API_PATH_SRA_STUDY_LIST,
+    fn: fetchSraStudyDetail,
+  },
+  {
+    name: "sra-submission",
+    basePath: API_PATH_SRA_SUBMISSION_LIST,
+    fn: fetchSraSubmissionDetail,
+  },
+];
+
+describe("fetch*Detail", () => {
+  it.each(cases)("should call GET $basePath: $name", async ({ basePath, fn }) => {
+    const identifier = "TEST000001";
+    const mockData = { identifier };
+
+    const mockFetch = vi.fn().mockResolvedValue(
+      new Response(JSON.stringify(mockData), {
+        status: 200,
+        headers: {
+          "content-type": "application/json",
+        },
+      }),
+    );
+
+    vi.stubGlobal("fetch", mockFetch);
+
+    const result = await fn(identifier);
+
+    expect(mockFetch).toHaveBeenCalledWith(`${basePath}${identifier}`, { method: "GET" });
+    expect(result).toEqual(mockData);
+
+    vi.unstubAllGlobals();
+  });
+
+  it.each(cases)(
+    "should throw AppHttpError for a problem response: $name",
+    async ({ basePath, fn }) => {
+      const identifier = "TEST000404";
+
+      const mockFetch = vi.fn().mockResolvedValue(
+        new Response(
+          JSON.stringify({
+            title: "Not Found",
+            status: 404,
+            detail: `${identifier} was not found`,
+            requestId: "request-404",
+          }),
+          {
+            status: 404,
+            statusText: "Not Found",
+            headers: {
+              "content-type": "application/problem+json",
+            },
+          },
+        ),
+      );
+
+      vi.stubGlobal("fetch", mockFetch);
+
+      await expect(fn(identifier)).rejects.toMatchObject({
+        name: "AppHttpError",
+        status: 404,
+        requestId: "request-404",
+        message: `${identifier} was not found`,
+        problem: {
+          title: "Not Found",
+          status: 404,
+        },
+      });
+      expect(mockFetch).toHaveBeenCalledWith(`${basePath}${identifier}`, { method: "GET" });
+
+      vi.unstubAllGlobals();
+    },
+  );
+});

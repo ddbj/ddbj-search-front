@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, fn } from "storybook/test";
-import { sleep } from "@/utils/sleep.ts";
+import { sleep } from "@/lib/storybook/sleep.ts";
 import { Organization } from "./Organization.tsx";
 
 const mockUpdateOrganization = fn((_value: string) => {});

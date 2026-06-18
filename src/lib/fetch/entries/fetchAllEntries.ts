@@ -1,0 +1,28 @@
+import type { AllEntryListRequestParams } from "@/api/entries/all.ts";
+import type { EntryListResponse } from "@/api/entries/base.ts";
+import { API_PATH_ALL_ENTRIES_LIST } from "@/api/paths.ts";
+import { parseJsonResponse } from "@/lib/fetch/http/httpError.ts";
+import { parseBaseEntryParams } from "@/lib/fetch/entries/parseBaseEntryParams.ts";
+import type { AllSearchParams } from "@/schema/search/all.ts";
+
+export const fetchAllEntries = async (params: AllSearchParams) => {
+  const searchParams = parseParams(params);
+  const response = await fetch(
+    `${API_PATH_ALL_ENTRIES_LIST}?${new URLSearchParams(searchParams)}`,
+    {
+      method: "GET",
+    },
+  );
+  return await parseJsonResponse<EntryListResponse>(response);
+};
+
+const parseParams = (params: AllSearchParams): AllEntryListRequestParams => {
+  return {
+    ...parseBaseEntryParams(params),
+    ...(params.types && params.types.length ? { types: params.types.join(",") } : {}),
+  };
+};
+
+export const __TEST__fetchSearchALL = {
+  parseParams,
+};
