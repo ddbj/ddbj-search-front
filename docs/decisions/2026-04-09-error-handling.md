@@ -32,7 +32,7 @@
 
 - TanStack Routerのfile-based routingでは、`src/routes` 配下の補助ファイルもrouteと解釈される
 - routeではないhelperは `src/routes` の外に置くか、ignore対象の命名にする
-- route loaderの共通処理は `src/utils` などに逃がすほうが安全
+- route loaderの共通処理は `src/lib/router` などに逃がすほうが安全
 - 現在のSPA配信では、未知のpathでも `index.html` が返るため、UI上の404は実際のHTTP 404ではない
 
 ## 見直し条件

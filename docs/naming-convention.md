@@ -20,8 +20,8 @@
 - **変数名 / 関数名**: `camelCase`（キャメルケース）
 - **定数**: `UPPER_SNAKE_CASE`（アッパースネークケース）
 - **ファイル名 / ディレクトリ名**:
-  - **コンポーネント / レイアウト**: `PascalCase`
-    - 例: `SearchResultLayout.tsx`, `TypeSelector.tsx`
+  - **View / コンポーネント**: `PascalCase`
+    - 例: `SearchResultView.tsx`, `TypeSelector.tsx`
   - **ユーティリティ / API定義 / ロジック / スキーマ**: `camelCase`
     - 例: `parseBaseEntryParams.ts`, `all.ts`, `searchSchema.ts`
   - **テストファイル**: 元のファイル名に `.spec` を付与する。
@@ -66,7 +66,7 @@
 ### 型の使い分けと変換
 
 1. **`SearchParams`**: フロントエンドのURLが保持する型。配列（`keywords` など）や特定のリテラルを含む。
-2. **変換**: `src/fetch/utils/` 配下などの関数で `SearchParams` を `RequestParams` に変換する。
+2. **変換**: `src/lib/fetch/entries/` や `src/lib/fetch/facets/` 配下などの関数で `SearchParams` を `RequestParams` に変換する。
 3. **`RequestParams`**: APIリクエスト時に実際に送信される型。クエリ文字列として送りやすいように、配列をカンマ区切りの文字列へ変換する。
 
 ## 運用メモ

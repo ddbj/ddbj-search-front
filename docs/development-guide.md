@@ -119,10 +119,11 @@ pnpm test:storybook
 ## リポジトリ構成の目安
 
 - `src/routes`: TanStack Routerのfile-based routes
-- `src/layout`: ページレベルのlayout
-- `src/features`: 機能単位のUIとロジック
-- `src/api`: OpenAPI由来の定義やAPI型
-- `src/fetch`: fetcher と関連ユーティリティ
+- `src/views`: 画面単位のView、View専用component、横断UI
+- `src/schema`: 検索条件やAPI contractなどの定義
+- `src/lib`: fetcherや用途別の共有実装
+- `src/consts`: 横断的に参照する定数
+- `src/msw`: Mock Service Workerのhandlerとfixture
 - `.storybook`: Storybook設定
 
 ## ビルドに関するメモ

@@ -23,7 +23,7 @@
 
 - 検索結果画面のQuery Builder
 - facet countを表示するselector component
-- `src/fetch/facets/` 配下のfacet API fetcher
+- `src/lib/fetch/facets/` 配下のfacet API fetcher
 
 ## 補足
 

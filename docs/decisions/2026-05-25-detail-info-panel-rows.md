@@ -27,7 +27,7 @@
 ## 影響範囲
 
 - Detail画面の `InfoPanel`
-- `src/features/searchDetail/panels/rows/` 配下のRow component
+- `src/views/searchDetail/components/panels/rows/` 配下のRow component
 - Detail画面のInfoPanel Storybook
 - 今後追加するDetail API fieldの表示実装
 

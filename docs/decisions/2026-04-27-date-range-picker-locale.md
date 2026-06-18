@@ -23,7 +23,7 @@
 
 ## 影響範囲
 
-- `src/features/searchResult/queryBuilder/premitives/DateRangePicker.tsx`
+- `src/views/searchResult/components/queryBuilder/primitives/DateRangePicker.tsx`
 - 検索結果画面のQuery Builderにある日付範囲入力
 - Storybook上の `DateRangePicker` 表示
 
