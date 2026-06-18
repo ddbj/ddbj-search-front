@@ -12,6 +12,7 @@ DDBJ Searchのフロントエンドアプリケーション。
 
 - `mise` を利用する
 - Node.jsとpnpmの実行環境は `mise.toml` を基準に管理する
+- 環境変数の一覧と設定例は [docs/environment-variables.md](./docs/environment-variables.md) を参照する
 
 ## 最小セットアップ
 
@@ -38,6 +39,7 @@ mise exec -- pnpm dev
 - ルート直下の `index.html` は `search/index.html` への案内ページ
 - APIドキュメントは TanStack Router の `/search/api-doc/` ルートで表示する
 - `VITE_MSW=true` でローカルモックを有効にできる
+- `.env` はGit管理しないため、共有が必要な設定は [docs/environment-variables.md](./docs/environment-variables.md) に記録する
 
 ## ドキュメント
 

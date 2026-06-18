@@ -11,6 +11,7 @@
 ## 日常開発
 
 - [`development-guide.md`](./development-guide.md): 日常開発で使う手順、検証方針、完了条件
+- [`environment-variables.md`](./environment-variables.md): ローカル開発やビルド時に使う環境変数の一覧と設定例
 - [`documentation-guide.md`](./documentation-guide.md): ドキュメントの書き方、置き分け方、一時メモの扱い
 - [`external-tool-operation.md`](./external-tool-operation.md): AIが外部ツールを使うときの進め方、待ち方、進捗共有の標準運用
 - [`agent-browser.md`](./agent-browser.md): `agent-browser` でStorybookや実アプリを確認するときの前提と成果物運用

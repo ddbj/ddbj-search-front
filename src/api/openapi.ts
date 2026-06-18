@@ -43,7 +43,9 @@ import { sraRunFacetListRequestDoc } from "@/api/facets/sraRun.ts";
 import { sraSampleFacetListRequestDoc } from "@/api/facets/sraSample.ts";
 import { sraStudyFacetListRequestDoc } from "@/api/facets/sraStudy.ts";
 import { sraSubmissionFacetListRequestDoc } from "@/api/facets/sraSubmission.ts";
+import { API_PATH_LIVE, API_PATH_STAGING } from "@/consts/paths.ts";
 import { extendZod } from "@/utils/extendZod.ts";
+
 extendZod();
 
 export const registry = new OpenAPIRegistry();
@@ -103,7 +105,11 @@ export const getDocs = () => {
     },
     servers: [
       {
-        url: "https://ddbj-staging.nig.ac.jp/search/api/",
+        url: API_PATH_LIVE,
+        description: "DDBJ live server",
+      },
+      {
+        url: API_PATH_STAGING,
         description: "DDBJ staging server",
       },
       {
