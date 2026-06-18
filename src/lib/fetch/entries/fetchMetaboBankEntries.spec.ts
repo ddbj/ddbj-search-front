@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import type { MetaboBankListRequestParams } from "@/api/entries/metaboBank.ts";
 import { __TEST__fetchMetaboBankEntries } from "@/lib/fetch/entries/fetchMetaboBankEntries.ts";
+import type { MetaboBankListRequestParams } from "@/schema/api/entries/metaboBank.ts";
 
 const { parseParams } = __TEST__fetchMetaboBankEntries;
 

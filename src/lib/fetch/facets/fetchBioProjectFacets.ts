@@ -1,10 +1,13 @@
+import { parseBaseFacetParams } from "@/lib/fetch/facets/parseBaseFacetParams.ts";
+import {
+  createAppHttpError,
+  isInvalidOrganismSearchParamError,
+} from "@/lib/fetch/http/httpError.ts";
 import type {
   BioProjectFacetListRequestParams,
   BioProjectFacetListResponse,
-} from "@/api/facets/bioProject.ts";
-import { API_PATH_BIOPROJECT_FACET_LIST } from "@/api/paths.ts";
-import { createAppHttpError, isInvalidOrganismSearchParamError } from "@/lib/fetch/http/httpError.ts";
-import { parseBaseFacetParams } from "@/lib/fetch/facets/parseBaseFacetParams.ts";
+} from "@/schema/api/facets/bioProject.ts";
+import { API_PATH_BIOPROJECT_FACET_LIST } from "@/schema/api/paths.ts";
 import type { BioprojectSearchParams } from "@/schema/search/bioProject.ts";
 
 const BIOPROJECT_FACETS = "organism,accessibility,objectType";

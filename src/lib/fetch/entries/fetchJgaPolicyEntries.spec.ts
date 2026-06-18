@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import type { JgaPolicyListRequestParams } from "@/api/entries/jgaPolicy.ts";
 import { __TEST__fetchJgaPolicyEntries } from "@/lib/fetch/entries/fetchJgaPolicyEntries.ts";
+import type { JgaPolicyListRequestParams } from "@/schema/api/entries/jgaPolicy.ts";
 
 const { parseParams } = __TEST__fetchJgaPolicyEntries;
 

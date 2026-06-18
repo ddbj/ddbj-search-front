@@ -1,4 +1,4 @@
-import type { SraRunDetailResponse } from "@/api/detail/sraRun.ts";
+import type { SraRunDetailResponse } from "@/schema/api/detail/sraRun.ts";
 
 export const makeSraRunDetail = (identifier: string): SraRunDetailResponse => ({
   identifier,

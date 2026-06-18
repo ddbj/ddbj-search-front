@@ -1,10 +1,10 @@
 import type { FC } from "react";
-import type { Publication } from "@/api/detail/base.ts";
 import { detailFieldLabels } from "@/consts/entryDisplayLabels.ts";
 import { sanitizeHTML } from "@/lib/sanitizing/sanitizeHTML.ts";
-import { linkIconClasses } from "@/styles/classTokens.ts";
+import type { Publication } from "@/schema/api/detail/base.ts";
 import { InfoListItem } from "@/views/searchDetail/components/ui/InfoListItem.tsx";
 import { ExternalLinkIcon } from "@/views/shared/icons/ExternalLinkIcon.tsx";
+import { linkIconClasses } from "@/views/shared/styles/classTokens.ts";
 
 type Props = { publications: Publication[] };
 

@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
-import type { AllEntryListRequestParams } from "@/api/entries/all.ts";
 import { dbTypes } from "@/consts/db.ts";
 import { __TEST__fetchSearchALL } from "@/lib/fetch/entries/fetchAllEntries.ts";
+import type { AllEntryListRequestParams } from "@/schema/api/entries/all.ts";
 
 const { parseParams } = __TEST__fetchSearchALL;
 

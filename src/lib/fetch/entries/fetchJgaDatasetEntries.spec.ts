@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import type { JgaDatasetListRequestParams } from "@/api/entries/jgaDataset.ts";
 import { __TEST__fetchJgaDatasetEntries } from "@/lib/fetch/entries/fetchJgaDatasetEntries.ts";
+import type { JgaDatasetListRequestParams } from "@/schema/api/entries/jgaDataset.ts";
 
 const { parseParams } = __TEST__fetchJgaDatasetEntries;
 

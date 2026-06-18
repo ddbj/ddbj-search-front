@@ -1,6 +1,6 @@
 import { ApiReferenceReact } from "@scalar/api-reference-react";
 import type { FC } from "react";
-import { getDocs } from "@/api/openapi.ts";
+import { getDocs } from "@/schema/api/openapi.ts";
 import { GlobalHeader } from "@/views/shared/components/GlobalHeader.tsx";
 
 type Props = {};

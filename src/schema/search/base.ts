@@ -1,5 +1,5 @@
 import * as z from "zod";
-import { sortKeyValues } from "@/api/valueTypes.ts";
+import { sortKeyValues } from "@/schema/api/valueTypes.ts";
 
 export const paginationShape = {
   page: z.number().optional(),

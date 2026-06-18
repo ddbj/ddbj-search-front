@@ -1,6 +1,9 @@
-import type { SraRunFacetListRequestParams, SraRunFacetListResponse } from "@/api/facets/sraRun.ts";
-import { API_PATH_SRA_RUN_FACET_LIST } from "@/api/paths.ts";
 import { parseBaseFacetParams } from "@/lib/fetch/facets/parseBaseFacetParams.ts";
+import type {
+  SraRunFacetListRequestParams,
+  SraRunFacetListResponse,
+} from "@/schema/api/facets/sraRun.ts";
+import { API_PATH_SRA_RUN_FACET_LIST } from "@/schema/api/paths.ts";
 import type { SraRunSearchParams } from "@/schema/search/sraRun.ts";
 export const fetchSraRunFacets = async (params: SraRunSearchParams) => {
   const searchParams = parseParams(params) as unknown as Record<string, string>;

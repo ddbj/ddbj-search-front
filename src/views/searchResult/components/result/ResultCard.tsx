@@ -1,10 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import clsx from "clsx";
 import { Fragment, type FC, useMemo } from "react";
-import { getAccessibilityLabels, type AccessibilityValue } from "@/api/valueTypes.ts";
 import { getDbLabel, getXrefDbLabel } from "@/consts/db.ts";
 import { relatedLinkLabels, searchResultDateLabels } from "@/consts/entryDisplayLabels.ts";
 import { reorderXrefs } from "@/lib/entry/reorderXrefs.ts";
+import { getAccessibilityLabels, type AccessibilityValue } from "@/schema/api/valueTypes.ts";
 import { LockIcon } from "@/views/shared/icons/LockIcon.tsx";
 
 type Props = {

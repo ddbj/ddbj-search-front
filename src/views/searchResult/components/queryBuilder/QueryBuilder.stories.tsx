@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { expect } from "storybook/test";
-import type { AllFacetListResponse } from "@/api/facets/all.ts";
-import type { FacetItem } from "@/api/facets/base.ts";
-import type { BioProjectFacetListResponse } from "@/api/facets/bioProject.ts";
 import { dbTypes } from "@/consts/db.ts";
 import { makeOrganismFacetQueryKey } from "@/lib/fetch/facets/fetchOrganismFacets.ts";
+import type { AllFacetListResponse } from "@/schema/api/facets/all.ts";
+import type { FacetItem } from "@/schema/api/facets/base.ts";
+import type { BioProjectFacetListResponse } from "@/schema/api/facets/bioProject.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
 import { __SB_updateFunctions } from "@/views/searchResult/components/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 import { QueryBuilder } from "@/views/searchResult/components/queryBuilder/QueryBuilder.tsx";

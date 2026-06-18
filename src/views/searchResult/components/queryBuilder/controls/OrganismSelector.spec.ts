@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { FacetItem } from "@/api/facets/base.ts";
+import type { FacetItem } from "@/schema/api/facets/base.ts";
 import { __TEST__ORGANISM_SELECTOR } from "@/views/searchResult/components/queryBuilder/controls/OrganismSelector.tsx";
 
 const { getOrganismItemLabel, normalizeTaxIdInput } = __TEST__ORGANISM_SELECTOR;

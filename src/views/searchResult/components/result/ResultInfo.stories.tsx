@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { expect, fn, within } from "storybook/test";
-import type { SortKey } from "@/api/valueTypes.ts";
+import type { SortKey } from "@/schema/api/valueTypes.ts";
 import type { AnySearchParams, AnySearchParamsKey } from "@/schema/search/any.ts";
 import { __TEST_updateFunctions } from "@/views/searchResult/components/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 import { ResultInfo } from "./ResultInfo.tsx";

@@ -1,9 +1,9 @@
+import { parseBaseFacetParams } from "@/lib/fetch/facets/parseBaseFacetParams.ts";
 import type {
   MetaboBankFacetListRequestParams,
   MetaboBankFacetListResponse,
-} from "@/api/facets/metaboBank.ts";
-import { API_PATH_METABOBANK_FACET_LIST } from "@/api/paths.ts";
-import { parseBaseFacetParams } from "@/lib/fetch/facets/parseBaseFacetParams.ts";
+} from "@/schema/api/facets/metaboBank.ts";
+import { API_PATH_METABOBANK_FACET_LIST } from "@/schema/api/paths.ts";
 import type { MetaboBankSearchParams } from "@/schema/search/metaboBank.ts";
 
 export const fetchMetaboBankFacets = async (params: MetaboBankSearchParams) => {

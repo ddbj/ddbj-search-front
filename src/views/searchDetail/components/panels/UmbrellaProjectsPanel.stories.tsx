@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import type { Xref } from "@/api/detail/base.ts";
+import type { Xref } from "@/schema/api/detail/base.ts";
 import { UmbrellaProjectsPanel } from "@/views/searchDetail/components/panels/UmbrellaProjectsPanel.tsx";
 
 const meta = {

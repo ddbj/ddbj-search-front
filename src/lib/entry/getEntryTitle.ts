@@ -1,5 +1,5 @@
-import type { EntryListResponse } from "@/api/entries/base.ts";
-import type { SearchDetailResponse } from "@/api/types.ts";
+import type { EntryListResponse } from "@/schema/api/entries/base.ts";
+import type { SearchDetailResponse } from "@/schema/api/types.ts";
 
 type EntryData = EntryListResponse["items"][number] | SearchDetailResponse;
 

@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import type { SearchDetailResponse } from "@/api/types.ts";
+import type { SearchDetailResponse } from "@/schema/api/types.ts";
 import { InfoList } from "@/views/searchDetail/components/ui/InfoList.tsx";
 import { PanelWrapper } from "@/views/searchDetail/components/ui/PanelWrapper.tsx";
 

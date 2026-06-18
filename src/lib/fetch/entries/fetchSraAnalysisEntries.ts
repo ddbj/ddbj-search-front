@@ -1,8 +1,8 @@
-import type { EntryListResponse } from "@/api/entries/base.ts";
-import type { SraAnalysisListRequestParams } from "@/api/entries/sraAnalysis.ts";
-import { API_PATH_SRA_ANALYSIS_LIST } from "@/api/paths.ts";
-import { parseJsonResponse } from "@/lib/fetch/http/httpError.ts";
 import { parseBaseEntryParams } from "@/lib/fetch/entries/parseBaseEntryParams.ts";
+import { parseJsonResponse } from "@/lib/fetch/http/httpError.ts";
+import type { EntryListResponse } from "@/schema/api/entries/base.ts";
+import type { SraAnalysisListRequestParams } from "@/schema/api/entries/sraAnalysis.ts";
+import { API_PATH_SRA_ANALYSIS_LIST } from "@/schema/api/paths.ts";
 import type { SraAnalysisSearchParams } from "@/schema/search/sraAnalysis.ts";
 
 export const fetchSraAnalyses = async (params: SraAnalysisSearchParams) => {

@@ -1,5 +1,5 @@
-import type { Xref } from "@/api/detail/base.ts";
-import type { SearchDetailResponse } from "@/api/types.ts";
+import type { Xref } from "@/schema/api/detail/base.ts";
+import type { SearchDetailResponse } from "@/schema/api/types.ts";
 
 type UmbrellaProjectsSource =
   | {

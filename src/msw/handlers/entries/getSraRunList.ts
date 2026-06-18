@@ -1,7 +1,7 @@
 import { http, HttpResponse } from "msw";
-import type { EntryListResponse } from "@/api/entries/base.ts";
-import { API_PATH_SRA_RUN_LIST } from "@/api/paths.ts";
 import { makeDummyIdentifier } from "@/msw/utils/makeDummyIdentifier.ts";
+import type { EntryListResponse } from "@/schema/api/entries/base.ts";
+import { API_PATH_SRA_RUN_LIST } from "@/schema/api/paths.ts";
 
 export const getSraRunList = http.get<never, never, EntryListResponse>(
   API_PATH_SRA_RUN_LIST,

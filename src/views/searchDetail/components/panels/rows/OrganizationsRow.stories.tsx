@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import type { Organization } from "@/api/detail/base.ts";
+import type { Organization } from "@/schema/api/detail/base.ts";
 import { InfoList } from "@/views/searchDetail/components/ui/InfoList.tsx";
 import { OrganizationsRow } from "./OrganizationsRow.tsx";
 

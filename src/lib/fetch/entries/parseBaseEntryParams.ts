@@ -1,4 +1,4 @@
-import type { BaseEntryListRequestParams } from "@/api/entries/base.ts";
+import type { BaseEntryListRequestParams } from "@/schema/api/entries/base.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
 
 export const parseBaseEntryParams = (params: AnySearchParams): BaseEntryListRequestParams => {

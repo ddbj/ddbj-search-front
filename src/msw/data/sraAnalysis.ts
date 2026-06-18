@@ -1,4 +1,4 @@
-import type { SraAnalysisDetailResponse } from "@/api/detail/sraAnalysis.ts";
+import type { SraAnalysisDetailResponse } from "@/schema/api/detail/sraAnalysis.ts";
 
 export const makeSraAnalysisDetail = (identifier: string): SraAnalysisDetailResponse => ({
   identifier,

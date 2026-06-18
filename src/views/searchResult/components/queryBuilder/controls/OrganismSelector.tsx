@@ -1,8 +1,8 @@
 import { ScrollShadow } from "@heroui/react";
 import { clsx } from "clsx";
 import { type FC, useCallback } from "react";
-import type { FacetItem } from "@/api/facets/base.ts";
 import { formatNumber } from "@/lib/formatting/formatNumber.ts";
+import type { FacetItem } from "@/schema/api/facets/base.ts";
 import { useDebouncedUiValue } from "@/views/searchResult/components/queryBuilder/hooks/useDebouncedUiValue.ts";
 import { CheckboxText } from "@/views/searchResult/components/queryBuilder/primitives/CheckboxText.tsx";
 import { TextInput } from "@/views/searchResult/components/queryBuilder/primitives/TextInput.tsx";

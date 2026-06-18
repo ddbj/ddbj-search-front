@@ -1,8 +1,8 @@
 import { http, HttpResponse } from "msw";
-import type { BaseDetailRequestParams } from "@/api/detail/base.ts";
-import { addIdentifierToPath, API_PATH_SRA_ANALYSIS_LIST } from "@/api/paths.ts";
 import { makeSraAnalysisDetail } from "@/msw/data/sraAnalysis.ts";
 import { resolveDetailFailureResponse } from "@/msw/handlers/detail/detailFailure.ts";
+import type { BaseDetailRequestParams } from "@/schema/api/detail/base.ts";
+import { addIdentifierToPath, API_PATH_SRA_ANALYSIS_LIST } from "@/schema/api/paths.ts";
 
 const path = addIdentifierToPath(API_PATH_SRA_ANALYSIS_LIST, "MSW");
 

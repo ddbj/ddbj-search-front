@@ -1,9 +1,9 @@
 import { queryOptions } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { zodValidator } from "@tanstack/zod-adapter";
-import { API_PATH_GEA_LIST } from "@/api/paths.ts";
 import { dbTypes } from "@/consts/db.ts";
 import { fetchGeaEntries } from "@/lib/fetch/entries/fetchGeaEntries.ts";
+import { API_PATH_GEA_LIST } from "@/schema/api/paths.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
 import { geaSearchSchema } from "@/schema/search/gea.ts";
 import { useUpdateSearchFunctions } from "@/views/searchResult/components/queryBuilder/hooks/useUpdateSearchFunctions.ts";

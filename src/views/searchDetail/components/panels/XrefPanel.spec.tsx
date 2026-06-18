@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { DbXrefsCount, Xref } from "@/api/detail/base.ts";
+import type { DbXrefsCount, Xref } from "@/schema/api/detail/base.ts";
 import { parseRefs } from "@/views/searchDetail/components/panels/xrefPanelUtils.ts";
 
 describe("parseRefs", () => {

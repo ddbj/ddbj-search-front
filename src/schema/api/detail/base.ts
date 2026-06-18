@@ -1,0 +1,116 @@
+import { z } from "zod";
+import { accessibilityValues, statusValues } from "@/schema/api/valueTypes.ts";
+import { extendZod } from "@/lib/zod/extendZod.ts";
+
+extendZod();
+
+export const baseDetailRequestSchema = z.object({
+  identifier: z.string(),
+});
+export type BaseDetailRequestParams = z.infer<typeof baseDetailRequestSchema>;
+
+export const XrefSchema = z.object({
+  identifier: z.string(),
+  type: z.string(),
+  url: z.string(),
+});
+
+const organizationSchema = z.object({
+  abbreviation: z.string().nullable(),
+  name: z.string().nullable(),
+  organizationType: z.string().nullable(),
+  role: z.string().nullable(),
+  url: z.string().nullable(),
+});
+
+const publicationSchema = z.object({
+  date: z.string().nullable(),
+  Reference: z.string().nullable(),
+  id: z.string(),
+  title: z.string().nullable(),
+  url: z.string().nullable(),
+  DbType: z.string().nullable(),
+  status: z.string().nullable(),
+});
+
+const grantAgencySchema = z.object({
+  abbreviation: z.string().nullable(),
+  name: z.string().nullable(),
+});
+
+const grantSchema = z.object({
+  title: z.string().nullable(),
+  id: z.string(),
+  agency: z.array(grantAgencySchema),
+});
+
+export const baseDetailResponseSchema = z.object({
+  identifier: z.string(),
+  dateCreated: z.string().nullable(),
+  dateModified: z.string().nullable(),
+  datePublished: z.string().nullable(),
+  title: z.string(),
+  organism: z
+    .object({
+      identifier: z.string(),
+      name: z.string().nullable(),
+    })
+    .nullable(),
+  description: z.string().nullable(),
+  organization: z.array(organizationSchema).nullable(),
+  publication: z.array(publicationSchema).nullable(),
+  grant: z.array(grantSchema).nullable(),
+  type: z.string(),
+  accessibility: z.enum(accessibilityValues),
+  status: z.enum(statusValues),
+  dbXrefs: z.array(XrefSchema).nullable().openapi({
+    description:
+      "To handle entries with a large number of refs, loaded refs are caped at n. <br> `dbXrefsCount` holds the total ref count in the DB, so compare as needed and fetch additional refs (refs-only) when required.",
+  }),
+  dbXrefsCount: z.record(z.string(), z.number()).openapi({
+    example: { bioproject: 1, biosample: 1, "sra-study": 2 },
+  }),
+  externalLink: z
+    .array(
+      z.object({
+        url: z.string().nullable().optional(),
+        label: z.string(),
+      }),
+    )
+    .nullable()
+    .optional(),
+  properties: z.unknown(),
+  distribution: z
+    .array(
+      z.object({
+        type: z.string("DataDownload"),
+        encodingFormat: z.string().openapi({ example: "JSON" }),
+        contentUrl: z.string().openapi({ example: "https://example.com/data.json" }),
+      }),
+    )
+    .optional()
+    .nullable(),
+  // downloadUrl: z.array(
+  //   z.object({
+  //     name: z.string(),
+  //     ftpUrl: z.string().optional(),
+  //     type: z.string(),
+  //     url: z.string(),
+  //   })
+  // ),
+  isPartOf: z.string(),
+  name: z.string().nullable().optional(),
+  url: z.unknown(),
+  sameAs: z.array(XrefSchema).nullable(),
+});
+export type BaseDetailResponse = z.infer<typeof baseDetailResponseSchema>;
+export type ExternalLink = NonNullable<BaseDetailResponse["externalLink"]>[0];
+export type DbXrefsCount = BaseDetailResponse["dbXrefsCount"];
+export type Organism = NonNullable<BaseDetailResponse["organism"]>;
+export type Organization = NonNullable<BaseDetailResponse["organization"]>[number];
+export type Xref = NonNullable<BaseDetailResponse["dbXrefs"]>[0];
+export type Distribution = NonNullable<BaseDetailResponse["distribution"]>[0];
+export type Accessibility = NonNullable<BaseDetailResponse["accessibility"]>;
+export type Status = NonNullable<BaseDetailResponse["status"]>;
+export type Publication = NonNullable<BaseDetailResponse["publication"]>[number];
+export type Grant = NonNullable<BaseDetailResponse["grant"]>[number];

@@ -1,4 +1,8 @@
-import type { BaseFacetListResponse, FacetItem } from "@/api/facets/base.ts";
+import { dbTypes, type DBType } from "@/consts/db.ts";
+import { fetchAllFacets } from "@/lib/fetch/facets/fetchAllFacets.ts";
+import { fetchBioProjectFacets } from "@/lib/fetch/facets/fetchBioProjectFacets.ts";
+import { parseBaseFacetParams } from "@/lib/fetch/facets/parseBaseFacetParams.ts";
+import type { BaseFacetListResponse, FacetItem } from "@/schema/api/facets/base.ts";
 import {
   API_PATH_BIOSAMPLE_FACET_LIST,
   API_PATH_GEA_FACET_LIST,
@@ -13,11 +17,7 @@ import {
   API_PATH_SRA_SAMPLE_FACET_LIST,
   API_PATH_SRA_STUDY_FACET_LIST,
   API_PATH_SRA_SUBMISSION_FACET_LIST,
-} from "@/api/paths.ts";
-import { dbTypes, type DBType } from "@/consts/db.ts";
-import { fetchAllFacets } from "@/lib/fetch/facets/fetchAllFacets.ts";
-import { fetchBioProjectFacets } from "@/lib/fetch/facets/fetchBioProjectFacets.ts";
-import { parseBaseFacetParams } from "@/lib/fetch/facets/parseBaseFacetParams.ts";
+} from "@/schema/api/paths.ts";
 import type { AllSearchParams } from "@/schema/search/all.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
 import type { BioprojectSearchParams } from "@/schema/search/bioProject.ts";

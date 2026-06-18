@@ -1,8 +1,8 @@
 import type { FC } from "react";
-import type { SearchDetailResponse } from "@/api/types.ts";
 import { dbLabels, type DBType } from "@/consts/db.ts";
 import { getEntryTitle } from "@/lib/entry/getEntryTitle.ts";
 import { useTitle } from "@/lib/react/useTitle.ts";
+import type { SearchDetailResponse } from "@/schema/api/types.ts";
 import {
   type AttributeKeyValue,
   AttributesPanel,

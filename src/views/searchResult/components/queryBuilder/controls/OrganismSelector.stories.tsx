@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, fn } from "storybook/test";
-import type { BaseFacetListResponse } from "@/api/facets/base.ts";
 import { sleep } from "@/lib/storybook/sleep.ts";
+import type { BaseFacetListResponse } from "@/schema/api/facets/base.ts";
 import { OrganismSelector } from "@/views/searchResult/components/queryBuilder/controls/OrganismSelector.tsx";
 
 const mockUpdateOrganism = fn((_organism: string | null) => {});

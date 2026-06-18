@@ -1,6 +1,6 @@
 import type { FC } from "react";
-import type { Grant } from "@/api/detail/base.ts";
 import { detailFieldLabels } from "@/consts/entryDisplayLabels.ts";
+import type { Grant } from "@/schema/api/detail/base.ts";
 import { InfoListItem } from "@/views/searchDetail/components/ui/InfoListItem.tsx";
 
 type Props = { grants: Grant[] };

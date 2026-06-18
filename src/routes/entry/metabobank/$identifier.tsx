@@ -1,10 +1,10 @@
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import type { ComponentProps } from "react";
-import { baseDetailRequestSchema } from "@/api/detail/base.ts";
-import { API_PATH_METABOBANK_LIST } from "@/api/paths.ts";
 import { fetchMetaboBankDetail } from "@/lib/fetch/detail/fetchMetaboBankDetail.ts";
 import { ensureDetailQueryData } from "@/lib/router/ensureDetailQueryData.ts";
+import { baseDetailRequestSchema } from "@/schema/api/detail/base.ts";
+import { API_PATH_METABOBANK_LIST } from "@/schema/api/paths.ts";
 import { SearchDetailView } from "@/views/searchDetail/SearchDetailView.tsx";
 
 const makeQuery = (identifier: string) =>

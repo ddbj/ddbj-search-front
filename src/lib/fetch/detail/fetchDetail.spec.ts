@@ -1,4 +1,18 @@
 import { describe, expect, it, vi } from "vitest";
+import { fetchBioProjectDetail } from "@/lib/fetch/detail/fetchBioProjectDetail.ts";
+import { fetchBioSampleDetail } from "@/lib/fetch/detail/fetchBioSampleDetail.ts";
+import { fetchGeaDetail } from "@/lib/fetch/detail/fetchGeaDetail.ts";
+import { fetchJgaDacDetail } from "@/lib/fetch/detail/fetchJgaDacDetail.ts";
+import { fetchJgaDatasetDetail } from "@/lib/fetch/detail/fetchJgaDatasetDetail.ts";
+import { fetchJgaPolicyDetail } from "@/lib/fetch/detail/fetchJgaPolicyDetail.ts";
+import { fetchJgaStudyDetail } from "@/lib/fetch/detail/fetchJgaStudyDetail.ts";
+import { fetchMetaboBankDetail } from "@/lib/fetch/detail/fetchMetaboBankDetail.ts";
+import { fetchSraAnalysisDetail } from "@/lib/fetch/detail/fetchSraAnalysisDetail.ts";
+import { fetchSraExperimentDetail } from "@/lib/fetch/detail/fetchSraExperimentDetail.ts";
+import { fetchSraRunDetail } from "@/lib/fetch/detail/fetchSraRunDetail.ts";
+import { fetchSraSampleDetail } from "@/lib/fetch/detail/fetchSraSampleDetail.ts";
+import { fetchSraStudyDetail } from "@/lib/fetch/detail/fetchSraStudyDetail.ts";
+import { fetchSraSubmissionDetail } from "@/lib/fetch/detail/fetchSraSubmissionDetail.ts";
 import {
   API_PATH_BIOPROJECT_LIST,
   API_PATH_BIOSAMPLE_LIST,
@@ -14,21 +28,7 @@ import {
   API_PATH_SRA_SAMPLE_LIST,
   API_PATH_SRA_STUDY_LIST,
   API_PATH_SRA_SUBMISSION_LIST,
-} from "@/api/paths.ts";
-import { fetchBioProjectDetail } from "@/lib/fetch/detail/fetchBioProjectDetail.ts";
-import { fetchBioSampleDetail } from "@/lib/fetch/detail/fetchBioSampleDetail.ts";
-import { fetchGeaDetail } from "@/lib/fetch/detail/fetchGeaDetail.ts";
-import { fetchJgaDacDetail } from "@/lib/fetch/detail/fetchJgaDacDetail.ts";
-import { fetchJgaDatasetDetail } from "@/lib/fetch/detail/fetchJgaDatasetDetail.ts";
-import { fetchJgaPolicyDetail } from "@/lib/fetch/detail/fetchJgaPolicyDetail.ts";
-import { fetchJgaStudyDetail } from "@/lib/fetch/detail/fetchJgaStudyDetail.ts";
-import { fetchMetaboBankDetail } from "@/lib/fetch/detail/fetchMetaboBankDetail.ts";
-import { fetchSraAnalysisDetail } from "@/lib/fetch/detail/fetchSraAnalysisDetail.ts";
-import { fetchSraExperimentDetail } from "@/lib/fetch/detail/fetchSraExperimentDetail.ts";
-import { fetchSraRunDetail } from "@/lib/fetch/detail/fetchSraRunDetail.ts";
-import { fetchSraSampleDetail } from "@/lib/fetch/detail/fetchSraSampleDetail.ts";
-import { fetchSraStudyDetail } from "@/lib/fetch/detail/fetchSraStudyDetail.ts";
-import { fetchSraSubmissionDetail } from "@/lib/fetch/detail/fetchSraSubmissionDetail.ts";
+} from "@/schema/api/paths.ts";
 
 type Case = {
   name: string;

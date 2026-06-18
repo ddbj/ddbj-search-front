@@ -1,7 +1,10 @@
-import type { AllFacetListRequestParams, AllFacetListResponse } from "@/api/facets/all.ts";
-import { API_PATH_ALL_FACET_LIST } from "@/api/paths.ts";
-import { createAppHttpError, isInvalidOrganismSearchParamError } from "@/lib/fetch/http/httpError.ts";
 import { parseBaseFacetParams } from "@/lib/fetch/facets/parseBaseFacetParams.ts";
+import {
+  createAppHttpError,
+  isInvalidOrganismSearchParamError,
+} from "@/lib/fetch/http/httpError.ts";
+import type { AllFacetListRequestParams, AllFacetListResponse } from "@/schema/api/facets/all.ts";
+import { API_PATH_ALL_FACET_LIST } from "@/schema/api/paths.ts";
 import type { AllSearchParams } from "@/schema/search/all.ts";
 
 type FetchAllFacetsOptions = {

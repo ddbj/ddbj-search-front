@@ -1,9 +1,9 @@
+import { parseBaseFacetParams } from "@/lib/fetch/facets/parseBaseFacetParams.ts";
 import type {
   BioSampleFacetListRequestParams,
   BioSampleFacetListResponse,
-} from "@/api/facets/bioSample.ts";
-import { API_PATH_BIOSAMPLE_FACET_LIST } from "@/api/paths.ts";
-import { parseBaseFacetParams } from "@/lib/fetch/facets/parseBaseFacetParams.ts";
+} from "@/schema/api/facets/bioSample.ts";
+import { API_PATH_BIOSAMPLE_FACET_LIST } from "@/schema/api/paths.ts";
 import type { BiosampleSearchParams } from "@/schema/search/bioSample.ts";
 export const fetchBioSampleFacets = async (params: BiosampleSearchParams) => {
   const searchParams = parseParams(params) as unknown as Record<string, string>;

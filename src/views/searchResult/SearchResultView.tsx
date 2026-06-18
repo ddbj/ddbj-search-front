@@ -1,6 +1,6 @@
 import { type FC, useMemo } from "react";
-import type { EntryListResponse } from "@/api/entries/base.ts";
 import { dbLabels, type DBType } from "@/consts/db.ts";
+import type { EntryListResponse } from "@/schema/api/entries/base.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
 import type { UpdateSearchFunctions } from "@/views/searchResult/components/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 import { QueryBuilder } from "@/views/searchResult/components/queryBuilder/QueryBuilder.tsx";

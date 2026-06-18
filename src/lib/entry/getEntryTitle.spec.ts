@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import type { EntryListItemResponse } from "@/api/entries/base.ts";
 import { getEntryTitle } from "@/lib/entry/getEntryTitle.ts";
+import type { EntryListItemResponse } from "@/schema/api/entries/base.ts";
 
 const makeEntry = (overrides: Partial<EntryListItemResponse> = {}): EntryListItemResponse => ({
   identifier: "DRR000001",

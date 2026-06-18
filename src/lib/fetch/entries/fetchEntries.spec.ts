@@ -1,4 +1,19 @@
 import { describe, expect, it, vi } from "vitest";
+import { fetchAllEntries } from "@/lib/fetch/entries/fetchAllEntries.ts";
+import { fetchBioProjects } from "@/lib/fetch/entries/fetchBioProjectEntries.ts";
+import { fetchBioSamples } from "@/lib/fetch/entries/fetchBioSampleEntries.ts";
+import { fetchGeaEntries } from "@/lib/fetch/entries/fetchGeaEntries.ts";
+import { fetchJgaDacs } from "@/lib/fetch/entries/fetchJgaDacEntries.ts";
+import { fetchJgaDatasets } from "@/lib/fetch/entries/fetchJgaDatasetEntries.ts";
+import { fetchJgaPolicies } from "@/lib/fetch/entries/fetchJgaPolicyEntries.ts";
+import { fetchJgaStudies } from "@/lib/fetch/entries/fetchJgaStudyEntries.ts";
+import { fetchMetaboBankEntries } from "@/lib/fetch/entries/fetchMetaboBankEntries.ts";
+import { fetchSraAnalyses } from "@/lib/fetch/entries/fetchSraAnalysisEntries.ts";
+import { fetchSraExperiments } from "@/lib/fetch/entries/fetchSraExperimentEntries.ts";
+import { fetchSraRuns } from "@/lib/fetch/entries/fetchSraRunEntries.ts";
+import { fetchSraSamples } from "@/lib/fetch/entries/fetchSraSampleEntries.ts";
+import { fetchSraStudies } from "@/lib/fetch/entries/fetchSraStudyEntries.ts";
+import { fetchSraSubmissions } from "@/lib/fetch/entries/fetchSraSubmissionEntries.ts";
 import {
   API_PATH_ALL_ENTRIES_LIST,
   API_PATH_BIOPROJECT_LIST,
@@ -15,22 +30,7 @@ import {
   API_PATH_SRA_SAMPLE_LIST,
   API_PATH_SRA_STUDY_LIST,
   API_PATH_SRA_SUBMISSION_LIST,
-} from "@/api/paths.ts";
-import { fetchAllEntries } from "@/lib/fetch/entries/fetchAllEntries.ts";
-import { fetchBioProjects } from "@/lib/fetch/entries/fetchBioProjectEntries.ts";
-import { fetchBioSamples } from "@/lib/fetch/entries/fetchBioSampleEntries.ts";
-import { fetchGeaEntries } from "@/lib/fetch/entries/fetchGeaEntries.ts";
-import { fetchJgaDacs } from "@/lib/fetch/entries/fetchJgaDacEntries.ts";
-import { fetchJgaDatasets } from "@/lib/fetch/entries/fetchJgaDatasetEntries.ts";
-import { fetchJgaPolicies } from "@/lib/fetch/entries/fetchJgaPolicyEntries.ts";
-import { fetchJgaStudies } from "@/lib/fetch/entries/fetchJgaStudyEntries.ts";
-import { fetchMetaboBankEntries } from "@/lib/fetch/entries/fetchMetaboBankEntries.ts";
-import { fetchSraAnalyses } from "@/lib/fetch/entries/fetchSraAnalysisEntries.ts";
-import { fetchSraExperiments } from "@/lib/fetch/entries/fetchSraExperimentEntries.ts";
-import { fetchSraRuns } from "@/lib/fetch/entries/fetchSraRunEntries.ts";
-import { fetchSraSamples } from "@/lib/fetch/entries/fetchSraSampleEntries.ts";
-import { fetchSraStudies } from "@/lib/fetch/entries/fetchSraStudyEntries.ts";
-import { fetchSraSubmissions } from "@/lib/fetch/entries/fetchSraSubmissionEntries.ts";
+} from "@/schema/api/paths.ts";
 
 type Case = {
   name: string;

@@ -1,8 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import type { FC, ReactNode } from "react";
 import type { ResolvedDbLink } from "@/lib/sanitizing/sanitizeDbLink.ts";
-import { linkIconClasses } from "@/styles/classTokens.ts";
 import { ExternalLinkIcon } from "@/views/shared/icons/ExternalLinkIcon.tsx";
+import { linkIconClasses } from "@/views/shared/styles/classTokens.ts";
 
 type Props = {
   children: ReactNode;

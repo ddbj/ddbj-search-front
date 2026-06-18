@@ -1,9 +1,9 @@
 import { queryOptions } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { zodValidator } from "@tanstack/zod-adapter";
-import { API_PATH_JGA_DAC_LIST } from "@/api/paths.ts";
 import { dbTypes } from "@/consts/db.ts";
 import { fetchJgaDacs } from "@/lib/fetch/entries/fetchJgaDacEntries.ts";
+import { API_PATH_JGA_DAC_LIST } from "@/schema/api/paths.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
 import { jgaDacSearchSchema } from "@/schema/search/jgaDac.ts";
 import { useUpdateSearchFunctions } from "@/views/searchResult/components/queryBuilder/hooks/useUpdateSearchFunctions.ts";

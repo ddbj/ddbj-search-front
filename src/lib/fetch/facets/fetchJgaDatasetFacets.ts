@@ -1,9 +1,9 @@
+import { parseBaseFacetParams } from "@/lib/fetch/facets/parseBaseFacetParams.ts";
 import type {
   JgaDatasetFacetListRequestParams,
   JgaDatasetFacetListResponse,
-} from "@/api/facets/jgaDataset.ts";
-import { API_PATH_JGA_DATASET_FACET_LIST } from "@/api/paths.ts";
-import { parseBaseFacetParams } from "@/lib/fetch/facets/parseBaseFacetParams.ts";
+} from "@/schema/api/facets/jgaDataset.ts";
+import { API_PATH_JGA_DATASET_FACET_LIST } from "@/schema/api/paths.ts";
 import type { JgaDatasetSearchParams } from "@/schema/search/jgaDataset.ts";
 export const fetchJgaDatasetFacets = async (params: JgaDatasetSearchParams) => {
   const searchParams = parseParams(params) as unknown as Record<string, string>;

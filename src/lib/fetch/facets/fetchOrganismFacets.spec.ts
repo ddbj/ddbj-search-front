@@ -1,10 +1,10 @@
 import { describe, expect, it, vi } from "vitest";
-import { API_PATH_GEA_FACET_LIST, API_PATH_METABOBANK_FACET_LIST } from "@/api/paths.ts";
 import { dbTypes } from "@/consts/db.ts";
 import {
   __TEST__fetchOrganismFacets,
   fetchOrganismFacets,
 } from "@/lib/fetch/facets/fetchOrganismFacets.ts";
+import { API_PATH_GEA_FACET_LIST, API_PATH_METABOBANK_FACET_LIST } from "@/schema/api/paths.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
 
 const { makeOrganismFacetParams, makeOrganismFacetQueryKey, parseBaseOrganismFacetParams } =

@@ -1,6 +1,6 @@
-import type { GeaFacetListRequestParams, GeaFacetListResponse } from "@/api/facets/gea.ts";
-import { API_PATH_GEA_FACET_LIST } from "@/api/paths.ts";
 import { parseBaseFacetParams } from "@/lib/fetch/facets/parseBaseFacetParams.ts";
+import type { GeaFacetListRequestParams, GeaFacetListResponse } from "@/schema/api/facets/gea.ts";
+import { API_PATH_GEA_FACET_LIST } from "@/schema/api/paths.ts";
 import type { GeaSearchParams } from "@/schema/search/gea.ts";
 
 export const fetchGeaFacets = async (params: GeaSearchParams) => {

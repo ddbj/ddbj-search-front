@@ -1,7 +1,7 @@
 import { useMemo, type FC } from "react";
-import { getDBXrefAPIPath } from "@/api/paths.ts";
 import { MAX_DB_XREFS } from "@/consts/counts.ts";
 import { relatedLinkLabels } from "@/consts/entryDisplayLabels.ts";
+import { getDBXrefAPIPath } from "@/schema/api/paths.ts";
 import { InfoList } from "@/views/searchDetail/components/ui/InfoList.tsx";
 import { PanelWrapper } from "@/views/searchDetail/components/ui/PanelWrapper.tsx";
 import {

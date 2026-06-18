@@ -1,9 +1,9 @@
 import clsx from "clsx";
 import { isUndefined } from "is-what";
 import { type ComponentProps, type FC } from "react";
-import { getBioProjectObjectTypeLabel } from "@/api/valueTypes.ts";
 import { getDbLabel } from "@/consts/db.ts";
 import { searchResultDateLabels } from "@/consts/entryDisplayLabels.ts";
+import { getBioProjectObjectTypeLabel } from "@/schema/api/valueTypes.ts";
 import type { AnySearchParams, AnySearchParamsKey } from "@/schema/search/any.ts";
 import type { UpdateSearchFunctions } from "@/views/searchResult/components/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 import { QueryTip } from "@/views/searchResult/components/queryBuilder/primitives/QueryTip.tsx";

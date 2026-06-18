@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import type { SraExperimentListRequestParams } from "@/api/entries/sraExperiment.ts";
 import { __TEST__fetchSraExperimentEntries } from "@/lib/fetch/entries/fetchSraExperimentEntries.ts";
+import type { SraExperimentListRequestParams } from "@/schema/api/entries/sraExperiment.ts";
 
 const { parseParams } = __TEST__fetchSraExperimentEntries;
 

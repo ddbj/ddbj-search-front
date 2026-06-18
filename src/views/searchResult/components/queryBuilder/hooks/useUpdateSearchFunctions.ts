@@ -1,7 +1,7 @@
 import { isEqual } from "@ver0/deep-equal";
 import { useMemo } from "react";
-import type { BioProjectObjectType, SortKey } from "@/api/valueTypes.ts";
 import type { DBType } from "@/consts/db.ts";
+import type { BioProjectObjectType, SortKey } from "@/schema/api/valueTypes.ts";
 import type { AnySearchParams, AnySearchParamsKey } from "@/schema/search/any.ts";
 type NavigateLike<TSearch extends AnySearchParams> = (opts: {
   search?: TSearch | ((prev: TSearch) => TSearch);

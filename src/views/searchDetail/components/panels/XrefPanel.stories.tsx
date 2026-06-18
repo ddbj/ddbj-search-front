@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect } from "storybook/test";
-import type { Xref } from "@/api/detail/base.ts";
+import type { Xref } from "@/schema/api/detail/base.ts";
 import { XrefPanel } from "./XrefPanel.tsx";
 import { parseRefs } from "./xrefPanelUtils.ts";
 

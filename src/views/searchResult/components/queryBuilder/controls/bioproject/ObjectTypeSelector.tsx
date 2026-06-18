@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import { clsx } from "clsx";
 import { type FC } from "react";
-import type { BioProjectFacetListResponse } from "@/api/facets/bioProject.ts";
+import { fetchBioProjectFacets } from "@/lib/fetch/facets/fetchBioProjectFacets.ts";
+import { formatNumber } from "@/lib/formatting/formatNumber.ts";
+import type { BioProjectFacetListResponse } from "@/schema/api/facets/bioProject.ts";
 import {
   type BioProjectObjectType,
   bioProjectObjectTypeValues,
   getBioProjectObjectTypeLabel,
-} from "@/api/valueTypes.ts";
-import { fetchBioProjectFacets } from "@/lib/fetch/facets/fetchBioProjectFacets.ts";
-import { formatNumber } from "@/lib/formatting/formatNumber.ts";
+} from "@/schema/api/valueTypes.ts";
 import type { BioprojectSearchParams } from "@/schema/search/bioProject.ts";
 import { useDebouncedUiValue } from "@/views/searchResult/components/queryBuilder/hooks/useDebouncedUiValue.ts";
 import { CheckboxText } from "@/views/searchResult/components/queryBuilder/primitives/CheckboxText.tsx";

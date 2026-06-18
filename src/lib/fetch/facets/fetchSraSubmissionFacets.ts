@@ -1,9 +1,9 @@
+import { parseBaseFacetParams } from "@/lib/fetch/facets/parseBaseFacetParams.ts";
 import type {
   SraSubmissionFacetListRequestParams,
   SraSubmissionFacetListResponse,
-} from "@/api/facets/sraSubmission.ts";
-import { API_PATH_SRA_SUBMISSION_FACET_LIST } from "@/api/paths.ts";
-import { parseBaseFacetParams } from "@/lib/fetch/facets/parseBaseFacetParams.ts";
+} from "@/schema/api/facets/sraSubmission.ts";
+import { API_PATH_SRA_SUBMISSION_FACET_LIST } from "@/schema/api/paths.ts";
 import type { SraSubmissionSearchParams } from "@/schema/search/sraSubmission.ts";
 export const fetchSraSubmissionFacets = async (params: SraSubmissionSearchParams) => {
   const searchParams = parseParams(params) as unknown as Record<string, string>;

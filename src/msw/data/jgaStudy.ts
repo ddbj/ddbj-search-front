@@ -1,4 +1,4 @@
-import type { JgaStudyDetailResponse } from "@/api/detail/jgaStudy.ts";
+import type { JgaStudyDetailResponse } from "@/schema/api/detail/jgaStudy.ts";
 
 export const makeJgaStudyDetail = (identifier: string): JgaStudyDetailResponse => ({
   identifier,

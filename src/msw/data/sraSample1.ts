@@ -1,4 +1,4 @@
-import type { SraSampleDetailResponse } from "@/api/detail/sraSample.ts";
+import type { SraSampleDetailResponse } from "@/schema/api/detail/sraSample.ts";
 
 export const sraSample1: SraSampleDetailResponse = {
   identifier: "ERS2785606",

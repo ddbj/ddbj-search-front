@@ -1,4 +1,4 @@
-import type { GeaDetailResponse } from "@/api/detail/gea.ts";
+import type { GeaDetailResponse } from "@/schema/api/detail/gea.ts";
 
 export const makeGeaDetail = (identifier: string): GeaDetailResponse => ({
   identifier,

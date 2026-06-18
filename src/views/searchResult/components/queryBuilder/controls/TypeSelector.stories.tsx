@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { expect, fn } from "storybook/test";
-import type { AllFacetListResponse } from "@/api/facets/all.ts";
 import type { DBType } from "@/consts/db.ts";
 import { sleep } from "@/lib/storybook/sleep.ts";
+import type { AllFacetListResponse } from "@/schema/api/facets/all.ts";
 import { TypeSelector } from "@/views/searchResult/components/queryBuilder/controls/TypeSelector.tsx";
 
 const mockUpdateTypes = fn((_v: DBType[]) => {});

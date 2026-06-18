@@ -1,0 +1,34 @@
+import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
+import { z } from "zod";
+import { baseDetailRequestSchema, baseDetailResponseSchema } from "@/schema/api/detail/base.ts";
+import { tags } from "@/schema/api/openapiTags.ts";
+import { addIdentifierToPath, API_PATH_SRA_SUBMISSION_LIST, omitBaseApiPath } from "@/schema/api/paths.ts";
+
+const sraSubmissionDetailRequestParamsSchema = baseDetailRequestSchema.extend({});
+
+const sraSubmissionDetailResponseSchema = baseDetailResponseSchema.omit({ type: true }).extend({
+  type: z.literal("sra-submission"),
+});
+
+export type SraSubmissionDetailResponse = z.infer<typeof sraSubmissionDetailResponseSchema>;
+const path = addIdentifierToPath(API_PATH_SRA_SUBMISSION_LIST, "openAPI");
+export const sraSubmissionDetailRequestDoc: RouteConfig = {
+  path: omitBaseApiPath(path),
+  method: "get",
+  summary: omitBaseApiPath(path),
+  description: "SRA Submission detail",
+  tags: [tags.searchResultDetail],
+  request: {
+    params: sraSubmissionDetailRequestParamsSchema,
+  },
+  responses: {
+    200: {
+      description: "Success",
+      content: {
+        "application/json": {
+          schema: sraSubmissionDetailResponseSchema,
+        },
+      },
+    },
+  },
+};

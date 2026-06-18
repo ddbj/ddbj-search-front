@@ -1,9 +1,9 @@
+import { parseBaseFacetParams } from "@/lib/fetch/facets/parseBaseFacetParams.ts";
 import type {
   JgaPolicyFacetListRequestParams,
   JgaPolicyFacetListResponse,
-} from "@/api/facets/jgaPolicy.ts";
-import { API_PATH_JGA_POLICY_FACET_LIST } from "@/api/paths.ts";
-import { parseBaseFacetParams } from "@/lib/fetch/facets/parseBaseFacetParams.ts";
+} from "@/schema/api/facets/jgaPolicy.ts";
+import { API_PATH_JGA_POLICY_FACET_LIST } from "@/schema/api/paths.ts";
 import type { JgaPolicySearchParams } from "@/schema/search/jgaPolicy.ts";
 export const fetchJgaPolicyFacets = async (params: JgaPolicySearchParams) => {
   const searchParams = parseParams(params) as unknown as Record<string, string>;

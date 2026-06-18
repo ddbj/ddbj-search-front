@@ -1,4 +1,4 @@
-import type { BioProjectDetailResponse } from "@/api/detail/bioProject.ts";
+import type { BioProjectDetailResponse } from "@/schema/api/detail/bioProject.ts";
 
 export const bioproject2: BioProjectDetailResponse = {
   identifier: "PRJNA313191",

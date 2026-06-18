@@ -1,7 +1,7 @@
 import { http, HttpResponse } from "msw";
-import type { EntryListResponse } from "@/api/entries/base.ts";
-import { API_PATH_JGA_DATASET_LIST } from "@/api/paths.ts";
 import { makeDummyIdentifier } from "@/msw/utils/makeDummyIdentifier.ts";
+import type { EntryListResponse } from "@/schema/api/entries/base.ts";
+import { API_PATH_JGA_DATASET_LIST } from "@/schema/api/paths.ts";
 
 export const getJgaDatasetList = http.get<never, never, EntryListResponse>(
   API_PATH_JGA_DATASET_LIST,

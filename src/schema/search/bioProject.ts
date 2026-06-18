@@ -1,5 +1,5 @@
 import * as z from "zod";
-import { bioProjectObjectTypeValues } from "@/api/valueTypes.ts";
+import { bioProjectObjectTypeValues } from "@/schema/api/valueTypes.ts";
 import {
   baseSearchSchema,
   grantSearchShape,

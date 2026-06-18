@@ -1,10 +1,10 @@
 import { describe, expect, it, vi } from "vitest";
-import { API_PATH_BIOSAMPLE_FACET_LIST } from "@/api/paths.ts";
 import {
   __TEST__fetchBioSampleFacets,
   fetchBioSampleFacets,
 } from "@/lib/fetch/facets/fetchBioSampleFacets.ts";
 import { __TEST__fetchJgaStudyFacets } from "@/lib/fetch/facets/fetchJgaStudyFacets.ts";
+import { API_PATH_BIOSAMPLE_FACET_LIST } from "@/schema/api/paths.ts";
 
 describe("DB-specific facet params", () => {
   it("omits publication and grant for BioSample facets", () => {

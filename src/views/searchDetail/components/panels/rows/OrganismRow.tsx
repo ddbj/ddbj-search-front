@@ -1,9 +1,9 @@
 import type { FC } from "react";
-import type { Organism } from "@/api/detail/base.ts";
 import { detailFieldLabels } from "@/consts/entryDisplayLabels.ts";
-import { linkIconClasses } from "@/styles/classTokens.ts";
+import type { Organism } from "@/schema/api/detail/base.ts";
 import { InfoListItem } from "@/views/searchDetail/components/ui/InfoListItem.tsx";
 import { ExternalLinkIcon } from "@/views/shared/icons/ExternalLinkIcon.tsx";
+import { linkIconClasses } from "@/views/shared/styles/classTokens.ts";
 
 type Props = { organism: Organism };
 

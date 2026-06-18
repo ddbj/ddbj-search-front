@@ -1,8 +1,8 @@
-import type { EntryListResponse } from "@/api/entries/base.ts";
-import type { JgaStudyListRequestParams } from "@/api/entries/jgaStudy.ts";
-import { API_PATH_JGA_STUDY_LIST } from "@/api/paths.ts";
-import { parseJsonResponse } from "@/lib/fetch/http/httpError.ts";
 import { parseBaseEntryParams } from "@/lib/fetch/entries/parseBaseEntryParams.ts";
+import { parseJsonResponse } from "@/lib/fetch/http/httpError.ts";
+import type { EntryListResponse } from "@/schema/api/entries/base.ts";
+import type { JgaStudyListRequestParams } from "@/schema/api/entries/jgaStudy.ts";
+import { API_PATH_JGA_STUDY_LIST } from "@/schema/api/paths.ts";
 import type { JgaStudySearchParams } from "@/schema/search/jgaStudy.ts";
 
 export const fetchJgaStudies = async (params: JgaStudySearchParams) => {

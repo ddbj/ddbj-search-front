@@ -1,4 +1,4 @@
-import type { JgaDatasetDetailResponse } from "@/api/detail/jgaDataset.ts";
+import type { JgaDatasetDetailResponse } from "@/schema/api/detail/jgaDataset.ts";
 
 export const makeJgaDatasetDetail = (identifier: string): JgaDatasetDetailResponse => ({
   identifier,

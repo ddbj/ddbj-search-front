@@ -1,0 +1,40 @@
+import type { RouteConfig } from "@asteasolutions/zod-to-openapi/dist/openapi-registry";
+import { z } from "zod";
+import { jgaStudyListRequestParamsShape } from "@/schema/api/entries/jgaStudy.ts";
+import {
+  baseFacetListRequestParamsSchema,
+  baseFacetListResponseSchema,
+} from "@/schema/api/facets/base.ts";
+import { tags } from "@/schema/api/openapiTags.ts";
+import { API_PATH_JGA_STUDY_FACET_LIST, omitBaseApiPath } from "@/schema/api/paths.ts";
+
+const jgaStudyFacetListRequestParamsSchema = baseFacetListRequestParamsSchema.extend({
+  ...jgaStudyListRequestParamsShape,
+});
+export type JgaStudyFacetListRequestParams = z.infer<typeof jgaStudyFacetListRequestParamsSchema>;
+
+const jgaStudyFacetListResponseSchema = baseFacetListResponseSchema.extend({
+  // add jgaStudyFacetSpecificFields here
+});
+export type JgaStudyFacetListResponse = z.infer<typeof jgaStudyFacetListResponseSchema>;
+
+export const jgaStudyFacetListRequestDoc: RouteConfig = {
+  path: omitBaseApiPath(API_PATH_JGA_STUDY_FACET_LIST),
+  method: "get",
+  summary: omitBaseApiPath(API_PATH_JGA_STUDY_FACET_LIST),
+  description: "facets list for requesting JGA Study entries",
+  tags: [tags.facetList],
+  request: {
+    query: jgaStudyFacetListRequestParamsSchema,
+  },
+  responses: {
+    200: {
+      description: "",
+      content: {
+        "application/json": {
+          schema: jgaStudyFacetListResponseSchema,
+        },
+      },
+    },
+  },
+};

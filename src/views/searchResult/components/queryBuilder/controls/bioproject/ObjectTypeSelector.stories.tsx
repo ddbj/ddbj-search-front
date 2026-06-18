@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { expect, fn } from "storybook/test";
-import type { BioProjectFacetListResponse } from "@/api/facets/bioProject.ts";
-import type { BioProjectObjectType } from "@/api/valueTypes.ts";
 import { sleep } from "@/lib/storybook/sleep.ts";
+import type { BioProjectFacetListResponse } from "@/schema/api/facets/bioProject.ts";
+import type { BioProjectObjectType } from "@/schema/api/valueTypes.ts";
 import { ObjectTypeSelector } from "./ObjectTypeSelector.tsx";
 
 const mockUpdateObjectTypes = fn((_value: BioProjectObjectType[]) => {});

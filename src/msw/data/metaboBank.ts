@@ -1,4 +1,4 @@
-import type { MetaboBankDetailResponse } from "@/api/detail/metaboBank.ts";
+import type { MetaboBankDetailResponse } from "@/schema/api/detail/metaboBank.ts";
 
 export const makeMetaboBankDetail = (identifier: string): MetaboBankDetailResponse => ({
   identifier,

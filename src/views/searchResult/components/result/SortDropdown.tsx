@@ -1,8 +1,8 @@
 import { ListBox, Select } from "@heroui/react";
 import clsx from "clsx";
 import { type FC, type Key, type ReactNode, useEffect, useMemo, useState } from "react";
-import type { SortKey } from "@/api/valueTypes.ts";
 import { searchResultDateLabels } from "@/consts/entryDisplayLabels.ts";
+import type { SortKey } from "@/schema/api/valueTypes.ts";
 import type { UpdateSearchFunctions } from "@/views/searchResult/components/queryBuilder/hooks/useUpdateSearchFunctions.ts";
 import { ArrowDownRightIcon } from "@/views/shared/icons/ArrowDownRightIcon.tsx";
 import { ArrowUpRightIcon } from "@/views/shared/icons/ArrowUpRightIcon.tsx";

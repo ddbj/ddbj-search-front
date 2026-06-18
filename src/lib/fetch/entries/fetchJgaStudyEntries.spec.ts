@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import type { JgaStudyListRequestParams } from "@/api/entries/jgaStudy.ts";
 import { __TEST__fetchJgaStudyEntries } from "@/lib/fetch/entries/fetchJgaStudyEntries.ts";
+import type { JgaStudyListRequestParams } from "@/schema/api/entries/jgaStudy.ts";
 
 const { parseParams } = __TEST__fetchJgaStudyEntries;
 

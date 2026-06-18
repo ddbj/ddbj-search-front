@@ -1,9 +1,9 @@
+import { parseBaseFacetParams } from "@/lib/fetch/facets/parseBaseFacetParams.ts";
 import type {
   SraExperimentFacetListRequestParams,
   SraExperimentFacetListResponse,
-} from "@/api/facets/sraExperiment.ts";
-import { API_PATH_SRA_EXPERIMENT_FACET_LIST } from "@/api/paths.ts";
-import { parseBaseFacetParams } from "@/lib/fetch/facets/parseBaseFacetParams.ts";
+} from "@/schema/api/facets/sraExperiment.ts";
+import { API_PATH_SRA_EXPERIMENT_FACET_LIST } from "@/schema/api/paths.ts";
 import type { SraExperimentSearchParams } from "@/schema/search/sraExperiment.ts";
 export const fetchSraExperimentFacets = async (params: SraExperimentSearchParams) => {
   const searchParams = parseParams(params) as unknown as Record<string, string>;

@@ -1,12 +1,5 @@
 import { clsx } from "clsx";
 import { type FC } from "react";
-import type { SearchDetailResponse } from "@/api/types.ts";
-import {
-  accessibilityLabels,
-  getAccessibilityLabels,
-  getStatusLabels,
-  statusLabels,
-} from "@/api/valueTypes.ts";
 import { dbLabels } from "@/consts/db.ts";
 import { detailFieldLabels } from "@/consts/entryDisplayLabels.ts";
 import {
@@ -16,6 +9,13 @@ import {
   visibleStatusTooltipValues,
 } from "@/consts/tooltipDescriptions.ts";
 import { formatToDateStr } from "@/lib/formatting/dateTime.ts";
+import type { SearchDetailResponse } from "@/schema/api/types.ts";
+import {
+  accessibilityLabels,
+  getAccessibilityLabels,
+  getStatusLabels,
+  statusLabels,
+} from "@/schema/api/valueTypes.ts";
 import { SanitizedRow } from "@/views/searchDetail/components/panels/rows/SanitizedRow.tsx";
 import { InfoList } from "@/views/searchDetail/components/ui/InfoList.tsx";
 import { InfoListItem } from "@/views/searchDetail/components/ui/InfoListItem.tsx";

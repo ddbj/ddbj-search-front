@@ -1,8 +1,8 @@
-import type { EntryListResponse } from "@/api/entries/base.ts";
-import type { BioProjectListRequestParams } from "@/api/entries/bioProject.ts";
-import { API_PATH_BIOPROJECT_LIST } from "@/api/paths.ts";
-import { parseJsonResponse } from "@/lib/fetch/http/httpError.ts";
 import { parseBaseEntryParams } from "@/lib/fetch/entries/parseBaseEntryParams.ts";
+import { parseJsonResponse } from "@/lib/fetch/http/httpError.ts";
+import type { EntryListResponse } from "@/schema/api/entries/base.ts";
+import type { BioProjectListRequestParams } from "@/schema/api/entries/bioProject.ts";
+import { API_PATH_BIOPROJECT_LIST } from "@/schema/api/paths.ts";
 import type { BioprojectSearchParams } from "@/schema/search/bioProject.ts";
 
 export const fetchBioProjects = async (params: BioprojectSearchParams) => {

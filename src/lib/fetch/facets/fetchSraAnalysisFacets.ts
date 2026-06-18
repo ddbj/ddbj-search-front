@@ -1,9 +1,9 @@
+import { parseBaseFacetParams } from "@/lib/fetch/facets/parseBaseFacetParams.ts";
 import type {
   SraAnalysisFacetListRequestParams,
   SraAnalysisFacetListResponse,
-} from "@/api/facets/sraAnalysis.ts";
-import { API_PATH_SRA_ANALYSIS_FACET_LIST } from "@/api/paths.ts";
-import { parseBaseFacetParams } from "@/lib/fetch/facets/parseBaseFacetParams.ts";
+} from "@/schema/api/facets/sraAnalysis.ts";
+import { API_PATH_SRA_ANALYSIS_FACET_LIST } from "@/schema/api/paths.ts";
 import type { SraAnalysisSearchParams } from "@/schema/search/sraAnalysis.ts";
 export const fetchSraAnalysisFacets = async (params: SraAnalysisSearchParams) => {
   const searchParams = parseParams(params) as unknown as Record<string, string>;

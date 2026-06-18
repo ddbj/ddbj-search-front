@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import type { GeaListRequestParams } from "@/api/entries/gea.ts";
 import { __TEST__fetchGeaEntries } from "@/lib/fetch/entries/fetchGeaEntries.ts";
+import type { GeaListRequestParams } from "@/schema/api/entries/gea.ts";
 
 const { parseParams } = __TEST__fetchGeaEntries;
 
