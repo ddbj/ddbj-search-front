@@ -4,8 +4,9 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { createRouter, RouterProvider } from "@tanstack/react-router";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { routeTree } from "@/routeTree.gen";
+import { isMSWEnabled } from "@/lib/env/parseEnvVariables.ts";
 import "./index.css";
+import { routeTree } from "@/routeTree.gen";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -41,7 +42,7 @@ declare module "@tanstack/react-router" {
 }
 
 async function enableMocking() {
-  if (import.meta.env.VITE_MSW !== "true") {
+  if (!isMSWEnabled) {
     return;
   }
   const { worker } = await import("./msw/browser");
