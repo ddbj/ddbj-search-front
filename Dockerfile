@@ -49,4 +49,11 @@ EXPOSE 3000
 # dist/serve.json (see public/serve.json) so that /search/** rewrites to
 # /search/index.html (the real SPA), while existing files (assets, /index.html
 # landing page) keep being served from the filesystem.
-CMD ["pnpm", "exec", "serve", "dist", "-l", "3000"]
+#
+# Invoke the local serve binary directly rather than via `pnpm exec`. Under
+# `userns_mode: keep-id`, the container HOME resolves to /app (which is owned
+# by root from the build stage), so `pnpm exec` triggers corepack and crashes
+# with EACCES while trying to create /app/.cache/node/corepack. The shipped
+# binary already wires everything up at build time, so corepack is not needed
+# at runtime.
+CMD ["./node_modules/.bin/serve", "dist", "-l", "3000"]
