@@ -39,6 +39,14 @@ COPY --from=build /app/package.json /app/pnpm-lock.yaml ./
 
 RUN pnpm install --prod --frozen-lockfile
 
+# MSW init worker is shipped as a public static asset for `pnpm dev:msw`;
+# strip it from the production image so it cannot be loaded by clients.
+RUN rm -f dist/mockServiceWorker.js
+
 EXPOSE 3000
 
-CMD ["pnpm", "exec", "serve", "-s", "dist", "-l", "3000"]
+# Run as plain static server (no -s/--single). SPA fallback rules live in
+# dist/serve.json (see public/serve.json) so that /search/** rewrites to
+# /search/index.html (the real SPA), while existing files (assets, /index.html
+# landing page) keep being served from the filesystem.
+CMD ["pnpm", "exec", "serve", "dist", "-l", "3000"]

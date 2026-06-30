@@ -1,0 +1,7 @@
+{
+  "$schema": "https://github.com/vercel/serve-handler#options",
+  "rewrites": [
+    { "source": "/search", "destination": "/search/index.html" },
+    { "source": "/search/**", "destination": "/search/index.html" }
+  ]
+}
