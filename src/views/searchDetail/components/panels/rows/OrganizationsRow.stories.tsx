@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { expect } from "storybook/test";
 import type { Organization } from "@/schema/api/detail/base.ts";
 import { InfoList } from "@/views/searchDetail/components/ui/InfoList.tsx";
 import { OrganizationsRow } from "./OrganizationsRow.tsx";
@@ -34,34 +35,46 @@ export const Primary = {
         name: "National Institute of Genetics",
         abbreviation: "NIG",
         url: "https://www.nig.ac.jp/",
-        role: "Sponsor",
-        organizationType: "Institute",
       }),
       organization({
         name: "DNA Data Bank of Japan",
         abbreviation: "DDBJ",
         url: "https://www.ddbj.nig.ac.jp/",
-        role: "Data Center",
-        organizationType: "Institute",
       }),
     ],
   },
 } satisfies Story;
 
-export const WithoutRoleOrType = {
+export const IgnoresRoleAndType = {
   args: {
     organizations: [
       organization({
         name: "National Center for Biotechnology Information",
         abbreviation: "NCBI",
         url: "https://www.ncbi.nlm.nih.gov/",
+        role: "Archive",
+        organizationType: "Database Center",
       }),
       organization({
         name: "European Bioinformatics Institute",
         abbreviation: "EBI",
         url: "https://www.ebi.ac.uk/",
+        role: "Partner",
+        organizationType: "Institute",
       }),
     ],
+  },
+  play: async ({ canvas }) => {
+    await expect(
+      await canvas.findByRole("link", { name: "National Center for Biotechnology Information" }),
+    ).toBeInTheDocument();
+    await expect(
+      await canvas.findByRole("link", { name: "European Bioinformatics Institute" }),
+    ).toBeInTheDocument();
+    await expect(
+      canvas.queryByText("Role: Archive / Type: Database Center"),
+    ).not.toBeInTheDocument();
+    await expect(canvas.queryByText("Role: Partner / Type: Institute")).not.toBeInTheDocument();
   },
 } satisfies Story;
 
@@ -71,13 +84,9 @@ export const WithoutUrl = {
       organization({
         name: "Genome Information Research Center",
         abbreviation: "GIRC",
-        role: "Contributor",
-        organizationType: "Research Center",
       }),
       organization({
         name: "Sequencing Core Facility",
-        role: "Provider",
-        organizationType: "Facility",
       }),
     ],
   },
@@ -89,14 +98,10 @@ export const WithoutAbbreviation = {
       organization({
         name: "Japan Society for the Promotion of Science",
         url: "https://www.jsps.go.jp/",
-        role: "Funder",
-        organizationType: "Funding Agency",
       }),
       organization({
         name: "National Bioscience Database Center",
         url: "https://biosciencedbc.jp/",
-        role: "Partner",
-        organizationType: "Database Center",
       }),
     ],
   },
@@ -122,22 +127,17 @@ export const MixedAvailability = {
         name: "DNA Data Bank of Japan",
         abbreviation: "DDBJ",
         url: "https://www.ddbj.nig.ac.jp/",
-        role: "Data Center",
-        organizationType: "Institute",
       }),
       organization({
         name: "Collaborative Sequencing Laboratory",
-        role: "Contributor",
       }),
       organization({
         abbreviation: "NIG",
         url: "https://www.nig.ac.jp/",
-        organizationType: "Institute",
       }),
       organization({
         name: "National Center for Biotechnology Information",
         abbreviation: "NCBI",
-        role: "Archive",
       }),
     ],
   },

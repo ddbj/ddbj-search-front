@@ -11,7 +11,7 @@ export const OrganizationsRow: FC<Props> = ({ organizations }) => {
   return (
     <InfoListItem term={detailFieldLabels.organizations}>
       <ul className={"flex flex-col gap-y-2"}>
-        {organizations.sort(sortOrganizations).map((org, index) => (
+        {organizations.map((org, index) => (
           <OrganizationItem org={org} key={index} />
         ))}
       </ul>
@@ -19,27 +19,17 @@ export const OrganizationsRow: FC<Props> = ({ organizations }) => {
   );
 };
 const OrganizationItem: FC<{ org: Organization }> = ({ org }) => {
-  const roleStr = org.role ? `Role: ${org.role}` : "";
-  const typeStr = org.organizationType ? `Type: ${org.organizationType}` : "";
-  const firstRow = [roleStr, typeStr].filter((str) => str !== "").join(" / ");
-
   return (
-    <li className={"flex flex-col"}>
-      <div className={"text-xs text-gray-500"}>{firstRow}</div>
-      <div>
-        {org.url ? (
-          <a href={org.url} target={"_blank"} className={"text-link-primary"}>
-            {org.name}
-            <ExternalLinkIcon className={linkIconClasses} />
-          </a>
-        ) : (
-          <span>{org.name}</span>
-        )}
-        {org.abbreviation && <span> ({org.abbreviation})</span>}
-      </div>
+    <li>
+      {org.url ? (
+        <a href={org.url} target={"_blank"} className={"text-link-primary"}>
+          {org.name}
+          <ExternalLinkIcon className={linkIconClasses} />
+        </a>
+      ) : (
+        <span>{org.name}</span>
+      )}
+      {org.abbreviation && <span> ({org.abbreviation})</span>}
     </li>
   );
-};
-const sortOrganizations = (a: Organization, b: Organization) => {
-  return (a.role ?? "").localeCompare(b.role ?? "");
 };
