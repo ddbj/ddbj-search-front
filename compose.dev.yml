@@ -1,0 +1,11 @@
+# Dev-only override: publish 3000 to the host so `curl http://localhost:3000/`
+# (and ブラウザでの動作確認) が直接通る。
+#
+# Apply with `-f compose.yml -f compose.dev.yml`. See docs/development-guide.md
+# for the full command. staging / production は internal nginx (meta repo) から
+# `ddbj-search-front-${env}:3000` で参照するため、host への port publish は
+# 不要 (本ファイルを include しない)。
+services:
+  front:
+    ports:
+      - "3000:3000"

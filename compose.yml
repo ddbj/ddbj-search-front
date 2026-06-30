@@ -1,0 +1,19 @@
+services:
+  front:
+    build:
+      context: .
+      target: runtime
+      args:
+        VITE_API_PATH: ${VITE_API_PATH}
+    image: ddbj-search-front-${DDBJ_SEARCH_ENV}
+    container_name: ddbj-search-front-${DDBJ_SEARCH_ENV}
+    environment:
+      TZ: ${TZ:-Asia/Tokyo}
+    networks:
+      - ddbj-search-network
+    init: true
+
+networks:
+  ddbj-search-network:
+    name: ddbj-search-network-${DDBJ_SEARCH_ENV}
+    external: true

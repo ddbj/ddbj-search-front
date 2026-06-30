@@ -42,6 +42,12 @@ declare module "@tanstack/react-router" {
 }
 
 async function enableMocking() {
+  // `import.meta.env.DEV` を最初にチェックして production build から
+  // dynamic import 経由の MSW を tree-shake で落とす (runtime 判定の前に
+  // 静的判定を置かないと Vite が dead code elimination できない)。
+  if (!import.meta.env.DEV) {
+    return;
+  }
   if (!isMSWEnabled) {
     return;
   }

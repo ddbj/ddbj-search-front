@@ -24,6 +24,30 @@
 - `pnpm build`: TypeScript ビルド後に本番アセットを生成する
 - `pnpm preview`: 本番ビルドをローカル確認する
 
+## Docker / podman での起動
+
+production と同じ image build を local で確認したいときは Docker (dev) または podman (staging / production) で起動できる。日常開発は `pnpm dev` (= Vite dev server) を使い、本パターンは「`pnpm build` 出力を `serve` で配信した結果を確認する」用途に絞る。HMR は本パターンには無い (= ソース変更ごとに rebuild)。
+
+### dev (docker compose)
+
+```bash
+cp env.staging .env   # または env.production。必要なら VITE_API_PATH を直接書き換える
+docker compose -f compose.yml -f compose.dev.yml up -d --build
+# http://localhost:3000/search/ で動作確認
+```
+
+`compose.dev.yml` は host port 3000 を publish するためだけの dev 用 override。staging / production はこのファイルを include せず、内部 nginx (meta repo) から container-to-container で参照する (= host への publish なし)。
+
+### staging / production (podman)
+
+```bash
+cp env.staging .env   # または env.production
+cp compose.override.podman.yml compose.override.yml
+podman-compose up -d --build
+```
+
+`compose.override.podman.yml` は `userns_mode: keep-id` を効かせるための差分設定で、podman 環境でだけ override に置く。`VITE_API_PATH` の build 時 embed については [docs/environment-variables.md § staging / production への配備 (build args 経由)](./environment-variables.md) を参照する。
+
 ## 品質ツール
 
 このリポジトリでは、Oxcを標準の整形・lintツールとして使う。

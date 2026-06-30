@@ -1,0 +1,14 @@
+# Ignore everything
+**
+
+# Allow only what `pnpm install` + `pnpm build` (tsc -b && vite build) need
+!index.html
+!package.json
+!pnpm-lock.yaml
+!public
+!search
+!src
+!tsconfig.app.json
+!tsconfig.json
+!tsconfig.node.json
+!vite.config.ts
