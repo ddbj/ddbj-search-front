@@ -1,5 +1,4 @@
 import type { Decorator, Preview } from "@storybook/react-vite";
-import { QueryClient } from "@tanstack/react-query";
 import {
   createMemoryHistory,
   createRootRoute,
@@ -7,24 +6,8 @@ import {
   RouterProvider,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
-import { routeTree } from "../src/routeTree.gen.ts";
 import { Providers } from "./providers.tsx";
 import "../src/index.css";
-
-const history = createMemoryHistory();
-const fileBaseRouter = createRouter({
-  routeTree,
-  history,
-  basepath: "/search",
-  context: { queryClient: new QueryClient() },
-});
-type RouterType = typeof fileBaseRouter;
-
-declare global {
-  interface Window {
-    __STORYBOOK_ROUTER__?: RouterType;
-  }
-}
 
 // eslint-disable-next-line react-refresh/only-export-components -- Storybook preview owns framework-level decorators rather than app components.
 const RouterDecorator: Decorator = (Story) => {
@@ -46,8 +29,7 @@ const RouterDecorator: Decorator = (Story) => {
     defaultErrorComponent: () => <Story />,
     trailingSlash: "always",
   });
-  // eslint-disable-next-line
-  window.__STORYBOOK_ROUTER__ = router as any as RouterType;
+  window.__STORYBOOK_ROUTER__ = router;
   return <RouterProvider router={router} />;
 };
 
