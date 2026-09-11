@@ -57,4 +57,12 @@ describe("parseEnvVariables", () => {
 
     expect(envDeployment).toBe("LIVE");
   });
+
+  it("defaults envDeployment to LIVE when the value is empty", async () => {
+    vi.stubEnv("VITE_DEPLOYMENT_ENV", "");
+
+    const { envDeployment } = await importEnvVariables();
+
+    expect(envDeployment).toBe("LIVE");
+  });
 });

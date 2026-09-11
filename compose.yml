@@ -5,6 +5,7 @@ services:
       target: runtime
       args:
         VITE_API_PATH: ${VITE_API_PATH}
+        VITE_DEPLOYMENT_ENV: ${VITE_DEPLOYMENT_ENV:-LIVE}
     image: ddbj-search-front-${DDBJ_SEARCH_ENV}
     container_name: ddbj-search-front-${DDBJ_SEARCH_ENV}
     environment:
