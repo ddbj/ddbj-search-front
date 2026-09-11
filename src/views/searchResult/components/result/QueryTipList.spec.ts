@@ -57,7 +57,7 @@ describe("parseQueryStateToTipList", () => {
     expect(result.find((o) => o.label.name === "Date First Published")?.label.value).toBe(
       "2025-07-01 | 2025-07-10",
     );
-    expect(result.find((o) => o.label.name === "Date Last Published")?.label.value).toBe(
+    expect(result.find((o) => o.label.name === "Date Last Updated")?.label.value).toBe(
       "2024-08-01 | 2024-08-10",
     );
   });

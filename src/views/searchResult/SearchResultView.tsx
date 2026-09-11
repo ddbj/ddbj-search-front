@@ -1,5 +1,6 @@
 import { type FC, useMemo } from "react";
 import { dbLabels, type DBType } from "@/consts/db.ts";
+import { useTitle } from "@/lib/react/useTitle.ts";
 import type { EntryListResponse } from "@/schema/api/entries/base.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
 import type { UpdateSearchFunctions } from "@/views/searchResult/components/queryBuilder/hooks/useUpdateSearchFunctions.ts";
@@ -27,6 +28,7 @@ export const SearchResultView: FC<Props> = ({
   data,
   isLoading = false,
 }) => {
+  useTitle("");
   const pagination = data.pagination;
   const isSkeletonLoading = useMinimumSkeletonLoading(isLoading);
   const breadcrumbsPaths: BreadcrumbsPath[] = useMemo(() => {

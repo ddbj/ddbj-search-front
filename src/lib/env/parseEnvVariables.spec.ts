@@ -41,4 +41,20 @@ describe("parseEnvVariables", () => {
 
     expect(envApiPath).toBe("https://example.com/search/api/");
   });
+
+  it("exposes VITE_DEPLOYMENT_ENV", async () => {
+    vi.stubEnv("VITE_DEPLOYMENT_ENV", "staging");
+
+    const { envDeployment } = await importEnvVariables();
+
+    expect(envDeployment).toBe("staging");
+  });
+
+  it("defaults envDeployment to LIVE", async () => {
+    vi.stubEnv("VITE_DEPLOYMENT_ENV", undefined);
+
+    const { envDeployment } = await importEnvVariables();
+
+    expect(envDeployment).toBe("LIVE");
+  });
 });

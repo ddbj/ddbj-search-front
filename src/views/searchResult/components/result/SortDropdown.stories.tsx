@@ -65,14 +65,14 @@ export const MenuOpen = {
     });
 
     await step("show listbox", async () => {
-      const updatedDateDesc = await findVisibleOption(/Date Last Published\s+Newest first/);
+      const updatedDateDesc = await findVisibleOption(/Date Last Updated\s+Newest first/);
       await expect(updatedDateDesc).toBeVisible();
     });
 
     await step("show sort captions", async () => {
-      const updatedDateDesc = await findVisibleOption(/Date Last Published\s+Newest first/);
+      const updatedDateDesc = await findVisibleOption(/Date Last Updated\s+Newest first/);
       await expect(updatedDateDesc).toBeVisible();
-      await expect(updatedDateDesc).toHaveTextContent("Date Last Published");
+      await expect(updatedDateDesc).toHaveTextContent("Date Last Updated");
       await expect(updatedDateDesc).toHaveTextContent("Newest first");
     });
   },

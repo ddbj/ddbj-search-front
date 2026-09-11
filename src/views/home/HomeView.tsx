@@ -4,6 +4,7 @@ import clsx from "clsx";
 import dayjs from "dayjs";
 import type { ComponentProps, FC } from "react";
 import type { DBType } from "@/consts/db.ts";
+import { useTitle } from "@/lib/react/useTitle.ts";
 import type { AnySearchParams } from "@/schema/search/any.ts";
 import { SearchBox } from "@/views/home/components/SearchBox.tsx";
 import { Logo } from "@/views/shared/icons/logo.tsx";
@@ -31,6 +32,7 @@ type SampleQuery = {
 };
 
 export const HomeView: FC = () => {
+  useTitle("");
   const navigate = useNavigate();
   const sampleQueries = getSampleQueries(new Date());
 
