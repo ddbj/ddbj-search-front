@@ -22,9 +22,16 @@
 
 - サーバー側のSPA fallbackは `/search/*` を `/search/index.html` へ向ける
 - ルート直下の `/*` を `/index.html` へ広くfallbackさせない
-- `/search/assets/*` はそのまま静的アセットとして配信する
+- `/search/assets/*` はそのまま静的アセットとして配信する。存在しないファイルは404にし、SPAのHTMLへfallbackさせない
 
 ルート直下の `index.html` は仮の案内ページなので、`/*` を `/index.html` に向けるとSPAの深いURLが案内ページへ倒れる。
+
+`/search/assets/*` をfallbackの対象から外すのは、ファイル名にcontent hashが入るアセットを長期cacheさせるため。deploy後に古いアセットのURLへHTMLを200で返すと、そのHTMLがスクリプトのURLでcacheされる。
+
+この規則の実体は配信先ごとに持つ。
+
+- container image: `nginx/nginx.conf`
+- Netlify: `netlify.toml`
 
 ## Vite preview / dev
 

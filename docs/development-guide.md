@@ -26,7 +26,7 @@
 
 ## Docker / podman での起動
 
-production と同じ image build を local で確認したいときは Docker (dev) または podman (staging / production) で起動できる。日常開発は `pnpm dev` (= Vite dev server) を使い、本パターンは「`pnpm build` 出力を `serve` で配信した結果を確認する」用途に絞る。HMR は本パターンには無い (= ソース変更ごとに rebuild)。
+production と同じ image build を local で確認したいときは Docker (dev) または podman (staging / production) で起動できる。日常開発は `pnpm dev` (= Vite dev server) を使い、本パターンは「`pnpm build` 出力を image 内の nginx で配信した結果を確認する」用途に絞る。HMR は本パターンには無い (= ソース変更ごとに rebuild)。
 
 ### dev (docker compose)
 

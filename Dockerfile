@@ -30,32 +30,16 @@ COPY . .
 
 RUN pnpm build
 
-FROM node:22.21.1-bookworm-slim AS runtime
+FROM nginx:1.28.0-alpine AS runtime
 
-WORKDIR /app
-
-RUN corepack enable && corepack prepare pnpm@10.33.1 --activate
-
-COPY --from=build /app/dist ./dist
-COPY --from=build /app/package.json /app/pnpm-lock.yaml ./
-
-RUN pnpm install --prod --frozen-lockfile
+COPY --from=build /app/dist /usr/share/nginx/html
 
 # MSW init worker is shipped as a public static asset for `pnpm dev:msw`;
 # strip it from the production image so it cannot be loaded by clients.
-RUN rm -f dist/mockServiceWorker.js
+# The stock server block listens on port 80 and is not used.
+RUN rm -f /usr/share/nginx/html/mockServiceWorker.js /etc/nginx/conf.d/default.conf
+
+# Routing rules (SPA fallback below /search, landing page at the root) live here.
+COPY nginx/nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 3000
-
-# Run as plain static server (no -s/--single). SPA fallback rules live in
-# dist/serve.json (see public/serve.json) so that /search/** rewrites to
-# /search/index.html (the real SPA), while existing files (assets, /index.html
-# landing page) keep being served from the filesystem.
-#
-# Invoke the local serve binary directly rather than via `pnpm exec`. Under
-# `userns_mode: keep-id`, the container HOME resolves to /app (which is owned
-# by root from the build stage), so `pnpm exec` triggers corepack and crashes
-# with EACCES while trying to create /app/.cache/node/corepack. The shipped
-# binary already wires everything up at build time, so corepack is not needed
-# at runtime.
-CMD ["./node_modules/.bin/serve", "dist", "-l", "3000"]

@@ -1,8 +1,9 @@
 # Ignore everything
 **
 
-# Allow only what `pnpm install` + `pnpm build` (tsc -b && vite build) need
+# Allow only what `pnpm install` + `pnpm build` (tsc -b && vite build) and the runtime stage need
 !index.html
+!nginx
 !package.json
 !pnpm-lock.yaml
 !public
