@@ -46,6 +46,14 @@ cp compose.override.podman.yml compose.override.yml
 podman-compose up -d --build
 ```
 
+更新を反映するときは、先にコンテナを消してから作り直す。podman-compose は同名のコンテナが残っていると作り直さず、build した image を使わないまま既存のコンテナを start し直す。
+
+```bash
+git pull
+podman-compose down
+podman-compose up -d --build
+```
+
 `compose.override.podman.yml` は `userns_mode: keep-id` を効かせるための差分設定で、podman 環境でだけ override に置く。`VITE_API_PATH` の build 時 embed については [docs/environment-variables.md § staging / production への配備 (build args 経由)](./environment-variables.md) を参照する。
 
 ## 品質ツール
