@@ -35,6 +35,35 @@ export const Primary = {
   },
 } satisfies Story;
 
+export const ClickControl = {
+  play: async ({ canvasElement, userEvent }) => {
+    mockSetIsSelected.mockReset();
+    const control = canvasElement.querySelector("[data-slot='checkbox-control']");
+    await expect(control).not.toBeNull();
+    await userEvent.click(control as Element);
+    await expect(mockSetIsSelected).toHaveBeenCalledTimes(1);
+    await expect(mockSetIsSelected).toHaveBeenLastCalledWith(true);
+  },
+} satisfies Story;
+
+export const ControlBesideLabel = {
+  args: {
+    labelStr: "BioProject details",
+    to: "/entry/bioproject/",
+  },
+  play: async ({ canvas, canvasElement }) => {
+    const control = canvasElement.querySelector("[data-slot='checkbox-control']");
+    await expect(control).not.toBeNull();
+    const controlRect = (control as Element).getBoundingClientRect();
+    const linkRect = (
+      await canvas.findByRole("link", { name: "BioProject details" })
+    ).getBoundingClientRect();
+    await expect(controlRect.right).toBeLessThanOrEqual(linkRect.left);
+    await expect(controlRect.top).toBeLessThan(linkRect.bottom);
+    await expect(linkRect.top).toBeLessThan(controlRect.bottom);
+  },
+} satisfies Story;
+
 export const Checked = {
   args: {
     isSelected: true,

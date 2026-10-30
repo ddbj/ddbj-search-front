@@ -15,7 +15,7 @@ type Props = {
   from?: keyof FileRoutesByFullPath;
 };
 
-const checkboxClasses = clsx("group/checkbox flex min-w-0 items-start gap-2.5");
+const checkboxClasses = clsx("group/checkbox min-w-0");
 const labelClasses = clsx("min-w-0 text-[15px] leading-6 break-words text-gray-900");
 const linkWrapperClasses = clsx("min-w-0 break-words");
 const controlClasses = clsx(
@@ -23,7 +23,7 @@ const controlClasses = clsx(
   "before:bg-bg-primary before:rounded-none",
 );
 const indicatorClasses = clsx("text-white");
-const contentClasses = clsx("min-w-0");
+const contentClasses = clsx("flex min-w-0 items-start gap-2.5 text-base font-normal");
 const linkClasses = clsx("text-link-primary");
 export const CheckboxText: FC<Props> = ({
   to,
@@ -42,10 +42,10 @@ export const CheckboxText: FC<Props> = ({
         onChange={setIsSelected}
         value={value}
       >
-        <Checkbox.Control className={controlClasses}>
-          <Checkbox.Indicator className={indicatorClasses} />
-        </Checkbox.Control>
         <Checkbox.Content className={contentClasses}>
+          <Checkbox.Control className={controlClasses}>
+            <Checkbox.Indicator className={indicatorClasses} />
+          </Checkbox.Control>
           <div className={linkWrapperClasses}>
             <Link
               to={to}
@@ -69,10 +69,10 @@ export const CheckboxText: FC<Props> = ({
         onChange={setIsSelected}
         value={value}
       >
-        <Checkbox.Control className={controlClasses}>
-          <Checkbox.Indicator className={indicatorClasses} />
-        </Checkbox.Control>
         <Checkbox.Content className={contentClasses}>
+          <Checkbox.Control className={controlClasses}>
+            <Checkbox.Indicator className={indicatorClasses} />
+          </Checkbox.Control>
           <span className={labelClasses}>{labelStr}</span>
         </Checkbox.Content>
       </Checkbox>

@@ -36,6 +36,7 @@
 - [`decisions/2026-04-27-date-range-picker-locale.md`](./decisions/2026-04-27-date-range-picker-locale.md): `DateRangePicker` の英語表示と年月日順のために `en-CA` を使う判断を記録した文書
 - [`decisions/2026-05-07-facet-count-fetching.md`](./decisions/2026-05-07-facet-count-fetching.md): facet countをUI単位で取得し、自身の検索条件だけ除外する判断を記録した文書
 - [`decisions/2026-05-15-properties-partial-parsing.md`](./decisions/2026-05-15-properties-partial-parsing.md): `properties` の一部を例外的にフロントでパースして表示する判断を記録した文書
+- [`decisions/2026-10-30-font-sans-pin.md`](./decisions/2026-10-30-font-sans-pin.md): Tailwind CSSの既定値の変更を取り込まず、`--font-sans` を `system-ui` 系の値に固定する判断を記録した文書
 
 ## エージェント向け
 

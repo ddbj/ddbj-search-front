@@ -2,6 +2,10 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
+  /* Pinned so that Tailwind CSS upgrades do not change the system font. */
+  --font-sans:
+    ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
   --color-fire-bush-50: #f6f2ef;
   --color-fire-bush-100: #fdd8ba;
   --color-fire-bush-200: #fbbf8e;
