@@ -16,7 +16,6 @@ import { InfoPanel } from "./InfoPanel.tsx";
 const meta = {
   component: InfoPanel,
   args: {},
-  decorators: [],
 } satisfies Meta<typeof InfoPanel>;
 
 export default meta;

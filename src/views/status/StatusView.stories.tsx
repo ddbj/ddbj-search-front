@@ -4,7 +4,6 @@ import { StatusView } from "./StatusView.tsx";
 const meta = {
   component: StatusView,
   args: {},
-  decorators: [],
 } satisfies Meta<typeof StatusView>;
 
 export default meta;

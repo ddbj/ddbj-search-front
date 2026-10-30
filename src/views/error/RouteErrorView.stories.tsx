@@ -5,7 +5,6 @@ import { RouteErrorView } from "./RouteErrorView.tsx";
 const meta = {
   component: RouteErrorView,
   args: {},
-  decorators: [],
 } satisfies Meta<typeof RouteErrorView>;
 
 export default meta;

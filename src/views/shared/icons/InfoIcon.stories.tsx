@@ -5,7 +5,6 @@ import { InfoIcon } from "@/views/shared/icons/InfoIcon.tsx";
 const meta = {
   component: InfoIcon,
   args: {},
-  decorators: [],
 } satisfies Meta<typeof InfoIcon>;
 
 export default meta;

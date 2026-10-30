@@ -5,7 +5,6 @@ import { ResultCard } from "./ResultCard.tsx";
 const meta = {
   component: ResultCard,
   args: {},
-  decorators: [],
 } satisfies Meta<typeof ResultCard>;
 
 export default meta;

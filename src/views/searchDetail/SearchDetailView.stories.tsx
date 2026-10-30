@@ -10,7 +10,6 @@ import { SearchDetailView } from "@/views/searchDetail/SearchDetailView.tsx";
 const meta = {
   component: SearchDetailView,
   args: {},
-  decorators: [],
 } satisfies Meta<typeof SearchDetailView>;
 
 export default meta;

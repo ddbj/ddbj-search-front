@@ -5,7 +5,6 @@ import { CircleQuestionIcon } from "@/views/shared/icons/CircleQuestionIcon.tsx"
 const meta = {
   component: CircleQuestionIcon,
   args: {},
-  decorators: [],
 } satisfies Meta<typeof CircleQuestionIcon>;
 
 export default meta;

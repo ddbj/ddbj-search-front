@@ -5,7 +5,6 @@ import { MagnifierIcon } from "@/views/shared/icons/MagnifierIcon.tsx";
 const meta = {
   component: MagnifierIcon,
   args: {},
-  decorators: [],
 } satisfies Meta<typeof MagnifierIcon>;
 
 export default meta;

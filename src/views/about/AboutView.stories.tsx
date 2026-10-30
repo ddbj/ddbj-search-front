@@ -4,7 +4,6 @@ import { AboutView } from "./AboutView.tsx";
 const meta = {
   component: AboutView,
   args: {},
-  decorators: [],
 } satisfies Meta<typeof AboutView>;
 
 export default meta;

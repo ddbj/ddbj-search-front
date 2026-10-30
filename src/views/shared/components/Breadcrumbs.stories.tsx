@@ -4,7 +4,6 @@ import { Breadcrumbs } from "./Breadcrumbs.tsx";
 const meta = {
   component: Breadcrumbs,
   args: {},
-  decorators: [],
 } satisfies Meta<typeof Breadcrumbs>;
 
 export default meta;

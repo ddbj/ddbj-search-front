@@ -80,7 +80,8 @@ export const PopoverOpen = {
       const heading = await screen.findByRole("heading", {
         name: /Date First Published calendar, /,
       });
-      await expect(heading).toBeVisible();
+      // The popover fades in, so the heading becomes visible after the open animation.
+      await waitFor(() => expect(heading).toBeVisible());
     });
   },
 } satisfies Story;

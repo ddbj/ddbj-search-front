@@ -5,7 +5,6 @@ import { DownloadIcon } from "@/views/shared/icons/DownloadIcon.tsx";
 const meta = {
   component: DownloadIcon,
   args: {},
-  decorators: [],
 } satisfies Meta<typeof DownloadIcon>;
 
 export default meta;

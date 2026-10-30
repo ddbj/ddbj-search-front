@@ -4,7 +4,6 @@ import { ApiView } from "./ApiView.tsx";
 const meta = {
   component: ApiView,
   args: {},
-  decorators: [],
 } satisfies Meta<typeof ApiView>;
 
 export default meta;

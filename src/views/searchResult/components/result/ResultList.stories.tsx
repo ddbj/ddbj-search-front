@@ -4,7 +4,6 @@ import { ResultList } from "./ResultList.tsx";
 const meta = {
   component: ResultList,
   args: {},
-  decorators: [],
 } satisfies Meta<typeof ResultList>;
 
 export default meta;

@@ -5,7 +5,6 @@ import { SquarePlusIcon } from "@/views/shared/icons/SquarePlusIcon.tsx";
 const meta = {
   component: SquarePlusIcon,
   args: {},
-  decorators: [],
 } satisfies Meta<typeof SquarePlusIcon>;
 
 export default meta;

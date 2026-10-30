@@ -9,7 +9,6 @@ const meta = {
     perPage: 10,
     searchParams: {},
   },
-  decorators: [],
 } satisfies Meta<typeof Pagination>;
 
 export default meta;

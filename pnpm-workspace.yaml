@@ -1,0 +1,9 @@
+publicHoistPattern:
+  - "*@heroui/*"
+
+# These packages work without their install scripts.
+allowBuilds:
+  esbuild: false
+  fallow: false
+  msw: false
+  vue-demi: false

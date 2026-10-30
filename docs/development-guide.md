@@ -28,11 +28,14 @@
 
 production と同じ image build を local で確認したいときは Docker (dev) または podman (staging / production) で起動できる。日常開発は `pnpm dev` (= Vite dev server) を使い、本パターンは「`pnpm build` 出力を image 内の nginx で配信した結果を確認する」用途に絞る。HMR は本パターンには無い (= ソース変更ごとに rebuild)。
 
+`Dockerfile` の base image の tag には major か minor までの version を書き、patch version と digest では固定しない。固定すると、OS package の修正を含めて作り直された image を取り込めなくなる。tag が指す最新の image を取得するため、build には必ず `--pull` を付ける。
+
 ### dev (docker compose)
 
 ```bash
 cp env.staging .env   # または env.production。必要なら VITE_API_PATH を直接書き換える
-docker compose -f compose.yml -f compose.dev.yml up -d --build
+docker compose -f compose.yml -f compose.dev.yml build --pull
+docker compose -f compose.yml -f compose.dev.yml up -d
 # http://localhost:3000/search/ で動作確認
 ```
 
@@ -43,15 +46,17 @@ docker compose -f compose.yml -f compose.dev.yml up -d --build
 ```bash
 cp env.staging .env   # または env.production
 cp compose.override.podman.yml compose.override.yml
-podman-compose up -d --build
+podman-compose build --pull
+podman-compose up -d
 ```
 
-更新を反映するときは、先にコンテナを消してから作り直す。podman-compose は同名のコンテナが残っていると作り直さず、build した image を使わないまま既存のコンテナを start し直す。
+更新を反映するときは、image を build してからコンテナを消して作り直す。podman-compose は同名のコンテナが残っていると作り直さず、build した image を使わないまま既存のコンテナを start し直す。
 
 ```bash
 git pull
+podman-compose build --pull
 podman-compose down
-podman-compose up -d --build
+podman-compose up -d
 ```
 
 `compose.override.podman.yml` は `userns_mode: keep-id` を効かせるための差分設定で、podman 環境でだけ override に置く。`VITE_API_PATH` の build 時 embed については [docs/environment-variables.md § staging / production への配備 (build args 経由)](./environment-variables.md) を参照する。

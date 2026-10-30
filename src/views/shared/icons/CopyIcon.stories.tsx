@@ -5,7 +5,6 @@ import { CopyIcon } from "@/views/shared/icons/CopyIcon.tsx";
 const meta = {
   component: CopyIcon,
   args: {},
-  decorators: [],
 } satisfies Meta<typeof CopyIcon>;
 
 export default meta;

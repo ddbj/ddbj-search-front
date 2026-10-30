@@ -6,7 +6,6 @@ const meta = {
   args: {
     children: "Panel Wrapper Content",
   },
-  decorators: [],
 } satisfies Meta<typeof PanelWrapper>;
 
 export default meta;

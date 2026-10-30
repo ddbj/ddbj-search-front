@@ -5,7 +5,6 @@ import { HomeIcon } from "@/views/shared/icons/HomeIcon.tsx";
 const meta = {
   component: HomeIcon,
   args: {},
-  decorators: [],
 } satisfies Meta<typeof HomeIcon>;
 
 export default meta;

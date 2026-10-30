@@ -5,7 +5,6 @@ import { StatusPanel } from "./StatusPanel.tsx";
 const meta = {
   component: StatusPanel,
   args: {},
-  decorators: [],
 } satisfies Meta<typeof StatusPanel>;
 
 export default meta;

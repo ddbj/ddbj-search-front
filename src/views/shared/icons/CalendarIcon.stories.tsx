@@ -5,7 +5,6 @@ import { CalendarIcon } from "@/views/shared/icons/CalendarIcon.tsx";
 const meta = {
   component: CalendarIcon,
   args: {},
-  decorators: [],
 } satisfies Meta<typeof CalendarIcon>;
 
 export default meta;

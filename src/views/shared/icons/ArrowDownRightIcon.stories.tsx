@@ -5,7 +5,6 @@ import { ArrowDownRightIcon } from "@/views/shared/icons/ArrowDownRightIcon.tsx"
 const meta = {
   component: ArrowDownRightIcon,
   args: {},
-  decorators: [],
 } satisfies Meta<typeof ArrowDownRightIcon>;
 
 export default meta;

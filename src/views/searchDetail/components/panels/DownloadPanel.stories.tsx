@@ -6,7 +6,6 @@ import { DownloadPanel } from "./DownloadPanel.tsx";
 const meta = {
   component: DownloadPanel,
   args: {},
-  decorators: [],
 } satisfies Meta<typeof DownloadPanel>;
 
 export default meta;

@@ -5,7 +5,6 @@ import { ExternalLinkIcon } from "@/views/shared/icons/ExternalLinkIcon.tsx";
 const meta = {
   component: ExternalLinkIcon,
   args: {},
-  decorators: [],
 } satisfies Meta<typeof ExternalLinkIcon>;
 
 export default meta;

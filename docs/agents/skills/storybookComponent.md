@@ -27,6 +27,7 @@ description: Storybookに対応するReactコンポーネントを作成する�
    - `Props` と表示内容は、指示に含まれる要件に合わせて調整する。
    - `import` 文のパスは、作成先の周辺ファイルに合わせて相対パスまたは `@/` を選ぶ。
    - 必須の `props` がある場合は、`Primary` に `args` を設定する。
+   - `meta` に空の `decorators: []` を書かない。空の配列は型が `never[]` になり、`StoryObj<typeof meta>` の `args` が `never` になって型チェックが失敗する。
 
 ## テンプレート
 
@@ -45,13 +46,12 @@ export const ComponentName: FC<Props> = () => {
 ### `<ComponentName>.stories.tsx`
 
 ```typescript jsx
-import { ComponentName } from "PathToComponent";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { ComponentName } from "PathToComponent";
 
 const meta = {
   component: ComponentName,
   args: {},
-  decorators: [],
 } satisfies Meta<typeof ComponentName>;
 
 export default meta;

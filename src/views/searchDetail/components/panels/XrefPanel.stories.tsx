@@ -7,7 +7,6 @@ import { parseRefs } from "./xrefPanelUtils.ts";
 const meta = {
   component: XrefPanel,
   args: {},
-  decorators: [],
 } satisfies Meta<typeof XrefPanel>;
 
 export default meta;

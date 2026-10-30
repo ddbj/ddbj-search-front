@@ -4,7 +4,6 @@ import { XrefListItem } from "./XrefListItem.tsx";
 const meta = {
   component: XrefListItem,
   args: {},
-  decorators: [],
 } satisfies Meta<typeof XrefListItem>;
 
 export default meta;

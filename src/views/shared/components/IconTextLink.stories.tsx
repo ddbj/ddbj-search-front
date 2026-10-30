@@ -5,7 +5,6 @@ import { IconTextLink } from "./IconTextLink.tsx";
 const meta = {
   component: IconTextLink,
   args: {},
-  decorators: [],
 } satisfies Meta<typeof IconTextLink>;
 
 export default meta;

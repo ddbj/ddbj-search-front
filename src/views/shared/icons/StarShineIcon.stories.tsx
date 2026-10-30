@@ -5,7 +5,6 @@ import { StarShineIcon } from "@/views/shared/icons/StarShineIcon.tsx";
 const meta = {
   component: StarShineIcon,
   args: {},
-  decorators: [],
 } satisfies Meta<typeof StarShineIcon>;
 
 export default meta;

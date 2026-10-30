@@ -9,48 +9,43 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as StatusRouteImport } from './routes/status'
-import { Route as ApiDocRouteImport } from './routes/api-doc'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ApiDocRouteImport } from './routes/api-doc'
+import { Route as StatusRouteImport } from './routes/status'
 import { Route as EntryIndexRouteImport } from './routes/entry/index'
-import { Route as EntrySraSubmissionIndexRouteImport } from './routes/entry/sra-submission/index'
-import { Route as EntrySraStudyIndexRouteImport } from './routes/entry/sra-study/index'
-import { Route as EntrySraSampleIndexRouteImport } from './routes/entry/sra-sample/index'
-import { Route as EntrySraRunIndexRouteImport } from './routes/entry/sra-run/index'
-import { Route as EntrySraExperimentIndexRouteImport } from './routes/entry/sra-experiment/index'
-import { Route as EntrySraAnalysisIndexRouteImport } from './routes/entry/sra-analysis/index'
-import { Route as EntryMetabobankIndexRouteImport } from './routes/entry/metabobank/index'
-import { Route as EntryJgaStudyIndexRouteImport } from './routes/entry/jga-study/index'
-import { Route as EntryJgaPolicyIndexRouteImport } from './routes/entry/jga-policy/index'
-import { Route as EntryJgaDatasetIndexRouteImport } from './routes/entry/jga-dataset/index'
-import { Route as EntryJgaDacIndexRouteImport } from './routes/entry/jga-dac/index'
-import { Route as EntryGeaIndexRouteImport } from './routes/entry/gea/index'
-import { Route as EntryBiosampleIndexRouteImport } from './routes/entry/biosample/index'
 import { Route as EntryBioprojectIndexRouteImport } from './routes/entry/bioproject/index'
-import { Route as EntrySraSubmissionIdentifierRouteImport } from './routes/entry/sra-submission/$identifier'
-import { Route as EntrySraStudyIdentifierRouteImport } from './routes/entry/sra-study/$identifier'
-import { Route as EntrySraSampleIdentifierRouteImport } from './routes/entry/sra-sample/$identifier'
-import { Route as EntrySraRunIdentifierRouteImport } from './routes/entry/sra-run/$identifier'
-import { Route as EntrySraExperimentIdentifierRouteImport } from './routes/entry/sra-experiment/$identifier'
-import { Route as EntrySraAnalysisIdentifierRouteImport } from './routes/entry/sra-analysis/$identifier'
-import { Route as EntryMetabobankIdentifierRouteImport } from './routes/entry/metabobank/$identifier'
-import { Route as EntryJgaStudyIdentifierRouteImport } from './routes/entry/jga-study/$identifier'
-import { Route as EntryJgaPolicyIdentifierRouteImport } from './routes/entry/jga-policy/$identifier'
-import { Route as EntryJgaDatasetIdentifierRouteImport } from './routes/entry/jga-dataset/$identifier'
-import { Route as EntryJgaDacIdentifierRouteImport } from './routes/entry/jga-dac/$identifier'
-import { Route as EntryGeaIdentifierRouteImport } from './routes/entry/gea/$identifier'
-import { Route as EntryBiosampleIdentifierRouteImport } from './routes/entry/biosample/$identifier'
 import { Route as EntryBioprojectIdentifierRouteImport } from './routes/entry/bioproject/$identifier'
+import { Route as EntryBiosampleIndexRouteImport } from './routes/entry/biosample/index'
+import { Route as EntryBiosampleIdentifierRouteImport } from './routes/entry/biosample/$identifier'
+import { Route as EntryGeaIndexRouteImport } from './routes/entry/gea/index'
+import { Route as EntryGeaIdentifierRouteImport } from './routes/entry/gea/$identifier'
+import { Route as EntryJgaDacIndexRouteImport } from './routes/entry/jga-dac/index'
+import { Route as EntryJgaDacIdentifierRouteImport } from './routes/entry/jga-dac/$identifier'
+import { Route as EntryJgaDatasetIndexRouteImport } from './routes/entry/jga-dataset/index'
+import { Route as EntryJgaDatasetIdentifierRouteImport } from './routes/entry/jga-dataset/$identifier'
+import { Route as EntryJgaPolicyIndexRouteImport } from './routes/entry/jga-policy/index'
+import { Route as EntryJgaPolicyIdentifierRouteImport } from './routes/entry/jga-policy/$identifier'
+import { Route as EntryJgaStudyIndexRouteImport } from './routes/entry/jga-study/index'
+import { Route as EntryJgaStudyIdentifierRouteImport } from './routes/entry/jga-study/$identifier'
+import { Route as EntryMetabobankIndexRouteImport } from './routes/entry/metabobank/index'
+import { Route as EntryMetabobankIdentifierRouteImport } from './routes/entry/metabobank/$identifier'
+import { Route as EntrySraAnalysisIndexRouteImport } from './routes/entry/sra-analysis/index'
+import { Route as EntrySraAnalysisIdentifierRouteImport } from './routes/entry/sra-analysis/$identifier'
+import { Route as EntrySraExperimentIndexRouteImport } from './routes/entry/sra-experiment/index'
+import { Route as EntrySraExperimentIdentifierRouteImport } from './routes/entry/sra-experiment/$identifier'
+import { Route as EntrySraRunIndexRouteImport } from './routes/entry/sra-run/index'
+import { Route as EntrySraRunIdentifierRouteImport } from './routes/entry/sra-run/$identifier'
+import { Route as EntrySraSampleIndexRouteImport } from './routes/entry/sra-sample/index'
+import { Route as EntrySraSampleIdentifierRouteImport } from './routes/entry/sra-sample/$identifier'
+import { Route as EntrySraStudyIndexRouteImport } from './routes/entry/sra-study/index'
+import { Route as EntrySraStudyIdentifierRouteImport } from './routes/entry/sra-study/$identifier'
+import { Route as EntrySraSubmissionIndexRouteImport } from './routes/entry/sra-submission/index'
+import { Route as EntrySraSubmissionIdentifierRouteImport } from './routes/entry/sra-submission/$identifier'
 
-const StatusRoute = StatusRouteImport.update({
-  id: '/status',
-  path: '/status',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiDocRoute = ApiDocRouteImport.update({
-  id: '/api-doc',
-  path: '/api-doc',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -58,9 +53,14 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const ApiDocRoute = ApiDocRouteImport.update({
+  id: '/api-doc',
+  path: '/api-doc',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StatusRoute = StatusRouteImport.update({
+  id: '/status',
+  path: '/status',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EntryIndexRoute = EntryIndexRouteImport.update({
@@ -68,141 +68,20 @@ const EntryIndexRoute = EntryIndexRouteImport.update({
   path: '/entry/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const EntrySraSubmissionIndexRoute = EntrySraSubmissionIndexRouteImport.update({
-  id: '/entry/sra-submission/',
-  path: '/entry/sra-submission/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EntrySraStudyIndexRoute = EntrySraStudyIndexRouteImport.update({
-  id: '/entry/sra-study/',
-  path: '/entry/sra-study/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EntrySraSampleIndexRoute = EntrySraSampleIndexRouteImport.update({
-  id: '/entry/sra-sample/',
-  path: '/entry/sra-sample/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EntrySraRunIndexRoute = EntrySraRunIndexRouteImport.update({
-  id: '/entry/sra-run/',
-  path: '/entry/sra-run/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EntrySraExperimentIndexRoute = EntrySraExperimentIndexRouteImport.update({
-  id: '/entry/sra-experiment/',
-  path: '/entry/sra-experiment/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EntrySraAnalysisIndexRoute = EntrySraAnalysisIndexRouteImport.update({
-  id: '/entry/sra-analysis/',
-  path: '/entry/sra-analysis/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EntryMetabobankIndexRoute = EntryMetabobankIndexRouteImport.update({
-  id: '/entry/metabobank/',
-  path: '/entry/metabobank/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EntryJgaStudyIndexRoute = EntryJgaStudyIndexRouteImport.update({
-  id: '/entry/jga-study/',
-  path: '/entry/jga-study/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EntryJgaPolicyIndexRoute = EntryJgaPolicyIndexRouteImport.update({
-  id: '/entry/jga-policy/',
-  path: '/entry/jga-policy/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EntryJgaDatasetIndexRoute = EntryJgaDatasetIndexRouteImport.update({
-  id: '/entry/jga-dataset/',
-  path: '/entry/jga-dataset/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EntryJgaDacIndexRoute = EntryJgaDacIndexRouteImport.update({
-  id: '/entry/jga-dac/',
-  path: '/entry/jga-dac/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EntryGeaIndexRoute = EntryGeaIndexRouteImport.update({
-  id: '/entry/gea/',
-  path: '/entry/gea/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EntryBiosampleIndexRoute = EntryBiosampleIndexRouteImport.update({
-  id: '/entry/biosample/',
-  path: '/entry/biosample/',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const EntryBioprojectIndexRoute = EntryBioprojectIndexRouteImport.update({
   id: '/entry/bioproject/',
   path: '/entry/bioproject/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const EntrySraSubmissionIdentifierRoute =
-  EntrySraSubmissionIdentifierRouteImport.update({
-    id: '/entry/sra-submission/$identifier',
-    path: '/entry/sra-submission/$identifier',
+const EntryBioprojectIdentifierRoute =
+  EntryBioprojectIdentifierRouteImport.update({
+    id: '/entry/bioproject/$identifier',
+    path: '/entry/bioproject/$identifier',
     getParentRoute: () => rootRouteImport,
   } as any)
-const EntrySraStudyIdentifierRoute = EntrySraStudyIdentifierRouteImport.update({
-  id: '/entry/sra-study/$identifier',
-  path: '/entry/sra-study/$identifier',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EntrySraSampleIdentifierRoute =
-  EntrySraSampleIdentifierRouteImport.update({
-    id: '/entry/sra-sample/$identifier',
-    path: '/entry/sra-sample/$identifier',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const EntrySraRunIdentifierRoute = EntrySraRunIdentifierRouteImport.update({
-  id: '/entry/sra-run/$identifier',
-  path: '/entry/sra-run/$identifier',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EntrySraExperimentIdentifierRoute =
-  EntrySraExperimentIdentifierRouteImport.update({
-    id: '/entry/sra-experiment/$identifier',
-    path: '/entry/sra-experiment/$identifier',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const EntrySraAnalysisIdentifierRoute =
-  EntrySraAnalysisIdentifierRouteImport.update({
-    id: '/entry/sra-analysis/$identifier',
-    path: '/entry/sra-analysis/$identifier',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const EntryMetabobankIdentifierRoute =
-  EntryMetabobankIdentifierRouteImport.update({
-    id: '/entry/metabobank/$identifier',
-    path: '/entry/metabobank/$identifier',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const EntryJgaStudyIdentifierRoute = EntryJgaStudyIdentifierRouteImport.update({
-  id: '/entry/jga-study/$identifier',
-  path: '/entry/jga-study/$identifier',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EntryJgaPolicyIdentifierRoute =
-  EntryJgaPolicyIdentifierRouteImport.update({
-    id: '/entry/jga-policy/$identifier',
-    path: '/entry/jga-policy/$identifier',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const EntryJgaDatasetIdentifierRoute =
-  EntryJgaDatasetIdentifierRouteImport.update({
-    id: '/entry/jga-dataset/$identifier',
-    path: '/entry/jga-dataset/$identifier',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const EntryJgaDacIdentifierRoute = EntryJgaDacIdentifierRouteImport.update({
-  id: '/entry/jga-dac/$identifier',
-  path: '/entry/jga-dac/$identifier',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EntryGeaIdentifierRoute = EntryGeaIdentifierRouteImport.update({
-  id: '/entry/gea/$identifier',
-  path: '/entry/gea/$identifier',
+const EntryBiosampleIndexRoute = EntryBiosampleIndexRouteImport.update({
+  id: '/entry/biosample/',
+  path: '/entry/biosample/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EntryBiosampleIdentifierRoute =
@@ -211,10 +90,131 @@ const EntryBiosampleIdentifierRoute =
     path: '/entry/biosample/$identifier',
     getParentRoute: () => rootRouteImport,
   } as any)
-const EntryBioprojectIdentifierRoute =
-  EntryBioprojectIdentifierRouteImport.update({
-    id: '/entry/bioproject/$identifier',
-    path: '/entry/bioproject/$identifier',
+const EntryGeaIndexRoute = EntryGeaIndexRouteImport.update({
+  id: '/entry/gea/',
+  path: '/entry/gea/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntryGeaIdentifierRoute = EntryGeaIdentifierRouteImport.update({
+  id: '/entry/gea/$identifier',
+  path: '/entry/gea/$identifier',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntryJgaDacIndexRoute = EntryJgaDacIndexRouteImport.update({
+  id: '/entry/jga-dac/',
+  path: '/entry/jga-dac/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntryJgaDacIdentifierRoute = EntryJgaDacIdentifierRouteImport.update({
+  id: '/entry/jga-dac/$identifier',
+  path: '/entry/jga-dac/$identifier',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntryJgaDatasetIndexRoute = EntryJgaDatasetIndexRouteImport.update({
+  id: '/entry/jga-dataset/',
+  path: '/entry/jga-dataset/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntryJgaDatasetIdentifierRoute =
+  EntryJgaDatasetIdentifierRouteImport.update({
+    id: '/entry/jga-dataset/$identifier',
+    path: '/entry/jga-dataset/$identifier',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const EntryJgaPolicyIndexRoute = EntryJgaPolicyIndexRouteImport.update({
+  id: '/entry/jga-policy/',
+  path: '/entry/jga-policy/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntryJgaPolicyIdentifierRoute =
+  EntryJgaPolicyIdentifierRouteImport.update({
+    id: '/entry/jga-policy/$identifier',
+    path: '/entry/jga-policy/$identifier',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const EntryJgaStudyIndexRoute = EntryJgaStudyIndexRouteImport.update({
+  id: '/entry/jga-study/',
+  path: '/entry/jga-study/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntryJgaStudyIdentifierRoute = EntryJgaStudyIdentifierRouteImport.update({
+  id: '/entry/jga-study/$identifier',
+  path: '/entry/jga-study/$identifier',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntryMetabobankIndexRoute = EntryMetabobankIndexRouteImport.update({
+  id: '/entry/metabobank/',
+  path: '/entry/metabobank/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntryMetabobankIdentifierRoute =
+  EntryMetabobankIdentifierRouteImport.update({
+    id: '/entry/metabobank/$identifier',
+    path: '/entry/metabobank/$identifier',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const EntrySraAnalysisIndexRoute = EntrySraAnalysisIndexRouteImport.update({
+  id: '/entry/sra-analysis/',
+  path: '/entry/sra-analysis/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntrySraAnalysisIdentifierRoute =
+  EntrySraAnalysisIdentifierRouteImport.update({
+    id: '/entry/sra-analysis/$identifier',
+    path: '/entry/sra-analysis/$identifier',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const EntrySraExperimentIndexRoute = EntrySraExperimentIndexRouteImport.update({
+  id: '/entry/sra-experiment/',
+  path: '/entry/sra-experiment/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntrySraExperimentIdentifierRoute =
+  EntrySraExperimentIdentifierRouteImport.update({
+    id: '/entry/sra-experiment/$identifier',
+    path: '/entry/sra-experiment/$identifier',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const EntrySraRunIndexRoute = EntrySraRunIndexRouteImport.update({
+  id: '/entry/sra-run/',
+  path: '/entry/sra-run/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntrySraRunIdentifierRoute = EntrySraRunIdentifierRouteImport.update({
+  id: '/entry/sra-run/$identifier',
+  path: '/entry/sra-run/$identifier',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntrySraSampleIndexRoute = EntrySraSampleIndexRouteImport.update({
+  id: '/entry/sra-sample/',
+  path: '/entry/sra-sample/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntrySraSampleIdentifierRoute =
+  EntrySraSampleIdentifierRouteImport.update({
+    id: '/entry/sra-sample/$identifier',
+    path: '/entry/sra-sample/$identifier',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const EntrySraStudyIndexRoute = EntrySraStudyIndexRouteImport.update({
+  id: '/entry/sra-study/',
+  path: '/entry/sra-study/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntrySraStudyIdentifierRoute = EntrySraStudyIdentifierRouteImport.update({
+  id: '/entry/sra-study/$identifier',
+  path: '/entry/sra-study/$identifier',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntrySraSubmissionIndexRoute = EntrySraSubmissionIndexRouteImport.update({
+  id: '/entry/sra-submission/',
+  path: '/entry/sra-submission/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntrySraSubmissionIdentifierRoute =
+  EntrySraSubmissionIdentifierRouteImport.update({
+    id: '/entry/sra-submission/$identifier',
+    path: '/entry/sra-submission/$identifier',
     getParentRoute: () => rootRouteImport,
   } as any)
 
@@ -470,18 +470,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/status': {
-      id: '/status'
-      path: '/status'
-      fullPath: '/status'
-      preLoaderRoute: typeof StatusRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api-doc': {
-      id: '/api-doc'
-      path: '/api-doc'
-      fullPath: '/api-doc'
-      preLoaderRoute: typeof ApiDocRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -491,11 +484,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/api-doc': {
+      id: '/api-doc'
+      path: '/api-doc'
+      fullPath: '/api-doc'
+      preLoaderRoute: typeof ApiDocRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/status': {
+      id: '/status'
+      path: '/status'
+      fullPath: '/status'
+      preLoaderRoute: typeof StatusRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/entry/': {
@@ -505,88 +505,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EntryIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/entry/sra-submission/': {
-      id: '/entry/sra-submission/'
-      path: '/entry/sra-submission'
-      fullPath: '/entry/sra-submission/'
-      preLoaderRoute: typeof EntrySraSubmissionIndexRouteImport
+    '/entry/bioproject/': {
+      id: '/entry/bioproject/'
+      path: '/entry/bioproject'
+      fullPath: '/entry/bioproject/'
+      preLoaderRoute: typeof EntryBioprojectIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/entry/sra-study/': {
-      id: '/entry/sra-study/'
-      path: '/entry/sra-study'
-      fullPath: '/entry/sra-study/'
-      preLoaderRoute: typeof EntrySraStudyIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/entry/sra-sample/': {
-      id: '/entry/sra-sample/'
-      path: '/entry/sra-sample'
-      fullPath: '/entry/sra-sample/'
-      preLoaderRoute: typeof EntrySraSampleIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/entry/sra-run/': {
-      id: '/entry/sra-run/'
-      path: '/entry/sra-run'
-      fullPath: '/entry/sra-run/'
-      preLoaderRoute: typeof EntrySraRunIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/entry/sra-experiment/': {
-      id: '/entry/sra-experiment/'
-      path: '/entry/sra-experiment'
-      fullPath: '/entry/sra-experiment/'
-      preLoaderRoute: typeof EntrySraExperimentIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/entry/sra-analysis/': {
-      id: '/entry/sra-analysis/'
-      path: '/entry/sra-analysis'
-      fullPath: '/entry/sra-analysis/'
-      preLoaderRoute: typeof EntrySraAnalysisIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/entry/metabobank/': {
-      id: '/entry/metabobank/'
-      path: '/entry/metabobank'
-      fullPath: '/entry/metabobank/'
-      preLoaderRoute: typeof EntryMetabobankIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/entry/jga-study/': {
-      id: '/entry/jga-study/'
-      path: '/entry/jga-study'
-      fullPath: '/entry/jga-study/'
-      preLoaderRoute: typeof EntryJgaStudyIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/entry/jga-policy/': {
-      id: '/entry/jga-policy/'
-      path: '/entry/jga-policy'
-      fullPath: '/entry/jga-policy/'
-      preLoaderRoute: typeof EntryJgaPolicyIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/entry/jga-dataset/': {
-      id: '/entry/jga-dataset/'
-      path: '/entry/jga-dataset'
-      fullPath: '/entry/jga-dataset/'
-      preLoaderRoute: typeof EntryJgaDatasetIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/entry/jga-dac/': {
-      id: '/entry/jga-dac/'
-      path: '/entry/jga-dac'
-      fullPath: '/entry/jga-dac/'
-      preLoaderRoute: typeof EntryJgaDacIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/entry/gea/': {
-      id: '/entry/gea/'
-      path: '/entry/gea'
-      fullPath: '/entry/gea/'
-      preLoaderRoute: typeof EntryGeaIndexRouteImport
+    '/entry/bioproject/$identifier': {
+      id: '/entry/bioproject/$identifier'
+      path: '/entry/bioproject/$identifier'
+      fullPath: '/entry/bioproject/$identifier'
+      preLoaderRoute: typeof EntryBioprojectIdentifierRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/entry/biosample/': {
@@ -596,88 +526,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EntryBiosampleIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/entry/bioproject/': {
-      id: '/entry/bioproject/'
-      path: '/entry/bioproject'
-      fullPath: '/entry/bioproject/'
-      preLoaderRoute: typeof EntryBioprojectIndexRouteImport
+    '/entry/biosample/$identifier': {
+      id: '/entry/biosample/$identifier'
+      path: '/entry/biosample/$identifier'
+      fullPath: '/entry/biosample/$identifier'
+      preLoaderRoute: typeof EntryBiosampleIdentifierRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/entry/sra-submission/$identifier': {
-      id: '/entry/sra-submission/$identifier'
-      path: '/entry/sra-submission/$identifier'
-      fullPath: '/entry/sra-submission/$identifier'
-      preLoaderRoute: typeof EntrySraSubmissionIdentifierRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/entry/sra-study/$identifier': {
-      id: '/entry/sra-study/$identifier'
-      path: '/entry/sra-study/$identifier'
-      fullPath: '/entry/sra-study/$identifier'
-      preLoaderRoute: typeof EntrySraStudyIdentifierRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/entry/sra-sample/$identifier': {
-      id: '/entry/sra-sample/$identifier'
-      path: '/entry/sra-sample/$identifier'
-      fullPath: '/entry/sra-sample/$identifier'
-      preLoaderRoute: typeof EntrySraSampleIdentifierRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/entry/sra-run/$identifier': {
-      id: '/entry/sra-run/$identifier'
-      path: '/entry/sra-run/$identifier'
-      fullPath: '/entry/sra-run/$identifier'
-      preLoaderRoute: typeof EntrySraRunIdentifierRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/entry/sra-experiment/$identifier': {
-      id: '/entry/sra-experiment/$identifier'
-      path: '/entry/sra-experiment/$identifier'
-      fullPath: '/entry/sra-experiment/$identifier'
-      preLoaderRoute: typeof EntrySraExperimentIdentifierRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/entry/sra-analysis/$identifier': {
-      id: '/entry/sra-analysis/$identifier'
-      path: '/entry/sra-analysis/$identifier'
-      fullPath: '/entry/sra-analysis/$identifier'
-      preLoaderRoute: typeof EntrySraAnalysisIdentifierRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/entry/metabobank/$identifier': {
-      id: '/entry/metabobank/$identifier'
-      path: '/entry/metabobank/$identifier'
-      fullPath: '/entry/metabobank/$identifier'
-      preLoaderRoute: typeof EntryMetabobankIdentifierRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/entry/jga-study/$identifier': {
-      id: '/entry/jga-study/$identifier'
-      path: '/entry/jga-study/$identifier'
-      fullPath: '/entry/jga-study/$identifier'
-      preLoaderRoute: typeof EntryJgaStudyIdentifierRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/entry/jga-policy/$identifier': {
-      id: '/entry/jga-policy/$identifier'
-      path: '/entry/jga-policy/$identifier'
-      fullPath: '/entry/jga-policy/$identifier'
-      preLoaderRoute: typeof EntryJgaPolicyIdentifierRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/entry/jga-dataset/$identifier': {
-      id: '/entry/jga-dataset/$identifier'
-      path: '/entry/jga-dataset/$identifier'
-      fullPath: '/entry/jga-dataset/$identifier'
-      preLoaderRoute: typeof EntryJgaDatasetIdentifierRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/entry/jga-dac/$identifier': {
-      id: '/entry/jga-dac/$identifier'
-      path: '/entry/jga-dac/$identifier'
-      fullPath: '/entry/jga-dac/$identifier'
-      preLoaderRoute: typeof EntryJgaDacIdentifierRouteImport
+    '/entry/gea/': {
+      id: '/entry/gea/'
+      path: '/entry/gea'
+      fullPath: '/entry/gea/'
+      preLoaderRoute: typeof EntryGeaIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/entry/gea/$identifier': {
@@ -687,18 +547,158 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EntryGeaIdentifierRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/entry/biosample/$identifier': {
-      id: '/entry/biosample/$identifier'
-      path: '/entry/biosample/$identifier'
-      fullPath: '/entry/biosample/$identifier'
-      preLoaderRoute: typeof EntryBiosampleIdentifierRouteImport
+    '/entry/jga-dac/': {
+      id: '/entry/jga-dac/'
+      path: '/entry/jga-dac'
+      fullPath: '/entry/jga-dac/'
+      preLoaderRoute: typeof EntryJgaDacIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/entry/bioproject/$identifier': {
-      id: '/entry/bioproject/$identifier'
-      path: '/entry/bioproject/$identifier'
-      fullPath: '/entry/bioproject/$identifier'
-      preLoaderRoute: typeof EntryBioprojectIdentifierRouteImport
+    '/entry/jga-dac/$identifier': {
+      id: '/entry/jga-dac/$identifier'
+      path: '/entry/jga-dac/$identifier'
+      fullPath: '/entry/jga-dac/$identifier'
+      preLoaderRoute: typeof EntryJgaDacIdentifierRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entry/jga-dataset/': {
+      id: '/entry/jga-dataset/'
+      path: '/entry/jga-dataset'
+      fullPath: '/entry/jga-dataset/'
+      preLoaderRoute: typeof EntryJgaDatasetIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entry/jga-dataset/$identifier': {
+      id: '/entry/jga-dataset/$identifier'
+      path: '/entry/jga-dataset/$identifier'
+      fullPath: '/entry/jga-dataset/$identifier'
+      preLoaderRoute: typeof EntryJgaDatasetIdentifierRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entry/jga-policy/': {
+      id: '/entry/jga-policy/'
+      path: '/entry/jga-policy'
+      fullPath: '/entry/jga-policy/'
+      preLoaderRoute: typeof EntryJgaPolicyIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entry/jga-policy/$identifier': {
+      id: '/entry/jga-policy/$identifier'
+      path: '/entry/jga-policy/$identifier'
+      fullPath: '/entry/jga-policy/$identifier'
+      preLoaderRoute: typeof EntryJgaPolicyIdentifierRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entry/jga-study/': {
+      id: '/entry/jga-study/'
+      path: '/entry/jga-study'
+      fullPath: '/entry/jga-study/'
+      preLoaderRoute: typeof EntryJgaStudyIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entry/jga-study/$identifier': {
+      id: '/entry/jga-study/$identifier'
+      path: '/entry/jga-study/$identifier'
+      fullPath: '/entry/jga-study/$identifier'
+      preLoaderRoute: typeof EntryJgaStudyIdentifierRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entry/metabobank/': {
+      id: '/entry/metabobank/'
+      path: '/entry/metabobank'
+      fullPath: '/entry/metabobank/'
+      preLoaderRoute: typeof EntryMetabobankIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entry/metabobank/$identifier': {
+      id: '/entry/metabobank/$identifier'
+      path: '/entry/metabobank/$identifier'
+      fullPath: '/entry/metabobank/$identifier'
+      preLoaderRoute: typeof EntryMetabobankIdentifierRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entry/sra-analysis/': {
+      id: '/entry/sra-analysis/'
+      path: '/entry/sra-analysis'
+      fullPath: '/entry/sra-analysis/'
+      preLoaderRoute: typeof EntrySraAnalysisIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entry/sra-analysis/$identifier': {
+      id: '/entry/sra-analysis/$identifier'
+      path: '/entry/sra-analysis/$identifier'
+      fullPath: '/entry/sra-analysis/$identifier'
+      preLoaderRoute: typeof EntrySraAnalysisIdentifierRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entry/sra-experiment/': {
+      id: '/entry/sra-experiment/'
+      path: '/entry/sra-experiment'
+      fullPath: '/entry/sra-experiment/'
+      preLoaderRoute: typeof EntrySraExperimentIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entry/sra-experiment/$identifier': {
+      id: '/entry/sra-experiment/$identifier'
+      path: '/entry/sra-experiment/$identifier'
+      fullPath: '/entry/sra-experiment/$identifier'
+      preLoaderRoute: typeof EntrySraExperimentIdentifierRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entry/sra-run/': {
+      id: '/entry/sra-run/'
+      path: '/entry/sra-run'
+      fullPath: '/entry/sra-run/'
+      preLoaderRoute: typeof EntrySraRunIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entry/sra-run/$identifier': {
+      id: '/entry/sra-run/$identifier'
+      path: '/entry/sra-run/$identifier'
+      fullPath: '/entry/sra-run/$identifier'
+      preLoaderRoute: typeof EntrySraRunIdentifierRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entry/sra-sample/': {
+      id: '/entry/sra-sample/'
+      path: '/entry/sra-sample'
+      fullPath: '/entry/sra-sample/'
+      preLoaderRoute: typeof EntrySraSampleIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entry/sra-sample/$identifier': {
+      id: '/entry/sra-sample/$identifier'
+      path: '/entry/sra-sample/$identifier'
+      fullPath: '/entry/sra-sample/$identifier'
+      preLoaderRoute: typeof EntrySraSampleIdentifierRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entry/sra-study/': {
+      id: '/entry/sra-study/'
+      path: '/entry/sra-study'
+      fullPath: '/entry/sra-study/'
+      preLoaderRoute: typeof EntrySraStudyIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entry/sra-study/$identifier': {
+      id: '/entry/sra-study/$identifier'
+      path: '/entry/sra-study/$identifier'
+      fullPath: '/entry/sra-study/$identifier'
+      preLoaderRoute: typeof EntrySraStudyIdentifierRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entry/sra-submission/': {
+      id: '/entry/sra-submission/'
+      path: '/entry/sra-submission'
+      fullPath: '/entry/sra-submission/'
+      preLoaderRoute: typeof EntrySraSubmissionIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entry/sra-submission/$identifier': {
+      id: '/entry/sra-submission/$identifier'
+      path: '/entry/sra-submission/$identifier'
+      fullPath: '/entry/sra-submission/$identifier'
+      preLoaderRoute: typeof EntrySraSubmissionIdentifierRouteImport
       parentRoute: typeof rootRouteImport
     }
   }

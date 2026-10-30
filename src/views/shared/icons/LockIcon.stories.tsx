@@ -5,7 +5,6 @@ import { LockIcon } from "@/views/shared/icons/LockIcon.tsx";
 const meta = {
   component: LockIcon,
   args: {},
-  decorators: [],
 } satisfies Meta<typeof LockIcon>;
 
 export default meta;

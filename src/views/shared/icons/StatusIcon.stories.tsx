@@ -5,7 +5,6 @@ import { StatusIcon } from "@/views/shared/icons/StatusIcon.tsx";
 const meta = {
   component: StatusIcon,
   args: {},
-  decorators: [],
 } satisfies Meta<typeof StatusIcon>;
 
 export default meta;

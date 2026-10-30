@@ -5,7 +5,6 @@ import { CircleCloseIcon } from "@/views/shared/icons/CircleCloseIcon.tsx";
 const meta = {
   component: CircleCloseIcon,
   args: {},
-  decorators: [],
 } satisfies Meta<typeof CircleCloseIcon>;
 
 export default meta;

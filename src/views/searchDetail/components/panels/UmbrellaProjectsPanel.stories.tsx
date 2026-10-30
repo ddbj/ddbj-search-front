@@ -5,7 +5,6 @@ import { UmbrellaProjectsPanel } from "@/views/searchDetail/components/panels/Um
 const meta = {
   component: UmbrellaProjectsPanel,
   args: {},
-  decorators: [],
 } satisfies Meta<typeof UmbrellaProjectsPanel>;
 
 export default meta;

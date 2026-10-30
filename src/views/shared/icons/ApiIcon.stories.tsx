@@ -5,7 +5,6 @@ import { ApiIcon } from "@/views/shared/icons/ApiIcon.tsx";
 const meta = {
   component: ApiIcon,
   args: {},
-  decorators: [],
 } satisfies Meta<typeof ApiIcon>;
 
 export default meta;

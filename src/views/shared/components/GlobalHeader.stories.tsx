@@ -4,7 +4,6 @@ import { GlobalHeader } from "./GlobalHeader.tsx";
 const meta = {
   component: GlobalHeader,
   args: {},
-  decorators: [],
 } satisfies Meta<typeof GlobalHeader>;
 
 export default meta;
