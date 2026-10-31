@@ -5,6 +5,9 @@ on:
     tags:
       - "20*" # yyyymmdd
 
+permissions:
+  contents: write
+
 jobs:
   create_gh_release:
     if: github.repository == 'ddbj/ddbj-search-front'
